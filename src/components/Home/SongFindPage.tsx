@@ -9,8 +9,10 @@ import { songs } from '~/src/libs/songs';
 import { Button } from '../Button';
 import { Container } from '../Container';
 import { Text } from '~/src/components/ui/typography';
+import { useSongStore } from '~/src/libs/stores/songs';
 
 export const SongFinderPage = () => {
+  const { recentlyPlayedSongs, favoriteSongs: fav } = useSongStore();
   const [songNumber, setSongNumber] = useState<string>('');
   const [error, setError] = useState<string>('');
   const { ChangeSong } = useSongs();
@@ -71,12 +73,12 @@ export const SongFinderPage = () => {
         {/* Recent Songs */}
         <SongList
           title="Recently Viewed Songs"
-          songNumbers={[]}
+          songNumbers={recentlyPlayedSongs}
           emptyMessage="No recently viewed songs"
         />
 
         {/* Favorite Songs */}
-        <SongList title="Favorite Songs" songNumbers={[]} emptyMessage="No favorite songs yet" />
+        <SongList title="Favorite Songs" songNumbers={fav} emptyMessage="No favorite songs yet" />
       </ScrollView>
     </Container>
   );

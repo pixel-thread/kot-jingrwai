@@ -1,16 +1,49 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SongT } from '~/src/types/song';
 
 type UseSongStoreT = {
-  song: SongT;
-  setSong: (song: SongT) => void;
-  currentSong: number;
-  setCurrentSong: (song: number) => void;
+  favoriteSongs: number[];
+  addFavoriteSong: (song: number) => void;
+  removeFavoriteSong: (songNo: number) => void;
+
+  recentlyPlayedSongs: number[];
+  addRecentlyPlayedSong: (songNo: SongT) => void;
 };
 
-export const useSongStore = create<UseSongStoreT>((set) => ({
-  song: {} as SongT,
-  setSong: (song: SongT) => set({ song }),
-  currentSong: 1,
-  setCurrentSong: (song: number) => set({ currentSong: song }),
-}));
+const MAX_RECENTLY_PLAYED = 10;
+
+export const useSongStore = create<UseSongStoreT>()(
+  persist(
+    (set, get) => ({
+      favoriteSongs: [],
+      addFavoriteSong: (song) => {
+        const current = get().favoriteSongs;
+        const num = song;
+        if (!current.includes(num)) {
+          set({ favoriteSongs: [...current, num] });
+        }
+      },
+
+      removeFavoriteSong: (song) => {
+        const num = song;
+        set({
+          favoriteSongs: get().favoriteSongs.filter((n) => n !== num),
+        });
+      },
+
+      recentlyPlayedSongs: [],
+      addRecentlyPlayedSong: (song) => {
+        const num = song.metadata.number;
+        const existing = get().recentlyPlayedSongs.filter((n) => n !== num);
+        const updated = [num, ...existing].slice(0, MAX_RECENTLY_PLAYED);
+        set({ recentlyPlayedSongs: updated });
+      },
+    }),
+    {
+      name: 'song-storage',
+      getStorage: () => AsyncStorage,
+    }
+  )
+);
