@@ -3928,5 +3928,4 @@ export const shaphangUKhrist: SongT[] = [
       },
     ],
   },
-  
 ];
