@@ -12,7 +12,7 @@ type UseSongStoreT = {
   addRecentlyPlayedSong: (songNo: SongT) => void;
 };
 
-const MAX_RECENTLY_PLAYED = 10;
+const MAX_RECENTLY_VIEWS = 10;
 
 export const useSongStore = create<UseSongStoreT>()(
   persist(
@@ -37,7 +37,7 @@ export const useSongStore = create<UseSongStoreT>()(
       addRecentlyPlayedSong: (song) => {
         const num = song.metadata.number;
         const existing = get().recentlyPlayedSongs.filter((n) => n !== num);
-        const updated = [num, ...existing].slice(0, MAX_RECENTLY_PLAYED);
+        const updated = [num, ...existing].slice(0, MAX_RECENTLY_VIEWS);
         set({ recentlyPlayedSongs: updated });
       },
     }),
