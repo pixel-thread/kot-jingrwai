@@ -28,9 +28,9 @@ export const useSongStore = create<UseSongStoreT>()(
 
       removeFavoriteSong: (song) => {
         const num = song;
-        set({
-          favoriteSongs: get().favoriteSongs.filter((n) => n !== num),
-        });
+        const existing = get().favoriteSongs.filter((n) => n !== num);
+        const updated = existing.slice(0, MAX_RECENTLY_VIEWS);
+        set({ favoriteSongs: updated });
       },
 
       recentlyPlayedSongs: [],

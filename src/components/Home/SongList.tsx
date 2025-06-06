@@ -1,5 +1,4 @@
-import React from 'react';
-import { View, FlatList, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { songs } from '~/src/libs/songs';
@@ -20,7 +19,7 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
 
   const handleSongPress = (songNumber: number) => {
     ChangeSong(songNumber);
-    router.push(`song/${songNumber}` as any);
+    router.push('/song');
   };
 
   return (
