@@ -25,7 +25,9 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
 
   return (
     <View className="mb-6">
-      <Text className="mb-2 text-lg font-semibold">{title}</Text>
+      <Text size={'lg'} weight={'semibold'} className="mb-2">
+        {title}
+      </Text>
 
       {filteredSongs.length > 0 ? (
         <View className="rounded-lg border border-gray-200">
@@ -35,12 +37,14 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
               onPress={() => handleSongPress(song.metadata.number)}
               className="flex-row items-center border-b border-gray-100 px-3 py-2">
               <View className="mr-3 h-8 w-8 items-center justify-center rounded-full bg-indigo-100">
-                <Text className="font-semibold">{song.metadata.number}</Text>
+                <Text weight={'semibold'}>{song.metadata.number}</Text>
               </View>
               <View className="flex-1">
                 <Text className="text-base font-medium">{song.title}</Text>
                 {song.metadata.author && (
-                  <Text className="text-xs text-gray-500">By: {song.metadata.author}</Text>
+                  <Text variant={'muted'} size={'sm'}>
+                    By: {song.metadata.author}
+                  </Text>
                 )}
               </View>
             </TouchableOpacity>
@@ -48,7 +52,9 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
         </View>
       ) : (
         <View className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-          <Text className="text-center text-gray-500">{emptyMessage}</Text>
+          <Text variant={'muted'} className="text-center ">
+            {emptyMessage}
+          </Text>
         </View>
       )}
     </View>

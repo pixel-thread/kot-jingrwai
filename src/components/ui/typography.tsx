@@ -7,6 +7,7 @@ import { cn } from '~/src/libs/cn';
 export const textVariants = cva('text-black dark:text-white', {
   variants: {
     size: {
+      base: 'text-base', // default size
       sm: 'text-sm',
       md: 'text-base',
       lg: 'text-lg',
@@ -17,6 +18,16 @@ export const textVariants = cva('text-black dark:text-white', {
       '5xl': 'text-5xl',
       '6xl': 'text-6xl',
       responsive: '', // resolved in component logic
+    },
+    decoration: {
+      none: 'text-decoration-none',
+      underline: 'text-decoration-underline',
+      lineThrough: 'text-decoration-line-through',
+      overline: 'text-decoration-overline',
+    },
+    italic: {
+      true: 'italic',
+      false: 'not-italic',
     },
     weight: {
       normal: 'font-normal',
@@ -43,10 +54,12 @@ export const textVariants = cva('text-black dark:text-white', {
     },
   },
   defaultVariants: {
-    size: 'md',
+    size: 'base',
     weight: 'normal',
     align: 'left',
     variant: 'default',
+    decoration: 'none',
+    italic: false,
   },
 });
 

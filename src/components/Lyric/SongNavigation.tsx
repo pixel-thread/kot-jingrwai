@@ -14,7 +14,9 @@ export const SongNavigation = ({ onNext, onPrevious, songNumber }: SongNavigatio
     <View className="absolute bottom-0 left-0 right-0 bg-white/80 px-5 py-4 backdrop-blur-md">
       <View className="flex-row items-center justify-between">
         <Button title="Previous" onPress={onPrevious} className="mr-3 flex-1" />
-        <Text className="mx-1 font-medium text-gray-500">#{songNumber}</Text>
+        <Text weight={'medium'} variant={'muted'} className="mx-1">
+          #{songNumber}
+        </Text>
         <Button title="Next" onPress={onNext} className="ml-3 flex-1" />
       </View>
     </View>

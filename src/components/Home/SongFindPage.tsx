@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { TextInput, View, ScrollView, TouchableOpacity } from 'react-native';
 
-import { QuoteOfTheDay } from '~/src/components/Home/QuoteOfTheDay';
+import { QuoteOfTheDay } from '~/src/components/Common/QuoteOfTheDay';
 import { SongList } from '~/src/components/Home/SongList';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { songs } from '~/src/libs/songs';
@@ -43,8 +43,10 @@ export const SongFinderPage = () => {
         {/* Song Finder */}
         <View className="mb-8">
           <View className="mb-4 items-center">
-            <Text className="mb-2 text-2xl font-bold">Song Finder</Text>
-            <Text className="text-center text-base text-gray-600">
+            <Text size={'2xl'} weight={'bold'} className="mb-2">
+              Song Finder
+            </Text>
+            <Text size={'base'} variant={'secondary'} className="text-center">
               Enter a song number to view lyrics
             </Text>
           </View>
@@ -75,36 +77,6 @@ export const SongFinderPage = () => {
 
         {/* Favorite Songs */}
         <SongList title="Favorite Songs" songNumbers={[]} emptyMessage="No favorite songs yet" />
-
-        {/* All Songs */}
-        <Text className="mb-2 text-lg font-semibold">All Songs:</Text>
-        <View className="mb-6 flex-1 rounded-lg border border-gray-200 p-2">
-          {songs
-            .sort((a, b) => a.metadata.number - b.metadata.number)
-            .map((song) => (
-              <TouchableOpacity
-                key={song.id}
-                onPress={() => {
-                  ChangeSong(song.metadata.number);
-                  router.push('/song');
-                }}
-                className="border-b border-gray-100 px-2 py-3">
-                <View className="flex-row items-center justify-between">
-                  <View className="flex-1 flex-row items-center">
-                    <View className="mr-3 h-8 w-8 items-center justify-center rounded-full bg-indigo-100">
-                      <Text className="font-semibold">{song.metadata.number}</Text>
-                    </View>
-                    <View className="flex-1">
-                      <Text className="text-lg font-medium">{song.title}</Text>
-                      <Text className="text-sm text-gray-500">
-                        {`By: ${song.metadata.author ?? song.metadata.composer}`}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            ))}
-        </View>
       </ScrollView>
     </Container>
   );

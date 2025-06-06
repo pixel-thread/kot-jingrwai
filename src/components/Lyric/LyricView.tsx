@@ -18,14 +18,14 @@ export const LyricView = ({ song }: LyricViewProps) => {
   return (
     <ScrollView className="flex-1 p-4">
       <View className="mb-6 items-center">
-        <Text className="text-center text-3xl font-extrabold text-black dark:text-white">
+        <Text size={'3xl'} weight={'extrabold'} className="text-center ">
           {title}
         </Text>
-        <Text className="text-center text-sm text-gray-500 dark:text-gray-400">
+        <Text size={'sm'} variant={'muted'} className="text-center ">
           {song.metadata.author ?? song.metadata.composer}
         </Text>
         {song.metadata.syllables && (
-          <Text className="text-center text-sm text-gray-500 dark:text-gray-400">
+          <Text variant={'muted'} weight={'medium'} className="text-center">
             {song.metadata.syllables}
           </Text>
         )}
@@ -40,7 +40,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
           return (
             <View key={paragraph.id} className="space-y-2 px-2">
               {/* Paragraph Label */}
-              <Text className="text-right text-sm italic text-gray-500 dark:text-gray-400">
+              <Text italic size={'sm'} variant={'muted'} className="text-right">
                 {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
               </Text>
 
@@ -58,11 +58,13 @@ export const LyricView = ({ song }: LyricViewProps) => {
                   return (
                     <Text
                       key={`${paragraph.id}-line-${index}`}
+                      size={'lg'}
+                      variant={isChorus ? 'muted' : 'default'}
                       className={cn(
                         isChorus
                           ? 'font-medium italic text-blue-800 dark:text-blue-300'
                           : 'text-gray-900 dark:text-gray-100',
-                        'text-lg leading-relaxed'
+                        'leading-relaxed'
                       )}>
                       {textContent || ' '}
                     </Text>
