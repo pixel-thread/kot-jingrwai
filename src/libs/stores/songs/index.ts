@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SongT } from '~/src/types/song';
 
@@ -43,7 +43,7 @@ export const useSongStore = create<UseSongStoreT>()(
     }),
     {
       name: 'song-storage',
-      getStorage: () => AsyncStorage,
+      storage: createJSONStorage(() => AsyncStorage), // ✅ WRAPPED AsyncStorage
     }
   )
 );
