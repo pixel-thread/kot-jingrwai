@@ -1,7 +1,17 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { View } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
 export const QuoteOfTheDay = () => {
+  // https://beta.ourmanna.com/api/v1/get
+  const fetchQuote = async () => {
+    const res = await fetch('https://beta.ourmanna.com/api/v1/get');
+    console.log(res);
+  };
+
+  useEffect(() => {
+    fetchQuote();
+  }, []);
+
   return (
     <View className="mb-6 rounded-lg border border-indigo-100 bg-indigo-50 p-4">
       <Text size={'lg'} weight={'semibold'} className="mb-1">
