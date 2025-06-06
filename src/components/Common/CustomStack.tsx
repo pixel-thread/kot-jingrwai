@@ -1,7 +1,11 @@
 import { Stack, usePathname } from 'expo-router';
+import { TouchableOpacity } from 'react-native';
 import { useSongs } from '~/src/hooks/song/useSongs';
+import { useTextStore } from '~/src/libs/stores/text';
+import { Text } from '../ui/typography';
 
 export const CustomStack = () => {
+  const { size, cycleTextSize } = useTextStore();
   const { song } = useSongs();
   const pathName = usePathname();
   const isSongPage = pathName === '/song';
@@ -21,6 +25,12 @@ export const CustomStack = () => {
         headerTitleAlign: 'left',
         animation: 'ios_from_right',
         headerBackButtonDisplayMode: 'minimal',
+        headerRight: () =>
+          isSongPage && (
+            <TouchableOpacity className="" onPress={cycleTextSize}>
+              <Text className="pr-2 uppercase">{size}</Text>
+            </TouchableOpacity>
+          ),
       }}>
       <Stack.Screen name="(tabs)" />
     </Stack>

@@ -4,22 +4,24 @@ import { SongT } from '~/src/types/song';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { useEffect } from 'react';
+import { useTextStore } from '~/src/libs/stores/text';
 
 type LyricViewProps = {
   song: SongT;
 };
 
 export const LyricView = ({ song }: LyricViewProps) => {
+  const { size } = useTextStore();
   const { addRecentlyPlayedSong } = useSongStore();
   const title = song.title;
   const paragraphs = song.paragraphs;
   const sortedParagraphs = [...paragraphs].sort((a, b) => a.order - b.order);
 
-  // Count section numbers (Verse 1, Verse 2, etc
   const sectionCount: Record<string, number> = {};
   useEffect(() => {
     addRecentlyPlayedSong(song);
   }, [addRecentlyPlayedSong, song]);
+
   return (
     <ScrollView className="flex-1 p-4">
       <View className="mb-6 items-center">
@@ -63,7 +65,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                   return (
                     <Text
                       key={`${paragraph.id}-line-${index}`}
-                      size={'lg'}
+                      size={size}
                       variant={isChorus ? 'muted' : 'default'}
                       className={cn(
                         isChorus
