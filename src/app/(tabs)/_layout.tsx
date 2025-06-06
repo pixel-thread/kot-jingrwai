@@ -1,4 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { Tabs } from 'expo-router';
 
 export default function TabLayout() {
@@ -20,6 +21,13 @@ export default function TabLayout() {
         options={{
           title: 'Ki Jing Rwai',
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="book" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="chorus"
+        options={{
+          title: 'Khorus',
+          tabBarIcon: ({ color }) => <AntDesign size={28} name="book" color={color} />,
         }}
       />
     </Tabs>
