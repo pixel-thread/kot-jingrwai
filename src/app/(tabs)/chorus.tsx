@@ -1,10 +1,5 @@
-import { Container } from '~/src/components/Container';
-import { Text } from '~/src/components/ui/typography';
+import { ChorusPage } from '~/src/components/Chorus';
 
 export default function Chorus() {
-  return (
-    <Container>
-      <Text>Chorus</Text>
-    </Container>
-  );
+  return <ChorusPage />;
 }
