@@ -1,5 +1,5 @@
 import { Stack, usePathname } from 'expo-router';
-import { TouchableOpacity, View } from 'react-native';
+import { Platform, TouchableOpacity, View } from 'react-native';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { useTextStore } from '~/src/libs/stores/text';
 import { Text } from '../ui/typography';
@@ -49,46 +49,34 @@ export const CustomStack = () => {
 
 const RightHeaderButtons = () => {
   const { colorScheme, setColorScheme } = useColorScheme();
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const isDarkMode = colorScheme === 'dark';
   const { size, cycleTextSize } = useTextStore();
   const pathName = usePathname();
   const isSongPage = pathName === '/song';
 
   const onClickDarkMode = () => {
-    if (colorScheme === 'light') {
-      setColorScheme('dark');
-      setIsDarkMode(true);
-    } else {
-      setColorScheme('light');
-      setIsDarkMode(false);
-    }
+    setColorScheme(isDarkMode ? 'light' : 'dark');
   };
-  if (isSongPage) {
-    return (
-      <View className="flex-row gap-x-2">
-        <TouchableOpacity className="" onPress={cycleTextSize}>
-          <Text className="pr-2 uppercase">{size}</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+
   return (
-    <View className="">
-      <TouchableOpacity onPress={onClickDarkMode}>
-        {isDarkMode ? (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+      {isSongPage ? (
+        <TouchableOpacity onPress={cycleTextSize} style={{ paddingHorizontal: 8 }}>
+          <Text style={{ textTransform: 'uppercase' }}>{size}</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          onPress={onClickDarkMode}
+          style={{
+            padding: 8,
+          }}>
           <FontAwesome
-            name="sun-o"
-            size={20}
-            color={isDarkMode ? colors.gray[200] : colors.gray[400]}
+            name={isDarkMode ? 'sun-o' : 'moon-o'}
+            size={18}
+            color={isDarkMode ? colors.gray[200] : colors.gray[800]}
           />
-        ) : (
-          <FontAwesome
-            name="moon-o"
-            size={20}
-            color={isDarkMode ? colors.gray[200] : colors.black[400]}
-          />
-        )}
-      </TouchableOpacity>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

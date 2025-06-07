@@ -58,10 +58,10 @@ const SongListItem = ({ song }: { song: SongT }) => {
               {song.title}
             </Text>
             <Text size="sm" variant="muted">
-              {`By: ${song.metadata.author ?? song.metadata.composer}`}
+              {`Written By: ${song.metadata.author || 'N/A'}`}
             </Text>
             <Text size="sm" variant="muted">
-              {`Composer: ${song.metadata.composer}`}
+              {`Composer: ${song.metadata.composer || 'N/A'}`}
             </Text>
           </View>
         </View>

@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { TextInput, View, ScrollView, TouchableOpacity } from 'react-native';
+import { TextInput, View, ScrollView } from 'react-native';
 
 import { QuoteOfTheDay } from '~/src/components/Common/QuoteOfTheDay';
 import { SongList } from '~/src/components/Home/SongList';
@@ -63,7 +63,7 @@ export const SongFinderPage = () => {
               placeholder="Jing rwai number"
               placeholderTextColor={'#9CA3AF'}
               keyboardType="numeric"
-              className="w-full flex-1 rounded-lg border border-gray-200 p-3 align-middle text-xl dark:border-gray-800"
+              className="w-full flex-1 rounded-lg border border-gray-300 p-3 align-middle text-xl dark:border-gray-800"
             />
             <Button title="WAD" onPress={handleSongSearch} className="w-full px-6" />
           </View>
