@@ -1,6 +1,6 @@
 import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { Container } from '../Container';
-import { songs as allSongs } from '~/src/libs/songs';
+import { khoros as allSongs } from '~/src/libs/khoros';
 import { useRouter } from 'expo-router';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { Text } from '~/src/components/ui/typography';
@@ -22,17 +22,15 @@ export const ChorusPage = () => {
 
   return (
     <Container>
-      <ScrollView className="w-full flex-1 p-4">
-        <FlashList
-          data={paginatedSongs}
-          renderItem={({ item }) => <ChorusListItem song={item} />}
-          estimatedItemSize={100}
-          keyExtractor={(item) => item.id}
-          ItemSeparatorComponent={() => <View className="h-px bg-gray-200 dark:bg-gray-800" />}
-          onEndReached={loadMore}
-          onEndReachedThreshold={0.5}
-        />
-      </ScrollView>
+      <FlashList
+        data={paginatedSongs}
+        renderItem={({ item }) => <ChorusListItem song={item} />}
+        estimatedItemSize={100}
+        keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={() => <View className="h-px bg-gray-200 dark:bg-gray-800" />}
+        onEndReached={loadMore}
+        onEndReachedThreshold={0.5}
+      />
     </Container>
   );
 };
@@ -58,10 +56,10 @@ const ChorusListItem = ({ song }: { song: SongT }) => {
               {song.title}
             </Text>
             <Text size={'sm'} variant={'muted'}>
-              {`By: ${song.metadata.author ?? song.metadata.composer}`}
+              {`By: ${song.metadata.author || 'N/A'}`}
             </Text>
             <Text size={'sm'} variant={'muted'}>
-              {`Composer: ${song.metadata.composer}`}
+              {`Composer: ${song.metadata.composer || 'N/A'}`}
             </Text>
           </View>
         </View>
