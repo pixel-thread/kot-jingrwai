@@ -1,20 +1,36 @@
-import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { Container } from '../Container';
-import { songs } from '~/src/libs/songs';
+import { songs as allSongs } from '~/src/libs/songs';
 import { useRouter } from 'expo-router';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { Text } from '~/src/components/ui/typography';
 import { SongT } from '~/src/types/song';
+import { FlashList } from '@shopify/flash-list';
+import { useCallback, useState } from 'react';
+import { PAGE_SIZE } from '~/src/libs/constant';
 
 export const ChorusPage = () => {
+  const [page, setPage] = useState(1);
+
+  const paginatedSongs = allSongs.slice(0, page * PAGE_SIZE);
+
+  const loadMore = useCallback(() => {
+    if (paginatedSongs.length < allSongs.length) {
+      setPage((prev) => prev + 1);
+    }
+  }, [paginatedSongs.length]);
+
   return (
     <Container>
       <ScrollView className="w-full flex-1 p-4">
-        <FlatList
-          data={songs}
+        <FlashList
+          data={paginatedSongs}
           renderItem={({ item }) => <ChorusListItem song={item} />}
+          estimatedItemSize={100}
           keyExtractor={(item) => item.id}
           ItemSeparatorComponent={() => <View className="h-px bg-gray-200 dark:bg-gray-800" />}
+          onEndReached={loadMore}
+          onEndReachedThreshold={0.5}
         />
       </ScrollView>
     </Container>

@@ -30,10 +30,8 @@ export const songs: SongT[] = [
   ...kiJingrwaiIalap,
   ...kaJingiaroh,
   ...kaJingrwaiShaphangKaRi,
-  ...kaJingrwaiRevival
-];
-
+  ...kaJingrwaiRevival,
+].sort((a, b) => a.metadata.number - b.metadata.number);
 
 //TODO: 248,
 //TODO: Some songs had same id which is causing error
-

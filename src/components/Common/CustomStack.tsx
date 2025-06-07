@@ -12,7 +12,7 @@ import colors from 'tailwindcss/colors';
 export const CustomStack = () => {
   const { song } = useSongs();
   const pathName = usePathname();
-  const { colorScheme, setColorScheme } = useColorScheme();
+  const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
   const isChordsPage = pathName === '/chorus';
   const isSongPage = pathName === '/song';
@@ -72,7 +72,6 @@ const RightHeaderButtons = () => {
       </View>
     );
   }
-  logger.log(colorScheme);
   return (
     <View className="">
       <TouchableOpacity onPress={onClickDarkMode}>
