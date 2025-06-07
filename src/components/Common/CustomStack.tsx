@@ -3,6 +3,9 @@ import { TouchableOpacity, View } from 'react-native';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { useTextStore } from '~/src/libs/stores/text';
 import { Text } from '../ui/typography';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { useState } from 'react';
+
 export const CustomStack = () => {
   const { song } = useSongs();
   const pathName = usePathname();
@@ -23,17 +26,30 @@ export const CustomStack = () => {
         headerTitleAlign: 'left',
         animation: 'ios_from_right',
         headerBackButtonDisplayMode: 'minimal',
-        headerRight: () => <RightHeaderButtons />,
+        headerRight: ({ canGoBack, tintColor }) => (
+          <RightHeaderButtons canGoBack={canGoBack} color={tintColor} />
+        ),
+        headerBackButtonMenuEnabled: true,
+        headerBlurEffect: 'dark',
       }}>
       <Stack.Screen name="(tabs)" />
     </Stack>
   );
 };
 
-const RightHeaderButtons = () => {
+const RightHeaderButtons = ({
+  color,
+}: {
+  color: string | undefined;
+  canGoBack: boolean | undefined;
+}) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const { size, cycleTextSize } = useTextStore();
   const pathName = usePathname();
   const isSongPage = pathName === '/song';
+  const onClickDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   if (isSongPage) {
     return (
       <View className="flex-row gap-x-2">
@@ -43,5 +59,16 @@ const RightHeaderButtons = () => {
       </View>
     );
   }
-  return null;
+
+  return (
+    <View className="">
+      <TouchableOpacity onPress={onClickDarkMode}>
+        {isDarkMode ? (
+          <FontAwesome name="sun-o" size={20} color={color} />
+        ) : (
+          <FontAwesome name="moon-o" size={20} color={color} />
+        )}
+      </TouchableOpacity>
+    </View>
+  );
 };
