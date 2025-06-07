@@ -15,7 +15,23 @@ import { kaJingiaroh } from './ka_jingiaroh';
 import { kaJingrwaiShaphangKaRi } from './ka_jingrwai_shaphang_ka_ri';
 import { kaJingrwaiRevival } from './ka_jingrwai_revival';
 
-export const songs: SongT[] = [...shaphangKaJinglongJingimKhristan, ...shaphangKaKamUBlei, ...shaphangUBlei, ...shaphangUKhrist, ...shaphangUMynsiemBakhuid, ...shaphangKaKtienUBlei,...shaphangKaBalang];
+export const songs: SongT[] = [
+  ...kaSnemBadKiAiom,
+  ...shaphangKaJingiapKibaNgeit,
+  ...shaphangKaJinglongJingimKhristan,
+  ...shaphangKaKamUBlei,
+  ...shaphangUBlei,
+  ...shaphangUKhrist,
+  ...shaphangUMynsiemBakhuid,
+  ...shaphangKaKtienUBlei,
+  ...shaphangKaBalang,
+  ...kaJingaiShaKaKamUBlei,
+  ...kiJingrwaiShaphangKiIngKhristan,
+  ...kiJingrwaiIalap,
+  ...kaJingiaroh,
+  ...kaJingrwaiShaphangKaRi,
+  ...kaJingrwaiRevival
+];
 
 
 //TODO: 248,
