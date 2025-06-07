@@ -1,11 +1,9 @@
 import { Stack, usePathname } from 'expo-router';
-import { Platform, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { useTextStore } from '~/src/libs/stores/text';
 import { Text } from '../ui/typography';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { useState } from 'react';
-import { logger } from '~/src/utils/logger';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 
@@ -14,7 +12,7 @@ export const CustomStack = () => {
   const pathName = usePathname();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-  const isChordsPage = pathName === '/chorus';
+  const isChordsPage = pathName === '/chorus' || pathName === '/Khorus/[khorusNo]';
   const isSongPage = pathName === '/song';
   const isAllSongPage = pathName === '/songs';
   const title = isSongPage

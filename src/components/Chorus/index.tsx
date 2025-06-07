@@ -43,7 +43,7 @@ const ChorusListItem = ({ song }: { song: SongT }) => {
       key={song.id}
       onPress={() => {
         ChangeSong(song.metadata.number);
-        router.push('/song');
+        router.push(`/khorus/${song.metadata.number}`);
       }}
       className="border-b border-gray-200 px-2 py-3 dark:border-gray-800">
       <View className="flex-row items-center justify-between">
