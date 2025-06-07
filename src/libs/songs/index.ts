@@ -14,6 +14,9 @@ import { kiJingrwaiIalap } from './ki_jingrwai_ialap';
 import { kaJingiaroh } from './ka_jingiaroh';
 import { kaJingrwaiShaphangKaRi } from './ka_jingrwai_shaphang_ka_ri';
 import { kaJingrwaiRevival } from './ka_jingrwai_revival';
+import { kiJingrwaiIaKiKhynnah } from './ki_jingrwai_ia_ki_khynnah';
+import { kiJingrwaiIaKiSamla } from './ki_jingrwai_ia_ki_samla';
+import { kiJingrwaiPynwai } from './ki_jingrwai_pynwai';
 
 export const songs: SongT[] = [
   ...kaSnemBadKiAiom,
@@ -30,7 +33,10 @@ export const songs: SongT[] = [
   ...kiJingrwaiIalap,
   ...kaJingiaroh,
   ...kaJingrwaiShaphangKaRi,
-  ...kaJingrwaiRevival
+  ...kaJingrwaiRevival,
+  ...kiJingrwaiIaKiKhynnah,
+  ...kiJingrwaiIaKiSamla,
+  ...kiJingrwaiPynwai
 ];
 
 
