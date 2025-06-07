@@ -7,7 +7,16 @@ import { shaphangKaBalang } from './shaphang_ka_balang';
 import { shaphangKaKamUBlei } from './shaphang_ka_kam_u_blei';
 import { shaphangKaJinglongJingimKhristan } from './shaphang_ka_jinglong_jingim_khristan';
 
-export const songs: SongT[] = [...shaphangKaJinglongJingimKhristan, ...shaphangKaKamUBlei, ...shaphangUBlei, ...shaphangUKhrist, ...shaphangUMynsiemBakhuid, ...shaphangKaKtienUBlei,...shaphangKaBalang];
-
+export const songs: SongT[] = [
+  ...shaphangKaJinglongJingimKhristan,
+  ...shaphangKaKamUBlei,
+  ...shaphangUBlei,
+  ...shaphangUKhrist,
+  ...shaphangUMynsiemBakhuid,
+  ...shaphangKaKtienUBlei,
+  ...shaphangKaBalang,
+];
 
 //TODO: 248,
+//TODO: Some songs had same id which is causing error
+

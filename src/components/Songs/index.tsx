@@ -36,12 +36,7 @@ export const AllSongPage = () => {
             className="flex flex-1 space-x-2"
             contentContainerStyle={{ paddingRight: 12, gap: 2 }}>
             {FILTERS.map((filter, i) => (
-              <TouchableOpacity
-                key={i}
-                className="rounded-lg bg-gray-200 px-4 py-2"
-                onPress={() => {
-                  // handle filter press (logic can be added later)
-                }}>
+              <TouchableOpacity key={i} className="rounded-lg bg-gray-200 px-4 py-2">
                 <Text size={'sm'} variant={'secondary'}>
                   {filter}
                 </Text>
