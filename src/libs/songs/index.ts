@@ -6,8 +6,32 @@ import { shaphangKaKtienUBlei } from './shaphang_ka_ktien_u_blei';
 import { shaphangKaBalang } from './shaphang_ka_balang';
 import { shaphangKaKamUBlei } from './shaphang_ka_kam_u_blei';
 import { shaphangKaJinglongJingimKhristan } from './shaphang_ka_jinglong_jingim_khristan';
+import { shaphangKaJingiapKibaNgeit } from './shaphang_ka_jingiap_kiba_ngeit';
+import { kaSnemBadKiAiom } from './ka_snem_bad_ki_aiom';
+import { kaJingaiShaKaKamUBlei } from './ka_jingai_sha_ka_kam_u_blei';
+import { kiJingrwaiShaphangKiIngKhristan } from './ki_jingrwai_shaphang_ki_ing_khristan';
+import { kiJingrwaiIalap } from './ki_jingrwai_ialap';
+import { kaJingiaroh } from './ka_jingiaroh';
+import { kaJingrwaiShaphangKaRi } from './ka_jingrwai_shaphang_ka_ri';
+import { kaJingrwaiRevival } from './ka_jingrwai_revival';
 
-export const songs: SongT[] = [...shaphangKaJinglongJingimKhristan, ...shaphangKaKamUBlei, ...shaphangUBlei, ...shaphangUKhrist, ...shaphangUMynsiemBakhuid, ...shaphangKaKtienUBlei,...shaphangKaBalang];
+export const songs: SongT[] = [
+  ...kaSnemBadKiAiom,
+  ...shaphangKaJingiapKibaNgeit,
+  ...shaphangKaJinglongJingimKhristan,
+  ...shaphangKaKamUBlei,
+  ...shaphangUBlei,
+  ...shaphangUKhrist,
+  ...shaphangUMynsiemBakhuid,
+  ...shaphangKaKtienUBlei,
+  ...shaphangKaBalang,
+  ...kaJingaiShaKaKamUBlei,
+  ...kiJingrwaiShaphangKiIngKhristan,
+  ...kiJingrwaiIalap,
+  ...kaJingiaroh,
+  ...kaJingrwaiShaphangKaRi,
+  ...kaJingrwaiRevival
+];
 
 
 //TODO: 248,
