@@ -1,10 +1,5 @@
-import { View } from 'react-native';
-import { Text } from '~/src/components/ui/typography';
+import { ChorusPage } from '~/src/components/Chorus';
 
 export default function Chorus() {
-  return (
-    <View>
-      <Text>Chorus</Text>
-    </View>
-  );
+  return <ChorusPage />;
 }

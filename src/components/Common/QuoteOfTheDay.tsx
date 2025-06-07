@@ -3,7 +3,7 @@ import { Text } from '~/src/components/ui/typography';
 
 export const QuoteOfTheDay = () => {
   return (
-    <View className="mb-6 rounded-lg border border-indigo-100 bg-indigo-50 p-4">
+    <View className="mb-6 rounded-lg border border-indigo-200 bg-indigo-50 p-4 dark:border-indigo-800 dark:bg-indigo-900">
       <Text size={'lg'} weight={'semibold'} className="mb-1">
         Quote of the Day
       </Text>

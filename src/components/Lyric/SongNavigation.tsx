@@ -4,6 +4,7 @@ import { Button } from '../Button';
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useSongStore } from '~/src/libs/stores/songs';
+import { Container } from '../Container';
 
 type SongNavigationProps = {
   onNext: () => void;
@@ -22,7 +23,7 @@ export const SongNavigation = ({ onNext, onPrevious, songNumber }: SongNavigatio
     }
   };
   return (
-    <View className="absolute bottom-0 left-0 right-0 bg-white/80 px-5 py-4 backdrop-blur-md">
+    <Container className="absolute bottom-0 left-0 right-0 px-5 py-4 backdrop-blur-md  ">
       <View className="flex-row items-center justify-between gap-x-5">
         <Button title="Previous" onPress={onPrevious} className="mr-3 flex-1" />
         <TouchableOpacity onPress={onClickFavorite}>
@@ -34,6 +35,6 @@ export const SongNavigation = ({ onNext, onPrevious, songNumber }: SongNavigatio
         </TouchableOpacity>
         <Button title="Next" onPress={onNext} className="ml-3 flex-1" />
       </View>
-    </View>
+    </Container>
   );
 };

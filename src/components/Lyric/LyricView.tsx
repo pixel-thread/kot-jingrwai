@@ -70,7 +70,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                       className={cn(
                         isChorus
                           ? 'font-medium italic text-blue-800 dark:text-blue-300'
-                          : 'text-gray-900 dark:text-gray-100',
+                          : 'text-gray-950 dark:text-gray-200',
                         'leading-relaxed'
                       )}>
                       {textContent || ' '}

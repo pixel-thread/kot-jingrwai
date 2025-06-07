@@ -40,31 +40,32 @@ export const SongFinderPage = () => {
   };
 
   return (
-    <Container>
+    <Container className="dark:bg-gray-950">
       <ScrollView className="w-full flex-1 p-4">
         {/* Song Finder */}
         <View className="mb-8">
           <View className="mb-4 items-center">
-            <Text size={'2xl'} weight={'bold'} className="mb-2">
-              Song Finder
+            <Text size={'2xl'} weight={'extrabold'} className="mb-2 uppercase">
+              Wad jingrwai
             </Text>
             <Text size={'base'} variant={'secondary'} className="text-center">
-              Enter a song number to view lyrics
+              Wad da number jingrwai
             </Text>
           </View>
 
-          <View className="mb-2 flex-row items-center">
+          <View className="mb-2 flex-col items-center gap-y-2">
             <TextInput
               value={songNumber}
               onChangeText={(text) => {
                 setSongNumber(text);
                 setError('');
               }}
-              placeholder="Enter song number"
+              placeholder="Jing rwai number"
+              placeholderTextColor={'#9CA3AF'}
               keyboardType="numeric"
-              className="flex-1 rounded-lg border border-gray-300 p-3 text-lg"
+              className="w-full flex-1 rounded-lg border border-gray-200 p-3 align-middle text-xl dark:border-gray-800"
             />
-            <Button title="Find" onPress={handleSongSearch} className="ml-2 px-6" />
+            <Button title="WAD" onPress={handleSongSearch} className="w-full px-6" />
           </View>
 
           {error ? <Text className="ml-1 text-red-500">{error}</Text> : null}
@@ -72,7 +73,7 @@ export const SongFinderPage = () => {
         <QuoteOfTheDay />
         {/* Recent Songs */}
         <SongList
-          title="Recently Viewed Songs"
+          title="Recently Viewed"
           songNumbers={recentlyPlayedSongs}
           emptyMessage="No recently viewed songs"
         />

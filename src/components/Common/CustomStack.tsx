@@ -5,17 +5,25 @@ import { useTextStore } from '~/src/libs/stores/text';
 import { Text } from '../ui/typography';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useState } from 'react';
+import { logger } from '~/src/utils/logger';
+import { useColorScheme } from 'nativewind';
+import colors from 'tailwindcss/colors';
 
 export const CustomStack = () => {
   const { song } = useSongs();
   const pathName = usePathname();
+  const { colorScheme, setColorScheme } = useColorScheme();
+  const isDarkMode = colorScheme === 'dark';
+  const isChordsPage = pathName === '/chorus';
   const isSongPage = pathName === '/song';
   const isAllSongPage = pathName === '/songs';
   const title = isSongPage
     ? song.metadata.number.toString()
-    : isAllSongPage
-      ? 'Ki Jing Rwai'
-      : 'Ka Kot Jing Rwai';
+    : isChordsPage
+      ? 'Ki Khorus'
+      : isAllSongPage
+        ? 'Ki Jing Rwai'
+        : 'Ka Kot Jing Rwai';
   return (
     <Stack
       screenOptions={{
@@ -26,29 +34,34 @@ export const CustomStack = () => {
         headerTitleAlign: 'left',
         animation: 'ios_from_right',
         headerBackButtonDisplayMode: 'minimal',
-        headerRight: ({ canGoBack, tintColor }) => (
-          <RightHeaderButtons canGoBack={canGoBack} color={tintColor} />
-        ),
-        headerBackButtonMenuEnabled: true,
-        headerBlurEffect: 'dark',
+        headerRight: () => <RightHeaderButtons />,
+        headerStyle: {
+          backgroundColor: isDarkMode ? colors.gray[950] : colors.gray[200],
+        },
+        headerTitleStyle: {
+          color: isDarkMode ? colors.gray[200] : colors.gray[950],
+        },
       }}>
       <Stack.Screen name="(tabs)" />
     </Stack>
   );
 };
 
-const RightHeaderButtons = ({
-  color,
-}: {
-  color: string | undefined;
-  canGoBack: boolean | undefined;
-}) => {
+const RightHeaderButtons = () => {
+  const { colorScheme, setColorScheme } = useColorScheme();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { size, cycleTextSize } = useTextStore();
   const pathName = usePathname();
   const isSongPage = pathName === '/song';
+
   const onClickDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    if (colorScheme === 'light') {
+      setColorScheme('dark');
+      setIsDarkMode(true);
+    } else {
+      setColorScheme('light');
+      setIsDarkMode(false);
+    }
   };
   if (isSongPage) {
     return (
@@ -59,14 +72,22 @@ const RightHeaderButtons = ({
       </View>
     );
   }
-
+  logger.log(colorScheme);
   return (
     <View className="">
       <TouchableOpacity onPress={onClickDarkMode}>
         {isDarkMode ? (
-          <FontAwesome name="sun-o" size={20} color={color} />
+          <FontAwesome
+            name="sun-o"
+            size={20}
+            color={isDarkMode ? colors.gray[200] : colors.gray[400]}
+          />
         ) : (
-          <FontAwesome name="moon-o" size={20} color={color} />
+          <FontAwesome
+            name="moon-o"
+            size={20}
+            color={isDarkMode ? colors.gray[200] : colors.black[400]}
+          />
         )}
       </TouchableOpacity>
     </View>
