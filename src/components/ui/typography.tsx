@@ -4,7 +4,7 @@ import { Text as RNText, TextProps as RNTextProps, useWindowDimensions } from 'r
 import { cn } from '~/src/libs/cn';
 
 export const textVariants = cva(
-  'text-black antialias  tracking-wider whitespace-pre-line font-sans dark:text-white',
+  'text-black antialias tracking-wider whitespace-pre-line font-sans dark:text-gray-200',
   {
     variants: {
       size: {
@@ -81,15 +81,10 @@ export const Text = ({
   variant,
   ...rest
 }: CustomTextProps) => {
-  const { width } = useWindowDimensions();
-  const isTablet = width >= 768;
-
-  const computedSize = size === 'responsive' ? (isTablet ? 'lg' : 'md') : size;
-
   return (
     <RNText
       {...rest}
-      className={cn(textVariants({ size: computedSize, weight, align, variant }), className)}>
+      className={cn(textVariants({ size: size, weight, align, variant }), className)}>
       {children}
     </RNText>
   );

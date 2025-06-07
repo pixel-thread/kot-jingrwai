@@ -1,10 +1,10 @@
-import { View } from 'react-native';
+import { Container } from '~/src/components/Container';
 import { Text } from '~/src/components/ui/typography';
 
 export default function Chorus() {
   return (
-    <View>
+    <Container>
       <Text>Chorus</Text>
-    </View>
+    </Container>
   );
 }

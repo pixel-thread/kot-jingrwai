@@ -1,21 +1,33 @@
 import '../../global.css';
 
 import { SongProvider } from '../components/Provider/Song';
-import { KeyboardAvoidingView, Platform, SafeAreaView, StatusBar } from 'react-native';
+import { StatusBar, useColorScheme, View } from 'react-native';
 import { CustomStack } from '../components/Common/CustomStack';
-
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useColorScheme as useScheme } from 'nativewind';
+import { useEffect, useState } from 'react';
 export default function Layout() {
+  const [isMounted, setIsMounted] = useState(false);
+  const theme = useColorScheme();
+  const { setColorScheme } = useScheme();
+  const isDarkMode = theme === 'dark';
+
+  useEffect(() => {
+    setColorScheme(isDarkMode ? 'dark' : 'light');
+    setIsMounted(true);
+  }, [isDarkMode, setColorScheme]);
+
+  if (!isMounted) {
+    return null;
+  }
   return (
-    <SafeAreaView className="flex-1 bg-white dark:bg-gray-950">
-      <StatusBar className="bg-gray-950" barStyle="dark-content" />
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{ flex: 1, paddingTop: 10 }}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
-        <SongProvider>
+    <SafeAreaProvider className="flex-1">
+      <StatusBar className="bg-gray-200 dark:bg-gray-950 " />
+      <SongProvider>
+        <View className="flex-1 bg-gray-200 dark:bg-gray-950">
           <CustomStack />
-        </SongProvider>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+        </View>
+      </SongProvider>
+    </SafeAreaProvider>
   );
 }
