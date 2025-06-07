@@ -34,6 +34,9 @@ export const songs: SongT[] = [
   ...kaJingiaroh,
   ...kaJingrwaiShaphangKaRi,
   ...kaJingrwaiRevival,
+ ...kiJingrwaiIaKiKhynnah,
+ ...kiJingrwaiIaKiSamla,
+ ...kiJingrwaiPynwai,
 ].sort((a, b) => a.metadata.number - b.metadata.number);
 
 //TODO: 248,
