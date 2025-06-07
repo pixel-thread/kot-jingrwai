@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Kot-Jing-Rwai",
-    "slug": "kot-jing-rwai",
+    "name": "Kot Jing Rwai",
+    "slug": "kot-jingrwai",
     "version": "1.0.0",
     "scheme": "kot-jing-rwai",
     "web": {
@@ -31,12 +31,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.pixelthread.kotongrwai"
+      "package": "com.pixelthread.kotjingrwai"
     },
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "68ddedf5-651b-49d7-a662-198bb5c86a3a"
+        "projectId": "72320702-85db-46c3-9f25-eb17aed2c84c"
       }
     },
     "owner": "pixel-thread"

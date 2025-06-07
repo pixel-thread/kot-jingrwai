@@ -1,4 +1,4 @@
-import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { Container } from '../Container';
 import { khoros as allSongs } from '~/src/libs/khoros';
 import { useRouter } from 'expo-router';
