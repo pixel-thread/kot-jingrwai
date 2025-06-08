@@ -41,7 +41,6 @@ export const SongFinderPage = () => {
 
   return (
     <Container className="dark:bg-gray-950">
-      <ScrollView className="w-full flex-1 p-4">
         {/* Song Finder */}
         <View className="mb-8">
           <View className="mb-4 items-center">
