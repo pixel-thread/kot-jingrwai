@@ -24,7 +24,7 @@ export default function Layout() {
 
   return (
     <SafeAreaProvider className="flex-1">
-      <StatusBar className="text-black dark:text-white" />
+      <StatusBar className="bg-gray-200 text-black dark:bg-gray-950 dark:text-white" />
       <SongProvider>
         <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-950">
           <CustomStack />

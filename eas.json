@@ -19,7 +19,6 @@
     "production": {
       "autoIncrement": true,
       "distribution": "internal"
-      // build apk
     }
   },
   "submit": {
