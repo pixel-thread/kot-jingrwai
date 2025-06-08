@@ -62,7 +62,6 @@ export const SongFinderPage = () => {
               placeholder="Ai i u Number jingrwai"
               placeholderTextColor={'#9CA3AF'}
               keyboardType="numeric"
-              className="w-full flex-1 rounded-lg border border-gray-300 p-3 align-middle text-xl dark:border-gray-800"
             />
             <Button title="WAD" onPress={handleSongSearch} className="w-full px-6" />
           </View>
