@@ -23,7 +23,7 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
   };
 
   return (
-    <View className="mb-6">
+    <View className="mb-6 border border-gray-200 p-4 dark:border-gray-950">
       <Text size={'lg'} weight={'semibold'} className="mb-2">
         {title}
       </Text>
