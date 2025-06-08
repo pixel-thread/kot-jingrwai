@@ -2,7 +2,6 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { TextInput, View, ScrollView } from 'react-native';
 
-import { QuoteOfTheDay } from '~/src/components/Common/QuoteOfTheDay';
 import { SongList } from '~/src/components/Home/SongList';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { songs } from '~/src/libs/songs';
@@ -10,7 +9,6 @@ import { Button } from '../Button';
 import { Container } from '../Container';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
-import { DismissKeyboardWrapper } from '../Common/DismissKeyboardWrapper';
 
 export const SongFinderPage = () => {
   const { recentlyPlayedSongs, favoriteSongs: fav } = useSongStore();
