@@ -68,7 +68,6 @@ export const SongFinderPage = () => {
 
           {error ? <Text className="ml-1 text-red-500">{error}</Text> : null}
         </View>
-        <QuoteOfTheDay />
         {/* Recent Songs */}
         <SongList
           title="Recently Viewed"
