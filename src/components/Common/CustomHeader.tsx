@@ -6,9 +6,8 @@ import { Text } from '../ui/typography';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useTextStore } from '~/src/libs/stores/text';
 import { useEffect, useState } from 'react';
-import { logger } from '~/src/utils/logger';
 import { useSongs } from '~/src/hooks/song/useSongs';
-
+import { useSongStore } from '~/src/libs/stores/songs';
 type Props = {
   back?: {
     title: string | undefined;
@@ -58,10 +57,22 @@ export const CustomHeader = ({ back }: Props) => {
   const { title } = useHeaderTitle();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
+  const { favoriteSongs, addFavoriteSong, removeFavoriteSong } = useSongStore();
+  const { song } = useSongs();
+  const songNumber = song.metadata.number;
+  const isSongPage = usePathname().startsWith('/song');
+  const isFavorite = favoriteSongs.includes(songNumber);
   const { cycleTextSize, size } = useTextStore();
 
   const onPressBackButton = () => router.back();
 
+  const onClickFavorite = () => {
+    if (isFavorite) {
+      removeFavoriteSong(songNumber);
+    } else {
+      addFavoriteSong(songNumber);
+    }
+  };
   return (
     <View className="flex flex-row items-center justify-between bg-gray-200 p-4 px-4 dark:bg-gray-900">
       <View className="flex flex-row items-center gap-x-4">
@@ -78,13 +89,26 @@ export const CustomHeader = ({ back }: Props) => {
           {title}
         </Text>
       </View>
-      <View className="flex flex-row gap-x-2">
+      <View className="flex flex-row gap-x-4">
         {back && (
-          <TouchableOpacity onPress={cycleTextSize}>
-            <Text size={'2xl'} className="uppercase" weight={'bold'} variant={'primary'}>
-              {size}
-            </Text>
-          </TouchableOpacity>
+          <>
+            {isSongPage && (
+              <TouchableOpacity onPress={onClickFavorite}>
+                <FontAwesome
+                  name={isFavorite ? 'heart' : 'heart-o'}
+                  size={24}
+                  color={
+                    isFavorite ? colors.red[400] : isDarkMode ? colors.gray[200] : colors.gray[950]
+                  }
+                />
+              </TouchableOpacity>
+            )}
+            <TouchableOpacity onPress={cycleTextSize}>
+              <Text size={'2xl'} className="uppercase" weight={'bold'}>
+                {size}
+              </Text>
+            </TouchableOpacity>
+          </>
         )}
       </View>
     </View>
