@@ -10,6 +10,7 @@ import { Button } from '../Button';
 import { Container } from '../Container';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
+import { DismissKeyboardWrapper } from '../Common/DismissKeyboardWrapper';
 
 export const SongFinderPage = () => {
   const { recentlyPlayedSongs, favoriteSongs: fav } = useSongStore();
@@ -41,6 +42,7 @@ export const SongFinderPage = () => {
 
   return (
     <Container className="dark:bg-gray-950">
+      <ScrollView keyboardShouldPersistTaps="handled" className="w-full flex-1 p-4">
         {/* Song Finder */}
         <View className="mb-8">
           <View className="mb-4 items-center">
@@ -62,12 +64,14 @@ export const SongFinderPage = () => {
               placeholder="Ai i u Number jingrwai"
               placeholderTextColor={'#9CA3AF'}
               keyboardType="numeric"
+              className="w-full flex-1 rounded-lg border border-gray-300 p-3 align-middle text-xl dark:border-gray-800 dark:text-white"
             />
             <Button title="WAD" onPress={handleSongSearch} className="w-full px-6" />
           </View>
 
           {error ? <Text className="ml-1 text-red-500">{error}</Text> : null}
         </View>
+        {/* <QuoteOfTheDay /> */}
         {/* Recent Songs */}
         <SongList
           title="Recently Viewed"
