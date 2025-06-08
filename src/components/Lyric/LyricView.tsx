@@ -23,66 +23,68 @@ export const LyricView = ({ song }: LyricViewProps) => {
   }, [addRecentlyPlayedSong, song]);
 
   return (
-    <ScrollView className="flex-1 p-4">
-      <View className="mb-6 items-center">
-        <Text size={'3xl'} weight={'extrabold'} className="text-center ">
-          {title}
-        </Text>
-        <Text size={'sm'} variant={'muted'} className="text-center ">
-          {song.metadata.author ?? song.metadata.composer}
-        </Text>
-        {song.metadata.syllables && (
-          <Text variant={'muted'} weight={'medium'} className="text-center">
-            {song.metadata.syllables}
+    <>
+      <ScrollView className="flex-1 p-4 pb-20">
+        <View className="mb-6 items-center">
+          <Text size={'3xl'} weight={'extrabold'} className="text-center ">
+            {title}
           </Text>
-        )}
-      </View>
+          <Text size={'sm'} variant={'muted'} className="text-center ">
+            {song.metadata.author ?? song.metadata.composer}
+          </Text>
+          {song.metadata.syllables && (
+            <Text variant={'muted'} weight={'medium'} className="text-center">
+              {song.metadata.syllables}
+            </Text>
+          )}
+        </View>
 
-      {/* Lyrics */}
-      <View className="space-y-6">
-        {sortedParagraphs.map((paragraph) => {
-          const type = capitalize(paragraph.type ?? 'Verse');
-          sectionCount[type] = (sectionCount[type] || 0) + 1;
+        {/* Lyrics */}
+        <View className="space-y-6">
+          {sortedParagraphs.map((paragraph) => {
+            const type = capitalize(paragraph.type ?? 'Verse');
+            sectionCount[type] = (sectionCount[type] || 0) + 1;
 
-          return (
-            <View key={paragraph.id} className="space-y-2 px-2">
-              {/* Paragraph Label */}
-              <Text italic size={'sm'} variant={'muted'} className="text-right">
-                {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
-              </Text>
+            return (
+              <View key={paragraph.id} className="space-y-2 px-2">
+                {/* Paragraph Label */}
+                <Text italic size={'sm'} variant={'muted'} className="text-right">
+                  {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
+                </Text>
 
-              {/* Paragraph Box */}
-              <View className={getParagraphStyle(paragraph.type)}>
-                {paragraph.lines.map((line, index) => {
-                  const isFirst = index === 0;
-                  const isLast = index === paragraph.lines.length - 1;
-                  const isChorus = paragraph.type === 'chorus';
+                {/* Paragraph Box */}
+                <View className={getParagraphStyle(paragraph.type)}>
+                  {paragraph.lines.map((line, index) => {
+                    const isFirst = index === 0;
+                    const isLast = index === paragraph.lines.length - 1;
+                    const isChorus = paragraph.type === 'chorus';
 
-                  const textContent = isChorus
-                    ? `${isFirst ? '“' : ''}${line}${isLast ? '”' : ''}`
-                    : line;
+                    const textContent = isChorus
+                      ? `${isFirst ? '“' : ''}${line}${isLast ? '”' : ''}`
+                      : line;
 
-                  return (
-                    <Text
-                      key={`${paragraph.id}-line-${index}`}
-                      size={size}
-                      variant={isChorus ? 'muted' : 'default'}
-                      className={cn(
-                        isChorus
-                          ? 'font-medium italic text-blue-800 dark:text-blue-300'
-                          : 'text-gray-950 dark:text-gray-200',
-                        'leading-relaxed'
-                      )}>
-                      {textContent || ' '}
-                    </Text>
-                  );
-                })}
+                    return (
+                      <Text
+                        key={`${paragraph.id}-line-${index}`}
+                        size={size}
+                        variant={isChorus ? 'muted' : 'default'}
+                        className={cn(
+                          isChorus
+                            ? 'font-medium italic text-blue-800 dark:text-blue-300'
+                            : 'text-gray-950 dark:text-gray-200',
+                          'leading-relaxed'
+                        )}>
+                        {textContent || ' '}
+                      </Text>
+                    );
+                  })}
+                </View>
               </View>
-            </View>
-          );
-        })}
-      </View>
-    </ScrollView>
+            );
+          })}
+        </View>
+      </ScrollView>
+    </>
   );
 };
 

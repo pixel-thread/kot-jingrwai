@@ -11,16 +11,10 @@ export default function Layout() {
           headerTitle: song.metadata.number.toString(),
           headerShown: false,
           title: song.metadata.number.toString(),
-          contentStyle: { backgroundColor: 'transparent', paddingBottom: 80 },
           headerBackButtonMenuEnabled: true,
         }}>
         <Stack.Screen name="index" />
       </Stack>
-      <SongNavigation
-        onNext={onNextSong}
-        onPrevious={onPreviousSong}
-        songNumber={song.metadata.number}
-      />
     </>
   );
 }

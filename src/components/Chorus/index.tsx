@@ -21,7 +21,7 @@ export const ChorusPage = () => {
   }, [paginatedSongs.length]);
 
   return (
-    <Container>
+    <Container className="flex-1 px-4">
       <FlashList
         data={paginatedSongs}
         renderItem={({ item }) => <ChorusListItem song={item} />}

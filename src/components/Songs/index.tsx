@@ -21,18 +21,16 @@ export const AllSongPage = () => {
   }, [paginatedSongs.length]);
 
   return (
-    <Container>
-      <View className="flex-1 px-4">
-        <FlashList
-          data={paginatedSongs}
-          renderItem={({ item }) => <SongListItem song={item} />}
-          estimatedItemSize={100}
-          keyExtractor={(item) => item.id}
-          ItemSeparatorComponent={() => <View className="h-px bg-gray-200 dark:bg-gray-800" />}
-          onEndReached={loadMore}
-          onEndReachedThreshold={0.5}
-        />
-      </View>
+    <Container className="flex-1 px-4">
+      <FlashList
+        data={paginatedSongs}
+        renderItem={({ item }) => <SongListItem song={item} />}
+        estimatedItemSize={100}
+        keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={() => <View className="h-px bg-gray-200 dark:bg-gray-800" />}
+        onEndReached={loadMore}
+        onEndReachedThreshold={0.5}
+      />
     </Container>
   );
 };

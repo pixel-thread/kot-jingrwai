@@ -46,7 +46,7 @@ export const SongFinderPage = () => {
         <View className="mb-8">
           <View className="mb-4 items-center">
             <Text size={'2xl'} weight={'extrabold'} className="mb-2 uppercase">
-              Wad jingrwai
+              Jingrwai
             </Text>
             <Text size={'base'} variant={'secondary'} className="text-center">
               Wad da number jingrwai
@@ -60,7 +60,7 @@ export const SongFinderPage = () => {
                 setSongNumber(text);
                 setError('');
               }}
-              placeholder="Jing rwai number"
+              placeholder="Ai i u Number jingrwai"
               placeholderTextColor={'#9CA3AF'}
               keyboardType="numeric"
               className="w-full flex-1 rounded-lg border border-gray-300 p-3 align-middle text-xl dark:border-gray-800"
