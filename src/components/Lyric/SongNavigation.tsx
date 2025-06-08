@@ -1,6 +1,4 @@
-import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Button } from '../Button';
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useSongStore } from '~/src/libs/stores/songs';
