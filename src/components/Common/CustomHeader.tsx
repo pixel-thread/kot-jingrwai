@@ -58,12 +58,12 @@ export const CustomHeader = ({ back }: Props) => {
   const { title } = useHeaderTitle();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-  const { cycleTextSize } = useTextStore();
+  const { cycleTextSize, size } = useTextStore();
 
   const onPressBackButton = () => router.back();
 
   return (
-    <View className="flex flex-row items-center justify-between bg-gray-200 p-2 px-4 dark:bg-gray-900">
+    <View className="flex flex-row items-center justify-between bg-gray-200 p-4 px-4 dark:bg-gray-900">
       <View className="flex flex-row items-center gap-x-4">
         {back && Platform.OS === 'ios' && (
           <TouchableOpacity onPress={onPressBackButton}>
@@ -81,8 +81,8 @@ export const CustomHeader = ({ back }: Props) => {
       <View className="flex flex-row gap-x-2">
         {back && (
           <TouchableOpacity onPress={cycleTextSize}>
-            <Text size={'2xl'} weight={'bold'} variant={'primary'}>
-              A+
+            <Text size={'2xl'} className="uppercase" weight={'bold'} variant={'primary'}>
+              {size}
             </Text>
           </TouchableOpacity>
         )}

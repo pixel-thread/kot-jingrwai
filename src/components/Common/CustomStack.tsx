@@ -9,6 +9,10 @@ export const CustomStack = () => {
         headerShown: true,
         title: isHome ? 'Kot Ong Rwai' : 'Kot Ong Rwai',
         header: ({ back }) => <CustomHeader back={back} />,
+        animation: 'ios_from_right',
+        animationDuration: 400,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
       }}>
       <Stack.Screen name="(tabs)" />
     </Stack>

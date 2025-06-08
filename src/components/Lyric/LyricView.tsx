@@ -24,9 +24,12 @@ export const LyricView = ({ song }: LyricViewProps) => {
 
   return (
     <>
-      <ScrollView className="flex-1 p-4 pb-20">
-        <View className="mb-6 items-center">
-          <Text size={'3xl'} weight={'extrabold'} className="text-center ">
+      <ScrollView className="mb-4 flex-1">
+        <View className="items-center px-4 py-2">
+          <Text
+            size={'3xl'}
+            weight={'extrabold'}
+            className="text-center leading-10 tracking-widest">
             {title}
           </Text>
           <Text size={'sm'} variant={'muted'} className="text-center ">
@@ -40,17 +43,19 @@ export const LyricView = ({ song }: LyricViewProps) => {
         </View>
 
         {/* Lyrics */}
-        <View className="space-y-6">
+        <View className="px-4">
           {sortedParagraphs.map((paragraph) => {
             const type = capitalize(paragraph.type ?? 'Verse');
             sectionCount[type] = (sectionCount[type] || 0) + 1;
 
             return (
-              <View key={paragraph.id} className="space-y-2 px-2">
+              <View key={paragraph.id} className="flex-1 flex-col space-y-5 px-2">
                 {/* Paragraph Label */}
-                <Text italic size={'sm'} variant={'muted'} className="text-right">
-                  {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
-                </Text>
+                <View className="mt-4">
+                  <Text italic size={'sm'} variant={'muted'} className="text-right">
+                    {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
+                  </Text>
+                </View>
 
                 {/* Paragraph Box */}
                 <View className={getParagraphStyle(paragraph.type)}>
@@ -90,7 +95,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
 
 // Utility to get background style by paragraph type
 const getParagraphStyle = (type?: string): string => {
-  const baseStyle = 'p-4 rounded-lg';
+  const baseStyle = 'p-4 rounded-lg border border-gray-200 dark:border-gray-950';
 
   switch (type) {
     case 'chorus':
