@@ -16,11 +16,7 @@ export default function TabLayout() {
           backgroundColor: isDarkMode ? colors.gray[950] : colors.gray[200],
           borderColor: isDarkMode ? colors.gray[950] : colors.gray[200],
         },
-        // tabBarActiveTintColor: isDarkMode ? colors.blue[200] : colors.blue[950],
-        // tabBarInactiveTintColor: isDarkMode ? colors.gray[200] : colors.indigo[950],
-        tabBarItemStyle: {
-          animationDuration: 200,
-        },
+        tabBarItemStyle: { animationDuration: 200 },
       }}>
       <Tabs.Screen
         name="index"
