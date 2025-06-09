@@ -73,9 +73,17 @@ export const LyricView = ({ song }: LyricViewProps) => {
               className="text-center leading-10 tracking-widest">
               {title}
             </Text>
-            <Text size={'sm'} variant={'muted'} className="text-center ">
-              {song.metadata.author ?? song.metadata.composer}
-            </Text>
+            {song.metadata.author && (
+              <Text size={'md'} variant={'muted'} className="text-center">
+                Written By: {song.metadata.author}
+              </Text>
+            )}
+
+            {song.metadata.composer && (
+              <Text size={'sm'} variant={'muted'} className="text-center ">
+                Composer: {song.metadata.composer}
+              </Text>
+            )}
             {song.metadata.syllables && (
               <Text variant={'muted'} weight={'medium'} className="text-center">
                 {song.metadata.syllables}
