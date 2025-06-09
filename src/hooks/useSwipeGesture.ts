@@ -13,6 +13,7 @@ type UseSwipeGestureProps = {
   onSwipeRight?: () => void;
   threshold?: number;
   simultaneousRef?: React.RefObject<any>;
+  maxPointers?: number;
 };
 
 export function useSwipeGesture({
@@ -20,13 +21,14 @@ export function useSwipeGesture({
   onSwipeRight,
   threshold = 50,
   simultaneousRef,
+  maxPointers = 1,
 }: UseSwipeGestureProps) {
   const translationX = useSharedValue(0);
   const prevTranslationX = useSharedValue(0);
 
   const gesture = Gesture.Pan()
-    .minDistance(20)
-    .maxPointers(1)
+    .minDistance(15) // minimum distance to trigger the gesture
+    .maxPointers(maxPointers) // maximum number of pointers to trigger the gesture
     .onStart(() => {
       prevTranslationX.value = translationX.value;
     })
