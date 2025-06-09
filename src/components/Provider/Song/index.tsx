@@ -15,7 +15,9 @@ export const SongProvider = ({ children }: SongProviderProps) => {
   const isLastSong = songIndex === songs.length - 1;
 
   const ChangeSong = (songNo: number) => {
-    const index = songs.findIndex((song) => song.metadata.number === songNo);
+    const index = songs.findIndex(
+      (song) => song.metadata.number === songNo || song.metadata.oldNumber === songNo
+    );
     if (index !== -1) {
       setSongIndex(index);
     }
