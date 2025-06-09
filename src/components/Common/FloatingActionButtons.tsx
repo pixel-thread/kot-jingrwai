@@ -20,7 +20,7 @@ export const FloatingActionButtons = ({ buttons, isVisible }: Props) => {
         <TouchableOpacity
           key={index}
           onPress={btn.onPress}
-          className="flex-row items-center justify-center rounded-2xl bg-white px-4 py-3 shadow-lg">
+          className="flex-row items-center justify-center rounded-2xl bg-white px-4 py-3 shadow-lg dark:bg-gray-950">
           {btn.icon || <FontAwesome name="plus" size={20} color="#000" />}
         </TouchableOpacity>
       ))}

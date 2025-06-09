@@ -12,29 +12,26 @@ type UseSwipeGestureProps = {
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
   threshold?: number;
+  simultaneousRef?: React.RefObject<any>;
 };
 
 export function useSwipeGesture({
   onSwipeLeft,
   onSwipeRight,
   threshold = 50,
+  simultaneousRef,
 }: UseSwipeGestureProps) {
   const translationX = useSharedValue(0);
   const prevTranslationX = useSharedValue(0);
 
   const gesture = Gesture.Pan()
-    .minDistance(10)
+    .minDistance(20)
+    .maxPointers(1)
     .onStart(() => {
       prevTranslationX.value = translationX.value;
     })
     .onUpdate((event) => {
-      const maxTranslateX = width / 2 - 50;
-
-      translationX.value = clamp(
-        prevTranslationX.value + event.translationX,
-        -maxTranslateX,
-        maxTranslateX
-      );
+      translationX.value = event.translationX;
     })
     .onEnd((event) => {
       if (event.translationX > threshold && onSwipeRight) {
@@ -42,10 +39,13 @@ export function useSwipeGesture({
       } else if (event.translationX < -threshold && onSwipeLeft) {
         runOnJS(onSwipeLeft)();
       }
-
       translationX.value = 0;
     })
     .runOnJS(true);
+
+  if (simultaneousRef) {
+    gesture.simultaneousWithExternalGesture(simultaneousRef);
+  }
 
   return gesture;
 }
