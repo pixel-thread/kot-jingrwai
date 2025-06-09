@@ -63,7 +63,8 @@ export const LyricView = ({ song }: LyricViewProps) => {
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        scrollEventThrottle={16}>
+        scrollEventThrottle={16}
+        className="mb-6">
         <View className="flex-1" collapsable={false}>
           <View className="items-center px-4 py-2">
             <Text
