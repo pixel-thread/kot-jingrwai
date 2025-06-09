@@ -1,5 +1,6 @@
 import { View, TouchableOpacity } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { cn } from '~/src/libs/cn';
 
 type ActionButton = {
   onPress: () => void;
@@ -9,16 +10,17 @@ type ActionButton = {
 
 type Props = {
   buttons: ActionButton[];
+  isVisible: boolean;
 };
 
-export const FloatingActionButtons = ({ buttons }: Props) => {
+export const FloatingActionButtons = ({ buttons, isVisible }: Props) => {
   return (
-    <View className="absolute bottom-6 right-6 z-50 gap-y-3">
+    <View className={cn('absolute bottom-6 right-6 z-50 gap-y-3', !isVisible && 'hidden')}>
       {buttons.map((btn, index) => (
         <TouchableOpacity
           key={index}
           onPress={btn.onPress}
-          className="flex-row items-center justify-center rounded-full bg-indigo-500/50 px-4 py-3 shadow-lg dark:bg-indigo-500">
+          className="flex-row items-center justify-center rounded-2xl bg-white px-4 py-3 shadow-lg">
           {btn.icon || <FontAwesome name="plus" size={20} color="#000" />}
         </TouchableOpacity>
       ))}

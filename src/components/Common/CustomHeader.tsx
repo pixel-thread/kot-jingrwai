@@ -103,11 +103,6 @@ export const CustomHeader = ({ back }: Props) => {
                 />
               </TouchableOpacity>
             )}
-            <TouchableOpacity onPress={cycleTextSize}>
-              <Text size={'2xl'} className="uppercase" weight={'bold'}>
-                {size}
-              </Text>
-            </TouchableOpacity>
           </>
         )}
       </View>
