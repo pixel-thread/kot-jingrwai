@@ -8,6 +8,7 @@ export type SongParagraph = {
 
 export type SongMetadata = {
   number: number; // song number/index
+  oldNumber?: number;
   language: string; // e.g. 'en', 'kn', 'khasi'
   author?: string;
   composer?: string;
