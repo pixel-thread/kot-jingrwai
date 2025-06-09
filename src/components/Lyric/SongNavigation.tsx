@@ -23,7 +23,6 @@ export const SongNavigation = ({ onNext, onPrevious, songNumber }: SongNavigatio
   return (
     <Container className="absolute bottom-0 left-0 right-0 px-5 py-4 backdrop-blur-md  ">
       <View className="flex-row items-center justify-between gap-x-5">
-        {/* <Button title="Previous" onPress={onPrevious} className="mr-3 flex-1" /> */}
         <TouchableOpacity onPress={onClickFavorite}>
           <FontAwesome
             name={isFavorite ? 'heart' : 'heart-o'}
@@ -31,7 +30,6 @@ export const SongNavigation = ({ onNext, onPrevious, songNumber }: SongNavigatio
             color={isFavorite ? 'red' : 'black'}
           />
         </TouchableOpacity>
-        {/* <Button title="Next" onPress={onNext} className="ml-3 flex-1" /> */}
       </View>
     </Container>
   );
