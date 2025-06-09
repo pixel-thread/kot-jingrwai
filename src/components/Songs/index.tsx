@@ -24,6 +24,7 @@ export const AllSongPage = () => {
     <Container className="flex-1 px-4">
       <FlashList
         data={paginatedSongs}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => <SongListItem song={item} />}
         estimatedItemSize={100}
         keyExtractor={(item) => item.id}
