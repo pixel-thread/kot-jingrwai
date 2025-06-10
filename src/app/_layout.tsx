@@ -7,6 +7,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useColorScheme as useScheme } from 'nativewind';
 import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SplashScreen } from '../components/Common/SplashScreen';
 
 export default function Layout() {
   const [isMounted, setIsMounted] = useState(false);
@@ -14,13 +15,12 @@ export default function Layout() {
 
   useEffect(() => {
     if (!isMounted) {
-      setIsMounted(true);
       setColorScheme('system');
     }
   }, [setColorScheme, isMounted]);
 
   if (!isMounted) {
-    return null;
+    return <SplashScreen onFinish={() => setIsMounted(true)} />;
   }
 
   return (
