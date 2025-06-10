@@ -694,9 +694,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
       },
     ],
   },
- 
-  
-  
+
   {
     id: 'song-264',
     title: 'Ka Jinghun ka Jingduwai.',
@@ -1307,9 +1305,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
       },
     ],
   },
-  
-  
- 
+
   {
     id: 'song-271',
     title: 'U Nongleit Riewblei.',
@@ -3292,7 +3288,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
       },
     ],
   },
-  
+
   {
     id: 'song-301',
     title: 'Lum Kalbari.',
@@ -3965,6 +3961,26 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
           `Їa Me nga ïaroh ruh, ko Trai,`,
           `Namar ki khuslai hi;`,
           `Ki shitom kiba beh ïa nga.`,
+          `Sha Me ban phet ban rieh.`,
+          `Nga don ka bynta ha byneng,`,
+          `Ba ngam pat ju iohi;`,
+          `Hynrei ka kti b'la mong jong Me,`,
+          `Ia nga, te khnang ka ri.`,
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 4,
+        type: 'verse',
+        lines: [
+          `Ah Blei! ha Me, tang ha Me hi,`,
+          `Ka mynsiem ka la hun;`,
+          `Bad sawdong kylleng nga iohsngew,`,
+          `Ki ktien sawa ba bun.`,
+          `'Me long ka bynta jong nga Trai',`,
+          `Ki hajar ki pyrta;`,
+          `Bad ka jingiaroh kan ym wai,`,
+          `Haduh ki yrta bah.`,
         ],
       },
     ],
@@ -9616,10 +9632,10 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
           'Ka maham ïa nga ban khreh;',
           'Ding sa lap ka shnong ka jingjot,',
           'Sha shnong Soar ngan sa beh.',
-          'Trai! ba eng ïa shisyndon,',
+          'Trai! to bad ïa nga shisyndon,',
           'Ïoh ym lah ïakynduh shuh;',
-          'Katba ka nangang ka shnang,',
-          'Lam sha lum ïng nga mang.',
+          'Katba ka nang ing ka Sodom,',
+          'Lam sha lum ïng nga ruh.',
         ],
       },
       {
@@ -9627,14 +9643,14 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Nga la lait mynsaw na,',
-          'Ha ka pyngha nga dang ap;',
-          'Shading i ba pla Gomorrah,',
-          'Shwa ng shnong ïU Blei ban lap.',
-          'Shaping sha ki ngan shanong,',
-          'Ngan sa pet ban lait ka ding;',
-          'Ha la kha Syiem ka jingng,',
-          'Mynsngsng jong mnga shing.',
+          'Nga la lait mynsaw na Sodom,',
+          'Ha ka pyntha nga dang ap,',
+          'Shadien i ba pluh Gomorrah,',
+          "Shuwa shnong ï'U Blei ban lap,",
+          'Shatei sha ki lum sha jerong,',
+          'Ngan sa phet ban lait ka ding;',
+          'Ai la ka kti Syiem ka jingim,',
+          'Mynsiem jong nga shato ring.',
         ],
       },
     ],
@@ -12631,5 +12647,4 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
       },
     ],
   },
-
 ];

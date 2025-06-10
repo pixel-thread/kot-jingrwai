@@ -16,6 +16,9 @@ export type SongMetadata = {
   tags?: string[]; // optional categories/tags
   songId?: string;
   syllables?: string;
+  reference?: string;
+  tune?: string;
+  meter?: string;
 };
 
 export type SongT = {

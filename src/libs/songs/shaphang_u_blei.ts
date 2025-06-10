@@ -1,4 +1,3 @@
-// @ts-ignore
 import { SongT } from '~/src/types/song';
 
 export const shaphangUBlei: SongT[] = [
@@ -10,7 +9,6 @@ export const shaphangUBlei: SongT[] = [
       language: 'khasi',
       author: 'J.R.',
       composer: 'Lowel (L.M.) O.C.H. 222',
-      syllables: '88.88',
     },
     paragraphs: [
       {
@@ -20,7 +18,7 @@ export const shaphangUBlei: SongT[] = [
         lines: [
           'Don Uwei U Blei ha byneng,',
           'U Trai ia baroh ba la seng;',
-          'U synshar hi na mynta rim;',
+          'U synshar hi na mynbarim;',
           'Ngan ieit, ngan iaroh katba im.',
         ],
       },
@@ -100,7 +98,7 @@ export const shaphangUBlei: SongT[] = [
           'Ka nongrim jong ka U la seng,',
           'Hapdeng ki um ka duriaw;',
           'Ha jingshlei um U pynskhem bha,',
-          'Ia ka, ngi shngain ban kymraw.',
+          'Ia ka, ngi shngain ban kynmaw.',
         ],
       },
       {
@@ -111,7 +109,7 @@ export const shaphangUBlei: SongT[] = [
           'Uei ban kiew sha iing U Trai,',
           'Ban ym phai khymat nangta?',
           'Ha lum ba kyntang Me, Ah Blei,',
-          'Uei un ieng hangta?',
+          'Uei un ioh ieng hangta?',
         ],
       },
       {
@@ -119,7 +117,7 @@ export const shaphangUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'Riewkhuid ka dohnud bad ki ktî,',
+          'Riewkhuid ka dohnud bad ki kti,',
           'Bym iaid ha lynti jubor;',
           'Sha kaba thala um ju phai,',
           'Um smai da kaba shukor.',
@@ -167,7 +165,7 @@ export const shaphangUBlei: SongT[] = [
         lines: [
           'Bakhuid, Bakhuid, Bakhuid, Bakhrawbor, Ah Blei!',
           'Dang step phyngab, Kynrad, ngi rwai nguh ia Me;',
-          'Bakhuid, Bakhuid, Bakhuid, khlain bad dap jingsneng,',
+          'Bakhuid, Bakhuid, Bakhuid, khlaiñ bad dap jingisynei,',
           'Lai ngut ba tang Wei long U Trai ba neh!',
         ],
       },
@@ -177,7 +175,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'Bakhuid, Bakhuid, Bakhuid, riewkhuid ki iaroh,',
-          'Baroh ki pangsngiat ksiar, ki loi’t ban nguh ia Me;',
+          'Baroh ki pangsngiat ksiar, ki loit ban nguh ia Me;',
           'Kherub bad ki Seraph ki mane dem baroh,',
           'Ia Me ba junom U Juh Me iaineh.',
         ],
@@ -198,56 +196,26 @@ export const shaphangUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'Bakhuid, Bakhuid, Bakhuid, bym ieng ha ka tip,',
-          'Ka bor U Trai long shnong, ka long ka bor U Blei;',
-          'Bakhuid, Bakhuid, Bakhuid, ngi shngeit baroh ruh,',
-          'Ban long U Trai ba shisha, ka jingkyrkhu.',
+          'Bakhuid, Bakhuid, Bakhuid, Bakhrawbor, Ah Blei!,',
+          'Pyrthei, byneng, baroh ki kyntiew nam ïa Me;',
+          'Bakhuid, Bakhuid, Bakhuid, khlaiñ bad dap jingisnei,',
+          'Lai ngut ba tang Wei long U Trai ba neh!',
         ],
       },
     ],
   },
   {
     id: 'song-004',
-    title: 'Shano Mynsiem O.C.H. 222',
+    title: 'Ka Jingdon U Blei Ha Ki Jaka Baroh',
     metadata: {
       number: 4,
       language: 'khasi',
-      composer: 'Lowel (L.M.) O.C.H. 222',
-      syllables: '88.88',
-    },
-    paragraphs: [
-      {
-        id: 'verse-1',
-        order: 1,
-        type: 'verse',
-        lines: [
-          'Shano mynsiem, shano nga miet,',
-          'Ka U Blei ka shong, ka shong,',
-          'Ka la pynkhuid ia ka pyrthei,',
-          'Bakhuid, Bakhuid, Ah Blei!',
-        ],
-      },
-      {
-        id: 'verse-2',
-        order: 2,
-        type: 'verse',
-        lines: [
-          'Lai ngut ba tang Wei long, khaniew,',
-          'Ka jingkyrkhu U Trai,',
-          'Bakhuid, Bakhuid, Bakhuid, baroh,',
-          'Pyrthei, bymkiew!',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'song-005',
-    title: 'Ka Jingkyrkhu Jong Me',
-    metadata: {
-      number: 5,
-      language: 'khasi',
-      composer: 'Sukhr (87.87.) Ambic N.W. 112',
+      composer: 'O.C.H. 43',
       syllables: '87.87',
+      meter: 'Iambic',
+      tune: 'MARY',
+      reference: 'Salm cxxxix',
+      songId: 'song-004',
     },
     paragraphs: [
       {
@@ -255,10 +223,10 @@ export const shaphangUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          'Ka jingkyrkhu jong Me ka da shngiat,',
-          'Ka la nga ka shnong Me da baroh ruh,',
-          'Ah Trai! ngi shngeit hi ia Me,',
-          'Ban long ka bor U Blei.',
+          'Shano ngan leit, shano ngan im,',
+          'Na U Mynsiem U jong Me?',
+          'Shano ngan phet, shano ngan rieh,',
+          'Na khymat shaiñ ka jong Me?',
         ],
       },
       {
@@ -266,44 +234,10 @@ export const shaphangUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Ka jingkyrkhu U Trai long ka tip,',
-          'Tang ka bor U Blei ka shisha,',
-          'Ka la nga ka shnong Me da baroh,',
-          'Ban long ka bor U Blei.',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'song-006',
-    title: 'Ka Jinglarap U Trai',
-    metadata: {
-      number: 6,
-      language: 'khasi',
-      composer: 'Glanarch (86.86.) S.S. 88',
-      syllables: '86.86',
-    },
-    paragraphs: [
-      {
-        id: 'verse-1',
-        order: 1,
-        type: 'verse',
-        lines: [
-          'Namar ingshaki U Trai,',
-          'Ka jinglarap U Trai ka shon,',
-          'Ka la ingsha be la khot,',
-          'Ngi shakla ban larap.',
-        ],
-      },
-      {
-        id: 'verse-2',
-        order: 2,
-        type: 'verse',
-        lines: [
-          'Ka khyndiat larap U Trai,',
-          'Ka larap ban larap Israel,',
-          'Un shah ka Israel baroh,',
-          'Un shah ka Israel.',
+          'La sha byneng nga ïoh ban kiew,',
+          'Ah Trai ki paid! Me hangta;',
+          'La thiah ruh ha dujok hi,',
+          'Ha khymih Me don hangta.',
         ],
       },
       {
@@ -311,10 +245,10 @@ export const shaphangUBlei: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Sha kyrdong jong U Kamon,',
-          'Ka U Trai un shah bymkhuid,',
-          'Ka U Trai un shah bymkhuid,',
-          'Ka U Trai un shah.',
+          'La kum u sim ngan her noh stet,',
+          'Ngan phet sha kut ka duriaw;',
+          'U Trai Un lam wat hangta hi,',
+          'Un ri ruh ïoh ngan mynsaw.',
         ],
       },
       {
@@ -322,11 +256,127 @@ export const shaphangUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'U Trai un shah bymkhuid,',
-          'Ka jinglarap U Trai un shah,',
-          'Ngi shakla ban larap U Trai,',
-          'Ngi shakla ban larap.',
+          'Lada nga ong, “Ka jingdum tliw,',
+          'Ïa nga u briew, kan buhrieh;',
+          'Ka miet kan tyngshaiñ kum mynsngi,”',
+          'U khymih U Blei jong ngi.',
         ],
+      },
+    ],
+  },
+  {
+    id: 'song-005',
+    title: 'Ka Jingsumar Sukher U Blei',
+    metadata: {
+      number: 5,
+      language: 'khasi',
+      composer: 'N.W. 112',
+      syllables: '87.87',
+      meter: 'Iambic',
+      tune: 'Morgannwg',
+      reference: 'Salm cxxxix',
+      songId: 'song-005',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Ah Trai, ka dohnud Me tip bha,',
+          'Ïa nga ruh Me la tynjuh;',
+          'Kaba nga shong, kaba nga khih,',
+          'Ka jingmut hi Me sngewthuh.',
+        ],
+        songId: 'song-005',
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Ka jingiaid jong nga Me ïit bha,',
+          'Dei Me ba da jingthiah;',
+          'Ki lynti jong nga baroh ruh,',
+          'Ithuh ma Me da shisha.',
+        ],
+        songId: 'song-005',
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Ha khymih, Trai, Me tip ma Me,',
+          'Ki jingleh jong nga baroh;',
+          'Ki jingpyrkhat ym lah buhrieh,',
+          'Na Me hi lano lano.',
+        ],
+        songId: 'song-005',
+      },
+    ],
+  },
+  {
+    id: 'song-006',
+    title: 'Ka Jingïaroh Ïa U Blei',
+    metadata: {
+      number: 6,
+      language: 'khasi',
+      composer: 'O.W. 109',
+      syllables: '87.87',
+      meter: 'Iambic',
+      tune: 'Paradwys',
+      reference: 'Salm c.',
+      songId: 'song-006',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'To ïaroh jam sngewbha ïa U Trai,',
+          'Ma phi ka pyrthei baroh;',
+          'To shakri ruh ïa U Trai, to wan,',
+          'Hajan da ka jingïaroh.',
+        ],
+        songId: 'song-006',
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          "To tip b'U Trai long Blei ba khraw,",
+          'Uba la thaw ngi kumne;',
+          'Ngi long ki langbrot jong U hi,',
+          'Ïa ngi, U ri ïa lade.',
+        ],
+        songId: 'song-006',
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Sha khyrdop jong U leit da nguh,',
+          'Sha ïing jong U da kyrmen;',
+          "Ï'U Trai jong ngi to wan ainguh,",
+          'To kyrkhu ïa ka kyrteng.',
+        ],
+        songId: 'song-006',
+      },
+      {
+        id: 'verse-4',
+        order: 4,
+        type: 'verse',
+        lines: [
+          'Namar U Trai U long ba bha,',
+          'Kam kylla ka jingisnei;',
+          'Jingshisha jong U kan ïaisah,',
+          'Ïa baroh pateng bynriew.',
+        ],
+        songId: 'song-006',
       },
     ],
   },
