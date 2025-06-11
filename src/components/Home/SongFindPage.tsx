@@ -64,7 +64,12 @@ export const SongFinderPage = () => {
               keyboardType="numeric"
               className="w-full flex-1 rounded-lg border border-gray-300 p-3 align-middle text-xl dark:border-gray-800 dark:text-white"
             />
-            <Button title="WAD" onPress={handleSongSearch} className="w-full px-6" />
+            <Button
+              title="WAD"
+              disabled={songNumber === ''}
+              onPress={handleSongSearch}
+              className="w-full px-6 disabled:bg-gray-400 disabled:shadow-none"
+            />
           </View>
 
           {error ? <Text className="ml-1 text-red-500">{error}</Text> : null}
