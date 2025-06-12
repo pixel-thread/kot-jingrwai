@@ -24,34 +24,38 @@ const HeaderLeft = () => {
   };
 
   return (
-    <>
-      <View>
-        <TouchableOpacity onPress={onPressFavorite}>
-          <FontAwesome
-            name={isFavorite ? 'bookmark' : 'bookmark-o'}
-            size={24}
-            color={isFavorite ? colors.orange[500] : colors.gray[500]}
-          />
-        </TouchableOpacity>
-      </View>
-    </>
+    <View>
+      <TouchableOpacity
+        onPress={onPressFavorite}
+        accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
+        <FontAwesome
+          name={isFavorite ? 'bookmark' : 'bookmark-o'}
+          size={24}
+          color={isFavorite ? colors.orange[500] : colors.gray[500]}
+        />
+      </TouchableOpacity>
+    </View>
   );
 };
 
 export default function SongLayout() {
   const { colorScheme } = useColorScheme();
-  const [isShowFloatingButton, setIsShowFloatingButton] = useState(false);
+  // Consider if isShowFloatingButton is still needed or if buttons are always visible
+  const [isShowFloatingButton, setIsShowFloatingButton] = useState(true); // Default to true if always visible initially
   const isDarkMode = colorScheme === 'dark';
   const { song } = useSongs();
   const { increaseTextSize, decreaseTextSize } = useTextStore();
 
+  // This useEffect might need to be re-evaluated based on desired behavior
+  // If buttons should always be visible, this can be removed.
   useEffect(() => {
     if (isShowFloatingButton) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setIsShowFloatingButton(false);
       }, 5000);
+      return () => clearTimeout(timer); // Cleanup timer on unmount or re-render
     }
-  }, [setIsShowFloatingButton, isShowFloatingButton]);
+  }, [isShowFloatingButton]);
 
   return (
     <>
@@ -60,13 +64,13 @@ export default function SongLayout() {
           headerShown: true,
           title: song.metadata.number.toString(),
           header: ({ options }) => (
-            <CustomHeader options={options} back={true} headerLeft={<HeaderLeft />} />
+            <CustomHeader options={options} back headerLeft={<HeaderLeft />} />
           ),
         }}>
         <Stack.Screen name="index" />
       </Stack>
       <FloatingActionButtons
-        isVisible
+        isVisible={isShowFloatingButton} // Use state here
         buttons={[
           {
             onPress: increaseTextSize,
@@ -77,6 +81,7 @@ export default function SongLayout() {
                 size={20}
               />
             ),
+            // Example: accessibilityLabel: "Increase text size"
           },
           {
             onPress: decreaseTextSize,
@@ -87,6 +92,7 @@ export default function SongLayout() {
                 color={isDarkMode ? colors.gray[200] : colors.gray[950]}
               />
             ),
+            // Example: accessibilityLabel: "Decrease text size"
           },
         ]}
       />
