@@ -1,0 +1,15 @@
+import { Stack } from 'expo-router';
+import { CustomHeader } from '~/src/components/Common/CustomHeader';
+
+export default function ContactLayout() {
+  return (
+    <Stack
+      screenOptions={{
+        title: 'Contact',
+        headerShown: true,
+        header: ({ options }) => <CustomHeader options={options} />,
+      }}>
+      <Stack.Screen name="index" />
+    </Stack>
+  );
+}
