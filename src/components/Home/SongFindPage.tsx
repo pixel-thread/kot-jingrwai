@@ -68,7 +68,7 @@ export const SongFinderPage = () => {
                 error && 'border-red-500'
               )}
             />
-            {error ? <Text className="ml-1 text-red-500">{error}</Text> : null}
+            {error ? <Text className="ml-1 text-red-500 dark:text-red-400">{error}</Text> : null}
             <Button
               title="WAD"
               disabled={songNumber === ''}
