@@ -6,7 +6,7 @@ export const CustomStack = () => {
   return (
     <Stack
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         title: isHome ? 'Kot Ong Rwai' : 'Kot Ong Rwai',
         header: ({ back }) => <CustomHeader back={back} />,
         animation: 'ios_from_right',
