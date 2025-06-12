@@ -24,12 +24,12 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
 
   return (
     <View className="mb-6 border border-gray-200 p-4 dark:border-gray-950">
-      <Text size={'lg'} weight={'semibold'} className="mb-2">
+      <Text size={'lg'} weight={'extrabold'} className="mb-2">
         {title}
       </Text>
 
       {filteredSongs.length > 0 ? (
-        <View className="rounded-lg border border-gray-200 dark:border-gray-800">
+        <View className="rounded-lg border border-gray-300 dark:border-gray-800">
           {filteredSongs.map((song) => (
             <TouchableOpacity
               key={song.id}
