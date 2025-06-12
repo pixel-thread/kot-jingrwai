@@ -73,7 +73,7 @@ export const SongFinderPage = () => {
               title="WAD"
               disabled={songNumber === ''}
               onPress={handleSongSearch}
-              className="w-full px-6 disabled:bg-gray-400 disabled:shadow-none"
+              className="w-full px-6 disabled:opacity-50 disabled:shadow-none"
             />
           </View>
         </View>
@@ -86,7 +86,7 @@ export const SongFinderPage = () => {
         />
 
         {/* Favorite Songs */}
-        <SongList title="Favorite Songs" songNumbers={fav} emptyMessage="No favorite songs yet" />
+        <SongList title="Marked Songs" songNumbers={fav} emptyMessage="No favorite songs yet" />
       </ScrollView>
     </Container>
   );
