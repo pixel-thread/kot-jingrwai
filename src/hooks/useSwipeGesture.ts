@@ -1,12 +1,6 @@
-import { Dimensions } from 'react-native';
 import { useSharedValue, runOnJS } from 'react-native-reanimated';
 import { Gesture } from 'react-native-gesture-handler';
-
-const { width } = Dimensions.get('screen');
-
-function clamp(val: number, min: number, max: number): number {
-  return Math.min(Math.max(val, min), max);
-}
+import * as Haptics from 'expo-haptics';
 
 type UseSwipeGestureProps = {
   onSwipeLeft?: () => void;
@@ -26,9 +20,13 @@ export function useSwipeGesture({
   const translationX = useSharedValue(0);
   const prevTranslationX = useSharedValue(0);
 
+  const triggerHaptic = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+  };
+
   const gesture = Gesture.Pan()
-    .minDistance(15) // minimum distance to trigger the gesture
-    .maxPointers(maxPointers) // maximum number of pointers to trigger the gesture
+    .minDistance(15)
+    .maxPointers(maxPointers)
     .onStart(() => {
       prevTranslationX.value = translationX.value;
     })
@@ -37,8 +35,10 @@ export function useSwipeGesture({
     })
     .onEnd((event) => {
       if (event.translationX > threshold && onSwipeRight) {
+        runOnJS(triggerHaptic)();
         runOnJS(onSwipeRight)();
       } else if (event.translationX < -threshold && onSwipeLeft) {
+        runOnJS(triggerHaptic)();
         runOnJS(onSwipeLeft)();
       }
       translationX.value = 0;

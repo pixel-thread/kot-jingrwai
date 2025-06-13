@@ -9,6 +9,7 @@ export const textVariants = cva(
     variants: {
       size: {
         base: 'text-base', // default size
+        xs: 'text-xs',
         sm: 'text-sm',
         md: 'text-base',
         lg: 'text-lg',

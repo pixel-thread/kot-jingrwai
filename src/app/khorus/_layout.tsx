@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router';
+import { Stack, useLocalSearchParams } from 'expo-router';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { useTapGesture } from '~/src/hooks/useTapGesture';
 import { FloatingActionButtons } from '~/src/components/Common/FloatingActionButtons';
@@ -8,13 +8,14 @@ import { useTextStore } from '~/src/libs/stores/text';
 import colors from 'tailwindcss/colors';
 import { useColorScheme } from 'nativewind';
 import { View } from 'react-native';
+import { CustomHeader } from '~/src/components/Common/CustomHeader';
 
 export default function KhorusLayout() {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
   const { increaseTextSize, decreaseTextSize } = useTextStore();
   const [isShowFloatingButton, setIsShowFloatingButton] = useState(false);
-
+  const { khorusNo } = useLocalSearchParams();
   const singleTap = () => setIsShowFloatingButton(true);
 
   const singleTapGesture = useTapGesture({
@@ -37,7 +38,9 @@ export default function KhorusLayout() {
       <View className="flex-1" collapsable={false}>
         <Stack
           screenOptions={{
-            headerShown: false,
+            headerShown: true,
+            header: ({ options }) => <CustomHeader back options={options} />,
+            title: `Khorus ${khorusNo}` || khorusNo.toString(),
           }}>
           <Stack.Screen name="index" />
         </Stack>

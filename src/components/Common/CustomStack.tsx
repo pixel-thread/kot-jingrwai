@@ -1,19 +1,8 @@
-import { Stack, usePathname } from 'expo-router';
-import { CustomHeader } from './CustomHeader';
+import { Stack } from 'expo-router';
+
 export const CustomStack = () => {
-  const pathName = usePathname();
-  const isHome = pathName === '/';
   return (
-    <Stack
-      screenOptions={{
-        headerShown: true,
-        title: isHome ? 'Kot Ong Rwai' : 'Kot Ong Rwai',
-        header: ({ back }) => <CustomHeader back={back} />,
-        animation: 'ios_from_right',
-        animationDuration: 400,
-        gestureEnabled: true,
-        gestureDirection: 'horizontal',
-      }}>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="(tabs)" />
     </Stack>
   );

@@ -9,9 +9,10 @@ import { Button } from '../Button';
 import { Container } from '../Container';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
+import { cn } from '~/src/libs/cn';
 
 export const SongFinderPage = () => {
-  const { recentlyPlayedSongs, favoriteSongs: fav } = useSongStore();
+  const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();
   const [songNumber, setSongNumber] = useState<string>('');
   const [error, setError] = useState<string>('');
   const { ChangeSong } = useSongs();
@@ -62,23 +63,24 @@ export const SongFinderPage = () => {
               placeholder="Ai i u Number jingrwai"
               placeholderTextColor={'#9CA3AF'}
               keyboardType="numeric"
-              className="w-full flex-1 rounded-lg border border-gray-300 p-3 align-middle text-xl dark:border-gray-800 dark:text-white"
+              className={cn(
+                'w-full flex-1 rounded-lg border border-gray-300 p-3 align-middle text-xl dark:border-gray-800 dark:text-white',
+                error && 'border-red-500'
+              )}
             />
-            <Button title="WAD" onPress={handleSongSearch} className="w-full px-6" />
+            {error ? <Text className="ml-1 text-red-500 dark:text-red-400">{error}</Text> : null}
+            <Button
+              title="WAD"
+              disabled={songNumber === ''}
+              onPress={handleSongSearch}
+              className="w-full px-6 disabled:opacity-50 disabled:shadow-none"
+            />
           </View>
-
-          {error ? <Text className="ml-1 text-red-500">{error}</Text> : null}
         </View>
-        {/* <QuoteOfTheDay /> */}
         {/* Recent Songs */}
-        <SongList
-          title="Recently Viewed"
-          songNumbers={recentlyPlayedSongs}
-          emptyMessage="No recently viewed songs"
-        />
-
+        <SongList title="Viewed" songNumbers={recentSongs} emptyMessage="No viewed songs" />
         {/* Favorite Songs */}
-        <SongList title="Favorite Songs" songNumbers={fav} emptyMessage="No favorite songs yet" />
+        <SongList title="Marked Songs" songNumbers={fav} emptyMessage="No Marked songs yet" />
       </ScrollView>
     </Container>
   );
