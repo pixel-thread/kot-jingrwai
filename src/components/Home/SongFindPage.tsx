@@ -86,7 +86,7 @@ export const SongFinderPage = () => {
         />
 
         {/* Favorite Songs */}
-        <SongList title="Marked Songs" songNumbers={fav} emptyMessage="No favorite songs yet" />
+        <SongList title="Marked Songs" songNumbers={fav} emptyMessage="No Marked songs yet" />
       </ScrollView>
     </Container>
   );
