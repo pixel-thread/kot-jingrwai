@@ -9,12 +9,10 @@ import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SplashScreen } from '../components/Common/SplashScreen';
 import { Ternary } from '../components/Common/Ternary';
-import { BetaBatch } from '../components/Common/BetaBatch';
 
 export default function Layout() {
   const [isMounted, setIsMounted] = useState(false);
   const { setColorScheme } = useScheme();
-  const isBeta = process.env.EXPO_PUBLIC_IS_BETA === 'true';
 
   useEffect(() => {
     setColorScheme('system');
@@ -28,12 +26,7 @@ export default function Layout() {
           <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-950">
             <Ternary
               condition={isMounted}
-              ifTrue={
-                <>
-                  {isBeta && <BetaBatch />}
-                  <CustomStack />
-                </>
-              }
+              ifTrue={<CustomStack />}
               ifFalse={<SplashScreen onFinish={() => setIsMounted(true)} />}
             />
           </SafeAreaView>
