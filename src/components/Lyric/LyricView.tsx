@@ -72,20 +72,19 @@ export const LyricView = ({ song }: LyricViewProps) => {
         <View className="flex-1" collapsable={false}>
           <View className="items-center px-4 py-2">
             <Text
-              size={'3xl'}
-              weight={'extrabold'}
-              className="text-center leading-10 tracking-widest">
+              size={'2xl'}
+              weight={'bold'}
+              className="mb-1 text-center tracking-wide text-gray-900 dark:text-gray-100">
               {title}
             </Text>
             {song.metadata.author && (
-              <Text size={'md'} variant={'muted'} className="text-center">
-                Written By: {song.metadata.author}
+              <Text size={'sm'} variant={'muted'} className="text-center">
+                {song.metadata.author}
               </Text>
             )}
-
             {song.metadata.composer && (
-              <Text size={'sm'} variant={'muted'} className="text-center ">
-                Composer: {song.metadata.composer}
+              <Text size={'xs'} variant={'muted'} className="text-center">
+                {song.metadata.composer}
               </Text>
             )}
             {song.metadata.syllables && (
@@ -94,33 +93,37 @@ export const LyricView = ({ song }: LyricViewProps) => {
               </Text>
             )}
           </View>
-
+          <View className="my-2 h-px w-2/3 self-center bg-gray-200 dark:bg-gray-800" />
           {/* Lyrics */}
           <View className="px-4">
             {sortedParagraphs.map((paragraph) => {
               const type = capitalize(paragraph.type ?? 'Verse');
               sectionCount[type] = (sectionCount[type] || 0) + 1;
-
               return (
-                <View key={paragraph.id} className="flex-1 flex-col space-y-5 px-2">
+                <View key={paragraph.id} className="flex-1 flex-col space-y-3 px-2">
                   {/* Paragraph Label */}
-                  <View className="mt-4">
-                    <Text italic size={'sm'} variant={'muted'} className="text-right">
+                  <View className="mb-1 mt-4 flex-row items-center justify-end">
+                    <Text
+                      italic
+                      size={'xs'}
+                      variant={'muted'}
+                      className="px-2 text-right text-gray-500 dark:text-gray-400">
                       {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
                     </Text>
                   </View>
-
                   {/* Paragraph Box */}
-                  <View className={getParagraphStyle(paragraph.type)}>
+                  <View
+                    className={cn(
+                      getParagraphStyle(paragraph.type),
+                      'border-none bg-transparent p-0'
+                    )}>
                     {paragraph.lines.map((line, index) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
                       const isChorus = paragraph.type === 'chorus';
-
                       const textContent = isChorus
                         ? `${isFirst ? '“' : ''}${line}${isLast ? '”' : ''}`
                         : line;
-
                       return (
                         <Text
                           key={`${paragraph.id}-line-${index}`}
@@ -129,7 +132,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                           className={cn(
                             isChorus
                               ? 'font-medium italic text-blue-800 dark:text-blue-300'
-                              : 'text-gray-950 dark:text-gray-200',
+                              : 'text-gray-900 dark:text-gray-100',
                             'leading-relaxed'
                           )}>
                           {textContent || ' '}
