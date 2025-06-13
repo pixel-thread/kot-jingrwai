@@ -12,7 +12,7 @@ import { useSongStore } from '~/src/libs/stores/songs';
 import { cn } from '~/src/libs/cn';
 
 export const SongFinderPage = () => {
-  const { recentlyPlayedSongs, favoriteSongs: fav } = useSongStore();
+  const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();
   const [songNumber, setSongNumber] = useState<string>('');
   const [error, setError] = useState<string>('');
   const { ChangeSong } = useSongs();
@@ -77,14 +77,8 @@ export const SongFinderPage = () => {
             />
           </View>
         </View>
-        {/* <QuoteOfTheDay /> */}
         {/* Recent Songs */}
-        <SongList
-          title="Recently Viewed"
-          songNumbers={recentlyPlayedSongs}
-          emptyMessage="No recently viewed songs"
-        />
-
+        <SongList title="Viewed" songNumbers={recentSongs} emptyMessage="No viewed songs" />
         {/* Favorite Songs */}
         <SongList title="Marked Songs" songNumbers={fav} emptyMessage="No Marked songs yet" />
       </ScrollView>
