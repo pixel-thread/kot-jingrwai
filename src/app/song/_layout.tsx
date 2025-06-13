@@ -41,21 +41,9 @@ const HeaderLeft = () => {
 export default function SongLayout() {
   const { colorScheme } = useColorScheme();
   // Consider if isShowFloatingButton is still needed or if buttons are always visible
-  const [isShowFloatingButton, setIsShowFloatingButton] = useState(true); // Default to true if always visible initially
   const isDarkMode = colorScheme === 'dark';
   const { song } = useSongs();
   const { increaseTextSize, decreaseTextSize } = useTextStore();
-
-  // This useEffect might need to be re-evaluated based on desired behavior
-  // If buttons should always be visible, this can be removed.
-  useEffect(() => {
-    if (isShowFloatingButton) {
-      const timer = setTimeout(() => {
-        setIsShowFloatingButton(false);
-      }, 5000);
-      return () => clearTimeout(timer); // Cleanup timer on unmount or re-render
-    }
-  }, [isShowFloatingButton]);
 
   return (
     <>
@@ -70,7 +58,7 @@ export default function SongLayout() {
         <Stack.Screen name="index" />
       </Stack>
       <FloatingActionButtons
-        isVisible={isShowFloatingButton} // Use state here
+        isVisible={true} // Use state here
         buttons={[
           {
             onPress: increaseTextSize,
