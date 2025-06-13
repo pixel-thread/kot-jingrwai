@@ -8,7 +8,8 @@ export const shaphangUBlei: SongT[] = [
       number: 1,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Lowel (L.M.) O.C.H. 222',
+      composer: 'Lowel O.C.H. 222',
+      syllables: 'L.M.',
     },
     paragraphs: [
       {
@@ -75,7 +76,7 @@ export const shaphangUBlei: SongT[] = [
       number: 2,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Oldenburg (87.87.) Iambic O.W. 77',
+      composer: 'Oldenburg Iambic O.W. 77',
       syllables: '87.87',
     },
     paragraphs: [
@@ -154,7 +155,7 @@ export const shaphangUBlei: SongT[] = [
       number: 3,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Nicaea (11.12.12.10.) S.S. 22',
+      composer: 'Nicaea S.S. 22',
       syllables: '11.12.12.10',
     },
     paragraphs: [
@@ -210,11 +211,8 @@ export const shaphangUBlei: SongT[] = [
     metadata: {
       number: 4,
       language: 'khasi',
-      composer: 'O.C.H. 43',
+      composer: 'MARY (Iambic) O.C.H 34',
       syllables: '87.87',
-      meter: 'Iambic',
-      tune: 'MARY',
-      reference: 'Salm cxxxix',
       songId: 'song-004',
     },
     paragraphs: [
@@ -270,11 +268,7 @@ export const shaphangUBlei: SongT[] = [
     metadata: {
       number: 5,
       language: 'khasi',
-      composer: 'N.W. 112',
-      syllables: '87.87',
-      meter: 'Iambic',
-      tune: 'Morgannwg',
-      reference: 'Salm cxxxix',
+      composer: 'Morgannwg (Iambic) N.W. 112',
       songId: 'song-005',
     },
     paragraphs: [
@@ -288,7 +282,6 @@ export const shaphangUBlei: SongT[] = [
           'Kaba nga shong, kaba nga khih,',
           'Ka jingmut hi Me sngewthuh.',
         ],
-        songId: 'song-005',
       },
       {
         id: 'verse-2',
@@ -300,7 +293,6 @@ export const shaphangUBlei: SongT[] = [
           'Ki lynti jong nga baroh ruh,',
           'Ithuh ma Me da shisha.',
         ],
-        songId: 'song-005',
       },
       {
         id: 'verse-3',
@@ -312,7 +304,6 @@ export const shaphangUBlei: SongT[] = [
           'Ki jingpyrkhat ym lah buhrieh,',
           'Na Me hi lano lano.',
         ],
-        songId: 'song-005',
       },
     ],
   },
@@ -322,11 +313,8 @@ export const shaphangUBlei: SongT[] = [
     metadata: {
       number: 6,
       language: 'khasi',
-      composer: 'O.W. 109',
+      composer: 'Paradwys (Iambic) O.W. 109',
       syllables: '87.87',
-      meter: 'Iambic',
-      tune: 'Paradwys',
-      reference: 'Salm c.',
       songId: 'song-006',
     },
     paragraphs: [
@@ -340,7 +328,6 @@ export const shaphangUBlei: SongT[] = [
           'To shakri ruh ïa U Trai, to wan,',
           'Hajan da ka jingïaroh.',
         ],
-        songId: 'song-006',
       },
       {
         id: 'verse-2',
@@ -352,7 +339,6 @@ export const shaphangUBlei: SongT[] = [
           'Ngi long ki langbrot jong U hi,',
           'Ïa ngi, U ri ïa lade.',
         ],
-        songId: 'song-006',
       },
       {
         id: 'verse-3',
@@ -364,7 +350,6 @@ export const shaphangUBlei: SongT[] = [
           "Ï'U Trai jong ngi to wan ainguh,",
           'To kyrkhu ïa ka kyrteng.',
         ],
-        songId: 'song-006',
       },
       {
         id: 'verse-4',
@@ -376,18 +361,18 @@ export const shaphangUBlei: SongT[] = [
           'Jingshisha jong U kan ïaisah,',
           'Ïa baroh pateng bynriew.',
         ],
-        songId: 'song-006',
       },
     ],
   },
   {
     id: 'song-007',
-    title: 'U Blei U Nongthaw',
+    title: 'Ka Jingshaniah ha U Trai',
     metadata: {
       number: 7,
       language: 'khasi',
-      composer: 'Hursley (L.M.) C.H. 292',
-      syllables: 'L.M.',
+      syllables: '87.87',
+      composer: 'Glanceri (Iambic) N.W. 11',
+      songId: 'song-007',
     },
     paragraphs: [
       {
@@ -395,10 +380,10 @@ export const shaphangUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          'U Blei U Nongthaw ba da shngiat,',
-          'To iaroh U Trai ka ma khiah,',
-          'Bad nadu U Trai un shong ma U,',
-          'Haba me U Blei un shong ma U.',
+          'Ngan khymih sha ki lum ngan ap,',
+          'Ka jingïarap na shatei;',
+          'Ka jingïarap ïa nga Un ai,',
+          'U Trai ba la thaw ka pyrthei.',
         ],
       },
       {
@@ -406,10 +391,10 @@ export const shaphangUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Na ka long ka ma U Trai,',
-          'Ka ba suid ban die U Blei,',
-          'Ka ba suid ban die U Blei,',
-          'Ka long ka ma U Trai.',
+          'Um shah ka kyjat ban syntuid,',
+          'Ngan ïaid laitluit khlem bakla;',
+          'U sumar bha ki Israel hi,',
+          'Ha khymih Um samthiah.',
         ],
       },
       {
@@ -417,10 +402,10 @@ export const shaphangUBlei: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Ha ka long ka ma U Trai,',
-          'U Trai un shong ka ma khiah,',
-          'Ki suid ban die U Blei,',
-          'Ki suid ban die U Blei.',
+          'Ha kti kamon jong me, long Blei,',
+          'U Trai ba dei nongsumar;',
+          'Ka sngi, u bnai, Um shah ban shoh,',
+          'Men lait baroh jingjynjar.',
         ],
       },
       {
@@ -428,22 +413,35 @@ export const shaphangUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'Ka long ka ma U Trai,',
-          'U Blei un shong ka ma khiah,',
-          'To iaroh U Trai ka ma U,',
-          'To iaroh U Trai ka ma U.',
+          'U Trai Un sumar hi ïa me,',
+          'Na jong ki jingleh bymman;',
+          'Un ri Un pyndap ka mynsiem,',
+          'U Nongïarap ba hajan.',
+        ],
+      },
+      {
+        id: 'verse-5',
+        order: 5,
+        type: 'verse',
+        lines: [
+          'Haba me shong haba me khih,',
+          'U Trai Un ri da shisha;',
+          'Bad naduh mynta long ma U,',
+          'Nongsumar ha la ka rta.',
         ],
       },
     ],
   },
   {
     id: 'song-008',
-    title: 'U Blei U Winchester',
+    title: 'U Blei U Nongthaw',
     metadata: {
       number: 8,
       language: 'khasi',
-      composer: 'Winchester (C.M.) S.S. 177',
-      syllables: 'C.M.',
+      author: 'J. R.',
+      composer: 'Hursley',
+      syllables: 'L.M. (Long Metre)',
+      songId: 'song-008',
     },
     paragraphs: [
       {
@@ -451,10 +449,10 @@ export const shaphangUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          'Ka la kaba la khraw sa paw,',
-          'Ka jinglarap U Trai,',
-          'Ka la kaba la khraw sa paw,',
-          'Ka jinglarap U Trai.',
+          'To ïaroh ïa U Syiem byneng,',
+          'U long U Trai ki trai kylleng;',
+          'Ha U ka jingim lut ka shong,',
+          'Na bymjukut, U ju ïai long.',
         ],
       },
       {
@@ -462,10 +460,10 @@ export const shaphangUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Na ka long ka jong U Trai,',
-          'Ka la kaba la khraw,',
-          'Na ka long ka jong U Trai,',
-          'Ka la kaba la khraw.',
+          'Ka sahit byneng U la tei,',
+          'Kaba sydien ha neng pyrthei;',
+          'Ka sngi, u bnai, ki khlur jingshai,',
+          "Ba ïaid ha neng ki nguh ï'U Trai.",
         ],
       },
       {
@@ -473,22 +471,57 @@ export const shaphangUBlei: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Sha khyndiat U Blei,',
-          'Ka la kaba la khraw sa paw,',
-          'Sha khyndiat U Blei,',
-          'Ka la kaba la khraw.',
+          'U Trai, ïa baroh long U Blei,',
+          'Ha suiñ, ha um, bad ha pyrthei;',
+          'Ki jingthaw phar, bad rit bad khraw,',
+          'Ki long ki jong U Trai Nongthaw.',
+        ],
+      },
+      {
+        id: 'verse-4',
+        order: 4,
+        type: 'verse',
+        lines: [
+          'U khymih thuh ïa ngi ki briew,',
+          'U ïit ka jylliew dohnud sniew;',
+          'Shaneng shapoh ym lah ban rieh,',
+          'Ka jingmut shapoh U ïohi.',
+        ],
+      },
+      {
+        id: 'verse-5',
+        order: 5,
+        type: 'verse',
+        lines: [
+          'Ka burom jong U kan sa paw,',
+          "Na kiei kiei b'U la thaw;",
+          'Jingïaroh kaba khraw kan mih,',
+          "Ї'U Blei Uba la thaw ïa ngi.",
+        ],
+      },
+      {
+        id: 'verse-6',
+        order: 6,
+        type: 'verse',
+        lines: [
+          'Ki lum, ki duriaw, sawa shai,',
+          'Ka bor bad ka jingstad U Trai;',
+          'Ki jingthaw baroh ha pyrthei,',
+          'Ki ong ba Uba khraw U Blei.',
         ],
       },
     ],
   },
   {
     id: 'song-009',
-    title: 'Lai Ngut Ba Khyndiat U Blei',
+    title: 'Lai Ngut ha Uwei U Blei',
     metadata: {
       number: 9,
+      oldNumber: 11,
       language: 'khasi',
-      composer: 'Harts, Glasgow (77.77.) Sukhr S.S. 320',
-      syllables: '77.77',
+      tune: 'Winchester New',
+      syllables: 'L.M. (Long Metre)',
+      songId: 'song-009',
     },
     paragraphs: [
       {
@@ -496,10 +529,10 @@ export const shaphangUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          'Ki bor ka jinglarap U Trai,',
-          'Ki bor ka jinglarap U Trai,',
-          'Ki bor ka jinglarap U Trai,',
-          'Lai ngut ba khyndiat U Blei.',
+          "Ї'U Blei U Kpa to ngin ïa-ai,",
+          "Ka burom, bad ï'U Khun, U Trai;",
+          "Ї'U Blei Mynsiem ba ai jingkhuid,",
+          'Sha lynti sniew ba ngim syntuid.',
         ],
       },
       {
@@ -507,10 +540,10 @@ export const shaphangUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Ka la kaba la khraw sa paw,',
-          'Ka la kaba la khraw sa paw,',
-          'Ka la kaba la khraw sa paw,',
-          'Ka jinglarap U Trai.',
+          'U Kpa, U Khun bad U Mynsiem,',
+          'Na bymjukut ki long syriem;',
+          'Na junom junom Uwei Lai,',
+          'Jingmaïan hi bym lah shem trai.',
         ],
       },
       {
@@ -518,55 +551,24 @@ export const shaphangUBlei: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Na ka long ka jong U Trai,',
-          'Na ka long ka jong U Trai,',
-          'Na ka long ka jong U Trai,',
-          'Ka la kaba la khraw.',
-        ],
-      },
-      {
-        id: 'verse-4',
-        order: 4,
-        type: 'verse',
-        lines: [
-          'Ki bor ka jinglarap U Trai,',
-          'Ki bor ka jinglarap U Trai,',
-          'Ki bor ka jinglarap U Trai,',
-          'Lai ngut ba khyndiat U Blei.',
-        ],
-      },
-      {
-        id: 'verse-5',
-        order: 5,
-        type: 'verse',
-        lines: [
-          'Ka la kaba la khraw sa paw,',
-          'Ka la kaba la khraw sa paw,',
-          'Ka la kaba la khraw sa paw,',
-          'Ka jinglarap U Trai.',
-        ],
-      },
-      {
-        id: 'verse-6',
-        order: 6,
-        type: 'verse',
-        lines: [
-          'Na ka long ka jong U Trai,',
-          'Na ka long ka jong U Trai,',
-          'Na ka long ka jong U Trai,',
-          'Ka la kaba la khraw.',
+          'To ai ka jingaiei U Khun,',
+          'Ka jingieit jong U Kpa sybun;',
+          'Bad jingïasyllok U Mynsiem,',
+          'Kin ïai long lem ba ngin ïoh im.',
         ],
       },
     ],
   },
   {
     id: 'song-010',
-    title: 'Ka Jinglarap U Trai',
+    title: 'Ka Jingsumar sukher U Blei',
     metadata: {
       number: 10,
+      oldNumber: 12,
       language: 'khasi',
-      composer: 'Sukhr (C.M.) S.S. 329',
-      syllables: 'C.M.',
+      author: 'T.J.J.',
+      syllables: '77.77',
+      songId: 'song-010',
     },
     paragraphs: [
       {
@@ -574,10 +576,10 @@ export const shaphangUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          'Ai ba ngin iaroh ka jinglarap,',
-          'Ngin iaroh ka da ka ma khiah,',
-          'Ai ba ngin iaroh ka jinglarap,',
-          'Ka jinglarap U Trai.',
+          'Ai ba da ka mynsiem hun,',
+          "Ngin ïaroh ï'U Trai sybun;",
+          'Namar ki jingisnei jong U,',
+          'Kin neh skhem, kin ym ju duh.',
         ],
       },
       {
@@ -585,10 +587,10 @@ export const shaphangUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Ka la kaba la khraw sa paw,',
-          'Ka la kaba la khraw sa paw,',
-          'Ka la kaba la khraw sa paw,',
-          'Ka jinglarap U Trai.',
+          'Ai ba ngin da pynphriang,',
+          'Kylleng ïa la ka kyrteng;',
+          'Namar ki jingisnei jong U,',
+          'Kin neh skhem, kin ym ju duh.',
         ],
       },
       {
@@ -596,10 +598,10 @@ export const shaphangUBlei: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Na ka long ka jong U Trai,',
-          'Na ka long ka jong U Trai,',
-          'Na ka long ka jong U Trai,',
-          'Ka la kaba la khraw.',
+          'Te ka burom Blei kan paw,',
+          "Ha ki byneng b'U la thaw;",
+          'Namar ki jingisnei jong U,',
+          'Kin neh skhem, kin ym ju duh.',
         ],
       },
       {
@@ -607,10 +609,10 @@ export const shaphangUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'Ai ba ngin iaroh ka jinglarap,',
-          'Ngin iaroh ka da ka ma khiah,',
-          'Ai ba ngin iaroh ka jinglarap,',
-          'Ka jinglarap U Trai.',
+          'U pynshai ïa ka pyrthei,',
+          'Da ka bor ka jingaiei;',
+          'Namar ki jingisnei jong U,',
+          'Kin neh skhem, kin ym ju duh.',
         ],
       },
       {
@@ -618,10 +620,10 @@ export const shaphangUBlei: SongT[] = [
         order: 5,
         type: 'verse',
         lines: [
-          'Ka la kaba la khraw sa paw,',
-          'Ka la kaba la khraw sa paw,',
-          'Ka la kaba la khraw sa paw,',
-          'Ka jinglarap U Trai.',
+          'La ka kti dap lin U plie,',
+          'Bad U synshar marwei hi;',
+          'Namar ki jingisnei jong U,',
+          'Kin neh skhem, kin ym ju duh.',
         ],
       },
       {
@@ -629,22 +631,35 @@ export const shaphangUBlei: SongT[] = [
         order: 6,
         type: 'verse',
         lines: [
-          'Na ka long ka jong U Trai,',
-          'Na ka long ka jong U Trai,',
-          'Na ka long ka jong U Trai,',
-          'Ka la kaba la khraw.',
+          'Da la khmat isnei U khmih,',
+          'Ha ngi haba long rangli;',
+          'Namar ki jingisnei jong U,',
+          'Kin neh skhem, kin ym ju duh.',
+        ],
+      },
+      {
+        id: 'verse-7',
+        order: 7,
+        type: 'verse',
+        lines: [
+          'Ai te ba ka nam jong U,',
+          'Ngin ïaroh da kaba nguh;',
+          'Namar ki jingisnei jong U,',
+          'Kin neh skhem, kin ym ju duh.',
         ],
       },
     ],
   },
   {
     id: 'song-011',
-    title: 'U Blei U Nonglarap',
+    title: 'U Blei U Nongiarap',
     metadata: {
       number: 11,
+      oldNumber: 14,
       language: 'khasi',
-      composer: 'Warrington (L.M.)',
-      syllables: 'L.M.',
+      syllables: 'L.M. (Long Metre)',
+      songId: 'song-011',
+      tune: 'WARRINGTON',
     },
     paragraphs: [
       {
@@ -653,9 +668,9 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'To wat buhrieh, Ah Trai ba bha,',
-          'Ia lade na u khñiang kat nga,',
+          'Їa lade na u khñiang kat nga,',
           'Ba khia ka pop, jingpang nga shah,',
-          'To wan ma Me, iarap ia nga.',
+          'To wan ma Me, ïarap ïa nga.',
         ],
       },
       {
@@ -666,7 +681,7 @@ export const shaphangUBlei: SongT[] = [
           'Me ju pyndap byneng ba khraw,',
           'Sawdong pyrthei Me long ba paw;',
           'Pyni ka khmat isnei, Ko Pa,',
-          'Tang kata lah pynshngaiñ ia nga.',
+          'Tang kata lah pynshngaiñ ïa nga.',
         ],
       },
       {
@@ -675,7 +690,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'Ka khmat jong Me, ha pulit rieh,',
-          'Bunsien mynshuwa la iohi;',
+          'Bunsien mynshuwa la ïohi;',
           'Nga sliang mynta bad nga swai,',
           'To kren sngewbha ha nga, Ah Trai.',
         ],
@@ -685,10 +700,10 @@ export const shaphangUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'Ah ban iohi ka khmat jong Me,',
-          'Ah ban ioh mad ka bor ba neh;',
+          'Ah ban ïohi ka khmat jong Me,',
+          'Ah ban ïoh mad ka bor ba neh;',
           'Ka bor jingsuk, ka bor jingmap,',
-          'Khlem ioh ia ki, nga duh, nga iap.',
+          'Khlem ïoh ïa ki, nga duh, nga ïap.',
         ],
       },
       {
@@ -699,20 +714,22 @@ export const shaphangUBlei: SongT[] = [
           'Te lano ka jingdum kan jah?',
           'Ki lyoh bym kyrmen kiba kah?',
           'Lano kan mih ka sngi ba bha,',
-          'Ba pynshai na ka iing I Pa?',
+          'Ba pynshai na ka ïing I Pa?',
         ],
       },
     ],
   },
   {
     id: 'song-012',
-    title: 'Kaba Kyrmen Ha U Blei',
+    title: 'Kaba kyrmen ha U Blei',
     metadata: {
       number: 12,
+      oldNumber: 15,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'St. Anne (C.M.)',
-      syllables: 'C.M.',
+      syllables: 'C.M. (Common Metre)',
+      songId: 'song-012',
+      tune: 'ST. ANNE',
     },
     paragraphs: [
       {
@@ -785,13 +802,15 @@ export const shaphangUBlei: SongT[] = [
   },
   {
     id: 'song-013',
-    title: 'Ka Jingmap-Ei U Blei',
+    title: 'Ka Jingmap-ei U Blei',
     metadata: {
       number: 13,
+      oldNumber: 16,
       language: 'khasi',
       author: 'J.J. & Ed.W.',
-      composer: 'Huddersfield; Melita (88.88.88.)',
       syllables: '88.88.88',
+      songId: 'song-013',
+      tune: 'HUDDERSFIELD, MELITA',
     },
     paragraphs: [
       {
@@ -801,7 +820,7 @@ export const shaphangUBlei: SongT[] = [
         lines: [
           'Ah Blei ba khraw, ba phylla eh,',
           'Ha baroh phar ba Me la leh;',
-          'Te ia ki kam jong Me, Ah Blei,',
+          'Te ïa ki kam jong Me, Ah Blei,',
           'Kham phylla long ka jingaiei.',
           'Ma Me, ko Blei, tang marwei hi,',
           'Me ju map ei ki pop jong ngi.',
@@ -815,7 +834,7 @@ export const shaphangUBlei: SongT[] = [
           'Jingpalat jong ngi map, Ah Blei,',
           'Ngi rem ngi swai, to pynim ei;',
           'Nalor jong Me, ym don ba lah,',
-          'Ia ngi ba pop, ban map ban shna.',
+          'Їa ngi ba pop. ban map ban shna.',
           'Ma Me, ko Blei, tang marwei hi,',
           'Me ju map ei ki pop jong ngi.',
         ],
@@ -840,9 +859,11 @@ export const shaphangUBlei: SongT[] = [
     title: 'Ka Jingthmu U Blei',
     metadata: {
       number: 14,
+      oldNumber: 17,
       language: 'khasi',
-      composer: 'Navarre (10.10.10.10.)',
       syllables: '10.10.10.10',
+      songId: 'song-014',
+      tune: 'NAVARRE',
     },
     paragraphs: [
       {
@@ -885,9 +906,11 @@ export const shaphangUBlei: SongT[] = [
     title: 'Ka Jutang U Blei',
     metadata: {
       number: 15,
+      oldNumber: 18,
       language: 'khasi',
-      composer: 'Holley (10.10.10.10.)',
       syllables: '10.10.10.10',
+      songId: 'song-015',
+      tune: 'HOLLEY',
     },
     paragraphs: [
       {
@@ -906,9 +929,9 @@ export const shaphangUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Jutang aiei, bla thaw da Uwei-Lai,',
-          'Ka spah ia ngi, ka skhem ka ktien jingsmai;',
-          'Ka long ba lah ban kyntiew lin ia ngi,',
+          "Jutang aiei, b'la thaw da Uwei-Lai,",
+          'Ka spah ïa ngi, ka skhem ka ktien jingsmai;',
+          'Ka long ba lah ban kyntiew lin ïa ngi,',
           'Ka bor jong ka, ka bor jong U Blei hi.',
         ],
       },
@@ -917,7 +940,7 @@ export const shaphangUBlei: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Jutang ba dap, ba ai jinghun iU Blei,',
+          "Jutang ba dap, ba ai jinghun ï'U Blei,",
           'Shuwa ba thaw ki lum bah ka pyrthei;',
           'Ka jor jong ka, bun byllien kan pyllait.',
           'Ka snam U Khun ka ram jong ki ka sait.',
@@ -928,8 +951,8 @@ export const shaphangUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'Jutang donbor, bym lah pyntor ia ka,',
-          'Pyrthei, jingiap, kim lah pynduh ia ka,',
+          'Jutang donbor. bym lah pyntor ïa ka,',
+          'Pyrthei, jingïap, kim lah pynduh ïa ka,',
           'Ka dang neh skhem jingthymu slem U Blei,',
           'Kam khih kum kiba tlot ki jong pyrthei.',
         ],
@@ -940,8 +963,8 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'La hap sha pop, la ngop ki khun U Blei,',
-          'Jutang dang don, ia ki ban ioh isnei;',
-          'Ban sait ia ki, jingpalat ruh pynduh,',
+          'Jutang dang don, ïa ki ban ïoh isnei;',
+          'Ban sait ïa ki, jingpalat ruh pynduh,',
           'Ban pynmihpat na jingtep khlem pop shuh.',
         ],
       },
@@ -949,13 +972,15 @@ export const shaphangUBlei: SongT[] = [
   },
   {
     id: 'song-016',
-    title: 'Ka Jaka Rieh Ha U Blei',
+    title: 'Ka jaka rieh ha U Blei',
     metadata: {
       number: 16,
+      oldNumber: 21,
       language: 'khasi',
-      author: 'J.R.',
-      composer: 'Nashville (888. D.)',
+      author: 'J. R.',
       syllables: '888. D.',
+      songId: 'song-016',
+      tune: 'NASHVILLE',
     },
     paragraphs: [
       {
@@ -1007,7 +1032,7 @@ export const shaphangUBlei: SongT[] = [
       language: 'khasi',
       author: 'J.R.',
       composer: 'Waterstock (S.S. 490.)',
-      syllables: 'S.S. 490',
+     
     },
     paragraphs: [
       {
@@ -1033,7 +1058,7 @@ export const shaphangUBlei: SongT[] = [
           'Ka jingim kaba kor,',
           'Ka dor bym lah pynshong,',
           'Phi lah ban ong phi Seraph khuid,',
-          'Ka dor ka spah sha ngi bla tuid?',
+          "Ka dor ka spah sha ngi b'la tuid?",
         ],
       },
       {
@@ -1071,7 +1096,7 @@ export const shaphangUBlei: SongT[] = [
       number: 18,
       language: 'khasi',
       author: 'H.L.',
-      composer: 'Sanctus (87.87. D.)',
+      composer: 'Sanctus',
       syllables: '87.87. D.',
     },
     paragraphs: [
@@ -1127,7 +1152,7 @@ export const shaphangUBlei: SongT[] = [
     metadata: {
       number: 19,
       language: 'khasi',
-      composer: 'St. Trond (87.87.) (Iambic)',
+      composer: 'St. Trond (Iambic)',
       syllables: '87.87',
     },
     paragraphs: [
@@ -1183,7 +1208,7 @@ export const shaphangUBlei: SongT[] = [
     metadata: {
       number: 20,
       language: 'khasi',
-      composer: 'Mary (87.87.) (Iambic)',
+      composer: 'Mary (Iambic)',
       syllables: '87.87',
     },
     paragraphs: [
@@ -1229,7 +1254,7 @@ export const shaphangUBlei: SongT[] = [
       number: 21,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Oldenburgh (87.87.) (Iambic)',
+      composer: 'Oldenburgh (Iambic)',
       syllables: '87.87',
     },
     paragraphs: [
@@ -1238,7 +1263,7 @@ export const shaphangUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          'Iu bymman, Trai Me pyniap duh,',
+          "I'u bymman, Trai Me pyniap duh,",
           'Mem ju riej shuh kum kita;',
           'To kynriah phi ki riew bitsnam,',
           'Ioh ngam lem nga ruh hangta.',
@@ -1297,7 +1322,7 @@ export const shaphangUBlei: SongT[] = [
       number: 22,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Oldenburgh (87.87.)',
+      composer: 'Oldenburgh',
       syllables: '87.87',
     },
     paragraphs: [
@@ -1320,7 +1345,7 @@ export const shaphangUBlei: SongT[] = [
           'La shet, la sylla, byllien bah,',
           'Kam ma ka mynsiem jong nga;',
           'La mih kynhun nongshun ban thap,',
-          'Kam duh jingshlur ‘riew shisha‘.',
+          'Kam duh jingshlur ‘riew shisha.',
         ],
       },
       {
@@ -1330,7 +1355,7 @@ export const shaphangUBlei: SongT[] = [
         lines: [
           'Tang kane kawei ngan iai pan,',
           'Ban wan ia im shi-ryta;',
-          'Ha iing U Trai, ban i bU shong,',
+          "Ha iing U Trai, ban i b'U shong,",
           'BU long itynnad hangta.',
         ],
       },
@@ -1350,7 +1375,7 @@ export const shaphangUBlei: SongT[] = [
         order: 5,
         type: 'verse',
         lines: [
-          'To sngew, Ah Trai, lu khun ba kyang,',
+          "To sngew, Ah Trai, l'u khun ba kyang,",
           'To nang iashah, isynei;',
           'Me ong ma Me, “To wad ia nga,”',
           'Kumta nga wad, Ah U Blei.',
@@ -1364,7 +1389,7 @@ export const shaphangUBlei: SongT[] = [
     metadata: {
       number: 23,
       language: 'khasi',
-      composer: 'Dymuniad (87.87.) (Iambic)',
+      composer: 'Dymuniad (Iambic)',
       syllables: '87.87',
     },
     paragraphs: [
@@ -1431,7 +1456,7 @@ export const shaphangUBlei: SongT[] = [
     metadata: {
       number: 24,
       language: 'khasi',
-      composer: 'Ely (87.81) (Iambic)',
+      composer: 'Ely (Iambic)',
       syllables: '87.81',
     },
     paragraphs: [
@@ -1510,7 +1535,7 @@ export const shaphangUBlei: SongT[] = [
       number: 25,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Morganwg (87.87.)',
+      composer: 'Morganwg',
       syllables: '87.87',
     },
     paragraphs: [

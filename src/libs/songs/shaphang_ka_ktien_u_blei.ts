@@ -7,8 +7,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
     metadata: {
       number: 129,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Sabbath (87.87)',
+      composer: 'Sabbath',
       syllables: '87.87',
     },
     paragraphs: [
@@ -75,8 +74,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
     metadata: {
       number: 130,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'St. Mabyn (87.87)',
+      composer: 'St. Mabyn',
       syllables: '87.87',
     },
     paragraphs: [
@@ -132,8 +130,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
     metadata: {
       number: 131,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Brooklyn (C.M)',
+      composer: 'Brooklyn',
       syllables: 'C.M',
     },
     paragraphs: [
@@ -190,7 +187,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
       number: 132,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Elliot (98.98.D)',
+      composer: 'Elliot',
       syllables: '98.98.D',
     },
     paragraphs: [
@@ -218,7 +215,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
       number: 133,
       language: 'khasi',
       author: 'Unknown',
-      composer: 'Ewing (76.76.D)',
+      composer: 'Ewing',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -290,8 +287,6 @@ export const shaphangKaKtienUBlei: SongT[] = [
     metadata: {
       number: 134,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Unknown',
       syllables: '83.83.88.83',
     },
     paragraphs: [
@@ -334,7 +329,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
       number: 135,
       language: 'khasi',
       author: 'H.R.',
-      composer: 'Noah Williams (87.87.D)',
+      composer: 'Noah Williams',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -412,8 +407,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
     metadata: {
       number: 136,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Neander (87.87.87)',
+      composer: 'Neander',
       syllables: '87.87.87',
     },
     paragraphs: [
@@ -477,8 +471,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
     metadata: {
       number: 137,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Rheidol (87.87.87)',
+      composer: 'Rheidol',
       syllables: '87.87.87',
     },
     paragraphs: [
@@ -517,7 +510,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
       number: 138,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Grafenberg (76.76.D)',
+      composer: 'Grafenberg',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -544,8 +537,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
     metadata: {
       number: 139,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Bethel (98.98.D)',
+      composer: 'Bethel',
       syllables: '98.98.D',
     },
     paragraphs: [
@@ -573,7 +565,6 @@ export const shaphangKaKtienUBlei: SongT[] = [
       number: 140,
       language: 'khasi',
       author: 'C.M.S.',
-      composer: 'Unknown',
       syllables: 'Irregular',
     },
     paragraphs: [

@@ -8,7 +8,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 26,
       language: 'khasi',
       author: 'T.J.J.',
-      composer: 'Dominus Regit Me (87.87.) (Iambic)',
+      composer: 'Dominus Regit Me (Iambic)',
       syllables: '87.87',
     },
     paragraphs: [
@@ -29,7 +29,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Jingknia bah jong ka diengphna,',
-          'Ka kuna bla siew Jisu;',
+          "Ka kuna b'la siew Jisu;",
           'Tang kane hi kaba donbor,',
           'Mynsiem ba tlor ban kyntiew.',
         ],
@@ -43,7 +43,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 27,
       language: 'khasi',
       author: 'H.S.R.',
-      composer: 'Mendelssohn (S.S.30.)',
+      composer: 'Mendelssohn',
       syllables: 'S.S.30',
     },
     paragraphs: [
@@ -53,7 +53,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Sngap ba rwai ki paidbah angel,',
-          '‘Burom ia U Syiem bla kha,',
+          "‘Burom ia U Syiem b'la kha,",
           'Ha pyrthei la wan ka jingsuk,',
           'Sha ki briew ka jingsngewbha;',
           'Bneng bad pyrthei burom ai,',
@@ -79,7 +79,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Burom ia U Syiem ka jingsuk,',
-          'Burom iU Immanuel;',
+          "Burom i'U Immanuel;",
           'Ha kiba ha khlieh tam eh ruh,',
           '‘Burom.’ rwai phi ki angel;',
           'Bneng bad pyrthei burom ai,',
@@ -107,7 +107,7 @@ export const shaphangUKhrist: SongT[] = [
     metadata: {
       number: 28,
       language: 'khasi',
-      composer: 'Ballerma (C.M.)',
+      composer: 'Ballerma',
       syllables: 'C.M.',
     },
     paragraphs: [
@@ -116,10 +116,10 @@ export const shaphangUKhrist: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          'Bla kyrkhu long ka bor jingstad,',
+          "B'la kyrkhu long ka bor jingstad,",
           'Ka hok, ka jingieit ruh;',
           'Kiba iasoh lem ban pyllait,',
-          'Iu briew ban ym jot shuh.',
+          "I'u briew ban ym jot shuh.",
         ],
       },
       {
@@ -127,8 +127,8 @@ export const shaphangUKhrist: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Bla kyrkhu long U Blei bla phah,',
-          'LU Khun ban kynja briew;',
+          "B'la kyrkhu long U Blei bla phah,",
+          "L'U Khun ban kynja briew;",
           'Tang Une hi, ym don ba lah,',
           'Ka ram jong ngi ban siew.',
         ],
@@ -138,7 +138,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Bla kyrkhu long U Khun bla wan,',
+          "B'la kyrkhu long U Khun b'la wan,",
           'Na la ka mon sngewbha;',
           'Namar ia kiba shun pynban,',
           'Jingkordit U la shah.',
@@ -153,7 +153,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 29,
       language: 'khasi',
       author: 'M.B.',
-      composer: 'Mendelssohn (S.S.30.) (77.77.D.)',
+      composer: 'Mendelssohn (S.S.30.)',
       syllables: '77.77.D',
     },
     paragraphs: [
@@ -164,12 +164,12 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'Sngap ki angel ki riwai,',
           'Khubor sngewbha jong U Trai;',
-          'Ba la kha iU Syiem jingsuk,',
+          "Ba la kha i'U Syiem jingsuk,",
           'Ha shnong Bethlehem baduk.',
           'Phi ki bynriew baroh lang,',
           'To iakyntiew sur ba bang;',
           'Ha U Blei ba long Nongthaw,',
-          'BU wan shim ka jinglongmraw.',
+          "B'U wan shim ka jinglongmraw.",
         ],
       },
       {
@@ -180,10 +180,10 @@ export const shaphangUKhrist: SongT[] = [
           'Khrist bla phong da burom Blei,',
           'Trai ka bneng bad ka pyrthei;',
           'La urlong ba Un wan paw,',
-          'Kum u bynriew bU la thaw.',
+          "Kum u bynriew b'U la thaw.",
           'Peit! U Blei ha doh la wan,',
           'Ah jingphylla, jingmaian;',
-          'IU Immanuel Bakhuid,',
+          "I'U Immanuel Bakhuid,",
           'Junom jingiaroh kan tuid.',
         ],
       },
@@ -211,7 +211,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 30,
       language: 'khasi',
       author: 'M.B.',
-      composer: 'Irby (87.87.47.)',
+      composer: 'Irby',
       syllables: '87.87.47',
     },
     paragraphs: [
@@ -235,7 +235,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'Ha ka sahit byneng phyrnai,',
           'Paidbah angel bym lah ñiew,',
-          'IU Immanuel ki iaroh',
+          "I'U Immanuel ki iaroh",
           'Ram ka pyrthei bU wan siew;',
           'Peit ko pyrthei,',
           'Jingshai jong pha ka la wan.',
@@ -326,7 +326,7 @@ export const shaphangUKhrist: SongT[] = [
         id: 'verse-4',
         order: 5,
         type: 'verse',
-        lines: ['Ei Uta hU ba nongpang,', 'Nongshem jynjar ki ialang?'],
+        lines: ["Ei Uta h'U ba nongpang,", 'Nongshem jynjar ki ialang?'],
       },
       {
         id: 'verse-5',
@@ -338,7 +338,7 @@ export const shaphangUKhrist: SongT[] = [
         id: 'verse-6',
         order: 7,
         type: 'verse',
-        lines: ['Ei Uta ba paidbah wan,', 'Da jingrisa iU ban tan?'],
+        lines: ['Ei Uta ba paidbah wan,', "Da jingrisa i'U ban tan?"],
       },
       {
         id: 'verse-7',
@@ -367,7 +367,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 32,
       language: 'khasi',
       author: 'E.H.W.',
-      composer: 'Adeste Fideles (Irregular) (S.S.31.)',
+      composer: 'Adeste Fideles (S.S.31.)',
       syllables: 'Irregular',
     },
     paragraphs: [
@@ -378,7 +378,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'To wan phi ki riewngeit,',
           'Risa bad sngewkymen;',
-          'Sha Bethlehem mynta ia ngin nguh iU Trai;',
+          "Sha Bethlehem mynta ia ngin nguh i'U Trai;",
           'Peit ha ka shyngoid,',
           'La kha iU Syiem ki Angel;',
           'To wan ia U ban mane, U Khrist U Trai.',
@@ -406,7 +406,7 @@ export const shaphangUKhrist: SongT[] = [
           'Me bla wan ban pynim,',
           'Ko Jisu! ia Me ka burom junom ngi ai,',
           'Ktien jong U Kypa;',
-          'Bla wan paw ha ka doh,',
+          "B'la wan paw ha ka doh,",
           'To wan ia U ban mane, U Khrist U Trai.',
         ],
       },
@@ -418,7 +418,7 @@ export const shaphangUKhrist: SongT[] = [
     metadata: {
       number: 33,
       language: 'khasi',
-      composer: 'Wyddgrug (87.87.67.)',
+      composer: 'Wyddgrug',
       syllables: '87.87.67',
     },
     paragraphs: [
@@ -429,7 +429,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'Ha khymih, la ioh Nongpynim,',
           'Lok ba kordor ngi la shem;',
-          'Bla iathuh ruh da u Moses,',
+          "B'la iathuh ruh da u Moses,",
           'Bad ki prophet la mynslem;',
           'Khun U Blei sha pyrthei,',
           'U la wan ban pynim ei.',
@@ -458,7 +458,7 @@ export const shaphangUKhrist: SongT[] = [
           'Jingim jong nga U la siewspah,',
           'Un nang sait na jinglong rim;',
           'Ale lang, ba sngewbang,',
-          'IU ban iaroh, ei ba khang.',
+          "I'U ban iaroh, ei ba khang.",
         ],
       },
     ],
@@ -469,7 +469,7 @@ export const shaphangUKhrist: SongT[] = [
     metadata: {
       number: 34,
       language: 'khasi',
-      composer: 'Irish (C.M.)',
+      composer: 'Irish',
       syllables: 'C.M.',
     },
     paragraphs: [
@@ -515,7 +515,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 35,
       language: 'khasi',
       author: 'H.S.R.',
-      composer: 'Triumph (87.87.47.)',
+      composer: 'Triumph',
       syllables: '87.87.47',
     },
     paragraphs: [
@@ -538,8 +538,8 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Burom ia Uba ieit ia ngi,',
-          'IU ba sait ka dohnud sniew;',
-          'Burom iU bla thied rem ia ngi,',
+          "I'U ba sait ka dohnud sniew,",
+          "Burom i'U bla thied rem ia ngi,",
           'Da ka dor ka snam bla siew,',
           'Burom, burom,',
           'Ia U Nongpynim ki briew.',
@@ -553,7 +553,7 @@ export const shaphangUKhrist: SongT[] = [
           'Burom ia U Blei U Kypa,',
           'Burom ia U Khrist U Trai,',
           'Burom ia U Blei U Mynsiem,',
-          'Burom junom iU Wei-Lai.',
+          "Burom junom i'U Wei-Lai.",
           'Burom, burom,',
           'Burom junom hi khlem wai.',
         ],
@@ -567,7 +567,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 36,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Lovely (66.66.88.)',
+      composer: 'Lovely',
       syllables: '66.66.88',
     },
     paragraphs: [
@@ -576,12 +576,12 @@ export const shaphangUKhrist: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          '‘Yn kha iU Jisu Khrist’,',
+          "‘Yn kha i'U Jisu Khrist’,",
           'Bun pateng ki ju ong;',
           'La kha iU Jisu Khrist,',
           'Te mynta ka la long;',
           'Wat khuslai shuh nongpop ba pli,',
-          'La kha iU Jisu Khrist ia ngi.',
+          "La kha i'U Jisu Khrist ia ngi.",
         ],
       },
       {
@@ -594,7 +594,7 @@ export const shaphangUKhrist: SongT[] = [
           'Da Jisu Khrist la wan,',
           'Ka jinglait phar ba ei;',
           'Wat khuslai shuh nongpop ba pli,',
-          'La kha iU Jisu Khrist ia ngi.',
+          "La kha i'U Jisu Khrist ia ngi.",
         ],
       },
     ],
@@ -606,7 +606,6 @@ export const shaphangUKhrist: SongT[] = [
       number: 37,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'S.S. 75',
       syllables: 'S.S. 75',
     },
     paragraphs: [
@@ -615,7 +614,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          'Ei bla wan na neng sha ngi?',
+          "Ei b'la wan na neng sha ngi?",
           'Jisu Khrist Nangpynim,',
           'Bla wan khynnah duk ba pli?',
           'Jisu Khrist Nongpynim.',
@@ -648,9 +647,9 @@ export const shaphangUKhrist: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'Ei bla kular ban iamap?',
+          "Ei b'la kular ban iamap?",
           'Jisu Khrist Nongpynim;',
-          'Ei ba ai ka jingbymiap?',
+          "Ei ba ai ka jingbymiap?",
           'Jisu Khrist Nongpynim.',
         ],
       },
@@ -685,7 +684,6 @@ export const shaphangUKhrist: SongT[] = [
       number: 38,
       language: 'khasi',
       author: 'H.L.',
-      composer: 'S.S. 40',
       syllables: 'S.S. 40',
     },
     paragraphs: [
@@ -696,7 +694,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'Jisu Nongpynim U wan sha pyrthei,',
           'Kha ha sem kulai ban shah i bein ei;',
-          'O, kaba phylla, long burom iU Blei,',
+          "O, kaba phylla, long burom i'U Blei,",
           'Bu wad ia nga, ia nga!',
         ],
       },
@@ -827,7 +825,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 40,
       language: 'khasi',
       author: 'W.R.',
-      composer: 'Noel (D.C.M.)',
+      composer: 'Noel',
       syllables: 'D.C.M.',
     },
     paragraphs: [
@@ -903,7 +901,7 @@ export const shaphangUKhrist: SongT[] = [
           'Ynda jingsuk pyrthei synshar,',
           'Jingsuk Eden hyndai;',
           'Na sawdong jingiaroh kan sei,',
-          'IU Jisu Trai ki trai.',
+          "I'U Jisu Trai ki trai.",
         ],
       },
     ],
@@ -915,7 +913,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 41,
       language: 'khasi',
       author: 'W.R.',
-      composer: 'Stockport (10.10.10.10.10.10.)',
+      composer: 'Stockport',
       syllables: '10.10.10.10.10.10',
     },
     paragraphs: [
@@ -927,9 +925,9 @@ export const shaphangUKhrist: SongT[] = [
           'Khristan to khie, khublei ka sngi ba bha,',
           'Ha kaba Nongpynim pyrthei la kha;',
           'To ieng mynta ban ainguh ia U Trai,',
-          'IU ba ki paitbah angel ki iarwai.',
+          "I'U ba ki paitbah angel ki iarwai.",
           'Khubor jingkmen nyngkong ia u bynriew,',
-          'BU Blei ha ka doh la kha na ka briew.',
+          "B'U Blei ha ka doh la kha na ka briew.",
         ],
       },
       {
@@ -938,11 +936,11 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Ki nongaplangbrot ha lum ki iohi,',
-          'IU angel ba wallam khubor ha ki;',
+          "I'U angel ba wallam khubor ha ki;",
           '‘Ha khmih nga wallam ka khubor ba bha,',
-          'Ha phi mynta iU Nongpynim la kha,’',
+          "Ha phi mynta i'U Nongpynim la kha,’",
           'La pyndep ka ktien jingkular U Blei,',
-          'La kha iU Nongpynim jong ka pyrthei.',
+          "La kha i'U Nongpynim jong ka pyrthei.",
         ],
       },
       {
@@ -954,7 +952,7 @@ export const shaphangUKhrist: SongT[] = [
           'La sawa jingrwai ba bang ka jingkmen;',
           'Ki rwai iaroh ia ka jingieit ba tam,',
           'Ka sur Haleluia ka sawa jam;',
-          'Ha kiba jrong tam eh, burom iU Blei,',
+          "Ha kiba jrong tam eh, burom i'U Blei,",
           'Jingsuk bad jingsngewbha ha ka pyrthei.',
         ],
       },
@@ -965,7 +963,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'Ki nongaplangbrot kyrkieh ki ialeit,',
           'Ia ka jingphylla jong U Blei ban peit;',
-          'Iu Joseph bad ka Theisotti ki shem,',
+          "I'U Joseph bad ka Theisotti ki shem,",
           'Bad Khunlung ha shyngoid ha Bethlehem;',
           'Ki pynbna ka khubor kylleng sawdong,',
           'Ka nam Nongpynim pynsawa nyngkong.',
@@ -980,7 +978,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 42,
       language: 'khasi',
       author: 'O.H.R. & H.L.',
-      composer: 'Stillenacht (Irr.)',
+      composer: 'Stillenacht',
       syllables: 'Irregular',
     },
     paragraphs: [
@@ -992,7 +990,7 @@ export const shaphangUKhrist: SongT[] = [
           'Miet ba khuid! Miet ba jar jar!',
           'Dum tliw tliw, ka shai kdar;',
           'Tang hangtai ha kaba ki ap,',
-          'Ia I Khunlung bla sop bla tap,',
+          "Ia I Khunlung bla sop b'la tap,",
           'Ba iohthiah suk kynjai,',
           'Ba iohthiah suh kynjai.',
         ],
@@ -1018,7 +1016,7 @@ export const shaphangUKhrist: SongT[] = [
           'Miet ba khuid! Miet ba jai jai!',
           'Btin ko khlur, ai jingshai;',
           'Khmih ki riewstad na ri mihngi,',
-          'Ki dem ki nguh iU Syiem jong ngi;',
+          "Ki dem ki nguh i'U Syiem jong ngi;",
           'Khrist Nongpynim la kha,',
           'Khrist Nongpynim la kha.',
         ],
@@ -1031,7 +1029,7 @@ export const shaphangUKhrist: SongT[] = [
           'Miet ba khuid! Miet ba jai jai!',
           'Khlur phylla, ai jingshai;',
           'Lem bad ki angel ngin iarwai,',
-          '“Haleluia! iU Syiem U Trai”:',
+          "“Haleluia! i'U Syiem U Trai”:",
           'Khrist Nongpynim la kha,',
           'Khrist Nongpynim la kha.',
         ],
@@ -1057,7 +1055,7 @@ export const shaphangUKhrist: SongT[] = [
           'Ha sngap ka khubor kaba bha,',
           'Ha khymih ka jingshai ba ba;',
           'Ia! ngin ialeit ban mane dem,',
-          'IU Khun U Blei ha Bethlehem,',
+          "I'U Khun U Blei ha Bethlehem,",
           'Haleluia! Haleluia!',
         ],
       },
@@ -1092,7 +1090,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'Ka jingiwbih ka ksiar ruh,',
           'Ka mirr ngim don ban ai ha U,',
-          'LЇa lade ngin ïa ai shitrhem.,',
+          'Їa lade ngin ïa ai shitrhem,',
           `Ї'U Syiem jingsuk ha Bethlehem.,`,
           'Haleluïa! Haleluïa!',
         ],
@@ -1101,12 +1099,12 @@ export const shaphangUKhrist: SongT[] = [
   },
   {
     id: 'song-044',
-    title: 'To Wan Sha Baeng, Baeng',
+    title: 'To Wan Sha ka dohnud, Trai Jisu',
     metadata: {
       number: 44,
       language: 'khasi',
       author: 'P.G.',
-      composer: 'S.S.35 (E.S. Elliott)',
+      composer: '(E.S. Elliott)',
       syllables: 'S.S.35',
     },
     paragraphs: [
@@ -1219,13 +1217,13 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Khmih Jingshai na Seion ka shat phyrnai sngur bha,',
-          'BU Sngi ka Hok, la wan ban pynthaba,',
+          "B'U Sngi ka Hok, la wan ban pynthaba,",
           'Da jingpynim ba khraw bad jingshai bneng ba dap,',
           'Na jingiap ba triem ia ngi ban pyllait;',
-          'U Syiem ki syiem bla thiah ha shyngoid sem kulai,',
+          "U Syiem ki syiem b'la thiah ha shyngoid sem kulai,",
           'Ha ki jingeh, U long U Lok jong ngi,',
           'Na ki Jingkit ka pop ia ngi Un pyllait phar,',
-          'Ale, Ko lok baroh ngin nguh iU Trai jong ngi.',
+          "Ale, Ko lok baroh ngin nguh i'U Trai jong ngi.",
         ],
       },
       {
@@ -1252,7 +1250,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 46,
       language: 'khasi',
       author: 'B.C.L.',
-      composer: 'Christmas Morn (76.76.D.) (C.H.363)',
+      composer: 'Christmas Morn (C.H.363)',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -1264,7 +1262,7 @@ export const shaphangUKhrist: SongT[] = [
           'La mih ka step ba phyrnai,',
           'Ba dap jingkmen suda;',
           'Jingthaw baroh ki ia rwai,',
-          'IU Nongpynim la kha.',
+          "I'U Nongpynim la kha.",
           'U Khlur ha neng u tyngshain,',
           'Halor jingdum ka miet;',
           'Paidbah angel ki ia rwai,',
@@ -1279,7 +1277,7 @@ export const shaphangUKhrist: SongT[] = [
           'Ki Nongaplangbrot ha lum,',
           'Ki dap da jinglyngngoh;',
           'Ban sngap khubor bla pynbna,',
-          'IU Blei ki rwai iaroh.',
+          "I'U Blei ki rwai iaroh.",
           'Mynta la wan jingpynim,',
           'Bad jingsuk ha pyrthei;',
           'Ha kylleng sawdong pynphriang,',
@@ -1310,7 +1308,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 47,
       language: 'khasi',
       author: 'W.R.',
-      composer: 'Cradlesong (11.11.11.11.)',
+      composer: 'Cradlesong',
       syllables: '11.11.11.11',
     },
     paragraphs: [
@@ -1396,7 +1394,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Ko khristan, leh sngewbha,',
-          'IU Syiem jong ngi la kha;',
+          "I'U Syiem jong ngi la kha;",
           'Angel bneng ruh ki ia rwai,',
           'Sngap, sngap:',
           'Jisu Khrist, la kha mynta,',
@@ -1486,7 +1484,7 @@ export const shaphangUKhrist: SongT[] = [
     metadata: {
       number: 50,
       language: 'khasi',
-      composer: 'Free Church Hymn 2 (11.11.11.11.)',
+      composer: 'Free Church Hymn 2',
       syllables: '11.11.11.11',
     },
     paragraphs: [
@@ -1553,7 +1551,7 @@ export const shaphangUKhrist: SongT[] = [
     metadata: {
       number: 51,
       language: 'khasi',
-      composer: 'Wareham (11.11.11.11.)',
+      composer: 'Wareham',
       syllables: '11.11.11.11',
     },
     paragraphs: [
@@ -1588,7 +1586,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 52,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Melcombe (L.M.)',
+      composer: 'Melcombe',
       syllables: 'L.M.',
     },
     paragraphs: [
@@ -1619,7 +1617,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Khamtam iu briew U hikai shai,',
+          "Khamtam i'u briew U hikai shai,",
           'Kumno ban leh ka mon U Blei;',
           'U jemnud tam, U ai kyrhai,',
           'Ki khunlung ruh U kydup ei.',
@@ -1632,8 +1630,8 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'U iehnoh balei la ka khet,',
           'Ban wan na byneng sha pyrthei?',
-          'BUn shah jingiap, ‘la khreh ka met’,',
-          'Bu briew ba pop un ioh map ei.',
+          "B'Un shah jingiap, ‘la khreh ka met’,",
+          "B'u briew ba pop un ioh map ei.",
         ],
       },
       {
@@ -1643,7 +1641,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'U tip ka jinglong sniew ka pop,',
           'Ka bainong hok ruh na U Blei;',
-          'BU isnei eh ia ngi bla ngop,',
+          "B'U isnei eh ia ngi bla ngop,",
           'U shah ka kordit ka pyrthei,',
         ],
       },
@@ -1667,7 +1665,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 53,
       language: 'khasi',
       author: 'H.R.',
-      composer: 'Joanna (11.11.11.11.)',
+      composer: 'Joanna',
       syllables: '11.11.11.11',
     },
     paragraphs: [
@@ -1690,7 +1688,7 @@ export const shaphangUKhrist: SongT[] = [
           'Ki umbah ka duriaw kim lah shuh ban sait,',
           'Ka snam ki mrad baroh kam lah ban pyllait;',
           'Hynrei ha Kalbari, ka snam jong U Khun,',
-          'Bla kyrsoi tang shisien, ka pynlong jinghun,',
+          "Bla kyrsoi tang shisien, ka pynlong jinghun,",
         ],
       },
       {
@@ -1724,7 +1722,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 54,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'St. Bees (77.77.)',
+      composer: 'St. Bees',
       syllables: '77.77',
     },
     paragraphs: [
@@ -1803,7 +1801,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 55,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Cyfamod (Old Berry) (98.98.D)',
+      composer: 'Cyfamod (Old Berry)',
       syllables: '98.98.D',
     },
     paragraphs: [
@@ -1857,11 +1855,11 @@ export const shaphangUKhrist: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'IU Hynmen la kha ia u bynriew,',
+          "I'U Hynmen la kha ia u bynriew,",
           'Ban ‘rap ha ka khim ha ka pang;',
           'U long uba neh, uba jemnud,',
           'Ban iaroh ngi dei baroh lang;',
-          'Iu mraw U pyllait bad U syrpai,',
+          "I'U mraw U pyllait bad U syrpai,",
           'Sha Seion U lam, U leh ei;',
           'Umpohliew ka jingim ki nongiap,',
           'Iinglieng ban pynim long U Blei.',
@@ -1876,7 +1874,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 56,
       language: 'khasi',
       author: 'R.E.',
-      composer: 'St. John Euddugoliaeth (886.886.)',
+      composer: 'St. John Euddugoliaeth',
       syllables: '886.886',
     },
     paragraphs: [
@@ -1912,7 +1910,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Ah hangto ha u dieng ba ieng,',
-          'La sahnarphna iU Syiem byneng,',
+          "La sahnarphna i'U Syiem byneng,",
           'Namar ki pop jong nga:',
           'La jop noh phar ia u bysein,',
           'La khongdongjat U Khrist la khein;',
@@ -1928,7 +1926,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 57,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Trewen (88.88.D.Ananaestic)',
+      composer: 'Trewen (.Ananaestic)',
       syllables: '88.88.D',
     },
     paragraphs: [
@@ -1971,7 +1969,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 58,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Pwllheli (76.76.D.)',
+      composer: 'Pwllheli',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -1997,10 +1995,10 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'Ngam don jingkyrmen junom,',
           'Ban lait na dujok hi;',
-          'Nu ksain u bym ju iap ruh,',
+          "N'u ksain u bym ju iap ruh,",
           'Na jingdum nga ban mih;',
-          'Lymda U Khunlung jong U Blei,',
-          'Bla iap ha Kalbari,',
+          "Lymda U Khunlung jong U Blei,",
+          "B'la iap ha Kalbari,",
           'Da jingieit bah bymjukut,',
           'U kynmaw ei ia ngi.',
         ],
@@ -2015,7 +2013,7 @@ export const shaphangUKhrist: SongT[] = [
           'Nga dap ba da ka jingtyngit,',
           'Ka jingbymnngit ba da:',
           'Dei ba tang ka snam U Jisu,',
-          'Bla ba mih hu diengphna,',
+          "B'la ba mih hu diengphna,",
           'Ba lah ba ba pynlong thymai,',
           'Ban ba bang lieh ia ba.',
         ],
@@ -2029,7 +2027,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 59,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Gwalchmai (74.74.D)',
+      composer: 'Gwalchmai',
       syllables: '74.74.D',
     },
     paragraphs: [
@@ -2102,7 +2100,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 60,
       language: 'khasi',
       author: 'J.J.',
-      composer: 'Hosanna (77.87.D)',
+      composer: 'Hosanna',
       syllables: '77.87.D',
     },
     paragraphs: [
@@ -2160,7 +2158,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 61,
       language: 'khasi',
       author: 'J.C.E. & J.R.',
-      composer: 'Llangoedmor (888.888)',
+      composer: 'Llangoedmor',
       syllables: '888.888',
     },
     paragraphs: [
@@ -2186,7 +2184,7 @@ export const shaphangUKhrist: SongT[] = [
           `Katno ba khraw jingieit jong U,`,
           `Pyni ka dor ka snam kim nang;`,
           `Ia Kalbari yn riwai jam,`,
-          `Ia bla sngew angel neng khamtam;`,
+          `Ia b'la sngew angel neng khamtam;`,
           `Ynda riewkhuid ki la poi lang`,
         ],
       },
@@ -2199,7 +2197,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 62,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Corinth (87.87.87)',
+      composer: 'Corinth',
       syllables: '87.87.87',
     },
     paragraphs: [
@@ -2264,7 +2262,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 63,
       language: 'khasi',
       author: 'J.C.E.(1&3) R.E.(2)',
-      composer: 'Ebenezer Hyfrydol (87.87.D)',
+      composer: 'Ebenezer Hyfrydol',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -2322,7 +2320,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 64,
       language: 'khasi',
       author: 'H.R.',
-      composer: 'Hungerford (558.D)',
+      composer: 'Hungerford',
       syllables: '558.D',
     },
     paragraphs: [
@@ -2374,7 +2372,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 65,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Hungerford (558.D)',
+      composer: 'Hungerford',
       syllables: '558.D',
     },
     paragraphs: [
@@ -2400,7 +2398,7 @@ export const shaphangUKhrist: SongT[] = [
           `Ka um ka la mih,`,
           `Umpohliew ba phylla ka bor;`,
           `Kan sait ia ka sniew,`,
-          `Ka dnhnud u briew,`,
+          `Ka dohnud u briew,`,
           `Kin lieh ki nongpop kum ka ior`,
         ],
       },
@@ -2494,7 +2492,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 67,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Arfon (87.87.D)',
+      composer: 'Arfon',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -2522,7 +2520,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 68,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Old Derby (98.98.D)',
+      composer: 'Old Derby',
       syllables: '98.98.D',
     },
     paragraphs: [
@@ -2565,7 +2563,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 69,
       language: 'khasi',
       author: 'S.M.ROY',
-      composer: 'Martyrdom (C.M)',
+      composer: 'Martyrdom',
       syllables: 'C.M',
     },
     paragraphs: [
@@ -2611,7 +2609,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 70,
       language: 'khasi',
       author: 'H.D.M.',
-      composer: 'S.S. 711 (87.87.D)',
+      composer: 'S.S. 711',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -2669,7 +2667,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 71,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Sychur Dagrau (76.76.D)',
+      composer: 'Sychur Dagrau',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -2727,7 +2725,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 72,
       language: 'khasi',
       author: 'H.R.',
-      composer: 'S.S. 868 (87.87.D)',
+      composer: 'S.S. 868',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -2785,7 +2783,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 73,
       language: 'khasi',
       author: 'R.J.',
-      composer: 'Rhad Ras (11.11.12.11.12.12)',
+      composer: 'Rhad Ras',
       syllables: '11.11.12.11.12.12',
     },
     paragraphs: [
@@ -2805,8 +2803,8 @@ export const shaphangUKhrist: SongT[] = [
         order: 2,
         type: 'chorus',
         lines: [
-          `Haleluia iU Khun bu kit ka pop baroh!`,
-          `Ynda ryngkang ka Jordan, iU juuom ngin iaroh`,
+          `Haleluia i'U Khun bu kit ka pop baroh!`,
+          `Ynda ryngkang ka Jordan, i'U junom ngin iaroh`,
         ],
       },
       {
@@ -2826,8 +2824,8 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           `Ynda ngin poi sha bneng, ka ri ba suk kynjai,`,
-          `Jingkynud sngewtynnad iU Jisu ngin riwai;`,
-          `Ngin kyntiew lU Kynrad khlem thait ha ka burom,`,
+          `Jingkynud sngewtynnad i'U Jisu ngin riwai;`,
+          `Ngin kyntiew l'U Kynrad khlem thait ha ka burom,`,
           `Da risa Hosanna ha iing U Blei junom`,
         ],
       },
@@ -2840,7 +2838,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 74,
       language: 'khasi',
       author: 'H.R.',
-      composer: 'Nashville (888.888)',
+      composer: 'Nashville',
       syllables: '888.888',
     },
     paragraphs: [
@@ -2971,7 +2969,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 76,
       language: 'khasi',
       author: 'H.L.',
-      composer: 'Horsley (C.M)',
+      composer: 'Horsley',
       syllables: 'C.M',
     },
     paragraphs: [
@@ -2982,7 +2980,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           `U don u lum jyrngam shatai,`,
           `Shabar ki kynroh shnong;`,
-          `Hangta la sahnarphna iU Trai,`,
+          `Hangta la sahnarphna i'U Trai,`,
           `Ba ngin im, U la mong`,
         ],
       },
@@ -3039,7 +3037,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 77,
       language: 'khasi',
       author: 'H.L.',
-      composer: 'Llef (L.M)',
+      composer: 'Llef',
       syllables: 'L.M',
     },
     paragraphs: [
@@ -3107,7 +3105,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 78,
       language: 'khasi',
       author: 'H.L.',
-      composer: 'Rockingham (L.M) (S.S.115)',
+      composer: 'Rockingham (S.S.115)',
       syllables: 'L.M',
     },
     paragraphs: [
@@ -3214,9 +3212,9 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           `Sngap! jingriew u tyrnem,`,
           `Bad nongshun ki byrngem`,
-          `Ba ki sahnar iU Trai ha U dieng;`,
+          `Ba ki sahnar i'U Trai ha U dieng;`,
           `Ka diengphna ki pynieng,`,
-          `La kyntiew iU Syiem bneng,`,
+          `La kyntiew i'U Syiem bneng,`,
           `Ah, jingshitom U shah ba sngewtriem`,
         ],
       },
@@ -3241,7 +3239,7 @@ export const shaphangUKhrist: SongT[] = [
           `Te ka sngi kam shai shuh,`,
           `Ka khyndew ka khynniuh,`,
           `Myn haba iap U Nongpynim;`,
-          `Sngew ka ktien bU pyrta,`,
+          `Sngew ka ktien b'U pyrta,`,
           `‘La pyndep ka jingknia!`,
           `La lait ka lad ban im ka mynsiem`,
         ],
@@ -3268,7 +3266,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 80,
       language: 'khasi',
       author: 'H.D.M.',
-      composer: 'Nashville (888.888)',
+      composer: 'Nashville',
       syllables: '888.888',
     },
     paragraphs: [
@@ -3307,7 +3305,7 @@ export const shaphangUKhrist: SongT[] = [
           `Ka lad ia pop U briew ban sait,`,
           `Khlem shah U Khun jynjar ba triem?`,
           `Ym don lynti ban pyniasuk.`,
-          `Bad lU Nogthaw iu briew ba duk?`,
+          `Bad l'U Nogthaw iu briew ba duk?`,
           `Em, ym don, lait diengphna ba triem`,
         ],
       },
@@ -3318,7 +3316,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           `Oh, katno khraw ka jingieit Blei,`,
           `Khun marwei phah sha ka pyrthei,`,
-          `Katno ngi iU jingieit ngi don?`,
+          `Katno ngi i'U jingieit ngi don?`,
           `Lada Khun Blei ai la jingim,`,
           `Namar jong ngi ban long jingtim,`,
           `Katno shuh mar jong ngi mon`,
@@ -3333,7 +3331,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 91,
       language: 'khasi',
       author: 'Unknown',
-      composer: 'Oldenburg (87.87)',
+      composer: 'Oldenburg',
       syllables: '87.87',
     },
     paragraphs: [
@@ -3344,8 +3342,8 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           `Ko khyrdop kyntiew la ki khlieh,`,
           `Ko jingkhang, plie donburom,`,
-          `BU Syiem ka burom Un ioh rung,`,
-          `Bla thung ban synshar junom`,
+          `B'U Syiem ka burom Un ioh rung,`,
+          `B'la thung ban synshar junom`,
         ],
       },
       {
@@ -3379,7 +3377,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 92,
       language: 'khasi',
       author: 'Unknown',
-      composer: 'Morganwg (87.87)',
+      composer: 'Morganwg',
       syllables: '87.87',
     },
     paragraphs: [
@@ -3399,7 +3397,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          `Ki ieng ialeh pyrshah iU Trai,`,
+          `Ki ieng ialeh pyrshah i'U Trai,`,
           `Ia kane ki iai sylla;`,
           `Pyrshah iU Khrist ki nang ia pun,`,
           `Shibun ki jingmut thala`,
@@ -3436,7 +3434,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 93,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Oxford: St. Peter (C.M)',
+      composer: 'Oxford: St. Peter',
       syllables: 'C.M',
     },
     paragraphs: [
@@ -3499,7 +3497,7 @@ export const shaphangUKhrist: SongT[] = [
   },
   {
     id: 'song-094',
-    title: 'Pyndonburom IU Khrist',
+    title: "Pyndonburom I'U Khrist",
     metadata: {
       number: 94,
       language: 'khasi',
@@ -3513,7 +3511,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Pyndonburom iU Khrist,`,
+          `Pyndonburom i'U Khrist,`,
           `Ba shong ha ka khet Bneng;`,
           `Ba phong ka pansngiat Syiem ha khlieh,`,
           `Riewkhuid sawdong ki ieng`,
@@ -3547,8 +3545,8 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           `Ki rwai iU Khunlangbrot,`,
-          `Bla shah ha Kalbari;`,
-          `BU la pynmih la snam kordor,`,
+          `B'la shah ha Kalbari;`,
+          `B'U la pynmih la snam kordor,`,
           `Ban siewspah ei ia ngi`,
         ],
       },
@@ -3558,7 +3556,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           `Dei jingaiei U Blei,`,
-          `BU wan shim jinglong briew,`,
+          `B'U wan shim jinglong briew,`,
           `Bad da kane, ka lad la plie,`,
           `Ia ngi ban ioh kyntiew`,
         ],
@@ -3572,7 +3570,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 95,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Sharon (87.87)',
+      composer: 'Sharon',
       syllables: '87.87',
     },
     paragraphs: [
@@ -3581,7 +3579,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `LU Syiem nga pynban nga la buh,`,
+          `L'U Syiem nga pynban nga la buh,`,
           `Ban shongduh ha lum Seion;`,
           `Un synshar hangta junom duh,`,
           `To wan ainguh shisyndon`,
@@ -3625,7 +3623,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 5,
         type: 'verse',
         lines: [
-          `To doh iU Khun, ia U to nguh,`,
+          `To doh i'U Khun, ia U to nguh,`,
           `Ioh phin iap duh ha lynti;`,
           `Jingbitar jong U kloi kan meh,`,
           `Un theh, phim lah ban buhrieh`,
@@ -3651,7 +3649,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 96,
       language: 'khasi',
       author: 'R.E. & J.R.',
-      composer: 'Llantisant (88.88)',
+      composer: 'Llantisant',
       syllables: '88.88',
     },
     paragraphs: [
@@ -3682,7 +3680,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          `Ai ba ngan kham ieit iU Jisu,`,
+          `Ai ba ngan kham ieit i'U Jisu,`,
           `Ai ngan shakri, ai ngan kohnguh;`,
           `Da ka ktien ia U ngan iaroh,`,
           `Ai ha U ia lade baroh`,
@@ -3697,7 +3695,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 97,
       language: 'khasi',
       author: 'Unknown',
-      composer: 'Lovely (66.66.88)',
+      composer: 'Lovely',
       syllables: '66.66.88',
     },
     paragraphs: [
@@ -3709,7 +3707,7 @@ export const shaphangUKhrist: SongT[] = [
           `Ah Khunlangbrot byneng,`,
           `Kham kor ia ka pyrthei!`,
           `Ki paidbah bneng ki nguh,`,
-          `Ki iai burom iU Blei.`,
+          `Ki iai burom i'U Blei.`,
           `Jingaiei jong U bad jingieit,`,
           `Ki dap byneng, ki dap pyrthei`,
         ],
@@ -3720,11 +3718,11 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           `To nguh, to dem baroh,`,
-          `IU Khunlangbrot U Blei;`,
+          `I'U Khunlangbrot U Blei;`,
           `Ym don kyrteng kham kor,`,
-          `Bla byna ha pyrthei.`,
+          `B'la byna ha pyrthei.`,
           `Jingnguh, burom bad jingiaroh,`,
-          `Ngin ai iU Jisu Trai junom`,
+          `Ngin ai i'U Jisu Trai junom`,
         ],
       },
     ],
@@ -3760,8 +3758,8 @@ export const shaphangUKhrist: SongT[] = [
         order: 2,
         type: 'chorus',
         lines: [
-          `Ngin ia burom Syiem iU Jisu,`,
-          `Ngin ia burom Syiem iU Jisu;`,
+          `Ngin ia burom Syiem i'U Jisu,`,
+          `Ngin ia burom Syiem i'U Jisu;`,
           `Ba U la shong ha la ka khet,`,
           `To burom Syiem iU Jisu`,
         ],
@@ -3786,7 +3784,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          `Ngan bud iU Jisu Kynrad,`,
+          `Ngan bud i'U Jisu Kynrad,`,
           `Ngan iaroh la nga iam ruh;`,
           `Jingim jong U, ka nuksa hun,`,
           `Dienjat jong U ngan bud ruh.`,
@@ -3862,7 +3860,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 100,
       language: 'khasi',
       author: 'H.R.',
-      composer: 'Mawkaiew (74.74.D)',
+      composer: 'Mawkaiew',
       syllables: '74.74.D',
     },
     paragraphs: [
@@ -3935,7 +3933,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 102,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Mynydd Each (76.76.D)',
+      composer: 'Mynydd Each',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -3948,9 +3946,9 @@ export const shaphangUKhrist: SongT[] = [
           `Haba Un wan U Trai;`,
           `Kin mih ki khun ka jynjar,`,
           `Na jingtep khlem jingswai;`,
-          `Bla kup ki jain ba tyngshain,`,
+          `B'la kup ki jain ba tyngshain,`,
           `Ka dur ba phyrnai hi;`,
-          `Kin sriem ruh ia lU Kynrad,`,
+          `Kin sriem ruh ia l'U Kynrad,`,
           `Myn haba U la mih`,
         ],
       },
@@ -4021,7 +4019,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 104,
       language: 'khasi',
       author: 'C.L.',
-      composer: 'Helmsley (87.87.47)',
+      composer: 'Helmsley',
       syllables: '87.87.47',
     },
     paragraphs: [
@@ -4156,7 +4154,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 106,
       language: 'khasi',
       author: 'S.G.N.',
-      composer: 'Jubilee Hymn Book 36 (87.87.D)',
+      composer: 'Jubilee Hymn Book 36',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -4167,7 +4165,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           `Lyngba lyoh ba per ha ka suin,`,
           `Jisu Un wan hiar na bneng;`,
-          `Ban pyndep kular bU pynpaw,`,
+          `Ban pyndep kular b'U pynpaw,`,
           `Shuwa ba Un kiew shaneng.`,
           `Ryngkat lem bad paidbah angel,`,
           `Ha jainkup lieh ba thaba;`,
@@ -4351,7 +4349,7 @@ export const shaphangUKhrist: SongT[] = [
       number: 109,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Innocents (77.77)',
+      composer: 'Innocents',
       syllables: '77.77',
     },
     paragraphs: [
@@ -4408,7 +4406,6 @@ export const shaphangUKhrist: SongT[] = [
       number: 110,
       language: 'khasi',
       author: 'H.M.S.',
-      composer: 'Unknown',
       syllables: 'Irregular',
     },
     paragraphs: [
@@ -4666,7 +4663,6 @@ export const shaphangUKhrist: SongT[] = [
       number: 114,
       language: 'khasi',
       author: 'J.F.J.',
-      composer: 'Unknown',
       syllables: '76.76.D',
     },
     paragraphs: [

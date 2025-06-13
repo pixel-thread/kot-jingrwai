@@ -8,7 +8,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
       number: 115,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Alexander (87.87.D)',
+      composer: 'Alexander',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -73,7 +73,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
       number: 116,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Dymuniad (87.87)',
+      composer: 'Dymuniad',
       syllables: '87.87',
     },
     paragraphs: [
@@ -119,7 +119,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
       number: 117,
       language: 'khasi',
       author: 'Unknown',
-      composer: 'Dyfrdwy (87.87)',
+      composer: 'Dyfrdwy',
       syllables: '87.87',
     },
     paragraphs: [
@@ -187,7 +187,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
       number: 118,
       language: 'khasi',
       author: 'Unknown',
-      composer: 'Dymuniad (87.87)',
+      composer: 'Dymuniad',
       syllables: '87.87',
     },
     paragraphs: [
@@ -232,7 +232,6 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
     metadata: {
       number: 119,
       language: 'khasi',
-      author: 'Unknown',
       composer: 'Blackbourn (C.M)',
       syllables: 'C.M',
     },
@@ -279,7 +278,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
       number: 120,
       language: 'khasi',
       author: 'H.R.',
-      composer: 'Bangor (C.M)',
+      composer: 'Bangor',
       syllables: 'C.M',
     },
     paragraphs: [
@@ -335,7 +334,6 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
     metadata: {
       number: 121,
       language: 'khasi',
-      author: 'Unknown',
       composer: 'S.S. 493',
       syllables: 'Irregular',
     },
@@ -425,8 +423,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
     metadata: {
       number: 122,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Bryngwyn (L.M)',
+      composer: 'Bryngwyn',
       syllables: 'L.M',
     },
     paragraphs: [
@@ -460,8 +457,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
     metadata: {
       number: 123,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Old Hundredth (L.M)',
+      composer: 'Old Hundredth',
       syllables: 'L.M',
     },
     paragraphs: [
@@ -517,8 +513,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
     metadata: {
       number: 124,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Calfari (87.87.47)',
+      composer: 'Calfari',
       syllables: '87.87.47',
     },
     paragraphs: [
@@ -569,8 +564,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
     metadata: {
       number: 125,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Rhyddid (76.76.D)',
+      composer: 'Rhyddid',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -628,7 +622,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
       number: 126,
       language: 'khasi',
       author: 'R.J.',
-      composer: "Cambridge; St. Michael's (S.M)",
+      composer: "Cambridge; St. Michael's",
       syllables: 'S.M',
     },
     paragraphs: [
@@ -685,7 +679,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
       number: 127,
       language: 'khasi',
       author: 'S.E.',
-      composer: 'Taking the Cross (87.87.D)',
+      composer: 'Taking the Cross',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -728,7 +722,6 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
       number: 128,
       language: 'khasi',
       author: 'L.D.',
-      composer: 'Unknown',
       syllables: 'Irregular',
     },
     paragraphs: [
