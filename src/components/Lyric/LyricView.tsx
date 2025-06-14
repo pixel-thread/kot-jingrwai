@@ -122,26 +122,29 @@ export const LyricView = ({ song }: LyricViewProps) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
                       const isChorus = paragraph.type === 'chorus';
-                      const textContent = isChorus
-                        ? `${isFirst ? '“' : ''}${line}${isLast ? '”' : ''}`
-                        : line;
+                      const textContent = line;
                       return (
                         <Ternary
                           key={`${paragraph.id}-line-${index}`}
                           condition={isChorus}
                           ifTrue={
-                            <Text
-                              key={`${paragraph.id}-${isChorus ? 'chorus' : 'verse'}-line-${index}`}
-                              size={size}
-                              italic
-                              variant={'muted'}
-                              tracking={'widest'}
-                              className={cn(
-                                'font-medium text-blue-800 dark:text-blue-300',
-                                'leading-relaxed'
-                              )}>
-                              {textContent || ' '}
-                            </Text>
+                            <View className="flex-1 flex-row">
+                              {isFirst && <Text variant={'primary'} size={'xl'}>{`"`}</Text>}
+                              <View className={isFirst ? 'px-0' : isLast ? 'pl-2' : 'px-2'}>
+                                <Text
+                                  key={`${paragraph.id}-${isChorus ? 'chorus' : 'verse'}-line-${index}`}
+                                  size={size}
+                                  italic={true}
+                                  tracking={'widest'}
+                                  className={cn(
+                                    'font-medium text-blue-800 dark:text-blue-300',
+                                    'leading-relaxed'
+                                  )}>
+                                  {textContent || ' '}
+                                </Text>
+                              </View>
+                              {isLast && <Text variant={'primary'} size={'xl'}>{`"`}</Text>}
+                            </View>
                           }
                           ifFalse={
                             <Text
