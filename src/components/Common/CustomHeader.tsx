@@ -22,7 +22,7 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft }) => 
   const onPressBackButton = () => router.back();
 
   return (
-    <View className="flex flex-row items-center justify-between border-b border-gray-300/75 bg-gray-200 p-4 px-4 dark:border-gray-800 dark:bg-gray-950/75">
+    <View className="flex flex-row items-center justify-between border-b border-gray-300/75 bg-gray-200 p-4 px-4 dark:border-gray-800 dark:bg-gray-950">
       {isBeta && <BetaBatch />}
       <View className="flex flex-row items-center gap-x-4">
         {back && Platform.OS === 'ios' && (
