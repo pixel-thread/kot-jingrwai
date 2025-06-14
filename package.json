@@ -21,8 +21,7 @@
     "build:android:preview": "eas build --profile preview --platform android",
     "build:android:prod": "eas build --profile production --platform android",
     "update:preview": "eas update --branch preview --message \"Preview update\"",
-    "update:prod": "eas update --branch production --message \"Production update\"",
-    "prepare": "husky install"
+    "update:prod": "eas update --branch production --message \"Production update\""
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
