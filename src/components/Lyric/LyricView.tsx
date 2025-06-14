@@ -75,7 +75,9 @@ export const LyricView = ({ song }: LyricViewProps) => {
             <Text
               size={'2xl'}
               weight={'bold'}
-              className="mb-1 text-center tracking-wide text-gray-900 dark:text-gray-100">
+              tracking="widest"
+              leading={'tight'}
+              className="mb-1 text-center text-gray-900 dark:text-gray-100">
               {title}
             </Text>
             {song.metadata.author && (
@@ -108,7 +110,8 @@ export const LyricView = ({ song }: LyricViewProps) => {
                       italic={true}
                       size={'xs'}
                       variant={'muted'}
-                      className="px-2 text-right text-gray-500 dark:text-gray-400">
+                      tracking={'wider'}
+                      className="px-2 text-justify text-gray-500 dark:text-gray-400">
                       {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
                     </Text>
                   </View>
@@ -132,6 +135,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                               size={size}
                               italic
                               variant={'muted'}
+                              tracking={'widest'}
                               className={cn(
                                 'font-medium text-blue-800 dark:text-blue-300',
                                 'leading-relaxed'
@@ -144,7 +148,9 @@ export const LyricView = ({ song }: LyricViewProps) => {
                               key={`${paragraph.id}-line-${index}`}
                               size={size}
                               variant={'default'}
-                              className={cn('text-gray-900 dark:text-gray-100', 'leading-relaxed')}>
+                              leading={'normal'}
+                              tracking={'widest'}
+                              className={cn('text-justify text-gray-900 dark:text-gray-100')}>
                               {textContent || ' '}
                             </Text>
                           }
