@@ -10,6 +10,7 @@ import { useAnimatedRef } from 'react-native-reanimated';
 import { useTapGesture } from '~/src/hooks/useTapGesture';
 import { useSwipeGesture } from '~/src/hooks/useSwipeGesture';
 import { useSongs } from '~/src/hooks/song/useSongs';
+import { Ternary } from '../Common/Ternary';
 
 type LyricViewProps = {
   song: SongT;
@@ -104,7 +105,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                   {/* Paragraph Label */}
                   <View className="mb-1 mt-4 flex-row items-center justify-end">
                     <Text
-                      italic
+                      italic={true}
                       size={'xs'}
                       variant={'muted'}
                       className="px-2 text-right text-gray-500 dark:text-gray-400">
@@ -125,18 +126,32 @@ export const LyricView = ({ song }: LyricViewProps) => {
                         ? `${isFirst ? '“' : ''}${line}${isLast ? '”' : ''}`
                         : line;
                       return (
-                        <Text
+                        <Ternary
                           key={`${paragraph.id}-line-${index}`}
-                          size={size}
-                          variant={isChorus ? 'muted' : 'default'}
-                          className={cn(
-                            isChorus
-                              ? 'font-medium italic text-blue-800 dark:text-blue-300'
-                              : 'text-gray-900 dark:text-gray-100',
-                            'leading-relaxed'
-                          )}>
-                          {textContent || ' '}
-                        </Text>
+                          condition={isChorus}
+                          ifTrue={
+                            <Text
+                              key={`${paragraph.id}-${isChorus ? 'chorus' : 'verse'}-line-${index}`}
+                              size={size}
+                              italic
+                              variant={'muted'}
+                              className={cn(
+                                'font-medium text-blue-800 dark:text-blue-300',
+                                'leading-relaxed'
+                              )}>
+                              {textContent || ' '}
+                            </Text>
+                          }
+                          ifFalse={
+                            <Text
+                              key={`${paragraph.id}-line-${index}`}
+                              size={size}
+                              variant={'default'}
+                              className={cn('text-gray-900 dark:text-gray-100', 'leading-relaxed')}>
+                              {textContent || ' '}
+                            </Text>
+                          }
+                        />
                       );
                     })}
                   </View>
