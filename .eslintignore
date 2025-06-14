@@ -1,8 +1,0 @@
-dist/
-build/
-node_modules/
-
-src/generated/**
-src/legacy/ignore-this-file.ts
-.expo
-.eslintcache
