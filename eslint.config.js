@@ -1,22 +1,21 @@
-/* eslint-env node */
-const { defineConfig } = require('eslint/config');
-const expoConfig = require('eslint-config-expo/flat');
-const unusedImports = require('eslint-plugin-unused-imports');
+// eslint.config.js
+import eslintExpo from 'eslint-config-expo/flat.js';
+import pluginUnusedImports from 'eslint-plugin-unused-imports';
 
-module.exports = defineConfig([
-  expoConfig,
+/** @type {import('eslint').Linter.FlatConfig[]} */
+export default [
+  ...eslintExpo,
+
   {
-    ignores: ['dist/**'],
+    ignores: ['node_modules/**', 'dist/**', 'build/**', '*.config.js', '**/*.d.ts'],
   },
+
   {
     plugins: {
-      // ✅ This must match the rule prefix
-      'unused-imports': unusedImports,
+      'unused-imports': pluginUnusedImports,
     },
     rules: {
       'react/display-name': 'off',
-
-      // ✅ These rules must match the plugin key
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'warn',
@@ -29,4 +28,4 @@ module.exports = defineConfig([
       ],
     },
   },
-]);
+];
