@@ -10,7 +10,7 @@ type SongNavigationProps = {
   songNumber: number;
 };
 
-export const SongNavigation = ({ onNext, onPrevious, songNumber }: SongNavigationProps) => {
+export const SongNavigation = ({ songNumber }: SongNavigationProps) => {
   const { favoriteSongs, addFavoriteSong, removeFavoriteSong } = useSongStore();
   const isFavorite = favoriteSongs.includes(songNumber);
   const onClickFavorite = () => {

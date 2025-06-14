@@ -8,7 +8,6 @@ import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { TouchableOpacity, View } from 'react-native';
 import { useSongStore } from '~/src/libs/stores/songs';
-import { useEffect, useState } from 'react';
 
 const HeaderLeft = () => {
   const { song } = useSongs();

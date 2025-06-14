@@ -1,6 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import React from 'react';
-import { Text as RNText, TextProps as RNTextProps, useWindowDimensions } from 'react-native';
+import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 import { cn } from '~/src/libs/cn';
 
 export const textVariants = cva(
