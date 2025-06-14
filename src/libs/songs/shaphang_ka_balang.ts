@@ -1046,7 +1046,6 @@ export const shaphangKaBalang: SongT[] = [
     title: 'Ki Jingïaseng',
     metadata: {
       number: 161,
-      oldNumber: 156,
       language: 'khasi',
       author: 'H. L.',
       syllables: '66.66',
@@ -2618,7 +2617,6 @@ export const shaphangKaBalang: SongT[] = [
     title: 'Ki soh ka jingïap U Khrist',
     metadata: {
       number: 188,
-      oldNumber: 181,
       language: 'khasi',
       author: 'J. R.',
       syllables: '2.88.888',
@@ -3135,7 +3133,6 @@ export const shaphangKaBalang: SongT[] = [
     title: 'U Mawsiang U Khristan',
     metadata: {
       number: 199,
-      oldNumber: 193,
       language: 'khasi',
       syllables: '87.87.D.',
       songId: 'song-199',
@@ -3578,7 +3575,6 @@ export const shaphangKaBalang: SongT[] = [
     title: 'Ka bor ka diengphna',
     metadata: {
       number: 207,
-      oldNumber: 203,
       language: 'khasi',
       author: 'J. R.',
       syllables: '87.87.47',

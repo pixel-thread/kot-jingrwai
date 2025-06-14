@@ -18,7 +18,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'U Blei ha doh jong ngi la wan,',
-          'U Lokb'laman Nongsiewspah;',
+          `U Lok b'la man Nongsiewspah;`,
           'Jar uba ngeit da dohnud skhem,',
           'La tlot um rem da shisha.',
         ],
@@ -177,7 +177,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Khristb'laphong da burom Blei,',
+          `Khrist b'la phong da burom Blei,`,
           'Trai ka bneng bad ka pyrthei;',
           'La urlong ba Un wan paw,',
           "Kum u bynriew b'U la thaw.",
@@ -403,7 +403,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Amen! Trai ngi ainguh,',
-          'Meb'lawan ban pynim,',
+          `Me b'la wan ban pynim,`,
           'Ko Jisu!ïaMe ka burom junom ngi ai,',
           'Ktien jong U Kypa;',
           "B'la wan paw ha ka doh,",
@@ -444,7 +444,7 @@ export const shaphangUKhrist: SongT[] = [
           'U la iap ha Kalbari;',
           'Ia ka ram jong ngi la siew dep,',
           'Lynti sha byneng la plie;',
-          'Snamb'lamih ha Kalbri,',
+          `Snam b'la mih ha Kalbri,`,
           'Jingsuk ka pyniohïangi.',
         ],
       },
@@ -453,7 +453,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Une U Lokb'ladei ban ieit,',
+          `Une U Lok b'la ladei ban ieit,`,
           'Bad ban iaroh katba im;',
           'Jingim jong nga U la siewspah,',
           'Un nang sait na jinglong rim;',
@@ -540,7 +540,7 @@ export const shaphangUKhrist: SongT[] = [
           'BuromïaUba ieitïangi,',
           "I'U ba sait ka dohnud sniew,",
           "Burom i'Ub'lathied remïangi,",
-          'Da ka dor ka snamb'lasiew,',
+          `Da ka dor ka snam b'la siew,`,
           'Burom, burom,',
           'Ia U Nongpynim ki briew.',
         ],
@@ -616,7 +616,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           "Ei b'la wan na neng sha ngi?",
           'Jisu Khrist Nangpynim,',
-          'B'la wan khynnah duk ba pli?',
+          `B'la wan khynnah duk ba pli?`,
           'Jisu Khrist Nongpynim.',
         ],
       },
@@ -636,7 +636,7 @@ export const shaphangUKhrist: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Eib'lashah ha diengphyna?',
+          `Ei b'la shah ha diengphyna?`,
           'Jisu Khrist Nongpynim;',
           'Ban sait ramïaphi bad nga?',
           'Jisu Khrist Nongpynim.',
@@ -1276,7 +1276,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           'Ki Nongaplangbrot ha lum,',
           'Ki dap da jinglyngngoh;',
-          'Ban sngap khuborb'lapynbna,',
+          `Ban sngap khubor b'la pynbna,`,
           "I'U Blei ki rwai iaroh.",
           'Mynta la wan jingpynim,',
           'Bad jingsuk ha pyrthei;',
@@ -1505,7 +1505,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'Da ieit bymjukut la ieitïanga,',
-          'JingnguhïaU junomb'lakynmawïanga;',
+          `JingnguhïaU junom b'la kynmawïanga;`,
           'Ka kyrteng ka jong nga la thoh ruh ha neng,',
           'Ha kitab kj riewkhuid, ha Seion byneng.',
         ],
@@ -1527,7 +1527,7 @@ export const shaphangUKhrist: SongT[] = [
         type: 'verse',
         lines: [
           'La shemïaU ba ha Blei, Hyongmen ba ngi,',
-          'U Khunb'lakha warwari U Blei ha ha khlieh;',
+          `U Khun b'la kha warwari U Blei ha ha khlieh;`,
           'Baing, U baeng iap run la Lum ba eng,',
           'Shaneng baengi ba ba ng ba ngi.',
         ],
@@ -1688,7 +1688,7 @@ export const shaphangUKhrist: SongT[] = [
           'Ki umbah ka duriaw kim lah shuh ban sait,',
           'Ka snam ki mrad baroh kam lah ban pyllait;',
           'Hynrei ha Kalbari, ka snam jong U Khun,',
-          'B'la kyrsoi tang shisien, ka pynlong jinghun,',
+          `B'la kyrsoi tang shisien, ka pynlong jinghun,`,
         ],
       },
       {
@@ -1742,10 +1742,10 @@ export const shaphangUKhrist: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Meb'lakhum Nga la pyllait,',
-          'Meb'lamiah Nga la pynshait;',
-          'Meb'labakla Nga pynphai,',
-          'Meb'ladum Nga la pynshai.',
+          `Me b'la khum Nga la pyllait,`,
+          `Me b'la miah Nga la pynshait;`,
+          `Me b'la bakla Nga pynphai,`,
+          `Me b'la dum Nga la pynshai.`,
         ],
       },
       {
@@ -1956,7 +1956,7 @@ export const shaphangUKhrist: SongT[] = [
           'Ka wadïau briew ban pynphai.',
           'U kdupïau briew ba la ngop,',
           'U kyntiew sha iing U Blei hi;',
-          'Ka kharaib'lapynlong ka pop,',
+          `Ka kharai b'la pynlong ka pop,`,
           'Ka dam ka snam Nongbahkhlieh.',
         ],
       },
@@ -2468,7 +2468,7 @@ export const shaphangUKhrist: SongT[] = [
         lines: [
           `Jingsuk ba ioh na la U Trai,`,
           `Ba U iasaid ha khmat U Blei;`,
-          `Ka hok ka snam ba kor,b'lashlei,`,
+          `Ka hok ka snam ba kor, b'la shlei,`,
           `Ym don ba lah ban ong`,
         ],
       },
@@ -3261,7 +3261,7 @@ export const shaphangUKhrist: SongT[] = [
   },
   {
     id: 'song-080',
-    title: 'Jisub'laPynmong (Isa 53:5)',
+    title: `Jisu b'la Pynmong (Isa 53:5)`,
     metadata: {
       number: 80,
       language: 'khasi',

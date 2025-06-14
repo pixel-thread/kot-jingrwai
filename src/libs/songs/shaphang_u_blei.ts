@@ -517,7 +517,6 @@ export const shaphangUBlei: SongT[] = [
     title: 'Lai Ngut ha Uwei U Blei',
     metadata: {
       number: 9,
-      oldNumber: 11,
       language: 'khasi',
       tune: 'Winchester New',
       syllables: 'L.M. (Long Metre)',
@@ -564,7 +563,6 @@ export const shaphangUBlei: SongT[] = [
     title: 'Ka Jingsumar sukher U Blei',
     metadata: {
       number: 10,
-      oldNumber: 12,
       language: 'khasi',
       author: 'T.J.J.',
       syllables: '77.77',
@@ -655,7 +653,6 @@ export const shaphangUBlei: SongT[] = [
     title: 'U Blei U Nongiarap',
     metadata: {
       number: 11,
-      oldNumber: 14,
       language: 'khasi',
       syllables: 'L.M. (Long Metre)',
       songId: 'song-011',
@@ -724,7 +721,6 @@ export const shaphangUBlei: SongT[] = [
     title: 'Kaba kyrmen ha U Blei',
     metadata: {
       number: 12,
-      oldNumber: 15,
       language: 'khasi',
       author: 'J.C.E.',
       syllables: 'C.M. (Common Metre)',
@@ -783,7 +779,7 @@ export const shaphangUBlei: SongT[] = [
         lines: [
           'Ka por ba kum ka wah ba shlei,',
           'Ki khun ka kit noh hi;',
-          'Ki herb'laklet kum jingphohsniew,',
+          `Ki her b'la klet kum jingphohsniew,`,
           'Ba jah tang mih ka sngi.',
         ],
       },
@@ -805,7 +801,6 @@ export const shaphangUBlei: SongT[] = [
     title: 'Ka Jingmap-ei U Blei',
     metadata: {
       number: 13,
-      oldNumber: 16,
       language: 'khasi',
       author: 'J.J. & Ed.W.',
       syllables: '88.88.88',
@@ -859,7 +854,6 @@ export const shaphangUBlei: SongT[] = [
     title: 'Ka Jingthmu U Blei',
     metadata: {
       number: 14,
-      oldNumber: 17,
       language: 'khasi',
       syllables: '10.10.10.10',
       songId: 'song-014',
@@ -906,7 +900,6 @@ export const shaphangUBlei: SongT[] = [
     title: 'Ka Jutang U Blei',
     metadata: {
       number: 15,
-      oldNumber: 18,
       language: 'khasi',
       syllables: '10.10.10.10',
       songId: 'song-015',
@@ -975,7 +968,6 @@ export const shaphangUBlei: SongT[] = [
     title: 'Ka jaka rieh ha U Blei',
     metadata: {
       number: 16,
-      oldNumber: 21,
       language: 'khasi',
       author: 'J. R.',
       syllables: '888. D.',
