@@ -64,7 +64,7 @@ export const kaJingiaroh: SongT[] = [
           `Ї'U Blei long ka burom ki kam b'U la leh,`,
           `L'U Khun U la phah ba ïa ngi U ieit eh;`,
           `U ai la ka jingim ka kuna ban siew,`,
-          `Ka khyrdop bneng U plie ba kin rung [ki briew.`,
+          `Ka khyrdop bneng U plie ba kin rung ki briew.`,
         ],
       },
       {
@@ -73,7 +73,7 @@ export const kaJingiaroh: SongT[] = [
         type: 'chorus',
         lines: [
           `To ïaroh ïa U Trai, sngap pyrthei ba U kren!`,
-          `To ïaroh ïa U Trai, phi ki bynriew [shadkmen!`,
+          `To ïaroh ïa U Trai, phi ki bynriew shadkmen!`,
           `To wan da U Jisu U Khun sha U kpa,`,
           `Ai burom ïa U b'U la leh kam phylla.`,
         ],
@@ -85,7 +85,7 @@ export const kaJingiaroh: SongT[] = [
         lines: [
           `Da snam Blei la pynlong jingsiewspah janai,`,
           `Jingim ha kiba ngeit U kular ban ai;`,
-          `Nongpop uba khraw tam ba wan da ngeit [skhem,`,
+          `Nongpop uba khraw tam ba wan da ngeit skhem,`,
           `Ka jingmap bad jingsuk h'U Jisu un shem.`,
         ],
       },
@@ -164,7 +164,6 @@ export const kaJingiaroh: SongT[] = [
     metadata: {
       number: 571,
       language: 'khasi',
-
       syllables: 'C.M.',
     },
     paragraphs: [

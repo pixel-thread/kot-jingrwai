@@ -232,7 +232,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
     metadata: {
       number: 119,
       language: 'khasi',
-      composer: 'Blackbourn (C.M)',
+      composer: 'Blackbourn',
       syllables: 'C.M',
     },
     paragraphs: [

@@ -2213,7 +2213,7 @@ export const shaphangKaBalang: SongT[] = [
       number: 182,
       language: 'khasi',
 
-      composer: 'Rockingham (L.M)',
+      composer: 'Rockingham',
       syllables: 'L.M',
     },
     paragraphs: [

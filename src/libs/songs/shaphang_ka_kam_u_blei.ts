@@ -490,7 +490,7 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          `To �ïeng ïashah sh'U Jisu,`,
+          `To ïeng ïashah sh'U Jisu,`,
           `Ka turoi ka la jam;`,
           `Shaphrang, ka jur ka thyma,`,
           `Ïatur, ïapom, U lam;`,
@@ -596,7 +596,7 @@ export const shaphangKaKamUBlei: SongT[] = [
           `Hukum jong U ngin leh,`,
           `Bainong ai kan dam;`,
           `Sha ka jingjop thiaw,`,
-          `Ïa ngi Un �ïalam.`,
+          `Ïa ngi Un ïalam.`,
         ],
       },
     ],
@@ -1377,7 +1377,7 @@ export const shaphangKaKamUBlei: SongT[] = [
         type: 'chorus',
         lines: [
           `To ngin trei, nang ïai trei,`,
-          `To ngin trei, nang �ïai trei;`,
+          `To ngin trei, nang ïai trei;`,
           `Ngin kyrmen ngin sharai,`,
           `Haduh ba Kynrad Un wan phai.`,
         ],
@@ -1600,7 +1600,7 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 4,
         type: 'chorus',
         lines: [
-          `Ngin ïai trei, ngin �ïai trei,`,
+          `Ngin ïai trei, ngin ïai trei,`,
           `Peit ka nong ba thiang shatei,`,
           `Namar U Trai Un ong bor thymmai Un ai;`,
           `Ngin ïai trei haduh ban da wai.`,
@@ -1622,7 +1622,7 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 6,
         type: 'chorus',
         lines: [
-          `Ngin �ïai trei, ngin ïai trei,`,
+          `Ngin ïai trei, ngin ïai trei,`,
           `Peit ka nong ba thiang shatei,`,
           `Namar U Trai Un ong bor thymmai Un ai;`,
           `Ngin ïai trei haduh ban da wai.`,

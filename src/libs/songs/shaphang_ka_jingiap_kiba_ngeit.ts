@@ -8,7 +8,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
       number: 457,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'S.S. 1029 (87.87.D)',
+      composer: 'S.S. 1029',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -179,7 +179,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 460,
       language: 'khasi',
-      composer: 'LLEF (L.M)',
+      composer: 'LLEF',
       syllables: 'L.M',
     },
     paragraphs: [
@@ -224,7 +224,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 461,
       language: 'khasi',
-      composer: 'ST. AMBROSE (C.M)',
+      composer: 'ST. AMBROSE',
       syllables: 'C.M',
     },
     paragraphs: [
@@ -270,7 +270,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
       number: 462,
       language: 'khasi',
       author: 'T.J.',
-      composer: 'DINIWEIDRWYDD (87.87.D)',
+      composer: 'DINIWEIDRWYDD',
       syllables: '87.87.D',
     },
     paragraphs: [
@@ -316,7 +316,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
           'Haba wan jingïap ngin khlad noh,',
           'Bha ïa nga ba nga don Blei;',
           'Lok ba synran ha ka jingïap,',
-          "Ї'Uta, mynba im nga dei.",
+          "Ї'U ta, mynba im nga dei.",
         ],
       },
     ],
@@ -473,7 +473,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 465,
       language: 'khasi',
-      composer: 'GWLADYS; LOVELY (66.66.88)',
+      composer: 'GWLADYS; LOVELY',
       syllables: '66.66.88',
     },
     paragraphs: [
@@ -772,7 +772,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
         lines: [
           'Khublei! Khublei!',
           'La ym hangne ha ka pyrthei;',
-          'Sa tang khyndiat hi ngin �ïashem haneng,',
+          'Sa tang khyndiat hi ngin ïashem haneng,',
           "Te mynta ngi ïa ong, 'Khublei'.",
         ],
       },
@@ -1477,7 +1477,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 482,
       language: 'khasi',
-      composer: 'DIES IRAE (87.87.887.)',
+      composer: 'DIES IRAE',
       syllables: '87.87.887.',
     },
     paragraphs: [
@@ -1531,7 +1531,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 483,
       language: 'khasi',
-      composer: 'HEAVEN (87.88.7.)',
+      composer: 'HEAVEN',
       syllables: '87.88.7.',
     },
     paragraphs: [
@@ -1791,7 +1791,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 488,
       language: 'khasi',
-      composer: 'WATERSTOCK (66.66.88)',
+      composer: 'WATERSTOCK',
       syllables: '66.66.88.',
     },
     paragraphs: [
@@ -2075,7 +2075,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 493,
       language: 'khasi',
-      composer: 'JOYFUL (776.667.)',
+      composer: 'JOYFUL',
       syllables: '776.667.',
     },
     paragraphs: [
@@ -2155,8 +2155,10 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 494,
       language: 'khasi',
-      composer: 'ESTHER',
+      author: 'H. R.',
       syllables: '87.87.D.',
+      songId: 'song-494',
+      tune: 'ESTHER',
     },
     paragraphs: [
       {
@@ -2164,51 +2166,65 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `K'ei ka jingim jong u bynriew?`,
-          `Shibit shen, kan kynran noh;`,
-          `K'ei ka jingim? tang ka syrngiew,`,
-          `Ynda kynran pat ym ïoh.`,
-          `Her, ko mynsiem, her sha jerong,`,
-          `Lei men ieit ïa ka pyrthei?`,
-          `Her noh nangne, wad ïa la shnong,`,
-          `Ka shnong khuid jong ki riewblei.`,
+          "K'ei ka jingim jong u bynriew?",
+          'Shibit shen, kan kynran noh;',
+          "K'ei ka jingim? tang ka syrngiew,",
+          'Ynda kynran pat ym ïoh.',
+        ],
+      },
+      {
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
+          'Her, ko mynsiem, her sha jerong,',
+          'Lei men ieit ïa ka pyrthei?',
+          'Her noh nangne, wad ïa la shnong,',
+          'Ka shnong khuid jong ki riewblei.',
         ],
       },
       {
         id: 'verse-2',
-        order: 2,
+        order: 3,
         type: 'verse',
         lines: [
-          `Ah ka burom! Ah ba tyngshaiñ!`,
-          `Ban ïalap ruh hi ym lah;`,
-          `Hangta ha ka jinglong U Blei,`,
-          `I ï'U Jisu shai khlem kah.`,
+          'Ah ka burom! Ah ba tyngshaiñ!',
+          'Ban ïalap ruh hi ym lah;',
+          'Hangta ha ka jinglong U Blei,',
+          "I ï'U Jisu shai khlem kah.",
         ],
       },
       {
         id: 'verse-3',
-        order: 3,
+        order: 4,
         type: 'verse',
         lines: [
-          `Sawdong jong U ki nongïaroh,`,
-          `Bun bah byllien ki ïashad;`,
-          `Ba pynher la ki jingkynud,`,
-          `Na l'U Kynrad kim ju khlad.`,
+          'Sawdong jong U ki nongïaroh,',
+          'Bun bah byllien ki ïashad;',
+          'Ba pynher la ki jingkynud,',
+          "Na l'U Kynrad kim ju khlad.",
         ],
       },
       {
         id: 'verse-4',
-        order: 4,
+        order: 5,
         type: 'verse',
         lines: [
-          `Nga pynbeit la ka duitara,`,
-          `Ban ïoh riwai ynda poi;`,
-          `Nga pynpyiar la ki thapniang,`,
-          `Ban her nangne nga la kloi.`,
-          `Her, ko mynsiem, her noh mynta,`,
-          `Ka pyrthei ïa nga ynnai;`,
-          `Her noh nangne, wad ïa la shnong,`,
-          `Ka shnong khuid ba shong U Trai.`,
+          'Nga pynbeit la ka duitara,',
+          'Ban ïoh riwai ynda poi;',
+          'Nga pynpyiar la ki thapniang,',
+          'Ban her nangne nga la kloi.',
+        ],
+      },
+      {
+        id: 'chorus-2',
+        order: 6,
+        type: 'chorus',
+        lines: [
+          'Her, ko mynsiem, her noh mynta,',
+          'Ka pyrthei ïa nga ynnai;',
+          'Her noh nangne, wad ïa la shnong,',
+          'Ka shnong khuid ba shong U Trai.',
         ],
       },
     ],
@@ -2257,7 +2273,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 496,
       language: 'khasi',
-      composer: 'S.S. 335 (88.88.D.)',
+      composer: 'S.S. 335',
       syllables: '88.88.D.',
     },
     paragraphs: [
@@ -2299,7 +2315,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 497,
       language: 'khasi',
-      composer: 'OLD DERBY (98.98.D.)',
+      composer: 'OLD DERBY',
       syllables: '98.98.D.',
     },
     paragraphs: [
@@ -2356,7 +2372,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 498,
       language: 'khasi',
-      composer: 'CRUGYBAR (98.98.D.)',
+      composer: 'CRUGYBAR',
       syllables: '98.98.D.',
     },
     paragraphs: [
@@ -2500,7 +2516,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 500,
       language: 'khasi',
-      composer: 'HEAVEN (87.88.7.)',
+      composer: 'HEAVEN',
       syllables: '87.88.7.',
     },
     paragraphs: [
@@ -2650,7 +2666,9 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
     metadata: {
       number: 502,
       language: 'khasi',
-      composer: 'NEARER HOME (S.S. 917)',
+      syllables: '66.86.66.86.6.6',
+      songId: 'song-502',
+      tune: 'NEARER HOME',
     },
     paragraphs: [
       {
@@ -2658,63 +2676,51 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Ah! junom bad U Trai,`,
-          `Shaneng to shah ngan shong;`,
-          `Ha kane im mynsiem khlem wai,`,
-          `Ka ktien ba im ka long.`,
-          `Shane ha ruh la set,`,
-          `Bad jngai na u ka ring;`,
-          `Te ha la ka sngi nang ïaphet,`,
-          `Kham hajan sha la ïing.`,
+          'Ah! junom bad U Trai,',
+          'Shaneng to shah ngan shong;',
+          'Ha kane im mynsiem khlem wai,',
+          'Ka ktien ba im ka long.',
+          'Shane ha ruh la set,',
+          'Bad jngai na u ka ring;',
+          'Te ha la ka sngi nang ïaphet,',
+          'Kham hajan sha la ïing.',
+          'Sha la ïing, sha la ïing,',
+          'Kham hajan sha la ïing.',
         ],
-      },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [`Sha la ïing, sha la ïing,`, `Kham hajan sha la ïing.`],
       },
       {
         id: 'verse-2',
-        order: 3,
+        order: 2,
         type: 'verse',
         lines: [
-          `Ka ïing I Pa sha khlieh,`,
-          `Sha shnong ruh nga la jan;`,
-          `Hateng ka jingngeit ka ïohi,`,
-          `Ban shaw b'Um pep ban wan.`,
-          `Ban poi ha shnong U Syiem,`,
-          `Nga thrang mynsiem hateng;`,
-          `Ka jingïoh bynta ki baim,`,
-          `Ka Salem sha byneng,`,
+          'Ka ïing I Pa sha khlieh,',
+          'Sha shnong ruh nga la jan;',
+          'Hateng ka jingngeit ka ïohi,',
+          "Ban shaw b'Um pep ban wan.",
+          'Ban poi ha shnong U Syiem,',
+          'Nga thrang mynsiem hateng;',
+          'Ka jingïoh bynta ki baim,',
+          'Ka Salem sha byneng,',
+          'Sha byneng, sha byneng.',
+          'Ka Salem sha byneng.',
         ],
-      },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [`Sha byneng, sha byneng.`, `Ka Salem sha byneng.`],
       },
       {
         id: 'verse-3',
-        order: 5,
+        order: 3,
         type: 'verse',
         lines: [
-          `Artatien ka wan lap,`,
-          `Jingtyngen ruh ka her;`,
-          `Kum ïa ka paro jong u Noah,`,
-          `Ba ban ka um ka lyer,`,
-          `La ryngaw shibit sngi,`,
-          `La pei la paw byneng;`,
-          `La hun ban i ka rud ka ri,`,
-          `Ba shato ngin ïashem.`,
+          'Artatien ka wan lap,',
+          'Jingtyngen ruh ka her;',
+          'Kum ïa ka paro jong u Noah,',
+          'Ba ban ka um ka lyer,',
+          'La ryngaw shibit sngi,',
+          'La pei la paw byneng;',
+          'La hun ban i ka rud ka ri,',
+          'Ba shato ngin ïashem.',
+          'Ngin ïashem, ngin ïashem,',
+          'Ba shato ngin ïashem.',
         ],
-      },
-      {
-        id: 'chorus-3',
-        order: 6,
-        type: 'chorus',
-        lines: [`Ngin ïashem, ngin ïashem,`, `Ba shato ngin ïashem.`],
       },
     ],
   },

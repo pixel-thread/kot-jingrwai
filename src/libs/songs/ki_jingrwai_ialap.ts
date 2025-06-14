@@ -156,7 +156,7 @@ export const kiJingrwaiIalap: SongT[] = [
     metadata: {
       number: 529,
       language: 'khasi',
-      composer: 'OH! SO BRIGHT (83.83.8883.)',
+      composer: 'OH! SO BRIGHT',
       syllables: '83.83.8883.',
     },
     paragraphs: [
@@ -213,7 +213,7 @@ export const kiJingrwaiIalap: SongT[] = [
     metadata: {
       number: 530,
       language: 'khasi',
-      composer: 'CHICAGO (87.87.67.)',
+      composer: 'CHICAGO',
       syllables: '87.87.67.',
     },
     paragraphs: [
@@ -560,11 +560,9 @@ export const kiJingrwaiIalap: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Don ka hima ba phyrnai, ka ap ha lyndet jong`,
-          `[ki lyoh,`,
+          `Don ka hima ba phyrnai, ka ap ha lyndet jong ki lyoh,`,
           `Ki riewkhuid na kylleng sawdong ki ïalang;`,
-          `Bad ki sngi ki ïaid stet thir thir ban pynjan`,
-          `[jingwan jong ka,`,
+          `Bad ki sngi ki ïaid stet thir thir ban pynjan jingwan jong ka,`,
           `Namar jingwan ka hima ka la nang jan.`,
         ],
       },
@@ -584,11 +582,9 @@ export const kiJingrwaiIalap: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          `Ka hima hangtei da ka burom ka la nang ïai`,
-          `[pynkhreh,`,
+          `Ka hima hangtei da ka burom ka la nang ïai pynkhreh,`,
           `Ka kwah hir hir ba Un wan U Nongpynim;`,
-          `Ban pyllait ïa ngi na jinglong mraw ba ngi la`,
-          `[shah shitom,`,
+          `Ban pyllait ïa ngi na jinglong mraw ba ngi la shah shitom,`,
           `Namar jingwan ka hima ka la nang jan.`,
         ],
       },
@@ -597,11 +593,9 @@ export const kiJingrwaiIalap: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          `Ha jingwan kata ka hima ngin ïohi ïa la U`,
-          `[Trai,`,
+          `Ha jingwan kata ka hima ngin ïohi ïa la U Trai,`,
           `Namar U Trai hima hi U dei ban paw;`,
-          `Jingsiewspah jong U da ka snam ngin ïaroh`,
-          `[Haleluïa,`,
+          `Jingsiewspah jong U da ka snam ngin ïaroh Haleluïa,`,
           `Oh! ka jingwan ka hima ka la nang jan.`,
         ],
       },
@@ -610,11 +604,9 @@ export const kiJingrwaiIalap: SongT[] = [
         order: 5,
         type: 'verse',
         lines: [
-          `Ka pyrthei ka nang ring swai da kaba ap`,
-          `[jingwan jong ka,`,
+          `Ka pyrthei ka nang ring swai da kaba ap jingwan jong ka,`,
           `Dohnud jong ki ki noh ïan da jingsheptieng;`,
-          `To ngin ïalap ïa ka hima, to ngin pyntngen`,
-          `[da jingrwai,`,
+          `To ngin ïalap ïa ka hima, to ngin pyntngen da jingrwai,`,
           `Ba ka jingwan ka hima ka la nang jan.`,
         ],
       },
@@ -758,7 +750,7 @@ export const kiJingrwaiIalap: SongT[] = [
     metadata: {
       number: 539,
       language: 'khasi',
-      composer: 'HENDON (77.77.)',
+      composer: 'HENDON',
       syllables: '77.77.',
     },
     paragraphs: [
@@ -1077,7 +1069,6 @@ export const kiJingrwaiIalap: SongT[] = [
       number: 544,
       language: 'khasi',
       composer: 'KANAAN (87.87.D.& REFRAIN)',
-      syllables: '87.87.D.',
     },
     paragraphs: [
       {
@@ -1866,7 +1857,7 @@ export const kiJingrwaiIalap: SongT[] = [
           `Ne jingdum ka miet b'U ïaid lyngba,`,
           `Shuwa ïa I ba Un tam.`,
           `Shapoh law baing U la ïohsngew I pah,`,
-          ` pang sa ban ïap, marwei I thiah.`,
+          `I pang sa ban ïap, marwei I thiah.`,
         ],
       },
       {
@@ -2026,7 +2017,7 @@ export const kiJingrwaiIalap: SongT[] = [
         type: 'verse',
         lines: [
           `To phai lok, Ah phai lok, balei phin ïap ei?`,
-          `U Blei � technik phi mynta U khot ieit isnei!`,
+          `U Blei  technik phi mynta U khot ieit isnei!`,
           `U Jisu U khot, Mynsiem ruh U ong ‘Wan’,`,
           `Ki angel ki ïa-ap ïa phi hi ban tan.`,
         ],
@@ -2494,7 +2485,7 @@ export const kiJingrwaiIalap: SongT[] = [
         type: 'verse',
         lines: [
           `Tang ki nongwei ngi long ha kane ka pyrthei,`,
-          `Їing jong ngi long sha khlieh, hangta lem bad [U Blei,`,
+          `Їing jong ngi long sha khlieh, hangta lem bad U Blei,`,
           `Їa khubor jingshisha ngi ïa pynbna mynta,`,
           `B'la phah ïa ngi da U Blei hi.`,
         ],
@@ -2528,7 +2519,7 @@ export const kiJingrwaiIalap: SongT[] = [
         lines: [
           `Ha ïing baitynnad, hangta ngin shong kyrhai,`,
           `Ngin ïoh im bymjukut, lada sha U ngi phai;`,
-          `Hangta jingïap kam don, baroh ngin [shongsuk lang,`,
+          `Hangta jingïap kam don, baroh ngin shongsuk lang,`,
           `Na shitom baroh ngin lait phar.`,
         ],
       },
@@ -2614,11 +2605,11 @@ export const kiJingrwaiIalap: SongT[] = [
         order: 2,
         type: 'chorus',
         lines: [
-          `Hangno ka lawei jong phi ko lok to pyrkhat [mynta hi,`,
+          `Hangno ka lawei jong phi ko lok to pyrkhat mynta hi,`,
           `Wan sha Jisu Un ym kyntait ei ïa phi;`,
           `Te Jisu U ong,`,
-          `“Nga Uba long ka Lynti bad ka jingshisha [bad ka Jingim de,`,
-          `Ym don uba wan ha U Kpa hynrei tang da [nga”.`,
+          `“Nga Uba long ka Lynti bad ka jingshisha bad ka Jingim de,`,
+          `Ym don uba wan ha U Kpa hynrei tang da nga”.`,
         ],
       },
       {
@@ -2627,7 +2618,7 @@ export const kiJingrwaiIalap: SongT[] = [
         type: 'verse',
         lines: [
           `Lok, ha pyrthei don bun byllien kiba ong,`,
-          `Ba ki dang don ï'U Blei Nongthaw [Nongpynlong;`,
+          `Ba ki dang don ï'U Blei Nongthaw Nongpynlong;`,
           `Hynrei soitan da la buit u pynthame,`,
           `Bad u pynbakla lut ki rukom mane.`,
         ],
@@ -2649,7 +2640,7 @@ export const kiJingrwaiIalap: SongT[] = [
         type: 'verse',
         lines: [
           `Wan sha Jisu, kumta wan kloi wat buhteng,`,
-          `Jingsuk mynsiem b'U ai ka long jingsuk [bneng,`,
+          `Jingsuk mynsiem b'U ai ka long jingsuk bneng,`,
           `Lad jingpynim b'U Blei U la thaw phylla,`,
           `Ba h'U Khun long jingkyrkhu ïa phi mynta.`,
         ],

@@ -316,7 +316,7 @@ export const kiJingrwaiIaKiSamla: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          `Namar U Khrist bad ka Balang, ka jingbha ngin [wad,`,
+          `Namar U Khrist bad ka Balang, ka jingbha ngin wad,`,
           `Diengphna ngin bah, ban bud l'U Kynrad;`,
           `To ngin pyndem ïa lade ha ka bor U Mynsiem,`,
           `Ban ïai shakri ïa U katba dang im.`,

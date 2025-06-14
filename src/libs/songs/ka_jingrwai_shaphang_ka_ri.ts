@@ -193,7 +193,7 @@ export const kaJingrwaiShaphangKaRi: SongT[] = [
         lines: [
           `Kynmaw Trai Ri India jong ngi kaba heh bad ïar,`,
           `Burom jong ka Trai ma Me to ri;`,
-          `Da, ma Me, na ki nongshun ba ker sawdong [jong ka,`,
+          `Da, ma Me, na ki nongshun ba ker sawdong jong ka,`,
           `Ka bor jong Me Trai, to pyni.`,
         ],
       },
@@ -213,9 +213,9 @@ export const kaJingrwaiShaphangKaRi: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          `Jingstad jong Me Trai ai ha ki nongïalam [jongngi,`,
+          `Jingstad jong Me Trai ai ha ki nongïalam jongngi,`,
           `Buit bad jingshemphang ha ki to ai;`,
-          `Wat la nongshun ker sawdong jong ka ban [ïoh pynpra,`,
+          `Wat la nongshun ker sawdong jong ka ban ïoh pynpra,`,
           `Da bor jong Me kan nang phyrnai.`,
         ],
       },
