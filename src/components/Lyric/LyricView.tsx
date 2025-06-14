@@ -114,10 +114,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                   </View>
                   {/* Paragraph Box */}
                   <View
-                    className={cn(
-                      getParagraphStyle(paragraph.type),
-                      'border-none bg-transparent p-0'
-                    )}>
+                    className={cn(getParagraphStyle(paragraph.type), 'border-none bg-transparent')}>
                     {paragraph.lines.map((line, index) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
