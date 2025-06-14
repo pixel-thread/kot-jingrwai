@@ -57,7 +57,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
   const combinedGesture = Gesture.Simultaneous(doubleTapGesture, leftRightGesture);
 
   useEffect(() => {
-    scrollRef.current?.scrollTo({ y: 0, animated: false });
+    scrollRef.current?.scrollTo({ y: 0, animated: true });
   }, [song.metadata.number, scrollRef]);
 
   return (
