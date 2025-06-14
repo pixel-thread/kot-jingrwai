@@ -150,7 +150,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                               variant={'default'}
                               leading={'normal'}
                               tracking={'widest'}
-                              className={cn('text-justify text-gray-900 dark:text-gray-100')}>
+                              className={cn('text-left text-gray-900 dark:text-gray-100')}>
                               {textContent || ' '}
                             </Text>
                           }

@@ -97,13 +97,17 @@ export const Text = ({
   align,
   variant,
   tracking,
+  italic,
   leading,
   ...rest
 }: CustomTextProps) => {
   return (
     <RNText
       {...rest}
-      className={cn(textVariants({ size, weight, align, variant, tracking, leading }), className)}>
+      className={cn(
+        textVariants({ size, weight, align, variant, italic, tracking, leading }),
+        className
+      )}>
       {children}
     </RNText>
   );
