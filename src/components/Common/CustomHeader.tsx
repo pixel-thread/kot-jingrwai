@@ -17,7 +17,7 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft }) => 
   const router = useRouter();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-  const isBeta = process.env.EXPO_PUBLIC_IS_BETA === 'true';
+  const isBeta = process.env.EXPO_PUBLIC_IS_BETA === 'true' || false;
 
   const onPressBackButton = () => router.back();
 
