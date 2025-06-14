@@ -1,4 +1,4 @@
- import { SongT } from '~/src/types/song';
+import { SongT } from '~/src/types/song';
 
 export const shaphangKaKtienUBlei: SongT[] = [
   {
@@ -214,7 +214,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
     metadata: {
       number: 133,
       language: 'khasi',
-      author: 'Unknown',
+
       composer: 'Ewing',
       syllables: '76.76.D',
     },
@@ -283,7 +283,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
   },
   {
     id: 'song-134',
-    title: 'Ka Jingiaroh Ia Ka Ktien U Blei',
+    title: 'Ka JingiarohÏa Ka Ktien U Blei',
     metadata: {
       number: 134,
       language: 'khasi',
@@ -310,7 +310,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          `Kham thiang hi ia ka rewngap,`,
+          `Kham thiang hiïaka rewngap,`,
           `Ngin ïaroh;`,
           `Ngin ïoh ka jingsngewbha ba dap,`,
           `Ngin ïaroh.`,
@@ -609,7 +609,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
           `Baibl ba nga ieit,`,
           `Ngan kohnguh tang ïa ka;`,
           `Kan sa long ka sharak,`,
-          `Ban ïalam beit ia nga.`,
+          `Ban ïalam beitïanga.`,
         ],
       },
     ],

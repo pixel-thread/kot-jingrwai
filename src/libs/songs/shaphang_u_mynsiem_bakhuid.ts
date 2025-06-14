@@ -1,4 +1,4 @@
- import { SongT } from '~/src/types/song';
+import { SongT } from '~/src/types/song';
 
 export const shaphangUMynsiemBakhuid: SongT[] = [
   {
@@ -118,7 +118,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
     metadata: {
       number: 117,
       language: 'khasi',
-      author: 'Unknown',
+
       composer: 'Dyfrdwy',
       syllables: '87.87',
     },
@@ -186,7 +186,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
     metadata: {
       number: 118,
       language: 'khasi',
-      author: 'Unknown',
+
       composer: 'Dymuniad',
       syllables: '87.87',
     },
@@ -273,7 +273,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
   },
   {
     id: 'song-120',
-    title: 'Ka Jingduwai Ban Ioh Ia U Mynsiem',
+    title: 'Ka Jingduwai Ban IohÏa U Mynsiem',
     metadata: {
       number: 120,
       language: 'khasi',
@@ -717,7 +717,7 @@ export const shaphangUMynsiemBakhuid: SongT[] = [
   },
   {
     id: 'song-128',
-    title: 'Ka Jingthrang Ban Ioh Ia U Mynsiem Bakhuid',
+    title: 'Ka Jingthrang Ban IohÏa U Mynsiem Bakhuid',
     metadata: {
       number: 128,
       language: 'khasi',

@@ -1,4 +1,4 @@
-import { SongT } from "~/src/types/song";
+import { SongT } from '~/src/types/song';
 
 export const shaphangKaBalang: SongT[] = [
   {
@@ -148,7 +148,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-145',
-    title: 'Ka Jingiada U Blei Ia Ka Balang',
+    title: 'Ka Jingiada U BleiÏa Ka Balang',
     metadata: {
       number: 145,
       language: 'khasi',
@@ -385,7 +385,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-150',
-    title: 'Ka Jingpynkhuid Ia Ka Balang',
+    title: 'Ka JingpynkhuidÏa Ka Balang',
     metadata: {
       number: 150,
       language: 'khasi',
@@ -673,7 +673,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 154,
       language: 'khasi',
-      author: 'Unknown',
+
       composer: 'Mary',
       syllables: '87.87',
     },
@@ -719,7 +719,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 155,
       language: 'khasi',
-      author: 'Unknown',
+
       composer: 'Morganwg',
       syllables: '87.87',
     },
@@ -975,7 +975,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-160',
-    title: 'Iaroh Ia U Blei',
+    title: 'IarohÏa U Blei',
     metadata: {
       number: 160,
       language: 'khasi',
@@ -1401,7 +1401,7 @@ export const shaphangKaBalang: SongT[] = [
         lines: [
           `Kyrteng jong Me ngi ieit ban dwai,`,
           `Bad ïaroh da jingrwai;`,
-          `Ai bor ia ngi ba ngin iaineh,`,
+          `Ai borïangi ba ngin iaineh,`,
           `Mon jong Me ba ngin leh.`,
         ],
       },
@@ -1526,7 +1526,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 169,
       language: 'khasi',
-      author: 'Unknown',
+
       composer: 'Sabbath (Iambic)',
       syllables: '87.87',
     },
@@ -1579,7 +1579,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-170',
-    title: 'Kaba Pynkyntang Ia Ki Khynnah',
+    title: 'Kaba PynkyntangÏa Ki Khynnah',
     metadata: {
       number: 170,
       language: 'khasi',
@@ -1622,7 +1622,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-171',
-    title: 'U Pdiang Ia Ki Khynnah',
+    title: 'U PdiangÏa Ki Khynnah',
     metadata: {
       number: 171,
       language: 'khasi',
@@ -1860,7 +1860,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-176',
-    title: 'To Kyrkhu Lang Ia Ngi Ah! Trai',
+    title: 'To Kyrkhu LangÏa Ngi Ah! Trai',
     metadata: {
       number: 176,
       language: 'khasi',
@@ -2177,7 +2177,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 181,
       language: 'khasi',
-      author: 'Unknown',
+
       composer: 'S.S. 129',
       syllables: 'Irregular',
     },
@@ -2212,7 +2212,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 182,
       language: 'khasi',
-      author: 'Unknown',
+
       composer: 'Rockingham (L.M)',
       syllables: 'L.M',
     },
@@ -2415,7 +2415,7 @@ export const shaphangKaBalang: SongT[] = [
         lines: [
           `Ki ummat sngewsih kim lah siew,`,
           `Ka ieit ba U la shah;`,
-          `Ngan ai ia lade, wat kyntait,`,
+          `Ngan aiïalade, wat kyntait,`,
           `Tang kata ba nga lah.`,
         ],
       },
@@ -2734,7 +2734,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-191',
-    title: 'Ah Pyni Ia U',
+    title: 'Ah PyniÏa U',
     metadata: {
       number: 191,
       language: 'khasi',
@@ -2947,7 +2947,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-195',
-    title: 'Ka Jingkhawai Ia Kiba Duk',
+    title: 'Ka JingkhawaiÏa Kiba Duk',
     metadata: {
       number: 195,
       language: 'khasi',
@@ -3029,7 +3029,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 197,
       language: 'khasi',
-      author: 'Unknown',
+
       composer: 'Wyddgrug (87.87.67)',
       syllables: '87.87.67',
     },
@@ -3292,7 +3292,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-202',
-    title: 'Ka Jingkynmaw Ia Ka Gethsemane',
+    title: 'Ka JingkynmawÏa Ka Gethsemane',
     metadata: {
       number: 202,
       language: 'khasi',
@@ -3341,7 +3341,7 @@ export const shaphangKaBalang: SongT[] = [
           `Nga kynmaw ka met kaba kor,`,
           `B'la lur kiba jerong ki nur;`,
           `Ah Kynrad, U Jisu Baieit,`,
-          `Pynsngew la jingieit ia nga;`,
+          `Pynsngew la jingieitïanga;`,
           `Ka dohnud eh jong nga kan pait,`,
           `Ban kynmaw ka shitom b'la shah.`,
         ],
@@ -3475,7 +3475,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-205',
-    title: 'Ban Kynmaw Ia Nga',
+    title: 'Ban KynmawÏa Nga',
     metadata: {
       number: 205,
       language: 'khasi',
@@ -3682,13 +3682,12 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-209',
-    title: 'Sait Ia Nga',
+    title: 'Sait ïa nga',
     metadata: {
       number: 209,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'S.S. 569',
-      syllables: 'Irregular',
+      syllables: '87.87.47',
+      songId: 'song-209',
     },
     paragraphs: [
       {
@@ -3696,76 +3695,78 @@ export const shaphangKaBalang: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Ko Kynrad, nga kwah Men pynkhiah ïa nga,`,
-          `Men shong ha ka dohnud jong nga ban pynbha;`,
-          `Pynduh ki blei baroh, pynmih da ka bor,`,
-          `Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.`,
-        ],
-      },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [
-          `Lieh kum ka ïor h'oid, lieh kum ka ïor,`,
-          `Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.`,
+          'Ko Kynrad, nga kwah Men pynkhiah ïa nga,',
+          'Men shong ha ka dohnud jong nga ban pynbha;',
+          'Pynduh ki blei baroh, pynmih da ka bor,',
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
+          "Lieh kum ka ïor h'oid,",
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
         ],
       },
       {
         id: 'verse-2',
-        order: 3,
+        order: 2,
         type: 'verse',
         lines: [
-          `Trai Kynrad, wat ai ka jingtyngit kan sah,`,
-          `Pyndei la ka snam, kaba thoh wat da shah;`,
-          `Ban ïoh ka jingsait ym lah kheiñ ïa ka dor,`,
-          `Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.`,
+          'Trai Kynrad, wat ai ka jingtyngit kan sah,',
+          'Pyndei la ka snam, kaba thoh wat da shah;',
+          'Ban ïoh ka jingsait ym lah kheiñ ïa ka dor,',
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
+          "Lieh kum ka ïor h'oid,",
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
         ],
       },
       {
         id: 'verse-3',
-        order: 4,
+        order: 3,
         type: 'verse',
         lines: [
-          `Trai Kynrad, to peit na la ka jong ka khet,`,
-          `Ai bor naduh mynta ïa lade ban klet;`,
-          `Ka jong nga ngan duh, la nga kheiñ kaba kor,`,
-          `Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.`,
+          'Trai Kynrad, to peit na la ka jong ka khet,',
+          'Ai bor naduh mynta ïa lade ban klet;',
+          'Ka jong nga ngan duh, la nga kheiñ kaba kor,',
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
+          "Lieh kum ka ïor h'oid,",
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
         ],
       },
       {
         id: 'verse-4',
-        order: 5,
+        order: 4,
         type: 'verse',
         lines: [
-          `Trai Kynrad, ïa kane nga duwai shisha,`,
-          `Nga khymih, ko Jisu, ki kjat ba la sah;`,
-          `Ban sait phar ïa nga, ba la tuid ka snam kor,`,
-          `Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.`,
+          'Trai Kynrad, ïa kane nga duwai shisha,',
+          'Nga khymih, ko Jisu, ki kjat ba la sah;',
+          'Ban sait phar ïa nga, ba la tuid ka snam kor,',
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
+          "Lieh kum ka ïor h'oid,",
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
         ],
       },
       {
         id: 'verse-5',
-        order: 6,
+        order: 5,
         type: 'verse',
         lines: [
-          `Trai Kynrad, Me tip ba nga ap la kham slem,`,
-          `Bad hapoh ka dohnud, wan mynta, kan dem;`,
-          `Ktien, ‘Em’, ym ju phai haba duwai shalor,`,
-          `Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.`,
+          'Trai Kynrad, Me tip ba nga ap la kham slem,',
+          'Bad hapoh ka dohnud, wan mynta, kan dem;',
+          'Ktien, ‘Em’, ym ju phai haba duwai shalor,',
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
+          "Lieh kum ka ïor h'oid,",
+          'Nang sait ïa nga, Jisu, ngan lieh kum ka ïor.',
         ],
       },
     ],
   },
   {
     id: 'song-210',
-    title: 'Ka Bor Ka Diengphna',
+    title: 'Ka bor ka diengphna',
     metadata: {
       number: 210,
       language: 'khasi',
       author: 'T.J. & H.R.',
-      composer: 'Bryn Calfaria (87.87.47)',
       syllables: '87.87.47',
+      songId: 'song-210',
+      tune: 'BRYN CALFARIA',
     },
     paragraphs: [
       {
@@ -3773,34 +3774,26 @@ export const shaphangKaBalang: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Snam ka diengphna ka pynkyntiew,`,
-          `Kiba tlot ban long nongjop;`,
-          `Snam ka diengphna ka pyndem ruh,`,
-          `Kiba sarong ban hap khop;`,
+          'Snam ka diengphna ka pynkyntiew,',
+          'Kiba tlot ban long nongjop;',
+          'Snam ka diengphna ka pyndem ruh,',
+          'Kiba sarong ban hap khop;',
+          'Ai ba ngan sngew,',
+          'Lyer pyngngad na Kalbari.',
         ],
-      },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [`Ai ba ngan sngew,`, `Lyer pyngngad na Kalbari.`],
       },
       {
         id: 'verse-2',
-        order: 3,
+        order: 2,
         type: 'verse',
         lines: [
-          `Ha ka bor jong U ngan kyrshan,`,
-          `Bor b'la trei bym lah iathuh;`,
-          `Shem ka jingïap, shem ka dujok,`,
-          `Shem u soitan, shem ban ïuh;`,
+          'Ha ka bor jong U ngan kyrshan,',
+          "Bor b'la trei bym lah iathuh;",
+          'Shem ka jingïap, shem ka dujok,',
+          'Shem u soitan, shem ban ïuh;',
+          'Lum Kalbari,',
+          'Lano ngan ym klet ïa u.',
         ],
-      },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [`Lum Kalbari,`, `Lano ngan ym klet ïa u.`],
       },
     ],
   },
@@ -3811,7 +3804,7 @@ export const shaphangKaBalang: SongT[] = [
       number: 211,
       language: 'khasi',
       author: 'O.H.R. & H.J.',
-      composer: 'Dorcas (2.88.888)',
+      composer: 'Dorcas',
       syllables: '2.88.888',
     },
     paragraphs: [
@@ -3878,7 +3871,7 @@ export const shaphangKaBalang: SongT[] = [
       number: 212,
       language: 'khasi',
       author: 'H.S.R.',
-      composer: 'Whitburn (L.M.)',
+      composer: 'Whitburn',
       syllables: 'L.M',
     },
     paragraphs: [
@@ -3945,8 +3938,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 213,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Dyfrdwy (87.87.) (Iambic)',
+      composer: 'Dyfrdwy (Iambic)',
       syllables: '87.87',
     },
     paragraphs: [
@@ -3980,8 +3972,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 214,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Dyfrdwy (87.87.) (Iambic)',
+      composer: 'Dyfrdwy (Iambic)',
       syllables: '87.87',
     },
     paragraphs: [
@@ -4026,8 +4017,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 215,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'St. Stephen (Abridge) (C.M.)',
+      composer: 'St. Stephen (Abridge)',
       syllables: 'C.M',
     },
     paragraphs: [
@@ -4090,12 +4080,11 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-216',
-    title: 'Ka Jingduwai Ia Ka Jingpynkhih U Blei',
+    title: 'Ka JingduwaiÏa Ka Jingpynkhih U Blei',
     metadata: {
       number: 216,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Gwladys (66.66.88)',
+      composer: 'Gwladys',
       syllables: '66.66.88',
     },
     paragraphs: [
@@ -4109,7 +4098,7 @@ export const shaphangKaBalang: SongT[] = [
           `Jingphylla jong U Trai,`,
           `Ki kam ba U la leh;`,
           `Ki khot ïa ngi mynta ka sngi,`,
-          `Ban ïaroh ia U Trai jong ngi.`,
+          `Ban ïarohïaU Trai jong ngi.`,
         ],
       },
       {
@@ -4146,8 +4135,7 @@ export const shaphangKaBalang: SongT[] = [
     metadata: {
       number: 217,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Navarre (10.10.10.10)',
+      composer: 'Navarre',
       syllables: '10.10.10.10',
     },
     paragraphs: [
@@ -4215,7 +4203,7 @@ export const shaphangKaBalang: SongT[] = [
       number: 218,
       language: 'khasi',
       author: 'H.L.L.',
-      composer: 'Duke Street (L.M.)',
+      composer: 'Duke Street',
       syllables: 'L.M',
     },
     paragraphs: [
@@ -4283,7 +4271,7 @@ export const shaphangKaBalang: SongT[] = [
       number: 219,
       language: 'khasi',
       author: 'H.L.L.',
-      composer: 'Aurelia (76.76.D)',
+      composer: 'Aurelia',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -4298,7 +4286,7 @@ export const shaphangKaBalang: SongT[] = [
           `Burom ruh ba phyrnai.`,
           `Ha pha bakhraw bad bapoh,`,
           `Ha khmat ka khet U Trai;`,
-          `'Bakhuid' laisien yn ïaroh,`,
+          `Bakhuid' laisien yn ïaroh,`,
           `Ha U Blei Uwei Lai.`,
         ],
       },
@@ -4341,7 +4329,7 @@ export const shaphangKaBalang: SongT[] = [
       number: 220,
       language: 'khasi',
       author: 'G.R.S.',
-      composer: 'Brooklyn (C.M.) (C.S.S.77)',
+      composer: 'Brooklyn (C.S.S.77)',
       syllables: 'C.M',
     },
     paragraphs: [

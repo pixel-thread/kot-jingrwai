@@ -1,15 +1,16 @@
-import { SongT } from "~/src/types/song";
+import { SongT } from '~/src/types/song';
 
 export const shaphangKaKamUBlei: SongT[] = [
   {
     id: 'song-221',
-    title: 'Ki Shipai U Syiem Bneng',
+    title: 'Ki shipai U Syiem Bneng',
     metadata: {
       number: 221,
       language: 'khasi',
-      author: 'J.R.',
-      composer: 'Beverly (66.66.88)',
+      author: 'J. R.',
       syllables: '66.66.88',
+      songId: 'song-221',
+      tune: 'BEVERLY',
     },
     paragraphs: [
       {
@@ -17,79 +18,62 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `U Syiem byneng shaphrang,`,
-          `Ngi ruh, ngi baroh shlur;`,
-          `Ka um ka ding kam khang,`,
-          `Haba ngi nang ïatur;`,
+          'U Syiem byneng shaphrang,',
+          'Ngi ruh, ngi baroh shlur;',
+          'Ka um ka ding kam khang,',
+          'Haba ngi nang ïatur;',
+          'Ngin tur, ngin tur, ïariwai jam,',
+          'Ngin jop, ngin jop, U Syiem Un lam.',
         ],
-      },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [`Ngin tur, ngin tur, ïariwai jam,`, `Ngin jop, ngin jop, U Syiem Un lam.`],
       },
       {
         id: 'verse-2',
-        order: 3,
+        order: 2,
         type: 'verse',
         lines: [
-          `Ym don uwei ba swai,`,
-          `Na shipai Syiem byneng;`,
-          `Ki pydiang de khlem wai,`,
-          `Ka bor jong U na neng;`,
+          'Ym don uwei ba swai,',
+          'Na shipai Syiem byneng;',
+          'Ki pydiang de khlem wai,',
+          'Ka bor jong U na neng;',
+          'Ngin ïoh, ngin ïoh ka waiñ ba sngur,',
+          'Kaba sngewbang, kaba pynshlur.',
         ],
-      },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [`Ngin ïoh, ngin ïoh ka waiñ ba sngur,`, `Kaba sngewbang, kaba pynshlur.`],
       },
       {
         id: 'verse-3',
-        order: 5,
+        order: 3,
         type: 'verse',
         lines: [
-          `Sydang ban riwai shuh,`,
-          `U Paidbah ba ïaseng;`,
-          `Ïaroh jingïap jong U-`,
-          `U Khun U Syiem byneng;`,
+          'Sydang ban riwai shuh,',
+          'U Paidbah ba ïaseng;',
+          'Їaroh jingïap jong U-',
+          'U Khun U Syiem byneng;',
+          'La ïoh la ïoh ki jingkyrkhu,',
+          'Ki angel kim ïoh mad ki juh.',
         ],
-      },
-      {
-        id: 'chorus-3',
-        order: 6,
-        type: 'chorus',
-        lines: [`La ïoh la ïoh ki jingkyrkhu,`, `Ki angel kim ïoh mad ki juh.`],
       },
       {
         id: 'verse-4',
-        order: 7,
+        order: 4,
         type: 'verse',
         lines: [
-          `Phi Seraph to ïadem,`,
-          `Ban khymih to wan kloi;`,
-          `Ki nongpop kiba rem,`,
-          `Ha byneng ki la poi;`,
+          'Phi Seraph to ïadem,',
+          'Ban khymih to wan kloi;',
+          'Ki nongpop kiba rem,',
+          'Ha byneng ki la poi;',
+          'Їohi ma ki ka ri sngewbha,',
+          'Ki kynroh ruh ka ïing I Pa.',
         ],
-      },
-      {
-        id: 'chorus-4',
-        order: 8,
-        type: 'chorus',
-        lines: [`Ïohi ma ki ka ri sngewbha,`, `Ki kynroh ruh ka ïing I Pa.`],
       },
     ],
   },
   {
     id: 'song-222',
-    title: 'Ka Jingduwai Ban Pynroi Ia Ka Kam',
+    title: 'Ka Jingduwai Ban PynroiÏa Ka Kam',
     metadata: {
       number: 222,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Boston (L.M.)',
+      composer: 'Boston',
       syllables: 'L.M',
     },
     paragraphs: [
@@ -124,7 +108,7 @@ export const shaphangKaKamUBlei: SongT[] = [
       number: 223,
       language: 'khasi',
       author: 'J.R.',
-      composer: 'Ellacombe (S.S.649.) (D.C.M.)',
+      composer: 'Ellacombe (S.S.649.)',
       syllables: 'D.C.M',
     },
     paragraphs: [
@@ -181,8 +165,7 @@ export const shaphangKaKamUBlei: SongT[] = [
     metadata: {
       number: 224,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Llandegla (66.46.88.76)',
+      composer: 'Llandegla',
       syllables: '66.46.88.76',
     },
     paragraphs: [
@@ -250,13 +233,14 @@ export const shaphangKaKamUBlei: SongT[] = [
   },
   {
     id: 'song-225',
-    title: 'Ka Jingwan Ka Gospel',
+    title: 'Ka Jingwan ka Gospel',
     metadata: {
       number: 225,
       language: 'khasi',
-      author: 'S.S.',
-      composer: 'Alun (66.66.88)',
+      author: 'S. S.',
       syllables: '66.66.88',
+      songId: 'song-225',
+      tune: 'ALUN',
     },
     paragraphs: [
       {
@@ -264,63 +248,51 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Ka Gospel Blei la wan,`,
-          `Na jyngai bah sha ngi;`,
-          `To sngap, ha ngi ka kren,`,
-          `Ka ïaid kylleng ka ri;`,
+          'Ka Gospel Blei la wan,',
+          'Na jyngai bah sha ngi;',
+          'To sngap, ha ngi ka kren,',
+          'Ka ïaid kylleng ka ri;',
+          'To ïeng, to ïeng ban sngew ïa ka,',
+          'Ka jingpynim men ïoh sngewbha.',
         ],
-      },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [`To ïeng, to ïeng ban sngew ïa ka,`, `Ka jingpynim men ïoh sngewbha.`],
       },
       {
         id: 'verse-2',
-        order: 3,
+        order: 2,
         type: 'verse',
         lines: [
-          `Ka Gospel Blei la wan,`,
-          `Ngi wad ïa ka la slem;`,
-          `Sharum, shaneng, ngi ïaid,`,
-          `Ia l'U Nongthaw ban shem;`,
+          'Ka Gospel Blei la wan,',
+          'Ngi wad ïa ka la slem;',
+          'Sharum, shaneng, ngi ïaid,',
+          "Ia l'U Nongthaw ban shem;",
+          'To ïeng, to ïeng, ban sngew ïa ka,',
+          'Ka ktien U Nongpynim ba bha.',
         ],
-      },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [`To ïeng, to ïeng, ban sngew ïa ka,`, `Ka ktien U Nongpynim ba bha.`],
       },
       {
         id: 'verse-3',
-        order: 5,
+        order: 3,
         type: 'verse',
         lines: [
-          `Ka Gospel Blei la wan,`,
-          `To pydiang ei ïa ka;`,
-          `Kan pyni lynti beit,`,
-          `Ban poi sha ïing I Pa;`,
+          'Ka Gospel Blei la wan,',
+          'To pydiang ei ïa ka;',
+          'Kan pyni lynti beit,',
+          'Ban poi sha ïing I Pa;',
+          "Ka tyrwa ruh ï'U Nongïalam,",
+          'U Jisu Khrist, ban ïaid shaphrang.',
         ],
-      },
-      {
-        id: 'chorus-3',
-        order: 6,
-        type: 'chorus',
-        lines: [`Ka tyrwa ruh ï'U Nongïalam,`, `U Jisu Khrist, ban ïaid shaphrang.`],
       },
     ],
   },
   {
     id: 'song-226',
-    title: 'Ka Lama Ka Gospel',
+    title: 'Ka Lama ka Gospel',
     metadata: {
       number: 226,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Dewi Sant (66.66.88)',
       syllables: '66.66.88',
+      songId: 'song-226',
+      tune: 'DEWI SANT',
     },
     paragraphs: [
       {
@@ -328,85 +300,65 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Ka lama khraw la sei,`,
-          `Ka Gospel Blei ka long;`,
-          `Ka dujok b'ishyrkhei,`,
-          `U Jisu la pynmong;`,
+          'Ka lama khraw la sei,',
+          'Ka Gospel Blei ka long;',
+          "Ka dujok b'ishyrkhei,",
+          'U Jisu la pynmong;',
+          'Kan hap, kan hap, la imat skhem,',
+          'Ha khmat U Jisu kam lah ïeng.',
         ],
-      },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [`Kan hap, kan hap, la imat skhem,`, `Ha khmat U Jisu kam lah ïeng.`],
       },
       {
         id: 'verse-2',
-        order: 3,
+        order: 2,
         type: 'verse',
         lines: [
-          `Ka dor pansngiat shiah,`,
-          `Ha khlieh U Syiem byneng;`,
-          `Ki nar sah kiba nep,`,
-          `Kham kor ïa ka jingrem;`,
+          'Ka dor pansngiat shiah,',
+          'Ha khlieh U Syiem byneng;',
+          'Ki nar sah kiba nep,',
+          'Kham kor ïa ka jingrem;',
+          'To wan khymih kane ka kam,',
+          'Uba ïong eh u la lieh tam.',
         ],
-      },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [`To wan khymih kane ka kam,`, `Uba ïong eh u la lieh tam.`],
       },
       {
         id: 'verse-3',
-        order: 5,
+        order: 3,
         type: 'verse',
         lines: [
-          `To riwai b'la ïohi,`,
-          `Ba mih jingshai byneng;`,
-          `To riwai b'la ïoh mad,`,
-          `Ki soh Kanaan ha neng;`,
+          "To riwai b'la ïohi,",
+          'Ba mih jingshai byneng;',
+          "To riwai b'la ïoh mad,",
+          'Ki soh Kanaan ha neng;',
+          'Ngin poi, ngin poi, ha Seïon lum,',
+          'La don jingpep ha ri khlaw bun.',
         ],
-      },
-      {
-        id: 'chorus-3',
-        order: 6,
-        type: 'chorus',
-        lines: [`Ngin poi, ngin poi, ha Seïon lum,`, `La don jingpep ha ri khlaw bun.`],
       },
       {
         id: 'verse-4',
-        order: 7,
+        order: 4,
         type: 'verse',
         lines: [
-          `Wat ai jingieit kan swai,`,
-          `Jingieit ba kum lyoh ding;`,
-          `Kaba la thung U Trai,`,
-          `Ban lam ïa ngi sha ïing;`,
+          'Wat ai jingieit kan swai,',
+          'Jingieit ba kum lyoh ding;',
+          'Kaba la thung U Trai,',
+          'Ban lam ïa ngi sha ïing;',
+          'Nga i ka ri ngan ïohïaka,',
+          'Ngan shong lem bad U Trai babha.',
         ],
-      },
-      {
-        id: 'chorus-4',
-        order: 8,
-        type: 'chorus',
-        lines: [`Nga i ka ri ngan ïoh ia ka,`, `Ngan shong lem bad U Trai babha.`],
       },
       {
         id: 'verse-5',
-        order: 9,
+        order: 5,
         type: 'verse',
         lines: [
-          `Ah! Tynrai khraw jingsuk,`,
-          `Ka duriaw bah, khlem kut;`,
-          `Ha Me ïa kiba duk,`,
-          `Don spah ka bymjukut;`,
+          'Ah! Tynrai khraw jingsuk,',
+          'Ka duriaw bah, khlem kut;',
+          'Ha Me ïa kiba duk,',
+          'Don spah ka bymjukut;',
+          'Jong Me ka nam, ïa Me kin nguh,',
+          'Byneng, pyrthei bad dujok ruh.',
         ],
-      },
-      {
-        id: 'chorus-5',
-        order: 10,
-        type: 'chorus',
-        lines: [`Jong Me ka nam, ïa Me kin nguh,`, `Byneng, pyrthei bad dujok ruh.`],
       },
     ],
   },
@@ -416,34 +368,22 @@ export const shaphangKaKamUBlei: SongT[] = [
     metadata: {
       number: 227,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Mawlgan, Diolcham Yrefengyl (10.7.6)',
       syllables: '10.7.6',
+      songId: 'song-227',
+      tune: 'Mawlgan, Diolcham Yrefengyl',
     },
     paragraphs: [
       {
         id: 'verse-1',
         order: 1,
         type: 'verse',
-        lines: [`Ngi nguh ïa Me, Ah Blei ba lah baroh,`],
-      },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [`Namar ka Gospel Jisu,—Haleluïa,—AMEN.`],
+        lines: ['Ngi nguh ïa Me, Ah Blei ba lah baroh,', 'Namar ka Gospel Jisu,—Haleluïa,—AMEN.'],
       },
       {
         id: 'verse-2',
-        order: 3,
+        order: 2,
         type: 'verse',
-        lines: [`Haba ngi long ha ka ïing byndi dum,`],
-      },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [`Lawan ka jingshai byneng,—Haleluïa,—AMEN.`],
+        lines: ['Haba ngi long ha ka ïing byndi dum,', 'Lawan ka jingshai byneng,—Haleluïa,—AMEN.'],
       },
     ],
   },
@@ -453,8 +393,7 @@ export const shaphangKaKamUBlei: SongT[] = [
     metadata: {
       number: 228,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Aberafon (74.74.D)',
+      composer: 'Aberafon',
       syllables: '74.74.D',
     },
     paragraphs: [
@@ -527,7 +466,7 @@ export const shaphangKaKamUBlei: SongT[] = [
       number: 229,
       language: 'khasi',
       author: 'R.J.',
-      composer: 'Canaan (76.76.D.) (S.S.680)',
+      composer: 'Canaan (S.S.680)',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -600,7 +539,7 @@ export const shaphangKaKamUBlei: SongT[] = [
       number: 230,
       language: 'khasi',
       author: 'H.S.R.',
-      composer: 'St. Gertrude Rachie (65.65.D)',
+      composer: 'St. Gertrude Rachie',
       syllables: '65.65.D',
     },
     paragraphs: [
@@ -668,8 +607,7 @@ export const shaphangKaKamUBlei: SongT[] = [
     metadata: {
       number: 231,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Missionary (76.76.D)',
+      composer: 'Missionary',
       syllables: '76.76.D',
     },
     paragraphs: [
@@ -742,7 +680,7 @@ export const shaphangKaKamUBlei: SongT[] = [
       number: 232,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Duke Street (L.M.)',
+      composer: 'Duke Street',
       syllables: 'L.M',
     },
     paragraphs: [
@@ -787,9 +725,9 @@ export const shaphangKaKamUBlei: SongT[] = [
     metadata: {
       number: 233,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Lewes (87.87.47)',
       syllables: '87.87.47',
+      songId: 'song-233',
+      tune: 'LEWES',
     },
     paragraphs: [
       {
@@ -797,51 +735,39 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Lyndet lum, ki lyoh bad jingdum,`,
-          `Suk mynsiem khymih shatei;`,
-          `Ki jingkular kin sa pynmih,`,
-          `Ïa ka sngi ka jingisnei;`,
+          'Lyndet lum, ki lyoh bad jingdum,',
+          'Suk mynsiem khymih shatei;',
+          'Ki jingkular kin sa pynmih,',
+          'Їa ka sngi ka jingisnei;',
+          'Jubil byneng,',
+          'Kata ka sngi ai ngin i.',
         ],
-      },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [`Jubil byneng,`, `Kata ka sngi ai ngin i.`],
       },
       {
         id: 'verse-2',
-        order: 3,
+        order: 2,
         type: 'verse',
         lines: [
-          `Wan phi bynriew, wan phi baroh,`,
-          `Wan nongkyndong ban ïohi;`,
-          `Ïa ka jingjop ba U Jisu,`,
-          `U la ïoh ha Kalbari;`,
+          'Wan phi bynriew, wan phi baroh,',
+          'Wan nongkyndong ban ïohi;',
+          'Їa ka jingjop ba U Jisu,',
+          'U la ïoh ha Kalbari;',
+          'Ai ba Gospel,',
+          'Kan sawa na kut sha kut.',
         ],
-      },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [`Ai ba Gospel,`, `Kan sawa na kut sha kut.`],
       },
       {
         id: 'verse-3',
-        order: 5,
+        order: 3,
         type: 'verse',
         lines: [
-          `Bun ki ri ba shong ha jingdum,`,
-          `Ah ban poi jingshai ha ki!`,
-          `Ïa ka miet ba dum to beh noh,`,
-          `Naduh mihngi sha sepngi;`,
+          'Bun ki ri ba shong ha jingdum,',
+          'Ah ban poi jingshai ha ki!',
+          'Їa ka miet ba dum to beh noh,',
+          'Naduh mihngi sha sepngi;',
+          'Ka jingpynim,',
+          'Tang ma ka to ai kan jop.',
         ],
-      },
-      {
-        id: 'chorus-3',
-        order: 6,
-        type: 'chorus',
-        lines: [`Ka jingpynim,`, `Tang ma ka to ai kan jop.`],
       },
     ],
   },
@@ -852,7 +778,7 @@ export const shaphangKaKamUBlei: SongT[] = [
       number: 234,
       language: 'khasi',
       author: 'J.C.E.',
-      composer: 'Sicily (87.87.47)',
+      composer: 'Sicily',
       syllables: '87.87.47',
     },
     paragraphs: [
@@ -865,14 +791,11 @@ export const shaphangKaKamUBlei: SongT[] = [
           `Naduh mihngi sha sepngi;`,
           `To pynïoh ki hima baroh,`,
           `Kum ka bynta jong Me hi;`,
+          `Jingshai byneng,`,
+          `To pynshai ïa ka pyrthei.`,
         ],
       },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [`Jingshai byneng,`, `To pynshai ïa ka pyrthei.`],
-      },
+
       {
         id: 'verse-2',
         order: 3,
@@ -882,14 +805,11 @@ export const shaphangKaKamUBlei: SongT[] = [
           `Ba la dap da ka jingdum,`,
           `Ai kan pydiang ïa ka Gospel,`,
           `Ha ri them bad ha ri lum:`,
+          `Te ka jingsuk,`,
+          `Kan pyndap na kut sha kut.`,
         ],
       },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [`Te ka jingsuk,`, `Kan pyndap na kut sha kut.`],
-      },
+
       {
         id: 'verse-3',
         order: 5,
@@ -899,13 +819,61 @@ export const shaphangKaKamUBlei: SongT[] = [
           `Da ki sur sngewbha ba bang;`,
           `Naduh shatei shaduh shathie,`,
           `Ai kin burom ïa U lang:`,
+          `Ai kin ïaroh,`,
+          `Jingitynnad Syiem byneng.`,
+        ],
+      },
+    ],
+  },
+  {
+    id: 'song-235',
+    title: 'Ka Jingkyrmen ïa ka kam',
+    metadata: {
+      number: 235,
+      language: 'khasi',
+      syllables: '87.87.47',
+      songId: 'song-235',
+      tune: 'GNOLL AVENUE',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Ah! mynsynñia nga shu khymih,',
+          'Khymih lano kan sa shai;',
+          'Khymih ba kin plie ki khyrdop,',
+          'Na ki nar ba khum ban lait:',
+          'Byrngut Jubil,',
+          'Lano shisha kan sa paw?',
         ],
       },
       {
-        id: 'chorus-3',
-        order: 6,
-        type: 'chorus',
-        lines: [`Ai kin ïaroh,`, `Jingitynnad Syiem byneng.`],
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Kum ka leilieh her jingbyna,',
+          'Her ban jop ki bynriew phar;',
+          'Ai ki pud kin ïar noh kylleng,',
+          'Їa ka pyrthei ban synshar:',
+          'Ktien ka jingim,',
+          'Sha ba kut ka duriaw poi.',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Mih to mih ka sngi ba tyngshaiñ,',
+          'Beh ka jingdum na ki briew;',
+          'Ka jingsawa jingput Gospel,',
+          'Hangne bad shaneng kan riew;',
+          'Baroh kawei,',
+          'Hima bah Immanuel.',
+        ],
       },
     ],
   },
@@ -915,8 +883,7 @@ export const shaphangKaKamUBlei: SongT[] = [
     metadata: {
       number: 236,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'Houghton (10.10.11.11)',
+      composer: 'Houghton',
       syllables: '10.10.11.11',
     },
     paragraphs: [
@@ -973,7 +940,7 @@ export const shaphangKaKamUBlei: SongT[] = [
       number: 237,
       language: 'khasi',
       author: 'H.L.',
-      composer: 'St. Bride (S.M.)',
+      composer: 'St. Bride',
       syllables: 'S.M',
     },
     paragraphs: [
@@ -1015,7 +982,7 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          `Ah Trai, to sngew ia ngi:`,
+          `Ah Trai, to sngewïangi:`,
           `Ngi ïam, ngi nguh, ngi dem;`,
           `Ah wallam jingpynim ïa ngi!`,
           `Ha Me ngi shaniah skhem.`,
@@ -1029,8 +996,7 @@ export const shaphangKaKamUBlei: SongT[] = [
     metadata: {
       number: 238,
       language: 'khasi',
-      author: 'Unknown',
-      composer: 'St. Austin (664.6664)',
+      composer: 'St. Austin',
       syllables: '664.6664',
     },
     paragraphs: [
@@ -1066,13 +1032,11 @@ export const shaphangKaKamUBlei: SongT[] = [
   },
   {
     id: 'song-239',
-    title: 'Ngin Nang Iaid Sha Seïon',
+    title: 'Ngin nang ïaid sha Seïon',
     metadata: {
       number: 239,
       language: 'khasi',
-      author: 'D.E.S.',
-      composer: 'S.S. 823',
-      syllables: 'Irregular',
+      composer: 'S. S. 823',
     },
     paragraphs: [
       {
@@ -1080,21 +1044,21 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Ale phi khun U Blei,`,
-          `Da jingkmen to ngin rwai;`,
-          `Ban pynsawa jingieit U Blei,`,
+          'Ale phi khun U Blei,',
+          'Da jingkmen to ngin rwai;',
+          'Ban pynsawa jingieit U Blei,(2 sien)',
+          'Sawdong ka Khet U Trai.(2 sien)',
         ],
       },
       {
-        id: 'chorus-1',
+        id: 'chorus',
         order: 2,
         type: 'chorus',
         lines: [
-          `Sawdong ka Khet U Trai.`,
-          `Ngin nang ïaid ska Seïon,`,
-          `Seïon itynnad jong U Trai;`,
-          `Ngin nang ïaid shatei sha Seïon,`,
-          `Sha Nongbah Bakhuid jong U Trai.`,
+          'Ngin nang ïaid ska Seïon,',
+          'Seïon itynnad jong U Trai;',
+          'Ngin nang ïaid shatei sha Seïon,',
+          'Sha Nongbah Bakhuid jong U Trai.',
         ],
       },
       {
@@ -1102,72 +1066,39 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          `Phi ki khun U Syiem Bneng,`,
-          `To kyntiew nam khlem wai,`,
-          `Pynbna kyrteng U Trai kylleng,`,
-        ],
-      },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [
-          `Ba bynriew tip ï'U Trai.`,
-          `Ngin nang ïaid ska Seïon,`,
-          `Seïon itynnad jong U Trai;`,
-          `Ngin nang ïaid shatei sha Seïon,`,
-          `Sha Nongbah Bakhuid jong U Trai.`,
+          'Phi ki khun U Syiem Bneng,',
+          'To kyntiew nam khlem wai,',
+          'Pynbna kyrteng U Trai kylleng,(2 sien)',
+          "Ba bynriew tip ï'U Trai.(2 sien)",
         ],
       },
       {
         id: 'verse-3',
-        order: 5,
+        order: 4,
         type: 'verse',
         lines: [
-          `H'u lum Seïon ba dap,`,
-          `Da burom jong U Trai;`,
-          `Ngin ïaid ha lynti ksiar-nylla,`,
-        ],
-      },
-      {
-        id: 'chorus-3',
-        order: 6,
-        type: 'chorus',
-        lines: [
-          `Ban poi ri bneng phyrnai.`,
-          `Ngin nang ïaid ska Seïon,`,
-          `Seïon itynnad jong U Trai;`,
-          `Ngin nang ïaid shatei sha Seïon,`,
-          `Sha Nongbah Bakhuid jong U Trai.`,
+          "H'u lum Seïon ba dap,",
+          'Da burom jong U Trai;',
+          'Ngin ïaid ha lynti ksiar-nylla,(2 sien)',
+          'Ban poi ri bneng phyrnai.(2 sien)',
         ],
       },
       {
         id: 'verse-4',
-        order: 7,
+        order: 5,
         type: 'verse',
         lines: [
-          `Jingrwai thiang yn ïaisah,`,
-          `Katba shaphrang nang ïaid;`,
-          `Ngin nang ïaid sha ka ri U Trai,`,
-        ],
-      },
-      {
-        id: 'chorus-4',
-        order: 8,
-        type: 'chorus',
-        lines: [
-          `Ri bathiang bym ju blad.`,
-          `Ngin nang ïaid ska Seïon,`,
-          `Seïon itynnad jong U Trai;`,
-          `Ngin nang �ïaid shatei sha Seïon,`,
-          `Sha Nongbah Bakhuid jong U Trai.`,
+          'Jingrwai thiang yn ïaisah,',
+          'Katba shaphrang nang ïaid;',
+          'Ngin nang ïaid sha ka ri U Trai,(2 sien)',
+          'Ri bathiang bym ju blad.(2 sien)',
         ],
       },
     ],
   },
   {
     id: 'song-240',
-    title: 'Trai Pynim Ia Ka Kam',
+    title: 'Trai PynimÏa Ka Kam',
     metadata: {
       number: 240,
       language: 'khasi',
@@ -1232,733 +1163,716 @@ export const shaphangKaKamUBlei: SongT[] = [
         ],
       },
     ],
-  },{
-  id: 'song-241',
-  title: 'Ka Jingduwai Na Ka Bynta Ki Nongtrei',
-  metadata: {
-    number: 241,
-    language: 'khasi',
-    author: 'H.L.',
-    composer: 'Bwlchgwyn (C.M.)',
-    syllables: 'C.M'
   },
-  paragraphs: [
-    {
-      id: 'verse-1',
-      order: 1,
-      type: 'verse',
-      lines: [
-        `Ngi nguh ngi dem ha Me, Ah Blei,`,
-        `Kane ka por kyntang;`,
-        `Ngi duwai ba Men sngewsynei,`,
-        `Jingkyrpad ka Balang.`
-      ]
+  {
+    id: 'song-241',
+    title: 'Ka Jingduwai Na Ka Bynta Ki Nongtrei',
+    metadata: {
+      number: 241,
+      language: 'khasi',
+      author: 'H.L.',
+      composer: 'Bwlchgwyn',
+      syllables: 'C.M',
     },
-    {
-      id: 'verse-2',
-      order: 2,
-      type: 'verse',
-      lines: [
-        `Ka khlaw ka bun ba dei ban prat,`,
-        `Nongtrei ruh duna bun;`,
-        `Ha jingdum ngi pan, Ah! to shat,`,
-        `Jingshai ka hok U Khun.`
-      ]
-    },
-    {
-      id: 'verse-3',
-      order: 3,
-      type: 'verse',
-      lines: [
-        `Ïa kiba Me la mon ban khot,`,
-        `Ïa kiba sngew ïa Me;`,
-        `Ah Blei, kyrkhu kin bet kin ot,`,
-        `Kat kum ka mon jong Me.`
-      ]
-    },
-    {
-      id: 'verse-4',
-      order: 4,
-      type: 'verse',
-      lines: [
-        `Pyndap ïa ki da U Mynsiem,`,
-        `Da bor ka jingieit Blei;`,
-        `Ïa U Jisu ai kin syriem,`,
-        `Da ki, Ah Blei, to trei.`
-      ]
-    }
-  ]
-},
-{
-  id: 'song-242',
-  title: 'Haba Thung Nongsharai',
-  metadata: {
-    number: 242,
-    language: 'khasi',
-    author: 'G.L.',
-    composer: 'Dismissal (87.87.D)',
-    syllables: '87.87.D'
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          `Ngi nguh ngi dem ha Me, Ah Blei,`,
+          `Kane ka por kyntang;`,
+          `Ngi duwai ba Men sngewsynei,`,
+          `Jingkyrpad ka Balang.`,
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          `Ka khlaw ka bun ba dei ban prat,`,
+          `Nongtrei ruh duna bun;`,
+          `Ha jingdum ngi pan, Ah! to shat,`,
+          `Jingshai ka hok U Khun.`,
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          `Ïa kiba Me la mon ban khot,`,
+          `Ïa kiba sngew ïa Me;`,
+          `Ah Blei, kyrkhu kin bet kin ot,`,
+          `Kat kum ka mon jong Me.`,
+        ],
+      },
+      {
+        id: 'verse-4',
+        order: 4,
+        type: 'verse',
+        lines: [
+          `Pyndap ïa ki da U Mynsiem,`,
+          `Da bor ka jingieit Blei;`,
+          `Ïa U Jisu ai kin syriem,`,
+          `Da ki, Ah Blei, to trei.`,
+        ],
+      },
+    ],
   },
-  paragraphs: [
-    {
-      id: 'verse-1',
-      order: 1,
-      type: 'verse',
-      lines: [
-        `Ko Trai Jisu, ko Nongpynim,`,
-        `Me U bym lah ban kylla;`,
-        `Kular jong Me ki ïaineh skhem,`,
-        `La ka Balang ban ïada;`,
-        `Ïa ki Nongsharai nang pynmih,`,
-        `Kiba Me hi Me la khot;`,
-        `Kam ka jong Me kin kit kin bah,`,
-        `Khlem sngewthait bad khlem sngewtlot.`
-      ]
+  {
+    id: 'song-242',
+    title: 'Haba Thung Nongsharai',
+    metadata: {
+      number: 242,
+      language: 'khasi',
+      author: 'G.L.',
+      composer: 'Dismissal',
+      syllables: '87.87.D',
     },
-    {
-      id: 'verse-2',
-      order: 2,
-      type: 'verse',
-      lines: [
-        `Hangne ruh mynta, ai ngin sngew,`,
-        `Jingdon jong Me lem bad ngi;`,
-        `Da lade hi wan pynkyntang,`,
-        `Ban thung ïa la ki shakri.`,
-        `Ïa kine mynta to kyrkhu,`,
-        `Da la kti isnei jong Me;`,
-        `Pynkup ruh ka bor U Mynsiem,`,
-        `Shan ïa ki ha ki jingeh.`
-      ]
-    }
-  ]
-},
-{
-  id: 'song-243',
-  title: 'Nga La Pdiang Jingkhot U Trai',
-  metadata: {
-    number: 243,
-    language: 'khasi',
-    author: 'H.L.L.',
-    composer: 'R.S. 297',
-    syllables: 'Irregular'
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          `Ko Trai Jisu, ko Nongpynim,`,
+          `Me U bym lah ban kylla;`,
+          `Kular jong Me ki ïaineh skhem,`,
+          `La ka Balang ban ïada;`,
+          `Ïa ki Nongsharai nang pynmih,`,
+          `Kiba Me hi Me la khot;`,
+          `Kam ka jong Me kin kit kin bah,`,
+          `Khlem sngewthait bad khlem sngewtlot.`,
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          `Hangne ruh mynta, ai ngin sngew,`,
+          `Jingdon jong Me lem bad ngi;`,
+          `Da lade hi wan pynkyntang,`,
+          `Ban thung ïa la ki shakri.`,
+          `Ïa kine mynta to kyrkhu,`,
+          `Da la kti isnei jong Me;`,
+          `Pynkup ruh ka bor U Mynsiem,`,
+          `Shan ïa ki ha ki jingeh.`,
+        ],
+      },
+    ],
   },
-  paragraphs: [
-    {
-      id: 'verse-1',
-      order: 1,
-      type: 'verse',
-      lines: [
-        `Nga la pdiang jingkhot Nongpynim,`,
-        `Nga la pdiang jingkhot Nongpynim,`,
-        `U la kren ha dohnud jong nga;`
-      ]
+  {
+    id: 'song-243',
+    title: 'Nga La Pdiang Jingkhot U Trai',
+    metadata: {
+      number: 243,
+      language: 'khasi',
+      author: 'H.L.L.',
+      composer: 'R.S. 297',
+      syllables: 'Irregular',
     },
-    {
-      id: 'chorus-1',
-      order: 2,
-      type: 'chorus',
-      lines: [
-        `Bah la diengphna mynta bad shirta.`
-      ]
-    },
-    {
-      id: 'verse-2',
-      order: 3,
-      type: 'verse',
-      lines: [
-        `Ngan bud shano Un lam ïa nga,`,
-        `Ngan bud shano Un lam ïa nga,`,
-        `Katba Un lam ngan bud ïa U;`
-      ]
-    },
-    {
-      id: 'chorus-2',
-      order: 4,
-      type: 'chorus',
-      lines: [
-        `Lynter lynti ngan bud ï'U Jisu.`
-      ]
-    },
-    {
-      id: 'verse-3',
-      order: 5,
-      type: 'verse',
-      lines: [
-        `Ngan ïaid lem lyngba ka brisoh,`,
-        `Ngan ïaid lem lyngba ka brisoh,`,
-        `Jingthung kordor ki don ha ka;`
-      ]
-    },
-    {
-      id: 'chorus-3',
-      order: 6,
-      type: 'chorus',
-      lines: [
-        `Kam ba dawa ïa nga don hangta.`
-      ]
-    },
-    {
-      id: 'verse-4',
-      order: 7,
-      type: 'verse',
-      lines: [
-        `Ngan bud ïa U ha jingtynjuh,`,
-        `Ngan bud ïa U ha jingtynjuh,`,
-        `Nga tip shai U don lem bad nga;`
-      ]
-    },
-    {
-      id: 'chorus-4',
-      order: 8,
-      type: 'chorus',
-      lines: [
-        `Ïa kane nga tip bha ngam bakla.`
-      ]
-    },
-    {
-      id: 'verse-5',
-      order: 9,
-      type: 'verse',
-      lines: [
-        `Un pynïoh ïa nga ka burom,`,
-        `Un pynïoh ïa nga ka burom,`,
-        `Hadien bun ki jingshah shitom;`
-      ]
-    },
-    {
-      id: 'chorus-5',
-      order: 10,
-      type: 'chorus',
-      lines: [
-        `Ngan shong lem bad U hi shi junom.`
-      ]
-    }
-  ]
-},
-{
-  id: 'song-244',
-  title: 'Ka Kam Ba Ngin Trei',
-  metadata: {
-    number: 244,
-    language: 'khasi',
-    author: 'H.L.L.',
-    composer: 'S.S. 751',
-    syllables: 'Irregular'
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          `Nga la pdiang jingkhot Nongpynim,`,
+          `Nga la pdiang jingkhot Nongpynim,`,
+          `U la kren ha dohnud jong nga;`,
+          `Bah la diengphna mynta bad shirta.`,
+        ],
+      },
+
+      {
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
+          `Ngan bud shano Un lam ïa nga,`,
+          `Ngan bud shano Un lam ïa nga,`,
+          `Katba Un lam ngan bud ïa U;`,
+          `Lynter lynti ngan bud ï'U Jisu.`,
+        ],
+      },
+
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          `Ngan ïaid lem lyngba ka brisoh,`,
+          `Ngan ïaid lem lyngba ka brisoh,`,
+          `Jingthung kordor ki don ha ka;`,
+        ],
+      },
+      {
+        id: 'chorus-3',
+        order: 6,
+        type: 'chorus',
+        lines: [`Kam ba dawa ïa nga don hangta.`],
+      },
+      {
+        id: 'verse-4',
+        order: 7,
+        type: 'verse',
+        lines: [
+          `Ngan bud ïa U ha jingtynjuh,`,
+          `Ngan bud ïa U ha jingtynjuh,`,
+          `Nga tip shai U don lem bad nga;`,
+        ],
+      },
+      {
+        id: 'chorus-4',
+        order: 8,
+        type: 'chorus',
+        lines: [`Ïa kane nga tip bha ngam bakla.`],
+      },
+      {
+        id: 'verse-5',
+        order: 9,
+        type: 'verse',
+        lines: [
+          `Un pynïoh ïa nga ka burom,`,
+          `Un pynïoh ïa nga ka burom,`,
+          `Hadien bun ki jingshah shitom;`,
+        ],
+      },
+      {
+        id: 'chorus-5',
+        order: 10,
+        type: 'chorus',
+        lines: [`Ngan shong lem bad U hi shi junom.`],
+      },
+    ],
   },
-  paragraphs: [
-    {
-      id: 'verse-1',
-      order: 1,
-      type: 'verse',
-      lines: [
-        `Sha ka kam U Kynrad ngi ki shakri U Blei,`,
-        `Bud ka lynti ba U Trai U ïaid ha pyrthei,`,
-        `Ha jingkynpham jong U bor ngin ïai pynthymmai;`,
-        `Aiti lut la ki sap ba U hi U la ai.`
-      ]
+  {
+    id: 'song-244',
+    title: 'Ka Kam Ba Ngin Trei',
+    metadata: {
+      number: 244,
+      language: 'khasi',
+      author: 'H.L.L.',
+      composer: 'S.S. 751',
+      syllables: 'Irregular',
     },
-    {
-      id: 'chorus-1',
-      order: 2,
-      type: 'chorus',
-      lines: [
-        `To ngin trei, nang ïai trei,`,
-        `To ngin trei, nang �ïai trei;`,
-        `Ngin kyrmen ngin sharai,`,
-        `Haduh ba Kynrad Un wan phai.`
-      ]
-    },
-    {
-      id: 'verse-2',
-      order: 3,
-      type: 'verse',
-      lines: [
-        `Sha ka kam U Kynrad, langbrot ba thngan ngin bsa;`,
-        `Na jingma u nongshun dei ma ngi ban ïada;`,
-        `Ha lyngkor ka diengphna burom ïa ngi ka ïeng,`,
-        `Katba ngi ïai ïalam sha jingshongthait ha bneng.`
-      ]
-    },
-    {
-      id: 'chorus-2',
-      order: 4,
-      type: 'chorus',
-      lines: [
-        `To ngin trei, nang ïai trei,`,
-        `To ngin trei, nang ïai trei;`,
-        `Ngin kyrmen ngin sharai,`,
-        `Haduh ba Kynrad Un wan phai.`
-      ]
-    },
-    {
-      id: 'verse-3',
-      order: 5,
-      type: 'verse',
-      lines: [
-        `Sha ka kam U Kynrad don ka jingtrei kyrhai;`,
-        `Ban pynbeit ka lynti ba kynhun bah ki phai,`,
-        `Kyrteng U Jisu Khrist to ngin nang ïai kyntiew,`,
-        `Ring sha jingieit jong U na ka pyrthei basniew.`
-      ]
-    },
-    {
-      id: 'chorus-3',
-      order: 6,
-      type: 'chorus',
-      lines: [
-        `To ngin trei, nang ïai trei,`,
-        `To ngin trei, nang ïai trei;`,
-        `Ngin kyrmen ngin sharai,`,
-        `Haduh ba Kynrad Un wan phai.`
-      ]
-    },
-    {
-      id: 'verse-4',
-      order: 7,
-      type: 'verse',
-      lines: [
-        `Sha ka kam U Kynrad ha jingieit jong U Trai,`,
-        `Jaiñkup ba lieh bad pansngiat U kular ban ai,`,
-        `Lem bad riewkhuid ngin long ha khmat jong U junom;`,
-        `B'la siewspah da ka snam ngin phyrnai ha burom.`
-      ]
-    },
-    {
-      id: 'chorus-4',
-      order: 8,
-      type: 'chorus',
-      lines: [
-        `To ngin trei, nang ïai trei,`,
-        `To ngin trei, nang ïai trei;`,
-        `Ngin kyrmen ngin sharai,`,
-        `Haduh ba Kynrad Un wan phai.`
-      ]
-    }
-  ]
-},
-{
-  id: 'song-245',
-  title: 'Bud ï\'U Kynrad Ha Ki Jingeh',
-  metadata: {
-    number: 245,
-    language: 'khasi',
-    author: 'H.L.L.',
-    composer: 'S.S. 544',
-    syllables: 'Irregular'
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          `Sha ka kam U Kynrad ngi ki shakri U Blei,`,
+          `Bud ka lynti ba U Trai U ïaid ha pyrthei,`,
+          `Ha jingkynpham jong U bor ngin ïai pynthymmai;`,
+          `Aiti lut la ki sap ba U hi U la ai.`,
+        ],
+      },
+      {
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
+          `To ngin trei, nang ïai trei,`,
+          `To ngin trei, nang �ïai trei;`,
+          `Ngin kyrmen ngin sharai,`,
+          `Haduh ba Kynrad Un wan phai.`,
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 3,
+        type: 'verse',
+        lines: [
+          `Sha ka kam U Kynrad, langbrot ba thngan ngin bsa;`,
+          `Na jingma u nongshun dei ma ngi ban ïada;`,
+          `Ha lyngkor ka diengphna burom ïa ngi ka ïeng,`,
+          `Katba ngi ïai ïalam sha jingshongthait ha bneng.`,
+        ],
+      },
+      {
+        id: 'chorus-2',
+        order: 4,
+        type: 'chorus',
+        lines: [
+          `To ngin trei, nang ïai trei,`,
+          `To ngin trei, nang ïai trei;`,
+          `Ngin kyrmen ngin sharai,`,
+          `Haduh ba Kynrad Un wan phai.`,
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 5,
+        type: 'verse',
+        lines: [
+          `Sha ka kam U Kynrad don ka jingtrei kyrhai;`,
+          `Ban pynbeit ka lynti ba kynhun bah ki phai,`,
+          `Kyrteng U Jisu Khrist to ngin nang ïai kyntiew,`,
+          `Ring sha jingieit jong U na ka pyrthei basniew.`,
+        ],
+      },
+      {
+        id: 'chorus-3',
+        order: 6,
+        type: 'chorus',
+        lines: [
+          `To ngin trei, nang ïai trei,`,
+          `To ngin trei, nang ïai trei;`,
+          `Ngin kyrmen ngin sharai,`,
+          `Haduh ba Kynrad Un wan phai.`,
+        ],
+      },
+      {
+        id: 'verse-4',
+        order: 7,
+        type: 'verse',
+        lines: [
+          `Sha ka kam U Kynrad ha jingieit jong U Trai,`,
+          `Jaiñkup ba lieh bad pansngiat U kular ban ai,`,
+          `Lem bad riewkhuid ngin long ha khmat jong U junom;`,
+          `B'la siewspah da ka snam ngin phyrnai ha burom.`,
+        ],
+      },
+      {
+        id: 'chorus-4',
+        order: 8,
+        type: 'chorus',
+        lines: [
+          `To ngin trei, nang ïai trei,`,
+          `To ngin trei, nang ïai trei;`,
+          `Ngin kyrmen ngin sharai,`,
+          `Haduh ba Kynrad Un wan phai.`,
+        ],
+      },
+    ],
   },
-  paragraphs: [
-    {
-      id: 'verse-1',
-      order: 1,
-      type: 'verse',
-      lines: [
-        `Ha lade hi ngam shym pyrkhat,`,
-        `Ha pyrthei nga wad bun ki lad;`,
-        `Pynban jingieit jong Me ka bat;`,
-        `Mon jong Me ngam lah ban khlad.`
-      ]
+  {
+    id: 'song-245',
+    title: "Bud ï'U Kynrad Ha Ki Jingeh",
+    metadata: {
+      number: 245,
+      language: 'khasi',
+      author: 'H.L.L.',
+      composer: 'S.S. 544',
+      syllables: 'Irregular',
     },
-    {
-      id: 'chorus-1',
-      order: 2,
-      type: 'chorus',
-      lines: [
-        `Ha dienjat Nongpynim ngan bud,`,
-        `Ha dienjat Nongpynim ngan bud,`,
-        `Kyrshan bor ba ngan ïai aiti;`,
-        `Bud ïa U lynter ki sngi.`
-      ]
-    },
-    {
-      id: 'verse-2',
-      order: 3,
-      type: 'verse',
-      lines: [
-        `Ka lynti shisha kaba eh,`,
-        `Kjat jong nga ba tlot ban pyneh,`,
-        `Kren ha nga ngan sngew man ka sngi;`,
-        `Shisha nga la jied ïa phi.`
-      ]
-    },
-    {
-      id: 'chorus-2',
-      order: 4,
-      type: 'chorus',
-      lines: [
-        `Ha dienjat Nongpynim ngan bud,`,
-        `Ha dienjat Nongpynim ngan bud,`,
-        `Kyrshan bor ba ngan ïai aiti;`,
-        `Bud ïa U lynter ki sngi.`
-      ]
-    },
-    {
-      id: 'verse-3',
-      order: 5,
-      type: 'verse',
-      lines: [
-        `Jingtynjuh ha pyrthei kin wan,`,
-        `Erïong jingim ki lah ban ban,`,
-        `Kdup ïa nga da ksangti ba jem,`,
-        `Ba ngan ïeng skhem khlem pyndem.`
-      ]
-    },
-    {
-      id: 'chorus-3',
-      order: 6,
-      type: 'chorus',
-      lines: [
-        `Ha dienjat Nongpynim ngan bud,`,
-        `Ha dienjat Nongpynim ngan bud,`,
-        `Kyrshan bor ba ngan ïai aiti;`,
-        `Bud ïa U lynter ki sngi.`
-      ]
-    },
-    {
-      id: 'verse-4',
-      order: 7,
-      type: 'verse',
-      lines: [
-        `Nanglaw ïa ki jingteh pyrthei,`,
-        `Dohnud ring ba ngan peit shatei,`,
-        `Barabor kti jong Me kan btin,`,
-        `Ngan ïaid beit khlem kylla dien.`
-      ]
-    },
-    {
-      id: 'chorus-4',
-      order: 8,
-      type: 'chorus',
-      lines: [
-        `Ha dienjat Nongpynim ngan bud,`,
-        `Ha dienjat Nongpynim ngan bud,`,
-        `Kyrshan bor ba ngan ïai aiti;`,
-        `Bud ïa U lynter ki sngi.`
-      ]
-    }
-  ]
-},
-{
-  id: 'song-246',
-  title: 'Ïai Trei Ha Ka Balang',
-  metadata: {
-    number: 246,
-    language: 'khasi',
-    author: 'H.L.L.',
-    composer: 'S.S. 754',
-    syllables: 'Irregular'
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          `Ha lade hi ngam shym pyrkhat,`,
+          `Ha pyrthei nga wad bun ki lad;`,
+          `Pynban jingieit jong Me ka bat;`,
+          `Mon jong Me ngam lah ban khlad.`,
+        ],
+      },
+      {
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
+          `Ha dienjat Nongpynim ngan bud,`,
+          `Ha dienjat Nongpynim ngan bud,`,
+          `Kyrshan bor ba ngan ïai aiti;`,
+          `Bud ïa U lynter ki sngi.`,
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 3,
+        type: 'verse',
+        lines: [
+          `Ka lynti shisha kaba eh,`,
+          `Kjat jong nga ba tlot ban pyneh,`,
+          `Kren ha nga ngan sngew man ka sngi;`,
+          `Shisha nga la jied ïa phi.`,
+        ],
+      },
+      {
+        id: 'chorus-2',
+        order: 4,
+        type: 'chorus',
+        lines: [
+          `Ha dienjat Nongpynim ngan bud,`,
+          `Ha dienjat Nongpynim ngan bud,`,
+          `Kyrshan bor ba ngan ïai aiti;`,
+          `Bud ïa U lynter ki sngi.`,
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 5,
+        type: 'verse',
+        lines: [
+          `Jingtynjuh ha pyrthei kin wan,`,
+          `Erïong jingim ki lah ban ban,`,
+          `Kdup ïa nga da ksangti ba jem,`,
+          `Ba ngan ïeng skhem khlem pyndem.`,
+        ],
+      },
+      {
+        id: 'chorus-3',
+        order: 6,
+        type: 'chorus',
+        lines: [
+          `Ha dienjat Nongpynim ngan bud,`,
+          `Ha dienjat Nongpynim ngan bud,`,
+          `Kyrshan bor ba ngan ïai aiti;`,
+          `Bud ïa U lynter ki sngi.`,
+        ],
+      },
+      {
+        id: 'verse-4',
+        order: 7,
+        type: 'verse',
+        lines: [
+          `Nanglaw ïa ki jingteh pyrthei,`,
+          `Dohnud ring ba ngan peit shatei,`,
+          `Barabor kti jong Me kan btin,`,
+          `Ngan ïaid beit khlem kylla dien.`,
+        ],
+      },
+      {
+        id: 'chorus-4',
+        order: 8,
+        type: 'chorus',
+        lines: [
+          `Ha dienjat Nongpynim ngan bud,`,
+          `Ha dienjat Nongpynim ngan bud,`,
+          `Kyrshan bor ba ngan ïai aiti;`,
+          `Bud ïa U lynter ki sngi.`,
+        ],
+      },
+    ],
   },
-  paragraphs: [
-    {
-      id: 'verse-1',
-      order: 1,
-      type: 'verse',
-      lines: [
-        `Ha jingker U Trai ka kam ka dawa;`,
-        `Jingud ba jylliew nongtrei ki duna,`,
-        `Ha jingkhot jong U ka dohnud ka shlei;`,
-        `Balang U Blei ban nang ïai tei.`
-      ]
+  {
+    id: 'song-246',
+    title: 'Ïai Trei Ha Ka Balang',
+    metadata: {
+      number: 246,
+      language: 'khasi',
+      author: 'H.L.L.',
+      composer: 'S.S. 754',
+      syllables: 'Irregular',
     },
-    {
-      id: 'chorus-1',
-      order: 2,
-      type: 'chorus',
-      lines: [
-        `Ngin ïai trei, ngin ïai trei,`,
-        `Peit ka nong ba thiang shatei,`,
-        `Namar U Trai Un ong bor thymmai Un ai;`,
-        `Ngin ïai trei haduh ban da wai.`
-      ]
-    },
-    {
-      id: 'verse-2',
-      order: 3,
-      type: 'verse',
-      lines: [
-        `Seïon jong U Trai kan nang ïai phyrnai,`,
-        `Ka pyrthei ba sniew kan ym lah pynswai,`,
-        `Siewspah por kordor, jingkular ngin bat;`,
-        `Jingkmen U Kynrad don ha khmat.`
-      ]
-    },
-    {
-      id: 'chorus-2',
-      order: 4,
-      type: 'chorus',
-      lines: [
-        `Ngin ïai trei, ngin �ïai trei,`,
-        `Peit ka nong ba thiang shatei,`,
-        `Namar U Trai Un ong bor thymmai Un ai;`,
-        `Ngin ïai trei haduh ban da wai.`
-      ]
-    },
-    {
-      id: 'verse-3',
-      order: 5,
-      type: 'verse',
-      lines: [
-        `Ban wad ki langbrot jingsngewbha ngin shem,`,
-        `La ka kam ka eh, lyngkor Un pynjem,`,
-        `Jingkit U Kynrad ngin bah ha tyrpeng,`,
-        `Mawsiang jingpynim, skhem ngin ïeng.`
-      ]
-    },
-    {
-      id: 'chorus-3',
-      order: 6,
-      type: 'chorus',
-      lines: [
-        `Ngin �ïai trei, ngin ïai trei,`,
-        `Peit ka nong ba thiang shatei,`,
-        `Namar U Trai Un ong bor thymmai Un ai;`,
-        `Ngin ïai trei haduh ban da wai.`
-      ]
-    },
-    {
-      id: 'verse-4',
-      order: 7,
-      type: 'verse',
-      lines: [
-        `Khmih ka phang jingtrei kumba U la khot,`,
-        `Ha jingtlot sngewhun tang ban ïai minot;`,
-        `Jingsawa ba thiang U Trai ngin kynud,`,
-        `Leit sha ka jingkmen bymjukut.`
-      ]
-    },
-    {
-      id: 'chorus-4',
-      order: 8,
-      type: 'chorus',
-      lines: [
-        `Ngin ïai trei, ngin ïai trei,`,
-        `Peit ka nong ba thiang shatei,`,
-        `Namar U Trai Un ong bor thymmai Un ai;`,
-        `Ngin ïai trei haduh ban da wai.`
-      ]
-    }
-  ]
-},
-{
-  id: 'song-247',
-  title: 'Pyneh Ha Jingïaleh',
-  metadata: {
-    number: 247,
-    language: 'khasi',
-    author: 'H.L.L.',
-    composer: 'R.S. 407',
-    syllables: 'Irregular'
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          `Ha jingker U Trai ka kam ka dawa;`,
+          `Jingud ba jylliew nongtrei ki duna,`,
+          `Ha jingkhot jong U ka dohnud ka shlei;`,
+          `Balang U Blei ban nang ïai tei.`,
+        ],
+      },
+      {
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
+          `Ngin ïai trei, ngin ïai trei,`,
+          `Peit ka nong ba thiang shatei,`,
+          `Namar U Trai Un ong bor thymmai Un ai;`,
+          `Ngin ïai trei haduh ban da wai.`,
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 3,
+        type: 'verse',
+        lines: [
+          `Seïon jong U Trai kan nang ïai phyrnai,`,
+          `Ka pyrthei ba sniew kan ym lah pynswai,`,
+          `Siewspah por kordor, jingkular ngin bat;`,
+          `Jingkmen U Kynrad don ha khmat.`,
+        ],
+      },
+      {
+        id: 'chorus-2',
+        order: 4,
+        type: 'chorus',
+        lines: [
+          `Ngin ïai trei, ngin �ïai trei,`,
+          `Peit ka nong ba thiang shatei,`,
+          `Namar U Trai Un ong bor thymmai Un ai;`,
+          `Ngin ïai trei haduh ban da wai.`,
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 5,
+        type: 'verse',
+        lines: [
+          `Ban wad ki langbrot jingsngewbha ngin shem,`,
+          `La ka kam ka eh, lyngkor Un pynjem,`,
+          `Jingkit U Kynrad ngin bah ha tyrpeng,`,
+          `Mawsiang jingpynim, skhem ngin ïeng.`,
+        ],
+      },
+      {
+        id: 'chorus-3',
+        order: 6,
+        type: 'chorus',
+        lines: [
+          `Ngin �ïai trei, ngin ïai trei,`,
+          `Peit ka nong ba thiang shatei,`,
+          `Namar U Trai Un ong bor thymmai Un ai;`,
+          `Ngin ïai trei haduh ban da wai.`,
+        ],
+      },
+      {
+        id: 'verse-4',
+        order: 7,
+        type: 'verse',
+        lines: [
+          `Khmih ka phang jingtrei kumba U la khot,`,
+          `Ha jingtlot sngewhun tang ban ïai minot;`,
+          `Jingsawa ba thiang U Trai ngin kynud,`,
+          `Leit sha ka jingkmen bymjukut.`,
+        ],
+      },
+      {
+        id: 'chorus-4',
+        order: 8,
+        type: 'chorus',
+        lines: [
+          `Ngin ïai trei, ngin ïai trei,`,
+          `Peit ka nong ba thiang shatei,`,
+          `Namar U Trai Un ong bor thymmai Un ai;`,
+          `Ngin ïai trei haduh ban da wai.`,
+        ],
+      },
+    ],
   },
-  paragraphs: [
-    {
-      id: 'verse-1',
-      order: 1,
-      type: 'verse',
-      lines: [
-        `Ah Trai Me la khot ïa nga,`,
-        `Shawei na neng Mem shah ba ngan ïaid bakha;`,
-        `Jingieit jong Me ïa nga ba;`,
-        `Tang na Me hi ïa kane nga pan.`
-      ]
+  {
+    id: 'song-247',
+    title: 'Pyneh Ha Jingïaleh',
+    metadata: {
+      number: 247,
+      language: 'khasi',
+      author: 'H.L.L.',
+      composer: 'R.S. 407',
+      syllables: 'Irregular',
     },
-    {
-      id: 'chorus-1',
-      order: 2,
-      type: 'chorus',
-      lines: [
-        `Nongpyn ka pyrthei,`,
-        `Theh ba nga la jingawei;`,
-        `Ki langbrot jong Me ban ba,`,
-        `Da la dohnud jingieit ba shisha.`
-      ]
-    },
-    {
-      id: 'verse-2',
-      order: 3,
-      type: 'verse',
-      lines: [
-        `Katba jingïaleh ki ban,`,
-        `Pynkynmaw katno ha Me ki ban,`,
-        `Ai ba ngan ban, da jingsngewmen,`,
-        `Ktien ba jem na nga Ah Trai ïai kren.`
-      ]
-    },
-    {
-      id: 'chorus-2',
-      order: 4,
-      type: 'chorus',
-      lines: [
-        `Nongpyn ka pyrthei,`,
-        `Theh ba nga la jingawei;`,
-        `Ki langbrot jong Me ban ba,`,
-        `Da la dohnud jingieit ba shisha.`
-      ]
-    },
-    {
-      id: 'verse-3',
-      order: 5,
-      type: 'verse',
-      lines: [
-        `Pop ha pyrthei, roi ba byllien;`,
-        `Jingieit na khait, Me la kren ka ktien,`,
-        `Jingsngewdaiaw nga tip nga shem,`,
-        `Bor baing ngi byneng ba ngan ïai bat skhem.`
-      ]
-    },
-    {
-      id: 'chorus-3',
-      order: 6,
-      type: 'chorus',
-      lines: [
-        `Nongpyn ka pyrthei,`,
-        `Theh ba nga la jinga,`,
-        `Ki langbrot jong Me ban ba,`,
-        `Da la dohnud jingieit ba shisha.`
-      ]
-    },
-    {
-      id: 'verse-4',
-      order: 7,
-      type: 'verse',
-      lines: [
-        `Tang kha ba khang ha nga;`,
-        `Minot na hangta kum ba,`,
-        `Ktien ba, sngewbha ba,`,
-        `Men ong ba nga Men shong.`
-      ]
-    },
-    {
-      id: 'chorus-4',
-      order: 8,
-      type: 'chorus',
-      lines: [
-        `Nongpyn na pyrthei ba,`,
-        `Niang ba nga na jinga,`,
-        `Baing ngong jong Me na ba, nga,`,
-        `Da nga ba jingieit na shisha.`
-      ]
-    }
-  ]
-},
-{
-  id: 'song-248',
-  title: 'Kaba Pynkyntang ba Ki Ning',
-  metadata: {
-    number: 248,
-    language: 'khasi',
-    author: 'H.L.L.',
-    composer: 'R.S. 483',
-    syllables: 'Irregular'
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          `Ah Trai Me la khot ïa nga,`,
+          `Shawei na neng Mem shah ba ngan ïaid bakha;`,
+          `Jingieit jong Me ïa nga ba;`,
+          `Tang na Me hi ïa kane nga pan.`,
+        ],
+      },
+      {
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
+          `Nongpyn ka pyrthei,`,
+          `Theh ba nga la jingawei;`,
+          `Ki langbrot jong Me ban ba,`,
+          `Da la dohnud jingieit ba shisha.`,
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 3,
+        type: 'verse',
+        lines: [
+          `Katba jingïaleh ki ban,`,
+          `Pynkynmaw katno ha Me ki ban,`,
+          `Ai ba ngan ban, da jingsngewmen,`,
+          `Ktien ba jem na nga Ah Trai ïai kren.`,
+        ],
+      },
+      {
+        id: 'chorus-2',
+        order: 4,
+        type: 'chorus',
+        lines: [
+          `Nongpyn ka pyrthei,`,
+          `Theh ba nga la jingawei;`,
+          `Ki langbrot jong Me ban ba,`,
+          `Da la dohnud jingieit ba shisha.`,
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 5,
+        type: 'verse',
+        lines: [
+          `Pop ha pyrthei, roi ba byllien;`,
+          `Jingieit na khait, Me la kren ka ktien,`,
+          `Jingsngewdaiaw nga tip nga shem,`,
+          `Bor baing ngi byneng ba ngan ïai bat skhem.`,
+        ],
+      },
+      {
+        id: 'chorus-3',
+        order: 6,
+        type: 'chorus',
+        lines: [
+          `Nongpyn ka pyrthei,`,
+          `Theh ba nga la jinga,`,
+          `Ki langbrot jong Me ban ba,`,
+          `Da la dohnud jingieit ba shisha.`,
+        ],
+      },
+      {
+        id: 'verse-4',
+        order: 7,
+        type: 'verse',
+        lines: [
+          `Tang kha ba khang ha nga;`,
+          `Minot na hangta kum ba,`,
+          `Ktien ba, sngewbha ba,`,
+          `Men ong ba nga Men shong.`,
+        ],
+      },
+      {
+        id: 'chorus-4',
+        order: 8,
+        type: 'chorus',
+        lines: [
+          `Nongpyn na pyrthei ba,`,
+          `Niang ba nga na jinga,`,
+          `Baing ngong jong Me na ba, nga,`,
+          `Da nga ba jingieit na shisha.`,
+        ],
+      },
+    ],
   },
-  paragraphs: [
-    {
-      id: 'verse-1',
-      order: 1,
-      type: 'verse',
-      lines: [
-        `Jaing baing sha ba nga ngi ba,`,
-        `ba nga ba ngi baseng;`,
-        `ba ba nga ba nga briewing,`,
-        `ba ba ning ba pynnging.`
-      ]
+  {
+    id: 'song-248',
+    title: 'Kaba Pynkyntang ba Ki Ning',
+    metadata: {
+      number: 248,
+      language: 'khasi',
+      author: 'H.L.L.',
+      composer: 'R.S. 483',
+      syllables: 'Irregular',
     },
-    {
-      id: 'verse-2',
-      order: 2,
-      type: 'verse',
-      lines: [
-        `Khmih ba nga ba ka nga Blei ba,`,
-        `ba ba ba baing,`,
-        `Kiba ba nga ba shaingtrei,`,
-        `ba ba nga ba ba ki ba.`
-      ]
-    },
-    {
-      id: 'verse-3',
-      order: 3,
-      type: 'verse',
-      lines: [
-        `Ba ba ba ba nga ba pynkup,`,
-        `ba ba ning ha pynngiing;`,
-        `haingkting sa nga ba,`,
-        `ba ba na rung ba nga baing.`
-      ]
-    },
-    {
-      id: 'verse-4',
-      order: 4,
-      type: 'verse',
-      lines: [
-        `ba nga ba khmat ba, nga ngi ba,`,
-        `Kting ka ba ba ba;`,
-        `ba ngkhing ba pdiang kba ba Me ba,`,
-        `ba nga ba ba kumjuh.`
-      ]
-    },
-    {
-      id: 'verse-5',
-      order: 5,
-      type: 'verse',
-      lines: [
-        `Ba kin ba nga sha ba ha khmat ba,`,
-        `ba ba ba nga baid,`,
-        `ba lam ba nga ba nga ba, baing, ba ba,`,
-        `ba ba baing ba lait.`
-      ]
-    },
-    {
-      id: 'verse-6',
-      order: 6,
-      type: 'verse',
-      lines: [
-        `ba basing ba nga pynkingngang, ba ba, baing ba,`,
-        `Ba ba baing Bnei ba, khid;`,
-        `ba ba ba ba ba ba nga;`,
-        `baing ba ba ba tuid.`
-      ]
-    }
-  ]
-},
-{
-  id: 'song-249',
-  title: 'Pynkyntang Nongsharai',
-  metadata: {
-    number: 249,
-    language: 'khasi',
-    author: 'S.M.ROY',
-    composer: 'Henryd (87.87.D)',
-    syllables: '87.87.D'
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          `Jaing baing sha ba nga ngi ba,`,
+          `ba nga ba ngi baseng;`,
+          `ba ba nga ba nga briewing,`,
+          `ba ba ning ba pynnging.`,
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          `Khmih ba nga ba ka nga Blei ba,`,
+          `ba ba ba baing,`,
+          `Kiba ba nga ba shaingtrei,`,
+          `ba ba nga ba ba ki ba.`,
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          `Ba ba ba ba nga ba pynkup,`,
+          `ba ba ning ha pynngiing;`,
+          `haingkting sa nga ba,`,
+          `ba ba na rung ba nga baing.`,
+        ],
+      },
+      {
+        id: 'verse-4',
+        order: 4,
+        type: 'verse',
+        lines: [
+          `ba nga ba khmat ba, nga ngi ba,`,
+          `Kting ka ba ba ba;`,
+          `ba ngkhing ba pdiang kba ba Me ba,`,
+          `ba nga ba ba kumjuh.`,
+        ],
+      },
+      {
+        id: 'verse-5',
+        order: 5,
+        type: 'verse',
+        lines: [
+          `Ba kin ba nga sha ba ha khmat ba,`,
+          `ba ba ba nga baid,`,
+          `ba lam ba nga ba nga ba, baing, ba ba,`,
+          `ba ba baing ba lait.`,
+        ],
+      },
+      {
+        id: 'verse-6',
+        order: 6,
+        type: 'verse',
+        lines: [
+          `ba basing ba nga pynkingngang, ba ba, baing ba,`,
+          `Ba ba baing Bnei ba, khid;`,
+          `ba ba ba ba ba ba nga;`,
+          `baing ba ba ba tuid.`,
+        ],
+      },
+    ],
   },
-  paragraphs: [
-    {
-      id: 'verse-1',
-      order: 1,
-      type: 'verse',
-      lines: [
-        `Ah Trai baieit bad ba isnei,`,
-        `La ka Balang Me la seng;`,
-        `Me ïai pynmih ïa ki nongtrei,`,
-        `Kiba sngew jingkhot naneng;`,
-        `Me khot ïa kine ki shakri,`,
-        `Ban ïai trei kam jong Me Trai,`,
-        `To wan pynkyntang ma Me hi,`,
-        `Ban shakri ïa Me khlem wai.`
-      ]
+  {
+    id: 'song-249',
+    title: 'Pynkyntang Nongsharai',
+    metadata: {
+      number: 249,
+      language: 'khasi',
+      author: 'S.M.ROY',
+      composer: 'Henryd',
+      syllables: '87.87.D',
     },
-    {
-      id: 'verse-2',
-      order: 2,
-      type: 'verse',
-      lines: [
-        `Da U Mynsiem aibor ia ki,`,
-        `Ban ïai shakri tang ïa Me;`,
-        `Ka Balang kan long shitylli,`,
-        `Ban paw ka burom jong Me;`,
-        `Kyrshan ïa ki ha ki jingeh,`,
-        `Ha jingtynjuh bad khuslai;`,
-        `Ba jingieit jong Me kan ïaineh,`,
-        `Haduh ba jingtrei la wai.`
-      ]
-    }
-  ]
-}
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          `Ah Trai baieit bad ba isnei,`,
+          `La ka Balang Me la seng;`,
+          `Me ïai pynmih ïa ki nongtrei,`,
+          `Kiba sngew jingkhot naneng;`,
+          `Me khot ïa kine ki shakri,`,
+          `Ban ïai trei kam jong Me Trai,`,
+          `To wan pynkyntang ma Me hi,`,
+          `Ban shakri ïa Me khlem wai.`,
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          `Da U Mynsiem aiborïaki,`,
+          `Ban ïai shakri tang ïa Me;`,
+          `Ka Balang kan long shitylli,`,
+          `Ban paw ka burom jong Me;`,
+          `Kyrshan ïa ki ha ki jingeh,`,
+          `Ha jingtynjuh bad khuslai;`,
+          `Ba jingieit jong Me kan ïaineh,`,
+          `Haduh ba jingtrei la wai.`,
+        ],
+      },
+    ],
+  },
 ];

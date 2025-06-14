@@ -1,4 +1,4 @@
-import { SongT } from "~/src/types/song";
+import { SongT } from '~/src/types/song';
 
 export const kaJingrwaiRevival: SongT[] = [
   {
@@ -7,8 +7,6 @@ export const kaJingrwaiRevival: SongT[] = [
     metadata: {
       number: 584,
       language: 'khasi',
-      composer: '',
-      syllables: '',
     },
     paragraphs: [
       {
@@ -16,8 +14,8 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          '`Їathuh, ko mynsiem jong nga, shano phan sa her?`',
-          '`Ngan sa her, ngan sa her sha lyndet jong ki lyoh.`',
+          `Їathuh, ko mynsiem jong nga, shano phan sa her?`,
+          `Ngan sa her, ngan sa her sha lyndet jong ki lyoh.`,
         ],
       },
       {
@@ -25,8 +23,8 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          '`Їathuh, ko mynsiem jong nga, phan ïoh aïu shata?`',
-          '`Ngan sa ïoh, ngan sa ioh ka jingim bymjukut.`',
+          `Їathuh, ko mynsiem jong nga, phan ïoh aïu shata?`,
+          `Ngan sa ïoh, ngan sa ioh ka jingim bymjukut.`,
         ],
       },
       {
@@ -34,8 +32,8 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          '`Їathuh ko mynsiem jong nga, uei ban ai ïa pha?`',
-          '`Un sa ai, Un sa ai U Trai ba thaw ïa nga.`',
+          `Їathuh ko mynsiem jong nga, uei ban ai ïa pha?`,
+          `Un sa ai, Un sa ai U Trai ba thaw ïa nga.`,
         ],
       },
     ],
@@ -46,8 +44,6 @@ export const kaJingrwaiRevival: SongT[] = [
     metadata: {
       number: 585,
       language: 'khasi',
-      composer: '',
-      syllables: '',
     },
     paragraphs: [
       {
@@ -55,10 +51,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          '`Ki angel ki ïaid tawiar,`',
-          '`Ki angel ki ïaid tawiar;`',
-          '`Ki angel, ki angel,`',
-          '`Ki angel ki ïaid tawiar.`',
+          `Ki angel ki ïaid tawiar,`,
+          `Ki angel ki ïaid tawiar;`,
+          `Ki angel, ki angel,`,
+          `Ki angel ki ïaid tawiar.`,
         ],
       },
       {
@@ -66,10 +62,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          '`Ban kit khubor sha ïing hun,`',
-          '`Ban kit khubor sha ïing hun;`',
-          '`Ban kit, ban kit,`',
-          '`Ban kit khubor sha ïing hun.`',
+          `Ban kit khubor sha ïing hun,`,
+          `Ban kit khubor sha ïing hun;`,
+          `Ban kit, ban kit,`,
+          `Ban kit khubor sha ïing hun.`,
         ],
       },
       {
@@ -77,10 +73,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          '`Jerusalem ba thymmai,`',
-          '`Jerusalem ba thymmai;`',
-          '`Jeru, Jeru,`',
-          '`Jerusalem ba thymmai.`',
+          `Jerusalem ba thymmai,`,
+          `Jerusalem ba thymmai;`,
+          `Jeru, Jeru,`,
+          `Jerusalem ba thymmai.`,
         ],
       },
     ],
@@ -91,8 +87,6 @@ export const kaJingrwaiRevival: SongT[] = [
     metadata: {
       number: 586,
       language: 'khasi',
-      composer: '',
-      syllables: '',
     },
     paragraphs: [
       {
@@ -100,9 +94,9 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          '`Ko Blei, Ko Blei, Ko Pa jong Nga,`',
-          '`Khmih kti bad kjat jong Nga!`',
-          '`Khmih kti bad kjat jong Nga!`',
+          `Ko Blei, Ko Blei, Ko Pa jong Nga,`,
+          `Khmih kti bad kjat jong Nga!`,
+          `Khmih kti bad kjat jong Nga!`,
         ],
       },
       {
@@ -110,11 +104,11 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          '`Ko Blei, Ko Blei, Ko Pa jong Nga,`',
-          '`To khmih ïa ka khlieh jong Nga!`',
-          '`Ko Blei, Ko Blei, Ko Pa jong Nga,`',
-          '`To khmih ïa ka krung jong Nga!`',
-          '`Ba la leh ki nongpop.`',
+          `Ko Blei, Ko Blei, Ko Pa jong Nga,`,
+          `To khmih ïa ka khlieh jong Nga!`,
+          `Ko Blei, Ko Blei, Ko Pa jong Nga,`,
+          `To khmih ïa ka krung jong Nga!`,
+          `Ba la leh ki nongpop.`,
         ],
       },
       {
@@ -122,9 +116,9 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          '`Ko Blei, Ko Blei, Ko Pa jong Nga,`',
-          '`To map ia ki! naba,`',
-          '`Kim tip kaei ba ki leh.`',
+          `Ko Blei, Ko Blei, Ko Pa jong Nga,`,
+          `To mapïaki! naba,`,
+          `Kim tip kaei ba ki leh.`,
         ],
       },
       {
@@ -132,9 +126,9 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          '`Nga long, nga long, nga long u nongpop,`',
-          '`Ah Trai, to map ïa nga!`',
-          '`Ah Trai, to map ïa nga!`',
+          `Nga long, nga long, nga long u nongpop,`,
+          `Ah Trai, to map ïa nga!`,
+          `Ah Trai, to map ïa nga!`,
         ],
       },
       {
@@ -142,20 +136,16 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 5,
         type: 'verse',
         lines: [
-          '`Ngan bud, ngan bud, ngan bud, ngan bud,`',
-          '`Ngan bud sha lum Kalbari,`',
-          '`Ngan bud sha lum Kalbari.`',
+          `Ngan bud, ngan bud, ngan bud, ngan bud,`,
+          `Ngan bud sha lum Kalbari,`,
+          `Ngan bud sha lum Kalbari.`,
         ],
       },
       {
         id: 'verse-6',
         order: 6,
         type: 'verse',
-        lines: [
-          '`To nang ïalam, to nang ïalam,`',
-          '`Їalam, Mynsiem babha!`',
-          '`Їalam, Mynsiem babha!`',
-        ],
+        lines: [`To nang ïalam, to nang ïalam,`, `Їalam, Mynsiem babha!`, `Їalam, Mynsiem babha!`],
       },
     ],
   },
@@ -165,8 +155,6 @@ export const kaJingrwaiRevival: SongT[] = [
     metadata: {
       number: 587,
       language: 'khasi',
-      composer: '',
-      syllables: '',
     },
     paragraphs: [
       {
@@ -174,10 +162,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          '`Nga long, Nga long U Khrist jong phi,`',
-          '`Ba la ïap, ba la ïap ha diengphyna;`',
-          '`Nga long, Nga long U Khrist jong phi,`',
-          '`Ba la ïap, ba la ïap ha diengphyna.`',
+          `Nga long, Nga long U Khrist jong phi,`,
+          `Ba la ïap, ba la ïap ha diengphyna;`,
+          `Nga long, Nga long U Khrist jong phi,`,
+          `Ba la ïap, ba la ïap ha diengphyna.`,
         ],
       },
       {
@@ -185,10 +173,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          '`Nga long, Nga long U Khrist jong phi,`',
-          '`Uba kit, Uba kit ki pop jong phi;`',
-          '`Nga long, Nga long U Khrist jong phi,`',
-          '`Uba kit, Uba kit ki pop jong phi.`',
+          `Nga long, Nga long U Khrist jong phi,`,
+          `Uba kit, Uba kit ki pop jong phi;`,
+          `Nga long, Nga long U Khrist jong phi,`,
+          `Uba kit, Uba kit ki pop jong phi.`,
         ],
       },
       {
@@ -196,10 +184,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          '`Shadkmen, to shadkmen da kaba nguh,`',
-          '`U Khrist te U ong, Nga ieit ïa phi;`',
-          '`Shadkmen, to shadkmen da kaba nguh,`',
-          '`U Khrist te U ong, Nga ieit ïa phi.`',
+          `Shadkmen, to shadkmen da kaba nguh,`,
+          `U Khrist te U ong, Nga ieit ïa phi;`,
+          `Shadkmen, to shadkmen da kaba nguh,`,
+          `U Khrist te U ong, Nga ieit ïa phi.`,
         ],
       },
       {
@@ -207,10 +195,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          '`Shadkmen, to shadkmen Balang U Blei,`',
-          '`U Khrist te U ong, Nga ieit ïa phi;`',
-          '`Shadkmen, to shadkmen Balang U Blei,`',
-          '`U Khrist te U ong, Nga ieit ïa phi.`',
+          `Shadkmen, to shadkmen Balang U Blei,`,
+          `U Khrist te U ong, Nga ieit ïa phi;`,
+          `Shadkmen, to shadkmen Balang U Blei,`,
+          `U Khrist te U ong, Nga ieit ïa phi.`,
         ],
       },
       {
@@ -218,10 +206,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 5,
         type: 'verse',
         lines: [
-          '`U Jisu, U Jisu U la ïap,`',
-          '`U la ïap, U la ïap ha diengphyna;`',
-          '`U Jisu, U Jisu U la shah,`',
-          '`U la shah, U la shah namar jong nga.`',
+          `U Jisu, U Jisu U la ïap,`,
+          `U la ïap, U la ïap ha diengphyna;`,
+          `U Jisu, U Jisu U la shah,`,
+          `U la shah, U la shah namar jong nga.`,
         ],
       },
       {
@@ -229,10 +217,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 6,
         type: 'verse',
         lines: [
-          '`Janai, pynjanai Balang U Blei,`',
-          '`Janai, pynjanai Balang U Blei;`',
-          '`Janai, pynjanai Balang U Blei,`',
-          '`U Khrist te U ong, Nga ieit ïa phi.`',
+          `Janai, pynjanai Balang U Blei,`,
+          `Janai, pynjanai Balang U Blei;`,
+          `Janai, pynjanai Balang U Blei,`,
+          `U Khrist te U ong, Nga ieit ïa phi.`,
         ],
       },
     ],
@@ -243,8 +231,6 @@ export const kaJingrwaiRevival: SongT[] = [
     metadata: {
       number: 588,
       language: 'khasi',
-      composer: '',
-      syllables: '',
     },
     paragraphs: [
       {
@@ -252,10 +238,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          '`Trai kum ha ka sngi Pentecost,`',
-          '`Ah to theh da ka bor bah bakhraw;`',
-          '`Ban ing duh ki pop kum ha ka ding barhem,`',
-          '`Ah Mynsiem Bakhuid to wan.`',
+          `Trai kum ha ka sngi Pentecost,`,
+          `Ah to theh da ka bor bah bakhraw;`,
+          `Ban ing duh ki pop kum ha ka ding barhem,`,
+          `Ah Mynsiem Bakhuid to wan.`,
         ],
       },
       {
@@ -263,10 +249,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 2,
         type: 'chorus',
         lines: [
-          '`Ah Mynsiem bajemnud, Ah to wan noh kloi,`',
-          '`Ngi ki khun jong Me donkam jingim;`',
-          '`Pynduh ki jingsngewbha, ki syntiew pyrthei,`',
-          '`Ba ngan bud ruh tang ïa Me.`',
+          `Ah Mynsiem bajemnud, Ah to wan noh kloi,`,
+          `Ngi ki khun jong Me donkam jingim;`,
+          `Pynduh ki jingsngewbha, ki syntiew pyrthei,`,
+          `Ba ngan bud ruh tang ïa Me.`,
         ],
       },
       {
@@ -274,10 +260,10 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          '`Trai ngi dang ap haduh kane ka por,`',
-          "`Ї'U Mynsiem Bakhuid ka jingkular;`",
-          '`Ba Men theh noh hapdeng jong ngi Trai mynta,`',
-          "`Ї'U Mynsiem bakhuid ka bor.`",
+          `Trai ngi dang ap haduh kane ka por,`,
+          `Ї'U Mynsiem Bakhuid ka jingkular;`,
+          `Ba Men theh noh hapdeng jong ngi Trai mynta,`,
+          `Ї'U Mynsiem bakhuid ka bor.`,
         ],
       },
     ],
@@ -288,39 +274,37 @@ export const kaJingrwaiRevival: SongT[] = [
     metadata: {
       number: 589,
       language: 'khasi',
-      composer: '',
-      syllables: '',
     },
     paragraphs: [
       {
         id: 'verse-1',
         order: 1,
         type: 'verse',
-        lines: ['`Ah Trai phah rebaibal (3)`', '`Ai kan sdang shwa na nga.`'],
+        lines: [`Ah Trai phah rebaibal (3)`, `Ai kan sdang shwa na nga.`],
       },
       {
         id: 'verse-2',
         order: 2,
         type: 'verse',
-        lines: ['`Pynbaptis ïa nga Trai (3)`', '`Da ka ding U Mynsiem.`'],
+        lines: [`Pynbaptis ïa nga Trai (3)`, `Da ka ding U Mynsiem.`],
       },
       {
         id: 'verse-3',
         order: 3,
         type: 'verse',
-        lines: ['`Pynrhem hapoh jongnga (3)`', '`Da ka ding U Mynsiem.`'],
+        lines: [`Pynrhem hapoh jongnga (3)`, `Da ka ding U Mynsiem.`],
       },
       {
         id: 'verse-4',
         order: 4,
         type: 'verse',
-        lines: ['`Pynim la ka Balang (3)`', '`Ai kan sdang shwa na nga`'],
+        lines: [`Pynim la ka Balang (3)`, `Ai kan sdang shwa na nga`],
       },
       {
         id: 'verse-5',
         order: 5,
         type: 'verse',
-        lines: ['`Ai bor ba ngan ïalap (3)`', '`Їa ka kyrteng jong Me.`'],
+        lines: [`Ai bor ba ngan ïalap (3)`, `Їa ka kyrteng jong Me.`],
       },
     ],
   },
@@ -331,7 +315,6 @@ export const kaJingrwaiRevival: SongT[] = [
       number: 590,
       language: 'khasi',
       composer: 'D.W.',
-      syllables: '',
     },
     paragraphs: [
       {
@@ -339,19 +322,19 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          '`Kut jingmut baroh ban khot kyrpad,`',
-          '`Їa U Mynsiem Bakhuid;`',
-          '`Namar mynta U ïeng ha syndah,`',
-          '`Jingkhang dohnud ki briew;`',
-          '`Duwai kyrpad jur baroh lang,`',
-          '`Їa ka kyrteng U Mynsiem Bakhuid ka bor.`',
+          `Kut jingmut baroh ban khot kyrpad,`,
+          `Їa U Mynsiem Bakhuid;`,
+          `Namar mynta U ïeng ha syndah,`,
+          `Jingkhang dohnud ki briew;`,
+          `Duwai kyrpad jur baroh lang,`,
+          `Їa ka kyrteng U Mynsiem Bakhuid ka bor.`,
         ],
       },
       {
         id: 'chorus-1',
         order: 2,
         type: 'chorus',
-        lines: ['`Duwai kyrpad jur baroh lang,`', '`Їa ka kyrteng U Mynsiem Bakhuid ka bor.`'],
+        lines: [`Duwai kyrpad jur baroh lang,`, `Їa ka kyrteng U Mynsiem Bakhuid ka bor.`],
       },
     ],
   },
@@ -362,7 +345,6 @@ export const kaJingrwaiRevival: SongT[] = [
       number: 591,
       language: 'khasi',
       composer: 'D.W.',
-      syllables: '',
     },
     paragraphs: [
       {
@@ -370,14 +352,14 @@ export const kaJingrwaiRevival: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          '`To wan Mynsiem Bakhuid ha nga,`',
-          '`Rung hapoh ka dohnud jong nga,`',
-          '`To pynkhuid phar ki pop jong nga,`',
-          '`Shong sah hapoh jong nga.`',
-          '`Ah Mynsiem Bakhuid jingkular,`',
-          '`To ïasylla hapoh jong nga,`',
-          '`To pynshait bor ïa nga ba swai,`',
-          '`Ngan ïeng ngan ïaid bad Me.`',
+          `To wan Mynsiem Bakhuid ha nga,`,
+          `Rung hapoh ka dohnud jong nga,`,
+          `To pynkhuid phar ki pop jong nga,`,
+          `Shong sah hapoh jong nga.`,
+          `Ah Mynsiem Bakhuid jingkular,`,
+          `To ïasylla hapoh jong nga,`,
+          `To pynshait bor ïa nga ba swai,`,
+          `Ngan ïeng ngan ïaid bad Me.`,
         ],
       },
     ],
