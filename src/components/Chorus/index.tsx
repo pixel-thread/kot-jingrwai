@@ -1,5 +1,6 @@
 import { TouchableOpacity, View } from 'react-native';
-import { Container } from '../Container';
+import { Container } from '~/src/components/Common/Container';
+
 import { khoros as allSongs } from '~/src/libs/khoros';
 import { useRouter } from 'expo-router';
 import { useSongs } from '~/src/hooks/song/useSongs';

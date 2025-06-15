@@ -9,19 +9,19 @@ export interface ApiResponse<T> {
   message: string;
   data: T | null; // 👈 Explicitly allow `null`
   token?: string;
-  error?: string | Record<string, >;
+  error?: string | Record<string, any>;
 }
 
-export const handleAxiosError = <T>(error: ): ApiResponse<T> => {
+export const handleAxiosError = <T>(error: unknown): ApiResponse<T> => {
   let errorMessage = 'Something went wrong. Please try again.';
-  let errorDetails: string | Record<string, > = '';
+  let errorDetails: string | Record<string, any> = '';
 
   if (error instanceof AxiosError) {
     if (error.response) {
       logger.error(error.response.data);
       errorMessage = (error.response.data as { message?: string })?.message || errorMessage;
       errorDetails =
-        (error.response.data as { error?: string | Record<string, > })?.error ||
+        (error.response.data as { error?: string | Record<string, any> })?.error ||
         error.response.data ||
         '';
     } else if (error.request) {

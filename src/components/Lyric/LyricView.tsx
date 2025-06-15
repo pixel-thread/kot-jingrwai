@@ -57,7 +57,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
   const combinedGesture = Gesture.Simultaneous(doubleTapGesture, leftRightGesture);
 
   useEffect(() => {
-    scrollRef.current?.scrollTo({ y: 0, animated: false });
+    scrollRef.current?.scrollTo({ y: 0, animated: true });
   }, [song.metadata.number, scrollRef]);
 
   return (
@@ -75,7 +75,9 @@ export const LyricView = ({ song }: LyricViewProps) => {
             <Text
               size={'2xl'}
               weight={'bold'}
-              className="mb-1 text-center tracking-wide text-gray-900 dark:text-gray-100">
+              tracking="widest"
+              leading={'tight'}
+              className="mb-1 text-center text-gray-900 dark:text-gray-100">
               {title}
             </Text>
             {song.metadata.author && (
@@ -108,46 +110,50 @@ export const LyricView = ({ song }: LyricViewProps) => {
                       italic={true}
                       size={'xs'}
                       variant={'muted'}
-                      className="px-2 text-right text-gray-500 dark:text-gray-400">
+                      tracking={'wider'}
+                      className="px-2 text-justify text-gray-500 dark:text-gray-400">
                       {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
                     </Text>
                   </View>
                   {/* Paragraph Box */}
                   <View
-                    className={cn(
-                      getParagraphStyle(paragraph.type),
-                      'border-none bg-transparent p-0'
-                    )}>
+                    className={cn(getParagraphStyle(paragraph.type), 'border-none bg-transparent')}>
                     {paragraph.lines.map((line, index) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
                       const isChorus = paragraph.type === 'chorus';
-                      const textContent = isChorus
-                        ? `${isFirst ? '“' : ''}${line}${isLast ? '”' : ''}`
-                        : line;
+                      const textContent = line;
                       return (
                         <Ternary
                           key={`${paragraph.id}-line-${index}`}
                           condition={isChorus}
                           ifTrue={
-                            <Text
-                              key={`${paragraph.id}-${isChorus ? 'chorus' : 'verse'}-line-${index}`}
-                              size={size}
-                              italic
-                              variant={'muted'}
-                              className={cn(
-                                'font-medium text-blue-800 dark:text-blue-300',
-                                'leading-relaxed'
-                              )}>
-                              {textContent || ' '}
-                            </Text>
+                            <View className="flex-1 flex-row">
+                              {isFirst && <Text variant={'primary'} size={'xl'}>{`"`}</Text>}
+                              <View className={isFirst ? 'px-0' : isLast ? 'pl-2' : 'px-2'}>
+                                <Text
+                                  key={`${paragraph.id}-${isChorus ? 'chorus' : 'verse'}-line-${index}`}
+                                  size={size}
+                                  italic={true}
+                                  tracking={'widest'}
+                                  className={cn(
+                                    'font-medium text-blue-800 dark:text-blue-300',
+                                    'leading-relaxed'
+                                  )}>
+                                  {textContent || ' '}
+                                </Text>
+                              </View>
+                              {isLast && <Text variant={'primary'} size={'xl'}>{`"`}</Text>}
+                            </View>
                           }
                           ifFalse={
                             <Text
                               key={`${paragraph.id}-line-${index}`}
                               size={size}
                               variant={'default'}
-                              className={cn('text-gray-900 dark:text-gray-100', 'leading-relaxed')}>
+                              leading={'normal'}
+                              tracking={'widest'}
+                              className={cn('text-left text-gray-900 dark:text-gray-100')}>
                               {textContent || ' '}
                             </Text>
                           }

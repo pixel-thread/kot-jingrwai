@@ -2,7 +2,7 @@ import { TouchableOpacity, View } from 'react-native';
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useSongStore } from '~/src/libs/stores/songs';
-import { Container } from '../Container';
+import { Container } from '~/src/components/Common/Container';
 
 type SongNavigationProps = {
   onNext: () => void;
@@ -10,7 +10,7 @@ type SongNavigationProps = {
   songNumber: number;
 };
 
-export const SongNavigation = ({ onNext, onPrevious, songNumber }: SongNavigationProps) => {
+export const SongNavigation = ({ songNumber }: SongNavigationProps) => {
   const { favoriteSongs, addFavoriteSong, removeFavoriteSong } = useSongStore();
   const isFavorite = favoriteSongs.includes(songNumber);
   const onClickFavorite = () => {

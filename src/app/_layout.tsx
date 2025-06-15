@@ -21,7 +21,7 @@ export default function Layout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider className="flex-1">
-        <StatusBar className="bg-gray-200 text-black dark:bg-gray-950 dark:text-white" />
+        <StatusBar className={'bg-gray-200 text-black dark:bg-gray-950 dark:text-gray-200'} />
         <SongProvider>
           <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-950">
             <Ternary

@@ -1,10 +1,10 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import React from 'react';
-import { Text as RNText, TextProps as RNTextProps, useWindowDimensions } from 'react-native';
+import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 import { cn } from '~/src/libs/cn';
 
 export const textVariants = cva(
-  'text-black antialias tracking-wider whitespace-pre-line font-sans dark:text-gray-200',
+  'text-black antialias whitespace-pre-line font-sans dark:text-gray-200',
   {
     variants: {
       size: {
@@ -44,6 +44,20 @@ export const textVariants = cva(
         right: 'text-right',
         justify: 'text-justify',
       },
+      tracking: {
+        tighter: 'tracking-tighter',
+        tight: 'tracking-tight',
+        normal: 'tracking-normal',
+        wide: 'tracking-wide',
+        wider: 'tracking-wider',
+        widest: 'tracking-widest',
+      },
+      leading: {
+        none: 'leading-none',
+        tight: 'leading-tight',
+        normal: 'leading-normal',
+        loose: 'leading-loose',
+      },
       variant: {
         default: '',
         primary: 'text-blue-600 dark:text-blue-400',
@@ -61,6 +75,8 @@ export const textVariants = cva(
       variant: 'default',
       decoration: 'none',
       italic: false,
+      tracking: 'normal',
+      leading: 'normal',
     },
   }
 );
@@ -80,12 +96,18 @@ export const Text = ({
   weight,
   align,
   variant,
+  tracking,
+  italic,
+  leading,
   ...rest
 }: CustomTextProps) => {
   return (
     <RNText
       {...rest}
-      className={cn(textVariants({ size: size, weight, align, variant }), className)}>
+      className={cn(
+        textVariants({ size, weight, align, variant, italic, tracking, leading }),
+        className
+      )}>
       {children}
     </RNText>
   );

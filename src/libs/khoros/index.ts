@@ -12,7 +12,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Jingaiei ka don ka ram ban siew,`,
           `Snam ban sait phar ïa ka jinglong sniew,`,
@@ -33,7 +33,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Shaniah skhem, la jur ka jingïaleh,`,
           `Shaniah skhem ha lynti kaba eh,`,
@@ -54,7 +54,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Ah ka snam, ka snam kordor,`,
           `Ba la mih na Kalbari !`,
@@ -75,7 +75,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Kut la ka jingleit,`,
           `Phong la pansngiat,`,
@@ -98,7 +98,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Nga bam ka manna b'la buhrieh,`,
           `Na ki wah um ba im nga dih;`,
@@ -119,7 +119,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Ym dei ma ba phylla, ba phylla, ba phylla,`,
           `Trai Jisu U long Uba phylla,`,
@@ -141,7 +141,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Baphylla, baphylla, Jisu long ha nga,`,
           `Nongsylla, Syiem jingsuk, Blei khrawbor U long;`,
@@ -162,7 +162,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Oh! Katno nga kwah peit ïa ka khmat jong U,`,
           `Ngan ïoh ïaroh junom jingisnei jong U;`,
@@ -183,7 +183,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Namar ngin sa ïoh ïa shong lang,`,
           `Katno jingsuk ngin long,`,
@@ -205,7 +205,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Nga kham ieit ïa U man ka sngi,`,
           `Nga kham ieit ïa U man ka sngi;`,
@@ -226,7 +226,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Man ka sngi bad Jisu, jingim bahun dei tang bad U,`,
           `Man ka sngi bad Jisu, nga nang kham ieitïaU;`,
@@ -247,7 +247,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Shaniah h'U Trai wat sngew khuslai,`,
           `U long lok ba shisha, Haleluïa,`,
@@ -268,7 +268,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Blei U ieit ka pyrthei, U ai ï'U Khun marwei;`,
           `Ban ïap ha ka diengphna, ban pyllait phar ïa nga,`,
@@ -289,7 +289,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Oh! Їaroh ï'U Blei b'U la pynim ïa nga,`,
           `B'U la pynim ïa nga, nga tip,`,
@@ -313,7 +313,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Shisha jingbha bad jingisnei kin bud ïa nga. (2 Sien)`,
           `Shisha jingbha bad jingisnei kin bud ïa nga. (2 Sien)`,
@@ -334,7 +334,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Pynlong ïa nga Trai, jingim kum jingrwai,`,
           `Ka ban ïai pynsawa khubor ka diengphna,`,
@@ -359,7 +359,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Wad shuwa ïa ka hima U Blei,`,
           `Wad shuwa, wad shuwa.`,
@@ -384,7 +384,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Їaid bad U Jisu,`,
           `Їaid man la ka sngi, ïaid tang bad U hi,`,
@@ -409,7 +409,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Ai jingbhabriew U Jisu yn i ha nga,`,
           `Dur ieit ba sngewrit, batlem bad ba shisha;`,
@@ -430,7 +430,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Mynhynnin, mynta, bymjukut, Jisu long kumjuh,`,
           `Baroh kylla, Jisu te em, ïaroh ïa U Blei,`,
@@ -451,7 +451,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `La shim noh, la shim noh, la shim noh, (2 sien)`,
           `Jingkit hapoh ka dohnud la shim, noh, (2 sien)`,
@@ -473,7 +473,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Halelu, Halelu, Halelu, Haleluïa, ïaroh ï'U Trai, (2 sien)`,
           `Їaroh ï'U Trai,Haleluïa, (3 sien)`,
@@ -493,7 +493,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Rupa bad ka ksiar ngam don, kaba nga don nga ai ha Me,`,
           `Ha kyrteng U Jisu Khrist, Uba na Nasareth, to ïaid;`,
@@ -514,7 +514,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Haba U khot nga ngan jubab, (3 sien)`,
           `Ngan trei kat sha ba phah U Trai.`,
@@ -535,7 +535,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Nga don ka ïing shongneh haneng kham phyrnai ïa ka sngi (3 sien)`,
           `Sha lyndet ki lyoh,`,
@@ -558,7 +558,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           'O! Sngi baphylla, ka sngi baphylla,',
           'Ngam klet ha jingim jong nga,',
@@ -588,7 +588,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           'Ngi don U Blei ba khraw ba phylla, (2 sien)',
           'U Blei Uba ieit ïa ngi baroh,',
@@ -613,7 +613,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Їar ïar kat ka duriaw, ka jrong kat ka bneng shatei,`,
           `Jylliew kat ka duriaw bah, ka jingieit bah U Trai`,
@@ -634,7 +634,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Naba U Blei U ieit katta ïa ka pyrthei,`,
           `B'U aiti la U Khun, Uba la kha marwei,`,
@@ -655,7 +655,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Ki ong U long ba phylla,`,
           `Ki ong U long ba phylla;`,
@@ -666,7 +666,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-2',
         order: 2,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Nga tip U long ba phylla,`,
           `Nga tip U long ba phylla;`,
@@ -687,7 +687,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `La ka jur ka jingïaleh, to long shlur, lok,`,
           `Ha jingshitom bad jingeh, to long shlur, lok,`,
@@ -712,7 +712,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Nga la kut jingmut ban bud ï'U Jisu, (3 sien)`,
           `Ngan ym phai dien, ngan ym phai dien.`,
@@ -721,7 +721,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-2',
         order: 2,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Kiwei la kim treh nga marwei ngan bud, (3 sien)`,
           `Ngan ym phai dien, ngan ym phai dien.`,
@@ -730,7 +730,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-3',
         order: 3,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Pyrthei ngan ïehnoh, ïa diengphna ngan bah, (3 sien)`,
           `Ngan ym phai dien, Ngan ym phai dien.`,
@@ -749,7 +749,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Wan Mynsiem Bakhuid nga donkam,`,
           `Wan Mynsiem Bakhuid nga duwai;`,
@@ -770,7 +770,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: ['Ki jinglong barim nga la iehnoh baroh,(3 sien)', 'Naduh ba la pynim ïa nga.'],
       },
       {
@@ -782,19 +782,19 @@ export const khoros: SongT[] = [
       {
         id: 'verse-2',
         order: 3,
-        type: 'verse',
+        type: 'chorus',
         lines: ['Ki kam ba nga ju leh, ngam leh shuh mynta,(3 sien)', 'Naduh ba la pynim ïa nga.'],
       },
       {
         id: 'verse-3',
         order: 4,
-        type: 'verse',
+        type: 'chorus',
         lines: ['Kiba nga ju ïohi, ngam peit shuh mynta,(3 sien)', 'Naduh ba la pynim ïa nga.'],
       },
       {
         id: 'verse-4',
         order: 5,
-        type: 'verse',
+        type: 'chorus',
         lines: ['Jaka ba nga ju leit, ngam leit shuh mynta,(3 sien)', 'Naduh ba la pynim ïa nga.'],
       },
     ],
@@ -810,7 +810,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Kita ba ap khmih ï'U Trai kin pynthymmai bor,`,
           `Kin her da thapniang kum ki pukni;`,
@@ -831,7 +831,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           'Don ba ktah ïa nga mynba nga dang duwai, (3 sien)',
           'Dei ka kti ba pynim jong U Trai.',
@@ -840,7 +840,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-2',
         order: 2,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           'Don ba ktah ïa nga mynba nga dang khot, (3 sien)',
           'Dei ka kti ba pynim jong U Trai.',
@@ -849,7 +849,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-3',
         order: 3,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           'Don ba ktah ïa nga mynba nga dang wad, (3 sien)',
           'Dei ka kti ba pynim jong U Trai.',
@@ -858,7 +858,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-4',
         order: 4,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           'Don ba ktah ïa nga mynba nga dang rwai, (3 sien)',
           'Dei ka kti ba pynim jong U Trai.',
@@ -877,7 +877,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           'Ah! Mynsiem Bakhuid jingkular, (3 sien)',
           'To pynbaptis ïa nga;',
@@ -900,7 +900,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-1',
         order: 1,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Trai, nga kwah ban long u khristan,`,
           `Ha ka dohnud, ha ka dohnud,`,
@@ -911,7 +911,7 @@ export const khoros: SongT[] = [
       {
         id: 'verse-2',
         order: 2,
-        type: 'verse',
+        type: 'chorus',
         lines: [
           `Trai, nga kwah ban long kum Jisu,`,
           `Ha ka dohnud, ha ka dohnud,`,
