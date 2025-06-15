@@ -2,16 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --liturgical-green: #228b22;
-  --liturgical-red: #b22222;
-  --liturgical-purple: #6a0dad;
-  --liturgical-white: #ffffff;
-}
+@layer base {
+  :root {
+    /* 🎨 Liturgical Tokens (Light Theme) */
+    --liturgical-green: 120 61% 34%;
+    --liturgical-red: 0 68% 42%;
+    --liturgical-purple: 276 77% 44%;
+    --liturgical-white: 0 0% 100%;
 
-.dark {
-  --liturgical-green: #14532d;
-  --liturgical-red: #7f1d1d;
-  --liturgical-purple: #4c1d95;
-  --liturgical-white: #f1f5f9;
+    /* 🌞 Light Theme Tokens */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 120 61% 34%; /* green */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 276 77% 95%; /* purple light */
+    --secondary-foreground: 276 77% 20%;
+
+    --muted: 276 77% 96%;
+    --muted-foreground: 276 50% 30%;
+
+    --accent: 0 68% 42%; /* 🔴 red for CTA */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 68% 30%; /* darker red for errors */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 89.8%;
+    --ring: 0 68% 42%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* 🎨 Liturgical Tokens (Dark Theme) */
+    --liturgical-green: 144 43% 19%;
+    --liturgical-red: 0 61% 30%;
+    --liturgical-purple: 261 65% 34%;
+    --liturgical-white: 210 40% 96%;
+
+    /* 🌚 Dark Theme Tokens */
+    --background: 261 65% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 261 65% 14%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 261 65% 14%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 144 43% 19%;
+    --primary-foreground: 210 40% 96%;
+
+    --secondary: 261 40% 25%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 261 30% 20%;
+    --muted-foreground: 261 20% 70%;
+
+    --accent: 0 61% 30%; /* 🔴 CTA in dark */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 70% 25%; /* deeper red for error */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 261 40% 25%;
+    --input: 261 40% 25%;
+    --ring: 0 68% 42%;
+  }
 }
