@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import { View } from 'react-native';
-import { Container } from '~/src/components/Container';
+import { Container } from '~/src/components/Common/Container';
 import { LyricView } from '~/src/components/Lyric/LyricView';
 import { khoros } from '~/src/libs/khoros';
 

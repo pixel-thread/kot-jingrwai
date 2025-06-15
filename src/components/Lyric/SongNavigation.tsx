@@ -2,7 +2,7 @@ import { TouchableOpacity, View } from 'react-native';
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useSongStore } from '~/src/libs/stores/songs';
-import { Container } from '../Container';
+import { Container } from '~/src/components/Common/Container';
 
 type SongNavigationProps = {
   onNext: () => void;

@@ -1,5 +1,6 @@
 import { View, TouchableOpacity } from 'react-native';
-import { Container } from '../Container';
+import { Container } from '~/src/components/Common/Container';
+
 import { songs as allSongs } from '~/src/libs/songs';
 import { useRouter } from 'expo-router';
 import { useSongs } from '~/src/hooks/song/useSongs';
