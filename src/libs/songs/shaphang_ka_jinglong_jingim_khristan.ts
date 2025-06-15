@@ -171,7 +171,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'Ba ngan ïalapïaka Gospel,',
+          'Ba ngan ïalap ïa ka Gospel,',
           'Ai ngan sngew ka bor jong ka;',
           'Ba ki briew kin shem jingkynduh,',
           'Theh U Mynsiem buk ha nga;',
@@ -3889,7 +3889,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
           `Bad mynta da ka sur thymmai,`,
           `Ban riwai jam nga lah;`,
           `‘Burom Ï'U Blei, ba U la ai,`,
-          `Ka jingpynhunïanga’.`,
+          `Ka jingpynhun ïa nga’.`,
         ],
       },
       {
@@ -5252,7 +5252,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
   },
   {
     id: 'song-335',
-    title: 'Ka Jingïaikyrmen',
+    title: 'Ka Jingïai kyrmen',
     metadata: {
       number: 335,
       language: 'khasi',
@@ -6994,7 +6994,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
         type: 'verse',
         lines: [
           'Bad la nga ïaid ha them jingïap,',
-          'Ngam tiengïakaba sniew;',
+          'Ngam tieng ïa kaba sniew;',
           'Diengduh bad shanduh Me ki rap,',
           'Ei ei ngam don jingngiew.',
         ],
@@ -8517,7 +8517,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
         type: 'verse',
         lines: [
           'Nga don U Lok ba hajan eh,',
-          'Uba ïakmen ïaïam lem;',
+          'Uba ïakmen ïa ïam lem;',
           'U long U Jisu Nongpynim,',
           'Ba ieit ïa nga la mynslem.',
         ],
@@ -8831,7 +8831,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
           'Baroh ba shaniah ha U,',
           'Kin ïoh jingtngen badap;',
           'Ym don u ban kham i-ieit,',
-          `Ï'U Traib'laïap.`,
+          `Ï'U Trai b'la ïap.`,
         ],
       },
     ],
@@ -9366,7 +9366,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
         lines: [
           'Sngewphylla shijunom ba nga la lait im,',
           'Lajynjar ka mynsiem, la ker ka jingtim;',
-          'Ka ïaroh, ka buromïaMe te, Ko Trai,',
+          'Ka ïaroh, ka burom ïa Me te, Ko Trai,',
           'Shilynter ka jingim ka dei ba ngan ai.',
         ],
       },

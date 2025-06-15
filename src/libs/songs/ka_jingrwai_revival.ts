@@ -117,7 +117,7 @@ export const kaJingrwaiRevival: SongT[] = [
         type: 'verse',
         lines: [
           `Ko Blei, Ko Blei, Ko Pa jong Nga,`,
-          `To mapïaki! naba,`,
+          `To map ïa ki! naba,`,
           `Kim tip kaei ba ki leh.`,
         ],
       },

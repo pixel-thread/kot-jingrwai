@@ -191,7 +191,7 @@ export const shaphangKaJingiapKibaNgeit: SongT[] = [
           'Ki lok baieit jong nga kim lah,',
           'Tang sharud jingtep wan ban rah;',
           'Nangta ki phai, ka sngi kan long,',
-          `Kin iehïanga h'u maw ban shong.`,
+          `Kin ieh ïa nga h'u maw ban shong.`,
         ],
       },
       {

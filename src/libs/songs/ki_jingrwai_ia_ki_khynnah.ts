@@ -1053,7 +1053,7 @@ export const kiJingrwaiIaKiKhynnah: SongT[] = [
         type: 'verse',
         lines: [
           `Їa nga, Trai, pynlong jemnud,`,
-          `Kumba deiïau khynnah;`,
+          `Kumba dei ïa u khynnah;`,
           `Baroh shisngi ialam ruh,`,
           `Bthah aiu ngan ong, ngan leh.`,
         ],

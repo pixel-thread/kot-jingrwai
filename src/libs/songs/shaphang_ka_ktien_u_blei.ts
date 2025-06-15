@@ -310,7 +310,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          `Kham thiang hiïaka rewngap,`,
+          `Kham thiang hi ïa ka rewngap,`,
           `Ngin ïaroh;`,
           `Ngin ïoh ka jingsngewbha ba dap,`,
           `Ngin ïaroh.`,
@@ -609,7 +609,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
           `Baibl ba nga ieit,`,
           `Ngan kohnguh tang ïa ka;`,
           `Kan sa long ka sharak,`,
-          `Ban ïalam beitïanga.`,
+          `Ban ïalam beit ïa nga.`,
         ],
       },
     ],

@@ -343,7 +343,7 @@ export const shaphangKaKamUBlei: SongT[] = [
           'Jingieit ba kum lyoh ding;',
           'Kaba la thung U Trai,',
           'Ban lam ïa ngi sha ïing;',
-          'Nga i ka ri ngan ïohïaka,',
+          'Nga i ka ri ngan ïoh ïa ka,',
           'Ngan shong lem bad U Trai babha.',
         ],
       },
@@ -982,7 +982,7 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          `Ah Trai, to sngewïangi:`,
+          `Ah Trai, to sngew ïa ngi:`,
           `Ngi ïam, ngi nguh, ngi dem;`,
           `Ah wallam jingpynim ïa ngi!`,
           `Ha Me ngi shaniah skhem.`,
@@ -1863,7 +1863,7 @@ export const shaphangKaKamUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          `Da U Mynsiem aiborïaki,`,
+          `Da U Mynsiem aibor ïa ki,`,
           `Ban ïai shakri tang ïa Me;`,
           `Ka Balang kan long shitylli,`,
           `Ban paw ka burom jong Me;`,

@@ -18,7 +18,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'Don Uwei U Blei ha byneng,',
-          'U Traiïabaroh ba la seng;',
+          'U Trai ïa baroh ba la seng;',
           'U synshar hi na mynbarim;',
           'Ngan ieit, ngan iaroh katba im.',
         ],
@@ -29,7 +29,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'Ki hukum don ba U la ai,',
-          'Ban hikaiïaka mon U Trai;',
+          'Ban hikai ïa ka mon U Trai;',
           'Ngan ngeit ka ktien jong U ba neh,',
           'Ba kaba hok, ba shisha eh.',
         ],
@@ -41,7 +41,7 @@ export const shaphangUBlei: SongT[] = [
         lines: [
           'La wan ka Gospel Blei ha ngi,',
           'Ka jingsuk jai na ka la mih;',
-          'Ha ka, Ah Blei, ngin shemïaMe,',
+          'Ha ka, Ah Blei, ngin shem ïa Me,',
           'Ai bor ngin wad nongrim ba neh.',
         ],
       },
@@ -50,8 +50,8 @@ export const shaphangUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'La buh ka porïanga ban iap,',
-          'Leh kyndit ehïanga kan lap;',
+          'La buh ka por ïa nga ban iap,',
+          'Leh kyndit eh ïa nga kan lap;',
           'Ki samla bad ki khynnah ruh,',
           'Ki iap, ban khreh ngan ym tud shuh.',
         ],
@@ -61,8 +61,8 @@ export const shaphangUBlei: SongT[] = [
         order: 5,
         type: 'verse',
         lines: [
-          'Ngan sumarïaki por ba sah;',
-          'To wan, Mynsiem, pynkhrehïanga;',
+          'Ngan sumar ïa ki por ba sah;',
+          'To wan, Mynsiem, pynkhreh ïa nga;',
           'Tang lap ka jingiap ngam lah phai,',
           'Ka aiom wad jingmap la wai.',
         ],
@@ -165,7 +165,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'Bakhuid, Bakhuid, Bakhuid, Bakhrawbor, Ah Blei!',
-          'Dang step phyngab, Kynrad, ngi rwai nguhïaMe;',
+          'Dang step phyngab, Kynrad, ngi rwai nguh ïa Me;',
           'Bakhuid, Bakhuid, Bakhuid, khlaiñ bad dap jingisynei,',
           'Lai ngut ba tang Wei long U Trai ba neh!',
         ],
@@ -176,7 +176,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'Bakhuid, Bakhuid, Bakhuid, riewkhuid ki iaroh,',
-          'Baroh ki pangsngiat ksiar, ki loit ban nguhïaMe;',
+          'Baroh ki pangsngiat ksiar, ki loit ban nguh ïa Me;',
           'Kherub bad ki Seraph ki mane dem baroh,',
           'Ia Me ba junom U Juh Me iaineh.',
         ],
@@ -187,7 +187,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'Bakhuid, Bakhuid, Bakhuid, b’la tap da u lyoh;',
-          'U briew ba pop ban peit ban iïaMe um lah;',
+          'U briew ba pop ban peit ban i ïa Me um lah;',
           'Ma Me bad tang Ma Me, Bakhuid ba dei iaroh,',
           'Ka bor, jingieit, jingkhuid, ha Me ki sah.',
         ],
@@ -733,7 +733,7 @@ export const shaphangUBlei: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          'Ah Blei ba ju iarapïangi,',
+          'Ah Blei ba ju iarap ïa ngi,',
           'Ngi kyrmen ruh ha Me;',
           'Ha eriong bah long jakarieh,',
           'Bad jaka shong ba neh.',
@@ -788,7 +788,7 @@ export const shaphangUBlei: SongT[] = [
         order: 6,
         type: 'verse',
         lines: [
-          'Ah Blei ba ju iarapïangi,',
+          'Ah Blei ba ju iarap ïa ngi,',
           'Ngi kyrmen ruh ha Me;',
           'Ha shitom baroh long ka stieh,',
           'Long jaka shong ba neh.',
@@ -887,7 +887,7 @@ export const shaphangUBlei: SongT[] = [
         order: 3,
         type: 'verse',
         lines: [
-          'La pynbna mynta ka jinglaitimïangi,',
+          'La pynbna mynta ka jinglaitim ïa ngi,',
           'Ka snam U Khun la mih ha Kalbari;',
           'To iaroh jam, ka ktien pynkylluid war,',
           'IU diengphyna, ka snam ba pyllait phar.',
@@ -1036,7 +1036,7 @@ export const shaphangUBlei: SongT[] = [
           'Kat ka ban shem ym lah;',
           'Ka jingioh suk ba ei,',
           'Ha ri seisoh I Pa.',
-          'Ym don ba lahïanga te shuh,',
+          'Ym don ba lah ïa nga te shuh,',
           'Na U pynkhlad da lei lei ruh.',
         ],
       },
@@ -1100,7 +1100,7 @@ export const shaphangUBlei: SongT[] = [
           'Sawdong ka burom jong U Trai,',
           'Kherub bad Seraph ki ieng;',
           'Ki jingiaroh ba ki iarwai,',
-          'Ki pynsawaïaki bneng.',
+          'Ki pynsawa ïa ki bneng.',
         ],
       },
       {
@@ -1177,7 +1177,7 @@ export const shaphangUBlei: SongT[] = [
         lines: [
           'Sngap jar, to tip ba nga long Blei,',
           'Uba ka dei ban iaroh;',
-          'Ki Jentil kin pynkhrawïaNga,',
+          'Ki Jentil kin pynkhraw ïa Nga,',
           'Ka pyrthei bah ruh baroh.',
         ],
       },
@@ -1212,7 +1212,7 @@ export const shaphangUBlei: SongT[] = [
           'U Trai U long jingshai jong nga,',
           'Jingkhiah, ngan tieng iano?',
           'U Trai U long ka bor jingim,',
-          'Pynkhimïanga lah mano?',
+          'Pynkhim ïa nga lah mano?',
         ],
       },
       {
@@ -1266,7 +1266,7 @@ export const shaphangUBlei: SongT[] = [
         order: 2,
         type: 'verse',
         lines: [
-          'Ki kren ‘tien sniew pyrshahïaMe,',
+          'Ki kren ‘tien sniew pyrshah ïa Me,',
           'Ba meh jingbitar hapoh;',
           'Ki kynnoh bein ka nam jong Me,',
           '‘Riewsniew kim treh ban iaroh.',
@@ -1279,7 +1279,7 @@ export const shaphangUBlei: SongT[] = [
         lines: [
           'Ki nongshun jong Me, Trai, nga shun,',
           'Bad ki, kam hun ka mynsiem;',
-          'Kat kiba ieng ialehïaMe,',
+          'Kat kiba ieng ialeh ïa Me,',
           'Kim neh, kan ngat ka jingtim.',
         ],
       },
@@ -1288,7 +1288,7 @@ export const shaphangUBlei: SongT[] = [
         order: 4,
         type: 'verse',
         lines: [
-          'To iitïanga, Ah Blei, ithuh,',
+          'To iit ïa nga, Ah Blei, ithuh,',
           'To tynjuh dohnud jong nga;',
           'To tip ki jingmut tynrai hi,',
           'Ioh ka dang sap jingbakla.',
@@ -1324,7 +1324,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'U Trai ka jingshai nga U long,',
-          'U Nongpynimïabaroh;',
+          'U Nongpynim ïa baroh;',
           'Ka bor jingim hangne U ai,',
           'Trai, ngan sheptieng iano?',
         ],
@@ -1346,7 +1346,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'Tang kane kawei ngan iai pan,',
-          'Ban wanïaim shi-ryta;',
+          'Ban wan ïa im shi-ryta;',
           "Ha iing U Trai, ban i b'U shong,",
           'BU long itynnad hangta.',
         ],
@@ -1369,7 +1369,7 @@ export const shaphangUBlei: SongT[] = [
         lines: [
           "To sngew, Ah Trai, l'u khun ba kyang,",
           'To nang iashah, isynei;',
-          'Me ong ma Me, “To wadïanga,”',
+          'Me ong ma Me, “To wad ïa nga,”',
           'Kumta nga wad, Ah U Blei.',
         ],
       },
@@ -1391,7 +1391,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'U Blei U long ka jakarieh,',
-          'Ka borïangi ban kyrshan;',
+          'Ka bor ïa ngi ban kyrshan;',
           'Ha ki jingkhuslai katba lap,',
           'U nongiarap ba hajan.',
         ],
@@ -1458,7 +1458,7 @@ export const shaphangUBlei: SongT[] = [
         type: 'verse',
         lines: [
           'U Blei U long ka jakarieh,',
-          'Ka borïangi ban kyrshan;',
+          'Ka bor ïa ngi ban kyrshan;',
           'Ha ki jingkhuslai baroh phar,',
           'U Nongiarap ba hajan.',
         ],

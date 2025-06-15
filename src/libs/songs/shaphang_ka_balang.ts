@@ -1400,7 +1400,7 @@ export const shaphangKaBalang: SongT[] = [
         lines: [
           `Kyrteng jong Me ngi ieit ban dwai,`,
           `Bad ïaroh da jingrwai;`,
-          `Ai borïangi ba ngin iaineh,`,
+          `Ai bor ïa ngi ba ngin iaineh,`,
           `Mon jong Me ba ngin leh.`,
         ],
       },
@@ -2414,7 +2414,7 @@ export const shaphangKaBalang: SongT[] = [
         lines: [
           `Ki ummat sngewsih kim lah siew,`,
           `Ka ieit ba U la shah;`,
-          `Ngan aiïalade, wat kyntait,`,
+          `Ngan ai ïa lade, wat kyntait,`,
           `Tang kata ba nga lah.`,
         ],
       },
@@ -3338,7 +3338,7 @@ export const shaphangKaBalang: SongT[] = [
           `Nga kynmaw ka met kaba kor,`,
           `B'la lur kiba jerong ki nur;`,
           `Ah Kynrad, U Jisu Baieit,`,
-          `Pynsngew la jingieitïanga;`,
+          `Pynsngew la jingieit ïa nga;`,
           `Ka dohnud eh jong nga kan pait,`,
           `Ban kynmaw ka shitom b'la shah.`,
         ],
@@ -4094,7 +4094,7 @@ export const shaphangKaBalang: SongT[] = [
           `Jingphylla jong U Trai,`,
           `Ki kam ba U la leh;`,
           `Ki khot ïa ngi mynta ka sngi,`,
-          `Ban ïarohïaU Trai jong ngi.`,
+          `Ban ïaroh ïa U Trai jong ngi.`,
         ],
       },
       {
