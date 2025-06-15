@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --liturgical-green: #228b22;
+  --liturgical-red: #b22222;
+  --liturgical-purple: #6a0dad;
+  --liturgical-white: #ffffff;
+}
+
+.dark {
+  --liturgical-green: #14532d;
+  --liturgical-red: #7f1d1d;
+  --liturgical-purple: #4c1d95;
+  --liturgical-white: #f1f5f9;
+}
