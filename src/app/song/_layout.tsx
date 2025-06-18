@@ -23,17 +23,19 @@ const HeaderLeft = () => {
   };
 
   return (
-    <View>
-      <TouchableOpacity
-        onPress={onPressFavorite}
-        accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
-        <FontAwesome
-          name={isFavorite ? 'bookmark' : 'bookmark-o'}
-          size={24}
-          color={isFavorite ? colors.orange[500] : colors.gray[500]}
-        />
-      </TouchableOpacity>
-    </View>
+    <>
+      <View>
+        <TouchableOpacity
+          onPress={onPressFavorite}
+          accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
+          <FontAwesome
+            name={isFavorite ? 'bookmark' : 'bookmark-o'}
+            size={24}
+            color={isFavorite ? colors.orange[500] : colors.gray[500]}
+          />
+        </TouchableOpacity>
+      </View>
+    </>
   );
 };
 
@@ -41,7 +43,7 @@ export default function SongLayout() {
   const { colorScheme } = useColorScheme();
   // Consider if isShowFloatingButton is still needed or if buttons are always visible
   const isDarkMode = colorScheme === 'dark';
-  const { song } = useSongs();
+  const { song, onNextSong, onPreviousSong } = useSongs();
   const { increaseTextSize, decreaseTextSize } = useTextStore();
 
   return (
@@ -60,6 +62,26 @@ export default function SongLayout() {
         isVisible={true} // Use state here
         buttons={[
           {
+            onPress: onNextSong,
+            icon: (
+              <FontAwesome
+                name="chevron-right"
+                size={20}
+                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+              />
+            ),
+          },
+          {
+            onPress: onPreviousSong,
+            icon: (
+              <FontAwesome
+                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+                name="chevron-left"
+                size={20}
+              />
+            ),
+          },
+          {
             onPress: increaseTextSize,
             icon: (
               <FontAwesome
@@ -68,7 +90,6 @@ export default function SongLayout() {
                 size={20}
               />
             ),
-            // Example: accessibilityLabel: "Increase text size"
           },
           {
             onPress: decreaseTextSize,
@@ -79,7 +100,6 @@ export default function SongLayout() {
                 color={isDarkMode ? colors.gray[200] : colors.gray[950]}
               />
             ),
-            // Example: accessibilityLabel: "Decrease text size"
           },
         ]}
       />
