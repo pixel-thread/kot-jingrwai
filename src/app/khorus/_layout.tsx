@@ -16,6 +16,7 @@ export default function KhorusLayout() {
   const { increaseTextSize, decreaseTextSize } = useTextStore();
   const [isShowFloatingButton, setIsShowFloatingButton] = useState(false);
   const { khorusNo } = useLocalSearchParams();
+
   const singleTap = () => setIsShowFloatingButton(true);
 
   const singleTapGesture = useTapGesture({

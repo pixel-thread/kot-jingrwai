@@ -8,6 +8,9 @@ import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { TouchableOpacity, View } from 'react-native';
 import { useSongStore } from '~/src/libs/stores/songs';
+import { useEffect, useState } from 'react';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import { useTapGesture } from '~/src/hooks/useTapGesture';
 
 const HeaderLeft = () => {
   const { song } = useSongs();
@@ -44,33 +47,46 @@ export default function SongLayout() {
   // Consider if isShowFloatingButton is still needed or if buttons are always visible
   const isDarkMode = colorScheme === 'dark';
   const { song, onNextSong, onPreviousSong } = useSongs();
+  const [isShowFloatingButton, setIsShowFloatingButton] = useState(true);
   const { increaseTextSize, decreaseTextSize } = useTextStore();
+
+  const singleTap = () => setIsShowFloatingButton(isShowFloatingButton ? false : true);
+
+  const singleTapGesture = useTapGesture({
+    onTap: singleTap,
+    numberOfTaps: 1,
+  });
+
+  const combinedGesture = Gesture.Simultaneous(singleTapGesture);
+
+  useEffect(() => {
+    if (isShowFloatingButton) {
+      setTimeout(() => {
+        setIsShowFloatingButton(false);
+      }, 5000);
+    }
+  }, [setIsShowFloatingButton, isShowFloatingButton]);
 
   return (
     <>
-      <Stack
-        screenOptions={{
-          headerShown: true,
-          title: song.metadata.number.toString(),
-          header: ({ options }) => (
-            <CustomHeader options={options} back headerLeft={<HeaderLeft />} />
-          ),
-        }}>
-        <Stack.Screen name="index" />
-      </Stack>
+      <GestureDetector gesture={combinedGesture}>
+        <View className="flex-1">
+          <Stack
+            screenOptions={{
+              headerShown: true,
+              title: song.metadata.number.toString(),
+              header: ({ options }) => (
+                <CustomHeader options={options} back headerLeft={<HeaderLeft />} />
+              ),
+            }}>
+            <Stack.Screen name="index" />
+          </Stack>
+        </View>
+      </GestureDetector>
+
       <FloatingActionButtons
-        isVisible={true} // Use state here
+        isVisible={isShowFloatingButton} // Use state here
         buttons={[
-          {
-            onPress: onNextSong,
-            icon: (
-              <FontAwesome
-                name="chevron-right"
-                size={20}
-                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
-              />
-            ),
-          },
           {
             onPress: onPreviousSong,
             icon: (
@@ -96,6 +112,17 @@ export default function SongLayout() {
             icon: (
               <FontAwesome
                 name="minus"
+                size={20}
+                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+              />
+            ),
+          },
+
+          {
+            onPress: onNextSong,
+            icon: (
+              <FontAwesome
+                name="chevron-right"
                 size={20}
                 color={isDarkMode ? colors.gray[200] : colors.gray[950]}
               />
