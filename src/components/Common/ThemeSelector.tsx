@@ -34,7 +34,7 @@ const ThemeSelector = () => {
             className={cn(
               'flex-row items-center justify-between p-4',
               index < themes.length - 1 && 'border-b border-gray-200 dark:border-gray-800',
-              isSelected && 'bg-blue-50 dark:bg-blue-950',
+              isSelected && 'bg-gray-300 dark:bg-gray-800',
               isSelected && index === themes.length - 1 && 'rounded-b-xl',
               isSelected && index === 0 && 'rounded-t-xl'
             )}>
