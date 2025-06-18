@@ -5,13 +5,18 @@ import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { View } from 'react-native';
-import { Dropdown } from '~/src/components/Common/DropDown';
+import { Dropdown, DropdownActionButton } from '~/src/components/Common/DropDown';
 
-const actionButtons = [
+const actionButtons: DropdownActionButton[] = [
   {
     label: 'Contact',
     icon: 'contacts',
     onPress: () => router.push(`/contact`),
+  },
+  {
+    label: 'Setting',
+    icon: 'setting',
+    onPress: () => router.push(`/setting`),
   },
 ];
 

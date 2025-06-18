@@ -32,7 +32,7 @@ export const SplashScreen = ({ onFinish }: { onFinish: () => void }) => {
   return (
     <View className="flex-1 items-center justify-center bg-gray-200 dark:bg-gray-950">
       <Animated.Image
-        src={'~/assets/splash/logo.png'}
+        src={'~/assets/icons/splash.png'}
         style={[{ width: 160, height: 160 }, animatedStyle]}
         resizeMode="contain"
         className="dark:tint-white"

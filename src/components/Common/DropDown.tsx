@@ -7,14 +7,14 @@ import { cn } from '~/src/libs/cn';
 import { Text } from '../ui/typography';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-type ActionButton = {
+export type DropdownActionButton = {
   onPress: () => void;
   label?: string;
   icon?: (typeof AntDesign)['name'];
 };
 
 type Props = {
-  buttons: ActionButton[];
+  buttons: DropdownActionButton[];
   className?: string;
 };
 

@@ -18,21 +18,22 @@ export const FloatingActionButtons = ({ buttons, isVisible }: Props) => {
   return (
     <View
       className={cn(
-        'absolute bottom-1 left-0 right-0 z-50 flex flex-row items-center justify-center gap-x-3',
+        'absolute bottom-3 left-0 right-0 z-50 flex items-center justify-center',
         !isVisible && 'hidden'
       )}>
-      <View className="flex flex-row gap-x-4 rounded-lg bg-transparent">
+      <View className="rounded-lg bg-transparent px-4">
         <FlashList
           data={buttons}
-          renderItem={({ item, index }) => (
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({ item }) => (
             <TouchableOpacity
-              key={index}
               onPress={item.onPress}
-              className="flex-row items-center justify-center rounded-2xl bg-white px-4 py-3 dark:bg-gray-950">
+              className="mx-2 flex-row items-center justify-center rounded-2xl bg-white px-4 py-3 dark:bg-gray-950">
               {item.icon || <FontAwesome name="plus" size={20} color="#000" />}
             </TouchableOpacity>
           )}
           horizontal
+          estimatedItemSize={60}
           showsHorizontalScrollIndicator={false}
         />
       </View>
