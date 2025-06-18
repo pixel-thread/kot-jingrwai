@@ -9,8 +9,6 @@ import { useSongs } from '~/src/hooks/song/useSongs';
 import { TouchableOpacity, View } from 'react-native';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { useEffect, useState } from 'react';
-import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import { useTapGesture } from '~/src/hooks/useTapGesture';
 
 const HeaderLeft = () => {
   const { song } = useSongs();
@@ -26,19 +24,17 @@ const HeaderLeft = () => {
   };
 
   return (
-    <>
-      <View>
-        <TouchableOpacity
-          onPress={onPressFavorite}
-          accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
-          <FontAwesome
-            name={isFavorite ? 'bookmark' : 'bookmark-o'}
-            size={24}
-            color={isFavorite ? colors.orange[500] : colors.gray[500]}
-          />
-        </TouchableOpacity>
-      </View>
-    </>
+    <View className="flex-row gap-x-4">
+      <TouchableOpacity
+        onPress={onPressFavorite}
+        accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
+        <FontAwesome
+          name={isFavorite ? 'bookmark' : 'bookmark-o'}
+          size={24}
+          color={isFavorite ? colors.orange[500] : colors.gray[500]}
+        />
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -47,45 +43,25 @@ export default function SongLayout() {
   // Consider if isShowFloatingButton is still needed or if buttons are always visible
   const isDarkMode = colorScheme === 'dark';
   const { song, onNextSong, onPreviousSong } = useSongs();
-  const [isShowFloatingButton, setIsShowFloatingButton] = useState(true);
   const { increaseTextSize, decreaseTextSize } = useTextStore();
-
-  const singleTap = () => setIsShowFloatingButton(isShowFloatingButton ? false : true);
-
-  const singleTapGesture = useTapGesture({
-    onTap: singleTap,
-    numberOfTaps: 1,
-  });
-
-  const combinedGesture = Gesture.Simultaneous(singleTapGesture);
-
-  useEffect(() => {
-    if (isShowFloatingButton) {
-      setTimeout(() => {
-        setIsShowFloatingButton(false);
-      }, 5000);
-    }
-  }, [setIsShowFloatingButton, isShowFloatingButton]);
 
   return (
     <>
-      <GestureDetector gesture={combinedGesture}>
-        <View className="flex-1">
-          <Stack
-            screenOptions={{
-              headerShown: true,
-              title: song.metadata.number.toString(),
-              header: ({ options }) => (
-                <CustomHeader options={options} back headerLeft={<HeaderLeft />} />
-              ),
-            }}>
-            <Stack.Screen name="index" />
-          </Stack>
-        </View>
-      </GestureDetector>
+      <View className="flex-1">
+        <Stack
+          screenOptions={{
+            headerShown: true,
+            title: song.metadata.number.toString(),
+            header: ({ options }) => (
+              <CustomHeader options={options} back headerLeft={<HeaderLeft />} />
+            ),
+          }}>
+          <Stack.Screen name="index" />
+        </Stack>
+      </View>
 
       <FloatingActionButtons
-        isVisible={isShowFloatingButton} // Use state here
+        isVisible // Use state here
         buttons={[
           {
             onPress: onPreviousSong,

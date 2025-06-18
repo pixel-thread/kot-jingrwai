@@ -7,7 +7,7 @@ export default function ContactLayout() {
       screenOptions={{
         title: 'Contact',
         headerShown: true,
-        header: ({ options }) => <CustomHeader options={options} />,
+        header: ({ options }) => <CustomHeader options={options} back />,
       }}>
       <Stack.Screen name="index" />
     </Stack>
