@@ -1,6 +1,7 @@
 import { SongT } from '.';
 
 export type SongContextT = {
+  songs: SongT[];
   song: SongT;
   isNotFound: boolean;
   onNextSong: () => void;
