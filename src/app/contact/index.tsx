@@ -13,11 +13,11 @@ export default function ContactScreen() {
     supported ? Linking.openURL(url) : Alert.alert('Error', 'Email app is not available.');
   };
 
-  const callPhone = async () => {
-    const url = `tel:${phone}`;
-    const supported = await Linking.canOpenURL(url);
-    supported ? Linking.openURL(url) : Alert.alert('Error', 'Phone app is not available.');
-  };
+  // const callPhone = async () => {
+  //   const url = `tel:${phone}`;
+  // const supported = await Linking.canOpenURL(url);
+  // supported ? Linking.openURL(url) : Alert.alert('Error', 'Phone app is not available.');
+  // };
 
   // const openMap = async () => {
   //   const supported = await Linking.canOpenURL(mapUrl);
@@ -51,7 +51,7 @@ export default function ContactScreen() {
         <Text className="mb-2 text-base text-gray-700 dark:text-gray-300">
           Call us during office hours.
         </Text>
-        <TouchableOpacity onPress={callPhone}>
+        <TouchableOpacity>
           <Text className="text-lg text-blue-600 underline dark:text-blue-400">{phone}</Text>
         </TouchableOpacity>
       </View>
