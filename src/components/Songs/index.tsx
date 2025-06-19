@@ -8,6 +8,7 @@ import { SongT } from '~/src/types/song';
 import { FlashList } from '@shopify/flash-list';
 import { useState, useCallback, useMemo } from 'react';
 import { PAGE_SIZE } from '~/src/libs/constant';
+import { Ternary } from '../Common/Ternary';
 
 export const AllSongPage = () => {
   const [page, setPage] = useState(1);
@@ -38,19 +39,25 @@ export const AllSongPage = () => {
 
   return (
     <Container className="flex-1 px-4">
-      <SearchBar value={searchQuery} onSearch={setSearchQuery} />
       <FlashList
         data={paginatedSongs}
         showsVerticalScrollIndicator
-        stickyHeaderHiddenOnScroll
-        renderItem={({ item }) => <SongListItem song={item} />}
         estimatedItemSize={100}
         keyExtractor={(item) => item.id}
-        ItemSeparatorComponent={() => <View className="h-px bg-gray-200 dark:bg-gray-800" />}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
+        renderItem={({ item, index }) => (
+          <Ternary
+            condition={index === 0}
+            ifFalse={<SongListItem song={item} />}
+            ifTrue={<SearchBar value={searchQuery} onSearch={setSearchQuery} />}
+          />
+        )}
+        stickyHeaderIndices={[0]}
+        ItemSeparatorComponent={() => <View className="h-px bg-gray-200 dark:bg-gray-800" />}
         ListEmptyComponent={() => <EmptyState />}
         keyboardShouldPersistTaps="handled"
+        StickyHeaderComponent={() => <SearchBar value={searchQuery} onSearch={setSearchQuery} />}
       />
     </Container>
   );
@@ -96,7 +103,7 @@ type SearchBarProps = {
 
 const SearchBar = ({ onSearch, value }: SearchBarProps) => {
   return (
-    <View className="px-2">
+    <View className="bg-gray-200 px-2 dark:bg-gray-950">
       <View>
         <Text size="4xl" align={'center'} leading={'loose'} tracking={'widest'} weight="bold">
           Search
