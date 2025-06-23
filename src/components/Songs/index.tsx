@@ -41,23 +41,16 @@ export const AllSongPage = () => {
     <Container className="flex-1 px-4">
       <FlashList
         data={paginatedSongs}
-        showsVerticalScrollIndicator
+        showsVerticalScrollIndicator={false}
         estimatedItemSize={100}
         keyExtractor={(item) => item.id}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
-        renderItem={({ item, index }) => (
-          <Ternary
-            condition={index === 0}
-            ifFalse={<SongListItem song={item} />}
-            ifTrue={<SearchBar value={searchQuery} onSearch={setSearchQuery} />}
-          />
-        )}
-        stickyHeaderIndices={[0]}
+        keyboardShouldPersistTaps="handled"
+        renderItem={({ item }) => <SongListItem song={item} />}
         ItemSeparatorComponent={() => <View className="h-px bg-gray-200 dark:bg-gray-800" />}
         ListEmptyComponent={() => <EmptyState />}
-        keyboardShouldPersistTaps="handled"
-        StickyHeaderComponent={() => <SearchBar value={searchQuery} onSearch={setSearchQuery} />}
+        ListHeaderComponent={() => <SearchBar onSearch={setSearchQuery} value={searchQuery} />}
       />
     </Container>
   );
@@ -66,7 +59,6 @@ export const AllSongPage = () => {
 const SongListItem = ({ song }: { song: SongT }) => {
   const router = useRouter();
   const { ChangeSong } = useSongs();
-
   return (
     <TouchableOpacity
       onPress={() => {
