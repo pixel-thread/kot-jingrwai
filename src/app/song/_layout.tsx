@@ -8,7 +8,6 @@ import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { TouchableOpacity, View } from 'react-native';
 import { useSongStore } from '~/src/libs/stores/songs';
-import { useEffect, useState } from 'react';
 
 const HeaderLeft = () => {
   const { song } = useSongs();
@@ -51,7 +50,7 @@ export default function SongLayout() {
         <Stack
           screenOptions={{
             headerShown: true,
-            title: song.metadata.number.toString(),
+            title: `Jingrwai No- ${song.metadata.number.toString()}`,
             header: ({ options }) => (
               <CustomHeader options={options} back headerLeft={<HeaderLeft />} />
             ),
@@ -74,16 +73,6 @@ export default function SongLayout() {
             ),
           },
           {
-            onPress: increaseTextSize,
-            icon: (
-              <FontAwesome
-                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
-                name="plus"
-                size={20}
-              />
-            ),
-          },
-          {
             onPress: decreaseTextSize,
             icon: (
               <FontAwesome
@@ -93,7 +82,16 @@ export default function SongLayout() {
               />
             ),
           },
-
+          {
+            onPress: increaseTextSize,
+            icon: (
+              <FontAwesome
+                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+                name="plus"
+                size={20}
+              />
+            ),
+          },
           {
             onPress: onNextSong,
             icon: (
