@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { cn } from '~/src/libs/cn';
 
 type ButtonProps = {
   title: string;
@@ -10,7 +11,7 @@ export const Button = forwardRef<View, ButtonProps>(({ title, ...touchableProps 
     <TouchableOpacity
       ref={ref}
       {...touchableProps}
-      className={`${styles.button} ${touchableProps.className}`}>
+      className={cn(styles.button, touchableProps.className)}>
       <Text className={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
