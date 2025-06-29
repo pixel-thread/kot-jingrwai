@@ -6,6 +6,9 @@ import { AppUpdateT } from '~/src/types/AppVersion';
 type UseAppVersionStore = {
   isUserIgnoredUpdate: boolean;
   setIsUserIgnoredUpdate: (isIgnored: boolean) => void;
+
+  ignoredVersion: string;
+  setIgnoredVersion: (version: string) => void;
   // Actions
   prevVersion: string;
   setPrevVersion: (version: string) => void;
@@ -19,6 +22,9 @@ export const useAppVersionStore = create<UseAppVersionStore>()(
     (set, _) => ({
       isUserIgnoredUpdate: false,
       setIsUserIgnoredUpdate: (isIgnored: boolean) => set({ isUserIgnoredUpdate: isIgnored }),
+
+      ignoredVersion: '',
+      setIgnoredVersion: (version: string) => set({ ignoredVersion: version }),
 
       prevVersion: '',
       setPrevVersion: (version: string) => set({ prevVersion: version }),

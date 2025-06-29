@@ -7,11 +7,12 @@ import { AppUpdateT } from '~/src/types/AppVersion';
 import { Text } from '~/src/components/ui/typography';
 import { Button } from '../ui/button';
 import { FlashList } from '@shopify/flash-list';
+import Constants from 'expo-constants';
+import { logger } from '~/src/utils/logger';
 
 const AppVersion = () => {
-  const { prevVersion, setPrevVersion, isUserIgnoredUpdate, setIsUserIgnoredUpdate } =
-    useAppVersionStore();
-
+  const { setPrevVersion, ignoredVersion, setIgnoredVersion } = useAppVersionStore();
+  const appVersion = Constants.expoConfig?.version; // safer than manifest
   const [update, setUpdate] = useState<AppUpdateT | null>(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -21,26 +22,34 @@ const AppVersion = () => {
   });
 
   useEffect(() => {
-    if (data?.success && data.data) {
+    logger.log({
+      error: data,
+    });
+    if (data?.success && data.data && appVersion) {
       const fetchedUpdate = data.data;
       const serverVersion = fetchedUpdate.version;
       const updatePlatforms = fetchedUpdate.platforms || [];
       const currentPlatform = Platform.OS;
       const isPlatformSupported = updatePlatforms.includes(currentPlatform);
-      // Show modal only if version is different, user hasn't ignored it, and platform is supported
-      if (serverVersion !== prevVersion && isPlatformSupported) {
-        setShowModal(true);
-        setUpdate(fetchedUpdate);
+      const isServerHigher = compareVersions(serverVersion, appVersion) > 0;
+
+      if (isServerHigher && isPlatformSupported) {
+        const userIgnoredThisVersion = ignoredVersion === serverVersion;
+
+        if (fetchedUpdate.mandatory || !userIgnoredThisVersion) {
+          setShowModal(true);
+          setUpdate(fetchedUpdate);
+        }
       } else {
         setShowModal(false);
       }
     }
-  }, [data, prevVersion, isUserIgnoredUpdate]);
+  }, [data, appVersion, ignoredVersion]);
 
   const handleDismiss = () => {
     if (update?.version) {
+      setIgnoredVersion(update.version);
       setPrevVersion(update.version);
-      setIsUserIgnoredUpdate(true);
     }
     setShowModal(false);
   };
@@ -76,13 +85,11 @@ const AppVersion = () => {
               />
             ) : (
               <View className="flex flex-row justify-end gap-x-2">
-                {!data?.data?.mandatory && (
-                  <Button
-                    className="border border-red-500 bg-red-600/70 py-2"
-                    onPress={handleDismiss}
-                    title="Close"
-                  />
-                )}
+                <Button
+                  className="border border-red-500 bg-red-600/70 py-2"
+                  onPress={handleDismiss}
+                  title="Close"
+                />
                 <Button
                   title="Update"
                   className="py-2"
@@ -97,9 +104,27 @@ const AppVersion = () => {
   );
 };
 
+/**
+ * Compare two semantic versions
+ * Returns:
+ * - 1 if v1 > v2
+ * - -1 if v1 < v2
+ * - 0 if equal
+ */
+function compareVersions(v1: string, v2: string): number {
+  const s1 = v1.split('.').map(Number);
+  const s2 = v2.split('.').map(Number);
+  for (let i = 0; i < Math.max(s1.length, s2.length); i++) {
+    const num1 = s1[i] || 0;
+    const num2 = s2[i] || 0;
+    if (num1 > num2) return 1;
+    if (num1 < num2) return -1;
+  }
+  return 0;
+}
+
 const DescriptionList = ({ description }: { description?: string[] }) => {
   if (!description || description.length === 0) return null;
-
   return (
     <View className="mt-3">
       <Text size="md" className="font-bold capitalize">
