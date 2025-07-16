@@ -70,7 +70,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
         className="mb-16 mt-3">
-        <View className="flex-1" collapsable={false}>
+        <View className="flex-1 border border-red-500" collapsable={false}>
           <View className="items-center px-4 ">
             <Text
               size={'3xl'}
@@ -98,7 +98,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
           </View>
           <View className="my-2 h-px w-2/3 self-center bg-gray-200 dark:bg-gray-800" />
           {/* Lyrics */}
-          <View className="px-4">
+          <View className="px-0">
             {sortedParagraphs.map((paragraph) => {
               const type = capitalize(paragraph.type ?? 'Verse');
               sectionCount[type] = (sectionCount[type] || 0) + 1;
@@ -117,7 +117,10 @@ export const LyricView = ({ song }: LyricViewProps) => {
                   </View>
                   {/* Paragraph Box */}
                   <View
-                    className={cn(getParagraphStyle(paragraph.type), 'border-none bg-transparent')}>
+                    className={cn(
+                      getParagraphStyle(paragraph.type),
+                      'border border-red-500 bg-transparent'
+                    )}>
                     {paragraph.lines.map((line, index) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
