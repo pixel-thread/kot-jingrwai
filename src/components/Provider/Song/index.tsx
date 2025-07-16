@@ -34,6 +34,7 @@ export const SongProvider = ({ children }: SongProviderProps) => {
   };
 
   const value: SongContextT = {
+    songs,
     song: currentSong,
     ChangeSong: ChangeSong,
     currentSongIndex: songIndex,

@@ -23,7 +23,7 @@ const HeaderLeft = () => {
   };
 
   return (
-    <View>
+    <View className="flex-row gap-x-4">
       <TouchableOpacity
         onPress={onPressFavorite}
         accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
@@ -41,34 +41,36 @@ export default function SongLayout() {
   const { colorScheme } = useColorScheme();
   // Consider if isShowFloatingButton is still needed or if buttons are always visible
   const isDarkMode = colorScheme === 'dark';
-  const { song } = useSongs();
+  const { song, onNextSong, onPreviousSong } = useSongs();
   const { increaseTextSize, decreaseTextSize } = useTextStore();
 
   return (
     <>
-      <Stack
-        screenOptions={{
-          headerShown: true,
-          title: song.metadata.number.toString(),
-          header: ({ options }) => (
-            <CustomHeader options={options} back headerLeft={<HeaderLeft />} />
-          ),
-        }}>
-        <Stack.Screen name="index" />
-      </Stack>
+      <View className="flex-1">
+        <Stack
+          screenOptions={{
+            headerShown: true,
+            title: `Jingrwai No- ${song.metadata.number.toString()}`,
+            header: ({ options }) => (
+              <CustomHeader options={options} back headerLeft={<HeaderLeft />} />
+            ),
+          }}>
+          <Stack.Screen name="index" />
+        </Stack>
+      </View>
+
       <FloatingActionButtons
-        isVisible={true} // Use state here
+        isVisible // Use state here
         buttons={[
           {
-            onPress: increaseTextSize,
+            onPress: onPreviousSong,
             icon: (
               <FontAwesome
                 color={isDarkMode ? colors.gray[200] : colors.gray[950]}
-                name="plus"
+                name="chevron-left"
                 size={20}
               />
             ),
-            // Example: accessibilityLabel: "Increase text size"
           },
           {
             onPress: decreaseTextSize,
@@ -79,7 +81,26 @@ export default function SongLayout() {
                 color={isDarkMode ? colors.gray[200] : colors.gray[950]}
               />
             ),
-            // Example: accessibilityLabel: "Decrease text size"
+          },
+          {
+            onPress: increaseTextSize,
+            icon: (
+              <FontAwesome
+                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+                name="plus"
+                size={20}
+              />
+            ),
+          },
+          {
+            onPress: onNextSong,
+            icon: (
+              <FontAwesome
+                name="chevron-right"
+                size={20}
+                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+              />
+            ),
           },
         ]}
       />

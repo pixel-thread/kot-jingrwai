@@ -14,8 +14,9 @@ export default function KhorusLayout() {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
   const { increaseTextSize, decreaseTextSize } = useTextStore();
-  const [isShowFloatingButton, setIsShowFloatingButton] = useState(false);
+  const [isShowFloatingButton, setIsShowFloatingButton] = useState(true);
   const { khorusNo } = useLocalSearchParams();
+
   const singleTap = () => setIsShowFloatingButton(true);
 
   const singleTapGesture = useTapGesture({

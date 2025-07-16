@@ -69,11 +69,11 @@ export const LyricView = ({ song }: LyricViewProps) => {
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
-        className="mb-6">
+        className="mb-16 mt-3">
         <View className="flex-1" collapsable={false}>
-          <View className="items-center px-4 py-2">
+          <View className="items-center px-4 ">
             <Text
-              size={'2xl'}
+              size={'3xl'}
               weight={'bold'}
               tracking="widest"
               leading={'tight'}
