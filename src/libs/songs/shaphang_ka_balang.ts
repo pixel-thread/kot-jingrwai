@@ -148,7 +148,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-145',
-    title: 'Ka Jingiada U BleiÏa Ka Balang',
+    title: 'Ka Jingiada U Blei Ïa Ka Balang',
     metadata: {
       number: 145,
       language: 'khasi',
@@ -2732,7 +2732,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-191',
-    title: 'Ah PyniÏa U',
+    title: 'Ah Pyni Ïa U',
     metadata: {
       number: 191,
       language: 'khasi',
@@ -2945,7 +2945,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-195',
-    title: 'Ka JingkhawaiÏa Kiba Duk',
+    title: 'Ka Jingkhawai Ïa Kiba Duk',
     metadata: {
       number: 195,
       language: 'khasi',
@@ -4076,7 +4076,7 @@ export const shaphangKaBalang: SongT[] = [
   },
   {
     id: 'song-216',
-    title: 'Ka JingduwaiÏa Ka Jingpynkhih U Blei',
+    title: 'Ka Jingduwai Ïa Ka Jingpynkhih U Blei',
     metadata: {
       number: 216,
       language: 'khasi',

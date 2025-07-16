@@ -1444,7 +1444,7 @@ export const shaphangUBlei: SongT[] = [
   },
   {
     id: 'song-024',
-    title: 'Ka Jingiada U BleiÏa La Ki Briew (Salm xlvi)',
+    title: 'Ka Jingiada U Blei Ïa La Ki Briew (Salm xlvi)',
     metadata: {
       number: 24,
       language: 'khasi',

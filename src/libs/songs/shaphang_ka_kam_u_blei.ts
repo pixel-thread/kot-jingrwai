@@ -69,7 +69,7 @@ export const shaphangKaKamUBlei: SongT[] = [
   },
   {
     id: 'song-222',
-    title: 'Ka Jingduwai Ban PynroiÏa Ka Kam',
+    title: 'Ka Jingduwai Ban Pynroi Ïa Ka Kam',
     metadata: {
       number: 222,
       language: 'khasi',

@@ -9585,6 +9585,13 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
           'Ngeit ka Ktien U Trai;',
           'Bud ïa kita kiba shah,',
           'Ki lok u Daniel lai.',
+        ],
+      },
+      {
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
           'Nud ban long u Daniel,',
           'Nud ban ïeng marwei;',
           'Nud ban bat ka thymu skhem,',
@@ -9593,7 +9600,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
       },
       {
         id: 'verse-2',
-        order: 2,
+        order: 3,
         type: 'verse',
         lines: [
           'Bynriew bun ba khraw la jot,',
@@ -9604,7 +9611,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
       },
       {
         id: 'verse-3',
-        order: 3,
+        order: 4,
         type: 'verse',
         lines: [
           'Riewradbah ba runar,',
@@ -9615,7 +9622,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
       },
       {
         id: 'verse-4',
-        order: 4,
+        order: 5,
         type: 'verse',
         lines: [
           'Lama lieh ka Gospel rah,',
