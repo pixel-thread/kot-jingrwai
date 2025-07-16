@@ -139,14 +139,17 @@ export const LyricView = ({ song }: LyricViewProps) => {
                                   size={size}
                                   italic={true}
                                   tracking={'widest'}
+                                  weight={'black'}
                                   className={cn(
-                                    'font-medium text-blue-800 dark:text-blue-300',
+                                    'text-blue-800 dark:text-blue-300',
                                     'leading-relaxed'
                                   )}>
                                   {textContent || ' '}
                                 </Text>
                               </View>
-                              {isLast && <Text variant={'primary'} size={'xl'}>{`"`}</Text>}
+                              {isLast && (
+                                <Text variant={'primary'} weight={'bold'} size={'xl'}>{`"`}</Text>
+                              )}
                             </View>
                           }
                           ifFalse={
