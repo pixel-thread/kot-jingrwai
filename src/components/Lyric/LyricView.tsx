@@ -70,7 +70,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
         className="mb-16 mt-3">
-        <View className="flex-1 border border-red-500" collapsable={false}>
+        <View className="flex-1" collapsable={false}>
           <View className="items-center px-4 ">
             <Text
               size={'3xl'}
@@ -103,7 +103,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
               const type = capitalize(paragraph.type ?? 'Verse');
               sectionCount[type] = (sectionCount[type] || 0) + 1;
               return (
-                <View key={paragraph.id} className="flex-1 flex-col space-y-3 px-2">
+                <View key={paragraph.id} className="flex-1 flex-col space-y-3 px-1">
                   {/* Paragraph Label */}
                   <View className="mb-1 mt-4 flex-row items-center justify-end">
                     <Text
@@ -116,11 +116,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                     </Text>
                   </View>
                   {/* Paragraph Box */}
-                  <View
-                    className={cn(
-                      getParagraphStyle(paragraph.type),
-                      'border border-red-500 bg-transparent'
-                    )}>
+                  <View className={cn(getParagraphStyle(paragraph.type), 'bg-transparent')}>
                     {paragraph.lines.map((line, index) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
@@ -142,7 +138,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                                   weight={'black'}
                                   className={cn(
                                     'text-blue-800 dark:text-blue-300',
-                                    'leading-relaxed'
+                                    'leading-normal'
                                   )}>
                                   {textContent || ' '}
                                 </Text>
@@ -179,7 +175,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
 
 // Utility to get background style by paragraph type
 const getParagraphStyle = (type?: string): string => {
-  const baseStyle = 'p-4 rounded-lg border border-gray-200 dark:border-gray-950';
+  const baseStyle = 'p-2 rounded-lg border border-gray-200 dark:border-gray-950';
 
   switch (type) {
     case 'chorus':
