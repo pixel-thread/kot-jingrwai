@@ -6,6 +6,7 @@
   "build": {
     "local": {
       "android": {
+        "autoIncrement": true,
         "buildType": "apk",
         "developmentClient": false,
         "distribution": "store"

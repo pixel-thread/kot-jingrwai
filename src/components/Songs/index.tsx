@@ -1,32 +1,31 @@
+import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import { View, TouchableOpacity, TextInput } from 'react-native';
-import { Container } from '~/src/components/Common/Container';
-import { songs as allSongs } from '~/src/libs/songs';
-import { useRouter } from 'expo-router';
-import { useSongs } from '~/src/hooks/song/useSongs';
-import { Text } from '~/src/components/ui/typography';
-import { SongT } from '~/src/types/song';
 import { FlashList } from '@shopify/flash-list';
-import { useState, useCallback, useMemo } from 'react';
+import { useRouter } from 'expo-router';
+import { Container } from '~/src/components/Common/Container';
+import { Text } from '~/src/components/ui/typography';
+import { useSongs } from '~/src/hooks/song/useSongs';
+import { songs as allSongs } from '~/src/libs/songs';
 import { PAGE_SIZE } from '~/src/libs/constant';
-import { Ternary } from '../Common/Ternary';
+import { SongT } from '~/src/types/song';
+import { Button } from '../ui/button';
+import { FlatList } from 'react-native-gesture-handler';
 
 export const AllSongPage = () => {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredSongs = useMemo(() => {
-    if (!searchQuery.trim()) return allSongs;
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return allSongs;
 
-    const query = searchQuery.toLowerCase();
-    return allSongs.filter((song) => {
-      const { title, metadata } = song;
-      return (
+    return allSongs.filter(
+      ({ title, metadata }) =>
         title.toLowerCase().includes(query) ||
         metadata.author?.toLowerCase().includes(query) ||
         metadata.composer?.toLowerCase().includes(query) ||
         metadata.number.toString().includes(query)
-      );
-    });
+    );
   }, [searchQuery]);
 
   const paginatedSongs = filteredSongs.slice(0, page * PAGE_SIZE);
@@ -37,20 +36,26 @@ export const AllSongPage = () => {
     }
   }, [paginatedSongs.length, filteredSongs.length]);
 
+  const onSearch = useCallback((query: string) => {
+    setSearchQuery(query);
+    setPage(1); // reset to first page when searching
+  }, []);
+
   return (
     <Container className="flex-1 px-4">
       <FlashList
         data={paginatedSongs}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <SongListItem song={item} />}
         showsVerticalScrollIndicator={false}
         estimatedItemSize={100}
-        keyExtractor={(item) => item.id}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
         keyboardShouldPersistTaps="handled"
-        renderItem={({ item }) => <SongListItem song={item} />}
-        ItemSeparatorComponent={() => <View className="h-px bg-gray-200 dark:bg-gray-800" />}
+        StickyHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
+        stickyHeaderHiddenOnScroll={false}
+        ListHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
         ListEmptyComponent={() => <EmptyState />}
-        ListHeaderComponent={() => <SearchBar onSearch={setSearchQuery} value={searchQuery} />}
       />
     </Container>
   );
@@ -59,6 +64,7 @@ export const AllSongPage = () => {
 const SongListItem = ({ song }: { song: SongT }) => {
   const router = useRouter();
   const { ChangeSong } = useSongs();
+
   return (
     <TouchableOpacity
       onPress={() => {
@@ -75,12 +81,8 @@ const SongListItem = ({ song }: { song: SongT }) => {
             <Text size="lg" weight="medium">
               {song.title}
             </Text>
-            <Text size="sm" variant="muted">
-              {`Written By: ${song.metadata.author || 'N/A'}`}
-            </Text>
-            <Text size="sm" variant="muted">
-              {`Composer: ${song.metadata.composer || 'N/A'}`}
-            </Text>
+            <Text size="sm" variant="muted">{`Written By: ${song.metadata.author || 'N/A'}`}</Text>
+            <Text size="sm" variant="muted">{`Composer: ${song.metadata.composer || 'N/A'}`}</Text>
           </View>
         </View>
       </View>
@@ -93,24 +95,38 @@ type SearchBarProps = {
   value: string;
 };
 
-const SearchBar = ({ onSearch, value }: SearchBarProps) => {
+const SearchBar = React.memo(({ onSearch, value }: SearchBarProps) => {
+  const [searchValue, setValue] = useState(value);
+  const inputRef = useRef<TextInput>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
   return (
-    <View className="bg-gray-200 px-2 dark:bg-gray-950">
-      <View>
-        <Text size="4xl" align={'center'} leading={'loose'} tracking={'widest'} weight="bold">
-          Search
-        </Text>
+    <View className="bg-gray-200 p-2 dark:bg-gray-950">
+      <View className="flex-row items-center gap-x-2">
+        <View className="w-full flex-1">
+          <TextInput
+            ref={inputRef}
+            placeholder="Search by title, author, composer, or song number"
+            className="h-14 w-full rounded-lg border border-gray-300 bg-gray-200 px-4 py-2 text-base dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+            placeholderTextColor="#9ca3af"
+            keyboardType="default"
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={value}
+            value={searchValue}
+            onChangeText={(text) => setValue(text)}
+          />
+        </View>
+        <View>
+          <Button disabled={!searchValue} title="Wad" onPress={() => onSearch(searchValue)} />
+        </View>
       </View>
-      <TextInput
-        placeholder="Search by title, author, or composer song number"
-        className="mb-4 h-16 w-full rounded-lg border border-gray-300 bg-gray-200 px-4 py-2 text-base dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-        placeholderTextColor="#9ca3af"
-        value={value}
-        onChangeText={onSearch}
-      />
     </View>
   );
-};
+});
 
 const EmptyState = () => (
   <View className="flex h-64 items-center justify-center px-4">
