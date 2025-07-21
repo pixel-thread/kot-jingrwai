@@ -2651,6 +2651,69 @@ export const shaphangKaBalang: SongT[] = [
         ],
       },
     ],
+  },{
+    "id": "song-189",
+    "title": "Ah! phi la shem ï'U?",
+    "metadata": {
+      "number": 189,
+      "language": "khasi",
+      "author": "Unknown",
+      "composer": "INTERCESSION (557.779)"
+    },
+    "paragraphs": [
+      {
+        "id": "verse-1",
+        "order": 1,
+        "type": "verse",
+        "lines": [
+          "Ah! phi la shem ï’U?",
+          "Ah! phi la shem ï’U?",
+          "Jisu b’la man Nongpynim;",
+          "Namar nongpop kat ma nga,",
+          "U la ïap ha diengphyna,",
+          "Da ka hok Nongbahkhlieh ngan ïoh im."
+        ]
+      },
+      {
+        "id": "verse-2",
+        "order": 2,
+        "type": "verse",
+        "lines": [
+          "Ah! la sahnarphna,",
+          "Ah! la sahnarphna,",
+          "Jisu ba jemnud U sngap;",
+          "U b’la siang ka byneng,",
+          "La ka khlieh U la pyndem,",
+          "Їa ka ram ka pyrthei ban siew dep."
+        ]
+      },
+      {
+        "id": "verse-3",
+        "order": 3,
+        "type": "verse",
+        "lines": [
+          "Ah! U ïasaid ruh,",
+          "Ah! U ïasaid ruh,",
+          "Namar jong ngi la ki briew;",
+          "U da ong ruh, ‘Ko I Pa,",
+          "Khymih kti bad ‘jat jong Nga,",
+          "Ai kin im, ïa ka ram Nga la siew’."
+        ]
+      },
+      {
+        "id": "verse-4",
+        "order": 4,
+        "type": "verse",
+        "lines": [
+          "Hooid, lada kin phai,",
+          "Hooid, lada kin phai,",
+          "Khun baieit namar jong Me;",
+          "Lada kin wan phai sha Nga,",
+          "Wan da ngeit ha Me b’la phah,",
+          "Kin ïoh im ha ka jingsuk ba neh."
+        ]
+      }
+    ]
   },
   {
     id: 'song-190',
