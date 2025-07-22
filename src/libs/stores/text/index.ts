@@ -2,7 +2,23 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export type TextSize = 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
+export type TextSize =
+  | 'xs'
+  | 'xs2'
+  | 'xs3'
+  | 'sm'
+  | 'sm2'
+  | 'md'
+  | 'md2'
+  | 'lg'
+  | 'lg2'
+  | 'xl'
+  | 'xl2'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | '6xl';
 
 type UseTextStoreT = {
   size: TextSize;
