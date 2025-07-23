@@ -10,6 +10,7 @@ import { PAGE_SIZE } from '~/src/libs/constant';
 import { SongT } from '~/src/types/song';
 import { Button } from '../ui/button';
 import { FlatList } from 'react-native-gesture-handler';
+import { NotFoundSong } from './NotFoundSong';
 
 export const AllSongPage = () => {
   const [page, setPage] = useState(1);
@@ -55,7 +56,7 @@ export const AllSongPage = () => {
         StickyHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
         stickyHeaderHiddenOnScroll={false}
         ListHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
-        ListEmptyComponent={() => <EmptyState />}
+        ListEmptyComponent={() => <NotFoundSong />}
       />
     </Container>
   );
