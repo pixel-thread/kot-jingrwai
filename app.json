@@ -4,34 +4,59 @@
     "slug": "kot-jingrwai",
     "version": "1.0.0",
     "scheme": "kot-jing-rwai",
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/favicon.png"
+    "orientation": "portrait",
+    "icon": "./assets/icons/kot-jingrwai-icon.png",
+    "splash": {
+      "image": "./assets/images/splashscreen/splashscreen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "dark": {
+        "image": "./assets/images/splashscreen/splashscreen.png",
+        "backgroundColor": "#000000"
+      }
     },
-    "plugins": ["expo-router"],
+    "assetBundlePatterns": ["**/*"],
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/images/splashscreen/splashscreen.png",
+          "dark": {
+            "image": "./assets/images/splashscreen/splashscreen.png",
+            "backgroundColor": "#000000"
+          },
+          "imageWidth": 200
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
     },
-    "orientation": "portrait",
-    "icon": "./assets/icons/kot-jingrwai-icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/icons/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pixelthread.kotjingrwai",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow Kot Jingrwai to access your camera.",
+        "NSPhotoLibraryUsageDescription": "Allow Kot Jingrwai to access your photos."
+      }
     },
     "android": {
+      "package": "com.pixelthread.kotjingrwai",
+      "versionCode": 1,
+      "permissions": [],
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/kot-jingrwai-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.pixelthread.kotjingrwai"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png"
     },
     "extra": {
       "router": {},
