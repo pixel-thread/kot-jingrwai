@@ -22,9 +22,6 @@ export const QuoteOfTheDay = () => {
     queryKey: ['random', 'verse'],
     queryFn: randomVerse,
   });
-  logger.log({
-    error: data,
-  });
   // Split the verse into quote and author by dash
   const [quoteText, author] = data?.verse ? data.verse.split(/-\s*/) : ['', ''];
 
