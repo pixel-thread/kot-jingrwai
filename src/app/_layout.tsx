@@ -1,12 +1,10 @@
 import '../../global.css';
 
 import { SongProvider } from '../components/Provider/Song';
-import { StatusBar } from 'react-native';
-import { CustomStack } from '../components/Common/CustomStack';
+import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useCallback, useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Ternary } from '../components/Common/Ternary';
 import { ThemeProvider } from '../components/Provider/theme';
 import AppVersion from '../components/Common/AppVersion';
 import { TQueryProvider } from '../components/Provider/query';
