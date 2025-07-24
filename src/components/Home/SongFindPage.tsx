@@ -10,6 +10,7 @@ import { Container } from '~/src/components/Common/Container';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { cn } from '~/src/libs/cn';
+import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
 
 export const SongFinderPage = () => {
   const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();
@@ -52,7 +53,6 @@ export const SongFinderPage = () => {
               Wad da number jingrwai
             </Text>
           </View>
-
           <View className="mb-2 flex-col items-center gap-y-2">
             <TextInput
               value={songNumber}
@@ -77,6 +77,8 @@ export const SongFinderPage = () => {
             />
           </View>
         </View>
+
+        <QuoteOfTheDay />
         {/* Recent Songs */}
         <SongList title="Viewed" songNumbers={recentSongs} emptyMessage="No viewed songs" />
         {/* Favorite Songs */}
