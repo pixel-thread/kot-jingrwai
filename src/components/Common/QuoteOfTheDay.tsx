@@ -29,7 +29,7 @@ export const QuoteOfTheDay = () => {
   const [quoteText, author] = data?.verse ? data.verse.split(/-\s*/) : ['', ''];
 
   const copyToClipboard = async () => {
-    if (quoteText) {
+    if (quoteText && data?.verse) {
       await Clipboard.setStringAsync(data?.verse || '');
       ToastAndroid.show('Quote copied to clipboard!', ToastAndroid.SHORT);
     }
@@ -48,10 +48,17 @@ export const QuoteOfTheDay = () => {
   return (
     <TouchableOpacity onPress={copyToClipboard}>
       <View className="gap-2 rounded-lg border border-indigo-200 bg-indigo-50 p-4 dark:border-indigo-800 dark:bg-indigo-900">
-        <Text size="md" weight="semibold" align="center" className="mb-1">
+        <Text size="md" weight="medium" align="center" className="mb-1">
           Quote of the Day
         </Text>
-        <Text size="lg" align="center" italic variant="secondary" className="mb-2">
+        <Text
+          size="lg"
+          align="center"
+          weight={'bold'}
+          leading={'loose'}
+          italic
+          variant="secondary"
+          className="mb-2">
           &quot;{quoteText?.trim()}&quot;
         </Text>
         <Text size="sm" variant="secondary" className="text-right">
