@@ -24,7 +24,7 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
 
   return (
     <View className="mb-6 border border-gray-200 p-4 dark:border-gray-950">
-      <Text size={'lg'} weight={'extrabold'} className="mb-2">
+      <Text size={'lg'} weight={'semibold'} className="mb-2">
         {title}
       </Text>
 
@@ -36,10 +36,10 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
               onPress={() => handleSongPress(song.metadata.number)}
               className="flex-row items-center border-b border-gray-200 px-3 py-2 dark:border-gray-800">
               <View className="mr-3 h-8 w-8 items-center justify-center rounded-full bg-indigo-200 dark:bg-indigo-800">
-                <Text weight={'semibold'}>{song.metadata.number}</Text>
+                <Text weight={'medium'}>{song.metadata.number}</Text>
               </View>
               <View className="flex-1">
-                <Text className="text-base font-medium">{song.title}</Text>
+                <Text weight={'normal'}>{song.title}</Text>
                 {song.metadata.author && (
                   <Text variant={'muted'} size={'sm'}>
                     By: {song.metadata.author}

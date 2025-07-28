@@ -56,7 +56,7 @@ export const QuoteOfTheDay = () => {
           italic
           variant="secondary"
           className="mb-2">
-          &quot;{quoteText?.trim()}&quot;
+          {quoteText?.trim()}
         </Text>
         <Text size="sm" variant="secondary" className="text-right">
           - {author?.trim() || 'Unknown'}

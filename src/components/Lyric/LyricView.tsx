@@ -129,17 +129,17 @@ export const LyricView = ({ song }: LyricViewProps) => {
                           ifTrue={
                             <View className="flex-1 flex-row">
                               {isFirst && <Text variant={'primary'} size={'xl'}>{`"`}</Text>}
-                              <View className={isFirst ? 'px-0' : isLast ? 'pl-2' : 'px-2'}>
+                              <View className={isFirst ? 'flex-1 px-0' : isLast ? 'pl-2' : 'px-2'}>
                                 <Text
                                   key={`${paragraph.id}-${isChorus ? 'chorus' : 'verse'}-line-${index}`}
                                   size={size}
-                                  italic={true}
-                                  tracking={'widest'}
-                                  weight={'black'}
-                                  className={cn(
-                                    'text-blue-800 dark:text-blue-300',
-                                    'leading-normal'
-                                  )}>
+                                  leading={'loose'}
+                                  variant={'secondary'}
+                                  weight={'normal'}
+                                  italic
+                                  tracking={'tighter'}
+                                  align={'center'}
+                                  className={cn('text-left')}>
                                   {textContent || ' '}
                                 </Text>
                               </View>
@@ -152,9 +152,10 @@ export const LyricView = ({ song }: LyricViewProps) => {
                             <Text
                               key={`${paragraph.id}-line-${index}`}
                               size={size}
-                              variant={'default'}
-                              leading={'normal'}
-                              tracking={'widest'}
+                              leading={'loose'}
+                              weight={'bold'}
+                              tracking={'tight'}
+                              align={'center'}
                               className={cn('text-left text-gray-900 dark:text-gray-100')}>
                               {textContent || ' '}
                             </Text>

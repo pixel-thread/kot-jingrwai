@@ -9,7 +9,6 @@ import { songs as allSongs } from '~/src/libs/songs';
 import { PAGE_SIZE } from '~/src/libs/constant';
 import { SongT } from '~/src/types/song';
 import { Button } from '../ui/button';
-import { FlatList } from 'react-native-gesture-handler';
 import { NotFoundSong } from './NotFoundSong';
 
 export const AllSongPage = () => {
@@ -54,7 +53,7 @@ export const AllSongPage = () => {
         onEndReachedThreshold={0.5}
         keyboardShouldPersistTaps="handled"
         StickyHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
-        stickyHeaderHiddenOnScroll={false}
+        stickyHeaderHiddenOnScroll={true}
         ListHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
         ListEmptyComponent={() => <NotFoundSong />}
       />
@@ -75,11 +74,11 @@ const SongListItem = ({ song }: { song: SongT }) => {
       className="border-b border-gray-200 px-2 py-3 dark:border-gray-800">
       <View className="flex-row items-center justify-between">
         <View className="flex-1 flex-row items-center">
-          <View className="mr-3 h-10 w-10 items-center justify-center rounded-full bg-indigo-200 p-1 dark:bg-indigo-800">
+          <View className="mr-3 h-14 w-14 items-center justify-center rounded-full bg-indigo-200 p-1 dark:bg-indigo-800">
             <Text weight="semibold">{song.metadata.number}</Text>
           </View>
           <View className="flex-1">
-            <Text size="lg" weight="medium">
+            <Text size="lg" weight="normal">
               {song.title}
             </Text>
             <Text size="sm" variant="muted">{`Written By: ${song.metadata.author || 'N/A'}`}</Text>
@@ -128,11 +127,3 @@ const SearchBar = React.memo(({ onSearch, value }: SearchBarProps) => {
     </View>
   );
 });
-
-const EmptyState = () => (
-  <View className="flex h-64 items-center justify-center px-4">
-    <Text size="lg" weight="semibold" className="text-center text-gray-500 dark:text-gray-400">
-      No songs found matching your search.
-    </Text>
-  </View>
-);

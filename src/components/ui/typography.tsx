@@ -4,7 +4,7 @@ import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 import { cn } from '~/src/libs/cn';
 
 export const textVariants = cva(
-  'text-black antialias whitespace-pre-line font-sans dark:text-gray-200',
+  'text-black antialias whitespace-pre-line font-[Helvetica] dark:text-gray-200',
   {
     variants: {
       size: {

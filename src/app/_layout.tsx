@@ -10,6 +10,9 @@ import AppVersion from '../components/Common/AppVersion';
 import { TQueryProvider } from '../components/Provider/query';
 import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
+import { useFonts } from 'expo-font';
+import * as Font from 'expo-font';
+import Entypo from '@expo/vector-icons/Entypo';
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
@@ -22,11 +25,15 @@ SplashScreen.setOptions({
 export default function Layout() {
   const [appIsReady, setAppIsReady] = useState(false);
 
+  const [loaded, error] = useFonts({
+    Helvetica: require('~/assets/fonts/Helvetica.ttf'),
+  });
+
   useEffect(() => {
     async function prepare() {
       try {
         // Pre-load fonts, make any API calls you need to do here
-        // await Font.loadAsync(Entypo.font);
+        await Font.loadAsync(Entypo.font);
         // Artificially delay for two seconds to simulate a slow loading
         // experience. Remove this if you copy and paste the code!
         // await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -52,14 +59,14 @@ export default function Layout() {
     }
   }, [appIsReady]);
 
-  if (!appIsReady) {
+  if (!appIsReady || !loaded || error) {
     return null;
   }
 
   return (
     <GestureHandlerRootView onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <SafeAreaProvider className="flex-1">
-        <StatusBar className={'bg-gray-200 text-black dark:bg-gray-950 dark:text-gray-200'} />
+        <StatusBar style="auto" />
         <ThemeProvider>
           <TQueryProvider>
             <SongProvider>
