@@ -6,6 +6,7 @@
     "scheme": "kot-jing-rwai",
     "orientation": "portrait",
     "icon": "./assets/icons/kot-jingrwai-icon.png",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splashscreen/splashscreen.png",
       "resizeMode": "contain",
@@ -29,7 +30,8 @@
           },
           "imageWidth": 200
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true,

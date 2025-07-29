@@ -1,0 +1,72 @@
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+
+import { Tabs } from 'expo-router';
+import { useColorScheme } from 'nativewind';
+import colors from 'tailwindcss/colors';
+import { CustomHeader } from '~/src/components/Common/CustomHeader';
+import { TouchableOpacity, View } from 'react-native';
+import { TabBarIcon } from '~/src/components/Common/TabBarIcon';
+import { DrawerToggleButton } from '@react-navigation/drawer';
+import { useThemeStore } from '~/src/libs/stores/theme';
+
+const HeaderRight = () => {
+  const { theme, setTheme } = useThemeStore();
+  return (
+    <View className="flex-row gap-x-4">
+      <TouchableOpacity onPress={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+        <FontAwesome
+          name={theme === 'light' ? 'moon-o' : 'sun-o'}
+          size={20}
+          color={theme === 'light' ? colors.gray[950] : colors.gray[200]}
+        />
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+export default function TabLayout() {
+  const { colorScheme } = useColorScheme();
+  const isDarkMode = colorScheme === 'dark';
+  return (
+    <Tabs
+      screenOptions={{
+        headerShown: true,
+        tabBarHideOnKeyboard: true,
+        tabBarShowLabel: true,
+        tabBarStyle: {
+          backgroundColor: isDarkMode ? colors.gray[950] : colors.gray[200],
+          borderColor: isDarkMode ? colors.gray[950] : colors.gray[200],
+          height: 60,
+        },
+        header: ({ options }) => (
+          <CustomHeader
+            options={options}
+            headerLeft={<DrawerToggleButton />}
+            headerRight={<HeaderRight />}
+          />
+        ),
+      }}>
+      <Tabs.Screen
+        name="index"
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          title: 'Kot Jingrwai',
+        }}
+      />
+      <Tabs.Screen
+        name="songs"
+        options={{
+          title: 'Ki JingRwai',
+          tabBarIcon: ({ color }) => <TabBarIcon name="music-circle-outline" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="chorus"
+        options={{
+          title: 'Khorus',
+          tabBarIcon: ({ color }) => <TabBarIcon name="page-last" color={color} />,
+        }}
+      />
+    </Tabs>
+  );
+}

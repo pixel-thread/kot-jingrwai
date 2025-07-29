@@ -9,7 +9,7 @@ import { useSongs } from '~/src/hooks/song/useSongs';
 import { TouchableOpacity, View } from 'react-native';
 import { useSongStore } from '~/src/libs/stores/songs';
 
-const HeaderLeft = () => {
+const HeaderRight = () => {
   const { song } = useSongs();
   const { favoriteSongs, addFavoriteSong, removeFavoriteSong } = useSongStore();
   const isFavorite = favoriteSongs.includes(song.metadata.number);
@@ -52,7 +52,7 @@ export default function SongLayout() {
             headerShown: true,
             title: `Jingrwai No- ${song.metadata.number.toString()}`,
             header: ({ options }) => (
-              <CustomHeader options={options} back headerLeft={<HeaderLeft />} />
+              <CustomHeader options={options} back headerRight={<HeaderRight />} />
             ),
           }}>
           <Stack.Screen name="index" />

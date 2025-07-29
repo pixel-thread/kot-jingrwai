@@ -1,12 +1,23 @@
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { cn } from '~/src/libs/cn';
 import { SongT } from '~/src/types/song';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useColorScheme } from 'nativewind';
+import colors from 'tailwindcss/colors';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTextStore } from '~/src/libs/stores/text';
 import { Gesture, GestureDetector, ScrollView } from 'react-native-gesture-handler';
-import { useAnimatedRef } from 'react-native-reanimated';
+import Reanimated, {
+  FadeIn,
+  FadeInDown,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming,
+  useAnimatedRef,
+} from 'react-native-reanimated';
 import { useTapGesture } from '~/src/hooks/useTapGesture';
 import { useSwipeGesture } from '~/src/hooks/useSwipeGesture';
 import { useSongs } from '~/src/hooks/song/useSongs';
@@ -20,6 +31,8 @@ export const LyricView = ({ song }: LyricViewProps) => {
   const scrollRef = useAnimatedRef<ScrollView>();
   const { size } = useTextStore();
   const { addRecentlyPlayedSong } = useSongStore();
+  const { colorScheme } = useColorScheme();
+  const isDarkMode = colorScheme === 'dark';
   const title = song.title;
   const paragraphs = song.paragraphs;
   const sortedParagraphs = [...paragraphs].sort((a, b) => a.order - b.order);
@@ -29,9 +42,17 @@ export const LyricView = ({ song }: LyricViewProps) => {
   const isFavorite = favoriteSongs.includes(song.metadata.number);
   const sectionCount: Record<string, number> = {};
 
+  // Animation values
+  const headerOpacity = useSharedValue(0);
+  const contentOpacity = useSharedValue(0);
+
   useEffect(() => {
     addRecentlyPlayedSong(song);
-  }, [addRecentlyPlayedSong, song]);
+
+    // Animate elements when component mounts
+    headerOpacity.value = withTiming(1, { duration: 800 });
+    contentOpacity.value = withTiming(1, { duration: 1000 });
+  }, [addRecentlyPlayedSong, song, headerOpacity, contentOpacity]);
 
   const doubleTap = () => {
     if (isFavorite) {
@@ -60,6 +81,18 @@ export const LyricView = ({ song }: LyricViewProps) => {
     scrollRef.current?.scrollTo({ y: 0, animated: true });
   }, [song.metadata.number, scrollRef]);
 
+  const headerAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: headerOpacity.value,
+    };
+  });
+
+  const contentAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: contentOpacity.value,
+    };
+  });
+
   return (
     <GestureDetector gesture={combinedGesture}>
       <ScrollView
@@ -69,54 +102,88 @@ export const LyricView = ({ song }: LyricViewProps) => {
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
-        className="mb-16 mt-3">
+        className="mb-16 dark:bg-gray-950">
         <View className="flex-1" collapsable={false}>
-          <View className="items-center px-4 ">
-            <Text
-              size={'3xl'}
-              weight={'bold'}
-              tracking="widest"
-              leading={'tight'}
-              className="mb-1 text-center text-gray-900 dark:text-gray-100">
+          <Reanimated.View
+            style={headerAnimatedStyle}
+            className="mb-6 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-6 pt-4 shadow-lg">
+            <Text size={'2xl'} weight={'extrabold'} className="mb-1 text-center">
               {title}
             </Text>
-            {song.metadata.author && (
-              <Text size={'sm'} variant={'muted'} className="text-center">
-                {song.metadata.author}
-              </Text>
-            )}
+            <View className="flex-row items-center justify-center space-x-2">
+              {song.metadata.number && (
+                <View className="flex-row items-center">
+                  <MaterialCommunityIcons
+                    name="music-note"
+                    size={16}
+                    color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+                  />
+                  <Text size={'sm'} className="ml-1 opacity-80">
+                    #{song.metadata.number}
+                  </Text>
+                </View>
+              )}
+              {song.metadata.author && (
+                <View className="flex-row items-center">
+                  <MaterialCommunityIcons
+                    name="account"
+                    size={16}
+                    color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+                  />
+                  <Text size={'sm'} className="ml-1 opacity-80">
+                    {song.metadata.author}
+                  </Text>
+                </View>
+              )}
+            </View>
             {song.metadata.composer && (
-              <Text size={'xs'} variant={'muted'} className="text-center">
-                {song.metadata.composer}
+              <Text size={'xs'} className="mt-1 text-center opacity-70">
+                Composer: {song.metadata.composer}
               </Text>
             )}
             {song.metadata.syllables && (
-              <Text variant={'muted'} weight={'medium'} className="text-center">
-                {song.metadata.syllables}
-              </Text>
+              <View className="mt-2 rounded-full bg-gray-100/30 px-3 py-1 dark:bg-gray-800/30">
+                <Text weight={'medium'} className="text-center">
+                  {song.metadata.syllables}
+                </Text>
+              </View>
             )}
-          </View>
-          <View className="my-2 h-px w-2/3 self-center bg-gray-200 dark:bg-gray-800" />
+          </Reanimated.View>
           {/* Lyrics */}
-          <View className="px-0">
-            {sortedParagraphs.map((paragraph) => {
+          <Reanimated.View style={contentAnimatedStyle} className="px-4">
+            {sortedParagraphs.map((paragraph, paragraphIndex) => {
               const type = capitalize(paragraph.type ?? 'Verse');
               sectionCount[type] = (sectionCount[type] || 0) + 1;
               return (
-                <View key={paragraph.id} className="flex-1 flex-col space-y-3 px-1">
+                <Reanimated.View
+                  key={paragraph.id}
+                  entering={FadeInDown.delay(300 + paragraphIndex * 100).duration(800)}
+                  className="mb-4">
                   {/* Paragraph Label */}
-                  <View className="mb-1 mt-4 flex-row items-center justify-end">
-                    <Text
-                      italic={true}
-                      size={'xs'}
-                      variant={'muted'}
-                      tracking={'wider'}
-                      className="px-2 text-justify text-gray-500 dark:text-gray-400">
-                      {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
-                    </Text>
+                  <View className="mb-2 flex-row items-center">
+                    <View className="mr-2 h-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 px-3">
+                      <Text size={'sm'} weight={'bold'}>
+                        {type} {sectionCount[type] > 1 ? sectionCount[type] : ''}
+                      </Text>
+                    </View>
+                    <View className="h-px flex-1 bg-gray-800/20 dark:bg-gray-200/20" />
                   </View>
                   {/* Paragraph Box */}
-                  <View className={cn(getParagraphStyle(paragraph.type), 'bg-transparent')}>
+                  <View
+                    className={cn(
+                      getParagraphStyle(paragraph.type),
+                      'overflow-hidden rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800'
+                    )}
+                    style={
+                      Platform.OS === 'ios'
+                        ? {
+                            shadowColor: isDarkMode ? colors.gray[900] : '#000',
+                            shadowOffset: { width: 0, height: 2 },
+                            shadowOpacity: isDarkMode ? 0.3 : 0.1,
+                            shadowRadius: 3,
+                          }
+                        : {}
+                    }>
                     {paragraph.lines.map((line, index) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
@@ -128,23 +195,30 @@ export const LyricView = ({ song }: LyricViewProps) => {
                           condition={isChorus}
                           ifTrue={
                             <View className="flex-1 flex-row">
-                              {isFirst && <Text variant={'primary'} size={'xl'}>{`"`}</Text>}
-                              <View className={isFirst ? 'px-0' : isLast ? 'pl-2' : 'px-2'}>
+                              {isFirst && (
+                                <Text variant={'primary'} size={'xl'} selectable={true}>{`"`}</Text>
+                              )}
+                              <View className={isFirst ? 'flex-1 px-0' : isLast ? 'pl-2' : 'px-2'}>
                                 <Text
                                   key={`${paragraph.id}-${isChorus ? 'chorus' : 'verse'}-line-${index}`}
                                   size={size}
-                                  italic={true}
-                                  tracking={'widest'}
-                                  weight={'black'}
-                                  className={cn(
-                                    'text-blue-800 dark:text-blue-300',
-                                    'leading-normal'
-                                  )}>
+                                  leading={'loose'}
+                                  variant={'secondary'}
+                                  weight={'normal'}
+                                  italic
+                                  tracking={'tighter'}
+                                  align={'center'}
+                                  selectable={true}
+                                  className={cn('text-left')}>
                                   {textContent || ' '}
                                 </Text>
                               </View>
                               {isLast && (
-                                <Text variant={'primary'} weight={'bold'} size={'xl'}>{`"`}</Text>
+                                <Text
+                                  variant={'primary'}
+                                  weight={'bold'}
+                                  size={'xl'}
+                                  selectable={true}>{`"`}</Text>
                               )}
                             </View>
                           }
@@ -152,9 +226,11 @@ export const LyricView = ({ song }: LyricViewProps) => {
                             <Text
                               key={`${paragraph.id}-line-${index}`}
                               size={size}
-                              variant={'default'}
-                              leading={'normal'}
-                              tracking={'widest'}
+                              leading={'loose'}
+                              weight={'bold'}
+                              tracking={'tight'}
+                              align={'center'}
+                              selectable={true}
                               className={cn('text-left text-gray-900 dark:text-gray-100')}>
                               {textContent || ' '}
                             </Text>
@@ -163,10 +239,10 @@ export const LyricView = ({ song }: LyricViewProps) => {
                       );
                     })}
                   </View>
-                </View>
+                </Reanimated.View>
               );
             })}
-          </View>
+          </Reanimated.View>
         </View>
       </ScrollView>
     </GestureDetector>
@@ -175,21 +251,19 @@ export const LyricView = ({ song }: LyricViewProps) => {
 
 // Utility to get background style by paragraph type
 const getParagraphStyle = (type?: string): string => {
-  const baseStyle = 'p-2 rounded-lg border border-gray-200 dark:border-gray-950';
-
   switch (type) {
     case 'chorus':
-      return `${baseStyle} bg-blue-100 dark:bg-blue-900/30`;
+      return 'border-l-4 border-l-blue-500';
     case 'verse':
-      return `${baseStyle} bg-gray-100 dark:bg-gray-800`;
+      return 'border-l-4 border-l-gray-500';
     case 'bridge':
-      return `${baseStyle} bg-purple-100 dark:bg-purple-900/30`;
+      return 'border-l-4 border-l-purple-500';
     case 'intro':
-      return `${baseStyle} bg-green-100 dark:bg-green-900/30`;
+      return 'border-l-4 border-l-green-500';
     case 'outro':
-      return `${baseStyle} bg-yellow-100 dark:bg-yellow-900/30`;
+      return 'border-l-4 border-l-yellow-500';
     default:
-      return `${baseStyle} bg-gray-50 dark:bg-neutral-800`;
+      return 'border-l-4 border-l-gray-400';
   }
 };
 

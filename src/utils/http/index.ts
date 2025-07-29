@@ -18,7 +18,6 @@ export const handleAxiosError = <T>(error: unknown): ApiResponse<T> => {
 
   if (error instanceof AxiosError) {
     if (error.response) {
-      logger.error(error.response.data);
       errorMessage = (error.response.data as { message?: string })?.message || errorMessage;
       errorDetails =
         (error.response.data as { error?: string | Record<string, any> })?.error ||
