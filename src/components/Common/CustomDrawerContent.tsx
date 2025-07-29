@@ -17,8 +17,9 @@ const menuItems: MenuItemsT[] = [
     herf: 'apostle-creed',
   },
   { id: 3, title: 'Contact', herf: 'contact' },
+  { id: 4, title: 'Report', herf: 'contact' },
   {
-    id: 4,
+    id: 5,
     title: 'Settings',
     herf: 'setting',
   },

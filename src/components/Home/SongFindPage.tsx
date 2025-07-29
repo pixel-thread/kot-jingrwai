@@ -145,6 +145,7 @@ export const SongFinderPage = () => {
                   placeholderTextColor={'#9CA3AF'}
                   keyboardType="numeric"
                   className={cn('flex-1 p-4 text-xl dark:text-white', error && 'border-red-500')}
+                  onSubmitEditing={handleSongSearch}
                 />
               </View>
 
@@ -157,7 +158,7 @@ export const SongFinderPage = () => {
               ) : null}
 
               <TouchableOpacity
-                className="w-full items-center justify-center rounded-xl bg-indigo-600 p-4"
+                className="w-full items-center justify-center rounded-xl bg-indigo-600 p-4 shadow-sm"
                 onPress={() => handleSongSearch()}>
                 <Text size={'lg'} weight={'bold'} className="uppercase text-white dark:text-white">
                   Wad

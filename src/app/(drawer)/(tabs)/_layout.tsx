@@ -1,28 +1,13 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import { router, Tabs } from 'expo-router';
+
+import { Tabs } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { TouchableOpacity, View } from 'react-native';
-import { Dropdown, DropdownActionButton } from '~/src/components/Common/DropDown';
 import { TabBarIcon } from '~/src/components/Common/TabBarIcon';
-import { Button } from '~/src/components/ui/button';
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import { useThemeStore } from '~/src/libs/stores/theme';
-
-const actionButtons: DropdownActionButton[] = [
-  {
-    label: 'Contact',
-    icon: 'contacts',
-    onPress: () => router.push(`/contact`),
-  },
-  {
-    label: 'Setting',
-    icon: 'setting',
-    onPress: () => router.push(`/setting`),
-  },
-];
 
 const HeaderRight = () => {
   const { theme, setTheme } = useThemeStore();
@@ -71,15 +56,15 @@ export default function TabLayout() {
       <Tabs.Screen
         name="songs"
         options={{
-          title: 'Ki Jing Rwai',
-          tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
+          title: 'Ki JingRwai',
+          tabBarIcon: ({ color }) => <TabBarIcon name="music-circle-outline" color={color} />,
         }}
       />
       <Tabs.Screen
         name="chorus"
         options={{
           title: 'Khorus',
-          tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="page-last" color={color} />,
         }}
       />
     </Tabs>
