@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { TextInput, View, ScrollView } from 'react-native';
 
@@ -11,6 +11,8 @@ import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { cn } from '~/src/libs/cn';
 import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
+import { DrawerToggleButton } from '@react-navigation/drawer';
+import { Ionicons } from '@expo/vector-icons';
 
 export const SongFinderPage = () => {
   const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();

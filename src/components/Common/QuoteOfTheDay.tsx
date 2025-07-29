@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
-import { logger } from '~/src/utils/logger';
 import * as Clipboard from 'expo-clipboard';
 import { Skeleton } from '../ui/skeleton';
 
@@ -12,7 +11,6 @@ const randomVerse = async (): Promise<{ verse: string; error?: any }> => {
     const response = await axios.get('https://beta.ourmanna.com/api/v1/get');
     return { verse: response.data };
   } catch (error) {
-    logger.error(error);
     return { verse: '', error };
   }
 };

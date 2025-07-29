@@ -13,14 +13,16 @@ import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
 import Entypo from '@expo/vector-icons/Entypo';
+import { logger } from '../utils/logger';
+
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
 // Set the animation options. This is optional.
-SplashScreen.setOptions({
-  duration: 1000,
-  fade: true,
-});
+// SplashScreen.setOptions({
+//   duration: 1000,
+//   fade: true,
+// });
 
 export default function Layout() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -34,11 +36,9 @@ export default function Layout() {
       try {
         // Pre-load fonts, make any API calls you need to do here
         await Font.loadAsync(Entypo.font);
-        // Artificially delay for two seconds to simulate a slow loading
-        // experience. Remove this if you copy and paste the code!
-        // await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (e) {
-        console.warn(e);
+        logger.error(e);
       } finally {
         // Tell the application to render
         setAppIsReady(true);
@@ -66,17 +66,17 @@ export default function Layout() {
   return (
     <GestureHandlerRootView onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <SafeAreaProvider className="flex-1">
-        <StatusBar style="auto" />
-        <ThemeProvider>
-          <TQueryProvider>
-            <SongProvider>
-              <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-950">
+        <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-950">
+          <StatusBar style="auto" />
+          <ThemeProvider>
+            <TQueryProvider>
+              <SongProvider>
                 <Stack screenOptions={{ headerShown: false }} />
                 <AppVersion />
-              </SafeAreaView>
-            </SongProvider>
-          </TQueryProvider>
-        </ThemeProvider>
+              </SongProvider>
+            </TQueryProvider>
+          </ThemeProvider>
+        </SafeAreaView>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );
