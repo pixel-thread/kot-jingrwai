@@ -8,24 +8,24 @@ import { usePathname, useRouter } from 'expo-router';
 import { Image, View } from 'react-native';
 import { Text } from '../ui/typography';
 import { MenuItemsT } from '~/src/types/MenuItems';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
-
+import { useColorScheme } from 'nativewind';
+import colors from 'tailwindcss/colors';
+const menuItems: MenuItemsT[] = [
+  {
+    id: 2,
+    title: 'Apostle Creed',
+    herf: 'apostle-creed',
+  },
+  { id: 3, title: 'Contact', herf: 'contact' },
+  {
+    id: 4,
+    title: 'Settings',
+    herf: 'setting',
+  },
+];
 export function CustomDrawerContent(props: DrawerContentComponentProps) {
-  const menuItems: MenuItemsT[] = [
-    {
-      id: 2,
-      title: 'Apostle Creed',
-      herf: 'apostle-creed',
-      icon: 'music',
-    },
-    { id: 3, title: 'Contact', herf: 'contact', icon: 'phone-square' },
-    {
-      id: 4,
-      title: 'Settings',
-      herf: 'setting',
-      icon: 'music',
-    },
-  ];
+  const { colorScheme } = useColorScheme();
+  const isDarkMode = colorScheme === 'dark';
   const router = useRouter();
   const pathname = usePathname();
 
@@ -42,32 +42,21 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
       </View>
 
       <DrawerItemList {...props} />
-      <View className="p-4 pt-0">
-        <Text weight={'bold'} size={'md'}>
-          Content
-        </Text>
-      </View>
 
-      {menuItems.map((item) => {
-        const isActive = pathname === `/${item.id}`;
-        return (
-          <DrawerItem
-            focused={isActive}
-            key={item.id}
-            icon={({ color, size }) => <FontAwesome name={item.icon} size={size} color={color} />}
-            label={item.title}
-            // @ts-ignore
-            onPress={() => router.push(`/${item.herf}`)}
-            labelStyle={{
-              textTransform: 'capitalize',
-              color: isActive ? '#000' : '#000',
-              fontWeight: isActive ? 'bold' : 'normal',
-              fontSize: 16,
-              elevation: 1,
-            }}
-          />
-        );
-      })}
+      {menuItems.map((item) => (
+        <DrawerItem
+          focused={pathname === `/${item.herf}`}
+          key={item.id}
+          label={item.title}
+          // @ts-ignore
+          onPress={() => router.push(`/${item.herf}`)}
+          labelStyle={{
+            textTransform: 'capitalize',
+            color: isDarkMode ? colors.gray[200] : colors.gray[950],
+            fontWeight: 'bold',
+          }}
+        />
+      ))}
     </DrawerContentScrollView>
   );
 }

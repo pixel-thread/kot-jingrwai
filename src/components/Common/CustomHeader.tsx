@@ -6,7 +6,6 @@ import { Text } from '../ui/typography';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import type { ReactNode } from 'react';
 import { BetaBatch } from './BetaBatch';
-import { logger } from '~/src/utils/logger';
 
 type Props = {
   options?: { title?: string };
@@ -32,11 +31,16 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
             <FontAwesome
               size={20}
               name="arrow-left"
-              color={isDarkMode ? colors.gray[200] : colors.gray[500]}
+              color={isDarkMode ? colors.gray[200] : colors.gray[950]}
             />
           </TouchableOpacity>
         )}
-        <Text size={'2xl'} weight={'bold'} variant={'primary'} className="uppercase">
+        <Text
+          size={'2xl'}
+          weight={'bold'}
+          align={'center'}
+          variant={'primary'}
+          className="uppercase">
           {options?.title ?? 'No Title'}
         </Text>
       </View>
