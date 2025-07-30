@@ -21,7 +21,7 @@ export const SongNavigation = ({ songNumber }: SongNavigationProps) => {
     }
   };
   return (
-    <Container className="absolute bottom-0 left-0 right-0 px-5 py-4 backdrop-blur-md  ">
+    <Container className="absolute bottom-0 left-0 right-0 px-5 py-4 backdrop-blur-md">
       <View className="flex-row items-center justify-between gap-x-5">
         <TouchableOpacity onPress={onClickFavorite}>
           <FontAwesome

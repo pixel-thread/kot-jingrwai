@@ -53,7 +53,7 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
                   </Text>
                 </View>
                 <View className="flex-1 border-l border-gray-100 pl-3 dark:border-gray-700">
-                  <Text weight="semibold" className="text-gray-800 dark:text-white">
+                  <Text weight="semibold" className="line-clamp-1 text-gray-800 dark:text-white">
                     {song.title}
                   </Text>
                   {song.metadata.author && (

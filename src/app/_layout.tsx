@@ -72,7 +72,7 @@ export default function Layout() {
             <TQueryProvider>
               <SongProvider>
                 <Stack screenOptions={{ headerShown: false }} />
-                <AppVersion />
+                {/* <AppVersion /> */}
               </SongProvider>
             </TQueryProvider>
           </ThemeProvider>
