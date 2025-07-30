@@ -1964,7 +1964,7 @@ export const shaphangUKhrist: SongT[] = [
   },
   {
     id: 'song-058',
-    title: 'Ka JingiarohÏa U Khrist',
+    title: 'Ka Jingïaroh Ïa U Khrist',
     metadata: {
       number: 58,
       language: 'khasi',

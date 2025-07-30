@@ -212,7 +212,10 @@ export const LyricView = ({ song }: LyricViewProps) => {
                           ifTrue={
                             <View className="flex-1 flex-row">
                               {isFirst && (
-                                <Text variant={'primary'} size={'xl'} selectable={true}>{`"`}</Text>
+                                <Text
+                                  variant={'primary'}
+                                  size={'xl'}
+                                  selectable={isSelectable}>{`"`}</Text>
                               )}
                               <View className={isFirst ? 'flex-1 px-0' : isLast ? 'pl-2' : 'px-2'}>
                                 <Text
@@ -227,7 +230,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                                   italic
                                   tracking={'tighter'}
                                   align={'center'}
-                                  selectable={true}
+                                  selectable={isSelectable}
                                   className={cn('text-left')}>
                                   {textContent || ' '}
                                 </Text>
@@ -237,7 +240,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                                   variant={'primary'}
                                   weight={'bold'}
                                   size={'xl'}
-                                  selectable={true}>{`"`}</Text>
+                                  selectable={isSelectable}>{`"`}</Text>
                               )}
                             </View>
                           }
@@ -247,6 +250,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                               onLongPress={() => {
                                 copyToClipboard(paragraph.lines.join('\n'));
                               }}
+                              selectable={isSelectable}
                               size={size}
                               leading={'loose'}
                               weight={'bold'}

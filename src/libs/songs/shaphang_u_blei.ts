@@ -150,7 +150,7 @@ export const shaphangUBlei: SongT[] = [
   },
   {
     id: 'song-003',
-    title: 'Ka JingiarohÏa Uwei-Lai',
+    title: 'Ka Jingïaroh Ïa Uwei-Lai',
     metadata: {
       number: 3,
       language: 'khasi',
