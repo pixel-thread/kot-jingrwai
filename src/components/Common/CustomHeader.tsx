@@ -29,7 +29,7 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
   const isBeta = process.env.EXPO_PUBLIC_IS_BETA === 'true' || false;
 
   // Animation values
-  const headerOpacity = useSharedValue(0);
+  const headerOpacity = useSharedValue(0.9);
 
   useEffect(() => {
     // Animate header when component mounts
@@ -47,7 +47,7 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
   return (
     <Reanimated.View
       style={headerAnimatedStyle}
-      className="w-full overflow-hidden bg-gray-200 shadow-lg dark:bg-gray-800 ">
+      className="w-full overflow-hidden border-b border-gray-300 bg-gray-200 shadow-lg dark:border-gray-700 dark:bg-gray-800">
       <View className="flex flex-row items-center justify-between p-4 px-4">
         {isBeta && <BetaBatch />}
 
@@ -55,7 +55,7 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
           {back && (
             <TouchableOpacity
               onPress={onPressBackButton}
-              className="mr-3 h-10 w-10 items-center justify-center rounded-full bg-white/10">
+              className="mr-3 items-center justify-center">
               <Ternary
                 condition={Platform.OS === 'ios'}
                 ifFalse={
@@ -67,7 +67,7 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
                 }
                 ifTrue={
                   <MaterialCommunityIcons
-                    size={24}
+                    size={30}
                     name="chevron-left"
                     color={isDarkMode ? colors.gray[200] : colors.gray[950]}
                   />

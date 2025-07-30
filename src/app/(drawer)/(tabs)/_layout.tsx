@@ -1,35 +1,12 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-
 import { Tabs } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { TouchableOpacity, View } from 'react-native';
 import { TabBarIcon } from '~/src/components/Common/TabBarIcon';
 import { DrawerToggleButton } from '@react-navigation/drawer';
-import { useThemeStore } from '~/src/libs/stores/theme';
 import { useEffect } from 'react';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
-
-const HeaderRight = () => {
-  const { theme, setTheme } = useThemeStore();
-  const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
-
-  return (
-    <View className="flex-row gap-x-4">
-      <TouchableOpacity
-        onPress={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-        className="h-10 w-10 items-center justify-center rounded-full bg-white/30 dark:bg-gray-800/40">
-        <FontAwesome
-          name={theme === 'light' ? 'moon-o' : 'sun-o'}
-          size={20}
-          color={isDarkMode ? colors.gray[200] : colors.gray[950]}
-        />
-      </TouchableOpacity>
-    </View>
-  );
-};
+import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
 
 export default function TabLayout() {
   const { colorScheme } = useColorScheme();
@@ -70,7 +47,7 @@ export default function TabLayout() {
             headerLeft={
               <DrawerToggleButton tintColor={isDarkMode ? colors.gray[200] : colors.gray[950]} />
             }
-            headerRight={<HeaderRight />}
+            headerRight={<ThemeToggle />}
           />
         ),
       }}>
@@ -89,7 +66,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="chorus"
+        name="khorus"
         options={{
           title: 'Ki Khorus',
           tabBarIcon: ({ color }) => <TabBarIcon name="music" color={color} />,

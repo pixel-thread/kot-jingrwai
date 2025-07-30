@@ -3,7 +3,6 @@ import { Drawer } from 'expo-router/drawer';
 import { CustomDrawerContent } from '~/src/components/Common/CustomDrawerContent';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import colors from 'tailwindcss/colors';
-import { useThemeStore } from '~/src/libs/stores/theme';
 import { useColorScheme } from 'nativewind';
 const DrawerLayout = () => {
   const { colorScheme } = useColorScheme();

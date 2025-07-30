@@ -111,16 +111,16 @@ export const SongFinderPage = () => {
         </Animated.View>
 
         {/* Main Content */}
-        <View className="-mt-6 px-4">
+        <View className="mt-6 px-4">
           <Reanimated.View
             entering={SlideInDown.delay(300).springify()}
-            className="mb-6 rounded-2xl bg-white p-5 shadow-xl dark:bg-gray-800"
+            className="mb-6 rounded-2xl bg-gray-100/70 p-5 shadow-xl dark:bg-gray-800"
             style={[
               Platform.OS === 'ios'
                 ? {
                     shadowColor: '#6366f1',
                     shadowOffset: { width: 0, height: 4 },
-                    shadowOpacity: 0.3,
+                    // shadowOpacity: 0.3,
                     shadowRadius: 8,
                   }
                 : {},
@@ -141,7 +141,7 @@ export const SongFinderPage = () => {
                     setSongNumber(text);
                     setError('');
                   }}
-                  placeholder="Ai i u Number jingrwai"
+                  placeholder="Number jingrwai"
                   placeholderTextColor={'#9CA3AF'}
                   keyboardType="numeric"
                   className={cn('flex-1 p-4 text-xl dark:text-white', error && 'border-red-500')}
@@ -200,7 +200,9 @@ export const SongFinderPage = () => {
                         : {}
                     }>
                     <View className="h-[100px] items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600">
-                      <Text size={'xl'}>{song.metadata.number}</Text>
+                      <Text size={'5xl'} weight={'extrabold'}>
+                        {song.metadata.number}
+                      </Text>
                     </View>
                     <View className="p-3">
                       <Text

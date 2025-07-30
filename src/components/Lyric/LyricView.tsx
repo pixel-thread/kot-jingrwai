@@ -1,20 +1,23 @@
-import { View, Platform } from 'react-native';
+import { View, Platform, ToastAndroid } from 'react-native';
 import { cn } from '~/src/libs/cn';
 import { SongT } from '~/src/types/song';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTextStore } from '~/src/libs/stores/text';
 import { Gesture, GestureDetector, ScrollView } from 'react-native-gesture-handler';
+import * as Clipboard from 'expo-clipboard';
+import * as Haptics from 'expo-haptics';
 import Reanimated, {
   FadeInDown,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
   useAnimatedRef,
+  runOnJS,
 } from 'react-native-reanimated';
 import { useTapGesture } from '~/src/hooks/useTapGesture';
 import { useSwipeGesture } from '~/src/hooks/useSwipeGesture';
@@ -91,6 +94,20 @@ export const LyricView = ({ song }: LyricViewProps) => {
     };
   });
 
+  const triggerHaptic = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+  };
+  const copyToClipboard = async (text: string) => {
+    if (text !== '') {
+      await Clipboard.setStringAsync(text);
+      // add toast and feed back
+      runOnJS(triggerHaptic)();
+      if (Platform.OS === 'android') {
+        ToastAndroid.show('Copied to clipboard', ToastAndroid.SHORT);
+      }
+    }
+  };
+
   return (
     <GestureDetector gesture={combinedGesture}>
       <ScrollView
@@ -147,7 +164,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
               </View>
             )}
           </Reanimated.View>
-          {/* Lyrics */}
           <Reanimated.View style={contentAnimatedStyle} className="px-4">
             {sortedParagraphs.map((paragraph, paragraphIndex) => {
               const type = capitalize(paragraph.type ?? 'Verse');
@@ -157,7 +173,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
                   key={paragraph.id}
                   entering={FadeInDown.delay(300 + paragraphIndex * 100).duration(800)}
                   className="mb-4">
-                  {/* Paragraph Label */}
                   <View className="mb-2 flex-row items-center">
                     <View className="mr-2 h-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 px-3">
                       <Text size={'sm'} weight={'bold'}>
@@ -166,7 +181,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
                     </View>
                     <View className="h-px flex-1 bg-gray-800/20 dark:bg-gray-200/20" />
                   </View>
-                  {/* Paragraph Box */}
                   <View
                     className={cn(
                       getParagraphStyle(paragraph.type),
@@ -198,6 +212,9 @@ export const LyricView = ({ song }: LyricViewProps) => {
                               )}
                               <View className={isFirst ? 'flex-1 px-0' : isLast ? 'pl-2' : 'px-2'}>
                                 <Text
+                                  onLongPress={() => {
+                                    copyToClipboard(paragraph.lines.join('\n'));
+                                  }}
                                   key={`${paragraph.id}-${isChorus ? 'chorus' : 'verse'}-line-${index}`}
                                   size={size}
                                   leading={'loose'}
@@ -223,12 +240,14 @@ export const LyricView = ({ song }: LyricViewProps) => {
                           ifFalse={
                             <Text
                               key={`${paragraph.id}-line-${index}`}
+                              onLongPress={() => {
+                                copyToClipboard(paragraph.lines.join('\n'));
+                              }}
                               size={size}
                               leading={'loose'}
                               weight={'bold'}
                               tracking={'tight'}
                               align={'center'}
-                              selectable={true}
                               className={cn('text-left text-gray-900 dark:text-gray-100')}>
                               {textContent || ' '}
                             </Text>
@@ -247,7 +266,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
   );
 };
 
-// Utility to get background style by paragraph type
 const getParagraphStyle = (type?: string): string => {
   switch (type) {
     case 'chorus':
@@ -265,5 +283,4 @@ const getParagraphStyle = (type?: string): string => {
   }
 };
 
-// Capitalizes first letter
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
