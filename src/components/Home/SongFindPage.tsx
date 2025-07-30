@@ -16,7 +16,6 @@ import Reanimated, {
 import { SongList } from '~/src/components/Home/SongList';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { songs } from '~/src/libs/songs';
-import { Button } from '../ui/button';
 import { Container } from '~/src/components/Common/Container';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
@@ -24,6 +23,7 @@ import { cn } from '~/src/libs/cn';
 import { useColorScheme } from 'nativewind';
 
 import { Ternary } from '../Common/Ternary';
+import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
 
 export const SongFinderPage = () => {
   const { colorScheme } = useColorScheme();
@@ -109,7 +109,6 @@ export const SongFinderPage = () => {
             </Text>
           </Reanimated.View>
         </Animated.View>
-
         {/* Main Content */}
         <View className="mt-6 px-4">
           <Reanimated.View
@@ -166,8 +165,10 @@ export const SongFinderPage = () => {
               </TouchableOpacity>
             </View>
           </Reanimated.View>
+
+          <QuoteOfTheDay />
           {/* Featured Section */}
-          <Reanimated.View entering={FadeInUp.delay(500).duration(800)} className="mb-6">
+          <Reanimated.View entering={FadeInUp.delay(500).duration(800)} className="my-6">
             <Text size={'xl'} weight={'bold'} className="mb-4 text-gray-800 dark:text-white">
               Featured Songs
             </Text>

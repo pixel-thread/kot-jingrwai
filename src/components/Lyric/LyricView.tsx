@@ -23,6 +23,7 @@ import { useTapGesture } from '~/src/hooks/useTapGesture';
 import { useSwipeGesture } from '~/src/hooks/useSwipeGesture';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { Ternary } from '../Common/Ternary';
+import { logger } from '~/src/utils/logger';
 
 type LyricViewProps = {
   song: SongT;
@@ -30,7 +31,7 @@ type LyricViewProps = {
 
 export const LyricView = ({ song }: LyricViewProps) => {
   const scrollRef = useAnimatedRef<ScrollView>();
-  const { size } = useTextStore();
+  const { size, isSelectable } = useTextStore();
   const { addRecentlyPlayedSong } = useSongStore();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
@@ -98,6 +99,9 @@ export const LyricView = ({ song }: LyricViewProps) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
   };
   const copyToClipboard = async (text: string) => {
+    if (!isSelectable) {
+      return;
+    }
     if (text !== '') {
       await Clipboard.setStringAsync(text);
       // add toast and feed back

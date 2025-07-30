@@ -1,35 +1,31 @@
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import { View, ScrollView, TouchableOpacity, Switch, Linking } from 'react-native';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import ThemeSelector from '~/src/components/Common/ThemeSelector';
+import ThemeSelector from '~/src/components/Common/theme/ThemeSelector';
 import { Text } from '~/src/components/ui/typography';
 import { useState, useEffect } from 'react';
 import { useColorScheme } from 'nativewind';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import http from '~/src/utils/http';
 import { AppUpdateT } from '~/src/types/AppVersion';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+import { useTextStore } from '~/src/libs/stores/text';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
+  const { isSelectable: textSelectionEnabled, setIsSelectable: setTextSelectionEnabled } =
+    useTextStore();
   const appVersion = Constants.expoConfig?.version || '1.0.0';
-  // Dummy settings state
+
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(false);
-  const [textSelectionEnabled, setTextSelectionEnabled] = useState(true);
 
   // Version check
-  const {
-    data: versionData,
-
-    refetch,
-  } = useQuery({
-    queryKey: ['app-version-check'],
-    queryFn: async () => http.get<AppUpdateT>('/kot-version'),
-    enabled: true,
+  const { data: versionData, mutate: refetch } = useMutation({
+    mutationFn: async () => http.get<AppUpdateT>('/kot-version'),
   });
 
   const [hasUpdate, setHasUpdate] = useState(false);
@@ -80,20 +76,6 @@ export default function Settings() {
           {/* App Preferences Section */}
           <SettingSection title="App Preferences">
             <SettingItem
-              icon="bell-outline"
-              title="Notifications"
-              description="Receive updates and reminders"
-              right={
-                <Switch
-                  value={notificationsEnabled}
-                  onValueChange={setNotificationsEnabled}
-                  trackColor={{ false: '#767577', true: '#81b0ff' }}
-                  thumbColor={notificationsEnabled ? '#3b82f6' : '#f4f3f4'}
-                />
-              }
-            />
-
-            <SettingItem
               icon="text-box-outline"
               title="Text Selection"
               description="Allow selecting and copying text"
@@ -108,12 +90,28 @@ export default function Settings() {
             />
 
             <SettingItem
+              icon="bell-outline"
+              title="Notifications"
+              description="Receive updates and reminders"
+              right={
+                <Switch
+                  disabled
+                  value={notificationsEnabled}
+                  onValueChange={setNotificationsEnabled}
+                  trackColor={{ false: '#767577', true: '#81b0ff' }}
+                  thumbColor={notificationsEnabled ? '#3b82f6' : '#f4f3f4'}
+                />
+              }
+            />
+
+            <SettingItem
               icon="play-circle-outline"
               title="Auto Play"
               description="Automatically play songs when opened"
               right={
                 <Switch
                   value={autoPlayEnabled}
+                  disabled={true}
                   onValueChange={setAutoPlayEnabled}
                   trackColor={{ false: '#767577', true: '#81b0ff' }}
                   thumbColor={autoPlayEnabled ? '#3b82f6' : '#f4f3f4'}
@@ -145,9 +143,7 @@ export default function Settings() {
               <Reanimated.View entering={FadeInDown.duration(500)}>
                 <TouchableOpacity
                   className="mt-2 flex-row items-center justify-between rounded-xl bg-blue-100 p-3 dark:bg-blue-900"
-                  onPress={() =>
-                    Linking.openURL('https://github.com/yourusername/kot-ong-rwai/releases')
-                  }>
+                  onPress={() => Linking.openURL(versionData?.data?.release_notes_url || '')}>
                   <View className="flex-row items-center">
                     <MaterialCommunityIcons
                       name="download"
@@ -155,6 +151,9 @@ export default function Settings() {
                       color={isDarkMode ? '#93c5fd' : '#3b82f6'}
                     />
                     <Text className="ml-2 text-blue-700 dark:text-blue-300">Update Available!</Text>
+                    <Text className="ml-2 text-blue-700 dark:text-blue-300">
+                      {versionData?.data?.version}
+                    </Text>
                   </View>
                   <MaterialCommunityIcons
                     name="chevron-right"
@@ -169,14 +168,14 @@ export default function Settings() {
               icon="help-circle-outline"
               title="Help & Support"
               description="Get assistance with the app"
-              onPress={() => {}}
+              onPress={() => router.push('/setting/support')}
             />
 
             <SettingItem
               icon="shield-check-outline"
               title="Privacy Policy"
               description="Read our privacy policy"
-              onPress={() => {}}
+              onPress={() => router.push('/setting/privacy')}
             />
           </SettingSection>
         </Reanimated.View>

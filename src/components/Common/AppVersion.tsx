@@ -19,6 +19,7 @@ import Constants from 'expo-constants';
 import { useColorScheme } from 'nativewind';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+import { logger } from '~/src/utils/logger';
 
 const AppVersion = () => {
   const { colorScheme } = useColorScheme();
@@ -33,6 +34,8 @@ const AppVersion = () => {
     queryKey: ['app-update'],
     queryFn: async () => http.get<AppUpdateT>('/kot-version'),
   });
+
+  logger.error(data);
 
   useEffect(() => {
     if (data?.success && data.data && appVersion) {
@@ -97,23 +100,25 @@ const AppVersion = () => {
 
               <Reanimated.View entering={FadeInDown.delay(300).duration(500)} className="mt-6">
                 {update.mandatory ? (
-                  <Button
-                    title="Update Now"
+                  <TouchableOpacity
                     className="p-3"
-                    onPress={() => Linking.openURL(update.release_notes_url)}
-                  />
+                    onPress={() => Linking.openURL(update.release_notes_url)}>
+                    <Text>Update Now</Text>
+                  </TouchableOpacity>
                 ) : (
-                  <View className="flex flex-row justify-end gap-x-2">
+                  <View className="flex flex-row items-center justify-end gap-x-2">
                     <Button
                       className="border border-red-500 bg-red-600/70 py-2 dark:border-red-700 dark:bg-red-900/70"
                       onPress={handleDismiss}
                       title="Close"
                     />
-                    <Button
-                      title="Update"
-                      className="py-2"
-                      onPress={() => Linking.openURL(update.release_notes_url)}
-                    />
+                    <TouchableOpacity
+                      className="rounded-lg bg-indigo-500 p-3 text-white dark:bg-indigo-600"
+                      onPress={() => Linking.openURL(update.release_notes_url)}>
+                      <Text className="text-white" weight={'bold'}>
+                        Update
+                      </Text>
+                    </TouchableOpacity>
                   </View>
                 )}
               </Reanimated.View>
@@ -145,6 +150,8 @@ function compareVersions(v1: string, v2: string): number {
 }
 
 const DescriptionList = ({ description }: { description?: string[] }) => {
+  const { colorScheme } = useColorScheme();
+  const isDarkMode = colorScheme === 'dark';
   if (!description || description.length === 0) return null;
   return (
     <Reanimated.View entering={FadeInDown.delay(100).duration(500)} className="mt-4">
@@ -160,7 +167,7 @@ const DescriptionList = ({ description }: { description?: string[] }) => {
             <MaterialCommunityIcons
               name="check-circle-outline"
               size={16}
-              color={colorScheme === 'dark' ? '#93c5fd' : '#3b82f6'}
+              color={isDarkMode ? '#93c5fd' : '#3b82f6'}
             />
             <Text size={'sm'} className="flex-1 text-gray-700 dark:text-gray-300">
               {item}
