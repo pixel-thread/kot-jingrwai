@@ -41,7 +41,7 @@ export default function KhorusLayout() {
           screenOptions={{
             headerShown: true,
             header: ({ options }) => <CustomHeader back options={options} />,
-            title: `Khorus ${khorusNo}` || khorusNo.toString(),
+            title: khorusNo.toString(),
           }}>
           <Stack.Screen name="index" />
         </Stack>

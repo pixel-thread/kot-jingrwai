@@ -19,6 +19,7 @@ import { SongT } from '~/src/types/song';
 import { NotFoundSong } from './NotFoundSong';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
+import { SearchBar } from '../Common/search/SearchBar';
 
 export const AllSongPage = () => {
   const { colorScheme } = useColorScheme();
@@ -77,9 +78,9 @@ export const AllSongPage = () => {
     <Container className="flex-1 dark:bg-gray-950">
       <Reanimated.View
         style={headerAnimatedStyle}
-        className="mb-2 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-4 pt-2 shadow-lg">
+        className="mb-2 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 py-5 shadow-lg">
         <Text size={'2xl'} weight={'extrabold'} className="mb-1 uppercase">
-          All Songs
+          Jingrwai
         </Text>
         <Text size={'base'} className="text-center opacity-80">
           Browse collection
@@ -100,7 +101,6 @@ export const AllSongPage = () => {
           onEndReached={loadMore}
           onEndReachedThreshold={0.5}
           keyboardShouldPersistTaps="handled"
-          StickyHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
           stickyHeaderHiddenOnScroll={true}
           ListHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
           ListEmptyComponent={() => <NotFoundSong />}
@@ -195,60 +195,3 @@ const SongListItem = ({ song }: { song: SongT }) => {
     </Reanimated.View>
   );
 };
-
-type SearchBarProps = {
-  onSearch: (query: string) => void;
-  value: string;
-};
-
-const SearchBar = React.memo(({ onSearch, value }: SearchBarProps) => {
-  const [searchValue, setValue] = useState(value);
-  const inputRef = useRef<TextInput>(null);
-  const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  return (
-    <Reanimated.View className="z-10 mb-4 rounded-2xl p-3">
-      <View className="mb-2 flex-row items-center">
-        <Ionicons name="search-outline" size={24} color="#6366f1" />
-        <Text size={'lg'} weight={'semibold'} className="ml-2 text-gray-800 dark:text-white">
-          Find Your Song
-        </Text>
-      </View>
-      <View className="flex-row items-center gap-x-2">
-        <View className="w-full flex-1 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-700">
-          <View className="flex-row items-center px-3">
-            <MaterialCommunityIcons name="music-note" size={24} color="#6366f1" />
-            <TextInput
-              ref={inputRef}
-              placeholder="Search by title, author, composer, or song number"
-              className="flex-1 items-center p-4 align-middle text-base  dark:text-white"
-              placeholderClassName="text-xl"
-              placeholderTextColor={isDarkMode ? '#9CA3AF' : '#9ca3af'}
-              keyboardType="default"
-              autoCapitalize="none"
-              autoCorrect={false}
-              defaultValue={value}
-              value={searchValue}
-              onChangeText={(text) => setValue(text)}
-              onSubmitEditing={() => onSearch(searchValue)}
-            />
-          </View>
-        </View>
-        <TouchableOpacity
-          className="w-auto items-center justify-center rounded-xl bg-indigo-600 p-4 shadow-sm"
-          onPress={() => onSearch(searchValue)}>
-          <Ionicons
-            name="search"
-            size={24}
-            color={isDarkMode ? colors.gray[200] : colors.gray[50]}
-          />
-        </TouchableOpacity>
-      </View>
-    </Reanimated.View>
-  );
-});

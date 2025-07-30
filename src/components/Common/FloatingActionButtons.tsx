@@ -18,10 +18,10 @@ export const FloatingActionButtons = ({ buttons, isVisible }: Props) => {
   return (
     <View
       className={cn(
-        'absolute bottom-3 left-0 right-0 z-50 flex items-center justify-center',
+        'absolute bottom-0 left-0 right-0 z-50 flex items-center justify-center  bg-gray-200 py-2 dark:bg-gray-800',
         !isVisible && 'hidden'
       )}>
-      <View className="rounded-lg bg-transparent px-4">
+      <View className="rounded-lg bg-transparent px-4 py-2">
         <FlashList
           data={buttons}
           keyExtractor={(_, index) => index.toString()}

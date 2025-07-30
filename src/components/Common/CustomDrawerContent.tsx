@@ -12,12 +12,17 @@ import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 const menuItems: MenuItemsT[] = [
   {
+    id: 1,
+    title: 'Home',
+    herf: '',
+  },
+  {
     id: 2,
     title: 'Apostle Creed',
     herf: 'apostle-creed',
   },
   { id: 3, title: 'Contact', herf: 'contact' },
-  { id: 4, title: 'Report', herf: 'contact' },
+  { id: 4, title: 'Report', herf: 'report' },
   {
     id: 5,
     title: 'Settings',
