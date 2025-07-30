@@ -77,7 +77,7 @@ export const AllSongPage = () => {
     <Container className="flex-1 dark:bg-gray-950">
       <Reanimated.View
         style={headerAnimatedStyle}
-        className="mb-2 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-4 pt-2 shadow-lg">
+        className="mb-2 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 py-5 shadow-lg">
         <Text size={'2xl'} weight={'extrabold'} className="mb-1 uppercase">
           All Songs
         </Text>
@@ -206,10 +206,6 @@ const SearchBar = React.memo(({ onSearch, value }: SearchBarProps) => {
   const inputRef = useRef<TextInput>(null);
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
 
   return (
     <Reanimated.View className="z-10 mb-4 rounded-2xl p-3">

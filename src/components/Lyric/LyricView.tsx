@@ -10,11 +10,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTextStore } from '~/src/libs/stores/text';
 import { Gesture, GestureDetector, ScrollView } from 'react-native-gesture-handler';
 import Reanimated, {
-  FadeIn,
   FadeInDown,
   useAnimatedStyle,
   useSharedValue,
-  withSpring,
   withTiming,
   useAnimatedRef,
 } from 'react-native-reanimated';
@@ -106,7 +104,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
         <View className="flex-1" collapsable={false}>
           <Reanimated.View
             style={headerAnimatedStyle}
-            className="mb-6 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-6 pt-4 shadow-lg">
+            className="mb-6 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-6 pt-6 shadow-lg">
             <Text size={'2xl'} weight={'extrabold'} className="mb-1 text-center">
               {title}
             </Text>

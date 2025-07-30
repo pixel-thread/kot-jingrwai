@@ -50,7 +50,7 @@ export default function SongLayout() {
         <Stack
           screenOptions={{
             headerShown: true,
-            title: `Jingrwai No- ${song.metadata.number.toString()}`,
+            title: song.metadata.number.toString(),
             header: ({ options }) => (
               <CustomHeader options={options} back headerRight={<HeaderRight />} />
             ),

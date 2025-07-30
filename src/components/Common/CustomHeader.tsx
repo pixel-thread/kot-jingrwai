@@ -45,7 +45,9 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
   const onPressBackButton = () => router.back();
 
   return (
-    <Reanimated.View className="w-full overflow-hidden bg-gray-200 shadow-lg dark:bg-gray-800 ">
+    <Reanimated.View
+      style={headerAnimatedStyle}
+      className="w-full overflow-hidden bg-gray-200 shadow-lg dark:bg-gray-800 ">
       <View className="flex flex-row items-center justify-between p-4 px-4">
         {isBeta && <BetaBatch />}
 
