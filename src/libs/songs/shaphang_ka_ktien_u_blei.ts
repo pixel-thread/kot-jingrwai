@@ -283,7 +283,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
   },
   {
     id: 'song-134',
-    title: 'Ka JingiarohÏa Ka Ktien U Blei',
+    title: 'Ka Jingïaroh Ïa Ka Ktien U Blei',
     metadata: {
       number: 134,
       language: 'khasi',
