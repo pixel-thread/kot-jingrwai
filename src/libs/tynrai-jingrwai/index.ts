@@ -1,4 +1,4 @@
-import { TynraiJingrwaiT } from '~/src/types/tynraiJingrwai';
+import { TynraiJingrwaiT } from '~/src/types/tynrai-jingrwai';
 
 export const tynraiJingrwai: TynraiJingrwaiT[] = [
   {
