@@ -17,7 +17,7 @@ type OnboardingItemProps = {
 
 const onboardingData: OnboardingItemProps[] = [
   {
-    title: 'Welcome to Kot Jingrwai',
+    title: 'Ka Kot Jingrwai',
     description: 'Your complete collection of Khasi hymns and songs at your fingertips.',
     image: require('../../../assets/icons/kot-jingrwai-icon.png'),
   },
@@ -29,6 +29,11 @@ const onboardingData: OnboardingItemProps[] = [
   {
     title: 'Customize Your Experience',
     description: 'Adjust text size, enable dark mode, and personalize your reading experience.',
+    image: require('../../../assets/icons/kot-jingrwai-icon.png'),
+  },
+  {
+    title: 'Use Offline Anytime',
+    description: 'No internet? No problem. Access all songs and features even when offline.',
     image: require('../../../assets/icons/kot-jingrwai-icon.png'),
   },
   {
@@ -45,14 +50,19 @@ const OnboardingItem = ({ item }: { item: OnboardingItemProps }) => {
   return (
     <View style={{ width, height: height * 0.8 }} className="items-center justify-center px-8">
       <Reanimated.View entering={FadeIn.duration(500)} className="items-center">
-        <Image source={item.image} className="bg-gray-200 dark:bg-gray-900" style={styles.image} />
+        {/* <Image source={item.image} className="bg-gray-200 dark:bg-gray-900" style={styles.image} /> */}
         <Text
-          size="2xl"
+          size="4xl"
           weight="bold"
+          tracking={'widest'}
           className="mt-8 text-center text-gray-800 dark:text-gray-100">
           {item.title}
         </Text>
-        <Text size="md" className="mt-4 text-center text-gray-600 dark:text-gray-300">
+        <Text
+          size="xl"
+          tracking={'wider'}
+          weight={'semibold'}
+          className="mt-4 text-center text-gray-600 dark:text-gray-300">
           {item.description}
         </Text>
       </Reanimated.View>

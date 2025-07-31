@@ -1,39 +1,20 @@
-import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
-import { View, TouchableOpacity, TextInput, Platform } from 'react-native';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { FlashList } from '@shopify/flash-list';
-import { useRouter } from 'expo-router';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, {
   FadeInRight,
   useAnimatedStyle,
   useSharedValue,
-  withSpring,
   withTiming,
 } from 'react-native-reanimated';
 import { Container } from '~/src/components/Common/Container';
 import { Text } from '~/src/components/ui/typography';
-import { useSongs } from '~/src/hooks/song/useSongs';
 import { songs as allSongs } from '~/src/libs/songs';
 import { PAGE_SIZE } from '~/src/libs/constant';
-import { SongT } from '~/src/types/song';
 import { NotFoundSong } from './NotFoundSong';
-import { useColorScheme } from 'nativewind';
-import colors from 'tailwindcss/colors';
 import { SearchBar } from '../Common/search/SearchBar';
-import { useSearchParams } from 'expo-router/build/hooks';
-import { logger } from '~/src/utils/logger';
+import { SongListItem } from './SongListItem';
 
 export const AllSongPage = () => {
-  const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
-  const searchParams = useSearchParams();
-  const from = searchParams.get('from');
-  const to = searchParams.get('to');
-  logger.log({
-    message: 'AllSongPage',
-    from,
-    to,
-  });
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -117,91 +98,5 @@ export const AllSongPage = () => {
         />
       </Reanimated.View>
     </Container>
-  );
-};
-
-const SongListItem = ({ song }: { song: SongT }) => {
-  const router = useRouter();
-  const { ChangeSong } = useSongs();
-  const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
-
-  // Animation for press feedback
-  const scale = useSharedValue(1);
-
-  const handlePressIn = () => {
-    scale.value = withSpring(0.98, { damping: 10 });
-  };
-
-  const handlePressOut = () => {
-    scale.value = withSpring(1, { damping: 10 });
-  };
-
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: scale.value }],
-    };
-  });
-
-  return (
-    <Reanimated.View style={animatedStyle} className="mb-3">
-      <TouchableOpacity
-        onPress={() => {
-          ChangeSong(song.metadata.number);
-          router.push('/song');
-        }}
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
-        className="overflow-hidden rounded-xl bg-white shadow-sm dark:bg-gray-800"
-        style={
-          Platform.OS === 'ios'
-            ? {
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 1 },
-                shadowOpacity: 0.1,
-                shadowRadius: 2,
-              }
-            : {}
-        }>
-        <View className="flex-row items-center p-3">
-          <View className="mr-3 h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600">
-            <Text size="3xl" weight="bold">
-              {song.metadata.number}
-            </Text>
-          </View>
-          <View className="flex-1 border-l border-gray-100 pl-3 dark:border-gray-700">
-            <Text
-              size="lg"
-              weight="semibold"
-              className="line-clamp-1  text-gray-800 dark:text-white">
-              {song.title}
-            </Text>
-            <View className="mt-1 flex-row items-center">
-              <MaterialCommunityIcons
-                name="account"
-                size={14}
-                color={isDarkMode ? '#9CA3AF' : '#6B7280'}
-              />
-              <Text size="xs" variant="muted" className="ml-1">
-                {song.metadata.author || 'Unknown'}
-              </Text>
-            </View>
-            {song.metadata.composer && (
-              <View className="mt-1 flex-row items-center">
-                <MaterialCommunityIcons
-                  name="music"
-                  size={14}
-                  color={isDarkMode ? '#9CA3AF' : '#6B7280'}
-                />
-                <Text size="xs" variant="muted" className="ml-1">
-                  {song.metadata.composer}
-                </Text>
-              </View>
-            )}
-          </View>
-          <MaterialCommunityIcons name="chevron-right" size={24} color="#6366f1" />
-        </View>
-      </TouchableOpacity>
-    </Reanimated.View>
   );
 };

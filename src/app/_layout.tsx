@@ -17,6 +17,7 @@ import { logger } from '../utils/logger';
 import { useOnboardingStore } from '../libs/stores/onboarding';
 import Onboarding from '../components/Onboarding';
 import { Ternary } from '../components/Common/Ternary';
+import colors from 'tailwindcss/colors';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -69,8 +70,8 @@ export default function Layout() {
   return (
     <GestureHandlerRootView onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <SafeAreaProvider className="flex-1">
-        <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-950">
-          <StatusBar style="auto" />
+        <StatusBar style="auto" hidden />
+        <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-800">
           <ThemeProvider>
             <TQueryProvider>
               <SongProvider>
