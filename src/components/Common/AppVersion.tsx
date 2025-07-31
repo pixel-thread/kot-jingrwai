@@ -22,8 +22,6 @@ import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { logger } from '~/src/utils/logger';
 
 const AppVersion = () => {
-  const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
   const { setPrevVersion, ignoredVersion, setIgnoredVersion } = useAppVersionStore();
   const appVersion = Constants.expoConfig?.version; // safer than manifest
   const [update, setUpdate] = useState<AppUpdateT | null>();

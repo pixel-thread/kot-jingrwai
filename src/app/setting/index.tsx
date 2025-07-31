@@ -12,6 +12,7 @@ import http from '~/src/utils/http';
 import { AppUpdateT } from '~/src/types/AppVersion';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useTextStore } from '~/src/libs/stores/text';
+import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
@@ -63,7 +64,9 @@ export default function Settings() {
           headerShown: true,
           headerTitleAlign: 'center',
           headerBackTitle: 'Back',
-          header: ({ options }) => <CustomHeader options={options} back />,
+          header: ({ options }) => (
+            <CustomHeader options={options} back headerRight={<ThemeToggle />} />
+          ),
         }}
       />
       <ScrollView className="flex-1 bg-gray-200 dark:bg-gray-950">

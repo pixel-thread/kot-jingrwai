@@ -80,7 +80,7 @@ export default function Layout() {
                   ifTrue={<Onboarding />}
                   ifFalse={<Stack screenOptions={{ headerShown: false }} />}
                 />
-                {/* <AppVersion /> */}
+                <AppVersion />
               </SongProvider>
             </TQueryProvider>
           </ThemeProvider>
