@@ -1,9 +1,10 @@
-import { View, Alert, Linking, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Alert, TouchableOpacity, ScrollView } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
+import * as Linking from 'expo-linking';
 
 export default function ReportScreen() {
   const { colorScheme } = useColorScheme();
@@ -22,7 +23,7 @@ export default function ReportScreen() {
   const openEmail = async (subject: string, body: string) => {
     const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}&cc=jyrwaboys@gmial.com`;
 
-    const supported = await Linking.canOpenURL(url);
+    const supported = true;
     //@ts-ignore @eslint-disable-next-line
     supported ? Linking.openURL(url) : Alert.alert('Error', 'Email app is not available.');
   };

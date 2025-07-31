@@ -1,4 +1,4 @@
-import { View, Alert, Linking, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Alert, TouchableOpacity, ScrollView } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
@@ -6,6 +6,7 @@ import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import { logger } from '~/src/utils/logger';
 import { ContentSection } from '../../Common/ContentSection';
+import * as Linking from 'expo-linking';
 
 export default function ContactScreen() {
   const { colorScheme } = useColorScheme();
@@ -26,7 +27,7 @@ export default function ContactScreen() {
 
   const openEmail = async () => {
     const url = `mailto:${email}`;
-    const supported = await Linking.canOpenURL(url);
+    const supported = true;
     supported ? Linking.openURL(url) : Alert.alert('Error', 'Email app is not available.');
   };
 
@@ -35,8 +36,7 @@ export default function ContactScreen() {
     const url = `tel:${cleaned}`;
 
     try {
-      const supported = await Linking.canOpenURL(url);
-      logger.log(supported);
+      const supported = true;
 
       if (!supported) {
         return;
@@ -48,7 +48,7 @@ export default function ContactScreen() {
   };
 
   const openMap = async () => {
-    const supported = await Linking.canOpenURL(mapUrl);
+    const supported = true;
     supported ? Linking.openURL(mapUrl) : Alert.alert('Error', 'Map app is not available.');
   };
 
