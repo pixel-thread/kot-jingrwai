@@ -9,11 +9,14 @@ import { ThemeProvider } from '../components/Provider/theme';
 import AppVersion from '../components/Common/AppVersion';
 import { TQueryProvider } from '../components/Provider/query';
 import * as SplashScreen from 'expo-splash-screen';
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
 import Entypo from '@expo/vector-icons/Entypo';
 import { logger } from '../utils/logger';
+import { useOnboardingStore } from '../libs/stores/onboarding';
+import Onboarding from '../components/Onboarding';
+import { Ternary } from '../components/Common/Ternary';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -26,7 +29,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   const [appIsReady, setAppIsReady] = useState(false);
-
+  const { hasCompletedOnboarding } = useOnboardingStore();
   const [loaded, error] = useFonts({
     Helvetica: require('~/assets/fonts/Helvetica.ttf'),
   });
@@ -71,7 +74,11 @@ export default function Layout() {
           <ThemeProvider>
             <TQueryProvider>
               <SongProvider>
-                <Stack screenOptions={{ headerShown: false }} />
+                <Ternary
+                  condition={!hasCompletedOnboarding}
+                  ifTrue={<Onboarding />}
+                  ifFalse={<Stack screenOptions={{ headerShown: false }} />}
+                />
                 {/* <AppVersion /> */}
               </SongProvider>
             </TQueryProvider>

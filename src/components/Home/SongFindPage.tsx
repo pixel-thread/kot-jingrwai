@@ -1,12 +1,11 @@
 import { useRouter } from 'expo-router';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { TextInput, View, ScrollView, TouchableOpacity, Animated, Platform } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, {
   FadeIn,
   FadeInDown,
   FadeInUp,
-  SlideInDown,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
@@ -20,14 +19,11 @@ import { Container } from '~/src/components/Common/Container';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { cn } from '~/src/libs/cn';
-import { useColorScheme } from 'nativewind';
 
 import { Ternary } from '../Common/Ternary';
 import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
 
 export const SongFinderPage = () => {
-  const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
   const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();
   const [songNumber, setSongNumber] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -35,8 +31,6 @@ export const SongFinderPage = () => {
   const { ChangeSong } = useSongs();
   const router = useRouter();
   // Animation values
-  const headerOpacity = useRef(new Animated.Value(0)).current;
-  const searchBarTranslateY = useRef(new Animated.Value(50)).current;
   const scale = useSharedValue(0.9);
   const opacity = useSharedValue(0);
 
@@ -64,17 +58,17 @@ export const SongFinderPage = () => {
   // Run animations on component mount
   useEffect(() => {
     Animated.parallel([
-      Animated.timing(headerOpacity, {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-      Animated.spring(searchBarTranslateY, {
-        toValue: 0,
-        tension: 50,
-        friction: 7,
-        useNativeDriver: true,
-      }),
+      // Animated.timing(headerOpacity, {
+      //   toValue: 1,
+      //   duration: 1000,
+      //   useNativeDriver: true,
+      // }),
+      // Animated.spring(searchBarTranslateY, {
+      //   toValue: 0,
+      //   tension: 50,
+      //   friction: 7,
+      //   useNativeDriver: true,
+      // }),
     ]).start();
 
     scale.value = withSpring(1, { damping: 12 });
@@ -96,7 +90,7 @@ export const SongFinderPage = () => {
         showsVerticalScrollIndicator={false}>
         {/* Hero Header */}
         <Animated.View
-          style={{ opacity: headerOpacity }}
+          // style={{ opacity: headerOpacity }}
           className="w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-8 pt-6 shadow-lg">
           <Reanimated.View entering={FadeInDown.delay(300).duration(800)}>
             <Text size={'3xl'} weight={'extrabold'} className="mb-2 uppercase">
@@ -112,7 +106,6 @@ export const SongFinderPage = () => {
         {/* Main Content */}
         <View className="mt-6 px-4">
           <Reanimated.View
-            entering={SlideInDown.delay(300).springify()}
             className="mb-6 rounded-2xl bg-gray-100/70 p-5 shadow-xl dark:bg-gray-800"
             style={[
               Platform.OS === 'ios'
@@ -183,7 +176,8 @@ export const SongFinderPage = () => {
                   key={song.id}
                   entering={FadeInUp.delay(600 + index * 100).duration(800)}
                   className={'gap-4 space-x-4'}
-                  style={animatedCardStyle}>
+                  // style={animatedCardStyle}
+                >
                   <TouchableOpacity
                     onPress={() => {
                       ChangeSong(song.metadata.number);

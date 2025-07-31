@@ -21,6 +21,7 @@ const menuItems: MenuItemsT[] = [
     title: 'Apostle Creed',
     herf: 'apostle-creed',
   },
+  { id: 6, title: 'Tynrai Jingrwai', herf: 'tynrai-jingrwai' },
   { id: 3, title: 'Contact', herf: 'contact' },
   { id: 4, title: 'Report', herf: 'report' },
   {

@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
+import { ContentSection } from '../../Common/ContentSection';
 
 export default function HelpSupportScreen() {
   const { colorScheme } = useColorScheme();
@@ -30,7 +31,7 @@ export default function HelpSupportScreen() {
         {contentVisible && (
           <>
             {/* Introduction Section */}
-            <HelpSection title="Help & Support">
+            <ContentSection title="Help & Support">
               <View className="p-4">
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
                   Welcome to the Kot Jingrwai App Help & Support Center. Here you&apos;ll find
@@ -38,10 +39,10 @@ export default function HelpSupportScreen() {
                   team.
                 </Text>
               </View>
-            </HelpSection>
+            </ContentSection>
 
             {/* Frequently Asked Questions */}
-            <HelpSection title="Frequently Asked Questions">
+            <ContentSection title="Frequently Asked Questions">
               <FaqItem
                 question="How do I search for songs?"
                 answer="You can search for songs by tapping on the search icon in the Songs tab and entering the song title, number, or keywords. The app will display matching results as you type."
@@ -62,10 +63,10 @@ export default function HelpSupportScreen() {
                 answer="Go to the Report section in the app menu and select 'Report a Song Issue'. Provide details about the song and the correction needed."
                 isLast
               />
-            </HelpSection>
+            </ContentSection>
 
             {/* Troubleshooting */}
-            <HelpSection title="Troubleshooting">
+            <ContentSection title="Troubleshooting">
               <HelpItem
                 icon="refresh"
                 title="App Not Loading Properly"
@@ -84,10 +85,10 @@ export default function HelpSupportScreen() {
                 content="Make sure your app is updated to the latest version. Clear the app cache from your device settings. If problems persist, contact our support team."
                 isLast
               />
-            </HelpSection>
+            </ContentSection>
 
             {/* Contact Support */}
-            <HelpSection title="Contact Support">
+            <ContentSection title="Contact Support">
               <View className="p-4">
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
                   If you couldn&apos;t find the answer to your question, please contact our support
@@ -129,7 +130,7 @@ export default function HelpSupportScreen() {
                   </Text>
                 </View>
               </View>
-            </HelpSection>
+            </ContentSection>
 
             {/* Footer */}
             <Reanimated.View entering={FadeInDown.delay(500).duration(500)} className="mb-4 mt-8">
@@ -143,25 +144,6 @@ export default function HelpSupportScreen() {
     </ScrollView>
   );
 }
-
-// Helper components
-type HelpSectionProps = {
-  title: string;
-  children: React.ReactNode;
-};
-
-const HelpSection = ({ title, children }: HelpSectionProps) => {
-  return (
-    <Reanimated.View entering={FadeInDown.duration(500)} className="mb-6">
-      <Text size="lg" weight={'bold'} className="mb-2 px-2 text-gray-800 dark:text-gray-200">
-        {title}
-      </Text>
-      <View className="overflow-hidden rounded-xl border border-gray-300 dark:border-gray-800">
-        {children}
-      </View>
-    </Reanimated.View>
-  );
-};
 
 type HelpItemProps = {
   icon: React.ComponentProps<typeof MaterialCommunityIcons>['name'];

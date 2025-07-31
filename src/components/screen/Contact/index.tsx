@@ -5,6 +5,7 @@ import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import { logger } from '~/src/utils/logger';
+import { ContentSection } from '../../Common/ContentSection';
 
 export default function ContactScreen() {
   const { colorScheme } = useColorScheme();
@@ -57,7 +58,7 @@ export default function ContactScreen() {
         {contentVisible && (
           <>
             {/* Contact Info Section */}
-            <ContactSection title="Contact Information">
+            <ContentSection title="Contact Information">
               <ContactItem
                 icon="email-outline"
                 title="Email"
@@ -82,10 +83,10 @@ export default function ContactScreen() {
                 onPress={openMap}
                 isLast
               />
-            </ContactSection>
+            </ContentSection>
 
             {/* Hours Section */}
-            <ContactSection title="Office Hours">
+            <ContentSection title="Office Hours">
               <View className="p-4">
                 <View className="flex-row items-center">
                   <MaterialCommunityIcons
@@ -106,17 +107,17 @@ export default function ContactScreen() {
                   </View>
                 </View>
               </View>
-            </ContactSection>
+            </ContentSection>
 
             {/* Social Media Section */}
-            <ContactSection title="Connect With Us">
+            <ContentSection title="Connect With Us">
               <View className="flex-row justify-around p-4">
                 <SocialButton icon="facebook" label="Facebook" />
                 <SocialButton icon="instagram" label="Instagram" />
                 <SocialButton icon="twitter" label="Twitter" />
                 <SocialButton icon="youtube" label="YouTube" />
               </View>
-            </ContactSection>
+            </ContentSection>
 
             {/* Footer */}
             <Reanimated.View entering={FadeInDown.delay(500).duration(500)} className="mb-4 mt-8">
@@ -130,25 +131,6 @@ export default function ContactScreen() {
     </ScrollView>
   );
 }
-
-// Helper components
-type ContactSectionProps = {
-  title: string;
-  children: React.ReactNode;
-};
-
-const ContactSection = ({ title, children }: ContactSectionProps) => {
-  return (
-    <Reanimated.View entering={FadeInDown.duration(500)} className="mb-6">
-      <Text size="lg" weight={'bold'} className="mb-2 px-2 text-gray-800 dark:text-gray-200">
-        {title}
-      </Text>
-      <View className="overflow-hidden rounded-xl border border-gray-300 dark:border-gray-800">
-        {children}
-      </View>
-    </Reanimated.View>
-  );
-};
 
 type ContactItemProps = {
   icon: React.ComponentProps<typeof MaterialCommunityIcons>['name'];

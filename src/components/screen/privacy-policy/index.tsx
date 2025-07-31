@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
+import { ContentSection } from '../../Common/ContentSection';
 
 export default function PrivacyPolicyScreen() {
   const { colorScheme } = useColorScheme();
@@ -25,7 +26,7 @@ export default function PrivacyPolicyScreen() {
         {contentVisible && (
           <>
             {/* Introduction Section */}
-            <PolicySection title="Privacy Policy">
+            <ContentSection title="Privacy Policy">
               <View className="p-4">
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
                   Kot Jingrwai {`("we," "our," or "us")`} is committed to protecting your privacy.
@@ -50,10 +51,10 @@ export default function PrivacyPolicyScreen() {
                   </Text>
                 </View>
               </View>
-            </PolicySection>
+            </ContentSection>
 
             {/* Information We Collect */}
-            <PolicySection title="Information We Collect">
+            <ContentSection title="Information We Collect">
               <PolicyItem
                 icon="information-outline"
                 title="Personal Information"
@@ -72,10 +73,10 @@ export default function PrivacyPolicyScreen() {
                 content="We collect information about how you use our app, including which features you use most frequently, song preferences, and other interaction data to improve our service."
                 isLast
               />
-            </PolicySection>
+            </ContentSection>
 
             {/* How We Use Information */}
-            <PolicySection title="How We Use Your Information">
+            <ContentSection title="How We Use Your Information">
               <View className="p-4">
                 <View className="flex-row items-start">
                   <MaterialCommunityIcons
@@ -112,10 +113,10 @@ export default function PrivacyPolicyScreen() {
                   </View>
                 </View>
               </View>
-            </PolicySection>
+            </ContentSection>
 
             {/* Data Sharing */}
-            <PolicySection title="Sharing Your Information">
+            <ContentSection title="Sharing Your Information">
               <PolicyItem
                 icon="account-group-outline"
                 title="Third-Party Service Providers"
@@ -134,10 +135,10 @@ export default function PrivacyPolicyScreen() {
                 content="If we are involved in a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred as part of that transaction."
                 isLast
               />
-            </PolicySection>
+            </ContentSection>
 
             {/* Data Security */}
-            <PolicySection title="Data Security">
+            <ContentSection title="Data Security">
               <View className="p-4">
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
                   We use administrative, technical, and physical security measures to help protect
@@ -147,10 +148,10 @@ export default function PrivacyPolicyScreen() {
                   transmission can be guaranteed against any interception or other type of misuse.
                 </Text>
               </View>
-            </PolicySection>
+            </ContentSection>
 
             {/* Your Rights */}
-            <PolicySection title="Your Rights">
+            <ContentSection title="Your Rights">
               <PolicyItem
                 icon="account-check-outline"
                 title="Access and Update"
@@ -169,10 +170,10 @@ export default function PrivacyPolicyScreen() {
                 content="You can opt out of receiving promotional communications from us by following the unsubscribe instructions included in each communication."
                 isLast
               />
-            </PolicySection>
+            </ContentSection>
 
             {/* Children's Privacy */}
-            <PolicySection title="Children's Privacy">
+            <ContentSection title="Children's Privacy">
               <View className="p-4">
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
                   Our Service is not directed to children under the age of 13. We do not knowingly
@@ -181,10 +182,10 @@ export default function PrivacyPolicyScreen() {
                   information, please contact us so that we can take necessary actions.
                 </Text>
               </View>
-            </PolicySection>
+            </ContentSection>
 
             {/* Changes to Policy */}
-            <PolicySection title="Changes to This Policy">
+            <ContentSection title="Changes to This Policy">
               <View className="p-4">
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
                   We may update our Privacy Policy from time to time. We will notify you of any
@@ -194,10 +195,10 @@ export default function PrivacyPolicyScreen() {
                   periodically for any changes.
                 </Text>
               </View>
-            </PolicySection>
+            </ContentSection>
 
             {/* Contact Us */}
-            <PolicySection title="Contact Us">
+            <ContentSection title="Contact Us">
               <View className="p-4">
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
                   If you have any questions about this Privacy Policy, please contact us at:
@@ -212,7 +213,7 @@ export default function PrivacyPolicyScreen() {
                   <Text className="text-blue-600 dark:text-blue-400">bimonlangb@gmail.com</Text>
                 </View>
               </View>
-            </PolicySection>
+            </ContentSection>
 
             {/* Footer */}
             <Reanimated.View entering={FadeInDown.delay(500).duration(500)} className="mb-4 mt-8">
@@ -226,25 +227,6 @@ export default function PrivacyPolicyScreen() {
     </ScrollView>
   );
 }
-
-// Helper components
-type PolicySectionProps = {
-  title: string;
-  children: React.ReactNode;
-};
-
-const PolicySection = ({ title, children }: PolicySectionProps) => {
-  return (
-    <Reanimated.View entering={FadeInDown.duration(500)} className="mb-6">
-      <Text size="lg" weight={'bold'} className="mb-2 px-2 text-gray-800 dark:text-gray-200">
-        {title}
-      </Text>
-      <View className="overflow-hidden rounded-xl border border-gray-300 dark:border-gray-800">
-        {children}
-      </View>
-    </Reanimated.View>
-  );
-};
 
 type PolicyItemProps = {
   icon: React.ComponentProps<typeof MaterialCommunityIcons>['name'];

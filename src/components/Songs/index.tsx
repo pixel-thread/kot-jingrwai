@@ -20,10 +20,20 @@ import { NotFoundSong } from './NotFoundSong';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { SearchBar } from '../Common/search/SearchBar';
+import { useSearchParams } from 'expo-router/build/hooks';
+import { logger } from '~/src/utils/logger';
 
 export const AllSongPage = () => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
+  const searchParams = useSearchParams();
+  const from = searchParams.get('from');
+  const to = searchParams.get('to');
+  logger.log({
+    message: 'AllSongPage',
+    from,
+    to,
+  });
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
