@@ -17,6 +17,7 @@ import { logger } from '../utils/logger';
 import { useOnboardingStore } from '../libs/stores/onboarding';
 import Onboarding from '../components/Onboarding';
 import { Ternary } from '../components/Common/Ternary';
+import { ErrorBoundary } from '../components/Common/ErrorBoundary';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -65,18 +66,20 @@ export default function Layout() {
       <SafeAreaProvider className="flex-1">
         <StatusBar style="auto" hidden />
         <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-800">
-          <ThemeProvider>
-            <TQueryProvider>
-              <SongProvider>
-                <Ternary
-                  condition={!hasCompletedOnboarding}
-                  ifTrue={<Onboarding />}
-                  ifFalse={<Stack screenOptions={{ headerShown: false }} />}
-                />
-                <AppVersion />
-              </SongProvider>
-            </TQueryProvider>
-          </ThemeProvider>
+          <ErrorBoundary>
+            <ThemeProvider>
+              <TQueryProvider>
+                <SongProvider>
+                  <Ternary
+                    condition={!hasCompletedOnboarding}
+                    ifTrue={<Onboarding />}
+                    ifFalse={<Stack screenOptions={{ headerShown: false }} />}
+                  />
+                  <AppVersion />
+                </SongProvider>
+              </TQueryProvider>
+            </ThemeProvider>
+          </ErrorBoundary>
         </SafeAreaView>
       </SafeAreaProvider>
     </GestureHandlerRootView>

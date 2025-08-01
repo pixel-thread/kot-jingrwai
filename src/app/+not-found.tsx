@@ -1,24 +1,26 @@
 import { Link, Stack } from 'expo-router';
-
-import { Text } from 'react-native';
 import { Container } from '../components/Common/Container';
+import { Text } from '../components/ui/typography';
+import Reanimated, { FadeIn } from 'react-native-reanimated';
 
 export default function NotFoundScreen() {
   return (
     <>
       <Stack.Screen options={{ title: 'Oops!' }} />
       <Container>
-        <Text className={styles.title}>{"This screen doesn't exist."}</Text>
-        <Link href="/" className={styles.link}>
-          <Text className={styles.linkText}>Go to home screen!</Text>
-        </Link>
+        <Reanimated.View
+          entering={FadeIn.duration(500)}
+          className="flex-1 items-center justify-center px-4">
+          <Text size="2xl" weight="bold" align="center" className="mb-6">
+            This screen doesn&apos;t exist.
+          </Text>
+          <Link href="/" className="mt-4 pt-4">
+            <Text size="lg" weight="semibold" className="text-indigo-600 dark:text-indigo-400">
+              Go to home screen!
+            </Text>
+          </Link>
+        </Reanimated.View>
       </Container>
     </>
   );
 }
-
-const styles = {
-  title: `text-xl font-bold`,
-  link: `mt-4 pt-4`,
-  linkText: `text-base text-[#2e78b7]`,
-};
