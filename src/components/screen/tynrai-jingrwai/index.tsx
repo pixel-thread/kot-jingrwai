@@ -1,6 +1,5 @@
 import { View, ScrollView } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
-import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import { tynraiJingrwai } from '~/src/libs/tynrai-jingrwai';
@@ -10,9 +9,6 @@ import { SubCategoryItem } from './SubCategoryItems';
 import { ContentSection } from '../../Common/ContentSection';
 
 export default function TynraiJingrwaiScreen() {
-  const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
-
   // Animation values
   const [contentVisible, setContentVisible] = useState(false);
 

@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { View, FlatList, Dimensions, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { useState, useRef } from 'react';
+import { View, FlatList, Dimensions, TouchableOpacity, StyleSheet } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
 import { useColorScheme } from 'nativewind';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Reanimated, { FadeIn, FadeInDown, FadeInUp } from 'react-native-reanimated';
+import Reanimated, { FadeIn, FadeInUp } from 'react-native-reanimated';
 import { useOnboardingStore } from '~/src/libs/stores/onboarding';
 import { router } from 'expo-router';
 
@@ -44,9 +43,6 @@ const onboardingData: OnboardingItemProps[] = [
 ];
 
 const OnboardingItem = ({ item }: { item: OnboardingItemProps }) => {
-  const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
-
   return (
     <View style={{ width, height: height * 0.8 }} className="items-center justify-center px-8">
       <Reanimated.View entering={FadeIn.duration(500)} className="items-center">

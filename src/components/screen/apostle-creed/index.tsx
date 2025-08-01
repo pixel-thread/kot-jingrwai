@@ -7,16 +7,13 @@ import Reanimated, {
 } from 'react-native-reanimated';
 import { Container } from '~/src/components/Common/Container';
 import { Text } from '~/src/components/ui/typography';
-import { useColorScheme } from 'nativewind';
 import { apostleCreed } from '~/src/libs/apostle-creed';
 import { ScrollView } from 'react-native-gesture-handler';
 import { View } from 'react-native';
 import { useTextStore } from '~/src/libs/stores/text';
 
 export const ApostleCreedPage = () => {
-  const { colorScheme } = useColorScheme();
   const { size } = useTextStore();
-  const isDarkMode = colorScheme === 'dark';
 
   const indent = (text: string[], spaces = 4) => `${'\u00A0\u00A0'.repeat(spaces)}${text}`;
   const headerOpacity = useSharedValue(0);

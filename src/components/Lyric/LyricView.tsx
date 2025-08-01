@@ -23,7 +23,6 @@ import { useTapGesture } from '~/src/hooks/useTapGesture';
 import { useSwipeGesture } from '~/src/hooks/useSwipeGesture';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { Ternary } from '../Common/Ternary';
-import { logger } from '~/src/utils/logger';
 
 type LyricViewProps = {
   song: SongT;

@@ -9,7 +9,7 @@ import { ThemeProvider } from '../components/Provider/theme';
 import AppVersion from '../components/Common/AppVersion';
 import { TQueryProvider } from '../components/Provider/query';
 import * as SplashScreen from 'expo-splash-screen';
-import { router, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
 import Entypo from '@expo/vector-icons/Entypo';
@@ -17,16 +17,9 @@ import { logger } from '../utils/logger';
 import { useOnboardingStore } from '../libs/stores/onboarding';
 import Onboarding from '../components/Onboarding';
 import { Ternary } from '../components/Common/Ternary';
-import colors from 'tailwindcss/colors';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
-
-// Set the animation options. This is optional.
-// SplashScreen.setOptions({
-//   duration: 1000,
-//   fade: true,
-// });
 
 export default function Layout() {
   const [appIsReady, setAppIsReady] = useState(false);

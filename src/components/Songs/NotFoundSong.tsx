@@ -1,6 +1,6 @@
 import { Container } from '../Common/Container';
 import { Text } from '../ui/typography';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
