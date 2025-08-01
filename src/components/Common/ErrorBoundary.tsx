@@ -1,5 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Text } from '../ui/typography';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
 import { Container } from './Container';
