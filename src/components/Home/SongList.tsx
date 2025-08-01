@@ -87,7 +87,9 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
           <Text variant="muted" className="mt-2 text-center">
             {emptyMessage}
           </Text>
-          <TouchableOpacity className="mt-3 rounded-full bg-indigo-100 px-4 py-2 dark:bg-indigo-900">
+          <TouchableOpacity
+            onPress={() => router.push('/songs')}
+            className="mt-3 rounded-full bg-indigo-100 px-4 py-2 dark:bg-indigo-900">
             <Text size="sm" className="text-indigo-600 dark:text-indigo-400">
               Browse Songs
             </Text>

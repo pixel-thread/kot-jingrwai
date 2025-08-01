@@ -1,4 +1,4 @@
-import { View, Platform, ToastAndroid } from 'react-native';
+import { View, Platform, ToastAndroid, TouchableOpacity } from 'react-native';
 import { cn } from '~/src/libs/cn';
 import { SongT } from '~/src/types/song';
 import { Text } from '~/src/components/ui/typography';
@@ -199,6 +199,16 @@ export const LyricView = ({ song }: LyricViewProps) => {
                           }
                         : {}
                     }>
+                    <TouchableOpacity
+                      onPress={() => copyToClipboard(paragraph.lines.join('\n'))}
+                      className="absolute right-3 z-50 mt-3 flex-row items-center justify-end">
+                      <MaterialCommunityIcons
+                        name="content-copy"
+                        size={14}
+                        color={isDarkMode ? '#93c5fd' : '#3b82f6'}
+                        style={{ marginRight: 4 }}
+                      />
+                    </TouchableOpacity>
                     {paragraph.lines.map((line, index) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
@@ -244,20 +254,22 @@ export const LyricView = ({ song }: LyricViewProps) => {
                             </View>
                           }
                           ifFalse={
-                            <Text
-                              key={`${paragraph.id}-line-${index}`}
-                              onLongPress={() => {
-                                copyToClipboard(paragraph.lines.join('\n'));
-                              }}
-                              selectable={isSelectable}
-                              size={size}
-                              leading={'loose'}
-                              weight={'bold'}
-                              tracking={'tight'}
-                              align={'center'}
-                              className={cn('text-left text-gray-900 dark:text-gray-100')}>
-                              {textContent || ' '}
-                            </Text>
+                            <>
+                              <Text
+                                key={`${paragraph.id}-line-${index}`}
+                                onLongPress={() => {
+                                  copyToClipboard(paragraph.lines.join('\n'));
+                                }}
+                                selectable={isSelectable}
+                                size={size}
+                                leading={'loose'}
+                                weight={'bold'}
+                                tracking={'tight'}
+                                align={'center'}
+                                className={cn('text-left text-gray-900 dark:text-gray-100')}>
+                                {textContent || ' '}
+                              </Text>
+                            </>
                           }
                         />
                       );
