@@ -25,8 +25,13 @@ export default function Settings() {
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(false);
 
   // Version check
-  const { data: versionData, mutate: refetch } = useMutation({
-    mutationFn: async () => http.get<AppUpdateT>('/kot-version'),
+  const {
+    data: versionData,
+    refetch,
+    isPending,
+  } = useQuery({
+    queryFn: async () => http.get<AppUpdateT>('/kot-version'),
+    queryKey: ['version'],
   });
 
   const [hasUpdate, setHasUpdate] = useState(false);
@@ -131,10 +136,12 @@ export default function Settings() {
               description={`Current version: ${appVersion}`}
               right={
                 <TouchableOpacity
+                  activeOpacity={0.7}
+                  disabled={isPending}
                   onPress={checkForUpdates}
                   className="rounded-full bg-gray-100 p-2 dark:bg-gray-800">
                   <MaterialCommunityIcons
-                    name="update"
+                    name={isPending ? 'sync' : 'update'}
                     size={20}
                     color={isDarkMode ? '#3b82f6' : '#3b82f6'}
                   />
