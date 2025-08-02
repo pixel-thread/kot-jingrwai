@@ -104,8 +104,8 @@ export const LyricView = ({ song }: LyricViewProps) => {
     if (text !== '') {
       await Clipboard.setStringAsync(text);
       // add toast and feed back
-      runOnJS(triggerHaptic)();
       if (Platform.OS === 'android') {
+        runOnJS(triggerHaptic)();
         ToastAndroid.show('Copied to clipboard', ToastAndroid.SHORT);
       }
     }
