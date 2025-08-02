@@ -17,7 +17,6 @@ import { SongListItem } from './SongListItem';
 export const AllSongPage = () => {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-
   // Animation values
   const headerOpacity = useSharedValue(0);
   const listOpacity = useSharedValue(0);
@@ -30,13 +29,13 @@ export const AllSongPage = () => {
   const filteredSongs = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     if (!query) return allSongs;
-
     return allSongs.filter(
-      ({ title, metadata }) =>
+      ({ title, metadata, paragraphs }) =>
         title.toLowerCase().includes(query) ||
         metadata.author?.toLowerCase().includes(query) ||
         metadata.composer?.toLowerCase().includes(query) ||
-        metadata.number.toString().includes(query)
+        metadata.number.toString().includes(query) ||
+        paragraphs[0]?.lines[0]?.toLowerCase()?.includes(query)
     );
   }, [searchQuery]);
 
