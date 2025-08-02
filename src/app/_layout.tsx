@@ -70,12 +70,12 @@ export default function Layout() {
             <ThemeProvider>
               <TQueryProvider>
                 <SongProvider>
+                  <AppVersion />
                   <Ternary
                     condition={!hasCompletedOnboarding}
                     ifTrue={<Onboarding />}
                     ifFalse={<Stack screenOptions={{ headerShown: false }} />}
                   />
-                  <AppVersion />
                 </SongProvider>
               </TQueryProvider>
             </ThemeProvider>

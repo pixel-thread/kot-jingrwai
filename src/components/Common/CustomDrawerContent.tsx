@@ -10,6 +10,7 @@ import { Text } from '../ui/typography';
 import { MenuItemsT } from '~/src/types/MenuItems';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
+
 const menuItems: MenuItemsT[] = [
   {
     id: 1,

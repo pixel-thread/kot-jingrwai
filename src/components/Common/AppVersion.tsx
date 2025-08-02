@@ -22,7 +22,7 @@ import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { logger } from '~/src/utils/logger';
 
 const AppVersion = () => {
-  const { setPrevVersion, ignoredVersion, setIgnoredVersion } = useAppVersionStore();
+  const { setPrevVersion } = useAppVersionStore();
   const appVersion = Constants.expoConfig?.version; // safer than manifest
   const [update, setUpdate] = useState<AppUpdateT | null>();
   const [showModal, setShowModal] = useState(false);
@@ -32,8 +32,6 @@ const AppVersion = () => {
     queryKey: ['app-update'],
     queryFn: async () => http.get<AppUpdateT>('/kot-version'),
   });
-
-  logger.error(data);
 
   useEffect(() => {
     if (data?.success && data.data && appVersion) {
@@ -45,28 +43,25 @@ const AppVersion = () => {
       const isServerHigher = compareVersions(serverVersion, appVersion) > 0;
 
       if (isServerHigher && isPlatformSupported) {
-        const userIgnoredThisVersion = ignoredVersion === serverVersion;
-
-        if (fetchedUpdate.mandatory || !userIgnoredThisVersion) {
-          setShowModal(true);
-          setUpdate(fetchedUpdate);
-          // Delay showing content for smooth animation
-          setTimeout(() => setContentVisible(true), 300);
-        }
+        // Always show update notification when server version is higher
+        setShowModal(true);
+        setUpdate(fetchedUpdate);
+        // Delay showing content for smooth animation
+        setTimeout(() => setContentVisible(true), 300);
       } else {
         setShowModal(false);
       }
     }
-  }, [data, appVersion, ignoredVersion]);
+  }, [data, appVersion]);
 
   const handleDismiss = () => {
     if (update?.version) {
-      setIgnoredVersion(update.version);
       setPrevVersion(update.version);
     }
     setShowModal(false);
   };
 
+  logger.error(data);
   if (!update) return null;
 
   return (
@@ -99,9 +94,11 @@ const AppVersion = () => {
               <Reanimated.View entering={FadeInDown.delay(300).duration(500)} className="mt-6">
                 {update.mandatory ? (
                   <TouchableOpacity
-                    className="p-3"
+                    className="rounded-lg bg-indigo-500 p-3 text-center text-white dark:bg-indigo-600"
                     onPress={() => Linking.openURL(update.release_notes_url)}>
-                    <Text>Update Now</Text>
+                    <Text align={'center'} weight={'bold'} className="uppercase text-white">
+                      Update Now
+                    </Text>
                   </TouchableOpacity>
                 ) : (
                   <View className="flex flex-row items-center justify-end gap-x-2">
