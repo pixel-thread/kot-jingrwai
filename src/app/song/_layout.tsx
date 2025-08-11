@@ -35,9 +35,9 @@ const HeaderRight = () => {
         onPress={onPressFavorite}
         accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}>
         <FontAwesome
-          name={isFavorite ? 'bookmark' : 'bookmark-o'}
+          name={isFavorite ? 'heart' : 'heart-o'}
           size={24}
-          color={isFavorite ? colors.orange[500] : colors.gray[500]}
+          color={isFavorite ? colors.red[500] : colors.gray[500]}
         />
       </TouchableOpacity>
       <ThemeToggle />
