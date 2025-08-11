@@ -78,11 +78,19 @@ export const SongFinderPage = () => {
             </Text>
           </Reanimated.View>
           <Reanimated.View entering={FadeInDown.delay(600).duration(800)}>
-            <Text size={'base'} italic className="text-center opacity-80">
-              Ngan rwai rwai da la ka dohnud - Paul
+            <Text size={'base'} italic variant={'default'} className="text-center opacity-80">
+              Ngan rwai da la ka dohnud
             </Text>
-            <Text size={'base'} italic className="text-center opacity-80">
-              Ngan rwai rwai da la ka jingshemphang ruh de - Paul
+            <Text size={'base'} variant={'default'} italic className="text-center opacity-80">
+              Ngan rwai da la ka jingshemphang ruh de
+            </Text>
+            <Text
+              size={'base'}
+              italic
+              weight={'normal'}
+              align={'right'}
+              className="pr-2 opacity-80">
+              - Paul
             </Text>
           </Reanimated.View>
         </Animated.View>
