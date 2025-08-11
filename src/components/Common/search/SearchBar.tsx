@@ -28,7 +28,7 @@ export const SearchBar = React.memo(
     return (
       <Reanimated.View className="z-10 mb-4 rounded-2xl p-3">
         <View className="mb-2 flex-row items-center">
-          <Ionicons name="search-outline" size={24} color="#6366f1" />
+          <MaterialCommunityIcons name="music-note" size={24} color="#6366f1" />
           <Text size={'lg'} weight={'semibold'} className="ml-2 text-gray-800 dark:text-white">
             {label}
           </Text>
@@ -36,7 +36,7 @@ export const SearchBar = React.memo(
         <View className="flex-row items-center gap-x-2">
           <View className="w-full flex-1 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-700">
             <View className="flex-row items-center px-3">
-              <MaterialCommunityIcons name="music-note" size={24} color="#6366f1" />
+              <Ionicons name="search-outline" size={24} color="#6366f1" />
               <TextInput
                 ref={inputRef}
                 placeholder={placeholder}
