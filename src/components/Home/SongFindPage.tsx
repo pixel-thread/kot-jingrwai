@@ -79,10 +79,10 @@ export const SongFinderPage = () => {
           </Reanimated.View>
           <Reanimated.View entering={FadeInDown.delay(600).duration(800)}>
             <Text size={'base'} italic className="text-center opacity-80">
-              Ngan rwai rwai da la ka dohnud
+              Ngan rwai rwai da la ka dohnud - Paul
             </Text>
             <Text size={'base'} italic className="text-center opacity-80">
-              Ngan rwai rwai da la ka jingshemphang ruh de
+              Ngan rwai rwai da la ka jingshemphang ruh de - Paul
             </Text>
           </Reanimated.View>
         </Animated.View>
@@ -101,7 +101,7 @@ export const SongFinderPage = () => {
                 : {},
             ]}>
             <View className="mb-4 flex-row items-center">
-              <Ionicons name="search-outline" size={24} color="#6366f1" />
+              <MaterialCommunityIcons name="music" size={24} color="#6366f1" />
               <Text size={'lg'} weight={'semibold'} className="ml-2 text-gray-800 dark:text-white">
                 Wad da number jingrwai
               </Text>
@@ -109,7 +109,7 @@ export const SongFinderPage = () => {
 
             <View className="mb-3 flex-col items-center gap-y-3">
               <View className="w-full flex-row items-center overflow-hidden rounded-xl border border-secondary-foreground bg-gray-200 px-3 dark:bg-gray-700">
-                <MaterialCommunityIcons name="music-note" size={24} color="#6366f1" />
+                <Ionicons name="search-outline" size={24} color="#6366f1" />
                 <TextInput
                   value={songNumber}
                   onChangeText={(text) => {
