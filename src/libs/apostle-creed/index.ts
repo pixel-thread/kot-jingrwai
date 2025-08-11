@@ -21,7 +21,7 @@ export const apostleCreed: SongT = {
       id: 'para-2',
       order: 2,
       lines: [
-        'Bad ha U Jisu Khrist U Khun ba tang marwei jong U, U Trai jong ngi Uba la pun da U Mynsiem Bakhuid, Uba la kha na ka Mari The isotti Uba la shah shitom ha U Pontios Pilat, la Sahnarphna ia U, U la iap bad la tep ia U; U la hiar sha ki riewiap; U la mihpat na kiba iap ha ka Sngi kaba lai, U la kiew sha bneng bad U la shong ha ka kti kamon U Blei U Kpa Badombor baroh; nangta Un wan ban bishar ia kiba im bad kiba iap.',
+        'Bad ha U Jisu Khrist U Khun ba tang marwei jong U, U Trai jong ngi Uba la pun da U Mynsiem Bakhuid, Uba la kha na ka Mari Theisotti Uba la shah shitom ha U Pontios Pilat, la Sahnarphna ia U, U la iap bad la tep ia U; U la hiar sha ki riewiap; U la mihpat na kiba iap ha ka Sngi kaba lai, U la kiew sha bneng bad U la shong ha ka kti kamon U Blei U Kpa Badonbor baroh; nangta Un wan ban bishar ia kiba im bad kiba iap.',
       ],
       type: 'verse',
     },
