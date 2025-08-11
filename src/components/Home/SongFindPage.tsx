@@ -116,7 +116,7 @@ export const SongFinderPage = () => {
             </View>
 
             <View className="mb-3 flex-col items-center gap-y-3">
-              <View className="w-full flex-row items-center overflow-hidden rounded-xl border border-secondary-foreground bg-gray-200 px-3 dark:bg-gray-700">
+              <View className="w-full flex-row items-center overflow-hidden rounded-xl border border-secondary-foreground bg-gray-200 px-3 dark:border-gray-600 dark:bg-gray-700">
                 <Ionicons name="search-outline" size={24} color="#6366f1" />
                 <TextInput
                   value={songNumber}
