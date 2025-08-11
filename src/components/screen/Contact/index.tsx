@@ -111,7 +111,7 @@ export default function ContactScreen() {
             {/* Social Media Section */}
             <ContentSection title="Connect With Us">
               <View className="flex-row justify-around p-4">
-                <SocialButton icon="facebook" label="Facebook" />
+                <SocialButton icon="github" label="Github" />
                 <SocialButton icon="instagram" label="Instagram" />
                 <SocialButton icon="twitter" label="Twitter" />
                 <SocialButton icon="youtube" label="YouTube" />
