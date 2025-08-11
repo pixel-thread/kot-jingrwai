@@ -57,30 +57,11 @@ export const SongFinderPage = () => {
 
   // Run animations on component mount
   useEffect(() => {
-    Animated.parallel([
-      // Animated.timing(headerOpacity, {
-      //   toValue: 1,
-      //   duration: 1000,
-      //   useNativeDriver: true,
-      // }),
-      // Animated.spring(searchBarTranslateY, {
-      //   toValue: 0,
-      //   tension: 50,
-      //   friction: 7,
-      //   useNativeDriver: true,
-      // }),
-    ]).start();
+    Animated.parallel([]).start();
 
     scale.value = withSpring(1, { damping: 12 });
     opacity.value = withTiming(1, { duration: 1000 });
   }, []);
-
-  const animatedCardStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: scale.value }],
-      opacity: opacity.value,
-    };
-  });
 
   return (
     <Container className="dark:bg-gray-950">
@@ -98,8 +79,11 @@ export const SongFinderPage = () => {
             </Text>
           </Reanimated.View>
           <Reanimated.View entering={FadeInDown.delay(600).duration(800)}>
-            <Text size={'base'} className="text-center opacity-80">
-              Wad da number jingrwai
+            <Text size={'base'} italic className="text-center opacity-80">
+              Ngan rwai rwai da la ka dohnud
+            </Text>
+            <Text size={'base'} italic className="text-center opacity-80">
+              Ngan rwai rwai da la ka jingshemphang ruh de
             </Text>
           </Reanimated.View>
         </Animated.View>
@@ -125,7 +109,7 @@ export const SongFinderPage = () => {
             </View>
 
             <View className="mb-3 flex-col items-center gap-y-3">
-              <View className="w-full flex-row items-center overflow-hidden rounded-xl bg-gray-100 px-3 dark:bg-gray-700">
+              <View className="w-full flex-row items-center overflow-hidden rounded-xl border border-secondary-foreground bg-gray-200 px-3 dark:bg-gray-700">
                 <MaterialCommunityIcons name="music-note" size={24} color="#6366f1" />
                 <TextInput
                   value={songNumber}
