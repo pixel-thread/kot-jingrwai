@@ -58,8 +58,12 @@ export const LyricView = ({ song }: LyricViewProps) => {
   const doubleTap = () => {
     if (isFavorite) {
       removeFavoriteSong(song.metadata.number);
+      ToastAndroid.show('Removed from favorites', ToastAndroid.SHORT);
+      triggerHaptic();
     } else {
       addFavoriteSong(song.metadata.number);
+      ToastAndroid.show('Added to favorites', ToastAndroid.SHORT);
+      triggerHaptic();
     }
   };
 
