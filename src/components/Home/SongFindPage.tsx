@@ -6,7 +6,6 @@ import Reanimated, {
   FadeIn,
   FadeInDown,
   FadeInUp,
-  useAnimatedStyle,
   useSharedValue,
   withSpring,
   withTiming,
