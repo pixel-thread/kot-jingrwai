@@ -11,14 +11,11 @@ import { Container } from '~/src/components/Common/Container';
 import { khoros as allSongs } from '~/src/libs/khoros';
 import { Text } from '~/src/components/ui/typography';
 import { PAGE_SIZE } from '~/src/libs/constant';
-import { useColorScheme } from 'nativewind';
 import { SearchBar } from '../Common/search/SearchBar';
 import { EmptyKhorusState } from './EmptyKhorusState';
 import { KhorusListItem } from './KhorusListItems';
 
 export const KhorusPage = () => {
-  const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -79,9 +76,6 @@ export const KhorusPage = () => {
         className="mb-2 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 py-5 shadow-lg">
         <Text size={'2xl'} weight={'extrabold'} className="mb-1 uppercase">
           Khorus
-        </Text>
-        <Text size={'base'} className="text-center opacity-80">
-          Browse collection
         </Text>
       </Reanimated.View>
 

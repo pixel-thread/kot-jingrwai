@@ -70,10 +70,7 @@ export const AllSongPage = () => {
         style={headerAnimatedStyle}
         className="mb-2 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 py-5 shadow-lg">
         <Text size={'2xl'} weight={'extrabold'} className="mb-1 uppercase">
-          Jingrwai
-        </Text>
-        <Text size={'base'} className="text-center opacity-80">
-          Browse collection
+          Ki Jingrwai
         </Text>
       </Reanimated.View>
 
