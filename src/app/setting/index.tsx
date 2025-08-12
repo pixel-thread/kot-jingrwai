@@ -3,62 +3,22 @@ import { View, ScrollView, TouchableOpacity, Switch, Linking } from 'react-nativ
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import ThemeSelector from '~/src/components/Common/theme/ThemeSelector';
 import { Text } from '~/src/components/ui/typography';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useColorScheme } from 'nativewind';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Constants from 'expo-constants';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import http from '~/src/utils/http';
-import { AppUpdateT } from '~/src/types/AppVersion';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useTextStore } from '~/src/libs/stores/text';
 import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-  const { isSelectable: textSelectionEnabled, setIsSelectable: setTextSelectionEnabled } =
-    useTextStore();
-  const appVersion = Constants.expoConfig?.version || '1.0.0';
-
+  const { isUpdateAvailable, isUpdateLoading, refresh, appVersion, update } = useUpdateContext();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(false);
-
-  // Version check
-  const {
-    data: versionData,
-    refetch,
-    isPending,
-  } = useQuery({
-    queryFn: async () => http.get<AppUpdateT>('/kot-version'),
-    queryKey: ['version'],
-  });
-
-  const [hasUpdate, setHasUpdate] = useState(false);
-
-  useEffect(() => {
-    if (versionData?.success && versionData.data) {
-      const serverVersion = versionData.data.version;
-      setHasUpdate(compareVersions(serverVersion, appVersion) > 0);
-    }
-  }, [versionData, appVersion]);
-
-  // Compare two semantic versions
-  function compareVersions(v1: string, v2: string): number {
-    const s1 = v1.split('.').map(Number);
-    const s2 = v2.split('.').map(Number);
-    for (let i = 0; i < Math.max(s1.length, s2.length); i++) {
-      const num1 = s1[i] || 0;
-      const num2 = s2[i] || 0;
-      if (num1 > num2) return 1;
-      if (num1 < num2) return -1;
-    }
-    return 0;
-  }
-
-  const checkForUpdates = () => {
-    refetch();
-  };
+  const { isSelectable: textSelectionEnabled, setIsSelectable: setTextSelectionEnabled } =
+    useTextStore();
 
   return (
     <>
@@ -135,25 +95,27 @@ export default function Settings() {
               title="Version"
               description={`Current version: ${appVersion}`}
               right={
-                <TouchableOpacity
-                  activeOpacity={0.7}
-                  disabled={isPending}
-                  onPress={checkForUpdates}
-                  className="rounded-full bg-gray-100 p-2 dark:bg-gray-800">
-                  <MaterialCommunityIcons
-                    name={isPending ? 'sync' : 'update'}
-                    size={20}
-                    color={isDarkMode ? '#3b82f6' : '#3b82f6'}
-                  />
-                </TouchableOpacity>
+                <>
+                  <TouchableOpacity
+                    activeOpacity={0.7}
+                    disabled={isUpdateLoading}
+                    onPress={refresh}
+                    className="rounded-full bg-gray-100 p-2 dark:bg-gray-800">
+                    <MaterialCommunityIcons
+                      name={isUpdateLoading ? 'sync' : 'update'}
+                      size={20}
+                      color={isDarkMode ? '#3b82f6' : '#3b82f6'}
+                    />
+                  </TouchableOpacity>
+                </>
               }
             />
 
-            {hasUpdate && (
+            {isUpdateAvailable && (
               <Reanimated.View entering={FadeInDown.duration(500)}>
                 <TouchableOpacity
                   className="mt-2 flex-row items-center justify-between rounded-xl bg-blue-100 p-3 dark:bg-blue-900"
-                  onPress={() => Linking.openURL(versionData?.data?.release_notes_url || '')}>
+                  onPress={() => Linking.openURL(update?.release_notes_url || '')}>
                   <View className="flex-row items-center">
                     <MaterialCommunityIcons
                       name="download"
@@ -161,9 +123,7 @@ export default function Settings() {
                       color={isDarkMode ? '#93c5fd' : '#3b82f6'}
                     />
                     <Text className="ml-2 text-blue-700 dark:text-blue-300">Update Available!</Text>
-                    <Text className="ml-2 text-blue-700 dark:text-blue-300">
-                      {versionData?.data?.version}
-                    </Text>
+                    <Text className="ml-2 text-blue-700 dark:text-blue-300">{update?.version}</Text>
                   </View>
                   <MaterialCommunityIcons
                     name="chevron-right"
@@ -224,7 +184,7 @@ type SettingItemProps = {
 const SettingItem = ({ icon, title, description, right, onPress }: SettingItemProps) => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-
+  const { isUpdateAvailable } = useUpdateContext();
   const Container = onPress ? TouchableOpacity : View;
 
   return (
@@ -237,6 +197,9 @@ const SettingItem = ({ icon, title, description, right, onPress }: SettingItemPr
             color={isDarkMode ? '#93c5fd' : '#3b82f6'}
           />
           <View className="ml-3">
+            {isUpdateAvailable && title === 'Version' && (
+              <View className="absolute right-4 top-0 h-2 w-2 -translate-y-1/2 rounded-full bg-red-500" />
+            )}
             <Text weight="semibold" className="text-gray-800 dark:text-gray-100">
               {title}
             </Text>

@@ -10,6 +10,8 @@ import { Text } from '../ui/typography';
 import { MenuItemsT } from '~/src/types/MenuItems';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
+import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
+import React from 'react';
 
 const menuItems: MenuItemsT[] = [
   { id: 1, title: 'Home', herf: '/' },
@@ -23,6 +25,7 @@ const menuItems: MenuItemsT[] = [
 
 export function CustomDrawerContent(props: DrawerContentComponentProps) {
   const { colorScheme } = useColorScheme();
+  const { isUpdateAvailable } = useUpdateContext();
   const isDarkMode = colorScheme === 'dark';
   const router = useRouter();
   const pathname = usePathname();
@@ -40,20 +43,32 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
       </View>
 
       <DrawerItemList {...props} />
+      <>
+        {menuItems.map((item) => {
+          // Decide which item should carry the badge.
+          // Here I’m showing it on the “Settings” item as an example:
+          const showDot = item.herf === '/setting' && isUpdateAvailable;
 
-      {menuItems.map((item) => (
-        <DrawerItem
-          focused={pathname === `${item.herf}`}
-          key={item.id}
-          label={item.title}
-          onPress={() => router.push(item.herf)}
-          labelStyle={{
-            textTransform: 'capitalize',
-            color: isDarkMode ? colors.gray[200] : colors.gray[950],
-            fontWeight: 'bold',
-          }}
-        />
-      ))}
+          return (
+            <View key={item.id} className="relative">
+              <DrawerItem
+                focused={pathname === item.herf}
+                label={item.title}
+                onPress={() => router.push(item.herf)}
+                labelStyle={{
+                  textTransform: 'capitalize',
+                  color: isDarkMode ? colors.gray[200] : colors.gray[950],
+                  fontWeight: 'bold',
+                }}
+              />
+
+              {showDot && (
+                <View className="absolute right-4 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-red-500" />
+              )}
+            </View>
+          );
+        })}
+      </>
     </DrawerContentScrollView>
   );
 }

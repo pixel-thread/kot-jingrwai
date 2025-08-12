@@ -7,8 +7,11 @@ import { DrawerToggleButton } from '@react-navigation/drawer';
 import { useEffect } from 'react';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
 import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
+import { View } from 'react-native';
 
 export default function TabLayout() {
+  const { isUpdateAvailable } = useUpdateContext();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
 
@@ -45,7 +48,12 @@ export default function TabLayout() {
           <CustomHeader
             options={options}
             headerLeft={
-              <DrawerToggleButton tintColor={isDarkMode ? colors.gray[200] : colors.gray[950]} />
+              <>
+                {isUpdateAvailable && (
+                  <View className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-red-500" />
+                )}
+                <DrawerToggleButton tintColor={isDarkMode ? colors.gray[200] : colors.gray[950]} />
+              </>
             }
             headerRight={<ThemeToggle />}
           />

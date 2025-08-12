@@ -17,8 +17,9 @@ export default function TynraiJingrwaiScreen() {
   const [selectedCategory, setSelectedCategory] = useState<TynraiJingrwaiT | null>(null);
   const [filteredSongs, setFilteredSongs] = useState<SongT[]>([]);
   const { ChangeSong } = useSongs();
+
   useEffect(() => {
-    const timer = setTimeout(() => setContentVisible(true), 300);
+    const timer = setTimeout(() => setContentVisible(true), 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -43,6 +44,7 @@ export default function TynraiJingrwaiScreen() {
   const toggleSongExpansion = (songId: number) => {
     ChangeSong(songId);
     router.push('/song');
+    return;
   };
 
   const getFirstLine = (song: SongT): string => {
@@ -52,13 +54,11 @@ export default function TynraiJingrwaiScreen() {
 
   const renderSongDropdown = (song: SongT) => {
     const firstLine = getFirstLine(song);
-
     return (
       <Reanimated.View
         key={song.id}
         entering={FadeInDown.delay(100).duration(300)}
         className="mb-2 overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800">
-        {/* Dropdown Header - Always visible */}
         <TouchableOpacity
           onPress={() => toggleSongExpansion(song.metadata.number)}
           className="flex-row items-center justify-between p-4">
@@ -83,7 +83,6 @@ export default function TynraiJingrwaiScreen() {
         {contentVisible && (
           <>
             {selectedCategory ? (
-              // Song List View with Dropdowns
               <>
                 <ContentSection
                   title={`${selectedCategory.title} (${selectedCategory.from}-${selectedCategory.to})`}>
@@ -115,7 +114,6 @@ export default function TynraiJingrwaiScreen() {
                 )}
               </>
             ) : (
-              // Category List View (Original)
               <>
                 <ContentSection title="Tynrai Jingrwai">
                   <View className="p-4">
