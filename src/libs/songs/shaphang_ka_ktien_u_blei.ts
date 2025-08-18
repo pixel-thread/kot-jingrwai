@@ -342,13 +342,6 @@ export const shaphangKaKtienUBlei: SongT[] = [
           `Ki Ktien jong Me long umsoh,`,
           `Kiba lah pynmih ka jingsuk,`,
           `Kaba dap da jor baroh.`,
-        ],
-      },
-      {
-        id: 'chorus-1',
-        order: 2,
-        type: 'chorus',
-        lines: [
           `Ka jingsawa ka jingpynlong,`,
           `Ki jingpynshoi doh bad pop;`,
           `Ha jingsawa sngewbha jong Me,`,
@@ -364,13 +357,6 @@ export const shaphangKaKtienUBlei: SongT[] = [
           `Kiba bang ruh jong pyrthei;`,
           `Ym lah nujor bad jingsawa,`,
           `Ki ktien sngur ka jingmap ei.`,
-        ],
-      },
-      {
-        id: 'chorus-2',
-        order: 4,
-        type: 'chorus',
-        lines: [
           `Ai ngin sngew jingsawa jong Me,`,
           `Ka jingsawa ba donbor;`,
           `Hapoh jong nga, ha ka dohnud,`,
@@ -386,13 +372,6 @@ export const shaphangKaKtienUBlei: SongT[] = [
           `Ong da ka ktien kaba shai;`,
           `To pynduh ka jingartatien,`,
           `Kren ha nga, to kren, Ah Trai!`,
-        ],
-      },
-      {
-        id: 'chorus-3',
-        order: 6,
-        type: 'chorus',
-        lines: [
           `Ai ngan ïohsngew kawei ka ktien,`,
           `Kaba mih na byneng hi;`,
           `Ki jingsheptieng kin jah junom,`,
