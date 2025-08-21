@@ -6,8 +6,12 @@ import { Container } from '~/src/components/Common/Container';
 import { Text } from '~/src/components/ui/typography';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
+import { Button } from '../ui/button';
 
-export const EmptyKhorusState = () => {
+type EmptyKhorusStateProps = {
+  reset: () => void;
+};
+export const EmptyKhorusState = ({ reset }: EmptyKhorusStateProps) => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
 
@@ -49,6 +53,24 @@ export const EmptyKhorusState = () => {
             We couldn&apos;t find any chorus songs matching your search. Try searching with
             different keywords.
           </Text>
+        </Reanimated.View>
+
+        <Reanimated.View entering={FadeInDown.delay(900).duration(800)}>
+          <Button
+            title="Clear"
+            variant="primary"
+            size="lg"
+            icon={
+              <MaterialCommunityIcons
+                name="select-remove"
+                size={20}
+                color={isDarkMode ? colors.indigo[400] : colors.white}
+              />
+            }
+            iconPosition="left"
+            onPress={reset}
+            className="w-full"
+          />
         </Reanimated.View>
       </Reanimated.View>
     </Container>

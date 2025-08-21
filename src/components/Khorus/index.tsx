@@ -77,7 +77,7 @@ export const KhorusPage = () => {
           ListHeaderComponent={() => (
             <SearchBar label="Find Your Khoros" onSearch={onSearch} value={searchQuery} />
           )}
-          ListEmptyComponent={() => <EmptyKhorusState />}
+          ListEmptyComponent={() => <EmptyKhorusState reset={() => onSearch('')} />}
           onEndReached={loadMore}
           onEndReachedThreshold={0.5}
         />
