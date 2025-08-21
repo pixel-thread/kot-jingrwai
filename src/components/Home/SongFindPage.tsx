@@ -99,16 +99,12 @@ export const SongFinderPage = () => {
         <View className="mt-6 px-4">
           <Reanimated.View
             className="mb-6 rounded-2xl bg-gray-100/70 p-5 shadow-xl dark:bg-gray-800"
-            style={[
-              Platform.OS === 'ios'
-                ? {
-                    shadowColor: '#6366f1',
-                    shadowOffset: { width: 0, height: 4 },
-                    // shadowOpacity: 0.3,
-                    shadowRadius: 8,
-                  }
-                : {},
-            ]}>
+            style={{
+              shadowColor: '#6366f1',
+              shadowOffset: { width: 0, height: 4 },
+              // shadowOpacity: 0.3,
+              shadowRadius: 8,
+            }}>
             <View className="mb-4 flex-row items-center">
               <MaterialCommunityIcons name="music" size={24} color="#6366f1" />
               <Text size={'lg'} weight={'semibold'} className="ml-2 text-gray-800 dark:text-white">
