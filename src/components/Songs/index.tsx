@@ -72,7 +72,9 @@ export const AllSongPage = () => {
           keyboardShouldPersistTaps="handled"
           stickyHeaderHiddenOnScroll={true}
           ListHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
-          ListEmptyComponent={() => <NotFoundSong />}
+          ListEmptyComponent={() => (
+            <NotFoundSong reset={() => searchQuery && setSearchQuery('')} />
+          )}
         />
       </Reanimated.View>
     </Container>
