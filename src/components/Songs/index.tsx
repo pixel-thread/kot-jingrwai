@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { FlashList } from '@shopify/flash-list';
 import Reanimated, {
   FadeInRight,
@@ -8,15 +8,16 @@ import Reanimated, {
 } from 'react-native-reanimated';
 import { Container } from '~/src/components/Common/Container';
 import { Text } from '~/src/components/ui/typography';
-import { songs as allSongs } from '~/src/libs/songs';
 import { PAGE_SIZE } from '~/src/libs/constant';
 import { NotFoundSong } from './NotFoundSong';
 import { SearchBar } from '../Common/search/SearchBar';
 import { SongListItem } from './SongListItem';
+import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
 
 export const AllSongPage = () => {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  const filteredSongs = useFilteredSongs({ searchQuery });
   // Animation values
   const headerOpacity = useSharedValue(0);
   const listOpacity = useSharedValue(0);
@@ -26,43 +27,24 @@ export const AllSongPage = () => {
     listOpacity.value = withTiming(1, { duration: 1000 });
   }, []);
 
-  const filteredSongs = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
-    if (!query) return allSongs;
-    return allSongs.filter(
-      ({ title, metadata, paragraphs }) =>
-        title.toLowerCase().includes(query) ||
-        metadata.author?.toLowerCase().includes(query) ||
-        metadata.composer?.toLowerCase().includes(query) ||
-        metadata.number.toString().includes(query) ||
-        paragraphs[0]?.lines[0]?.toLowerCase()?.includes(query)
-    );
-  }, [searchQuery]);
-
-  const paginatedSongs = filteredSongs.slice(0, page * PAGE_SIZE);
+  const paginatedSongs = filteredSongs?.slice(0, page * PAGE_SIZE);
 
   const loadMore = useCallback(() => {
-    if (paginatedSongs.length < filteredSongs.length) {
-      setPage((prev) => prev + 1);
+    if (paginatedSongs && filteredSongs) {
+      if (paginatedSongs?.length < filteredSongs?.length) {
+        setPage((prev) => prev + 1);
+      }
     }
-  }, [paginatedSongs.length, filteredSongs.length]);
+  }, [paginatedSongs?.length, filteredSongs?.length]);
 
   const onSearch = useCallback((query: string) => {
     setSearchQuery(query);
     setPage(1); // reset to first page when searching
   }, []);
 
-  const headerAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: headerOpacity.value,
-    };
-  });
+  const headerAnimatedStyle = useAnimatedStyle(() => ({ opacity: headerOpacity.value }));
 
-  const listAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: listOpacity.value,
-    };
-  });
+  const listAnimatedStyle = useAnimatedStyle(() => ({ opacity: listOpacity.value }));
 
   return (
     <Container className="flex-1 dark:bg-gray-950">

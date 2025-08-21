@@ -8,17 +8,18 @@ import Reanimated, {
 } from 'react-native-reanimated';
 
 import { Container } from '~/src/components/Common/Container';
-import { khoros as allSongs } from '~/src/libs/khoros';
 import { Text } from '~/src/components/ui/typography';
 import { PAGE_SIZE } from '~/src/libs/constant';
 import { SearchBar } from '../Common/search/SearchBar';
 import { EmptyKhorusState } from './EmptyKhorusState';
 import { KhorusListItem } from './KhorusListItems';
+import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
 
 export const KhorusPage = () => {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const filteredSongs = useFilteredSongs({ searchQuery, isKhorus: true });
   // Animation values
   const headerOpacity = useSharedValue(0);
   const listOpacity = useSharedValue(0);
@@ -28,46 +29,27 @@ export const KhorusPage = () => {
     listOpacity.value = withTiming(1, { duration: 1000 });
   }, []);
 
-  const filteredSongs = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
-    if (!query) return allSongs;
-
-    return allSongs.filter(
-      ({ title, metadata }) =>
-        title.toLowerCase().includes(query) ||
-        metadata.author?.toLowerCase().includes(query) ||
-        metadata.composer?.toLowerCase().includes(query) ||
-        metadata.number.toString().includes(query)
-    );
-  }, [searchQuery]);
-
   const paginatedSongs = useMemo(
-    () => filteredSongs.slice(0, page * PAGE_SIZE),
+    () => filteredSongs?.slice(0, page * PAGE_SIZE),
     [page, filteredSongs]
   );
 
   const loadMore = useCallback(() => {
-    if (paginatedSongs.length < filteredSongs.length) {
-      setPage((prev) => prev + 1);
+    if (filteredSongs && paginatedSongs) {
+      if (paginatedSongs?.length < filteredSongs?.length) {
+        setPage((prev) => prev + 1);
+      }
     }
-  }, [paginatedSongs.length, filteredSongs.length]);
+  }, [paginatedSongs?.length, filteredSongs?.length]);
 
   const onSearch = useCallback((query: string) => {
     setSearchQuery(query);
     setPage(1); // reset to first page when searching
   }, []);
 
-  const headerAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: headerOpacity.value,
-    };
-  });
+  const headerAnimatedStyle = useAnimatedStyle(() => ({ opacity: headerOpacity.value }));
 
-  const listAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: listOpacity.value,
-    };
-  });
+  const listAnimatedStyle = useAnimatedStyle(() => ({ opacity: listOpacity.value }));
 
   return (
     <Container className="flex-1 dark:bg-gray-950">
