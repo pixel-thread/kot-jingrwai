@@ -18,7 +18,7 @@ export const SearchBar = React.memo(
     onSearch,
     value,
     label = 'Find Your Songs',
-    placeholder = 'Search by title, author, composer, or song number',
+    placeholder = 'Search by name...',
   }: SearchBarProps) => {
     const [searchValue, setValue] = useState(value);
     const inputRef = useRef<TextInput>(null);
@@ -26,7 +26,7 @@ export const SearchBar = React.memo(
     const isDarkMode = colorScheme === 'dark';
 
     return (
-      <Reanimated.View className="z-10 mb-4 rounded-2xl p-3">
+      <Reanimated.View className="mb-2 rounded-2xl">
         <View className="mb-2 flex-row items-center">
           <MaterialCommunityIcons name="music-note" size={24} color="#6366f1" />
           <Text size={'lg'} weight={'semibold'} className="ml-2 text-gray-800 dark:text-white">
@@ -40,7 +40,7 @@ export const SearchBar = React.memo(
               <TextInput
                 ref={inputRef}
                 placeholder={placeholder}
-                className="flex-1 items-center p-4 align-middle text-base  dark:text-white"
+                className="h-16 flex-1 items-center p-4 text-start align-middle  dark:text-white"
                 placeholderClassName="text-xl"
                 placeholderTextColor={isDarkMode ? '#9CA3AF' : '#9ca3af'}
                 keyboardType="default"
@@ -54,7 +54,9 @@ export const SearchBar = React.memo(
             </View>
           </View>
           <TouchableOpacity
-            className="w-auto items-center justify-center rounded-xl bg-indigo-600 p-4 shadow-sm"
+            activeOpacity={0.7}
+            disabled={!searchValue}
+            className="w-auto items-center justify-center rounded-xl bg-indigo-600 p-4 shadow-sm disabled:opacity-50"
             onPress={() => onSearch(searchValue)}>
             <Ionicons
               name="search"

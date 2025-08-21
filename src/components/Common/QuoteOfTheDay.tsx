@@ -29,15 +29,6 @@ export const QuoteOfTheDay = () => {
   // Split the verse into quote and author by dash
   const [quoteText, author] = data?.verse ? data.verse.split(/-\s*/) : ['', ''];
 
-  // Animation values
-  const [contentVisible, setContentVisible] = useState(false);
-
-  useEffect(() => {
-    // Delay showing content for smooth animation
-    const timer = setTimeout(() => setContentVisible(true), 300);
-    return () => clearTimeout(timer);
-  }, []);
-
   const copyToClipboard = async () => {
     if (quoteText && data?.verse) {
       await Clipboard.setStringAsync(data?.verse || '');
@@ -45,7 +36,7 @@ export const QuoteOfTheDay = () => {
     }
   };
 
-  if (isLoading || !contentVisible) {
+  if (isLoading) {
     return (
       <Reanimated.View
         entering={FadeIn.duration(500)}
@@ -61,7 +52,7 @@ export const QuoteOfTheDay = () => {
     <Reanimated.View entering={FadeInDown.duration(500)}>
       <TouchableOpacity
         onPress={copyToClipboard}
-        className="overflow-hidden rounded-xl border border-gray-300 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        className="overflow-hidden rounded-xl border border-gray-300 bg-white shadow-sm dark:border-none dark:border-gray-900 dark:bg-gray-900">
         <View className="p-4">
           <View className="mb-2 flex-row items-center justify-center">
             <MaterialCommunityIcons
