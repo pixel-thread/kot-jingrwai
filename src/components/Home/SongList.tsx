@@ -12,7 +12,7 @@ type SongListProps = {
   emptyMessage: string;
 };
 
-export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) => {
+export const SongList = ({ title, songNumbers = [], emptyMessage }: SongListProps) => {
   const router = useRouter();
   const { ChangeSong } = useSongs();
 
@@ -48,12 +48,14 @@ export const SongList = ({ title, songNumbers, emptyMessage }: SongListProps) =>
                     : {}
                 }>
                 <View className="mr-3 h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600">
-                  <Text size="lg" weight="bold">
+                  <Text size="xl" weight="bold">
                     {song.metadata.number}
                   </Text>
                 </View>
                 <View className="flex-1 border-l border-gray-100 pl-3 dark:border-gray-700">
-                  <Text weight="semibold" className="line-clamp-1 text-gray-800 dark:text-white">
+                  <Text
+                    weight="semibold"
+                    className="line-clamp-1 capitalize text-gray-800 dark:text-white">
                     {song.title}
                   </Text>
                   {song.metadata.author && (

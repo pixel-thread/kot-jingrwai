@@ -197,23 +197,30 @@ export const LyricView = ({ song }: LyricViewProps) => {
                     style={
                       Platform.OS === 'ios'
                         ? {
-                            shadowColor: isDarkMode ? colors.gray[900] : '#000',
+                            shadowColor: isDarkMode ? colors.gray[900] : colors.black,
                             shadowOffset: { width: 0, height: 2 },
                             shadowOpacity: isDarkMode ? 0.3 : 0.1,
                             shadowRadius: 3,
                           }
-                        : {}
+                        : {
+                            shadowColor: isDarkMode ? colors.gray[900] : colors.black,
+                            shadowOffset: { width: 0, height: 2 },
+                            shadowOpacity: isDarkMode ? 0.3 : 0.1,
+                            shadowRadius: 3,
+                          }
                     }>
-                    <TouchableOpacity
-                      onPress={() => copyToClipboard(paragraph.lines.join('\n'))}
-                      className="absolute right-3 z-50 mt-3 flex-row items-center justify-end">
-                      <MaterialCommunityIcons
-                        name="content-copy"
-                        size={14}
-                        color={isDarkMode ? '#93c5fd' : '#3b82f6'}
-                        style={{ marginRight: 4 }}
-                      />
-                    </TouchableOpacity>
+                    {isSelectable && (
+                      <TouchableOpacity
+                        onPress={() => copyToClipboard(paragraph.lines.join('\n'))}
+                        className="absolute right-3 z-50 mt-3 flex-row items-center justify-end">
+                        <MaterialCommunityIcons
+                          name="content-copy"
+                          size={14}
+                          color={isDarkMode ? '#93c5fd' : '#3b82f6'}
+                          style={{ marginRight: 4 }}
+                        />
+                      </TouchableOpacity>
+                    )}
                     {paragraph.lines.map((line, index) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
