@@ -135,7 +135,7 @@ export const SongFinderPage = () => {
               {error ? (
                 <Reanimated.Text
                   entering={FadeIn.duration(300)}
-                  className="ml-1 self-start text-red-500 dark:text-red-400">
+                  className="ml-1 self-start text-sm lowercase text-red-500 dark:text-red-400">
                   {error}
                 </Reanimated.Text>
               ) : null}
