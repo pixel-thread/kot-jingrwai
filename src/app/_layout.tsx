@@ -1,5 +1,3 @@
-import '../../global.css';
-
 import { SongProvider } from '../components/Provider/Song';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
