@@ -22,6 +22,8 @@ import { cn } from '~/src/libs/cn';
 import { Ternary } from '../Common/Ternary';
 import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
 import { ContentSection } from '../Common/ContentSection';
+import { FeaturedSongCard } from './FeaturedSongCard';
+import { FlashList } from '@shopify/flash-list';
 
 export const SongFinderPage = () => {
   const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();
@@ -155,51 +157,16 @@ export const SongFinderPage = () => {
               Featured Songs
             </Text>
 
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              className="flex-row gap-4 space-x-2"
-              contentContainerStyle={{ paddingRight: 20 }}>
-              {songs.slice(0, 10).map((song, index) => (
-                <Reanimated.View
-                  key={song.id}
-                  entering={FadeInUp.delay(600 + index * 100).duration(800)}
-                  className={'gap-4 space-x-4'}
-                  // style={animatedCardStyle}
-                >
-                  <TouchableOpacity
-                    onPress={() => {
-                      ChangeSong(song.metadata.number);
-                      router.push('/song');
-                    }}
-                    className="mx-1 w-[160px] overflow-hidden rounded-xl bg-white shadow-lg dark:bg-gray-800"
-                    style={
-                      Platform.OS === 'ios'
-                        ? {
-                            shadowColor: '#000',
-                            shadowOffset: { width: 0, height: 2 },
-                            shadowOpacity: 0.1,
-                            shadowRadius: 4,
-                          }
-                        : {}
-                    }>
-                    <View className="h-[100px] items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600">
-                      <Text size={'5xl'} weight={'extrabold'}>
-                        {song.metadata.number}
-                      </Text>
-                    </View>
-                    <View className="p-3">
-                      <Text
-                        weight={'semibold'}
-                        numberOfLines={1}
-                        className="text-gray-800 dark:text-white">
-                        {song.title}
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </Reanimated.View>
-              ))}
-            </ScrollView>
+            <View className="gap-4 gap-x-2">
+              <FlashList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                estimatedItemSize={20}
+                ItemSeparatorComponent={() => <View className="w-2 bg-transparent" />}
+                data={songs.slice(0, 5)}
+                renderItem={({ item }) => <FeaturedSongCard song={item} />}
+              />
+            </View>
           </Reanimated.View>
 
           {/* Tabs for Recent and Favorites */}
