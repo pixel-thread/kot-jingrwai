@@ -8,7 +8,10 @@ import { useRouter } from 'expo-router';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { Button } from '../ui/button';
 
-export const NotFoundSong = () => {
+type NotFoundSongProps = {
+  reset: () => void;
+};
+export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
   const router = useRouter();
@@ -51,8 +54,8 @@ export const NotFoundSong = () => {
 
         <Reanimated.View entering={FadeInDown.delay(900).duration(800)}>
           <Button
-            title="Back to Home"
-            variant={isDarkMode ? 'outline' : 'primary'}
+            title="Clear"
+            variant="primary"
             size="lg"
             icon={
               <MaterialCommunityIcons
@@ -62,7 +65,7 @@ export const NotFoundSong = () => {
               />
             }
             iconPosition="left"
-            onPress={() => router.push('/')}
+            onPress={reset}
             className="w-full"
           />
         </Reanimated.View>
