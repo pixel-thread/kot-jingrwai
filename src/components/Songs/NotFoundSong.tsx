@@ -57,7 +57,13 @@ export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
             title="Clear"
             variant="primary"
             size="lg"
-            icon={<MaterialCommunityIcons name="home" size={20} color="white" />}
+            icon={
+              <MaterialCommunityIcons
+                name="home"
+                size={20}
+                color={isDarkMode ? colors.indigo[400] : colors.white}
+              />
+            }
             iconPosition="left"
             onPress={reset}
             className="w-full"

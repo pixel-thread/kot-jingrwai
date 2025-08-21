@@ -52,7 +52,7 @@ export const Button = forwardRef<View, ButtonProps>(
       const baseStyle = 'items-center justify-center rounded-xl shadow-sm';
 
       const variantStyles = {
-        primary: 'bg-gradient-to-r from-indigo-600 to-purple-600',
+        primary: 'bg-indigo-600 dark:bg-indigo-400',
         secondary: 'bg-gray-200 dark:bg-gray-800',
         outline: 'bg-transparent border border-indigo-500 dark:border-indigo-400',
       };
