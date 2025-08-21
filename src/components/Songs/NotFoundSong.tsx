@@ -52,9 +52,15 @@ export const NotFoundSong = () => {
         <Reanimated.View entering={FadeInDown.delay(900).duration(800)}>
           <Button
             title="Back to Home"
-            variant="primary"
+            variant={isDarkMode ? 'outline' : 'primary'}
             size="lg"
-            icon={<MaterialCommunityIcons name="home" size={20} color="white" />}
+            icon={
+              <MaterialCommunityIcons
+                name="home"
+                size={20}
+                color={isDarkMode ? colors.indigo[400] : colors.white}
+              />
+            }
             iconPosition="left"
             onPress={() => router.push('/')}
             className="w-full"
