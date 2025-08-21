@@ -2,14 +2,17 @@ import { useMemo } from 'react';
 import { songs } from '../libs/songs';
 import { normalizeForSearch } from '../utils/normalizeTextForSearch';
 import { khoros } from '../libs/khoros';
+import { SongT } from '../types/song';
+
+type UseFilteredSongsProps = {
+  searchQuery: string;
+  isKhorus?: boolean;
+};
 
 export const useFilteredSongs = ({
   searchQuery,
   isKhorus = false,
-}: {
-  searchQuery: string;
-  isKhorus?: boolean;
-}) => {
+}: UseFilteredSongsProps): SongT[] => {
   return useMemo(() => {
     const query = searchQuery.trim();
 
@@ -17,7 +20,7 @@ export const useFilteredSongs = ({
     const dataSource = isKhorus ? khoros : songs;
 
     // If no query, return all songs from the selected source
-    if (!query || query === '') return dataSource;
+    if (!query) return dataSource;
 
     const normalizedQuery = normalizeForSearch(query);
 
