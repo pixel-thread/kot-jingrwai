@@ -1,10 +1,11 @@
 import { useState, useRef } from 'react';
-import { View, FlatList, Dimensions, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Dimensions, TouchableOpacity, StyleSheet } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInUp } from 'react-native-reanimated';
 import { useOnboardingStore } from '~/src/libs/stores/onboarding';
 import { router } from 'expo-router';
+import { FlashList } from '@shopify/flash-list';
 
 const { width, height } = Dimensions.get('window');
 
@@ -74,7 +75,6 @@ const Paginator = ({
   currentIndex: number;
 }) => {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
 
   return (
     <View className="flex-row justify-center">
@@ -93,9 +93,8 @@ const Paginator = ({
 
 export default function Onboarding() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const slidesRef = useRef<FlatList>(null);
+  const slidesRef = useRef<FlashList<OnboardingItemProps>>(null);
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
   const { setHasCompletedOnboarding } = useOnboardingStore();
 
   const viewableItemsChanged = useRef(({ viewableItems }: any) => {
@@ -130,7 +129,7 @@ export default function Onboarding() {
   return (
     <View className="flex-1 bg-gray-200 dark:bg-gray-950">
       <Reanimated.View entering={FadeIn} className="flex-1">
-        <FlatList
+        <FlashList
           data={onboardingData}
           renderItem={({ item }) => <OnboardingItem item={item} />}
           horizontal
@@ -138,6 +137,7 @@ export default function Onboarding() {
           pagingEnabled
           bounces={false}
           keyExtractor={(item) => item.title}
+          estimatedItemSize={10}
           onViewableItemsChanged={viewableItemsChanged}
           viewabilityConfig={viewConfig}
           ref={slidesRef}
