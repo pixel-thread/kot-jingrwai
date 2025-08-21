@@ -61,7 +61,7 @@ export const SongListItem = ({ song }: { song: SongT }) => {
             <Text
               size="lg"
               weight="semibold"
-              className="line-clamp-1  text-gray-800 dark:text-white">
+              className="line-clamp-1 capitalize text-gray-800 dark:text-white">
               {song.title}
             </Text>
             <View className="mt-1 flex-row items-center">

@@ -8,15 +8,13 @@ import { SongT } from '~/src/types/song';
 import { CategoryItem } from './CategoryItems';
 import { ContentSection } from '../../Common/ContentSection';
 import { songs } from '~/src/libs/songs';
-import { Ionicons } from '@expo/vector-icons';
-import { useSongs } from '~/src/hooks/song/useSongs';
-import { router } from 'expo-router';
+import { SongListItem } from '../../Songs/SongListItem';
+import { FlashList } from '@shopify/flash-list';
 
 export default function TynraiJingrwaiScreen() {
   const [contentVisible, setContentVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<TynraiJingrwaiT | null>(null);
   const [filteredSongs, setFilteredSongs] = useState<SongT[]>([]);
-  const { ChangeSong } = useSongs();
 
   useEffect(() => {
     const timer = setTimeout(() => setContentVisible(true), 1000);
@@ -24,10 +22,12 @@ export default function TynraiJingrwaiScreen() {
   }, []);
 
   const filterSongsByRange = (category: TynraiJingrwaiT) => {
-    const filtered = songs.filter((song) => {
-      const songNumber = song.metadata.number;
-      return songNumber >= category.from && songNumber <= category.to;
-    });
+    const filtered = songs
+      .filter((song) => {
+        const songNumber = song.metadata.number;
+        return songNumber >= category.from && songNumber <= category.to;
+      })
+      .reverse();
     setFilteredSongs(filtered);
     setSelectedCategory(category);
   };
@@ -41,40 +41,8 @@ export default function TynraiJingrwaiScreen() {
     setFilteredSongs([]);
   };
 
-  const toggleSongExpansion = (songId: number) => {
-    ChangeSong(songId);
-    router.push('/song');
-    return;
-  };
-
-  const getFirstLine = (song: SongT): string => {
-    const firstParagraph = song.paragraphs.sort((a, b) => a.order - b.order)[0];
-    return firstParagraph?.lines[0] || '';
-  };
-
   const renderSongDropdown = (song: SongT) => {
-    const firstLine = getFirstLine(song);
-    return (
-      <Reanimated.View
-        key={song.id}
-        entering={FadeInDown.delay(100).duration(300)}
-        className="mb-2 overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800">
-        <TouchableOpacity
-          onPress={() => toggleSongExpansion(song.metadata.number)}
-          className="flex-row items-center justify-between p-4">
-          <View className="mr-3 flex-1">
-            <Text className="mb-1 text-base font-medium text-gray-900 dark:text-white">
-              {song.metadata.number}. {song.title}
-            </Text>
-            <Text className="text-sm italic text-gray-600 dark:text-gray-400">{firstLine}</Text>
-          </View>
-
-          <View className="flex-row items-center">
-            <Ionicons name="arrow-forward" size={20} color={'#3b82f6'} />
-          </View>
-        </TouchableOpacity>
-      </Reanimated.View>
-    );
+    return <SongListItem song={song} />;
   };
 
   return (
@@ -99,19 +67,23 @@ export default function TynraiJingrwaiScreen() {
                     </View>
                   </View>
                 </ContentSection>
-
-                {/* Render filtered songs as dropdowns */}
-                {filteredSongs.length > 0 ? (
-                  filteredSongs.map((song) => renderSongDropdown(song))
-                ) : (
-                  <ContentSection title="No Songs Found">
-                    <View className="p-4">
-                      <Text className="text-center text-gray-500 dark:text-gray-400">
-                        No songs found in the range {selectedCategory.from}-{selectedCategory.to}
-                      </Text>
-                    </View>
-                  </ContentSection>
-                )}
+                <FlashList
+                  data={filteredSongs}
+                  keyExtractor={(item) => item.id}
+                  estimatedItemSize={20}
+                  renderItem={({ item }) => (
+                    <View className="my-1">{renderSongDropdown(item)}</View>
+                  )}
+                  ListEmptyComponent={() => (
+                    <ContentSection title="No Songs Found">
+                      <View className="p-4">
+                        <Text className="text-center text-gray-500 dark:text-gray-400">
+                          No songs found in the range {selectedCategory.from}-{selectedCategory.to}
+                        </Text>
+                      </View>
+                    </ContentSection>
+                  )}
+                />
               </>
             ) : (
               <>

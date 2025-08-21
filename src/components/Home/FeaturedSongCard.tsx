@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, TouchableOpacity, Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
@@ -8,9 +7,7 @@ import { SongT } from '~/src/types/song';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { useRouter } from 'expo-router';
 
-type FeaturedSongCardProps = {
-  song: SongT;
-};
+type FeaturedSongCardProps = { song: SongT };
 
 export const FeaturedSongCard = ({ song }: FeaturedSongCardProps) => {
   const { number: songNumber, author } = song.metadata;
@@ -43,7 +40,10 @@ export const FeaturedSongCard = ({ song }: FeaturedSongCardProps) => {
           </Text>
         </View>
         <View className="p-3">
-          <Text weight="semibold" numberOfLines={1} className="text-gray-800 dark:text-white">
+          <Text
+            weight="semibold"
+            numberOfLines={1}
+            className="text-center text-gray-800 dark:text-white">
             {title}
           </Text>
           <View className="mt-1 flex-row items-center justify-center">

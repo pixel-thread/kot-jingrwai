@@ -5,6 +5,7 @@ import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import * as Linking from 'expo-linking';
+import { ContentSection } from '../../Common/ContentSection';
 
 export default function ReportScreen() {
   const { colorScheme } = useColorScheme();
@@ -34,7 +35,7 @@ export default function ReportScreen() {
         {contentVisible && (
           <>
             {/* Report Form Section */}
-            <ReportSection title="Report an Issue">
+            <ContentSection title="Report an Issue">
               <View className="p-4">
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
                   If you&apos;ve found an issue with the app or have suggestions for improvement,
@@ -66,10 +67,10 @@ export default function ReportScreen() {
                   isLast
                 />
               </View>
-            </ReportSection>
+            </ContentSection>
 
             {/* How to Report Section */}
-            <ReportSection title="How to Report">
+            <ContentSection title="How to Report">
               <View className="p-4">
                 <View className="flex-row items-start">
                   <MaterialCommunityIcons
@@ -102,7 +103,7 @@ export default function ReportScreen() {
                   </View>
                 </View>
               </View>
-            </ReportSection>
+            </ContentSection>
 
             {/* Footer */}
             <Reanimated.View entering={FadeInDown.delay(500).duration(500)} className="mb-4 mt-8">
@@ -116,25 +117,6 @@ export default function ReportScreen() {
     </ScrollView>
   );
 }
-
-// Helper components
-type ReportSectionProps = {
-  title: string;
-  children: React.ReactNode;
-};
-
-const ReportSection = ({ title, children }: ReportSectionProps) => {
-  return (
-    <Reanimated.View entering={FadeInDown.duration(500)} className="mb-6">
-      <Text size="lg" weight={'bold'} className="mb-2 px-2 text-gray-800 dark:text-gray-200">
-        {title}
-      </Text>
-      <View className="overflow-hidden rounded-xl border border-gray-300 dark:border-gray-800">
-        {children}
-      </View>
-    </Reanimated.View>
-  );
-};
 
 type ReportItemProps = {
   icon: React.ComponentProps<typeof MaterialCommunityIcons>['name'];

@@ -160,10 +160,10 @@ export const SongFinderPage = () => {
             <View className="gap-4 gap-x-2">
               <FlashList
                 horizontal
+                data={songs.slice(0, 5)}
                 showsHorizontalScrollIndicator={false}
                 estimatedItemSize={20}
                 ItemSeparatorComponent={() => <View className="w-2 bg-transparent" />}
-                data={songs.slice(0, 5)}
                 renderItem={({ item }) => <FeaturedSongCard song={item} />}
               />
             </View>
