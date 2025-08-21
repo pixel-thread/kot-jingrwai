@@ -21,6 +21,7 @@ import { cn } from '~/src/libs/cn';
 
 import { Ternary } from '../Common/Ternary';
 import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
+import { ContentSection } from '../Common/ContentSection';
 
 export const SongFinderPage = () => {
   const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();
