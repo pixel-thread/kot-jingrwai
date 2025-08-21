@@ -10,6 +10,7 @@ import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useTextStore } from '~/src/libs/stores/text';
 import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
 import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
+import { ContentSection } from '~/src/components/Common/ContentSection';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
@@ -37,12 +38,12 @@ export default function Settings() {
       <ScrollView className="flex-1 bg-gray-200 dark:bg-gray-950">
         <Reanimated.View entering={FadeIn.duration(500)} className="p-4">
           {/* Theme Section */}
-          <SettingSection title="Theme">
+          <ContentSection title="Theme">
             <ThemeSelector />
-          </SettingSection>
+          </ContentSection>
 
           {/* App Preferences Section */}
-          <SettingSection title="App Preferences">
+          <ContentSection title="App Preferences">
             <SettingItem
               icon="text-box-outline"
               title="Text Selection"
@@ -86,10 +87,10 @@ export default function Settings() {
                 />
               }
             />
-          </SettingSection>
+          </ContentSection>
 
           {/* App Info Section */}
-          <SettingSection title="App Info">
+          <ContentSection title="App Info">
             <SettingItem
               icon="information-outline"
               title="Version"
@@ -147,31 +148,12 @@ export default function Settings() {
               description="Read our privacy policy"
               onPress={() => router.push('/setting/privacy')}
             />
-          </SettingSection>
+          </ContentSection>
         </Reanimated.View>
       </ScrollView>
     </>
   );
 }
-
-// Helper components
-type SettingSectionProps = {
-  title: string;
-  children: React.ReactNode;
-};
-
-const SettingSection = ({ title, children }: SettingSectionProps) => {
-  return (
-    <View className="mb-6">
-      <Text size="lg" weight={'bold'} className="mb-2 px-2 text-gray-800 dark:text-gray-200">
-        {title}
-      </Text>
-      <View className="overflow-hidden rounded-xl border border-gray-300 dark:border-gray-800">
-        {children}
-      </View>
-    </View>
-  );
-};
 
 type SettingItemProps = {
   icon: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
