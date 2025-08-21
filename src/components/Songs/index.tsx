@@ -61,7 +61,9 @@ export const AllSongPage = () => {
           data={paginatedSongs}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
-            <Reanimated.View entering={FadeInRight.delay(index * 100).duration(400)}>
+            <Reanimated.View
+              className={'my-1'}
+              entering={FadeInRight.delay(index * 100).duration(400)}>
               <SongListItem song={item} />
             </Reanimated.View>
           )}
