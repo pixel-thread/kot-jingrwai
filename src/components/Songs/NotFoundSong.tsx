@@ -59,7 +59,7 @@ export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
             size="lg"
             icon={
               <MaterialCommunityIcons
-                name="home"
+                name="select-remove"
                 size={20}
                 color={isDarkMode ? colors.indigo[400] : colors.white}
               />
