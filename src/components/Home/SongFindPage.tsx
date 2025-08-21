@@ -141,7 +141,8 @@ export const SongFinderPage = () => {
               ) : null}
 
               <TouchableOpacity
-                className="w-full items-center justify-center rounded-xl bg-indigo-600 p-4 shadow-sm"
+                disabled={!songNumber}
+                className="w-full items-center justify-center rounded-xl bg-indigo-600 p-4 shadow-sm disabled:opacity-50"
                 onPress={() => handleSongSearch()}>
                 <Text size={'lg'} weight={'bold'} className="uppercase text-white dark:text-white">
                   Wad
