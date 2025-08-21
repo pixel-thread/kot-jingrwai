@@ -32,7 +32,7 @@ export const SongListItem = ({ song }: { song: SongT }) => {
   });
 
   return (
-    <Reanimated.View style={animatedStyle} className="mb-3">
+    <Reanimated.View style={animatedStyle} className="mb-0">
       <TouchableOpacity
         onPress={() => {
           ChangeSong(song.metadata.number);
