@@ -171,6 +171,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
               </View>
             )}
           </Reanimated.View>
+
           <Reanimated.View style={contentAnimatedStyle} className="px-4">
             {sortedParagraphs.map((paragraph, paragraphIndex) => {
               const type = capitalize(paragraph.type ?? 'Verse');
@@ -224,17 +225,9 @@ export const LyricView = ({ song }: LyricViewProps) => {
                           condition={isChorus}
                           ifTrue={
                             <View className="flex-1 flex-row">
-                              {isFirst && (
-                                <Text
-                                  variant={'primary'}
-                                  size={'xl'}
-                                  selectable={isSelectable}>{`"`}</Text>
-                              )}
+                              {isFirst && <Text variant={'primary'} size={'xl'}>{`"`}</Text>}
                               <View className={isFirst ? 'flex-1 px-0' : isLast ? 'pl-2' : 'px-2'}>
                                 <Text
-                                  onLongPress={() => {
-                                    copyToClipboard(paragraph.lines.join('\n'));
-                                  }}
                                   key={`${paragraph.id}-${isChorus ? 'chorus' : 'verse'}-line-${index}`}
                                   size={size}
                                   leading={'loose'}
@@ -243,17 +236,12 @@ export const LyricView = ({ song }: LyricViewProps) => {
                                   italic
                                   tracking={'tighter'}
                                   align={'center'}
-                                  selectable={isSelectable}
                                   className={cn('text-left')}>
                                   {textContent || ' '}
                                 </Text>
                               </View>
                               {isLast && (
-                                <Text
-                                  variant={'primary'}
-                                  weight={'bold'}
-                                  size={'xl'}
-                                  selectable={isSelectable}>{`"`}</Text>
+                                <Text variant={'primary'} weight={'bold'} size={'xl'}>{`"`}</Text>
                               )}
                             </View>
                           }
@@ -261,10 +249,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
                             <>
                               <Text
                                 key={`${paragraph.id}-line-${index}`}
-                                onLongPress={() => {
-                                  copyToClipboard(paragraph.lines.join('\n'));
-                                }}
-                                selectable={isSelectable}
                                 size={size}
                                 leading={'loose'}
                                 weight={'bold'}
