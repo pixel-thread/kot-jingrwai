@@ -50,7 +50,7 @@ export const AllSongPage = () => {
     <Container className="flex-1 dark:bg-gray-950">
       <Reanimated.View
         style={headerAnimatedStyle}
-        className="mb-2 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 py-5 shadow-lg">
+        className="mb-2 w-full items-center justify-center rounded-b-3xl py-5">
         <Text size={'2xl'} weight={'extrabold'} className="mb-1 uppercase">
           Ki Jingrwai
         </Text>
