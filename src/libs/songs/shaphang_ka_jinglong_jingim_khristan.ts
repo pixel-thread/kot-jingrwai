@@ -3908,7 +3908,7 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
         ],
       },
       {
-        id: 'verse-3',
+        id: 'verse-4',
         order: 4,
         type: 'verse',
         lines: [
@@ -11689,121 +11689,122 @@ export const shaphangKaJinglongJingimKhristan: SongT[] = [
         ],
       },
     ],
-  },{
-    "id": "song-438",
-    "title": "Kynmaw ban peit sha U Jisu",
-    "metadata": {
-      "number": 438,
-      "language": "khasi",
-      "author": "E.H.W.",
-      "composer": "AHB - III - 6"
-    },
-    "paragraphs": [
-      {
-        "id": "verse-1",
-        "order": 1,
-        "type": "verse",
-        "lines": [
-          "Ko nongleit jingleit sha ri ba bha,",
-          "Kynmaw ban peit sha U Jisu;",
-          "Ka kti jong U kan bytin, kan da,",
-          "Kynmaw ban peit sha U Jisu."
-        ]
-      },
-      {
-        "id": "chorus-1",
-        "order": 2,
-        "type": "chorus",
-        "lines": [
-          "Kynmaw ban peit sha U Jisu,",
-          "Kynmaw ban peit sha U Jisu;",
-          "Synñia sngi Un ïalam beit ïa phi,",
-          "Kynmaw ban peit sha U Jisu."
-        ]
-      },
-      {
-        "id": "verse-2",
-        "order": 3,
-        "type": "verse",
-        "lines": [
-          "Haba shah pynshoi ha la mynsiem,",
-          "Kynmaw ban peit sha U Jisu;",
-          "Nang ïaid shaphrang ha ka lynti khim,",
-          "Kynmaw ban peit sha U Jisu."
-        ]
-      },
-      {
-        "id": "verse-3",
-        "order": 4,
-        "type": "verse",
-        "lines": [
-          "La dum ka lynti hangne ka long,",
-          "Kynmaw ban peit sha U Jisu;",
-          "‘Ngan long lem bad phi,’ U Khrist U ong,",
-          "Kynmaw ban peit sha U Jisu."
-        ]
-      },
-      {
-        "id": "verse-4",
-        "order": 5,
-        "type": "verse",
-        "lines": [
-          "Khnang ïa ka sngi ka jingïap ban kloi,",
-          "Kynmaw ban peit sha U Jisu;",
-          "Haduh sha byneng bad U ban poi,",
-          "Kynmaw ban peit sha U Jisu."
-        ]
-      }
-    ]
   },
   {
-    "id": "song-439",
-    "title": "U Blei Un ri ïa phi",
-    "metadata": {
-      "number": 439,
-      "language": "khasi",
-      "author": "H.L.",
-      "composer": "S.S. 517"
+    id: 'song-438',
+    title: 'Kynmaw ban peit sha U Jisu',
+    metadata: {
+      number: 438,
+      language: 'khasi',
+      author: 'E.H.W.',
+      composer: 'AHB - III - 6',
     },
-    "paragraphs": [
+    paragraphs: [
       {
-        "id": "verse-1",
-        "order": 1,
-        "type": "verse",
-        "lines": [
-          "To wat sheptieng, U Blei Un ri ïa phi,",
-          "Un sharai hi ïa phi, bad miet bad sngi;",
-          "Їa la ki jong, U khmih U ri kyndong,",
-          "Un ym shah kin sakma kylleng sawdong.",
-          "U Blei Un ri ïa phi haduh ba kut,",
-          "U long U Kpa bad U lok bymjukut;",
-          "Jisu U sngew haba phi khot phi ud,",
-          "Un sumar hi ïa phi, to shaniah lut."
-        ]
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Ko nongleit jingleit sha ri ba bha,',
+          'Kynmaw ban peit sha U Jisu;',
+          'Ka kti jong U kan bytin, kan da,',
+          'Kynmaw ban peit sha U Jisu.',
+        ],
       },
       {
-        "id": "verse-2",
-        "order": 2,
-        "type": "verse",
-        "lines": [
-          "U Blei Un ri ïa phi baroh shisngi,",
-          "Un da jingjam jong phi, Un lam lynti;",
-          "U long Nongaplangbrot ba bha jong phi,",
-          "Un lam la ki khun sha u phlang ba ni."
-        ]
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
+          'Kynmaw ban peit sha U Jisu,',
+          'Kynmaw ban peit sha U Jisu;',
+          'Synñia sngi Un ïalam beit ïa phi,',
+          'Kynmaw ban peit sha U Jisu.',
+        ],
       },
       {
-        "id": "verse-3",
-        "order": 3,
-        "type": "verse",
-        "lines": [
-          "U Blei Un ri ïa phi katba dang im,",
-          "Un kyrkhu ïa phi bad Un ri pynim;",
-          "Un kdup ïa phi, ynda la wai jingim,",
-          "Un lam ïa phi sha ka ri kiba im."
-        ]
-      }
-    ]
+        id: 'verse-2',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Haba shah pynshoi ha la mynsiem,',
+          'Kynmaw ban peit sha U Jisu;',
+          'Nang ïaid shaphrang ha ka lynti khim,',
+          'Kynmaw ban peit sha U Jisu.',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 4,
+        type: 'verse',
+        lines: [
+          'La dum ka lynti hangne ka long,',
+          'Kynmaw ban peit sha U Jisu;',
+          '‘Ngan long lem bad phi,’ U Khrist U ong,',
+          'Kynmaw ban peit sha U Jisu.',
+        ],
+      },
+      {
+        id: 'verse-4',
+        order: 5,
+        type: 'verse',
+        lines: [
+          'Khnang ïa ka sngi ka jingïap ban kloi,',
+          'Kynmaw ban peit sha U Jisu;',
+          'Haduh sha byneng bad U ban poi,',
+          'Kynmaw ban peit sha U Jisu.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'song-439',
+    title: 'U Blei Un ri ïa phi',
+    metadata: {
+      number: 439,
+      language: 'khasi',
+      author: 'H.L.',
+      composer: 'S.S. 517',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'To wat sheptieng, U Blei Un ri ïa phi,',
+          'Un sharai hi ïa phi, bad miet bad sngi;',
+          'Їa la ki jong, U khmih U ri kyndong,',
+          'Un ym shah kin sakma kylleng sawdong.',
+          'U Blei Un ri ïa phi haduh ba kut,',
+          'U long U Kpa bad U lok bymjukut;',
+          'Jisu U sngew haba phi khot phi ud,',
+          'Un sumar hi ïa phi, to shaniah lut.',
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'U Blei Un ri ïa phi baroh shisngi,',
+          'Un da jingjam jong phi, Un lam lynti;',
+          'U long Nongaplangbrot ba bha jong phi,',
+          'Un lam la ki khun sha u phlang ba ni.',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'U Blei Un ri ïa phi katba dang im,',
+          'Un kyrkhu ïa phi bad Un ri pynim;',
+          'Un kdup ïa phi, ynda la wai jingim,',
+          'Un lam ïa phi sha ka ri kiba im.',
+        ],
+      },
+    ],
   },
   {
     id: 'song-440',
