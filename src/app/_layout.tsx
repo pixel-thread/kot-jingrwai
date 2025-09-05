@@ -63,7 +63,7 @@ export default function Layout() {
 
   return (
     <GestureHandlerRootView onLayout={onLayoutRootView} style={{ flex: 1 }}>
-      <SafeAreaProvider className="flex-1">
+      <SafeAreaProvider>
         <StatusBar style="auto" hidden />
         <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-800">
           <TQueryProvider>
