@@ -2745,7 +2745,7 @@ export const shaphangUKhrist: SongT[] = [
         ],
       },
       {
-        id: 'verse-1',
+        id: 'verse-2',
         order: 2,
         type: 'verse',
         lines: [
@@ -3324,556 +3324,556 @@ export const shaphangUKhrist: SongT[] = [
       },
     ],
   },
-    {
-      "id": "song-81",
-      "title": "Hajan Diengphna jong Me Trai",
-      "metadata": {
-        "number": 81,
-        "language": "khasi",
-        "author": "D.E.S.",
-        "composer": "S.S. 134"
-      },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "Hajan diengphna jong Me Trai,",
-            "Wah ba im ka ïai tuid;",
-            "Jingmap ï’u nongpop ba swai,",
-            "Na lum Kalb’ri ïai tuid."
-          ]
-        },
-        {
-          "id": "chorus-1",
-          "order": 2,
-          "type": "chorus",
-          "lines": [
-            "Ha diengphna, ha diengphna,",
-            "Long ka burom ïa nga;",
-            "Haduh mynsiem nga kan shem,",
-            "Jingsuk jai bad jingkmen."
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 3,
-          "type": "verse",
-          "lines": [
-            "Mynsiem jot bad rem jong nga,",
-            "Shem jingieit jingisnei;",
-            "‘Lutstep ba sngewlem shisha,",
-            "Kum ïa nga pynim ei,"
-          ]
-        },
-        {
-          "id": "verse-3",
-          "order": 4,
-          "type": "verse",
-          "lines": [
-            "Hajan diengphna, Khun U Blei,",
-            "Jingshai bneng ka pynpaw;",
-            "Btin ïa nga lynter lynti,",
-            "Lyngba pyrthei ri khlaw."
-          ]
-        },
-        {
-          "id": "verse-4",
-          "order": 5,
-          "type": "verse",
-          "lines": [
-            "Hajan diengphna, ngan ïai ap,",
-            "Da ngeit skhem bad kyrmen;",
-            "Tang h’U Jisu ba la ïap,",
-            "Їa nga ban ai jingkmen."
-          ]
-        }
-      ]
+  {
+    id: 'song-81',
+    title: 'Hajan Diengphna jong Me Trai',
+    metadata: {
+      number: 81,
+      language: 'khasi',
+      author: 'D.E.S.',
+      composer: 'S.S. 134',
     },
-    {
-      "id": "song-82",
-      "title": "Ka Kyrteng U Jisu",
-      "metadata": {
-        "number": 82,
-        "language": "khasi",
-        "author": "J.R.",
-        "composer": "RAMOTH (66.66.88)"
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Hajan diengphna jong Me Trai,',
+          'Wah ba im ka ïai tuid;',
+          'Jingmap ï’u nongpop ba swai,',
+          'Na lum Kalb’ri ïai tuid.',
+        ],
       },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "Ka kyrteng ba nga ieit,",
-            "Nga ieit ha ka mynsiem;",
-            "Ki angel kim shym sngew,",
-            "Kat ka na mynbarim:",
-            "Ha ka nga ngeit la dum, la shai,",
-            "Kan shan ba don ka bor U Trai."
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 2,
-          "type": "verse",
-          "lines": [
-            "Ka kti jong U ka khlaiñ,",
-            "Ka waitlam ruh Ia kieng;",
-            "Ki nongshun la ki shait,",
-            "Ban peit sha U ki tieng;",
-            "Ha U ngan rieh, Un da ïa nga,",
-            "Ka buit ka dujok kan ym lah."
-          ]
-        },
-        {
-          "id": "verse-3",
-          "order": 3,
-          "type": "verse",
-          "lines": [
-            "Ka kyrteng Kalbari,",
-            "Ba ju long jingkren beiñ;",
-            "Mynsiem jong nga ka ieit,",
-            "Їa baroh kor nga kheiñ,",
-            "Ko lum jingsuk, ko jaka khuid,",
-            "Ka snam U Blei ha me la tuid."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "song-83",
-      "title": "Ki Soh ka Jingaiei",
-      "metadata": {
-        "number": 83,
-        "language": "khasi",
-        "author": "E.H.W.",
-        "composer": "BUILTH (54.64.6664)"
+      {
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
+          'Ha diengphna, ha diengphna,',
+          'Long ka burom ïa nga;',
+          'Haduh mynsiem nga kan shem,',
+          'Jingsuk jai bad jingkmen.',
+        ],
       },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "To kyntiew nam ï’U Trai,",
-            "Jisu ba im;",
-            "U la pynduh ka bor,",
-            "Ka Jordan triem.",
-            "Ka jingïap U la jop,",
-            "Ka jingïap dum shyrkhei;",
-            "Ki khun jingtep la lait,",
-            "Ah jingaiei!"
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 2,
-          "type": "verse",
-          "lines": [
-            "Kuna ba kor la siew,",
-            "To khie ban ïoh;",
-            "U soh na ka diengphna,",
-            "Ngin mad baroh.",
-            "Phi kiba thait to wan,",
-            "Ban ïoh ka jingisnei;",
-            "Jingmap, jingjm, phin shem,",
-            "Ah jingaiei!"
-          ]
-        },
-        {
-          "id": "verse-3",
-          "order": 3,
-          "type": "verse",
-          "lines": [
-            "Dieng shiah ki kylla long,",
-            "Dieng waiñ ba bang;",
-            "Na jingmong Jisu, mih,",
-            "Balm ï’u nongpang.",
-            "Sa khyndiat ngin ïasdang,",
-            "Ban ïaroh jingisnei;",
-            "Ka Anthem kan ym blad,",
-            "Ah jingaiei!"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "song-84",
-      "title": "Ka Jingjop thiaw U Khrist",
-      "metadata": {
-        "number": 84,
-        "language": "khasi",
-        "author": "H.R.",
-        "composer": "EASTER HYMN (77.77 & ki Haleluia)"
+      {
+        id: 'verse-2',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Mynsiem jot bad rem jong nga,',
+          'Shem jingieit jingisnei;',
+          '‘Lutstep ba sngewlem shisha,',
+          'Kum ïa nga pynim ei,',
+        ],
       },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "Mynta Jisu U la mih,",
-            "Haleluïa!",
-            "Ka Sngi jingjop khraw jong ngi,",
-            "Haleluïa!",
-            "Shisien ha ka diengphyna,",
-            "Haleluïa!",
-            "U la shah ban im ma nga,",
-            "Haleluïa!"
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 2,
-          "type": "verse",
-          "lines": [
-            "Riwai lang ïa ka kyrteng,",
-            "Ha leluïa!",
-            "Jisu long U Syiem byneng,",
-            "Haleluluïa!",
-            "Ha u dieng, jingtep, jingtim,",
-            "Haleluia!",
-            "U la shah ba ngin ïoh im;",
-            "Haleluïa!"
-          ]
-        },
-        {
-          "id": "verse-3",
-          "order": 3,
-          "type": "verse",
-          "lines": [
-            "Da jingshitom ï’U b’la ban,",
-            "Haleluïa!",
-            "Jingim ha ngi ka la wan,",
-            "Haleluïa!",
-            "Mynta halor baroh long,",
-            "Haleluïa!",
-            "Junom hangta ruh U’n shong;",
-            "Haleluïa!"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "song-85",
-      "title": "Ka Jingmih pat U Khrist",
-      "metadata": {
-        "number": 85,
-        "language": "khasi",
-        "author": "H.L.",
-        "composer": "EASTER HYMN (77.77 & ki Haleluïa)"
+      {
+        id: 'verse-3',
+        order: 4,
+        type: 'verse',
+        lines: [
+          'Hajan diengphna, Khun U Blei,',
+          'Jingshai bneng ka pynpaw;',
+          'Btin ïa nga lynter lynti,',
+          'Lyngba pyrthei ri khlaw.',
+        ],
       },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "La mih Jisu Khrist mynta,",
-            "Haleluïa!",
-            "Ka sngi jingjop to risa,",
-            "Haleluïa!",
-            "Ha ka diengphna U la shah,",
-            "Haleluïa!",
-            "Jingrem jong ngi ban siewspah,",
-            "Haleluïa!"
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 2,
-          "type": "verse",
-          "lines": [
-            "Jingïaroh to ngin rwai,",
-            "Haleluïa!",
-            "Їa U Syiem, U Khrist, U Trai,",
-            "Haleluïa!",
-            "Uba la shah ïap shah jop,",
-            "Haleluïa!",
-            "Ban pynim ïa ngi nongpop,",
-            "Haleluïa!"
-          ]
-        },
-        {
-          "id": "verse-3",
-          "order": 3,
-          "type": "verse",
-          "lines": [
-            "Ki jingshitom b’U la shah,",
-            "Haleluïa!",
-            "Їa ki pop jong ngi U bah,",
-            "Haleluïa!",
-            "Ha bneng mynta U long Syiem,",
-            "Haleluïa!",
-            "Ї’U ki angel ki nguh syiem,",
-            "Haleluïa!"
-          ]
-        },
-        {
-          "id": "verse-4",
-          "order": 4,
-          "type": "verse",
-          "lines": [
-            "Їa U Blei ha jrong ngi rwai,",
-            "Haleluïa!",
-            "Ki jingïaroh bymjukut,",
-            "Haleluïa!",
-            "Phi paid bneng ïaroh ïa U,",
-            "Haleluïa!",
-            "Kpa, Khun, bad Mynsiem Bakhuid,",
-            "Haleluïa!"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "song-86",
-      "title": "Ka Jingmihpat U Khrist",
-      "metadata": {
-        "number": 86,
-        "language": "khasi",
-        "author": "H.L.",
-        "composer": "S.S. 152"
+      {
+        id: 'verse-4',
+        order: 5,
+        type: 'verse',
+        lines: [
+          'Hajan diengphna, ngan ïai ap,',
+          'Da ngeit skhem bad kyrmen;',
+          'Tang h’U Jisu ba la ïap,',
+          'Їa nga ban ai jingkmen.',
+        ],
       },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "Ha jingtep U la thiah,",
-            "Jisu Nongpynim;",
-            "Ka sngi ba lai U ap,",
-            "U Trai jong nga."
-          ]
-        },
-        {
-          "id": "chorus-1",
-          "order": 2,
-          "type": "chorus",
-          "lines": [
-            "Joit, na jingtep U la mih,",
-            "Da ka jingjop bah ïa ki nongshun;",
-            "Kum U nonggjop U la mih na jingïap dom,",
-            "Bad U im bad riewkhuid ban synshar junom;",
-            "U la mih, U la mih,",
-            "Haleluïa! U la mih."
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 3,
-          "type": "verse",
-          "lines": [
-            "Sep ei jingtep ki ap,",
-            "Jisu Nongpynim;",
-            "Sep ei ka jingshon shap,",
-            "U Trai jong nga."
-          ]
-        },
-        {
-          "id": "verse-3",
-          "order": 4,
-          "type": "verse",
-          "lines": [
-            "Jingïap kam lah ban bat,",
-            "Jisu Nongpynim;",
-            "Ї’u maw ba khang U rat,",
-            "U Trai jong nga."
-          ]
-        }
-      ]
+    ],
+  },
+  {
+    id: 'song-82',
+    title: 'Ka Kyrteng U Jisu',
+    metadata: {
+      number: 82,
+      language: 'khasi',
+      author: 'J.R.',
+      composer: 'RAMOTH (66.66.88)',
     },
-    {
-      "id": "song-87",
-      "title": "Ka Jingkyrmen ia ka Jingmihpat",
-      "metadata": {
-        "number": 87,
-        "language": "khasi",
-        "author": "H.R.",
-        "composer": "BUILTH (64.64.6664)"
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Ka kyrteng ba nga ieit,',
+          'Nga ieit ha ka mynsiem;',
+          'Ki angel kim shym sngew,',
+          'Kat ka na mynbarim:',
+          'Ha ka nga ngeit la dum, la shai,',
+          'Kan shan ba don ka bor U Trai.',
+        ],
       },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "Kam lah ka jingtep dum,",
-            "Ban khum ï’U Trai;",
-            "La lait n’u maw b’la tap,",
-            "Ka sngi ba lai;",
-            "Jingtep ba ïong, ba dum,",
-            "Kam lah ban khum, ki khun,",
-            "Kin ïeng ha dur U Blei,",
-            "Shatei la hun."
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 2,
-          "type": "verse",
-          "lines": [
-            "Ban i ka jingïap ïong,",
-            "Sa long - sa paw,",
-            "Ngan kyiuh haba dei,",
-            "Ban poi kynmaw;",
-            "Tang i ka kam Trai,",
-            "Ka sngi balai b’U leh.",
-            "Nga kyrmen ba ngan mih,",
-            "Sha khlieh ngan beh."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "song-88",
-      "title": "Ka Jingmihpat U Khrist",
-      "metadata": {
-        "number": 88,
-        "language": "khasi",
-        "author": "J.R.",
-        "composer": "BEVERLY (66.66.68)"
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Ka kti jong U ka khlaiñ,',
+          'Ka waitlam ruh Ia kieng;',
+          'Ki nongshun la ki shait,',
+          'Ban peit sha U ki tieng;',
+          'Ha U ngan rieh, Un da ïa nga,',
+          'Ka buit ka dujok kan ym lah.',
+        ],
       },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "U Syiem byneng la mih,",
-            "U nongpynim ki briew;",
-            "Da burom phyrnai hi,",
-            "Na ki baïap la kiew;",
-            "Shaneng la kiew U Nongbahkhlieh,",
-            "Ban khreh ka ïing shongneh ïa ngi."
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 2,
-          "type": "verse",
-          "lines": [
-            "Riewkhuid baroh kin mih,",
-            "Na ka jingdum jingïap,",
-            "Ha dur U Trai jong ki,",
-            "B’la kup da jing bym ïap;",
-            "Kin sa ïoh kiew sha la U Trai,",
-            "Shonglem bad U ha suk khlem wai."
-          ]
-        },
-        {
-          "id": "verse-3",
-          "order": 3,
-          "type": "verse",
-          "lines": [
-            "Haba pyrthei yn thang,",
-            "Bad spah ba ïoh pateng,",
-            "Kin riwai kaba bang;",
-            "B’la mih U syiem byneng;",
-            "Da bor ka jingmihpat jong U,",
-            "Ma ki la mih, ban ym ïap shuh."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "song-89",
-      "title": "Ka Jingmihpat U Trai Jisu",
-      "metadata": {
-        "number": 89,
-        "language": "khasi",
-        "author": "S.Q.N.",
-        "composer": "S.S. 153"
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Ka kyrteng Kalbari,',
+          'Ba ju long jingkren beiñ;',
+          'Mynsiem jong nga ka ieit,',
+          'Їa baroh kor nga kheiñ,',
+          'Ko lum jingsuk, ko jaka khuid,',
+          'Ka snam U Blei ha me la tuid.',
+        ],
       },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "Haleluïa! Haleluïa! la ki jingïaroh pynjam,",
-            "Sha U Blei da ka jingkymen ïa jingjop ba phylla tam,",
-            "Ba Uta b’la shah ha u dieng, bad hapoh khyndew la btep,",
-            "Jisu Khrist, U Syiem ka burom, U la mihpat na jingtep."
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 2,
-          "type": "verse",
-          "lines": [
-            "Khrist la mih pat, kum soh nyngkong jong ki riewkhuid baroh phar,",
-            "Ha ka burom ynda Un wan kumba U hi la kular,",
-            "Te ki symboh ksiar ka jingot kin sa phyrnai khlem da sep,",
-            "Da jingput ba jam ka turoi kin sa mih bluit na jingtep."
-          ]
-        },
-        {
-          "id": "verse-3",
-          "order": 3,
-          "type": "verse",
-          "lines": [
-            "Haleluïa! Haleluïa! burom ïa U Blei ha khlieh!",
-            "Haleluia! ï’U Nongpynim, da ka jingjop U la mih;",
-            "Haleluïa! ïa U Mynsiem, to ngin dem da ainguh lut,",
-            "Haleluïa! ïa Lai Ngut ba tang Uwei sha bymjukut."
-          ]
-        }
-      ]
+    ],
+  },
+  {
+    id: 'song-83',
+    title: 'Ki Soh ka Jingaiei',
+    metadata: {
+      number: 83,
+      language: 'khasi',
+      author: 'E.H.W.',
+      composer: 'BUILTH (54.64.6664)',
     },
-    {
-      "id": "song-90",
-      "title": "U Jisu Khrist U La Mihpat",
-      "metadata": {
-        "number": 90,
-        "language": "khasi",
-        "author": "H.M.S.",
-        "composer": "Alexander III No. 45"
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'To kyntiew nam ï’U Trai,',
+          'Jisu ba im;',
+          'U la pynduh ka bor,',
+          'Ka Jordan triem.',
+          'Ka jingïap U la jop,',
+          'Ka jingïap dum shyrkhei;',
+          'Ki khun jingtep la lait,',
+          'Ah jingaiei!',
+        ],
       },
-      "paragraphs": [
-        {
-          "id": "verse-1",
-          "order": 1,
-          "type": "verse",
-          "lines": [
-            "Katno jingkmen Jisu U la mihpat,",
-            "Bor jong ka jingïap Jisu U la bthat;",
-            "Synran jong U hi ki ïashem markhmat,",
-            "Kata ka step ba Jisu la mihpat.",
-            "Katno jingkmen Jisu la mihpat,",
-            "U la mihpat, U la mihpat;",
-            "Katno jingkmen Jisu la mihpat,",
-            "U la mihpat shisha."
-          ]
-        },
-        {
-          "id": "verse-2",
-          "order": 2,
-          "type": "verse",
-          "lines": [
-            "Ha bor ka jingmihpat jong U Jisu,",
-            "Ka sni ka jingïap kam lah donbor shuh;",
-            "Ka jingtep dum hi kam lah khum ïa U Trai,",
-            "U la mihpat ha ka sngi kaba lai."
-          ]
-        },
-        {
-          "id": "verse-3",
-          "order": 3,
-          "type": "verse",
-          "lines": [
-            "Haleluïa ngi ïa kmen ngi ïa rwai,",
-            "Pyndonburom ïa U Jisu U Trai;",
-            "B’la kiew pat sha bneng ban shong bad U Kpa,",
-            "Ban ïai ïasaid namar jongphi jongnga."
-          ]
-        }
-      ]
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Kuna ba kor la siew,',
+          'To khie ban ïoh;',
+          'U soh na ka diengphna,',
+          'Ngin mad baroh.',
+          'Phi kiba thait to wan,',
+          'Ban ïoh ka jingisnei;',
+          'Jingmap, jingjm, phin shem,',
+          'Ah jingaiei!',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Dieng shiah ki kylla long,',
+          'Dieng waiñ ba bang;',
+          'Na jingmong Jisu, mih,',
+          'Balm ï’u nongpang.',
+          'Sa khyndiat ngin ïasdang,',
+          'Ban ïaroh jingisnei;',
+          'Ka Anthem kan ym blad,',
+          'Ah jingaiei!',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'song-84',
+    title: 'Ka Jingjop thiaw U Khrist',
+    metadata: {
+      number: 84,
+      language: 'khasi',
+      author: 'H.R.',
+      composer: 'EASTER HYMN (77.77 & ki Haleluia)',
     },
-  
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Mynta Jisu U la mih,',
+          'Haleluïa!',
+          'Ka Sngi jingjop khraw jong ngi,',
+          'Haleluïa!',
+          'Shisien ha ka diengphyna,',
+          'Haleluïa!',
+          'U la shah ban im ma nga,',
+          'Haleluïa!',
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Riwai lang ïa ka kyrteng,',
+          'Ha leluïa!',
+          'Jisu long U Syiem byneng,',
+          'Haleluluïa!',
+          'Ha u dieng, jingtep, jingtim,',
+          'Haleluia!',
+          'U la shah ba ngin ïoh im;',
+          'Haleluïa!',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Da jingshitom ï’U b’la ban,',
+          'Haleluïa!',
+          'Jingim ha ngi ka la wan,',
+          'Haleluïa!',
+          'Mynta halor baroh long,',
+          'Haleluïa!',
+          'Junom hangta ruh U’n shong;',
+          'Haleluïa!',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'song-85',
+    title: 'Ka Jingmih pat U Khrist',
+    metadata: {
+      number: 85,
+      language: 'khasi',
+      author: 'H.L.',
+      composer: 'EASTER HYMN (77.77 & ki Haleluïa)',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'La mih Jisu Khrist mynta,',
+          'Haleluïa!',
+          'Ka sngi jingjop to risa,',
+          'Haleluïa!',
+          'Ha ka diengphna U la shah,',
+          'Haleluïa!',
+          'Jingrem jong ngi ban siewspah,',
+          'Haleluïa!',
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Jingïaroh to ngin rwai,',
+          'Haleluïa!',
+          'Їa U Syiem, U Khrist, U Trai,',
+          'Haleluïa!',
+          'Uba la shah ïap shah jop,',
+          'Haleluïa!',
+          'Ban pynim ïa ngi nongpop,',
+          'Haleluïa!',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Ki jingshitom b’U la shah,',
+          'Haleluïa!',
+          'Їa ki pop jong ngi U bah,',
+          'Haleluïa!',
+          'Ha bneng mynta U long Syiem,',
+          'Haleluïa!',
+          'Ї’U ki angel ki nguh syiem,',
+          'Haleluïa!',
+        ],
+      },
+      {
+        id: 'verse-4',
+        order: 4,
+        type: 'verse',
+        lines: [
+          'Їa U Blei ha jrong ngi rwai,',
+          'Haleluïa!',
+          'Ki jingïaroh bymjukut,',
+          'Haleluïa!',
+          'Phi paid bneng ïaroh ïa U,',
+          'Haleluïa!',
+          'Kpa, Khun, bad Mynsiem Bakhuid,',
+          'Haleluïa!',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'song-86',
+    title: 'Ka Jingmihpat U Khrist',
+    metadata: {
+      number: 86,
+      language: 'khasi',
+      author: 'H.L.',
+      composer: 'S.S. 152',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Ha jingtep U la thiah,',
+          'Jisu Nongpynim;',
+          'Ka sngi ba lai U ap,',
+          'U Trai jong nga.',
+        ],
+      },
+      {
+        id: 'chorus-1',
+        order: 2,
+        type: 'chorus',
+        lines: [
+          'Joit, na jingtep U la mih,',
+          'Da ka jingjop bah ïa ki nongshun;',
+          'Kum U nonggjop U la mih na jingïap dom,',
+          'Bad U im bad riewkhuid ban synshar junom;',
+          'U la mih, U la mih,',
+          'Haleluïa! U la mih.',
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Sep ei jingtep ki ap,',
+          'Jisu Nongpynim;',
+          'Sep ei ka jingshon shap,',
+          'U Trai jong nga.',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 4,
+        type: 'verse',
+        lines: [
+          'Jingïap kam lah ban bat,',
+          'Jisu Nongpynim;',
+          'Ї’u maw ba khang U rat,',
+          'U Trai jong nga.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'song-87',
+    title: 'Ka Jingkyrmen ia ka Jingmihpat',
+    metadata: {
+      number: 87,
+      language: 'khasi',
+      author: 'H.R.',
+      composer: 'BUILTH (64.64.6664)',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Kam lah ka jingtep dum,',
+          'Ban khum ï’U Trai;',
+          'La lait n’u maw b’la tap,',
+          'Ka sngi ba lai;',
+          'Jingtep ba ïong, ba dum,',
+          'Kam lah ban khum, ki khun,',
+          'Kin ïeng ha dur U Blei,',
+          'Shatei la hun.',
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Ban i ka jingïap ïong,',
+          'Sa long - sa paw,',
+          'Ngan kyiuh haba dei,',
+          'Ban poi kynmaw;',
+          'Tang i ka kam Trai,',
+          'Ka sngi balai b’U leh.',
+          'Nga kyrmen ba ngan mih,',
+          'Sha khlieh ngan beh.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'song-88',
+    title: 'Ka Jingmihpat U Khrist',
+    metadata: {
+      number: 88,
+      language: 'khasi',
+      author: 'J.R.',
+      composer: 'BEVERLY (66.66.68)',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'U Syiem byneng la mih,',
+          'U nongpynim ki briew;',
+          'Da burom phyrnai hi,',
+          'Na ki baïap la kiew;',
+          'Shaneng la kiew U Nongbahkhlieh,',
+          'Ban khreh ka ïing shongneh ïa ngi.',
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Riewkhuid baroh kin mih,',
+          'Na ka jingdum jingïap,',
+          'Ha dur U Trai jong ki,',
+          'B’la kup da jing bym ïap;',
+          'Kin sa ïoh kiew sha la U Trai,',
+          'Shonglem bad U ha suk khlem wai.',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Haba pyrthei yn thang,',
+          'Bad spah ba ïoh pateng,',
+          'Kin riwai kaba bang;',
+          'B’la mih U syiem byneng;',
+          'Da bor ka jingmihpat jong U,',
+          'Ma ki la mih, ban ym ïap shuh.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'song-89',
+    title: 'Ka Jingmihpat U Trai Jisu',
+    metadata: {
+      number: 89,
+      language: 'khasi',
+      author: 'S.Q.N.',
+      composer: 'S.S. 153',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Haleluïa! Haleluïa! la ki jingïaroh pynjam,',
+          'Sha U Blei da ka jingkymen ïa jingjop ba phylla tam,',
+          'Ba Uta b’la shah ha u dieng, bad hapoh khyndew la btep,',
+          'Jisu Khrist, U Syiem ka burom, U la mihpat na jingtep.',
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Khrist la mih pat, kum soh nyngkong jong ki riewkhuid baroh phar,',
+          'Ha ka burom ynda Un wan kumba U hi la kular,',
+          'Te ki symboh ksiar ka jingot kin sa phyrnai khlem da sep,',
+          'Da jingput ba jam ka turoi kin sa mih bluit na jingtep.',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Haleluïa! Haleluïa! burom ïa U Blei ha khlieh!',
+          'Haleluia! ï’U Nongpynim, da ka jingjop U la mih;',
+          'Haleluïa! ïa U Mynsiem, to ngin dem da ainguh lut,',
+          'Haleluïa! ïa Lai Ngut ba tang Uwei sha bymjukut.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'song-90',
+    title: 'U Jisu Khrist U La Mihpat',
+    metadata: {
+      number: 90,
+      language: 'khasi',
+      author: 'H.M.S.',
+      composer: 'Alexander III No. 45',
+    },
+    paragraphs: [
+      {
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Katno jingkmen Jisu U la mihpat,',
+          'Bor jong ka jingïap Jisu U la bthat;',
+          'Synran jong U hi ki ïashem markhmat,',
+          'Kata ka step ba Jisu la mihpat.',
+          'Katno jingkmen Jisu la mihpat,',
+          'U la mihpat, U la mihpat;',
+          'Katno jingkmen Jisu la mihpat,',
+          'U la mihpat shisha.',
+        ],
+      },
+      {
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Ha bor ka jingmihpat jong U Jisu,',
+          'Ka sni ka jingïap kam lah donbor shuh;',
+          'Ka jingtep dum hi kam lah khum ïa U Trai,',
+          'U la mihpat ha ka sngi kaba lai.',
+        ],
+      },
+      {
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Haleluïa ngi ïa kmen ngi ïa rwai,',
+          'Pyndonburom ïa U Jisu U Trai;',
+          'B’la kiew pat sha bneng ban shong bad U Kpa,',
+          'Ban ïai ïasaid namar jongphi jongnga.',
+        ],
+      },
+    ],
+  },
+
   {
     id: 'song-091',
     title: 'Kaba Kyntiew BuromÏa U Khrist',
@@ -4475,82 +4475,83 @@ export const shaphangUKhrist: SongT[] = [
         ],
       },
     ],
-  },{
-    "id": "song-101",
-    "title": "Ha khmih U wan ha u lyoh",
-    "metadata": {
-      "number": 101,
-      "language": "khasi",
-      "author": "T.J.",
-      "composer": "HELMSLEY (87.87.47)"
+  },
+  {
+    id: 'song-101',
+    title: 'Ha khmih U wan ha u lyoh',
+    metadata: {
+      number: 101,
+      language: 'khasi',
+      author: 'T.J.',
+      composer: 'HELMSLEY (87.87.47)',
     },
-    "paragraphs": [
+    paragraphs: [
       {
-        "id": "verse-1",
-        "order": 1,
-        "type": "verse",
-        "lines": [
-          "Ha khymih U wan ha u lyoh,",
-          "Mynta kyntiew nam ïa U;",
-          "La thoh ïa ka ha ka ksangkti,",
-          "Ha ka syngkai la thoh ruh;",
-          "Haleluïa!",
-          "Ale, ale, Nougpynim."
-        ]
+        id: 'verse-1',
+        order: 1,
+        type: 'verse',
+        lines: [
+          'Ha khymih U wan ha u lyoh,',
+          'Mynta kyntiew nam ïa U;',
+          'La thoh ïa ka ha ka ksangkti,',
+          'Ha ka syngkai la thoh ruh;',
+          'Haleluïa!',
+          'Ale, ale, Nougpynim.',
+        ],
       },
       {
-        "id": "verse-2",
-        "order": 2,
-        "type": "verse",
-        "lines": [
-          "Don bun hajar, don bun lak ruh,",
-          "Ki lok kiba ibhabriew,",
-          "Na jyngai nga i ki dang mih;",
-          "Na jingtep ban tan ïa U;",
-          "Їam la wai noh,",
-          "Don ka jingpynim ba dap."
-        ]
+        id: 'verse-2',
+        order: 2,
+        type: 'verse',
+        lines: [
+          'Don bun hajar, don bun lak ruh,',
+          'Ki lok kiba ibhabriew,',
+          'Na jyngai nga i ki dang mih;',
+          'Na jingtep ban tan ïa U;',
+          'Їam la wai noh,',
+          'Don ka jingpynim ba dap.',
+        ],
       },
       {
-        "id": "verse-3",
-        "order": 3,
-        "type": "verse",
-        "lines": [
-          "Ale baroh, to ïakymen,",
-          "Phi ki khun ki jong I Pa;",
-          "Ale baroh ban ïoh bynta,",
-          "Kaba da ka snam jong Nga;",
-          "Їa ïakymen,",
-          "Khraw ka jingaiei U Blei."
-        ]
+        id: 'verse-3',
+        order: 3,
+        type: 'verse',
+        lines: [
+          'Ale baroh, to ïakymen,',
+          'Phi ki khun ki jong I Pa;',
+          'Ale baroh ban ïoh bynta,',
+          'Kaba da ka snam jong Nga;',
+          'Їa ïakymen,',
+          'Khraw ka jingaiei U Blei.',
+        ],
       },
       {
-        "id": "verse-4",
-        "order": 4,
-        "type": "verse",
-        "lines": [
-          "Ym don hangta kaba pynrem,",
-          "Tang ka jingmap baroh phar;",
-          "Kynmaw Jingïap bad Jingieit,",
-          "Bad ki jor ka snam ba ïar;",
-          "La wai sheptieng,",
-          "La wan kylliang jingsngewbha."
-        ]
+        id: 'verse-4',
+        order: 4,
+        type: 'verse',
+        lines: [
+          'Ym don hangta kaba pynrem,',
+          'Tang ka jingmap baroh phar;',
+          'Kynmaw Jingïap bad Jingieit,',
+          'Bad ki jor ka snam ba ïar;',
+          'La wai sheptieng,',
+          'La wan kylliang jingsngewbha.',
+        ],
       },
       {
-        "id": "verse-5",
-        "order": 5,
-        "type": "verse",
-        "lines": [
-          "Phi b’la shong bad nga ha shitom,",
-          "Shong bad nga ha ki jingpang;",
-          "Phi la long lok ba ïaineh,",
-          "Ha jingbeiñ ka pyrthei lang;",
-          "To wan mynta,",
-          "Dih sngewbha ha ïing I Pa."
-        ]
-      }
-    ]
+        id: 'verse-5',
+        order: 5,
+        type: 'verse',
+        lines: [
+          'Phi b’la shong bad nga ha shitom,',
+          'Shong bad nga ha ki jingpang;',
+          'Phi la long lok ba ïaineh,',
+          'Ha jingbeiñ ka pyrthei lang;',
+          'To wan mynta,',
+          'Dih sngewbha ha ïing I Pa.',
+        ],
+      },
+    ],
   },
   {
     id: 'song-102',

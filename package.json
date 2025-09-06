@@ -21,7 +21,9 @@
     "build:android:preview": "eas build --profile preview --platform android",
     "build:android:prod": "eas build --profile production --platform android",
     "update:preview": "eas update --branch preview --message \"Preview update\"",
-    "update:prod": "eas update --branch production --message \"Production update\""
+    "update:prod": "eas update --branch production --message \"Production update\"",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsc src/db/drizzle/migrate.ts"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -32,14 +34,17 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
+    "@libsql/client": "^0.15.14",
     "@react-native-async-storage/async-storage": "2.1.2",
     "@react-navigation/drawer": "^7.3.9",
     "@react-navigation/native": "^7.0.3",
     "@shopify/flash-list": "1.7.6",
     "@tanstack/react-query": "^5.81.5",
     "axios": "^1.9.0",
+    "babel-plugin-inline-import": "^3.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "drizzle-orm": "^0.44.5",
     "expo": "53.0.20",
     "expo-clipboard": "~7.1.5",
     "expo-constants": "~17.1.4",
@@ -48,6 +53,7 @@
     "expo-linking": "~7.1.7",
     "expo-router": "~5.1.4",
     "expo-splash-screen": "~0.30.10",
+    "expo-sqlite": "^16.0.7",
     "expo-status-bar": "~2.2.3",
     "expo-system-ui": "~5.0.10",
     "expo-web-browser": "~14.2.0",
@@ -70,6 +76,7 @@
     "@types/react": "~19.0.10",
     "add": "^2.0.6",
     "ajv": "^8.12.0",
+    "drizzle-kit": "^0.31.4",
     "eslint": "^9.25.1",
     "eslint-config-expo": "^9.2.0",
     "eslint-config-prettier": "^10.1.2",

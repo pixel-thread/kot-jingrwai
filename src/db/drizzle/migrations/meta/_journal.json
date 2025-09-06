@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1757177263610,
+      "tag": "0000_brainy_bloodstorm",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1757177930943,
+      "tag": "0001_narrow_blizzard",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1757177974979,
+      "tag": "0002_blushing_microbe",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1757179283486,
+      "tag": "0003_loving_mathemanic",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1757179469946,
+      "tag": "0004_outgoing_doctor_faustus",
+      "breakpoints": true
+    }
+  ]
+}

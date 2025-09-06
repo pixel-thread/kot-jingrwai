@@ -18,6 +18,7 @@ import Onboarding from '../components/Onboarding';
 import { Ternary } from '../components/Common/Ternary';
 import { ErrorBoundary } from '../components/Common/ErrorBoundary';
 import { UpdateContextProvider } from '../components/Provider/update';
+import { DBMigrationGate } from '../components/Provider/db/migrate';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -68,18 +69,20 @@ export default function Layout() {
         <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-800">
           <TQueryProvider>
             <ErrorBoundary>
-              <UpdateContextProvider>
-                <ThemeProvider>
-                  <SongProvider>
-                    <AppVersion />
-                    <Ternary
-                      condition={!hasCompletedOnboarding}
-                      ifTrue={<Onboarding />}
-                      ifFalse={<Stack screenOptions={{ headerShown: false }} />}
-                    />
-                  </SongProvider>
-                </ThemeProvider>
-              </UpdateContextProvider>
+              <DBMigrationGate>
+                <UpdateContextProvider>
+                  <ThemeProvider>
+                    <SongProvider>
+                      <AppVersion />
+                      <Ternary
+                        condition={!hasCompletedOnboarding}
+                        ifTrue={<Onboarding />}
+                        ifFalse={<Stack screenOptions={{ headerShown: false }} />}
+                      />
+                    </SongProvider>
+                  </ThemeProvider>
+                </UpdateContextProvider>
+              </DBMigrationGate>
             </ErrorBoundary>
           </TQueryProvider>
         </SafeAreaView>
