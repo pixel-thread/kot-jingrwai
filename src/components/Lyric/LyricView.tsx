@@ -23,12 +23,14 @@ import { useTapGesture } from '~/src/hooks/useTapGesture';
 import { useSwipeGesture } from '~/src/hooks/useSwipeGesture';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { Ternary } from '../Common/Ternary';
+import { useKeepAwake } from 'expo-keep-awake';
 
 type LyricViewProps = {
   song: SongT;
 };
 
 export const LyricView = ({ song }: LyricViewProps) => {
+  useKeepAwake();
   const scrollRef = useAnimatedRef<ScrollView>();
   const { size, isSelectable } = useTextStore();
   const { addRecentlyPlayedSong } = useSongStore();
