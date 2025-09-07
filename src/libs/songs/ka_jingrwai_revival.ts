@@ -269,7 +269,7 @@ export const kaJingrwaiRevival: SongT[] = [
     ],
   },
   {
-    id: 'song-\n',
+    id: 'song-589',
     title: 'Ah Trai phah rebaibal',
     metadata: {
       number: 589,

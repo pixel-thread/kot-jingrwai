@@ -4,7 +4,6 @@ import { Container } from '~/src/components/Common/Container';
 
 export default function Song() {
   const { song } = useSongs();
-
   return (
     <Container>
       <LyricView song={song} />

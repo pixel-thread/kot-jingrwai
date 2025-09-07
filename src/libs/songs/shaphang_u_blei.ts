@@ -1024,7 +1024,6 @@ export const shaphangUBlei: SongT[] = [
       language: 'khasi',
       author: 'J.R.',
       composer: 'Waterstock (S.S. 490.)',
-     
     },
     paragraphs: [
       {

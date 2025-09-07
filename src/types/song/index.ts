@@ -1,8 +1,9 @@
+export type SongParagraphType = 'verse' | 'chorus' | 'bridge' | 'intro' | 'outro';
 export type SongParagraph = {
   id: string; // unique id for each paragraph
   order: number; // display order
   lines: string[]; // lines of lyrics
-  type?: 'verse' | 'chorus' | 'bridge' | 'intro' | 'outro'; // optional label
+  type?: SongParagraphType;
   songId?: string;
 };
 
@@ -26,4 +27,5 @@ export type SongT = {
   title: string;
   metadata: SongMetadata;
   paragraphs: SongParagraph[];
+  isChorus?: number;
 };

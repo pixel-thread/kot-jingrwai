@@ -50,13 +50,12 @@ export default function SongLayout() {
   const isDarkMode = colorScheme === 'dark';
   const { song, onNextSong, onPreviousSong } = useSongs();
   const { increaseTextSize, decreaseTextSize } = useTextStore();
-
   return (
     <View className="flex-1" collapsable={false}>
       <Stack
         screenOptions={{
           headerShown: true,
-          title: song.metadata.number.toString(),
+          title: song?.metadata?.number?.toString(),
           header: ({ options }) => (
             <CustomHeader options={options} back headerRight={<HeaderRight />} />
           ),

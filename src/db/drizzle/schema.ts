@@ -3,7 +3,7 @@ import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // SongParagraph table
 export const songParagraphTable = sqliteTable('songParagraphs', {
-  id: text('id').primaryKey(),
+  id: text('id').primaryKey().unique(),
   songId: text('song_id').notNull(),
   order: integer('order').notNull(),
   lines: text('lines').notNull(), // stored as JSON.stringify(lines)
@@ -12,9 +12,9 @@ export const songParagraphTable = sqliteTable('songParagraphs', {
 
 // SongMetadata table
 export const songMetadataTable = sqliteTable('songMetadata', {
-  number: integer('number').notNull(),
-  oldNumber: integer('old_number'),
   songId: text('song_id').primaryKey().notNull(),
+  number: integer('number').notNull().unique(),
+  oldNumber: integer('old_number'),
   language: text('language').notNull(),
   author: text('author'),
   composer: text('composer'),
@@ -28,7 +28,7 @@ export const songMetadataTable = sqliteTable('songMetadata', {
 
 // Song table (base song info)
 export const songTable = sqliteTable('songs', {
-  id: text('id').primaryKey(),
+  id: text('id').primaryKey().unique(),
   title: text('title').notNull(),
-  // isChorus: integer('is_chorus').notNull().default(0),
+  isChorus: integer('is_chorus').notNull().default(0),
 });

@@ -6,6 +6,7 @@ import m0001 from './0001_narrow_blizzard.sql';
 import m0002 from './0002_blushing_microbe.sql';
 import m0003 from './0003_loving_mathemanic.sql';
 import m0004 from './0004_outgoing_doctor_faustus.sql';
+import m0005 from './0005_mixed_enchantress.sql';
 
 export default {
   journal,
@@ -15,5 +16,6 @@ export default {
     m0002,
     m0003,
     m0004,
+    m0005,
   },
 };

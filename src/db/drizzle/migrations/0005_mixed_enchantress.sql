@@ -1,0 +1,1 @@
+ALTER TABLE `songs` ADD `is_chorus` integer;

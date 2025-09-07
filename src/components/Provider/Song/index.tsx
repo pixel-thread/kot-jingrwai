@@ -1,21 +1,31 @@
-import { useState } from 'react';
-import { SongContext } from '~/src/context/SongContext';
-import { songs } from '~/src/libs/songs';
+import React, { useState, useEffect } from 'react';
+import { SongT } from '~/src/types/song';
 import { SongContextT } from '~/src/types/song/SongContext';
+import { SongContext } from '~/src/context/SongContext';
+import { useQuery } from '@tanstack/react-query';
+import { getSongs } from '~/src/services/song/getSongs';
+import { logger } from '~/src/utils/logger';
 
 type SongProviderProps = {
   children: React.ReactNode;
 };
 
 export const SongProvider = ({ children }: SongProviderProps) => {
+  const [songs, setSongs] = useState<SongT[]>([]);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [songIndex, setSongIndex] = useState<number>(0);
+
+  const { data } = useQuery<SongT[]>({
+    queryKey: ['songs'],
+    queryFn: () => getSongs(0),
+  });
 
   const currentSong = songs[songIndex] || null;
   const isNotFound = !currentSong;
   const isLastSong = songIndex === songs.length - 1;
 
   const ChangeSong = (songNo: number) => {
-    const index = songs.findIndex((song) => song.metadata.number === songNo);
+    const index = songs?.findIndex((song) => song.metadata.number === songNo);
     if (index !== -1) {
       setSongIndex(index);
     }
@@ -33,10 +43,18 @@ export const SongProvider = ({ children }: SongProviderProps) => {
     }
   };
 
+  useEffect(() => {
+    if (data && isInitialLoading) {
+      logger.log('SongProvider useEffect');
+      setSongs(data.sort((a, b) => a.metadata.number - b.metadata.number));
+      setIsInitialLoading(false);
+    }
+  }, [data, isInitialLoading]);
+
   const value: SongContextT = {
-    songs,
+    songs: data,
     song: currentSong,
-    ChangeSong: ChangeSong,
+    ChangeSong,
     currentSongIndex: songIndex,
     isLastSong,
     isNotFound,
