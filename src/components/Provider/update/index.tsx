@@ -8,7 +8,6 @@ import http from '~/src/utils/http';
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 import { useAppVersionStore } from '~/src/libs/stores/appVersion';
-import { logger } from '~/src/utils/logger';
 
 function compareVersions(v1: string, v2: string): number {
   const s1 = v1.split('.').map(Number);
@@ -31,7 +30,7 @@ export const UpdateContextProvider = ({ children }: { children: React.ReactNode 
 
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: ['app-update'],
-    queryFn: async () => http.get<AppUpdateT>(`/kot-version?id=${deviceId}`),
+    queryFn: async () => http.get<AppUpdateT>(`/version?id=${deviceId}`),
     enabled: !!deviceId,
   });
 

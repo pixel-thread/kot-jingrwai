@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import { ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
 import * as Clipboard from 'expo-clipboard';
@@ -7,12 +6,12 @@ import { Skeleton } from '../ui/skeleton';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import { useState, useEffect } from 'react';
+import http from '~/src/utils/http';
 
 // Fetch random verse from API
 const randomVerse = async (): Promise<{ verse: string; error?: any }> => {
   try {
-    const response = await axios.get('https://beta.ourmanna.com/api/v1/get');
+    const response = await http.get<any>('/verse');
     return { verse: response.data };
   } catch (error) {
     return { verse: '', error };
