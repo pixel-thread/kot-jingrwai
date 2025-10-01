@@ -9,7 +9,7 @@ export async function seedSongs() {
   try {
     const isSeeded = await AsyncStorage.getItem(DB_SEED_KEY);
     // Fix seed flag check
-    if (isSeeded === 'trues') {
+    if (isSeeded === 'true') {
       logger.log('Database already seeded, skipping seeding.');
       return;
     }

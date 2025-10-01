@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
-import { TextInput, View, ScrollView, TouchableOpacity, Animated, Platform } from 'react-native';
+import { TextInput, View, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, {
   FadeIn,
@@ -21,15 +21,17 @@ import { cn } from '~/src/libs/cn';
 
 import { Ternary } from '../Common/Ternary';
 import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
-import { ContentSection } from '../Common/ContentSection';
 import { FeaturedSongCard } from './FeaturedSongCard';
 import { FlashList } from '@shopify/flash-list';
+import { getRandomSongs } from '~/src/utils/getRandomSongs';
+import { SongT } from '~/src/types/song';
 
 export const SongFinderPage = () => {
   const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();
   const [songNumber, setSongNumber] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [activeTab, setActiveTab] = useState<'recent' | 'favorites'>('recent');
+  const [randomSong, setRandomSong] = useState<SongT[] | null>(null);
   const { ChangeSong } = useSongs();
   const router = useRouter();
   // Animation values
@@ -154,13 +156,13 @@ export const SongFinderPage = () => {
           {/* Featured Section */}
           <Reanimated.View entering={FadeInUp.delay(500).duration(800)} className="my-6">
             <Text size={'xl'} weight={'bold'} className="mb-4 text-gray-800 dark:text-white">
-              Featured Songs
+              Random Songs
             </Text>
 
             <View className="gap-4 gap-x-2">
               <FlashList
                 horizontal
-                data={songs.slice(0, 5)}
+                data={getRandomSongs<SongT>(songs, 10)}
                 showsHorizontalScrollIndicator={false}
                 estimatedItemSize={20}
                 ItemSeparatorComponent={() => <View className="w-2 bg-transparent" />}

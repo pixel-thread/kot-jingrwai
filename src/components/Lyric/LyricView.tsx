@@ -30,7 +30,6 @@ type LyricViewProps = {
 };
 
 export const LyricView = ({ song }: LyricViewProps) => {
-  useKeepAwake();
   const scrollRef = useAnimatedRef<ScrollView>();
   const { size, isSelectable } = useTextStore();
   const { addRecentlyPlayedSong } = useSongStore();
@@ -44,6 +43,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
   const { addFavoriteSong, favoriteSongs, removeFavoriteSong } = useSongStore();
   const isFavorite = favoriteSongs.includes(song.metadata.number);
   const sectionCount: Record<string, number> = {};
+  useKeepAwake();
 
   // Animation values
   const headerOpacity = useSharedValue(0);

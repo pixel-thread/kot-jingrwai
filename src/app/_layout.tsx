@@ -69,20 +69,18 @@ export default function Layout() {
         <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-800">
           <TQueryProvider>
             <ErrorBoundary>
-              <DBMigrationGate>
-                <UpdateContextProvider>
-                  <ThemeProvider>
-                    <SongProvider>
-                      <AppVersion />
-                      <Ternary
-                        condition={!hasCompletedOnboarding}
-                        ifTrue={<Onboarding />}
-                        ifFalse={<Stack screenOptions={{ headerShown: false }} />}
-                      />
-                    </SongProvider>
-                  </ThemeProvider>
-                </UpdateContextProvider>
-              </DBMigrationGate>
+              <UpdateContextProvider>
+                <ThemeProvider>
+                  <SongProvider>
+                    <AppVersion />
+                    <Ternary
+                      condition={!hasCompletedOnboarding}
+                      ifTrue={<Onboarding />}
+                      ifFalse={<Stack screenOptions={{ headerShown: false }} />}
+                    />
+                  </SongProvider>
+                </ThemeProvider>
+              </UpdateContextProvider>
             </ErrorBoundary>
           </TQueryProvider>
         </SafeAreaView>
