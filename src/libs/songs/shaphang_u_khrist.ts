@@ -4208,8 +4208,8 @@ export const shaphangUKhrist: SongT[] = [
         order: 1,
         type: 'verse',
         lines: [
-          `Ym don ba ka pyrthei baroh,`,
-          `Kat U Jisu ha ngan iaroh;`,
+          `Ym don ha ka pyrthei baroh,`,
+          `Kat U Jisu ba ngan iaroh;`,
           `Don ha U ka spah kham kordor,`,
           `Ia ka spah byneng ba halor`,
         ],

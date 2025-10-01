@@ -314,7 +314,7 @@ export const shaphangKaKtienUBlei: SongT[] = [
           `Ngin ïaroh;`,
           `Ngin ïoh ka jingsngewbha ba dap,`,
           `Ngin ïaroh.`,
-          `Ïa baroh lang kham kor shsha,`,
+          `Ïa baroh lang kham kor shisha,`,
           `Ïa ksiar bad ïa ki paila;`,
           `Ka Ktien U Blei long la ka spah,`,
           `Ngin ïaroh.`,
