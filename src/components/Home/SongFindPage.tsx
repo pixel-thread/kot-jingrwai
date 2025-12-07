@@ -154,22 +154,7 @@ export const SongFinderPage = () => {
 
           <QuoteOfTheDay />
           {/* Featured Section */}
-          <Reanimated.View entering={FadeInUp.delay(500).duration(800)} className="my-6">
-            <Text size={'xl'} weight={'bold'} className="mb-4 text-gray-800 dark:text-white">
-              Random Songs
-            </Text>
-
-            <View className="gap-4 gap-x-2">
-              <FlashList
-                horizontal
-                data={getRandomSongs<SongT>(songs, 10)}
-                showsHorizontalScrollIndicator={false}
-                estimatedItemSize={20}
-                ItemSeparatorComponent={() => <View className="w-2 bg-transparent" />}
-                renderItem={({ item }) => <FeaturedSongCard song={item} />}
-              />
-            </View>
-          </Reanimated.View>
+          <RandomSongs />
 
           {/* Tabs for Recent and Favorites */}
           <Reanimated.View entering={FadeInUp.delay(700).duration(800)} className="mb-6">
@@ -229,4 +214,25 @@ export const SongFinderPage = () => {
       </ScrollView>
     </Container>
   );
+
+  function RandomSongs() {
+    return (
+      <Reanimated.View entering={FadeInUp.delay(500).duration(800)} className="my-6">
+        <Text size={'xl'} weight={'bold'} className="mb-4 text-gray-800 dark:text-white">
+          Random Songs
+        </Text>
+
+        <View className="gap-4 gap-x-2">
+          <FlashList
+            horizontal
+            data={getRandomSongs<SongT>(songs, 10)}
+            showsHorizontalScrollIndicator={false}
+            estimatedItemSize={20}
+            ItemSeparatorComponent={() => <View className="w-2 bg-transparent" />}
+            renderItem={({ item }) => <FeaturedSongCard song={item} />}
+          />
+        </View>
+      </Reanimated.View>
+    );
+  }
 };

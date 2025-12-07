@@ -4,6 +4,7 @@ import { CustomDrawerContent } from '~/src/components/Common/CustomDrawerContent
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import colors from 'tailwindcss/colors';
 import { useColorScheme } from 'nativewind';
+
 const DrawerLayout = () => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';

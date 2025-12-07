@@ -7,35 +7,48 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import http from '~/src/utils/http';
+import { VerseT } from '~/src/types/qoute';
+import { logger } from '~/src/utils/logger';
 
 // Fetch random verse from API
-const randomVerse = async (): Promise<{ verse: string; error?: any }> => {
+type QouteResponse = {
+  success: boolean;
+  data?: VerseT | null | undefined;
+};
+const randomVerse = async (): Promise<QouteResponse> => {
   try {
-    const response = await http.get<any>('/verse');
-    return { verse: response.data };
+    const response = await http.get('/verse');
+    logger.log(response.data);
+    return {
+      success: true,
+      data: response?.data as VerseT,
+    };
   } catch (error) {
-    return { verse: '', error };
+    logger.error(error);
+    return {
+      success: false,
+      data: null,
+    };
   }
 };
 
 export const QuoteOfTheDay = () => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isFetching } = useQuery({
     queryKey: ['random', 'verse'],
     queryFn: randomVerse,
+    select: (data) => data.data,
   });
-  // Split the verse into quote and author by dash
-  const [quoteText, author] = data?.verse ? data.verse.split(/-\s*/) : ['', ''];
 
   const copyToClipboard = async () => {
-    if (quoteText && data?.verse) {
-      await Clipboard.setStringAsync(data?.verse || '');
+    if (data?.random_verse?.verse) {
+      await Clipboard.setStringAsync(data.random_verse.text);
       ToastAndroid.show('Quote copied to clipboard!', ToastAndroid.SHORT);
     }
   };
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return (
       <Reanimated.View
         entering={FadeIn.duration(500)}
@@ -46,7 +59,7 @@ export const QuoteOfTheDay = () => {
       </Reanimated.View>
     );
   }
-
+  logger.info(data);
   return (
     <Reanimated.View entering={FadeInDown.duration(500)}>
       <TouchableOpacity
@@ -64,8 +77,8 @@ export const QuoteOfTheDay = () => {
               size="md"
               weight="semibold"
               align="center"
-              className="text-gray-800 dark:text-gray-200">
-              Quote of the Day
+              className="capitalize text-gray-800 dark:text-gray-200">
+              Dkhot Bible
             </Text>
             <MaterialCommunityIcons
               name="format-quote-close"
@@ -83,18 +96,13 @@ export const QuoteOfTheDay = () => {
               leading={'loose'}
               italic
               className="mb-3 px-2 text-gray-700 dark:text-gray-300">
-              {quoteText?.trim()}
+              {data?.random_verse?.text?.trim()}
             </Text>
 
             <View className="flex-row items-center justify-end">
-              <MaterialCommunityIcons
-                name="account-outline"
-                size={16}
-                color={isDarkMode ? '#93c5fd' : '#3b82f6'}
-                style={{ marginRight: 4 }}
-              />
-              <Text size="sm" className="text-gray-600 dark:text-gray-400">
-                {author?.trim() || 'Unknown'}
+              <Text size="md" className="text-gray-600 dark:text-gray-400">
+                {data?.random_verse?.book}- {data?.random_verse?.chapter}:
+                {data?.random_verse?.verse || 'Unknown'}
               </Text>
             </View>
 

@@ -19,7 +19,6 @@ import Reanimated, {
   useAnimatedRef,
   runOnJS,
 } from 'react-native-reanimated';
-import { useTapGesture } from '~/src/hooks/useTapGesture';
 import { useSwipeGesture } from '~/src/hooks/useSwipeGesture';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { Ternary } from '../Common/Ternary';
@@ -40,8 +39,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
   const sortedParagraphs = [...paragraphs].sort((a, b) => a.order - b.order);
 
   const { onNextSong, onPreviousSong } = useSongs();
-  const { addFavoriteSong, favoriteSongs, removeFavoriteSong } = useSongStore();
-  const isFavorite = favoriteSongs.includes(song.metadata.number);
   const sectionCount: Record<string, number> = {};
   useKeepAwake();
 
@@ -57,24 +54,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
     contentOpacity.value = withTiming(1, { duration: 1000 });
   }, [addRecentlyPlayedSong, song, headerOpacity, contentOpacity]);
 
-  const doubleTap = () => {
-    if (isFavorite) {
-      removeFavoriteSong(song.metadata.number);
-      ToastAndroid.show('Removed from favorites', ToastAndroid.SHORT);
-      triggerHaptic();
-    } else {
-      addFavoriteSong(song.metadata.number);
-      ToastAndroid.show('Added to favorites', ToastAndroid.SHORT);
-      triggerHaptic();
-    }
-  };
-
-  const doubleTapGesture = useTapGesture({
-    onTap: doubleTap,
-    numberOfTaps: 2,
-    simultaneousRef: scrollRef,
-  });
-
   const leftRightGesture = useSwipeGesture({
     onSwipeLeft: onNextSong,
     onSwipeRight: onPreviousSong,
@@ -82,7 +61,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
     threshold: 100,
   });
 
-  const combinedGesture = Gesture.Simultaneous(doubleTapGesture, leftRightGesture);
+  const combinedGesture = Gesture.Simultaneous(leftRightGesture);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ y: 0, animated: true });
