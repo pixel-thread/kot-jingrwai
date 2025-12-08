@@ -55,7 +55,7 @@ export default function Onboarding() {
       <View className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-y-2 px-2">
         {/* Animated Login Button */}
         <Reanimated.View style={{ transform: [{ scale: scaleLogin }] }}>
-          <Button onPress={handleLogin} title="Login with Google" className="py-5" />
+          <Button disabled onPress={handleLogin} title="Login with Google" className="py-5" />
         </Reanimated.View>
         <Text className="text-center text-gray-500 dark:text-muted-foreground" size={'md'}>
           or
