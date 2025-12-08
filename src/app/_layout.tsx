@@ -71,7 +71,6 @@ export default function Layout() {
               <UpdateContextProvider>
                 <ThemeProvider>
                   <SongProvider>
-                    <AppVersion />
                     <Ternary
                       condition={!hasCompletedOnboarding}
                       ifTrue={<Onboarding />}
