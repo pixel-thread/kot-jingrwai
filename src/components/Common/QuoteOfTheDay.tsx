@@ -31,7 +31,6 @@ const randomVerse = async (): Promise<QouteResponse> => {
     const response = await axios.get(
       'https://beta.ourmanna.com/api/v1/get?format=json&order=daily'
     );
-    logger.log(response.data);
     return {
       success: true,
       data: response?.data as VerseT,
