@@ -2,7 +2,7 @@
   "expo": {
     "name": "Kot Jingrwai",
     "slug": "kot-jingrwai",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "scheme": "kot-jing-rwai",
     "orientation": "portrait",
     "icon": "./assets/icons/kot-jingrwai-icon.png",
@@ -72,7 +72,10 @@
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/72320702-85db-46c3-9f25-eb17aed2c84c"
+      "url": "https://u.expo.dev/72320702-85db-46c3-9f25-eb17aed2c84c",
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
     }
   }
 }

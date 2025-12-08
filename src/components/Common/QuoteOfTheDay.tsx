@@ -33,6 +33,7 @@ const randomVerse = async (): Promise<QouteResponse> => {
 };
 
 export const QuoteOfTheDay = () => {
+  return null;
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
   const { data, isLoading, isFetching } = useQuery({
