@@ -5,7 +5,6 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useCallback, useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ThemeProvider } from '../components/Provider/theme';
-import AppVersion from '../components/Common/AppVersion';
 import { TQueryProvider } from '../components/Provider/query';
 import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
