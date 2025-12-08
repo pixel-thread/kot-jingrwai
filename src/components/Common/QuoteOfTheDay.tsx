@@ -6,18 +6,31 @@ import { Skeleton } from '../ui/skeleton';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import http from '~/src/utils/http';
-import { VerseT } from '~/src/types/qoute';
 import { logger } from '~/src/utils/logger';
+import axios from 'axios';
 
+type VerseT = {
+  verse: {
+    details: {
+      text: string;
+      reference: string;
+      version: string;
+      verseurl: string;
+    };
+    notice: string;
+  };
+};
 // Fetch random verse from API
 type QouteResponse = {
   success: boolean;
   data?: VerseT | null | undefined;
 };
+
 const randomVerse = async (): Promise<QouteResponse> => {
   try {
-    const response = await http.get('/verse');
+    const response = await axios.get(
+      'https://beta.ourmanna.com/api/v1/get?format=json&order=daily'
+    );
     logger.log(response.data);
     return {
       success: true,
@@ -33,7 +46,6 @@ const randomVerse = async (): Promise<QouteResponse> => {
 };
 
 export const QuoteOfTheDay = () => {
-  return null;
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
   const { data, isLoading, isFetching } = useQuery({
@@ -43,8 +55,8 @@ export const QuoteOfTheDay = () => {
   });
 
   const copyToClipboard = async () => {
-    if (data?.random_verse?.verse) {
-      await Clipboard.setStringAsync(data.random_verse.text);
+    if (data?.verse?.details.text) {
+      await Clipboard.setStringAsync(data.verse.details.text);
       ToastAndroid.show('Quote copied to clipboard!', ToastAndroid.SHORT);
     }
   };
@@ -97,13 +109,12 @@ export const QuoteOfTheDay = () => {
               leading={'loose'}
               italic
               className="mb-3 px-2 text-gray-700 dark:text-gray-300">
-              {data?.random_verse?.text?.trim()}
+              {data?.verse.details?.text?.trim()}
             </Text>
 
             <View className="flex-row items-center justify-end">
               <Text size="md" className="text-gray-600 dark:text-gray-400">
-                {data?.random_verse?.book}- {data?.random_verse?.chapter}:
-                {data?.random_verse?.verse || 'Unknown'}
+                {data?.verse.details?.reference}
               </Text>
             </View>
 
