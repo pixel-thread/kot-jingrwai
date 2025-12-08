@@ -67,6 +67,12 @@
         "projectId": "72320702-85db-46c3-9f25-eb17aed2c84c"
       }
     },
-    "owner": "pixel-thread"
+    "owner": "pixel-thread",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/72320702-85db-46c3-9f25-eb17aed2c84c"
+    }
   }
 }

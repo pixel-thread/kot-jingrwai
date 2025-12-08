@@ -10,18 +10,22 @@
         "buildType": "apk",
         "developmentClient": false,
         "distribution": "store"
-      }
+      },
+      "channel": "local"
     },
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "development"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "preview"
     },
     "production": {
       "autoIncrement": true,
-      "distribution": "store"
+      "distribution": "store",
+      "channel": "production"
     }
   },
   "submit": {
