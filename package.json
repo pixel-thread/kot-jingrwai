@@ -88,8 +88,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.0",
-    "typescript": "~5.8.3",
-    "yarn": "^1.22.22"
+    "typescript": "~5.8.3"
   },
   "private": true
 }
