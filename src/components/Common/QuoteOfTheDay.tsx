@@ -7,6 +7,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import http from '~/src/utils/http';
+import { VerseT } from '~/src/types/verse';
 
 export const QuoteOfTheDay = () => {
   const { colorScheme } = useColorScheme();
