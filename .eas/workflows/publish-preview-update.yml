@@ -1,9 +1,5 @@
 name: Create Preview Update
 
-on:
-  push:
-    branches: ['uat']
-
 jobs:
   android_development_build:
     name: Build Android
