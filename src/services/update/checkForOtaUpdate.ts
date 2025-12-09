@@ -2,26 +2,47 @@ import * as Updates from 'expo-updates';
 import * as Network from 'expo-network';
 import { logger } from '~/src/utils/logger';
 
-export async function checkForOtaUpdate() {
-  try {
-    const network = await Network.getNetworkStateAsync();
+export const OtaUpdateServices = {
+  async checkForOtaUpdate(): Promise<boolean> {
+    try {
+      const network = await Network.getNetworkStateAsync();
 
-    const isOnline = network.isConnected;
+      const isOnline = network.isConnected;
 
-    if (!isOnline) {
-      return;
+      if (!isOnline) {
+        return false;
+      }
+
+      const update = await Updates.checkForUpdateAsync();
+
+      return update.isAvailable;
+    } catch (error: any) {
+      logger.error('Failed to check for updates');
+      return false;
     }
+  },
 
-    const update = await Updates.checkForUpdateAsync();
+  async applyOtaUpdate() {
+    const isAvailable = await OtaUpdateServices.checkForOtaUpdate();
 
-    if (update.isAvailable) {
+    if (isAvailable) {
       const fetched = await Updates.fetchUpdateAsync();
 
       if (fetched.isNew) {
         await Updates.reloadAsync();
       }
     }
-  } catch (error: any) {
-    logger.error('Failed to check for updates');
-  }
-}
+  },
+
+  async checkAndApplyOta() {
+    try {
+      const isAvailable = await OtaUpdateServices.checkForOtaUpdate();
+      if (isAvailable) {
+        await OtaUpdateServices.applyOtaUpdate();
+      }
+    } catch (error: any) {
+      logger.error('Failed to check for updates');
+      return false;
+    }
+  },
+};
