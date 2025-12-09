@@ -15,7 +15,13 @@ import { ContentSection } from '~/src/components/Common/ContentSection';
 export default function Settings() {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-  const { isUpdateAvailable, isUpdateLoading, refresh, appVersion, update } = useUpdateContext();
+  const {
+    isUpdateAvailable,
+    isUpdateLoading,
+    refresh,
+    currentAppVersion: appVersion,
+    update,
+  } = useUpdateContext();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(false);
   const { isSelectable: textSelectionEnabled, setIsSelectable: setTextSelectionEnabled } =
@@ -116,7 +122,7 @@ export default function Settings() {
               <Reanimated.View entering={FadeInDown.duration(500)}>
                 <TouchableOpacity
                   className="mt-2 flex-row items-center justify-between rounded-xl bg-blue-100 p-3 dark:bg-blue-900"
-                  onPress={() => Linking.openURL(update?.release_notes_url || '')}>
+                  onPress={() => Linking.openURL(update?.downloadUrl || '')}>
                   <View className="flex-row items-center">
                     <MaterialCommunityIcons
                       name="download"

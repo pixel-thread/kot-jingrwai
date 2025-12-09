@@ -1,4 +1,4 @@
 import React from 'react';
-import { UpdateI } from '~/src/types/Update';
+import { UpdateContextI } from '~/src/types/Update';
 
-export const UpdateContext = React.createContext<UpdateI | null>(null);
+export const UpdateContext = React.createContext<UpdateContextI | null>(null);

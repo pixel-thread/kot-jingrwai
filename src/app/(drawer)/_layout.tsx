@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Drawer } from 'expo-router/drawer';
 import { CustomDrawerContent } from '~/src/components/Common/CustomDrawerContent';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import colors from 'tailwindcss/colors';
+import { gray } from 'tailwindcss/colors';
 import { useColorScheme } from 'nativewind';
 
 const DrawerLayout = () => {
@@ -16,7 +16,7 @@ const DrawerLayout = () => {
         header: ({ options }) => <CustomHeader options={options} />,
         drawerStyle: {
           width: 300,
-          backgroundColor: isDarkMode ? colors.gray[950] : colors.gray[200],
+          backgroundColor: isDarkMode ? gray[950] : gray[200],
         },
       }}>
       <Drawer.Screen

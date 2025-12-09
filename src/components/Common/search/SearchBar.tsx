@@ -4,7 +4,7 @@ import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated from 'react-native-reanimated';
 import { Text } from '~/src/components/ui/typography';
 import { useColorScheme } from 'nativewind';
-import colors from 'tailwindcss/colors';
+import { gray } from 'tailwindcss/colors';
 
 type SearchBarProps = {
   onSearch: (query: string) => void;
@@ -58,11 +58,7 @@ export const SearchBar = React.memo(
             disabled={!searchValue}
             className="w-auto items-center justify-center rounded-xl bg-indigo-600 p-4 shadow-sm disabled:opacity-50"
             onPress={() => onSearch(searchValue)}>
-            <Ionicons
-              name="search"
-              size={24}
-              color={isDarkMode ? colors.gray[200] : colors.gray[50]}
-            />
+            <Ionicons name="search" size={24} color={isDarkMode ? gray[200] : gray[50]} />
           </TouchableOpacity>
         </View>
       </Reanimated.View>

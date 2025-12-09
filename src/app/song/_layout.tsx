@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 import { FloatingActionButtons } from '~/src/components/Common/FloatingActionButtons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useTextStore } from '~/src/libs/stores/text';
-import colors from 'tailwindcss/colors';
+import { gray } from 'tailwindcss/colors';
 import { useColorScheme } from 'nativewind';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { useSongs } from '~/src/hooks/song/useSongs';
@@ -37,7 +37,7 @@ const HeaderRight = () => {
         <FontAwesome
           name={isFavorite ? 'heart' : 'heart-o'}
           size={24}
-          color={isFavorite ? colors.red[500] : colors.gray[500]}
+          color={isFavorite ? gray[500] : gray[500]}
         />
       </TouchableOpacity>
       <ThemeToggle />
@@ -69,7 +69,7 @@ export default function SongLayout() {
             onPress: onPreviousSong,
             icon: (
               <FontAwesome
-                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+                color={isDarkMode ? gray[200] : gray[950]}
                 name="chevron-left"
                 size={20}
               />
@@ -77,23 +77,11 @@ export default function SongLayout() {
           },
           {
             onPress: decreaseTextSize,
-            icon: (
-              <FontAwesome
-                name="minus"
-                size={20}
-                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
-              />
-            ),
+            icon: <FontAwesome name="minus" size={20} color={isDarkMode ? gray[200] : gray[950]} />,
           },
           {
             onPress: increaseTextSize,
-            icon: (
-              <FontAwesome
-                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
-                name="plus"
-                size={20}
-              />
-            ),
+            icon: <FontAwesome color={isDarkMode ? gray[200] : gray[950]} name="plus" size={20} />,
           },
           {
             onPress: onNextSong,
@@ -101,7 +89,7 @@ export default function SongLayout() {
               <FontAwesome
                 name="chevron-right"
                 size={20}
-                color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+                color={isDarkMode ? gray[200] : gray[950]}
               />
             ),
           },

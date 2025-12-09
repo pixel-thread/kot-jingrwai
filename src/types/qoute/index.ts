@@ -1,16 +1,22 @@
-export type VerseT = {
-  translation: {
-    identifier: string;
-    name: string;
-    language: string;
-    language_code: string;
-    license: string;
+type DetailsT = {
+  id: string;
+  text: string;
+  reference: string;
+  version: string;
+  verseurl: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type VerseT = {
+  id: string;
+  verse: {
+    id: string;
+    details: DetailsT;
+    notice: string;
+    createdAt: string;
+    updatedAt: string;
   };
-  random_verse: {
-    book_id: string;
-    book: string;
-    chapter: number;
-    verse: number;
-    text: string;
-  } | null;
+  createdAt: string;
+  updatedAt: string;
 };
