@@ -1,13 +1,14 @@
 import { useRouter } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import { Platform, TouchableOpacity, View } from 'react-native';
-import colors from 'tailwindcss/colors';
+import { gray } from 'tailwindcss/colors';
 import { Text } from '../ui/typography';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { ReactNode } from 'react';
 import { BetaBatch } from './BetaBatch';
 import { Ternary } from './Ternary';
 import { useEffect } from 'react';
+
 import Reanimated, {
   useAnimatedStyle,
   useSharedValue,
@@ -62,14 +63,14 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
                   <MaterialCommunityIcons
                     size={20}
                     name="arrow-left"
-                    color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+                    color={isDarkMode ? gray[200] : gray[950]}
                   />
                 }
                 ifTrue={
                   <MaterialCommunityIcons
                     size={30}
                     name="chevron-left"
-                    color={isDarkMode ? colors.gray[200] : colors.gray[950]}
+                    color={isDarkMode ? gray[200] : gray[950]}
                   />
                 }
               />

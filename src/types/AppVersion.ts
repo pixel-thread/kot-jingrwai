@@ -1,22 +1,26 @@
-export type AppUpdateT = {
-  id: string; // uuid or database id
+export type AppUpdateType = 'PTA' | 'OTA';
+
+export type AppUpdateStatus = 'ACTIVE' | 'INACTIVE' | 'DEPRECATED';
+
+export type AppUpdatePlatform = 'ANDROID' | 'IOS';
+
+export type AppUpdateTag = 'BETA' | 'STABLE' | 'PATCH';
+
+export interface AppUpdateT {
+  id: string;
   version: string;
   title: string;
   description: string[];
-  downloadUrl: string;
-  mandatory: boolean;
-  platforms: string[];
-  release_notes_url: string;
-  release_date: string;
-  min_supported_version: string;
-  created_at: string; // ISO datetime string
-  updated_at: string; // ISO datetime string
-  author: string;
-  tags: string[];
-  additional_info: AdditionalInfo;
-};
-
-export type AdditionalInfo = {
-  estimated_downtime: string;
-  rollback_available: boolean;
-};
+  type: AppUpdateType;
+  platforms: AppUpdatePlatform[];
+  releaseNotesUrl: string | null;
+  downloadUrl: string | null;
+  releaseDate: string; // ISO string
+  minSupportedVersion: string;
+  author: string | null;
+  tags: AppUpdateTag[];
+  additionalInfo: unknown | null;
+  status: AppUpdateStatus;
+  createdAt: string; // ISO string
+  updatedAt: string; // ISO string
+}

@@ -6,50 +6,15 @@ import { Skeleton } from '../ui/skeleton';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import { logger } from '~/src/utils/logger';
-import axios from 'axios';
-
-type VerseT = {
-  verse: {
-    details: {
-      text: string;
-      reference: string;
-      version: string;
-      verseurl: string;
-    };
-    notice: string;
-  };
-};
-// Fetch random verse from API
-type QouteResponse = {
-  success: boolean;
-  data?: VerseT | null | undefined;
-};
-
-const randomVerse = async (): Promise<QouteResponse> => {
-  try {
-    const response = await axios.get(
-      'https://beta.ourmanna.com/api/v1/get?format=json&order=daily'
-    );
-    return {
-      success: true,
-      data: response?.data as VerseT,
-    };
-  } catch (error) {
-    logger.error(error);
-    return {
-      success: false,
-      data: null,
-    };
-  }
-};
+import http from '~/src/utils/http';
+import { VerseT } from '~/src/types/verse';
 
 export const QuoteOfTheDay = () => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
   const { data, isLoading, isFetching } = useQuery({
     queryKey: ['random', 'verse'],
-    queryFn: randomVerse,
+    queryFn: () => http.get<VerseT>('/verse'),
     select: (data) => data.data,
   });
 
@@ -71,7 +36,7 @@ export const QuoteOfTheDay = () => {
       </Reanimated.View>
     );
   }
-  logger.info(data);
+
   return (
     <Reanimated.View entering={FadeInDown.duration(500)}>
       <TouchableOpacity
