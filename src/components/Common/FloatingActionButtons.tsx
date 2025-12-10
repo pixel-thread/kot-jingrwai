@@ -28,7 +28,7 @@ export const FloatingActionButtons = ({ buttons, isVisible }: Props) => {
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={item.onPress}
-              className="mx-2 flex-row items-center justify-center rounded-2xl bg-white px-4 py-3 dark:bg-gray-950">
+              className="mx-2 flex-row items-center justify-center rounded-2xl bg-white px-4 py-2 dark:bg-gray-950">
               {item.icon || <FontAwesome name="plus" size={20} color="#000" />}
             </TouchableOpacity>
           )}

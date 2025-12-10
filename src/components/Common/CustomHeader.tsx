@@ -16,6 +16,8 @@ import Reanimated, {
   FadeIn,
 } from 'react-native-reanimated';
 
+import { OtaUpdateBanner } from './OtaUpdateBanner';
+
 type Props = {
   options?: { title?: string };
   back?: boolean;
