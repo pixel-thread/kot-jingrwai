@@ -60,7 +60,8 @@ export default function SongLayout() {
           header: ({ options }) => (
             <CustomHeader options={options} back headerRight={<HeaderRight />} />
           ),
-        }}></Stack>
+        }}
+      />
 
       <FloatingActionButtons
         isVisible // Use state here
