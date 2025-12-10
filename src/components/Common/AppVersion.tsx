@@ -19,7 +19,6 @@ import Reanimated, {
   ZoomIn,
 } from 'react-native-reanimated';
 import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
-import { OtaUpdateServices } from '~/src/services/update/checkForOtaUpdate';
 import { compareAppVersions } from '~/src/utils/compareAppVersion';
 
 const AppVersion = () => {
@@ -37,17 +36,12 @@ const AppVersion = () => {
   const isMandatory = update.type === 'PTA' || isBelowMinVersion;
 
   const onUpdatePress = async () => {
-    if (isMandatory) {
-      await Linking.canOpenURL(update.downloadUrl || '').then((supported) => {
-        if (supported) {
-          Linking.openURL(update.downloadUrl || '');
-        }
-      });
-      return;
-    } else {
-      await OtaUpdateServices.applyOtaUpdate();
-      return;
-    }
+    await Linking.canOpenURL(update.downloadUrl || '').then((supported) => {
+      if (supported) {
+        Linking.openURL(update.downloadUrl || '');
+      }
+    });
+    return;
   };
 
   return (
