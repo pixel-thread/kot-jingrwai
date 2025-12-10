@@ -17,6 +17,7 @@ import Onboarding from '../components/Onboarding';
 import { Ternary } from '../components/Common/Ternary';
 import { ErrorBoundary } from '../components/Common/ErrorBoundary';
 import { UpdateContextProvider } from '../components/Provider/update';
+import { OtaUpdateBanner } from '../components/Common/OtaUpdateBanner';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -63,13 +64,17 @@ export default function Layout() {
   return (
     <GestureHandlerRootView onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <SafeAreaProvider>
-        <StatusBar style="auto" hidden />
+        <StatusBar style="auto" translucent />
         <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-800">
           <TQueryProvider>
             <ErrorBoundary>
               <UpdateContextProvider>
                 <ThemeProvider>
                   <SongProvider>
+                    <OtaUpdateBanner
+                      testMode={process.env.NODE_ENV === 'development' || false}
+                      scenario={'fail'}
+                    />
                     <Ternary
                       condition={!hasCompletedOnboarding}
                       ifTrue={<Onboarding />}
