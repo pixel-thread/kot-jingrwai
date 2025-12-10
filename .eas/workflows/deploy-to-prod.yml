@@ -2,21 +2,33 @@ name: Deploy to production
 
 on:
   push:
+    # Deploy only from your protected branch
     branches: ['master']
 
 jobs:
   fingerprint:
+    # 1) Generate native fingerprint for current commit
+    #    This captures native deps, config, etc. so we know
+    #    whether a new binary is required or JS-only update is enough.
     name: Fingerprint
     type: fingerprint
     environment: production
+
   get_android_build:
+    # 2) Ask EAS if there is an existing Android build
+    #    that matches this fingerprint + profile.
+    #    If yes -> we can send OTA to that binary.
+    #    If no  -> we must create a new native build.
     name: Check for existing android build
     needs: [fingerprint]
     type: get-build
     params:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
       profile: production
+
   build_android:
+    # 3A) No compatible build found -> create a new native build.
+    #     This is your "mandatory update candidate" (PTA).
     name: Build Android
     needs: [get_android_build]
     if: ${{ !needs.get_android_build.outputs.build_id }}
@@ -24,7 +36,10 @@ jobs:
     params:
       platform: android
       profile: production
+
   publish_android_update:
+    # 3B) Compatible build exists -> publish an OTA update
+    #     to the production branch for that existing binary.
     name: Publish Android update
     needs: [get_android_build]
     if: ${{ needs.get_android_build.outputs.build_id }}
