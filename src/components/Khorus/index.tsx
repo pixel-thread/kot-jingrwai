@@ -48,8 +48,8 @@ export const KhorusPage = () => {
   const listAnimatedStyle = useAnimatedStyle(() => ({ opacity: listOpacity.value }));
 
   return (
-    <Container className="flex-1 pt-10 dark:bg-gray-950">
-      <Reanimated.View style={listAnimatedStyle} className="-mt-4 flex-1 px-4">
+    <Container className="flex-1 dark:bg-gray-950">
+      <Reanimated.View style={listAnimatedStyle} className="flex-1 p-4">
         <FlashList
           data={paginatedSongs}
           renderItem={({ item, index }) => (
