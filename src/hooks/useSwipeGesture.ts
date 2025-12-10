@@ -25,7 +25,7 @@ export function useSwipeGesture({
   };
 
   const gesture = Gesture.Pan()
-    .minDistance(15)
+    .minDistance(30)
     .maxPointers(maxPointers)
     .onStart(() => {
       prevTranslationX.value = translationX.value;

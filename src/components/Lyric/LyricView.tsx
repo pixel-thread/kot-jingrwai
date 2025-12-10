@@ -23,12 +23,14 @@ import { useSwipeGesture } from '~/src/hooks/useSwipeGesture';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { Ternary } from '../Common/Ternary';
 import { useKeepAwake } from 'expo-keep-awake';
+import { copyToClipboard } from '~/src/utils/copyToClipboard';
 
 type LyricViewProps = {
   song: SongT;
 };
 
 export const LyricView = ({ song }: LyricViewProps) => {
+  useKeepAwake();
   const scrollRef = useAnimatedRef<ScrollView>();
   const { size, isSelectable } = useTextStore();
   const { addRecentlyPlayedSong } = useSongStore();
@@ -40,7 +42,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
 
   const { onNextSong, onPreviousSong } = useSongs();
   const sectionCount: Record<string, number> = {};
-  useKeepAwake();
 
   // Animation values
   const headerOpacity = useSharedValue(0);
@@ -79,29 +80,12 @@ export const LyricView = ({ song }: LyricViewProps) => {
     };
   });
 
-  const triggerHaptic = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-  };
-  const copyToClipboard = async (text: string) => {
-    if (!isSelectable) {
-      return;
-    }
-    if (text !== '') {
-      await Clipboard.setStringAsync(text);
-      // add toast and feed back
-      if (Platform.OS === 'android') {
-        runOnJS(triggerHaptic)();
-        ToastAndroid.show('Copied to clipboard', ToastAndroid.SHORT);
-      }
-    }
-  };
-
   return (
     <GestureDetector gesture={combinedGesture}>
       <ScrollView
         ref={scrollRef}
         simultaneousHandlers={scrollRef}
-        contentContainerStyle={{ flexGrow: 1 }}
+        contentContainerStyle={{ flexGrow: 1, paddingBlockEnd: 50 }}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
@@ -109,7 +93,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
         <View className="flex-1" collapsable={false}>
           <Reanimated.View
             style={headerAnimatedStyle}
-            className="mb-6 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-6 pt-6 shadow-lg">
+            className="mb-6 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-6 pt-6">
             <Text size={'2xl'} weight={'extrabold'} className="mb-1 text-center">
               {title}
             </Text>
