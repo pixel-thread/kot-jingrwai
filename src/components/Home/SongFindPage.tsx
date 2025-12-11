@@ -31,7 +31,6 @@ export const SongFinderPage = () => {
   const [songNumber, setSongNumber] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [activeTab, setActiveTab] = useState<'recent' | 'favorites'>('recent');
-  const [randomSong, setRandomSong] = useState<SongT[] | null>(null);
   const { ChangeSong } = useSongs();
   const router = useRouter();
   // Animation values
@@ -76,7 +75,7 @@ export const SongFinderPage = () => {
         {/* Hero Header */}
         <Animated.View
           // style={{ opacity: headerOpacity }}
-          className="w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-8 pt-6 shadow-lg">
+          className="w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-8 pt-6">
           <Reanimated.View entering={FadeInDown.delay(300).duration(800)}>
             <Text size={'3xl'} weight={'extrabold'} className="mb-2 uppercase">
               Jingrwai

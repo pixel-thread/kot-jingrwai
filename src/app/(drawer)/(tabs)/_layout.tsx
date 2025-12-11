@@ -30,7 +30,7 @@ export default function TabLayout() {
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: true,
         tabBarStyle: {
-          backgroundColor: isDarkMode ? colors.gray[900] : colors.gray[100],
+          backgroundColor: isDarkMode ? colors.gray[950] : colors.gray[200],
           borderTopWidth: 0,
           elevation: 0,
           height: 65,

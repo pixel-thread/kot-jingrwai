@@ -8,7 +8,6 @@ import Reanimated, {
 } from 'react-native-reanimated';
 
 import { Container } from '~/src/components/Common/Container';
-import { Text } from '~/src/components/ui/typography';
 import { PAGE_SIZE } from '~/src/libs/constant';
 import { SearchBar } from '../Common/search/SearchBar';
 import { EmptyKhorusState } from './EmptyKhorusState';
@@ -46,21 +45,11 @@ export const KhorusPage = () => {
     setPage(1); // reset to first page when searching
   }, []);
 
-  const headerAnimatedStyle = useAnimatedStyle(() => ({ opacity: headerOpacity.value }));
-
   const listAnimatedStyle = useAnimatedStyle(() => ({ opacity: listOpacity.value }));
 
   return (
     <Container className="flex-1 dark:bg-gray-950">
-      <Reanimated.View
-        style={headerAnimatedStyle}
-        className="mb-2 w-full items-center justify-center rounded-b-3xl py-5">
-        <Text size={'2xl'} weight={'extrabold'} className="mb-1 uppercase">
-          Khorus
-        </Text>
-      </Reanimated.View>
-
-      <Reanimated.View style={listAnimatedStyle} className="-mt-4 flex-1 px-4">
+      <Reanimated.View style={listAnimatedStyle} className="flex-1 p-4">
         <FlashList
           data={paginatedSongs}
           renderItem={({ item, index }) => (

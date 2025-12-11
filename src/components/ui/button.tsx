@@ -49,7 +49,7 @@ export const Button = forwardRef<View, ButtonProps>(
     });
 
     const getButtonStyle = () => {
-      const baseStyle = 'items-center justify-center rounded-xl shadow-sm';
+      const baseStyle = 'items-center justify-center rounded-xl';
 
       const variantStyles = {
         primary: 'bg-indigo-600 dark:bg-indigo-400',
