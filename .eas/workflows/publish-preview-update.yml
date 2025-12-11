@@ -1,4 +1,7 @@
-name: Deploy to preview
+name: Deploy to preview branch
+on:
+  push:
+    # Deploy only from your protected branch
 
 jobs:
   fingerprint:
