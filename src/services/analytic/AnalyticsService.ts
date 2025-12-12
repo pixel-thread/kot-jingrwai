@@ -19,9 +19,11 @@ export const AnalyticsService = {
   },
 
   async syncUser(): Promise<void> {
-    const hasPending = await AsyncStorage.getItem(SYNC_PENDING_KEY);
+    // Sync user so that last login time is updated in the server
 
-    if (!hasPending) return;
+    // const hasPending = await AsyncStorage.getItem(SYNC_PENDING_KEY);
+    // console.log('hasPending', hasPending);
+    // if (!hasPending) return;
 
     const network = await Network.getNetworkStateAsync();
 

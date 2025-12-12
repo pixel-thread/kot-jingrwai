@@ -1,4 +1,4 @@
-name: Deploy to preview
+name: Deploy to preview branch
 
 jobs:
   fingerprint:
