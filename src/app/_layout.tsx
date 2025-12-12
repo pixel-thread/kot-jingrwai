@@ -18,6 +18,8 @@ import { Ternary } from '../components/Common/Ternary';
 import { ErrorBoundary } from '../components/Common/ErrorBoundary';
 import { UpdateContextProvider } from '../components/Provider/update';
 import { OtaUpdateBanner } from '../components/Common/OtaUpdateBanner';
+import { SyncProvider } from '../components/Provider/sync';
+import { Banner } from '../components/Common/Banner';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -69,19 +71,22 @@ export default function Layout() {
           <TQueryProvider>
             <ErrorBoundary>
               <UpdateContextProvider>
-                <ThemeProvider>
-                  <SongProvider>
-                    <OtaUpdateBanner
-                      testMode={process.env.NODE_ENV === 'development' || false}
-                      scenario={'fail'}
-                    />
-                    <Ternary
-                      condition={!hasCompletedOnboarding}
-                      ifTrue={<Onboarding />}
-                      ifFalse={<Stack screenOptions={{ headerShown: false }} />}
-                    />
-                  </SongProvider>
-                </ThemeProvider>
+                <SyncProvider>
+                  <ThemeProvider>
+                    <SongProvider>
+                      <Banner />
+                      <OtaUpdateBanner
+                        testMode={process.env.NODE_ENV === 'development' || false}
+                        scenario={'success'}
+                      />
+                      <Ternary
+                        condition={!hasCompletedOnboarding}
+                        ifTrue={<Onboarding />}
+                        ifFalse={<Stack screenOptions={{ headerShown: false }} />}
+                      />
+                    </SongProvider>
+                  </ThemeProvider>
+                </SyncProvider>
               </UpdateContextProvider>
             </ErrorBoundary>
           </TQueryProvider>

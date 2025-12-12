@@ -25,10 +25,6 @@ export const QuoteOfTheDay = () => {
     }
   };
 
-  if (!data?.verse) {
-    return null;
-  }
-
   if (isLoading || isFetching) {
     return (
       <Reanimated.View
@@ -39,6 +35,10 @@ export const QuoteOfTheDay = () => {
         <Skeleton className="h-4 w-1/3 self-end" />
       </Reanimated.View>
     );
+  }
+
+  if (!data?.verse) {
+    return null;
   }
 
   return (
