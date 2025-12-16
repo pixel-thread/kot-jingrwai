@@ -1,13 +1,11 @@
+// @ts-check
 import fs from 'fs';
 import path from 'path';
+import 'dotenv/config';
 
-type ApiResponse<T> = {
-  data: T;
-  message: string;
-  success: boolean;
-};
+const apiBaseUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000/api';
 
-const API_URL = `http://localhost:3000/api/songs`;
+const API_URL = `${apiBaseUrl}/songs`;
 
 const OUTPUT_PATH = path.resolve('src/libs/songs/song.json');
 
@@ -18,7 +16,7 @@ async function fetchRuntimeConfig() {
     throw new Error(`Request failed with status ${response.status}`);
   }
 
-  const json = (await response.json()) as ApiResponse<unknown>;
+  const json = await response.json();
 
   if (!json.success) {
     throw new Error(`Backend error: ${json.message}`);

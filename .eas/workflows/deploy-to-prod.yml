@@ -20,7 +20,7 @@ jobs:
     type: run
     params:
       command: |
-        node scripts/fetchSongsScript.ts
+        node scripts/fetchSongsScript.js
 
   get_android_build:
     # 2) Ask EAS if there is an existing Android build

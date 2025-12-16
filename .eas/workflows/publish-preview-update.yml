@@ -1,18 +1,23 @@
 name: Create development builds
 
+on:
+  push:
+    # Deploy only from your protected branch
+    branches: ['uat']
+
 jobs:
   fingerprint:
     name: Fingerprint
     type: fingerprint
     environment: preview
 
-  fetch_runtime_config:
-    name: Fetch runtime config
+  fetch_songs:
+    name: Fetch Songs
     needs: [fingerprint]
     type: run
     params:
       command: |
-        node scripts/fetchSongsScript.ts
+        node scripts/fetchSongsScript.js
 
   get_android_build:
     name: Check for existing android build
