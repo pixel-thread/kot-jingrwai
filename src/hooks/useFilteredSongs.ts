@@ -2,6 +2,7 @@ import { normalizeForSearch } from '../utils/normalizeTextForSearch';
 import { SongT } from '../types/song';
 import { getSongs } from '../services/song/getSongs';
 import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
 
 type UseFilteredSongsProps = {
   searchQuery?: string;
@@ -13,18 +14,24 @@ export const useFilteredSongs = ({
   isKhorus = false,
 }: UseFilteredSongsProps): SongT[] => {
   const querykey = isKhorus ? ['songs', 'khorus', { isKhorus }] : ['songs'];
-  const { data: dataSource } = useQuery({
-    queryKey: querykey,
-    queryFn: async () => await getSongs({ isChorus: isKhorus }),
-    notifyOnChangeProps: ['data'],
-    refetchOnMount: 'always',
-  });
 
   const query = searchQuery.trim();
 
-  // Select the correct data source
+  const {
+    data: dataSource,
+    refetch,
+    isFetching,
+  } = useQuery({
+    queryKey: querykey,
+    queryFn: async () => await getSongs({ isChorus: isKhorus }),
+    notifyOnChangeProps: ['data'],
+  });
 
-  if (!dataSource) {
+  useEffect(() => {
+    refetch();
+  }, [isKhorus]);
+
+  if (!dataSource || isFetching) {
     return [];
   }
 
