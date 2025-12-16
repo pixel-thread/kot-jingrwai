@@ -14,9 +14,10 @@ jobs:
     name: Fetch Songs
     needs: [fingerprint]
     steps:
+      - working_directory: .
       - name: Fetch songs JSON
         run: |
-          node scripts/fetchSongsScript.js
+          node ./scripts/fetchSongsScript.js
 
   get_android_build:
     name: Check for existing android build
