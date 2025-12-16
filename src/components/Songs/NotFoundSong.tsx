@@ -4,7 +4,6 @@ import { View } from 'react-native';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { Button } from '../ui/button';
 
@@ -14,7 +13,6 @@ type NotFoundSongProps = {
 export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-  const router = useRouter();
 
   return (
     <Container className="h-full">
@@ -73,5 +71,3 @@ export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
     </Container>
   );
 };
-
-// Styles are now inline with className and style props

@@ -14,6 +14,14 @@ jobs:
     type: fingerprint
     environment: production
 
+  fetch_runtime_config:
+    name: Fetch runtime config
+    needs: [fingerprint]
+    type: run
+    params:
+      command: |
+        node scripts/fetchSongsScript.js
+
   get_android_build:
     # 2) Ask EAS if there is an existing Android build
     #    that matches this fingerprint + profile.

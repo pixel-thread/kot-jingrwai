@@ -1,3 +1,5 @@
+import { SongT } from '../song';
+
 export type KhorusParagraph = {
   id: string; // unique id for each paragraph
   order: number; // display order
@@ -29,7 +31,7 @@ export type KhorusT = {
 };
 
 export type KhorusContextT = {
-  khorus: KhorusT;
+  khorus: SongT;
   isNotFound: boolean;
   onNextKhorus: () => void;
   currentKhorusIndex: number;
