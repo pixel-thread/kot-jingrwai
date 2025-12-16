@@ -2,7 +2,6 @@ name: Create Preview builds
 
 on:
   push:
-    # Deploy only from your protected branch
     branches: ['uat']
 
 jobs:
