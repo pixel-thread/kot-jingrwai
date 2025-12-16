@@ -1,7 +1,7 @@
 import { normalizeForSearch } from '../utils/normalizeTextForSearch';
 import { SongT } from '../types/song';
+import { getSongs } from '../services/song/getSongs';
 import { useQuery } from '@tanstack/react-query';
-import { songs } from '../libs/songs';
 
 type UseFilteredSongsProps = {
   searchQuery?: string;
@@ -12,34 +12,35 @@ export const useFilteredSongs = ({
   searchQuery = '',
   isKhorus = false,
 }: UseFilteredSongsProps): SongT[] => {
-  // Load songs once (offline-first, perfect for Expo)
-  const { data: allSongs = [] } = useQuery({
-    queryKey: ['songs'],
-    queryFn: () => songs,
-    staleTime: Infinity, // Never refetch - static data
-    gcTime: Infinity, // Never garbage collect
+  const querykey = isKhorus ? ['songs', 'khorus', { isKhorus }] : ['songs'];
+  const { data: dataSource } = useQuery({
+    queryKey: querykey,
+    queryFn: async () => await getSongs({ isChorus: isKhorus }),
+    notifyOnChangeProps: ['data'],
+    refetchOnMount: 'always',
   });
 
-  // Filter by isKhorus (instant, reactive)
-  const filteredByChorus = isKhorus
-    ? allSongs.filter((song) => song.metadata.isChorus === true)
-    : allSongs;
+  const query = searchQuery.trim();
 
-  // Early return if no search
-  if (!searchQuery.trim()) {
-    return filteredByChorus;
+  // Select the correct data source
+
+  if (!dataSource) {
+    return [];
   }
 
-  const normalizedQuery = normalizeForSearch(searchQuery.trim());
+  // If no query, return all songs from the selected source
+  if (!query) return dataSource;
 
-  return filteredByChorus.filter(({ title, metadata, paragraphs }) => {
+  const normalizedQuery = normalizeForSearch(query);
+
+  return dataSource.filter(({ title, metadata, paragraphs }) => {
     const searchFields = [
       title,
       metadata.author,
       metadata.composer,
       metadata.number?.toString(),
       paragraphs[0]?.lines[0].text,
-    ].filter(Boolean);
+    ].filter(Boolean); // Remove null/undefined values
 
     return searchFields.some((field) => {
       const normalizedField = normalizeForSearch(field ?? '');
