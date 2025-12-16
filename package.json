@@ -24,7 +24,7 @@
     "build:android:prod": "eas build --profile production --platform android",
     "update:preview": "eas update --branch preview --message \"Preview update\"",
     "update:prod": "eas update --branch production --message \"Production update\"",
-    "fetch:songs": "node scripts/fetchSongsScript.js"
+    "postinstall": "node scripts/fetchSongsScript.js"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [

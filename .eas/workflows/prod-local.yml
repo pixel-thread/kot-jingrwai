@@ -1,0 +1,13 @@
+name: Deploy to production (local)
+
+jobs:
+  # 2) Try to find an existing cloud build that matches this fingerprint
+  #    (optional – you can skip this if you only care about local builds)
+  # Running a Scripts to fetch songs JSON steps
+  get_songs_json:
+    name: Get songs JSON
+    working-directory: .
+    steps:
+      - name: Get songs JSON
+        run: |
+          node scripts/fetchSongsScript.js
