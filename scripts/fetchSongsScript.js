@@ -1,7 +1,7 @@
-// @ts-check
-import fs from 'fs';
-import path from 'path';
-import 'dotenv/config';
+const fs = require('fs');
+const path = require('path');
+const fetch = require('node-fetch');
+require('dotenv').config();
 
 const apiBaseUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000/api';
 
