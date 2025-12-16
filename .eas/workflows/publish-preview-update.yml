@@ -13,10 +13,10 @@ jobs:
   fetch_songs:
     name: Fetch Songs
     needs: [fingerprint]
-    type: run
-    params:
-      command: |
-        node scripts/fetchSongsScript.js
+    steps:
+      - name: Fetch songs JSON
+        run: |
+          node scripts/fetchSongsScript.js
 
   get_android_build:
     name: Check for existing android build
