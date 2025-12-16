@@ -17,10 +17,11 @@ jobs:
   fetch_runtime_config:
     name: Fetch runtime config
     needs: [fingerprint]
-    type: run
-    params:
-      command: |
-        node scripts/fetchSongsScript.js
+    environment: production
+    steps:
+      - uses: eas/checkout
+      - name: Fetch songs JSON
+        run: node scripts/fetchSongsScript.js
 
   get_android_build:
     # 2) Ask EAS if there is an existing Android build
@@ -29,7 +30,7 @@ jobs:
     #    If no  -> we must create a new native build.
     name: Check for existing android build
     needs: [fingerprint]
-    type: get-build
+    type: get_build
     params:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
       profile: production

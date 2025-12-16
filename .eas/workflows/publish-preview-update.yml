@@ -13,15 +13,16 @@ jobs:
   fetch_songs:
     name: Fetch Songs
     needs: [fingerprint]
-    type: run
-    params:
-      command: |
-        node scripts/fetchSongsScript.js
+    environment: preview
+    steps:
+      - uses: eas/checkout
+      - name: Fetch songs JSON
+        run: node scripts/fetchSongsScript.js
 
   get_android_build:
     name: Check for existing android build
     needs: [fingerprint]
-    type: get-build
+    type: get_build
     params:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
       profile: preview
