@@ -1,12 +1,10 @@
 import { SongT } from '.';
 
+type OnNextPrev = {
+  id: string;
+};
 export type SongContextT = {
-  songs: SongT[];
-  song: SongT;
-  isNotFound: boolean;
-  onNextSong: () => void;
-  currentSongIndex: number;
-  isLastSong: boolean;
-  onPreviousSong: () => void;
-  ChangeSong: (songNo: number) => void;
+  songs: SongT[] | null | undefined;
+  onNextSong: ({ id }: OnNextPrev) => void;
+  onPreviousSong: ({ id }: OnNextPrev) => void;
 };

@@ -16,8 +16,8 @@ export const OtaUpdateServices = {
       const update = await Updates.checkForUpdateAsync();
 
       return update.isAvailable;
-    } catch (error: any) {
-      logger.error('Failed to check for updates');
+    } catch (error) {
+      logger.error({ message: 'Failed to check for updates', error });
       return false;
     }
   },
@@ -40,8 +40,11 @@ export const OtaUpdateServices = {
       if (isAvailable) {
         await OtaUpdateServices.applyOtaUpdate();
       }
-    } catch (error: any) {
-      logger.error('Failed to check for updates');
+    } catch (error) {
+      logger.error({
+        message: 'Failed to check for updates',
+        error,
+      });
       return false;
     }
   },

@@ -1,24 +1,59 @@
+export type Line = {
+  id: string;
+  order: number;
+  text: string;
+  createdAt?: string;
+  updatedAt?: string;
+  paragraphId: string;
+};
 export type SongParagraph = {
   id: string; // unique id for each paragraph
   order: number; // display order
-  lines: string[]; // lines of lyrics
-  type?: 'verse' | 'chorus' | 'bridge' | 'intro' | 'outro'; // optional label
+  lines: Line[]; // lines of lyrics
+  type?: 'VERSE' | 'CHORUS' | 'BRIDGE' | 'INTRO' | 'OUTRO'; // optional label
   songId?: string;
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 export type SongMetadata = {
+  id: string;
   number: number; // song number/index
-  oldNumber?: number;
+  oldNumber?: number | null;
   language: string; // e.g. 'en', 'kn', 'khasi'
-  author?: string;
-  composer?: string;
-  createdAt?: string; // ISO date
+  author?: string | null;
+  composer?: string | null;
+  isChorus?: boolean;
   tags?: string[]; // optional categories/tags
-  songId?: string;
-  syllables?: string;
-  reference?: string;
-  tune?: string;
-  meter?: string;
+  songId?: string | null;
+  syllables?: string | null;
+  reference?: string | null;
+  tune?: string | null;
+  meter?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+type TrackMetadata = {
+  id: string;
+  supabaseId: string;
+  path: string;
+  fileName: string;
+  downloadUrl: string;
+  fullPath: string;
+  mimeType: string;
+  fileSize: number;
+  createdAt?: string;
+  updatedAt?: string;
+  trackId?: string | null;
+};
+
+export type Track = {
+  id: string;
+  createdAt?: string;
+  updatedAt?: string;
+  metadataId: string;
+  metadata: TrackMetadata;
 };
 
 export type SongT = {
@@ -26,4 +61,9 @@ export type SongT = {
   title: string;
   metadata: SongMetadata;
   paragraphs: SongParagraph[];
+  createdAt?: string;
+  updatedAt?: string;
+  metadataId: string;
+  trackId?: string | null;
+  track: Track | null;
 };

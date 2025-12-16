@@ -4,13 +4,11 @@ import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { Text } from '~/src/components/ui/typography';
-import { useSongs } from '~/src/hooks/song/useSongs';
 import { SongT } from '~/src/types/song';
 import { useColorScheme } from 'nativewind';
 
 export const SongListItem = ({ song }: { song: SongT }) => {
   const router = useRouter();
-  const { ChangeSong } = useSongs();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
 
@@ -35,8 +33,7 @@ export const SongListItem = ({ song }: { song: SongT }) => {
     <Reanimated.View style={animatedStyle} className="mb-0">
       <TouchableOpacity
         onPress={() => {
-          ChangeSong(song.metadata.number);
-          router.push('/song');
+          router.push(`/songs/${song.id}`);
         }}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}

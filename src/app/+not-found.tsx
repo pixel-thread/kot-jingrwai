@@ -11,6 +11,9 @@ export default function NotFoundScreen() {
         <Reanimated.View
           entering={FadeIn.duration(500)}
           className="flex-1 items-center justify-center px-4">
+          <Text size="3xl" weight="black" align="center" className="mb-6">
+            404
+          </Text>
           <Text size="2xl" weight="bold" align="center" className="mb-6">
             This screen doesn&apos;t exist.
           </Text>

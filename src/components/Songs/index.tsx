@@ -13,10 +13,14 @@ import { SearchBar } from '../Common/search/SearchBar';
 import { SongListItem } from './SongListItem';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
 
-export const AllSongPage = () => {
+type Props = {
+  isKhorus?: boolean;
+};
+
+export const AllSongPage = ({ isKhorus = false }: Props) => {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const filteredSongs = useFilteredSongs({ searchQuery });
+  const filteredSongs = useFilteredSongs({ searchQuery, isKhorus });
   // Animation values
   const headerOpacity = useSharedValue(0);
   const listOpacity = useSharedValue(0);
@@ -62,7 +66,13 @@ export const AllSongPage = () => {
           onEndReachedThreshold={0.5}
           keyboardShouldPersistTaps="handled"
           stickyHeaderHiddenOnScroll={true}
-          ListHeaderComponent={() => <SearchBar onSearch={onSearch} value={searchQuery} />}
+          ListHeaderComponent={() => (
+            <SearchBar
+              label={isKhorus ? 'Find Your Khorus' : 'Find Your Songs'}
+              onSearch={onSearch}
+              value={searchQuery}
+            />
+          )}
           ListEmptyComponent={() => (
             <NotFoundSong reset={() => searchQuery && setSearchQuery('')} />
           )}

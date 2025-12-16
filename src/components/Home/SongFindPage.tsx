@@ -12,8 +12,6 @@ import Reanimated, {
 } from 'react-native-reanimated';
 
 import { SongList } from '~/src/components/Home/SongList';
-import { useSongs } from '~/src/hooks/song/useSongs';
-import { songs } from '~/src/libs/songs';
 import { Container } from '~/src/components/Common/Container';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
@@ -25,13 +23,14 @@ import { FeaturedSongCard } from './FeaturedSongCard';
 import { FlashList } from '@shopify/flash-list';
 import { getRandomSongs } from '~/src/utils/getRandomSongs';
 import { SongT } from '~/src/types/song';
+import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
 
 export const SongFinderPage = () => {
+  const songs = useFilteredSongs({ isKhorus: false });
   const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();
   const [songNumber, setSongNumber] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [activeTab, setActiveTab] = useState<'recent' | 'favorites'>('recent');
-  const { ChangeSong } = useSongs();
   const router = useRouter();
   // Animation values
   const scale = useSharedValue(0.9);
@@ -53,9 +52,11 @@ export const SongFinderPage = () => {
       return;
     }
 
+    const song = songs.find((song) => song.metadata.number === number);
+
     setError('');
-    ChangeSong(number);
-    router.push('/song');
+
+    router.push(`/songs/${song?.id}`);
   };
 
   // Run animations on component mount

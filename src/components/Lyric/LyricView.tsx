@@ -1,4 +1,4 @@
-import { View, Platform, ToastAndroid, TouchableOpacity } from 'react-native';
+import { View, Platform, TouchableOpacity } from 'react-native';
 import { cn } from '~/src/libs/cn';
 import { SongT } from '~/src/types/song';
 import { Text } from '~/src/components/ui/typography';
@@ -8,22 +8,19 @@ import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTextStore } from '~/src/libs/stores/text';
-import { Gesture, GestureDetector, ScrollView } from 'react-native-gesture-handler';
-import * as Clipboard from 'expo-clipboard';
-import * as Haptics from 'expo-haptics';
+import { ScrollView } from 'react-native-gesture-handler';
 import Reanimated, {
   FadeInDown,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
   useAnimatedRef,
-  runOnJS,
 } from 'react-native-reanimated';
-import { useSwipeGesture } from '~/src/hooks/useSwipeGesture';
-import { useSongs } from '~/src/hooks/song/useSongs';
 import { Ternary } from '../Common/Ternary';
 import { useKeepAwake } from 'expo-keep-awake';
 import { copyToClipboard } from '~/src/utils/copyToClipboard';
+import { FloatingActionButtons } from '../Common/FloatingActionButtons';
+import { MiniMusicPlayer } from '../Common/MiniMusicPlayer';
 
 type LyricViewProps = {
   song: SongT;
@@ -40,7 +37,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
   const paragraphs = song.paragraphs;
   const sortedParagraphs = [...paragraphs].sort((a, b) => a.order - b.order);
 
-  const { onNextSong, onPreviousSong } = useSongs();
   const sectionCount: Record<string, number> = {};
 
   // Animation values
@@ -54,15 +50,6 @@ export const LyricView = ({ song }: LyricViewProps) => {
     headerOpacity.value = withTiming(1, { duration: 800 });
     contentOpacity.value = withTiming(1, { duration: 1000 });
   }, [addRecentlyPlayedSong, song, headerOpacity, contentOpacity]);
-
-  const leftRightGesture = useSwipeGesture({
-    onSwipeLeft: onNextSong,
-    onSwipeRight: onPreviousSong,
-    simultaneousRef: scrollRef,
-    threshold: 100,
-  });
-
-  const combinedGesture = Gesture.Simultaneous(leftRightGesture);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ y: 0, animated: true });
@@ -81,15 +68,17 @@ export const LyricView = ({ song }: LyricViewProps) => {
   });
 
   return (
-    <GestureDetector gesture={combinedGesture}>
+    <>
+      <FloatingActionButtons>
+        <MiniMusicPlayer song={song} />
+      </FloatingActionButtons>
       <ScrollView
         ref={scrollRef}
         simultaneousHandlers={scrollRef}
         contentContainerStyle={{ flexGrow: 1, paddingBlockEnd: 50 }}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        scrollEventThrottle={16}
-        className="mb-16 dark:bg-gray-950">
+        scrollEventThrottle={16}>
         <View className="flex-1" collapsable={false}>
           <Reanimated.View
             style={headerAnimatedStyle}
@@ -189,7 +178,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                     {paragraph.lines.map((line, index) => {
                       const isFirst = index === 0;
                       const isLast = index === paragraph.lines.length - 1;
-                      const isChorus = paragraph.type === 'chorus';
+                      const isChorus = paragraph.type === 'CHORUS';
                       const textContent = line;
                       return (
                         <Ternary
@@ -209,7 +198,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                                   tracking={'tighter'}
                                   align={'center'}
                                   className={cn('text-left')}>
-                                  {textContent || ' '}
+                                  {textContent.text || 'N/A'}
                                 </Text>
                               </View>
                               {isLast && (
@@ -227,7 +216,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                                 tracking={'tight'}
                                 align={'center'}
                                 className={cn('text-left text-gray-900 dark:text-gray-100')}>
-                                {textContent || ' '}
+                                {textContent.text || ' '}
                               </Text>
                             </>
                           }
@@ -241,7 +230,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
           </Reanimated.View>
         </View>
       </ScrollView>
-    </GestureDetector>
+    </>
   );
 };
 

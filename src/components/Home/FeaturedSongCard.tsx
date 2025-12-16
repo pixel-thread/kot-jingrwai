@@ -4,7 +4,6 @@ import Reanimated, { FadeIn } from 'react-native-reanimated';
 import { Text } from '~/src/components/ui/typography';
 import { cn } from '~/src/libs/cn';
 import { SongT } from '~/src/types/song';
-import { useSongs } from '~/src/hooks/song/useSongs';
 import { useRouter } from 'expo-router';
 
 type FeaturedSongCardProps = { song: SongT };
@@ -12,13 +11,12 @@ type FeaturedSongCardProps = { song: SongT };
 export const FeaturedSongCard = ({ song }: FeaturedSongCardProps) => {
   const { number: songNumber, author } = song.metadata;
   const { title } = song;
-  const { ChangeSong } = useSongs();
   const router = useRouter();
 
   const onPress = () => {
-    ChangeSong(songNumber);
-    router.push('/song');
+    router.push(`/songs/${song.id}`);
   };
+
   return (
     <Reanimated.View entering={FadeIn.duration(500)}>
       <TouchableOpacity
