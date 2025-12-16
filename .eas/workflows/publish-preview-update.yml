@@ -22,7 +22,6 @@ jobs:
   get_android_build:
     name: Check for existing android build
     needs: [fingerprint]
-    type: get_build
     params:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
       profile: preview
