@@ -10,14 +10,14 @@ jobs:
     type: fingerprint
     environment: preview
 
-  fetch_songs:
-    name: Fetch Songs
-    needs: [fingerprint]
-    steps:
-      - working_directory: .
-      - name: Fetch songs JSON
-        run: |
-          node ./scripts/fetchSongsScript.js
+fetch_songs:
+  name: Fetch Songs
+  needs: [fingerprint]
+  steps:
+    - name: Fetch songs JSON
+      working_directory: .
+      run: |
+        node ./scripts/fetchSongsScript.js
 
   get_android_build:
     name: Check for existing android build
