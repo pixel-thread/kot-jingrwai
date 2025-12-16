@@ -68,7 +68,7 @@ export const AllSongPage = ({ isKhorus = false }: Props) => {
           stickyHeaderHiddenOnScroll={true}
           ListHeaderComponent={() => (
             <SearchBar
-              label={isKhorus ? 'Find Your Khorus' : 'Find Your Songs'}
+              label={isKhorus ? 'Find Your Chorus' : 'Find Your Songs'}
               onSearch={onSearch}
               value={searchQuery}
             />

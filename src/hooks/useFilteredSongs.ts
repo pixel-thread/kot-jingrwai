@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { normalizeForSearch } from '../utils/normalizeTextForSearch';
 import { SongT } from '../types/song';
 import { getSongs } from '../services/song/getSongs';
@@ -13,9 +12,11 @@ export const useFilteredSongs = ({
   searchQuery = '',
   isKhorus = false,
 }: UseFilteredSongsProps): SongT[] => {
+  const querykey = isKhorus ? ['songs', 'khorus', isKhorus] : ['songs'];
   const { data: dataSource } = useQuery({
-    queryKey: ['songs', isKhorus],
+    queryKey: querykey,
     queryFn: async () => await getSongs({ isChorus: isKhorus }),
+    notifyOnChangeProps: ['data'],
   });
 
   const query = searchQuery.trim();
