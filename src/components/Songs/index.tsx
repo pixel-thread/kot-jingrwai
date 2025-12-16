@@ -30,6 +30,10 @@ export const AllSongPage = ({ isKhorus = false }: Props) => {
     listOpacity.value = withTiming(1, { duration: 1000 });
   }, []);
 
+  useEffect(() => {
+    setPage(1);
+  }, [isKhorus]);
+
   const paginatedSongs = filteredSongs?.slice(0, page * PAGE_SIZE);
 
   const loadMore = useCallback(() => {

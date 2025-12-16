@@ -13,23 +13,22 @@ export const useFilteredSongs = ({
   searchQuery = '',
   isKhorus = false,
 }: UseFilteredSongsProps): SongT[] => {
-  const querykey = isKhorus ? ['songs', 'khorus', isKhorus] : ['songs'];
+  const querykey = ['songs', { khorus: isKhorus }];
 
   const query = searchQuery.trim();
 
   const {
     data: dataSource,
-    refetch,
     isFetching,
+    refetch,
   } = useQuery({
     queryKey: querykey,
     queryFn: async () => await getSongs({ isChorus: isKhorus }),
-    notifyOnChangeProps: ['data'],
   });
 
   useEffect(() => {
     refetch();
-  }, [isKhorus]);
+  }, [isKhorus, refetch]);
 
   if (!dataSource || isFetching) {
     return [];
