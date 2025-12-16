@@ -1,4 +1,4 @@
-name: Create development builds
+name: Create Preview builds
 
 on:
   push:
