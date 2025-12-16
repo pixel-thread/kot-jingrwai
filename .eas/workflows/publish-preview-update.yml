@@ -20,7 +20,7 @@ jobs:
 
   get_android_build:
     name: Check for existing android build
-    needs: [fetch_runtime_config]
+    needs: [fetch_songs, fingerprint]
     type: get-build
     params:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
