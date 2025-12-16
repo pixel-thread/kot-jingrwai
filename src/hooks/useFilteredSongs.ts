@@ -13,7 +13,7 @@ export const useFilteredSongs = ({
   searchQuery = '',
   isKhorus = false,
 }: UseFilteredSongsProps): SongT[] => {
-  const querykey = isKhorus ? ['songs', 'khorus', { isKhorus }] : ['songs'];
+  const querykey = isKhorus ? ['songs', 'khorus', isKhorus] : ['songs'];
 
   const query = searchQuery.trim();
 
