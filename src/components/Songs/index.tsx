@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { FlashList } from '@shopify/flash-list';
 import Reanimated, {
   FadeInRight,
@@ -12,15 +12,17 @@ import { NotFoundSong } from './NotFoundSong';
 import { SearchBar } from '../Common/search/SearchBar';
 import { SongListItem } from './SongListItem';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
+import { Button } from '../ui/button';
 
 type Props = {
-  isKhorus?: boolean;
+  isKhorus: boolean;
 };
 
-export const AllSongPage = ({ isKhorus = false }: Props) => {
+export const AllSongPage = ({ isKhorus }: Props) => {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const filteredSongs = useFilteredSongs({ searchQuery, isKhorus });
+
   // Animation values
   const headerOpacity = useSharedValue(0);
   const listOpacity = useSharedValue(0);
@@ -29,10 +31,6 @@ export const AllSongPage = ({ isKhorus = false }: Props) => {
     headerOpacity.value = withTiming(1, { duration: 800 });
     listOpacity.value = withTiming(1, { duration: 1000 });
   }, []);
-
-  useEffect(() => {
-    setPage(1);
-  }, [isKhorus]);
 
   const paginatedSongs = filteredSongs?.slice(0, page * PAGE_SIZE);
 

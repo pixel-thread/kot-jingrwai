@@ -6,7 +6,7 @@ import { Container } from '~/src/components/Common/Container';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { LyricView } from '~/src/components/Lyric/LyricView';
 import { Text } from '~/src/components/ui/typography';
-import { getUniqueSongs } from '~/src/services/song/getUniqueSong';
+import { getUniqueSongs } from '~/src/services/songs/getUniqueSong';
 
 import { useTextStore } from '~/src/libs/stores/text';
 import { gray } from 'tailwindcss/colors';

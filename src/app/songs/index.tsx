@@ -21,7 +21,7 @@ export default function Song() {
           ),
         }}
       />
-      <AllSongPage isKhorus={isChorus === 'true'} />
+      <AllSongPage isKhorus={isChorus === 'true' ? true : false} />
     </>
   );
 }

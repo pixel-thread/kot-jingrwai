@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getUniqueSongs } from '~/src/services/song/getUniqueSong';
+import { getUniqueSongs } from '~/src/services/songs/getUniqueSong';
 
 type Props = {
   id: string;

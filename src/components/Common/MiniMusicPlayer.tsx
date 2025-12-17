@@ -9,7 +9,7 @@ import { useAudioPlayer } from 'expo-audio';
 import { SongT } from '~/src/types/song';
 import { cn } from '~/src/libs/cn';
 import { useQuery } from '@tanstack/react-query';
-import { getSongs } from '~/src/services/song/getSongs';
+import { getSongs } from '~/src/services/songs/getSongs';
 import { useRouter } from 'expo-router';
 
 type Props = {
