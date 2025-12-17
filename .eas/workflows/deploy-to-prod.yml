@@ -21,13 +21,11 @@ jobs:
     type: fingerprint
     environment: production
     needs: [notify-start]
-    outputs:
-      android_hash: ${{ outputs.android_fingerprint_hash }}
 
   notify-fingerprint:
     name: 📤 Fingerprint calculated
     type: slack
-    needs: fingerprint
+    needs: [fingerprint]
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
@@ -38,13 +36,10 @@ jobs:
     name: 🔍 Check existing build
     type: get-build
     environment: production
-    needs: fingerprint
+    needs: [fingerprint]
     params:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
-      platform: android
-    outputs:
-      build_id: ${{ outputs.build_id }}
-      build_status: ${{ outputs.status }}
+      profile: production
 
   notify-build-check:
     name: 📊 Build check complete
@@ -55,7 +50,7 @@ jobs:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
         🔍 Build check complete
-        Build exists: ${{ needs.check-existing-build.result == 'success' && '✅ YES' || '❌ NO' }}
+        Build exists: ${{ needs.check-existing-build.outputs.build_id && '✅ YES' || '❌ NO' }}
         Build ID: ${{ needs.check-existing-build.outputs.build_id || 'None' }}
         Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
 
@@ -64,7 +59,7 @@ jobs:
     type: build
     environment: production
     needs: [check-existing-build, fingerprint]
-    if: ${{ needs.check-existing-build.result != 'success' }}
+    if: ${{ !needs.check-existing-build.outputs.build_id }}
     params:
       platform: android
       profile: production
@@ -86,7 +81,7 @@ jobs:
     type: update
     environment: production
     needs: [check-existing-build, fingerprint]
-    if: ${{ needs.check-existing-build.result == 'success' }}
+    if: ${{ !!needs.check-existing-build.outputs.build_id }}
     params:
       platform: android
       branch: production
