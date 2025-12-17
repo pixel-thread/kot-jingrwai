@@ -12,7 +12,7 @@ jobs:
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
-        🚀 PROD deployment started {{ github.event.after }}
+        🚀 PROD deployment started
         Branch: Master
         App: ${{ github.event.repository.name }}
         Platform: android
@@ -29,16 +29,27 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2 # Get current + previous commit
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
       - id: version_check
         run: |
+          cd frontend  # Adjust path to your Expo app directory
+
           # Extract current app version and versionCode from app.json/app.config.js
           if [ -f app.json ]; then
             APP_VERSION=$(jq -r '.expo.version // empty' app.json)
             VERSION_CODE=$(jq -r '.expo.android.versionCode // empty' app.json)
           elif [ -f app.config.js ]; then
-            APP_VERSION=$(node -pe "require('./app.config.js')({}).expo.version")
-            VERSION_CODE=$(node -pe "require('./app.config.js')({}).expo.android?.versionCode")
+            APP_VERSION=$(node -pe "require('./app.config.js')({}).expo.version || ''")
+            VERSION_CODE=$(node -pe "JSON.stringify(require('./app.config.js')({}).expo.android?.versionCode || '')")
+          else
+            echo "No app.json or app.config.js found"
+            exit 1
           fi
+
+          # Store current values
+          echo "current_app_version=$APP_VERSION" >> $GITHUB_OUTPUT
+          echo "current_version_code=$VERSION_CODE" >> $GITHUB_OUTPUT
 
           # Get previous commit's versions
           git checkout HEAD~1
@@ -46,15 +57,13 @@ jobs:
             PREV_APP_VERSION=$(jq -r '.expo.version // empty' app.json)
             PREV_VERSION_CODE=$(jq -r '.expo.android.versionCode // empty' app.json)
           elif [ -f app.config.js ]; then
-            PREV_APP_VERSION=$(node -pe "require('./app.config.js')({}).expo.version")
-            PREV_VERSION_CODE=$(node -pe "require('./app.config.js')({}).expo.android?.versionCode")
+            PREV_APP_VERSION=$(node -pe "require('./app.config.js')({}).expo.version || ''")
+            PREV_VERSION_CODE=$(node -pe "JSON.stringify(require('./app.config.js')({}).expo.android?.versionCode || '')")
           fi
 
           # Check if either changed (version bump detected)
           if [ "$APP_VERSION" != "$PREV_APP_VERSION" ] || [ "$VERSION_CODE" != "$PREV_VERSION_CODE" ]; then
             echo "version_changed=true" >> $GITHUB_OUTPUT
-            echo "current_version=$APP_VERSION" >> $GITHUB_OUTPUT
-            echo "current_version_code=$VERSION_CODE" >> $GITHUB_OUTPUT
           else
             echo "version_changed=false" >> $GITHUB_OUTPUT
           fi
@@ -62,44 +71,35 @@ jobs:
           # Reset to current commit
           git checkout HEAD@{1}
         shell: bash
+    outputs:
+      version_changed: ${{ steps.version_check.outputs.version_changed }}
+      current_version: ${{ steps.version_check.outputs.current_app_version }}
+      current_version_code: ${{ steps.version_check.outputs.current_version_code }}
 
   fingerprint:
     # 2) Generate native fingerprint for current commit
-    #    This captures native deps, config, etc. so we know
-    #    whether a new binary is required or JS-only update is enough.
     name: Fingerprint
     type: fingerprint
     environment: production
     needs: [notify_start, check_version_change]
 
-  get_android_build:
-    # 3) Check for existing Android build (SKIPPED if version changed)
-    #    that matches this fingerprint + profile.
-    name: Check for existing android build
-    needs: [fingerprint, check_version_change]
-    if: ${{ needs.check_version_change.outputs.version_changed != 'true' }}
-    type: get_build
-    params:
-      fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
-      profile: production
-
   build_android:
-    # 4A) Force new build if version changed OR no compatible build exists
+    # 3A) Force new build if version changed OR always build (simplified logic)
     #     This creates your "mandatory update candidate" (PTA).
     name: Build Android
-    needs: [fingerprint, check_version_change, get_android_build]
-    if: ${{ needs.check_version_change.outputs.version_changed == 'true' || !needs.get_android_build.outputs.build_id }}
+    needs: [fingerprint, check_version_change]
+    if: ${{ needs.check_version_change.outputs.version_changed == 'true' }}
     type: build
     params:
       platform: android
       profile: production
 
   publish_android_update:
-    # 4B) Compatible build exists AND version unchanged -> publish OTA update
-    #     to the production branch for that existing binary.
+    # 3B) Send OTA update (runs for JS changes when version unchanged)
+    #     Compatible with existing production binary.
     name: Publish Android update
-    needs: [fingerprint, check_version_change, get_android_build]
-    if: ${{ needs.check_version_change.outputs.version_changed != 'true' && needs.get_android_build.outputs.build_id }}
+    needs: [fingerprint, check_version_change]
+    if: ${{ needs.check_version_change.outputs.version_changed != 'true' }}
     type: update
     params:
       branch: production
@@ -107,33 +107,29 @@ jobs:
 
   notify_failure:
     name: Notify production failure
-    after:
-      [fingerprint, check_version_change, get_android_build, build_android, publish_android_update]
+    after: [fingerprint, check_version_change, build_android, publish_android_update]
     if: ${{ failure() }}
     type: slack
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
         ❌ PROD deployment failed
-        Version changed: ${{ needs.check_version_change.outputs.version_changed }}
-        Fingerprint status: ${{ needs.fingerprint.status }}
-        Build ID check: ${{ needs.get_android_build.outputs.build_id }}
-        Build status: ${{ needs.build_android.status }}
-        Update status: ${{ needs.publish_android_update.status }}
+        Version changed: ${{ needs.check_version_change.outputs.version_changed || 'unknown' }}
+        Fingerprint: ${{ needs.fingerprint.status }}
+        Build status: ${{ needs.build_android.status || 'skipped' }}
+        Update status: ${{ needs.publish_android_update.status || 'skipped' }}
 
   notify_success:
     name: Notify production success
-    needs:
-      [check_version_change, fingerprint, get_android_build, build_android, publish_android_update]
+    needs: [check_version_change, fingerprint, build_android, publish_android_update]
     if: ${{ success() }}
     type: slack
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
-        ✅ PROD deployment completed
-        Version: ${{ needs.check_version_change.outputs.current_version || 'unchanged' }} (vCode: ${{ needs.check_version_change.outputs.current_version_code || 'unchanged' }})
-        Action taken: ${{ needs.build_android.result == 'success' && 'NEW BUILD' || 'OTA UPDATE' }}
-        Used existing build: ${{ needs.get_android_build.outputs.build_id || 'none' }}
-        New build ID: ${{ needs.build_android.outputs.build_id || 'none' }}
+        ✅ PROD deployment completed successfully
+        Version: ${{ needs.check_version_change.outputs.current_version }} (vCode: ${{ needs.check_version_change.outputs.current_version_code }})
+        ${{ needs.check_version_change.outputs.version_changed == 'true' && '🆕 NEW BUILD (PTA)' || '⚡ OTA UPDATE' }}
+        Build ID: ${{ needs.build_android.outputs.build_id || 'N/A' }}
         Branch: production
-        Platform: android [web:41][web:40]
+        Platform: android
