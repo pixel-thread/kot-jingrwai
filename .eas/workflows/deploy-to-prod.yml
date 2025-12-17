@@ -31,8 +31,6 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y jq
       - id: version_check
         run: |
-          cd frontend  # Adjust path to your Expo app directory
-
           # Extract current app version and versionCode from app.json/app.config.js
           if [ -f app.json ]; then
             APP_VERSION=$(jq -r '.expo.version // empty' app.json)

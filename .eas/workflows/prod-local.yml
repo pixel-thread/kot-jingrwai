@@ -9,6 +9,18 @@ jobs:
   # 2) Try to find an existing cloud build that matches this fingerprint
   #    (optional – you can skip this if you only care about local builds)
   # Running a Scripts to fetch songs JSON steps
+  notify_start:
+    name: Notify production deployment start
+    type: slack
+    params:
+      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
+      message: |
+        🚀 PROD deployment started
+        Branch: Master
+        App: ${{ github.event.repository.name }}
+        Platform: android
+        User: ${{ github.event.pusher.name }}
+
   fingerprint:
     # 2) Generate native fingerprint for current commit
     name: Fingerprint
@@ -24,3 +36,43 @@ jobs:
     params:
       platform: android
       profile: production
+
+  publish_android_update:
+    # 4B) Compatible build exists AND version unchanged -> publish OTA update
+    #     to the preview branch for that existing binary.
+    name: Publish Android update
+    needs: [fingerprint, check_version_change, get_android_build]
+    if: ${{ needs.check_version_change.outputs.version_changed != 'true' && needs.get_android_build.outputs.build_id }}
+    type: update
+    params:
+      branch: preview
+      platform: android
+
+  notify_failure:
+    name: Notify production failure
+    after: [fingerprint, check_version_change, build_android, publish_android_update]
+    if: ${{ failure() }}
+    type: slack
+    params:
+      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
+      message: |
+        ❌ PROD deployment failed
+        Version changed: ${{ needs.check_version_change.outputs.version_changed || 'unknown' }}
+        Fingerprint: ${{ needs.fingerprint.status }}
+        Build status: ${{ needs.build_android.status || 'skipped' }}
+        Update status: ${{ needs.publish_android_update.status || 'skipped' }}
+
+  notify_success:
+    name: Notify production success
+    after: [check_version_change, fingerprint, build_android, publish_android_update]
+    if: ${{ success() }}
+    type: slack
+    params:
+      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
+      message: |
+        ✅ PROD deployment completed successfully
+        Version: ${{ needs.check_version_change.outputs.current_version }} (vCode: ${{ needs.check_version_change.outputs.current_version_code }})
+        ${{ needs.check_version_change.outputs.version_changed == 'true' && '🆕 NEW BUILD (PTA)' || '⚡ OTA UPDATE' }}
+        Build ID: ${{ needs.build_android.outputs.build_id || 'N/A' }}
+        Branch: production
+        Platform: android
