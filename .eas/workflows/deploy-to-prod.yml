@@ -11,14 +11,14 @@ jobs:
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
+        #🚀 PROD deployment started
         ```
-        🚀 PROD deployment started by ${{ github.actor }}
-        Branch: ${{ github.ref_name }}
-        App: Kot-Jingrwai
-        Platform: android
-        Profile: production
-        Commit: ${{ github.sha }}
-        Repo: ${{ github.repository }}
+          Branch: ${{ github.ref_name }}
+          App: Kot-Jingrwai
+          Platform: android
+          channel: production
+          Profile: production
+          Commit: ${{ github.sha }}
         ```
 
   # fingerprint:
