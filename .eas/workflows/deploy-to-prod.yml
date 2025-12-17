@@ -3,7 +3,7 @@ name: EAS Trigger production deployment
 on:
   push:
     # Deploy only from your protected branch
-    # branches: ['master']
+    branches: ['master']
 
 jobs:
   notify_start:
