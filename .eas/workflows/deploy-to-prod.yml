@@ -5,7 +5,7 @@ on:
     branches: ['master']
 
 jobs:
-  notify-start:
+  notify_start:
     name: 🚀 Notify deployment start
     type: slack
     params:
@@ -20,9 +20,9 @@ jobs:
     name: 📋 Calculate fingerprint
     type: fingerprint
     environment: production
-    needs: [notify-start]
+    needs: [notify_start]
 
-  notify-fingerprint:
+  notify_fingerprint:
     name: 📤 Fingerprint calculated
     type: slack
     needs: [fingerprint]
@@ -32,7 +32,7 @@ jobs:
         📋 Fingerprint calculated: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
         Checking for existing build...
 
-  check-existing-build:
+  check_existing_build:
     name: 🔍 Check existing build
     type: get-build
     environment: production
@@ -41,87 +41,84 @@ jobs:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
       profile: production
 
-  notify-build-check:
+  notify_build_check:
     name: 📊 Build check complete
     type: slack
-    needs: [check-existing-build, fingerprint]
-    if: always()
+    needs: [check_existing_build, fingerprint]
+    if: ${{ always }}
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
         🔍 Build check complete
-        Build exists: ${{ needs.check-existing-build.outputs.build_id && '✅ YES' || '❌ NO' }}
-        Build ID: ${{ needs.check-existing-build.outputs.build_id || 'None' }}
+        Build ID: ${{ needs.check_existing_build.outputs.build_id || 'None' }}
         Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
 
-  build-new:
+  build_new:
     name: 🏗️ Create new build
     type: build
     environment: production
-    needs: [check-existing-build, fingerprint]
-    if: ${{ !needs.check-existing-build.outputs.build_id }}
+    needs: [check_existing_build, fingerprint]
+    if: ${{ !needs.check_existing_build.outputs.build_id }}
     params:
       platform: android
       profile: production
 
-  notify-build-start:
+  notify_build_start:
     name: 🏗️ Build started
     type: slack
-    needs: [build-new, check-existing-build]
-    if: ${{ needs.build-new.result == 'success' }}
+    needs: [build_new, check_existing_build]
+    if: ${{ !!needs.build_new.outputs.build_id }}
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
         🏗️ NEW PRODUCTION BUILD started
-        Build ID: ${{ needs.build-new.outputs.build_id }}
+        Build ID: ${{ needs.build_new.outputs.build_id }}
         Profile: production
 
-  publish-update:
+  publish_update:
     name: ⚡ Publish OTA update
     type: update
     environment: production
-    needs: [check-existing-build, fingerprint]
-    if: ${{ !!needs.check-existing-build.outputs.build_id }}
+    needs: [check_existing_build, fingerprint]
+    if: ${{ !!needs.check_existing_build.outputs.build_id }}
     params:
       platform: android
       branch: production
       channel: production
 
-  notify-update-start:
+  notify_update_start:
     name: ⚡ OTA update started
     type: slack
-    needs: [publish-update, check-existing-build]
-    if: ${{ needs.publish-update.result == 'success' }}
+    needs: [publish_update, check_existing_build]
+    if: ${{ !!needs.publish_update.outputs.update_group_id || !!needs.check_existing_build.outputs.build_id }}
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
         ⚡ OTA UPDATE published
-        Using existing build: ${{ needs.check-existing-build.outputs.build_id }}
+        Using existing build: ${{ needs.check_existing_build.outputs.build_id || 'None' }}
         Channel: production
 
-  notify-success:
+  notify_success:
     name: ✅ Deployment successful
     type: slack
-    needs: [build-new, publish-update, fingerprint]
-    if: ${{ always() && (needs.build-new.result == 'success' || needs.publish-update.result == 'success') }}
+    needs: [build_new, publish_update, fingerprint]
+    if: ${{ always }}
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
         ✅ PROD deployment SUCCESS
-        ${{ needs.build-new.result == 'success' && '🆕 NEW BUILD: ' || '⚡ OTA UPDATE: ' }}
-        Build ID: ${{ needs.build-new.outputs.build_id || needs.check-existing-build.outputs.build_id || 'N/A' }}
+        Build ID: ${{ needs.build_new.outputs.build_id || needs.check_existing_build.outputs.build_id || 'N/A' }}
         Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
 
-  notify-failure:
+  notify_failure:
     name: ❌ Deployment failed
     type: slack
-    needs: [fingerprint, check-existing-build, build-new, publish-update]
-    if: ${{ failure() }}
+    needs: [fingerprint, check_existing_build, build_new, publish_update]
+    if: ${{ failure }}
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
         ❌ PROD deployment FAILED
-        Fingerprint: ${{ needs.fingerprint.result }}
-        Build check: ${{ needs.check-existing-build.result }}
-        Build: ${{ needs.build-new.result }}
-        Update: ${{ needs.publish-update.result }}
+        Build ID: ${{ needs.build_new.outputs.build_id || 'N/A' }}
+        Existing Build ID: ${{ needs.check_existing_build.outputs.build_id || 'N/A' }}
+        Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
