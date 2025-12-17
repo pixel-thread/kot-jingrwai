@@ -1,4 +1,4 @@
-name: EAS Production Deployment
+name: EAS preview Deployment
 
 on:
   push:
@@ -16,15 +16,15 @@ jobs:
           Branch: ${{ github.ref_name }}
           App: Kot-Jingrwai
           Platform: android
-          channel: production
-          Profile: production
+          channel: preview
+          Profile: preview
           Commit: ${{ github.sha }}
         ```
 
   fingerprint:
     name: 📋 Calculate fingerprint
     type: fingerprint
-    environment: production
+    environment: preview
     needs: [notify_start]
 
   notify_fingerprint:
@@ -40,11 +40,11 @@ jobs:
   check_existing_build:
     name: 🔍 Check existing build
     type: get-build
-    environment: production
+    environment: preview
     needs: [fingerprint]
     params:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
-      profile: production
+      profile: preview
 
   notify_build_check:
     name: 📊 Build check complete
@@ -61,12 +61,12 @@ jobs:
   build_new:
     name: 🏗️ Create new build
     type: build
-    environment: production
+    environment: preview
     needs: [check_existing_build, fingerprint]
     if: ${{ !needs.check_existing_build.outputs.build_id }}
     params:
       platform: android
-      profile: production
+      profile: preview
 
   notify_build_start:
     name: 🏗️ Build started
@@ -76,20 +76,20 @@ jobs:
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
-        🏗️ NEW PRODUCTION BUILD started
+        🏗️ NEW preview BUILD started
         Build ID: ${{ needs.build_new.outputs.build_id }}
-        Profile: production
+        Profile: preview
 
   publish_update:
     name: ⚡ Publish OTA update
     type: update
-    environment: production
+    environment: preview
     needs: [check_existing_build, fingerprint]
     if: ${{ !!needs.check_existing_build.outputs.build_id }}
     params:
       platform: android
-      branch: production
-      channel: production
+      branch: preview
+      channel: preview
 
   notify_update_start:
     name: ⚡ OTA update started
@@ -101,7 +101,7 @@ jobs:
       message: |
         ⚡ OTA UPDATE published
         Using existing build: ${{ needs.check_existing_build.outputs.build_id || 'None' }}
-        Channel: production
+        Channel: preview
 
   notify_success:
     name: ✅ Deployment successful
