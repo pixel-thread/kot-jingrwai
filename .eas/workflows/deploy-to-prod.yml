@@ -21,7 +21,7 @@ jobs:
     #    If no  -> we must create a new native build.
     name: Check for existing android build
     needs: [fingerprint]
-    type: get-build
+    type: get_build
     params:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
       profile: production

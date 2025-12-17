@@ -1,42 +1,45 @@
-import { useMemo } from 'react';
-import { songs } from '../libs/songs';
 import { normalizeForSearch } from '../utils/normalizeTextForSearch';
-import { khoros } from '../libs/khoros';
 import { SongT } from '../types/song';
+import { getSongs } from '../services/songs/getSongs';
+import { useQuery } from '@tanstack/react-query';
 
 type UseFilteredSongsProps = {
-  searchQuery: string;
+  searchQuery?: string;
   isKhorus?: boolean;
 };
 
 export const useFilteredSongs = ({
-  searchQuery,
+  searchQuery = '',
   isKhorus = false,
 }: UseFilteredSongsProps): SongT[] => {
-  return useMemo(() => {
-    const query = searchQuery.trim();
+  const query = searchQuery.trim();
 
-    // Select the correct data source
-    const dataSource = isKhorus ? khoros : songs;
+  const { data: songs = [] } = useQuery({
+    queryKey: ['songs', isKhorus],
+    queryFn: () => getSongs({ isAll: true }),
+  });
 
-    // If no query, return all songs from the selected source
-    if (!query) return dataSource;
+  const dataSource = isKhorus
+    ? songs.filter((song) => song.metadata.isChorus)
+    : songs.filter((song) => !song.metadata.isChorus);
 
-    const normalizedQuery = normalizeForSearch(query);
+  // If no query, return all songs from the selected source
+  if (!query) return dataSource;
 
-    return dataSource.filter(({ title, metadata, paragraphs }) => {
-      const searchFields = [
-        title,
-        metadata.author,
-        metadata.composer,
-        metadata.number?.toString(),
-        paragraphs[0]?.lines[0],
-      ].filter(Boolean); // Remove null/undefined values
+  const normalizedQuery = normalizeForSearch(query);
 
-      return searchFields.some((field) => {
-        const normalizedField = normalizeForSearch(field ?? '');
-        return normalizedField?.includes(normalizedQuery);
-      });
+  return dataSource.filter(({ title, metadata, paragraphs }) => {
+    const searchFields = [
+      title,
+      metadata.author,
+      metadata.composer,
+      metadata.number?.toString(),
+      paragraphs[0]?.lines[0].text,
+    ].filter(Boolean); // Remove null/undefined values
+
+    return searchFields.some((field) => {
+      const normalizedField = normalizeForSearch(field ?? '');
+      return normalizedField?.includes(normalizedQuery);
     });
-  }, [searchQuery, isKhorus]); // Include both dependencies
+  });
 };

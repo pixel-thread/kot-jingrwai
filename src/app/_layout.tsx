@@ -1,5 +1,4 @@
 import '~/src/styles/global.css';
-import { SongProvider } from '../components/Provider/Song';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useCallback, useEffect, useState } from 'react';
@@ -70,17 +69,15 @@ export default function Layout() {
             <ErrorBoundary>
               <UpdateContextProvider>
                 <ThemeProvider>
-                  <SongProvider>
-                    <OtaUpdateBanner
-                      testMode={process.env.NODE_ENV === 'development' || false}
-                      scenario={'fail'}
-                    />
-                    <Ternary
-                      condition={!hasCompletedOnboarding}
-                      ifTrue={<Onboarding />}
-                      ifFalse={<Stack screenOptions={{ headerShown: false }} />}
-                    />
-                  </SongProvider>
+                  <OtaUpdateBanner
+                    testMode={process.env.NODE_ENV === 'development' || false}
+                    scenario={'fail'}
+                  />
+                  <Ternary
+                    condition={!hasCompletedOnboarding}
+                    ifTrue={<Onboarding />}
+                    ifFalse={<Stack screenOptions={{ headerShown: false }} />}
+                  />
                 </ThemeProvider>
               </UpdateContextProvider>
             </ErrorBoundary>

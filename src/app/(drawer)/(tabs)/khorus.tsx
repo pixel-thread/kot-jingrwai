@@ -1,5 +1,5 @@
-import { KhorusPage } from '~/src/components/Khorus';
+import { AllSongPage } from '~/src/components/Songs';
 
 export default function Chorus() {
-  return <KhorusPage />;
+  return <AllSongPage isKhorus={true} />;
 }

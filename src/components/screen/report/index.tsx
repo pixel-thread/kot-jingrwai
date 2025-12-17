@@ -22,11 +22,10 @@ export default function ReportScreen() {
   }, []);
 
   const openEmail = async (subject: string, body: string) => {
-    const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}&cc=jyrwaboys@gmial.com`;
-
+    const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     const supported = true;
-    //@ts-ignore @eslint-disable-next-line
-    supported ? Linking.openURL(url) : Alert.alert('Error', 'Email app is not available.');
+    supported ? Linking.canOpenURL(url) : Alert.alert('Error', 'Email app is not available.');
+    return;
   };
 
   return (

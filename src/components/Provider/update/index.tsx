@@ -9,6 +9,7 @@ import { compareAppVersions } from '~/src/utils/compareAppVersion';
 import AppVersion from '../../Common/AppVersion';
 import { Platform } from 'react-native';
 import { OtaUpdateServices } from '~/src/services/update/checkForOtaUpdate';
+import { UPDATE_ENDPOINTS } from '~/src/libs/endpoints/update';
 
 const currentAppVersion = Constants.default.expoConfig?.version || '0.0.1';
 
@@ -18,9 +19,10 @@ export const UpdateContextProvider = ({ children }: { children: React.ReactNode 
 
   const { isFetching, data, refetch } = useQuery({
     queryKey: ['update'],
-    queryFn: () => http.get<AppUpdateT>('/update/latest'),
+    queryFn: () => http.get<AppUpdateT>(UPDATE_ENDPOINTS.GET_LATEST_UPDATE),
     select: (res) => res.data,
     refetchInterval: 5 * 60 * 1000, // check every 5 min
+    enabled: !isUpdateAvailable,
   });
 
   useEffect(() => {

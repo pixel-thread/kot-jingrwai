@@ -7,13 +7,14 @@ import { TynraiJingrwaiT } from '~/src/types/tynrai-jingrwai';
 import { SongT } from '~/src/types/song';
 import { CategoryItem } from './CategoryItems';
 import { ContentSection } from '../../Common/ContentSection';
-import { songs } from '~/src/libs/songs';
 import { SongListItem } from '../../Songs/SongListItem';
 import { FlashList } from '@shopify/flash-list';
+import { useSongs } from '~/src/hooks/song/useSongs';
 
 export default function TynraiJingrwaiScreen() {
   const [contentVisible, setContentVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<TynraiJingrwaiT | null>(null);
+  const { data: songs = [] } = useSongs({ isChorus: false });
   const [filteredSongs, setFilteredSongs] = useState<SongT[]>([]);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export default function TynraiJingrwaiScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-gray-200 dark:bg-gray-950">
+    <ScrollView className="h-auto flex-1 bg-gray-200 dark:bg-gray-950">
       <Reanimated.View entering={FadeIn.duration(500)} className="p-4">
         {contentVisible && (
           <>

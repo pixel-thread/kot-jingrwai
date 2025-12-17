@@ -2,7 +2,7 @@
   "expo": {
     "name": "Kot Jingrwai",
     "slug": "kot-jingrwai",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "scheme": "kot-jing-rwai",
     "orientation": "portrait",
     "icon": "./assets/icons/kot-jingrwai-icon.png",
@@ -19,6 +19,12 @@
     "assetBundlePatterns": ["**/*"],
     "plugins": [
       "expo-router",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+        }
+      ],
       [
         "expo-splash-screen",
         {

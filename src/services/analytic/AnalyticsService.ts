@@ -3,6 +3,7 @@ import * as Network from 'expo-network';
 import http from '~/src/utils/http';
 import uuid from 'react-native-uuid';
 import * as Constant from 'expo-constants';
+import { ANALYTIC_ENDPOINTS } from '~/src/libs/endpoints/analytic';
 const USER_ID_KEY = 'user_id';
 
 const SYNC_PENDING_KEY = 'pending_user_sync';
@@ -34,7 +35,7 @@ export const AnalyticsService = {
     if (!userId) return;
 
     try {
-      const res = await http.post('/analytic/users', {
+      const res = await http.post(ANALYTIC_ENDPOINTS.POST_ANALYTIC_USERS, {
         userId,
         appVersion: Constant.default.expoConfig?.version || '',
       });
