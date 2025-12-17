@@ -3,7 +3,7 @@ name: EAS Trigger production deployment
 on:
   push:
     # Deploy only from your protected branch
-    branches: ['master']
+    # branches: ['master']
 
 jobs:
   notify_start:
@@ -17,8 +17,6 @@ jobs:
         App: ${{ github.event.repository.name }}
         Platform: android
         User: ${{ github.event.pusher.name }}
-        Commit: ${{ github.event.head_commit.message }}
-        Commit URL: ${{ github.event.head_commit.url }}
 
   check_version_change:
     # 1) Check if app version changed by parsing app.json/app.config.js

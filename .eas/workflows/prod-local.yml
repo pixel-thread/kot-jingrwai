@@ -1,13 +1,26 @@
 name: Deploy to production (local)
 
+on:
+  push:
+    # Deploy only from your protected branch
+    branches: ['master']
+
 jobs:
   # 2) Try to find an existing cloud build that matches this fingerprint
   #    (optional – you can skip this if you only care about local builds)
   # Running a Scripts to fetch songs JSON steps
-  get_songs_json:
-    name: Get songs JSON
-    working-directory: .
-    steps:
-      - name: Get songs JSON
-        run: |
-          node scripts/fetchSongsScript.js
+  fingerprint:
+    # 2) Generate native fingerprint for current commit
+    name: Fingerprint
+    type: fingerprint
+    environment: production
+
+  build_android:
+    # 3A) Force new build if version changed OR always build (simplified logic)
+    #     This creates your "mandatory update candidate" (PTA).
+    name: Build Android
+    needs: [fingerprint]
+    type: build
+    params:
+      platform: android
+      profile: production
