@@ -11,10 +11,10 @@ jobs:
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
-        🚀 PROD deployment started
+        `🚀 PROD deployment started
         Branch: ${{ github.ref_name }}
-        App: ${{ github.event.repository.name }}
-        Platform: android
+        App: Kot-Jingrwai
+        Platform: android`
 
   fingerprint:
     name: 📋 Calculate fingerprint
