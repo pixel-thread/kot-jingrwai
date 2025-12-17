@@ -12,7 +12,7 @@ jobs:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
         ```
-        🚀 PROD deployment started by {{ github.pusher }}
+        🚀 PROD deployment started by ${{ github.pusher }}
         Branch: ${{ github.ref_name }}
         App: Kot-Jingrwai
         Platform: android
