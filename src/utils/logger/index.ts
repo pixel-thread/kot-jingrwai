@@ -1,4 +1,5 @@
 import http from '../http';
+import { isConnectedToNetwork } from '../isConnectedToNetwork';
 
 type ErrorType = 'ERROR' | 'INFO' | 'WARN' | 'LOG';
 
@@ -11,6 +12,8 @@ const sendLogToServer = async (type: ErrorType, message: string, content: string
   };
 
   try {
+    const isConnected = await isConnectedToNetwork();
+    if (!isConnected) return;
     await http.post('/logs', logEntry);
   } catch (error) {
     console.error('Failed to send logs to server', error);
@@ -57,7 +60,6 @@ const logMethod = async (type: ErrorType, ...args: any[]): Promise<void> => {
           content = json;
         }
       } else {
-        // logger.log("Message", data)
         const [msg, data] = args;
         message = typeof msg === 'string' ? msg : JSON.stringify(msg);
         content = JSON.stringify(data);
