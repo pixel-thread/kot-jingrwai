@@ -14,14 +14,12 @@ export const useFilteredSongs = ({
 }: UseFilteredSongsProps): SongT[] => {
   const query = searchQuery.trim();
 
-  const { data: songs = [] } = useQuery({
+  const { data: dataSource = [] } = useQuery({
     queryKey: ['songs', isKhorus],
-    queryFn: () => getSongs({ isAll: true }),
+    queryFn: () => {
+      return getSongs({ isChorus: isKhorus });
+    },
   });
-
-  const dataSource = isKhorus
-    ? songs.filter((song) => song.metadata.isChorus)
-    : songs.filter((song) => !song.metadata.isChorus);
 
   // If no query, return all songs from the selected source
   if (!query) return dataSource;
