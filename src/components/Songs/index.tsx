@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { FlashList } from '@shopify/flash-list';
 import Reanimated, {
   FadeInRight,
@@ -12,7 +12,6 @@ import { NotFoundSong } from './NotFoundSong';
 import { SearchBar } from '../Common/search/SearchBar';
 import { SongListItem } from './SongListItem';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
-import { Button } from '../ui/button';
 
 type Props = {
   isKhorus: boolean;
