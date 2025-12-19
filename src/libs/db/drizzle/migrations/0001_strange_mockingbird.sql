@@ -1,0 +1,1 @@
+ALTER TABLE `songs` ADD `sync` integer DEFAULT false;

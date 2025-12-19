@@ -7,4 +7,9 @@ const { withNativeWind } = require('nativewind/metro');
 
 const config = getDefaultConfig(__dirname);
 
+// Allow bundling .db files from assets for SQLite import
+config.resolver.assetExts.push('db');
+
+config.resolver.sourceExts.push('sql');
+
 module.exports = withNativeWind(config, { input: './src/styles/global.css' });
