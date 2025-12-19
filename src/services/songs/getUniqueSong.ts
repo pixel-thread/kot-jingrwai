@@ -17,6 +17,5 @@ export async function getUniqueSongs({ id }: { id: string }) {
     .leftJoin(schema.paragraphs, eq(schema.paragraphs.songId, schema.songs.id))
     .leftJoin(schema.lines, eq(schema.lines.paragraphId, schema.paragraphs.id))
     .where(eq(schema.songs.id, id));
-
   return songMapper(rows);
 }

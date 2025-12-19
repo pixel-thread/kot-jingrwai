@@ -19,6 +19,7 @@ import { UpdateContextProvider } from '../components/Provider/update';
 import { OtaUpdateBanner } from '../components/Common/OtaUpdateBanner';
 import { InitializeDatabase } from '../components/Provider/migrations/InitializeDatabase';
 import { LoadingScreen } from '../components/Common/Loading';
+import { SyncManager } from '../components/Provider/sync';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();

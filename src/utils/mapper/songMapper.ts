@@ -56,8 +56,7 @@ export function songMapper(rows: JoinedSongRow[]): SongT {
     metadataId: first.songs.metadataId,
     trackId: first.songs.trackId,
     track: null,
-    createdAt: undefined,
-    updatedAt: undefined,
+    updatedAt: first.songs.updatedAt.toString(),
   };
 }
 
@@ -74,6 +73,7 @@ export function songsMapper(rows: JoinedSongRow[]): SongT[] {
   }
 
   // Map each song group
-  const songs = Array.from(songsMap.entries()).map(([_, songRows]) => songMapper(songRows));
-  return songs.sort((a, b) => a.metadata.number - b.metadata.number);
+  return Array.from(songsMap.entries())
+    .map(([_, songRows]) => songMapper(songRows))
+    .sort((a, b) => a.metadata.number - b.metadata.number); // Sort by song number
 }

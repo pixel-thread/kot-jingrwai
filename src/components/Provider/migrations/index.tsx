@@ -14,14 +14,16 @@ export const Migrations = ({ children }: Props) => {
 
   const status: Status = useMemo(() => {
     if (error) {
-      logger.error(error, {
+      logger.error('Database migration failed', {
         timestamp: Date.now(),
+        error,
       });
       return 'Failed';
     }
     if (success) {
       logger.info('Database migrated', {
         timestamp: Date.now(),
+        success,
       });
       return 'Migrated';
     }

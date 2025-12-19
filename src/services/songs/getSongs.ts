@@ -13,7 +13,6 @@ type Props = {
 
 export async function getSongs({ isChorus = false }: Props) {
   try {
-    console.log('🚀 ~ getSongs ~ isChorus', isChorus);
     const rows: JoinedSongRow[] = await db
       .select({
         lines: schema.lines,
@@ -28,7 +27,6 @@ export async function getSongs({ isChorus = false }: Props) {
       .where(eq(schema.songMetadata.isChorus, isChorus));
 
     if (rows.length > 0) {
-      console.log('Returning db songs');
       return songsMapper(rows);
     }
     return [];

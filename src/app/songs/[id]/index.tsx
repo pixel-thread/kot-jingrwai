@@ -5,15 +5,14 @@ import { View, TouchableOpacity } from 'react-native';
 import { Container } from '~/src/components/Common/Container';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { LyricView } from '~/src/components/Lyric/LyricView';
-import { Text } from '~/src/components/ui/typography';
 import { getUniqueSongs } from '~/src/services/songs/getUniqueSong';
 
 import { useTextStore } from '~/src/libs/stores/text';
 import { gray } from 'tailwindcss/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
-import { FloatingActionButtons } from '~/src/components/Common/FloatingActionButtons';
-import { MiniMusicPlayer } from '~/src/components/Common/MiniMusicPlayer';
+import { SongT } from '~/src/types/song';
+import { SyncManager } from '~/src/components/Provider/sync';
 
 const HeaderRight = () => {
   const { colorScheme } = useColorScheme();
@@ -46,7 +45,8 @@ const HeaderRight = () => {
 
 const SongsDetails = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { data: song, isFetching } = useQuery({
+
+  const { data: song, isFetching } = useQuery<SongT>({
     queryKey: ['song', id],
     queryFn: () => getUniqueSongs({ id }),
     enabled: !!id,
@@ -58,7 +58,7 @@ const SongsDetails = () => {
         <Stack.Screen
           options={{
             headerShown: true,
-            title: song?.metadata?.number?.toString() || 'No Title',
+            title: song?.metadata?.number?.toString() || 'Loading',
             header: ({ options }) => (
               <CustomHeader options={options} back headerRight={<HeaderRight />} />
             ),
@@ -70,18 +70,20 @@ const SongsDetails = () => {
 
   return (
     <>
-      <Stack.Screen
-        options={{
-          headerShown: true,
-          title: song?.metadata?.number?.toString() || 'No Title',
-          header: ({ options }) => (
-            <CustomHeader options={options} back headerRight={<HeaderRight />} />
-          ),
-        }}
-      />
-      <Container>
-        <LyricView song={song} />
-      </Container>
+      <SyncManager id={id}>
+        <Stack.Screen
+          options={{
+            headerShown: true,
+            title: song?.metadata?.number?.toString() || 'No Title',
+            header: ({ options }) => (
+              <CustomHeader options={options} back headerRight={<HeaderRight />} />
+            ),
+          }}
+        />
+        <Container>
+          <LyricView song={song} />
+        </Container>
+      </SyncManager>
     </>
   );
 };
