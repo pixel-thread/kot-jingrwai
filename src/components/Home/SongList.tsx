@@ -2,11 +2,11 @@ import { View, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { FadeInRight } from 'react-native-reanimated';
-import { songs } from '~/src/libs/songs';
 import { Text } from '~/src/components/ui/typography';
 import { ContentSection } from '../Common/ContentSection';
 import { SongListItem } from '../Songs/SongListItem';
 import { FlashList } from '@shopify/flash-list';
+import { useSongs } from '~/src/hooks/song/useSongs';
 
 type SongListProps = {
   title: string;
@@ -15,9 +15,11 @@ type SongListProps = {
 };
 
 export const SongList = ({ title, songNumbers = [], emptyMessage }: SongListProps) => {
+  const { data: songs } = useSongs({ isChorus: false });
+
   const router = useRouter();
 
-  const filteredSongs = songs.filter((song) => songNumbers.includes(song.metadata.number));
+  const filteredSongs = songs?.filter((song) => songNumbers.includes(song.metadata.number));
 
   return (
     <ContentSection title={title} className="border-transparent p-1 dark:border-transparent">

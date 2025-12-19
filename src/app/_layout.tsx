@@ -1,7 +1,7 @@
 import '~/src/styles/global.css';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, Suspense } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ThemeProvider } from '../components/Provider/theme';
 import { TQueryProvider } from '../components/Provider/query';
@@ -17,6 +17,8 @@ import { Ternary } from '../components/Common/Ternary';
 import { ErrorBoundary } from '../components/Common/ErrorBoundary';
 import { UpdateContextProvider } from '../components/Provider/update';
 import { OtaUpdateBanner } from '../components/Common/OtaUpdateBanner';
+import { InitializeDatabase } from '../components/Provider/migrations/InitializeDatabase';
+import { LoadingScreen } from '../components/Common/Loading';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -57,7 +59,8 @@ export default function Layout() {
   }, [appIsReady]);
 
   if (!appIsReady || !loaded || error) {
-    return null;
+    logger.error('Error loading fonts', error);
+    return <LoadingScreen />;
   }
 
   return (
@@ -65,23 +68,27 @@ export default function Layout() {
       <SafeAreaProvider>
         <StatusBar style="auto" translucent />
         <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-800">
-          <TQueryProvider>
-            <ErrorBoundary>
-              <UpdateContextProvider>
-                <ThemeProvider>
-                  <OtaUpdateBanner
-                    testMode={process.env.NODE_ENV === 'development' || false}
-                    scenario={'fail'}
-                  />
-                  <Ternary
-                    condition={!hasCompletedOnboarding}
-                    ifTrue={<Onboarding />}
-                    ifFalse={<Stack screenOptions={{ headerShown: false }} />}
-                  />
-                </ThemeProvider>
-              </UpdateContextProvider>
-            </ErrorBoundary>
-          </TQueryProvider>
+          <InitializeDatabase>
+            <TQueryProvider>
+              <ErrorBoundary>
+                <Suspense fallback={null}>
+                  <UpdateContextProvider>
+                    <ThemeProvider>
+                      <OtaUpdateBanner
+                        testMode={process.env.NODE_ENV === 'development' || false}
+                        scenario={'fail'}
+                      />
+                      <Ternary
+                        condition={!hasCompletedOnboarding}
+                        ifTrue={<Onboarding />}
+                        ifFalse={<Stack screenOptions={{ headerShown: false }} />}
+                      />
+                    </ThemeProvider>
+                  </UpdateContextProvider>
+                </Suspense>
+              </ErrorBoundary>
+            </TQueryProvider>
+          </InitializeDatabase>
         </SafeAreaView>
       </SafeAreaProvider>
     </GestureHandlerRootView>
