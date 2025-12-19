@@ -9,8 +9,9 @@ module.exports = defineConfig([
   },
   {
     rules: {
-      'react/display-name': 'off',
+      'react/display-name': 'warn',
       'react-hooks/exhaustive-deps': 'warn',
+      'no-console': 'error',
     },
   },
 ]);
