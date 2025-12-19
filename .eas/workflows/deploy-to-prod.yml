@@ -20,12 +20,17 @@ jobs:
           Profile: production
           Commit: ${{ github.sha }}
         ```
+  generate_build_db:
+    name: 📋 Generate build DB
+    type: custom
+    steps:
+      - run: npx tsx scripts/seed-local-db.ts
 
   fingerprint:
     name: 📋 Calculate fingerprint
     type: fingerprint
     environment: production
-    needs: [notify_start]
+    needs: [notify_start, generate_build_db]
 
   notify_fingerprint:
     name: 📤 Fingerprint calculated
