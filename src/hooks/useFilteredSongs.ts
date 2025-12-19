@@ -1,22 +1,25 @@
 import { normalizeForSearch } from '../utils/normalizeTextForSearch';
 import { SongT } from '../types/song';
 import { getSongs } from '../services/songs/getSongs';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 type UseFilteredSongsProps = {
   searchQuery?: string;
   isKhorus?: boolean;
+  page?: number;
 };
 
 export const useFilteredSongs = ({
   searchQuery = '',
   isKhorus = false,
+  page = 1,
 }: UseFilteredSongsProps): SongT[] => {
   const query = searchQuery.trim();
 
   const { data: dataSource = [] } = useQuery({
-    queryKey: ['songs', { khorus: isKhorus }],
-    queryFn: async () => await getSongs({ isChorus: isKhorus }),
+    queryKey: ['songs', { khorus: isKhorus }, page],
+    queryFn: async () => await getSongs({ isChorus: isKhorus, page }),
+    placeholderData: keepPreviousData,
   });
 
   // If no query, return all songs from the selected source
