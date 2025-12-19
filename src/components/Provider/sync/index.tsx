@@ -33,7 +33,8 @@ export const SyncManager = ({ children, id }: Props) => {
     queryKey: ['song-backend', id],
     queryFn: async () => http.get<SongT>(SONG_ENDPOINTS.GET_SONG.replace(':id', id)),
     select: (data) => data.data,
-    enabled: !!id,
+    enabled: !!id && isSyncing,
+    refetchInterval: 5000,
   });
 
   const mutate = useMutation({
