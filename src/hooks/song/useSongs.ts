@@ -4,9 +4,8 @@ type Props = {
   isChorus?: boolean;
 };
 export function useSongs({ isChorus = false }: Props = {}) {
-  console.log('useSongs', isChorus);
   return useQuery({
-    queryKey: ['songs', isChorus],
-    queryFn: async () => await getSongs({ isChorus: true }),
+    queryKey: ['songs', { khorus: isChorus }],
+    queryFn: async () => await getSongs({ isChorus }),
   });
 }

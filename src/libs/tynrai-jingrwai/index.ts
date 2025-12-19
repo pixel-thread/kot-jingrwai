@@ -2,11 +2,13 @@ import { TynraiJingrwaiT } from '~/src/types/tynrai-jingrwai';
 
 export const tynraiJingrwai: TynraiJingrwaiT[] = [
   {
+    id: '1',
     title: 'Shaphang U Blei',
     from: 1,
     to: 25,
   },
   {
+    id: '2',
     title: 'Shaphang U Khrist',
     from: 26,
     to: 114,
@@ -44,16 +46,19 @@ export const tynraiJingrwai: TynraiJingrwaiT[] = [
     ],
   },
   {
+    id: '3',
     title: 'Shaphang U Mynsiem Bakhuid',
     from: 115,
     to: 128,
   },
   {
+    id: '4',
     title: 'Shaphang ka ktien U Blei',
     from: 129,
     to: 141,
   },
   {
+    id: '5',
     title: 'Shaphang ka balang',
     from: 142,
     to: 220,
@@ -91,6 +96,7 @@ export const tynraiJingrwai: TynraiJingrwaiT[] = [
     ],
   },
   {
+    id: '6',
     title: 'Shaphang ka khyndew',
     from: 221,
     to: 249,
@@ -109,6 +115,7 @@ export const tynraiJingrwai: TynraiJingrwaiT[] = [
   },
 
   {
+    id: '7',
     title: 'Shaphang ka jinglong jingim Khristan',
     from: 250,
     to: 456,
@@ -146,6 +153,7 @@ export const tynraiJingrwai: TynraiJingrwaiT[] = [
     ],
   },
   {
+    id: '8',
     title: 'Shaphang ka jingiap ki bangeit',
     from: 457,
     to: 506,
@@ -168,56 +176,67 @@ export const tynraiJingrwai: TynraiJingrwaiT[] = [
     ],
   },
   {
+    id: '9',
     title: 'Ka snem bad ki aiom',
     from: 507,
     to: 515,
   },
   {
+    id: '10',
     title: 'Ka jingai sha ka kam U Blei',
     from: 516,
     to: 520,
   },
   {
+    id: '11',
     title: 'Ka jingrwai shaphang ki iing Khristan',
     from: 521,
     to: 524,
   },
   {
+    id: '12',
     title: 'Ka jingrwai ialap',
     from: 525,
     to: 567,
   },
   {
+    id: '13',
     title: 'Ka jingiaroh',
     from: 568,
     to: 577,
   },
   {
+    id: '14',
     title: 'Ka jingrwai shaphang ka ri',
     from: 578,
     to: 583,
   },
   {
+    id: '15',
     title: 'Ka jingrwai Revival',
     from: 584,
     to: 591,
   },
   {
+    id: '16',
     title: 'Ka jingrwai ia ki khynnah',
     from: 592,
     to: 619,
   },
   {
+    id: '17',
     title: 'Ka jingrwai ia ki smala',
     from: 620,
     to: 633,
   },
   {
+    id: '18',
     title: 'Ka jingrwai pynwai',
     from: 634,
     to: 639,
   },
   {
+    id: '19',
     title: 'Ki Khoros',
     from: 1,
     to: 38,
