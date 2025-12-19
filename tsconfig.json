@@ -6,7 +6,8 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["*"]
+      "~/*": ["*"],
+      "@src/*": ["src/*"]
     }
   },
   "include": [
@@ -16,6 +17,7 @@
     "expo-env.d.ts",
     "nativewind-env.d.ts",
     "scripts/fetchSongsScript.js",
-    "scripts/fetchSongsScript.js"
+    "scripts/fetchSongsScript.js",
+    "scripts/seed-local-db.ts"
   ]
 }
