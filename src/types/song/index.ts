@@ -6,11 +6,13 @@ export type Line = {
   updatedAt?: string;
   paragraphId: string;
 };
+type VerseType = 'VERSE' | 'CHORUS' | 'BRIDGE' | 'INTRO' | 'OUTRO'; // optional label
+
 export type SongParagraph = {
   id: string; // unique id for each paragraph
   order: number; // display order
   lines: Line[]; // lines of lyrics
-  type?: 'VERSE' | 'CHORUS' | 'BRIDGE' | 'INTRO' | 'OUTRO'; // optional label
+  type?: VerseType;
   songId?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -34,7 +36,7 @@ export type SongMetadata = {
   updatedAt?: string;
 };
 
-type TrackMetadata = {
+export type TrackMetadata = {
   id: string;
   supabaseId: string;
   path: string;
@@ -66,4 +68,43 @@ export type SongT = {
   metadataId: string;
   trackId?: string | null;
   track: Track | null;
+};
+
+export type JoinedSongRow = {
+  lines: {
+    id: string;
+    order: number;
+    paragraphId: string | null;
+    text: string;
+    updatedAt: number;
+  } | null;
+  paragraphs: {
+    id: string;
+    order: number;
+    songId: string;
+    type: 'VERSE' | 'CHORUS' | 'BRIDGE' | 'INTRO' | 'OUTRO' | null;
+    updatedAt: number;
+  } | null;
+  songMetadata: {
+    id: string;
+    number: number;
+    oldNumber: number | null;
+    language: string;
+    author: string | null; // ← Allow null
+    composer: string | null; // ← Allow null
+    isChorus: boolean | null;
+    tags: string | null; // ← Allow null
+    syllables: string | null; // ← Allow null
+    reference: string | null;
+    tune: string | null;
+    meter: string | null;
+    updatedAt: number;
+  } | null;
+  songs: {
+    id: string;
+    metadataId: string;
+    title: string;
+    trackId: string | null;
+    updatedAt: number;
+  };
 };
