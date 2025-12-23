@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "mono-kot-jingrwai",
   "private": true,
   "scripts": {
     "build": "turbo run build",
