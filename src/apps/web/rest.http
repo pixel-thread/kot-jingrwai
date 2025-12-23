@@ -1,0 +1,108 @@
+### 
+
+# @name get verse
+
+GET {{NEXT_PUBLIC_API_URL}}/verse HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
+### 
+
+GET https://bible-api.com/data/web/random HTTP/1.1
+
+
+### 
+
+# @name delete verse
+
+DELETE {{NEXT_PUBLIC_API_URL}}/verse?isAll=true HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
+### 
+
+# @name get App version
+
+GET {{NEXT_PUBLIC_API_URL}}/admin/updates HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
+### 
+
+# @name Add App version
+
+POST {{NEXT_PUBLIC_API_URL}}/version HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "additionalInfo": {
+    "estimatedDowntime": "0",
+    "rollbackAvailable": false
+  },
+  "author": "Release Bot",
+  "description": [
+    "Fix Search input icon",
+    "Tynrai Jingrwai page",
+    "Song Correction",
+    "UI Update"
+  ],
+  "mandatory": false,
+  "minSupportedVersion": "1.0.1",
+  "platforms": [
+    "ios",
+    "android"
+  ],
+  "releaseDate": "2025-08-011T14:00:00Z",
+  "releaseNotesUrl": "https://jyrwaboys-v2.vercel.app/docs/release/kot-jingrwai",
+  "title": "Stable Release",
+  "version": "1.1.0"
+}
+
+
+### 
+
+# @name Get apk download url
+
+GET {{NEXT_PUBLIC_API_URL}}/update/latest HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
+### 
+
+# @name eas webhook
+
+POST {{NEXT_PUBLIC_API_URL}}/webhook/eas HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
+### 
+
+# @name get songs
+
+GET {{NEXT_PUBLIC_API_URL}}/songs HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
+### 
+
+# @name get prod songs
+
+GET https://kot-jingrwai.vercel.app/api/songs HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
+### 
+
+# @name get songs
+
+GET {{NEXT_PUBLIC_API_URL}}/songs/featured HTTP/1.1
+Accept: application/json
+Content-Type: application/json

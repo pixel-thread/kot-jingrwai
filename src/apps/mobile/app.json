@@ -1,0 +1,87 @@
+{
+  "expo": {
+    "name": "Kot Jingrwai",
+    "slug": "kot-jingrwai",
+    "version": "1.0.1",
+    "scheme": "kot-jing-rwai",
+    "orientation": "portrait",
+    "icon": "./assets/icons/kot-jingrwai-icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splashscreen/splashscreen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "dark": {
+        "image": "./assets/images/splashscreen/splashscreen.png",
+        "backgroundColor": "#000000"
+      }
+    },
+    "assetBundlePatterns": ["**/*"],
+    "plugins": [
+      "expo-router",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/images/splashscreen/splashscreen.png",
+          "dark": {
+            "image": "./assets/images/splashscreen/splashscreen.png",
+            "backgroundColor": "#000000"
+          },
+          "imageWidth": 200
+        }
+      ],
+      "expo-font",
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "tsconfigPaths": true
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pixelthread.kotjingrwai",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow Kot Jingrwai to access your camera.",
+        "NSPhotoLibraryUsageDescription": "Allow Kot Jingrwai to access your photos."
+      }
+    },
+    "android": {
+      "package": "com.pixelthread.kotjingrwai",
+      "versionCode": 1,
+      "permissions": [],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icons/kot-jingrwai-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "72320702-85db-46c3-9f25-eb17aed2c84c"
+      }
+    },
+    "owner": "pixel-thread",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/72320702-85db-46c3-9f25-eb17aed2c84c",
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    }
+  }
+}

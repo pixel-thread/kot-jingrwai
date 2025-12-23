@@ -16,5 +16,13 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "pnpm": {
+    "overrides": {
+      "nativewind": "~4.1.23",
+      "react-native-reanimated": "~3.17.4",
+      "react-native-safe-area-context": "5.4.0"
+    },
+    "shamefully-hoist": true
   }
 }

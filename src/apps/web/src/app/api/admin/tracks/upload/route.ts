@@ -1,0 +1,86 @@
+import { env } from "@/env";
+import { prisma } from "@/lib/database/prisma";
+import { supabase } from "@/lib/supabase";
+import { getUniqueSongs } from "@/services/songs/getUniqueSong";
+import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
+import { NextRequest } from "next/server";
+import z from "zod";
+
+const schema = z.object({ file: z.instanceof(File) });
+
+export async function POST(request: NextRequest) {
+  try {
+    const formData = await request.formData();
+
+    const file = formData.get("file") as File;
+
+    const songId = formData.get("songId") as string;
+
+    schema.parse({ file });
+
+    if (!file) {
+      return ErrorResponse({ error: "Missing required fields", status: 400 });
+    }
+
+    if (!songId) {
+      return ErrorResponse({ error: "Missing required fields", status: 400 });
+    }
+
+    const songExist = await getUniqueSongs({ where: { id: songId } });
+
+    if (!songExist)
+      return ErrorResponse({ error: "Song not found", status: 404 });
+
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${crypto.randomUUID()}.${fileExt}`;
+    const filePath = `tracks/${fileName}`;
+
+    // Upload to Supabase Storage
+    const { error: uploadError, data } = await supabase.storage
+      .from(env.SUPABASE_BUCKET)
+      .upload(filePath, Buffer.from(await file.arrayBuffer()), {
+        contentType: file.type,
+        upsert: true,
+      });
+
+    if (uploadError) {
+      return ErrorResponse({ error: uploadError.message, status: 500 });
+    }
+
+    const { data: url } = supabase.storage
+      .from(env.SUPABASE_BUCKET)
+      .getPublicUrl(data?.path);
+
+    // Save metadata to database
+
+    const trackMetadata = await prisma.trackMetadata.create({
+      data: {
+        supabaseId: data?.id,
+        path: filePath,
+        fileName: file.name,
+        fullPath: data?.path,
+        downloadUrl: url.publicUrl,
+        fileSize: file.size,
+        mimeType: file.type,
+      },
+    });
+
+    const track = await prisma.track.create({
+      data: {
+        songs: { connect: { id: songId } },
+        metadata: { connect: { id: trackMetadata.id } },
+      },
+      include: { metadata: true },
+    });
+
+    await prisma.trackMetadata.update({
+      where: { id: trackMetadata.id },
+      data: { trackId: track.id },
+    });
+
+    return SuccessResponse({ data: track });
+  } catch (error) {
+    return handleApiErrors(error);
+  }
+}
