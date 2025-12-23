@@ -12,7 +12,14 @@ overrides:
 importers:
 
   .:
+    dependencies:
+      lint-staged:
+        specifier: ^16.1.0
+        version: 16.2.7
     devDependencies:
+      husky:
+        specifier: ^9.1.7
+        version: 9.1.7
       prettier:
         specifier: ^3.7.4
         version: 3.7.4
