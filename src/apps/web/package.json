@@ -1,6 +1,6 @@
 {
-  "name": "kot-jingrwai-web",
-  "version": "0.1.0",
+  "name": "web",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -8,9 +8,12 @@
     "start": "next start",
     "lint": "eslint",
     "test": "cypress run",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate || echo \"Skipping prisma generate\""
   },
   "dependencies": {
+    "@repo/constants": "workspace:*",
+    "@repo/ui": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@clerk/nextjs": "^6.31.4",
     "@hookform/resolvers": "^5.2.1",
     "@prisma/client": "^6.14.0",

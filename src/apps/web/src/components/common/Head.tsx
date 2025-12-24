@@ -1,5 +1,5 @@
 // components/Head.tsx
-import { SEO } from "@/lib/constants/seo";
+import { SEO } from "@repo/constants";
 
 export type HeadMetaProps = {
   title?: string;

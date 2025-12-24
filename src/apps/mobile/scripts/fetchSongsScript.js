@@ -13,7 +13,7 @@ async function fetchRuntimeConfig() {
   const response = await fetch(API_URL);
 
   if (!response.ok) {
-    throw new Error(`Request failed with status ${response.status}`);
+    throw new Error(`Backend error: ${response.statusText}`);
   }
 
   const json = await response.json();
@@ -34,5 +34,5 @@ async function fetchRuntimeConfig() {
 
 fetchRuntimeConfig().catch((error) => {
   console.error(error);
-  process.exit(1);
+  process.exit(0);
 });
