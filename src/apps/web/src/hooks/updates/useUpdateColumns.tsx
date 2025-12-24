@@ -7,7 +7,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DownloadIcon, TrashIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
-import { ADMIN_UPDATE_ENDPOINT } from "@/lib/constants/endpoints/admin/updates";
+import { ADMIN_UPDATE_ENDPOINT } from "@repo/constants";
 import { toast } from "sonner";
 
 const defaultColumns: ColumnDef<AppVersion>[] = [

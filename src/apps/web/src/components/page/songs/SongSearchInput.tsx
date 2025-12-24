@@ -12,7 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { SongT } from "@/types/song";
+import { type SongT } from "@repo/types";
 import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import http from "@/utils/http";

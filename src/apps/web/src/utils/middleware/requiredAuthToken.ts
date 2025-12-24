@@ -28,7 +28,7 @@ export async function requiredAuthToken(req: NextRequest) {
     user = await createUser({
       data: {
         name: clerkUser.firstName ?? "",
-        email: clerkUser.emailAddresses[0].emailAddress,
+        email: clerkUser?.primaryEmailAddress?.emailAddress || "",
         clerkId: claims.sub,
         hasImage: clerkUser.hasImage,
         imageUrl: clerkUser.imageUrl,

@@ -1,6 +1,6 @@
 "use client";
 import { AuthContext } from "@/lib/context/auth";
-import { AUTH_ENDPOINT } from "@/lib/constants/endpoints/auth";
+import { AUTH_ENDPOINT } from "@repo/constants";
 import { AuthContextT } from "@/types/auth/context";
 import http from "@/utils/http";
 import { useQuery } from "@tanstack/react-query";

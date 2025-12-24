@@ -2,6 +2,7 @@
   "name": "web",
   "version": "1.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -13,6 +14,7 @@
   "dependencies": {
     "@repo/constants": "workspace:*",
     "@repo/ui": "workspace:*",
+    "@repo/types": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@clerk/nextjs": "^6.31.4",
     "@hookform/resolvers": "^5.2.1",

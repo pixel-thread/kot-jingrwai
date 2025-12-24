@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/database/prisma";
 import { AppVersionPlatform } from "@/lib/database/prisma/generated/prisma";
-import { EasBuildPayload } from "@/types/eas/easBuild";
+import { EasBuildPayload } from "@repo/types";
 
 export async function promoteToAppVersion(payload: EasBuildPayload) {
   const isProduction = payload.metadata?.channel === "production";

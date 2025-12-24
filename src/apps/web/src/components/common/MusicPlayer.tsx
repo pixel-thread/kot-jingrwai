@@ -75,8 +75,8 @@ export const MusicPlayer = ({
   const handleSeek = (value: number[]) => {
     const audio = audioRef.current;
     if (audio) {
-      audio.currentTime = value[0];
-      setCurrentTime(value[0]);
+      audio.currentTime = value[0] || 0;
+      setCurrentTime(value[0] || 0);
     }
   };
 
@@ -84,8 +84,8 @@ export const MusicPlayer = ({
     const audio = audioRef.current;
     if (audio) {
       const newVolume = value[0];
-      audio.volume = newVolume;
-      setVolume(newVolume);
+      audio.volume = newVolume || 0;
+      setVolume(newVolume || 0);
     }
   };
 

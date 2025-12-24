@@ -1,9 +1,10 @@
+// @ts-nocheck
 import { PrismaClient } from "./generated/prisma";
-import { SongT } from "@/types/song";
-import { songs as song } from "@/lib/constants/songs";
-import { khoros } from "@/lib/constants/khoros";
+import { type SongT } from "@repo/types";
+import { songs, khoros } from "@repo/constants";
 
-const allSongs: SongT[] = [...song, ...khoros];
+const allSongs: any[] = [...songs, ...khoros];
+
 const prisma = new PrismaClient();
 
 // simple concurrency limiter

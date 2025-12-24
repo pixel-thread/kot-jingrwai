@@ -28,6 +28,8 @@
     "postinstall": "node scripts/fetchSongsScript.js"
   },
   "dependencies": {
+    "@repo/types": "workspace:*",
+    "@repo/constants": "workspace:*",
     "@expo/vector-icons": "^14.0.0",
     "@react-native-async-storage/async-storage": "2.1.2",
     "@react-navigation/drawer": "^7.3.9",

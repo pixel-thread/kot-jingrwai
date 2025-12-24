@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
-import { EasBuildPayload } from "@/types/eas/easBuild";
+import { type EasBuildPayload } from "@repo/types";
 import { verifyExpoSignature } from "@/utils/eas/verifyExpoSignature";
 import { promoteToAppVersion } from "@/services/appVersion/promoteToAppVersion";
 import { upsertEASBuild } from "@/services/easBuildWebhook/easBuildWebhook";

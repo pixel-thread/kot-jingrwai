@@ -1,51 +1,4 @@
-import { $Enums } from "@/lib/database/prisma/generated/prisma";
-
-export type Line = {
-  id?: string;
-  order: number;
-  text: string;
-};
-
-export type SongParagraph = {
-  id?: string; // unique id for each paragraph
-  order: number; // display order
-  lines: string[]; // lines of lyrics
-  type?: $Enums.VerseType;
-  songId?: string;
-  createdAt?: string; // ISO date
-  updatedAt?: string; // ISO date
-};
-
-export type SongMetadata = {
-  id?: string;
-  number: number; // song number/index
-  oldNumber?: number | null;
-  isChorus?: boolean;
-  language: string; // e.g. 'en', 'kn', 'khasi'
-  author?: string;
-  composer?: string;
-  tags?: string[]; // optional categories/tags
-  songId?: string | null;
-  syllables?: string | null;
-  reference?: string | null;
-  tune?: string | null;
-  meter?: string | null;
-  createdAt?: string; // ISO date
-  updatedAt?: string; // ISO date
-};
-
-export type SongT = {
-  id?: string;
-  title: string;
-  metadata: SongMetadata;
-  paragraphs: SongParagraph[];
-  isChorus?: boolean;
-  createdAt?: string; // ISO date
-  updatedAt?: string; // ISO date
-  trackId?: string | null;
-  track?: null;
-  metadataId?: string | null;
-};
+import { type SongT } from "@repo/types";
 
 export const khoros: SongT[] = [
   {
@@ -73,7 +26,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-2",
     title: "Shaniah skhem, la jur ka jingïaleh",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 2,
@@ -96,7 +48,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-3",
     title: "Ah ka snam, ka snam kordor",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 3,
@@ -118,7 +69,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-4",
-    isChorus: true,
     title: "Kut la ka jingleit",
     metadata: {
       isChorus: true,
@@ -144,7 +94,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-5",
     title: "Nga bam ka manna b'la buhrieh",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 5,
@@ -166,7 +115,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-6",
-    isChorus: true,
     title: "Ym dei ma ba phylla, ba phylla, ba phylla",
     metadata: {
       isChorus: true,
@@ -191,7 +139,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-7",
     title: "Baphylla, baphylla, Jisu long ha nga",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 7,
@@ -213,7 +160,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-8",
-    isChorus: true,
     title: "Oh! Katno nga kwah peit ïa ka khmat jong U",
     metadata: {
       isChorus: true,
@@ -236,7 +182,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-9",
-    isChorus: true,
     title: "Namar ngin sa ïoh ïa shong lang",
     metadata: {
       isChorus: true,
@@ -261,7 +206,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-10",
     title: "Nga kham ieit ïa U man ka sngi",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 10,
@@ -284,7 +228,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-11",
     title: "Man ka sngi bad Jisu, jingim bahun dei tang bad U",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 11,
@@ -306,7 +249,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-12",
-    isChorus: true,
     title: "Shaniah h'U Trai wat sngew khuslai",
     metadata: {
       isChorus: true,
@@ -329,7 +271,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-13",
-    isChorus: true,
     title: "Blei U ieit ka pyrthei, U ai ï'U Khun marwei",
     metadata: {
       isChorus: true,
@@ -353,7 +294,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-14",
     title: "Oh! Їaroh ï'U Blei b'U la pynim ïa nga",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 14,
@@ -379,7 +319,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-15",
     title: "Shisha jingbha bad jingisnei kin bud ïa nga",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 15,
@@ -402,7 +341,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-16",
     title: "Pynlong ïa nga Trai, jingim kum jingrwai",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 16,
@@ -429,7 +367,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-17",
     title: "Wad shuwa ïa ka hima U Blei",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 17,
@@ -456,7 +393,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-18",
     title: "Їaid bad U Jisu",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 18,
@@ -483,7 +419,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-19",
     title: "Ai jingbhabriew U Jisu yn i ha nga",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 19,
@@ -505,7 +440,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-20",
-    isChorus: true,
     title: "Mynhynnin, mynta, bymjukut, Jisu long kumjuh",
     metadata: {
       isChorus: true,
@@ -529,7 +463,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-21",
     title: "La shim noh, la shim noh, la shim noh",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 21,
@@ -553,7 +486,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-22",
     title: "Halelu, Halelu, Halelu, Haleluïa, ïaroh ï'U Trai",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 22,
@@ -575,7 +507,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-23",
     title: "Rupa bad ka ksiar ngam don, kaba nga don nga",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 23,
@@ -598,7 +529,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-24",
     title: "Haba U khot nga ngan jubab",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 24,
@@ -621,7 +551,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-25",
     title: "Nga don ka ïing shongneh haneng kham phyrnai",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 25,
@@ -645,7 +574,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-26",
-    isChorus: true,
     title: "O! Sngi baphylla, ka sngi baphylla",
     metadata: {
       isChorus: true,
@@ -678,7 +606,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-27",
     title: "Ngi don U Blei ba khraw ba phylla",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 27,
@@ -705,7 +632,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-28",
     title: "Їar ïar kat ka duriaw, ka jrong kat ka bneng shatei",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 28,
@@ -726,7 +652,6 @@ export const khoros: SongT[] = [
     ],
   },
   {
-    isChorus: true,
     id: "khoros-29",
     title: "Naba U Blei U ieit katta ïa ka pyrthei",
     metadata: {
@@ -750,7 +675,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-30",
-    isChorus: true,
     title: "Ki ong U long ba phylla",
     metadata: {
       isChorus: true,
@@ -784,7 +708,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-31",
-    isChorus: true,
     title: "La ka jur ka jingïaleh, to long shlur, lok",
     metadata: {
       isChorus: true,
@@ -812,7 +735,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-32",
     title: "Nga la kut jingmut ban bud ï'U Jisu",
-    isChorus: true,
     metadata: {
       isChorus: true,
       number: 32,
@@ -851,7 +773,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-33",
     title: "Wan Mynsiem Bakhuid nga donkam",
-    isChorus: true,
     metadata: {
       number: 33,
       language: "khasi",
@@ -874,7 +795,6 @@ export const khoros: SongT[] = [
   {
     id: "khoros-34",
     title: "Ki jinglong barim nga la iehnoh baroh",
-    isChorus: true,
     metadata: {
       number: 34,
       isChorus: true,
@@ -930,7 +850,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-35",
-    isChorus: true,
     title: "Kita ba ap khmih ï'U Trai kin pynthymmai bor",
     metadata: {
       number: 35,
@@ -1000,7 +919,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-37",
-    isChorus: true,
     title: "Ah! Mynsiem Bakhuid jingkular",
     metadata: {
       number: 37,
@@ -1024,7 +942,6 @@ export const khoros: SongT[] = [
   },
   {
     id: "khoros-38",
-    isChorus: true,
     title: "Trai, nga kwah ban long u khristan",
     metadata: {
       number: 38,

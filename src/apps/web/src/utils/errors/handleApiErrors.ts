@@ -24,11 +24,11 @@ export const handleApiErrors = (error: unknown) => {
   if (error instanceof ZodError) {
     logger.error({
       type: "ZodError",
-      message: error.issues[0].message,
+      message: error?.issues[0]?.message,
       error: error,
     });
     return ErrorResponse({
-      message: error.issues[0].message,
+      message: error?.issues[0]?.message,
       error: error.issues,
       status: 400,
     });

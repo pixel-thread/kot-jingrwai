@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ArrowRightIcon, DownloadIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import http from "@/utils/http";
-import { UPDATE_ENDPOINT } from "@/lib/constants/endpoints/update";
+import { UPDATE_ENDPOINT } from "@repo/constants";
 import { AppVersion } from "@/lib/database/prisma/generated/prisma";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -108,7 +108,7 @@ export default function Home() {
         {/* App mockup */}
         <div className="flex justify-center md:justify-end w-full max-w-md md:max-w-lg mx-auto">
           <Image
-            src={images[imageIndex]}
+            src={images[imageIndex] || ""}
             alt="Ka dur pynshai jong ka App"
             width={600}
             height={1200}

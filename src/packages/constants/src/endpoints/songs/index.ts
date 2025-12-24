@@ -1,4 +1,4 @@
-import { EndpointT } from "@/types/endpoints";
+import { type EndpointT } from "@repo/types";
 
 type SongEndpointsKey = "GET_SONGS";
 

@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Suspense, useState } from "react";
 import { Plus, RefreshCw } from "lucide-react";
 import { AddUpdateDialog } from "./AddUpdateDialog";
-import { ADMIN_UPDATE_ENDPOINT } from "@/lib/constants/endpoints/admin/updates";
+import { ADMIN_UPDATE_ENDPOINT } from "@repo/constants";
 import { useUpdateColumns } from "@/hooks/updates/useUpdateColumns";
 
 export const Updates = () => {

@@ -1,10 +1,10 @@
 {
-  "name": "@repo/constants",
+  "name": "@repo/types",
   "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "private": true,
+  "description": "Shared TypeScript types for the repo",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -15,17 +15,14 @@
       "default": "./dist/*.js"
     }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
   "devDependencies": {
-    "@types/react": "*",
-    "typescript": "*",
+    "typescript": "^5.4.0",
+    "@types/react": "^18.2.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*"
   },
-  "dependencies": {
-    "@repo/types": "workspace:*"
-  },
-  "private": true
+  "license": "ISC"
 }

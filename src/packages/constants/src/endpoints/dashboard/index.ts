@@ -1,4 +1,4 @@
-import { EndpointT } from '@/types/endpoints';
+import { type EndpointT } from "@repo/types";
 
 /**
  * Dashboard endpoint keys.
@@ -6,7 +6,7 @@ import { EndpointT } from '@/types/endpoints';
  *
  * @property GET_DASHBOARD - Main dashboard data endpoint
  */
-type DashboardEndpointsKey = 'GET_DASHBOARD';
+type DashboardEndpointsKey = "GET_DASHBOARD";
 
 /**
  * Dashboard API endpoints configuration.
@@ -19,5 +19,5 @@ type DashboardEndpointsKey = 'GET_DASHBOARD';
  * ```
  */
 export const DASHBOARD_ENDPOINT: EndpointT<DashboardEndpointsKey> = {
-  GET_DASHBOARD: '/dashboard',
+  GET_DASHBOARD: "/dashboard",
 };

@@ -1,4 +1,4 @@
-import { EndpointT } from '@/types/endpoints';
+import { type EndpointT } from "@repo/types";
 
 /**
  * Admin users management endpoint keys.
@@ -6,7 +6,7 @@ import { EndpointT } from '@/types/endpoints';
  *
  * @property GET_USERS - Endpoint for retrieving users list
  */
-type AdminUsersEndpointKeys = 'GET_USERS';
+type AdminUsersEndpointKeys = "GET_USERS";
 
 /**
  * Admin users management API endpoints configuration.
@@ -19,5 +19,5 @@ type AdminUsersEndpointKeys = 'GET_USERS';
  * ```
  */
 export const ADMIN_USERS_ENDPOINT: EndpointT<AdminUsersEndpointKeys> = {
-  GET_USERS: '/admin/users',
+  GET_USERS: "/admin/users",
 };

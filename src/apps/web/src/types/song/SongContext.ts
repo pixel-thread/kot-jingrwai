@@ -1,4 +1,4 @@
-import { SongT } from ".";
+import { SongT } from "@repo/types";
 
 export type SongContextT = {
   songs: SongT[];

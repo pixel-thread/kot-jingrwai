@@ -1,4 +1,4 @@
-import { SongT } from "@/types/song";
+import { type SongT } from "@repo/types";
 
 export const kaJingiaroh: SongT[] = [
   {

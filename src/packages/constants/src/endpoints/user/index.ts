@@ -1,4 +1,4 @@
-import { EndpointT } from '@/types/endpoints';
+import { type EndpointT } from "@repo/types";
 
 /**
  * Admin users management endpoint keys.
@@ -6,7 +6,7 @@ import { EndpointT } from '@/types/endpoints';
  *
  * @property GET_USERS - Endpoint for retrieving users list
  */
-type UsersEndpointKeys = 'GET_USER' | 'PUT_USER_PROFILE_PIC';
+type UsersEndpointKeys = "GET_USER" | "PUT_USER_PROFILE_PIC";
 
 /**
  * Admin users management API endpoints configuration.
@@ -18,7 +18,7 @@ type UsersEndpointKeys = 'GET_USER' | 'PUT_USER_PROFILE_PIC';
  * const getUsersUrl = ADMIN_USERS_ENDPOINT.GET_USERS; // "/admin/users"
  * ```
  */
-export const ADMIN_USERS_ENDPOINT: EndpointT<UsersEndpointKeys> = {
-  GET_USER: '/user/:id',
-  PUT_USER_PROFILE_PIC: '/user/:id/profile-pic',
+export const USERS_ENDPOINT: EndpointT<UsersEndpointKeys> = {
+  GET_USER: "/user/:id",
+  PUT_USER_PROFILE_PIC: "/user/:id/profile-pic",
 };
