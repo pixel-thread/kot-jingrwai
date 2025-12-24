@@ -116,10 +116,10 @@ const SongDetail = ({ id }: { id: string }) => {
 
   const totalLines = song.paragraphs.reduce(
     (acc, p) => acc + p.lines.length,
-    0,
+    0
   );
   const sortedParagraphs = [...song.paragraphs].sort(
-    (a, b) => a.order - b.order,
+    (a, b) => a.order - b.order
   );
 
   // const handleShare = () => {
