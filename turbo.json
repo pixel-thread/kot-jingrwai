@@ -13,6 +13,9 @@
     "check-types": {
       "dependsOn": ["^check-types"]
     },
+    "generate": {
+      "dependsOn": ["^generate"]
+    },
     "dev": {
       "cache": false,
       "persistent": true

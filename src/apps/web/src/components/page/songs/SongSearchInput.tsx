@@ -105,8 +105,8 @@ export const SongSearchInput = () => {
 
             {/* Search Results List */}
             {searchResults.length > 0 ? (
-              <ScrollArea className="max-h-[400px]">
-                <div className="py-2">
+              <ScrollArea>
+                <div className="py-2 max-h-[400px]">
                   {searchResults.map((song) => (
                     <button
                       key={song.id || song.metadata.number}

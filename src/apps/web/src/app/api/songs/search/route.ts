@@ -6,13 +6,12 @@ import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const page = req.nextUrl.searchParams.get("page") || "1";
+    const page = req.nextUrl.searchParams.get("page");
     const query = req.nextUrl.searchParams.get("query") || "";
     const isChorus = req.nextUrl.searchParams.get("isChorus") === "true";
 
     const queryNumber = Number(query);
     const isNumber = !Number.isNaN(queryNumber);
-
     const [songs, total] = await getSongs({
       page,
       where: {
@@ -20,7 +19,13 @@ export async function GET(req: NextRequest) {
         OR: [
           // 🔢 Search by song number
           ...(isNumber
-            ? [{ metadata: { number: { equals: queryNumber } } }]
+            ? [
+                {
+                  metadata: {
+                    number: { equals: queryNumber },
+                  },
+                },
+              ]
             : []),
 
           // 🎵 Search by title
@@ -53,7 +58,7 @@ export async function GET(req: NextRequest) {
 
     return SuccessResponse({
       data: songs,
-      meta: getMeta({ currentPage: page, total }),
+      meta: getMeta({ currentPage: page || "1", total }),
       message: "Success fetching songs",
     });
   } catch (error) {

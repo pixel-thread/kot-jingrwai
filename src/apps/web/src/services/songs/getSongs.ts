@@ -14,7 +14,7 @@ export async function getSongs({ where, page, orderBy }: Props = {}) {
   if (!page) {
     return prisma.$transaction([
       prisma.song.findMany({
-        // where,
+        where,
         orderBy: orderBy ?? {
           metadata: { number: "asc" },
         },
@@ -30,7 +30,7 @@ export async function getSongs({ where, page, orderBy }: Props = {}) {
 
   return prisma.$transaction([
     prisma.song.findMany({
-      // where,
+      where,
       take,
       skip,
       orderBy: orderBy ?? {
