@@ -3,7 +3,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
 import { Text } from '~/src/components/ui/typography';
 import { cn } from '~/src/libs/cn';
-import { SongT } from '~/src/types/song';
+import { SongT } from '@repo/types';
 import { useRouter } from 'expo-router';
 
 type FeaturedSongCardProps = { song: SongT };

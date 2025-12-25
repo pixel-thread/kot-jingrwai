@@ -1,3 +1,6 @@
-import { SongT } from '../../types/song';
+import { SongT } from '@repo/types';
 
-export const songs: SongT[] = [];
+import defaultSongs from './song.json';
+
+// @ts-ignore
+export const songs: SongT[] = defaultSongs || [];

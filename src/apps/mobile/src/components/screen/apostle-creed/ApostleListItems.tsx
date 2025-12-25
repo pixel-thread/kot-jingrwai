@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { Text } from '~/src/components/ui/typography';
 import { useSongs } from '~/src/hooks/song/useSongs';
-import { SongT } from '~/src/types/song';
+import { SongT } from '@repo/types';
 import { useColorScheme } from 'nativewind';
 
 export const ApostleListItems = ({ song }: { song: SongT }) => {

@@ -2,11 +2,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text } from '../ui/typography';
 import { ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { useColorScheme } from 'nativewind';
-import { useSongs } from '~/src/hooks/song/useSongs';
 import React from 'react';
 import { useSongTrack } from '~/src/hooks/song/useSongTrack';
 import { useAudioPlayer } from 'expo-audio';
-import { SongT } from '~/src/types/song';
+import { SongT } from '@repo/types';
 import { cn } from '~/src/libs/cn';
 import { useQuery } from '@tanstack/react-query';
 import { getSongs } from '~/src/services/songs/getSongs';
@@ -23,7 +22,7 @@ export const MiniMusicPlayer = ({ song }: Props) => {
 
   const [isPlaying, setIsPlaying] = React.useState(false);
 
-  const { data: songTrack, isFetching } = useSongTrack({ id: song.id });
+  const { data: songTrack, isFetching } = useSongTrack({ id: song.id || '' });
 
   const audioPlayer = useAudioPlayer(songTrack?.metadata.downloadUrl);
 

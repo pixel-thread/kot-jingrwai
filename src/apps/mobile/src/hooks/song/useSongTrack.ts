@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { SONG_ENDPOINTS } from '~/src/libs/endpoints/song';
-import { Track } from '~/src/types/song';
+import { Track } from '@repo/types';
 import http from '~/src/utils/http';
 
 type Props = {

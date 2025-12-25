@@ -22,7 +22,7 @@ import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
 import { FeaturedSongCard } from './FeaturedSongCard';
 import { FlashList } from '@shopify/flash-list';
 import { getRandomSongs } from '~/src/utils/getRandomSongs';
-import { SongT } from '~/src/types/song';
+import { SongT } from '@repo/types';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
 
 export const SongFinderPage = () => {

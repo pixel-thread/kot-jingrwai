@@ -1,6 +1,6 @@
 import { View, Platform, TouchableOpacity } from 'react-native';
 import { cn } from '~/src/libs/cn';
-import { SongT } from '~/src/types/song';
+import { SongT } from '@repo/types';
 import { Text } from '~/src/components/ui/typography';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { useEffect } from 'react';

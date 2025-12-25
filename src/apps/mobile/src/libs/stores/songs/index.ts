@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { SongT } from '~/src/types/song';
+import { SongT } from '@repo/types';
 
 type UseSongStoreT = {
   favoriteSongs: number[];

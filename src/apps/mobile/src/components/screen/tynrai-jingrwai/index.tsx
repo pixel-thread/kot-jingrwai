@@ -2,20 +2,22 @@ import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
-import { tynraiJingrwai } from '~/src/libs/tynrai-jingrwai';
-import { TynraiJingrwaiT } from '~/src/types/tynrai-jingrwai';
-import { SongT } from '~/src/types/song';
+import { tynraiJingrwai } from '@repo/constants';
+import { TynraiJingrwaiT } from '@repo/types';
+import { SongT } from '@repo/types';
 import { CategoryItem } from './CategoryItems';
 import { ContentSection } from '../../Common/ContentSection';
 import { SongListItem } from '../../Songs/SongListItem';
 import { FlashList } from '@shopify/flash-list';
 import { useSongs } from '~/src/hooks/song/useSongs';
+import { useRouter } from 'expo-router';
 
 export default function TynraiJingrwaiScreen() {
   const [contentVisible, setContentVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<TynraiJingrwaiT | null>(null);
   const { data: songs = [] } = useSongs({ isChorus: false });
   const [filteredSongs, setFilteredSongs] = useState<SongT[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => setContentVisible(true), 1000);
@@ -34,7 +36,7 @@ export default function TynraiJingrwaiScreen() {
   };
 
   const handleCategoryPress = (category: TynraiJingrwaiT) => {
-    filterSongsByRange(category);
+    router.push(`/tynrai-jingrwai/${category?.id || '1'}`);
   };
 
   const handleBackToCategories = () => {
