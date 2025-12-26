@@ -1,8 +1,0 @@
-{
-  "projects": [
-    {
-      "name": "web",
-      "rootDirectory": "apps/web"
-    }
-  ]
-}
