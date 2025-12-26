@@ -27,12 +27,11 @@ export const TynraijingrwaiDetails = ({ id }: Props) => {
     if (!category) return;
 
     const filtered = songs
+      .filter((song) => !song.metadata.isChorus)
       .filter((song) => {
         const songNumber = song.metadata.number;
         return songNumber >= category?.from && songNumber <= category?.to;
-      })
-      .reverse();
-
+      });
     setFilteredSongs(filtered);
 
     setSelectedCategory(category);

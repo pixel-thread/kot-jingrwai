@@ -2,40 +2,13 @@ name: EAS Production Deployment
 
 on:
   push:
-    branches: ['uat']
+    branches: ['master']
 
 jobs:
-  notify_start:
-    name: 🚀 Notify deployment start
-    type: slack
-    params:
-      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
-      message: |
-        🚀 PROD deployment started
-        ```
-          Branch: ${{ github.ref_name }}
-          App: Kot-Jingrwai
-          Platform: android
-          channel: production
-          Profile: production
-          Commit: ${{ github.sha }}
-        ```
-
   fingerprint:
     name: 📋 Calculate fingerprint
     type: fingerprint
     environment: production
-    needs: [notify_start]
-
-  notify_fingerprint:
-    name: 📤 Fingerprint calculated
-    type: slack
-    needs: [fingerprint]
-    params:
-      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
-      message: |
-        📋 Fingerprint calculated: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
-        Checking for existing build...
 
   check_existing_build:
     name: 🔍 Check existing build
@@ -46,18 +19,6 @@ jobs:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
       profile: production
 
-  notify_build_check:
-    name: 📊 Build check complete
-    type: slack
-    needs: [check_existing_build, fingerprint]
-    if: ${{ always }}
-    params:
-      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
-      message: |
-        🔍 Build check complete
-        Build ID: ${{ needs.check_existing_build.outputs.build_id || 'None' }}
-        Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
-
   build_new:
     name: 🏗️ Create new build
     type: build
@@ -67,18 +28,6 @@ jobs:
     params:
       platform: android
       profile: production
-
-  notify_build_start:
-    name: 🏗️ Build started
-    type: slack
-    needs: [build_new, check_existing_build]
-    if: ${{ !!needs.build_new.outputs.build_id }}
-    params:
-      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
-      message: |
-        🏗️ NEW PRODUCTION BUILD started
-        Build ID: ${{ needs.build_new.outputs.build_id }}
-        Profile: production
 
   publish_update:
     name: ⚡ Publish OTA update
@@ -91,39 +40,33 @@ jobs:
       branch: production
       channel: production
 
-  notify_update_start:
-    name: ⚡ OTA update started
-    type: slack
-    needs: [publish_update, check_existing_build]
-    if: ${{ !!needs.publish_update.outputs.update_group_id || !!needs.check_existing_build.outputs.build_id }}
-    params:
-      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
-      message: |
-        ⚡ OTA UPDATE published
-        Using existing build: ${{ needs.check_existing_build.outputs.build_id || 'None' }}
-        Channel: production
+  check_build_status:
+    name: 📊 Check EAS Build Status
+    runs-on: ubuntu-latest
+    needs: [build_new, check_existing_build]
+    if: ${{ always() }}
+    steps:
+      - name: Get build status
+        run: |
+          # Use EAS CLI to check build status and capture output
+          eas build:status --id ${{ needs.build_new.outputs.build_id || needs.check_existing_build.outputs.build_id }}
+          # Parse output for status (success, failure, canceled, timeout)
+          # Example: echo "::set-output name=status::$(echo $status)"
+          # Example: echo "::set-output name=message::$(echo $message)"
 
-  notify_success:
-    name: ✅ Deployment successful
+  notify_summary:
+    name: 📊 Unified Deployment Summary
     type: slack
-    needs: [build_new, publish_update, fingerprint]
-    if: ${{ always }}
+    needs: [fingerprint, check_existing_build, build_new, publish_update, check_build_status]
+    if: ${{ always() }}
     params:
       webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
       message: |
-        ✅ PROD deployment SUCCESS
+        🚀 PROD deployment summary
+        Branch: ${{ github.ref_name }}
+        App: Kot-Jingrwai
+        Platform: android
         Build ID: ${{ needs.build_new.outputs.build_id || needs.check_existing_build.outputs.build_id || 'N/A' }}
         Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
-
-  notify_failure:
-    name: ❌ Deployment failed
-    type: slack
-    needs: [fingerprint, check_existing_build, build_new, publish_update]
-    if: ${{ failure }}
-    params:
-      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
-      message: |
-        ❌ PROD deployment FAILED
-        Build ID: ${{ needs.build_new.outputs.build_id || 'N/A' }}
-        Existing Build ID: ${{ needs.check_existing_build.outputs.build_id || 'N/A' }}
-        Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
+        Status: ${{ needs.check_build_status.outputs.status }}
+        Message: ${{ needs.check_build_status.outputs.message }}

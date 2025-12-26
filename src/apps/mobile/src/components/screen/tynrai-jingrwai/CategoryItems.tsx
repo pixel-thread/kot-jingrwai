@@ -18,15 +18,15 @@ export const CategoryItem = ({ title, range, onPress, isLast }: CategoryItemProp
     <TouchableOpacity
       onPress={onPress}
       className={`flex-1 border-gray-200 p-4 dark:border-gray-800 ${!isLast ? 'border-b' : ''}`}>
-      <View className="flex-row items-start justify-between">
-        <View className="flex-row items-center">
+      <View className="flex-row  items-center justify-between">
+        <View className="flex-row items-center justify-center">
           <MaterialCommunityIcons
             name="book-open-page-variant"
             size={24}
             color={isDarkMode ? '#93c5fd' : '#3b82f6'}
           />
           <View className="ml-3">
-            <Text weight="semibold" className="mb-1 text-gray-800 dark:text-gray-100">
+            <Text weight="semibold" className="text-gray-800 dark:text-gray-100">
               {title}
             </Text>
           </View>
