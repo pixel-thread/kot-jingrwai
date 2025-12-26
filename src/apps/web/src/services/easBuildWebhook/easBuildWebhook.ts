@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/database/prisma";
 import { $Enums, Prisma } from "@/lib/database/prisma/generated/prisma";
-import { EasBuildPayload } from "@repo/types/eas/easBuild";
+import { EasBuildPayload } from "@repo/types";
 
 export async function upsertEASBuild(payload: EasBuildPayload) {
   const status: $Enums.EASBuildStatus =
