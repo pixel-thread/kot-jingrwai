@@ -5,7 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*", "apps/**/.env*"],
-      "outputs": [".vercel/**", ".next/**", "!.next/cache/**"],
+      "outputs": [".vercel/**", ".next/**", "!.next/cache/**", "dist/**"],
       "env": [
         "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
         "CLERK_SECRET_KEY",
