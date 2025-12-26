@@ -5,41 +5,35 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*", "apps/**/.env*"],
-      "outputs": [".next/**", "!.next/cache/**"],
+      "outputs": [".vercel/**", ".next/**", "!.next/cache/**"],
       "env": [
-        "DATABASE_URL",
-        "DIRECT_URL",
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+        "CLERK_SECRET_KEY",
+        "NEXT_PUBLIC_APP_NAME",
         "NEXT_PUBLIC_BASE_URL",
         "NEXT_PUBLIC_API_URL",
+        "SUPABASE_SECRET_KEY",
+        "SUPABASE_BUCKET",
         "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
-        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
-        "EXPO_PUBLIC_API_URL",
-        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY",
-        "EXPO_PUBLIC_IS_BETA"
+        "EAS_WEBHOOK_SECRET",
+        "DATABASE_URL",
+        "DIRECT_URL"
       ]
     },
     "lint": {
       "dependsOn": ["^lint"]
     },
     "check-types": {
-      "dependsOn": ["^check-types"],
-      "env": ["DATABASE_URL", "EXPO_PUBLIC_API_URL"]
+      "dependsOn": ["^check-types"]
     },
     "generate": {
       "dependsOn": ["^generate"],
       "cache": false,
-      "persistent": false,
-      "env": ["DATABASE_URL", "DIRECT_URL", "SUPABASE_SECRET_KEY"]
+      "persistent": false
     },
     "dev": {
       "cache": false,
-      "persistent": true,
-      "env": [
-        "NEXT_PUBLIC_BASE_URL",
-        "NEXT_PUBLIC_API_URL",
-        "EXPO_PUBLIC_API_URL",
-        "EXPO_PUBLIC_IS_BETA"
-      ]
+      "persistent": true
     }
   }
 }
