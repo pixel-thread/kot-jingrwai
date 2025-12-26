@@ -1,6 +1,6 @@
 import { type SongT } from "@repo/types";
 
-export const kaSnemBadKiAiom: SongT[] = [
+export const kaSnemBadKiAiom = [
   {
     id: "song-507",
     title: "Ka snem thymmai",

@@ -45,7 +45,7 @@ export const QuoteOfTheDay = () => {
     <Reanimated.View entering={FadeInDown.duration(500)}>
       <TouchableOpacity
         onPress={copyToClipboard}
-        className="overflow-hidden rounded-xl border border-gray-300 bg-white shadow-sm dark:border-none dark:border-gray-950 dark:bg-gray-900">
+        className="overflow-hidden rounded-xl border border-gray-300 bg-white shadow-sm dark:border-none dark:border-gray-950 dark:bg-gray-800">
         <View className="p-4">
           <View className="mb-2 flex-row items-center justify-center">
             <MaterialCommunityIcons

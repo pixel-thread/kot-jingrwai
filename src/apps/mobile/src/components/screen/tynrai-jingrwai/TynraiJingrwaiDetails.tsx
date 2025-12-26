@@ -9,6 +9,7 @@ import { ContentSection } from '../../Common/ContentSection';
 import { SongListItem } from '../../Songs/SongListItem';
 import { FlashList } from '@shopify/flash-list';
 import { useSongs } from '~/src/hooks/song/useSongs';
+import { Container } from '../../Common/Container';
 
 type Props = {
   id: string;
@@ -48,31 +49,33 @@ export const TynraijingrwaiDetails = ({ id }: Props) => {
   if (!selectedCategory) return null;
 
   return (
-    <ScrollView className="h-auto flex-1 bg-gray-200 dark:bg-gray-950">
-      <Reanimated.View entering={FadeIn.duration(500)} className="p-4">
-        <FlashList
-          data={filteredSongs}
-          keyExtractor={(item) => item.id}
-          estimatedItemSize={20}
-          renderItem={({ item }) => <View className="my-1">{renderSongDropdown(item)}</View>}
-          ListEmptyComponent={() => (
-            <ContentSection title="No Songs Found">
-              <View className="p-4">
-                <Text className="text-center text-gray-500 dark:text-gray-400">
-                  No songs found in the range {selectedCategory.from}-{selectedCategory?.to}
-                </Text>
-              </View>
-            </ContentSection>
-          )}
-        />
+    <Container>
+      <ScrollView className="h-auto flex-1">
+        <Reanimated.View entering={FadeIn.duration(500)} className="p-4">
+          <FlashList
+            data={filteredSongs}
+            keyExtractor={(item) => item.id}
+            estimatedItemSize={20}
+            renderItem={({ item }) => <View className="my-1">{renderSongDropdown(item)}</View>}
+            ListEmptyComponent={() => (
+              <ContentSection title="No Songs Found">
+                <View className="p-4">
+                  <Text className="text-center text-gray-500 dark:text-gray-400">
+                    No songs found in the range {selectedCategory.from}-{selectedCategory?.to}
+                  </Text>
+                </View>
+              </ContentSection>
+            )}
+          />
 
-        {/* Footer */}
-        <Reanimated.View entering={FadeInDown.delay(500).duration(500)} className="mb-4 mt-8">
-          <Text className="text-center text-xs text-gray-500 dark:text-gray-500">
-            © {new Date().getFullYear()} Kot Jingrwai. All rights reserved.
-          </Text>
+          {/* Footer */}
+          <Reanimated.View entering={FadeInDown.delay(500).duration(500)} className="mb-4 mt-8">
+            <Text className="text-center text-xs text-gray-500 dark:text-gray-500">
+              © {new Date().getFullYear()} Kot Jingrwai. All rights reserved.
+            </Text>
+          </Reanimated.View>
         </Reanimated.View>
-      </Reanimated.View>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };

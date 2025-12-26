@@ -5,15 +5,12 @@ import { View, TouchableOpacity } from 'react-native';
 import { Container } from '~/src/components/Common/Container';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { LyricView } from '~/src/components/Lyric/LyricView';
-import { Text } from '~/src/components/ui/typography';
 import { getUniqueSongs } from '~/src/services/songs/getUniqueSong';
 
 import { useTextStore } from '~/src/libs/stores/text';
 import { gray } from 'tailwindcss/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
-import { FloatingActionButtons } from '~/src/components/Common/FloatingActionButtons';
-import { MiniMusicPlayer } from '~/src/components/Common/MiniMusicPlayer';
 
 const HeaderRight = () => {
   const { colorScheme } = useColorScheme();

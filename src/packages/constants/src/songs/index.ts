@@ -16,9 +16,8 @@ import { kaJingrwaiRevival } from "./ka_jingrwai_revival";
 import { kiJingrwaiIaKiKhynnah } from "./ki_jingrwai_ia_ki_khynnah";
 import { kiJingrwaiIaKiSamla } from "./ki_jingrwai_ia_ki_samla";
 import { kiJingrwaiPynwai } from "./ki_jingrwai_pynwai";
-import { type SongT } from "@repo/types";
 
-export const songs: SongT[] = [
+export const songs = [
   ...kaSnemBadKiAiom,
   ...shaphangKaJingiapKibaNgeit,
   ...shaphangKaJinglongJingimKhristan,

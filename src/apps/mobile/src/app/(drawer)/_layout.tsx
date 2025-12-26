@@ -16,7 +16,7 @@ const DrawerLayout = () => {
         header: ({ options }) => <CustomHeader options={options} />,
         drawerStyle: {
           width: 300,
-          backgroundColor: isDarkMode ? gray[950] : gray[200],
+          backgroundColor: isDarkMode ? gray[900] : gray[200],
         },
       }}>
       <Drawer.Screen

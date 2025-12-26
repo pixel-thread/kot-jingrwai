@@ -19,11 +19,9 @@ import { cn } from '~/src/libs/cn';
 
 import { Ternary } from '../Common/Ternary';
 import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
-import { FeaturedSongCard } from './FeaturedSongCard';
-import { FlashList } from '@shopify/flash-list';
-import { getRandomSongs } from '~/src/utils/getRandomSongs';
-import { SongT } from '@repo/types';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
+import { Button } from '../ui/button';
+import { FeaturedSongs } from './FeaturedSongs';
 
 export const SongFinderPage = () => {
   const songs = useFilteredSongs({ isKhorus: false });
@@ -48,7 +46,7 @@ export const SongFinderPage = () => {
     }
 
     if (!availableSongNumbers.includes(number)) {
-      setError(`Song number ${number} not found`);
+      setError(`Song number not found, Please enter a valid song number`);
       return;
     }
 
@@ -68,7 +66,7 @@ export const SongFinderPage = () => {
   }, []);
 
   return (
-    <Container className="dark:bg-gray-950">
+    <Container>
       <ScrollView
         keyboardShouldPersistTaps="handled"
         className="w-full flex-1"
@@ -136,57 +134,43 @@ export const SongFinderPage = () => {
               {error ? (
                 <Reanimated.Text
                   entering={FadeIn.duration(300)}
-                  className="ml-1 self-start text-sm lowercase text-red-500 dark:text-red-400">
+                  className="ml-1 self-start text-sm text-red-500 dark:text-red-400">
                   {error}
                 </Reanimated.Text>
               ) : null}
 
-              <TouchableOpacity
+              <Button
+                containerClassName="w-full"
+                title="WAD"
                 disabled={!songNumber}
-                className="w-full items-center justify-center rounded-xl bg-indigo-600 p-4 shadow-sm disabled:opacity-50"
-                onPress={() => handleSongSearch()}>
-                <Text size={'lg'} weight={'bold'} className="uppercase text-white dark:text-white">
-                  Wad
-                </Text>
-              </TouchableOpacity>
+                size={'lg'}
+                variant={'primary'}
+                icon="magnify"
+                iconPosition="left"
+                onPress={() => handleSongSearch()}
+              />
             </View>
           </Reanimated.View>
 
           <QuoteOfTheDay />
           {/* Featured Section */}
-          <RandomSongs />
+          <FeaturedSongs />
 
           {/* Tabs for Recent and Favorites */}
           <Reanimated.View entering={FadeInUp.delay(700).duration(800)} className="mb-6">
-            <View className="mb-4 flex-row rounded-full bg-gray-100 p-1 dark:bg-gray-800">
-              <TouchableOpacity
+            <View className="mb-4 flex-1 flex-row rounded-lg bg-gray-100 p-1 dark:bg-gray-800">
+              <Button
+                title="Recent"
+                containerClassName="w-1/2"
                 onPress={() => setActiveTab('recent')}
-                className={cn(
-                  'flex-1 items-center rounded-full py-2',
-                  activeTab === 'recent' ? 'bg-indigo-600' : 'bg-transparent'
-                )}>
-                <Text
-                  weight={'medium'}
-                  className={
-                    activeTab === 'recent' ? 'text-white' : 'text-gray-600 dark:text-gray-300'
-                  }>
-                  Recent
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
+                variant={activeTab === 'recent' ? 'primary' : 'secondary'}
+              />
+              <Button
+                title="Favorites"
                 onPress={() => setActiveTab('favorites')}
-                className={cn(
-                  'flex-1 items-center rounded-full py-2',
-                  activeTab === 'favorites' ? 'bg-indigo-600' : 'bg-transparent'
-                )}>
-                <Text
-                  weight={'medium'}
-                  className={
-                    activeTab === 'favorites' ? 'text-white' : 'text-gray-600 dark:text-gray-300'
-                  }>
-                  Favorites
-                </Text>
-              </TouchableOpacity>
+                containerClassName="w-1/2"
+                variant={activeTab === 'favorites' ? 'primary' : 'secondary'}
+              />
             </View>
             <Ternary
               condition={activeTab === 'recent'}
@@ -214,25 +198,4 @@ export const SongFinderPage = () => {
       </ScrollView>
     </Container>
   );
-
-  function RandomSongs() {
-    return (
-      <Reanimated.View entering={FadeInUp.delay(500).duration(800)} className="my-6">
-        <Text size={'xl'} weight={'bold'} className="mb-4 text-gray-800 dark:text-white">
-          Random Songs
-        </Text>
-
-        <View className="gap-4 gap-x-2">
-          <FlashList
-            horizontal
-            data={getRandomSongs<SongT>(songs, 10)}
-            showsHorizontalScrollIndicator={false}
-            estimatedItemSize={20}
-            ItemSeparatorComponent={() => <View className="w-2 bg-transparent" />}
-            renderItem={({ item }) => <FeaturedSongCard song={item} />}
-          />
-        </View>
-      </Reanimated.View>
-    );
-  }
 };

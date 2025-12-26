@@ -1,6 +1,6 @@
 import { type SongT } from "@repo/types";
 
-export const kaJingiaroh: SongT[] = [
+export const kaJingiaroh = [
   {
     id: "song-568",
     title: "Їaroh ïa U Blei",

@@ -1,7 +1,7 @@
 export type VerseT = "VERSE" | "CHORUS" | "BRIDGE" | "INTRO" | "OUTRO";
 
 export type LineT = {
-  id?: string;
+  id: string;
   order: number;
   text: string;
   createdAt?: string;
@@ -10,9 +10,9 @@ export type LineT = {
 };
 
 export type SongParagraphT = {
-  id?: string; // unique id for each paragraph
+  id: string; // unique id for each paragraph
   order: number; // display order
-  lines: LineT[] | string[]; // lines of lyrics
+  lines: LineT[]; // lines of lyrics
   type?: VerseT;
   songId?: string;
   createdAt?: string;
@@ -20,7 +20,7 @@ export type SongParagraphT = {
 };
 
 export type SongMetadataT = {
-  id?: string;
+  id: string;
   number: number; // song number/index
   oldNumber?: number | null;
   language: string; // e.g. 'en', 'kn', 'khasi'
@@ -38,7 +38,7 @@ export type SongMetadataT = {
 };
 
 type TrackMetadataT = {
-  id?: string;
+  id: string;
   supabaseId: string;
   path: string;
   fileName: string;
@@ -52,7 +52,7 @@ type TrackMetadataT = {
 };
 
 export type TrackT = {
-  id?: string;
+  id: string;
   createdAt?: string;
   updatedAt?: string;
   metadataId: string;
@@ -60,7 +60,7 @@ export type TrackT = {
 };
 
 export type SongT = {
-  id?: string;
+  id: string;
   title: string;
   metadata: SongMetadataT;
   paragraphs: SongParagraphT[];

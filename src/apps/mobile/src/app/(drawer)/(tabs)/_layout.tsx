@@ -30,7 +30,7 @@ export default function TabLayout() {
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: true,
         tabBarStyle: {
-          backgroundColor: isDarkMode ? colors.gray[950] : colors.gray[200],
+          backgroundColor: isDarkMode ? colors.gray[900] : colors.gray[200],
           borderTopWidth: 0,
           elevation: 0,
           height: 65,
@@ -42,7 +42,7 @@ export default function TabLayout() {
           fontSize: 12,
           fontWeight: '600',
         },
-        tabBarActiveTintColor: isDarkMode ? colors.indigo[400] : colors.indigo[600],
+        tabBarActiveTintColor: isDarkMode ? colors.indigo[200] : colors.indigo[600],
         tabBarInactiveTintColor: isDarkMode ? colors.gray[400] : colors.gray[500],
         header: ({ options }) => (
           <CustomHeader
@@ -63,13 +63,13 @@ export default function TabLayout() {
         name="index"
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          title: 'Kot Jingrwai',
+          title: 'Home',
         }}
       />
       <Tabs.Screen
         name="songs"
         options={{
-          title: 'Ki JingRwai',
+          title: 'Ki Jingiwai',
           tabBarIcon: ({ color }) => <TabBarIcon name="music-note" color={color} />,
         }}
       />

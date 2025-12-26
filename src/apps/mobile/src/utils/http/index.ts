@@ -52,6 +52,7 @@ const noConnectionData = {
   error: null,
   data: null,
 };
+
 const http = {
   get: async <T>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> => {
     try {

@@ -23,7 +23,7 @@ export const FloatingActionButtons = ({ className, children }: Props) => {
       <View
         className={cn(
           'w-[92%] rounded-2xl border border-gray-300 bg-gray-200/90 px-3 py-2 shadow-lg shadow-gray-900/50',
-          'dark:border-gray-900 dark:bg-gray-950/95',
+          'dark:border-gray-900 dark:bg-gray-900/95',
           'backdrop-blur-3xl'
         )}>
         {children}

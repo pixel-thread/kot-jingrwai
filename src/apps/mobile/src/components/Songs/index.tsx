@@ -51,6 +51,11 @@ export const AllSongPage = ({ isKhorus }: Props) => {
   return (
     <Container className="flex-1 dark:bg-gray-950">
       <Reanimated.View style={listAnimatedStyle} className="flex-1 p-4">
+        <SearchBar
+          label={isKhorus ? 'Find Your Chorus' : 'Find Your Songs'}
+          onSearch={onSearch}
+          value={searchQuery}
+        />
         <FlashList
           data={paginatedSongs}
           keyExtractor={(item) => item.id}
@@ -67,13 +72,6 @@ export const AllSongPage = ({ isKhorus }: Props) => {
           onEndReachedThreshold={0.5}
           keyboardShouldPersistTaps="handled"
           stickyHeaderHiddenOnScroll={true}
-          ListHeaderComponent={() => (
-            <SearchBar
-              label={isKhorus ? 'Find Your Chorus' : 'Find Your Songs'}
-              onSearch={onSearch}
-              value={searchQuery}
-            />
-          )}
           ListEmptyComponent={() => (
             <NotFoundSong reset={() => searchQuery && setSearchQuery('')} />
           )}

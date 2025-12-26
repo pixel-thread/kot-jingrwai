@@ -31,13 +31,13 @@ export const ApostleCreedPage = () => {
   });
 
   return (
-    <Container className="flex-1 dark:bg-gray-950">
+    <Container>
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
-        className="mb-16 dark:bg-gray-950">
+        className="mb-16">
         <View className="flex-1" collapsable={false}>
           <Reanimated.View
             style={headerAnimatedStyle}

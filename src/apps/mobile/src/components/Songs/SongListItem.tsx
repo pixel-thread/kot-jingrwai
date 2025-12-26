@@ -6,6 +6,7 @@ import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-
 import { Text } from '~/src/components/ui/typography';
 import { SongT } from '@repo/types';
 import { useColorScheme } from 'nativewind';
+import colors from 'tailwindcss/colors';
 
 export const SongListItem = ({ song }: { song: SongT }) => {
   const router = useRouter();
@@ -50,15 +51,12 @@ export const SongListItem = ({ song }: { song: SongT }) => {
         }>
         <View className="flex-row items-center p-3">
           <View className="mr-3 h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600">
-            <Text size="3xl" weight="bold">
+            <Text variant={'primary'} size="4xl" weight="bold">
               {song.metadata.number}
             </Text>
           </View>
           <View className="flex-1 border-l border-gray-100 pl-3 dark:border-gray-700">
-            <Text
-              size="lg"
-              weight="semibold"
-              className="line-clamp-1 capitalize text-gray-800 dark:text-white">
+            <Text size="lg" weight="semibold" className="line-clamp-1 capitalize">
               {song.title}
             </Text>
             <View className="mt-1 flex-row items-center">
@@ -84,7 +82,12 @@ export const SongListItem = ({ song }: { song: SongT }) => {
               </View>
             )}
           </View>
-          <MaterialCommunityIcons name="chevron-right" size={24} color="#6366f1" />
+          <MaterialCommunityIcons
+            className="text-indigo-600 dark:text-indigo-400"
+            color={isDarkMode ? colors.indigo[400] : colors.indigo[600]}
+            name="chevron-right"
+            size={24}
+          />
         </View>
       </TouchableOpacity>
     </Reanimated.View>

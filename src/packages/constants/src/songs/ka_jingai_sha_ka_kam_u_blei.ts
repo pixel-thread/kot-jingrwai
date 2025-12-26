@@ -1,10 +1,11 @@
 import { type SongT } from "@repo/types";
 
-export const kaJingaiShaKaKamUBlei: SongT[] = [
+export const kaJingaiShaKaKamUBlei = [
   {
     id: "song-516",
     title: "Jingim jong nga, Trai, to shim",
     metadata: {
+      id: "song-516",
       number: 516,
       language: "khasi",
       composer: "S.S. 616",

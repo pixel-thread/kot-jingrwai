@@ -41,7 +41,7 @@ export default function Settings() {
           ),
         }}
       />
-      <ScrollView className="flex-1 bg-gray-200 dark:bg-gray-950">
+      <ScrollView className="flex-1 bg-gray-200 dark:bg-gray-900">
         <Reanimated.View entering={FadeIn.duration(500)} className="p-4">
           {/* Theme Section */}
           <ContentSection title="Theme">

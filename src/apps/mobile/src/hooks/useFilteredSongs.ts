@@ -1,5 +1,5 @@
 import { normalizeForSearch } from '../utils/normalizeTextForSearch';
-import { SongT } from '../types/song';
+import { SongT } from '@repo/types';
 import { getSongs } from '../services/songs/getSongs';
 import { useQuery } from '@tanstack/react-query';
 
@@ -15,10 +15,8 @@ export const useFilteredSongs = ({
   const query = searchQuery.trim();
 
   const { data: dataSource = [] } = useQuery({
-    queryKey: ['songs', isKhorus],
-    queryFn: () => {
-      return getSongs({ isChorus: isKhorus });
-    },
+    queryKey: ['songs', { isKhorus }],
+    queryFn: () => getSongs({ isChorus: isKhorus }),
   });
 
   // If no query, return all songs from the selected source

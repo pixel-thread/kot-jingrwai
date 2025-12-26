@@ -14,7 +14,9 @@
       "dependsOn": ["^check-types"]
     },
     "generate": {
-      "dependsOn": ["^generate"]
+      "dependsOn": ["^generate"],
+      "cache": false,
+      "persistent": false
     },
     "dev": {
       "cache": false,

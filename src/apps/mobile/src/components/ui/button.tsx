@@ -6,33 +6,96 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-import { cn } from '~/src/libs/cn';
 import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '~/src/libs/cn';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-type ButtonProps = {
-  title: string;
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  loading?: boolean;
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
-} & TouchableOpacityProps;
+/* -------------------------------------------------------------------------- */
+/*                                    CVA                                     */
+/* -------------------------------------------------------------------------- */
+
+const buttonVariants = cva('items-center justify-center rounded-xl w-full', {
+  variants: {
+    variant: {
+      primary: 'bg-indigo-600 dark:bg-indigo-900',
+      secondary: 'bg-gray-200 dark:bg-gray-800',
+      outline: 'bg-transparent border border-indigo-500 dark:border-indigo-400',
+      destructive: 'bg-red-600 dark:bg-red-900',
+    },
+    size: {
+      sm: 'px-3 py-2',
+      md: 'px-4 py-3',
+      lg: 'px-6 py-4',
+    },
+    disabled: {
+      true: 'opacity-50',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+});
+
+const textVariants = cva('text-center font-semibold', {
+  variants: {
+    variant: {
+      primary: 'text-white',
+      secondary: 'text-gray-800 dark:text-white',
+      outline: 'text-indigo-600 dark:text-indigo-400',
+      destructive: 'text-white',
+    },
+    size: {
+      sm: 'text-sm',
+      md: 'text-base',
+      lg: 'text-lg',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+});
+
+/* -------------------------------------------------------------------------- */
+/*                                   Types                                    */
+/* -------------------------------------------------------------------------- */
+
+type ButtonProps = TouchableOpacityProps &
+  VariantProps<typeof buttonVariants> & {
+    title: string;
+    loading?: boolean;
+    icon?: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
+    iconPosition?: 'left' | 'right';
+    containerClassName?: string;
+  };
+
+/* -------------------------------------------------------------------------- */
+/*                                  Component                                 */
+/* -------------------------------------------------------------------------- */
 
 export const Button = forwardRef<View, ButtonProps>(
   (
     {
       title,
-      variant = 'primary',
-      size = 'md',
+      variant,
+      size,
       loading = false,
       icon,
       iconPosition = 'left',
-      ...touchableProps
+      disabled,
+      className,
+      containerClassName,
+      ...props
     },
     ref
   ) => {
-    // Animation for press feedback
     const scale = useSharedValue(1);
+
+    const animatedStyle = useAnimatedStyle(() => ({
+      transform: [{ scale: scale.value }],
+    }));
 
     const handlePressIn = () => {
       scale.value = withSpring(0.95, { damping: 10 });
@@ -42,61 +105,15 @@ export const Button = forwardRef<View, ButtonProps>(
       scale.value = withSpring(1, { damping: 10 });
     };
 
-    const animatedStyle = useAnimatedStyle(() => {
-      return {
-        transform: [{ scale: scale.value }],
-      };
-    });
-
-    const getButtonStyle = () => {
-      const baseStyle = 'items-center justify-center rounded-xl';
-
-      const variantStyles = {
-        primary: 'bg-indigo-600 dark:bg-indigo-400',
-        secondary: 'bg-gray-200 dark:bg-gray-800',
-        outline: 'bg-transparent border border-indigo-500 dark:border-indigo-400',
-      };
-
-      const sizeStyles = {
-        sm: 'px-3 py-2',
-        md: 'px-4 py-3',
-        lg: 'px-6 py-4',
-      };
-
-      return cn(
-        baseStyle,
-        variantStyles[variant],
-        sizeStyles[size],
-        touchableProps.disabled && 'opacity-50'
-      );
-    };
-
-    const getTextStyle = () => {
-      const baseStyle = 'text-center font-semibold';
-
-      const variantStyles = {
-        primary: 'text-white',
-        secondary: 'text-gray-800 dark:text-white',
-        outline: 'text-indigo-600 dark:text-indigo-400',
-      };
-
-      const sizeStyles = {
-        sm: 'text-sm',
-        md: 'text-base',
-        lg: 'text-lg',
-      };
-
-      return cn(baseStyle, variantStyles[variant], sizeStyles[size]);
-    };
-
     return (
-      <Reanimated.View style={animatedStyle}>
+      <Reanimated.View className={cn(containerClassName, 'overflow-hidden')} style={animatedStyle}>
         <TouchableOpacity
           ref={ref}
-          {...touchableProps}
+          disabled={disabled || loading}
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
-          className={cn(getButtonStyle(), touchableProps.className)}>
+          className={cn(buttonVariants({ variant, size, disabled }), className)}
+          {...props}>
           <View className="flex-row items-center justify-center">
             {loading ? (
               <ActivityIndicator
@@ -104,13 +121,22 @@ export const Button = forwardRef<View, ButtonProps>(
                 color={variant === 'primary' ? 'white' : '#6366f1'}
                 className="mr-2"
               />
-            ) : icon && iconPosition === 'left' ? (
-              <View className="mr-2">{icon}</View>
-            ) : null}
+            ) : (
+              icon &&
+              iconPosition === 'left' && (
+                <View className="mr-2">
+                  <MaterialCommunityIcons name={icon} size={24} color="white" />
+                </View>
+              )
+            )}
 
-            <Text className={getTextStyle()}>{title}</Text>
+            <Text className={textVariants({ variant, size })}>{title}</Text>
 
-            {!loading && icon && iconPosition === 'right' && <View className="ml-2">{icon}</View>}
+            {!loading && icon && iconPosition === 'right' && (
+              <View className="ml-2">
+                <MaterialCommunityIcons name={icon} size={24} color="white" />
+              </View>
+            )}
           </View>
         </TouchableOpacity>
       </Reanimated.View>

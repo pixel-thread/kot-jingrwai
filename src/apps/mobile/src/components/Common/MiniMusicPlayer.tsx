@@ -90,7 +90,7 @@ export const MiniMusicPlayer = ({ song }: Props) => {
   const isTrackExist = songTrack?.metadata.downloadUrl ? true : false;
 
   return (
-    <View className="w-auto flex-1 flex-row items-center justify-between rounded-xl border border-gray-500/40 bg-black/5 px-2 py-2 dark:border-gray-800 dark:bg-gray-800/5">
+    <View className="w-auto flex-1 flex-row items-center justify-between rounded-xl border border-gray-500/40 bg-black/5 px-2 py-2 dark:border-gray-800 dark:bg-gray-900/5">
       <View className="flex-1 flex-row items-center">
         <View className="mr-3 h-9 w-9 items-center justify-center rounded-lg bg-indigo-500 dark:bg-indigo-950">
           <MaterialCommunityIcons name="music-note-eighth" size={18} color="white" />

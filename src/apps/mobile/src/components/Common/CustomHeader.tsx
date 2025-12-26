@@ -5,7 +5,6 @@ import { gray } from 'tailwindcss/colors';
 import { Text } from '../ui/typography';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { ReactNode } from 'react';
-import { BetaBatch } from './BetaBatch';
 import { Ternary } from './Ternary';
 import { useEffect } from 'react';
 
@@ -15,8 +14,6 @@ import Reanimated, {
   withTiming,
   FadeIn,
 } from 'react-native-reanimated';
-
-import { OtaUpdateBanner } from './OtaUpdateBanner';
 
 type Props = {
   options?: { title?: string };
@@ -29,7 +26,6 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
   const router = useRouter();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
-  const isBeta = process.env.EXPO_PUBLIC_IS_BETA === 'true' || false;
 
   // Animation values
   const headerOpacity = useSharedValue(0.9);
@@ -50,15 +46,13 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
   return (
     <Reanimated.View
       style={headerAnimatedStyle}
-      className="w-full overflow-hidden border-b border-gray-300 bg-gray-200 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+      className="w-full overflow-hidden border-b border-gray-300 bg-gray-200 shadow-lg dark:border-gray-700 dark:bg-gray-900">
       <View className="flex flex-row items-center justify-between p-4 px-4">
-        {isBeta && <BetaBatch />}
-
         <View className="flex-row items-center">
           {back && (
             <TouchableOpacity
               onPress={onPressBackButton}
-              className="mr-3 items-center justify-center">
+              className="mr-3 flex flex-row items-center justify-center">
               <Ternary
                 condition={Platform.OS === 'ios'}
                 ifFalse={
@@ -76,6 +70,9 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
                   />
                 }
               />
+              <Text size={'lg'} weight={'medium'}>
+                Back
+              </Text>
             </TouchableOpacity>
           )}
           {headerLeft && <View className="flex flex-row gap-x-2">{headerLeft}</View>}
@@ -84,7 +81,12 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
         <Reanimated.View
           entering={FadeIn.delay(200).duration(500)}
           className="flex-1 items-center justify-center">
-          <Text size={'2xl'} weight={'extrabold'} align={'center'} className="uppercase">
+          <Text
+            size={'2xl'}
+            weight={'extrabold'}
+            align={'center'}
+            variant={'secondary'}
+            className="uppercase">
             {options?.title ?? 'No Title'}
           </Text>
         </Reanimated.View>

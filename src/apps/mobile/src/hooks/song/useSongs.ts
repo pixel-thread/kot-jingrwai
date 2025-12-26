@@ -6,6 +6,6 @@ type Props = {
 export function useSongs({ isChorus = false }: Props) {
   return useQuery({
     queryKey: ['songs', isChorus],
-    queryFn: () => getSongs({ isAll: true }),
+    queryFn: () => getSongs({ isAll: true, isChorus }),
   });
 }

@@ -6,6 +6,7 @@ import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import { ContentSection } from '../../Common/ContentSection';
 import * as Linking from 'expo-linking';
+import { Container } from '../../Common/Container';
 
 export default function ContactScreen() {
   const { colorScheme } = useColorScheme();
@@ -52,82 +53,84 @@ export default function ContactScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-gray-200 dark:bg-gray-950">
-      <Reanimated.View entering={FadeIn.duration(500)} className="p-4">
-        {contentVisible && (
-          <>
-            {/* Contact Info Section */}
-            <ContentSection title="Contact Information">
-              <ContactItem
-                icon="email-outline"
-                title="Email"
-                value={email}
-                description="Reach us via email for support or inquiries"
-                onPress={openEmail}
-              />
+    <Container>
+      <ScrollView className="flex-1">
+        <Reanimated.View entering={FadeIn.duration(500)} className="p-4">
+          {contentVisible && (
+            <>
+              {/* Contact Info Section */}
+              <ContentSection title="Contact Information">
+                <ContactItem
+                  icon="email-outline"
+                  title="Email"
+                  value={email}
+                  description="Reach us via email for support or inquiries"
+                  onPress={openEmail}
+                />
 
-              <ContactItem
-                icon="phone-outline"
-                title="Phone"
-                value={phone}
-                description="Call us during office hours"
-                onPress={() => openPhone(phone)}
-              />
+                <ContactItem
+                  icon="phone-outline"
+                  title="Phone"
+                  value={phone}
+                  description="Call us during office hours"
+                  onPress={() => openPhone(phone)}
+                />
 
-              <ContactItem
-                icon="map-marker-outline"
-                title="Address"
-                value={address}
-                description="Visit our office or find us on the map"
-                onPress={openMap}
-                isLast
-              />
-            </ContentSection>
+                <ContactItem
+                  icon="map-marker-outline"
+                  title="Address"
+                  value={address}
+                  description="Visit our office or find us on the map"
+                  onPress={openMap}
+                  isLast
+                />
+              </ContentSection>
 
-            {/* Hours Section */}
-            <ContentSection title="Office Hours">
-              <View className="p-4">
-                <View className="flex-row items-center">
-                  <MaterialCommunityIcons
-                    name="clock-outline"
-                    size={24}
-                    color={isDarkMode ? '#93c5fd' : '#3b82f6'}
-                  />
-                  <View className="ml-3">
-                    <Text weight="semibold" className="text-gray-800 dark:text-gray-100">
-                      Business Hours
-                    </Text>
-                    <Text size="sm" className="text-gray-500 dark:text-gray-400">
-                      Monday – Friday
-                    </Text>
-                    <Text size="sm" className="text-gray-500 dark:text-gray-400">
-                      9:00 AM – 6:00 PM (Local Time)
-                    </Text>
+              {/* Hours Section */}
+              <ContentSection title="Office Hours">
+                <View className="p-4">
+                  <View className="flex-row items-center">
+                    <MaterialCommunityIcons
+                      name="clock-outline"
+                      size={24}
+                      color={isDarkMode ? '#93c5fd' : '#3b82f6'}
+                    />
+                    <View className="ml-3">
+                      <Text weight="semibold" className="text-gray-800 dark:text-gray-100">
+                        Business Hours
+                      </Text>
+                      <Text size="sm" className="text-gray-500 dark:text-gray-400">
+                        Monday – Friday
+                      </Text>
+                      <Text size="sm" className="text-gray-500 dark:text-gray-400">
+                        9:00 AM – 6:00 PM (Local Time)
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-            </ContentSection>
+              </ContentSection>
 
-            {/* Social Media Section */}
-            <ContentSection title="Connect With Us">
-              <View className="flex-row justify-around p-4">
-                <SocialButton icon="github" label="Github" />
-                <SocialButton icon="instagram" label="Instagram" />
-                <SocialButton icon="twitter" label="Twitter" />
-                <SocialButton icon="youtube" label="YouTube" />
-              </View>
-            </ContentSection>
+              {/* Social Media Section */}
+              <ContentSection title="Connect With Us">
+                <View className="flex-row justify-around p-4">
+                  <SocialButton icon="github" label="Github" />
+                  <SocialButton icon="instagram" label="Instagram" />
+                  <SocialButton icon="twitter" label="Twitter" />
+                  <SocialButton icon="youtube" label="YouTube" />
+                </View>
+              </ContentSection>
 
-            {/* Footer */}
-            <Reanimated.View entering={FadeInDown.delay(500).duration(500)} className="mb-4 mt-8">
-              <Text className="text-center text-xs text-gray-500 dark:text-gray-500">
-                © {new Date().getFullYear()} Kot Jingrwai. All rights reserved.
-              </Text>
-            </Reanimated.View>
-          </>
-        )}
-      </Reanimated.View>
-    </ScrollView>
+              {/* Footer */}
+              <Reanimated.View entering={FadeInDown.delay(500).duration(500)} className="mb-4 mt-8">
+                <Text className="text-center text-xs text-gray-500 dark:text-gray-500">
+                  © {new Date().getFullYear()} Kot Jingrwai. All rights reserved.
+                </Text>
+              </Reanimated.View>
+            </>
+          )}
+        </Reanimated.View>
+      </ScrollView>
+    </Container>
   );
 }
 
