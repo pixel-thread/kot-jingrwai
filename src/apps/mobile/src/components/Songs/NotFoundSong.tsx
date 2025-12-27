@@ -55,13 +55,7 @@ export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
             title="Clear"
             variant="primary"
             size="lg"
-            icon={
-              <MaterialCommunityIcons
-                name="select-remove"
-                size={20}
-                color={isDarkMode ? colors.indigo[400] : colors.white}
-              />
-            }
+            icon={'select-remove'}
             iconPosition="left"
             onPress={reset}
             className="w-full"
