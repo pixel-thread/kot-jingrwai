@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     const page = req.nextUrl.searchParams.get("page");
     const chorus = req.nextUrl.searchParams.get("isChorus");
 
-    const isChorusDefine = chorus !== "" || chorus !== undefined;
+    const isChorusDefine = chorus;
 
     const isChorus =
       req.nextUrl.searchParams.get("isChorus") === "true" || false;
