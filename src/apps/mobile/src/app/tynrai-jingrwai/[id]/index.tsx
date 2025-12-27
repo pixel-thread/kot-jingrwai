@@ -10,7 +10,6 @@ export default function page() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const tynrai = tynraiJingrwai.find((val) => val.id === id);
   const title = tynrai?.title || 'Tynrai Jingrwai';
-  console.log(title);
   return (
     <Reanimated.View entering={FadeIn.duration(300)} className="flex-1">
       <Stack.Screen
