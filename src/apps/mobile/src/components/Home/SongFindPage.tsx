@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
-import { TextInput, View, ScrollView, TouchableOpacity, Animated } from 'react-native';
+import { TextInput, View, ScrollView, Animated } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, {
   FadeIn,
@@ -120,12 +120,14 @@ export const SongFinderPage = () => {
                 <TextInput
                   value={songNumber}
                   onChangeText={(text) => {
-                    setSongNumber(text);
+                    const numericOnly = text.replace(/[^0-9]/g, '');
+                    setSongNumber(numericOnly);
                     setError('');
                   }}
                   placeholder="Number jingrwai"
                   placeholderTextColor={'#9CA3AF'}
-                  keyboardType="numeric"
+                  keyboardType="number-pad" // Pure numeric keyboard, no ABC switch
+                  returnKeyType="done" // Adds done/return button
                   className={cn('flex-1 p-4 text-xl dark:text-white', error && 'border-red-500')}
                   onSubmitEditing={handleSongSearch}
                 />
