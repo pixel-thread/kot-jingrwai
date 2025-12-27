@@ -20,8 +20,6 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts",
-    "scripts/fetchSongsScript.js",
-    "scripts/fetchSongsScript.js",
     "scripts/fetch-songs.js"
   ]
 }
