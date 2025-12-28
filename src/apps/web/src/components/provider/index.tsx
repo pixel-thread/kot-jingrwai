@@ -1,7 +1,7 @@
 "use client";
 import { AuthProvider } from "./auth";
 import { TQueryProvider } from "./query";
-// import { RoleBaseRoute } from "../protectedRoute/protectedRoute";
+import { RoleBaseRoute } from "../protectedRoute/protectedRoute";
 import { Toaster } from "../ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
 import { env } from "@/env";
@@ -21,9 +21,7 @@ export const MainProvider = ({ children }: MainProviderProps) => {
           disableTransitionOnChange
         >
           <AuthProvider>
-            {/* <RoleBaseRoute> */}
-            {children}
-            {/* </RoleBaseRoute> */}
+            <RoleBaseRoute>{children}</RoleBaseRoute>
             <Toaster />
           </AuthProvider>
         </NxThemeProvider>

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "../ui/button";
 
 export const NavBar = () => {
-  const { user, isSuperAdmin } = useAuth();
+  const { isSuperAdmin } = useAuth();
 
   return (
     <nav className="fixed backdrop-blur bg-background/40 shadow-sm top-0 left-0 w-full z-20 border-gray-200">
