@@ -1,8 +1,13 @@
 import { env } from "@/env";
 import Link from "next/link";
 import { SongSearchInput } from "../page/songs/SongSearchInput";
+import { useAuth } from "@/hooks/auth/useAuth";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "../ui/button";
 
 export const NavBar = () => {
+  const { user, isSuperAdmin } = useAuth();
+
   return (
     <nav className="fixed backdrop-blur bg-background/40 shadow-sm top-0 left-0 w-full z-20 border-gray-200">
       <div className="flex flex-wrap items-center justify-between mx-auto p-4">
@@ -43,6 +48,21 @@ export const NavBar = () => {
         </div>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700">
+            {isSuperAdmin && (
+              <li>
+                <Link
+                  href="/admin"
+                  className={cn(
+                    buttonVariants({
+                      variant: "secondary",
+                    }),
+                  )}
+                  aria-current="page"
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
             <li>
               <Link
                 href="/"

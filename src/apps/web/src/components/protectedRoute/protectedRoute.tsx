@@ -18,6 +18,11 @@ const routeRoles: RoleRoute[] = [
     role: ["SUPER_ADMIN", "PARTNER"],
     needAuth: true,
   },
+  {
+    url: "/admin/users/app-users",
+    role: ["SUPER_ADMIN", "PARTNER"],
+    needAuth: true,
+  },
 ];
 
 type PropsT = {
@@ -84,7 +89,7 @@ export const RoleBaseRoute = ({ children }: PropsT) => {
         }
       }
     }
-  }, [pathName, isAuthenticated, userRoles, router, isAuthLoading]);
+  }, [userRoles]);
 
   // Prevent authenticated users from accessing unauthenticated-only pages
   useEffect(() => {

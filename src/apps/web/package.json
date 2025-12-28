@@ -14,6 +14,7 @@
     "@repo/constants": "workspace:*",
     "@repo/ui": "workspace:*",
     "@repo/types": "workspace:*",
+    "@repo/utils": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@clerk/nextjs": "^6.31.4",
     "@hookform/resolvers": "^5.2.1",
