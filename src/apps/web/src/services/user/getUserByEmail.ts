@@ -1,12 +1,9 @@
-// import { prisma } from "@/lib/database/prisma";
+import { prisma } from "@/lib/database/prisma";
 
-// type Props = {
-//   email: string;
-//   id: string;
-// };
+type Props = {
+  email: string;
+};
 
-// export async function getDownloadUserByEmail({ email, id }: Props) {
-//   return await prisma.downloadUsers.findUnique({
-//     where: { appVersionId_email: { email, appVersionId: id } },
-//   });
-// }
+export async function getUserByEmail({ email }: Props) {
+  return await prisma.user.findUnique({ where: { email } });
+}

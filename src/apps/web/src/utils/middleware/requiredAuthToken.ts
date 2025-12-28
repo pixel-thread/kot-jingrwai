@@ -5,6 +5,7 @@ import { UnauthorizedError } from "../errors/unAuthError";
 import { getUserById } from "@/services/user/getUserById";
 import { createUser } from "@/services/user/createUser";
 import { clientClerk } from "@/lib/clerk/client";
+import { getUserByEmail } from "@/services/user/getUserByEmail";
 
 export async function requiredAuthToken(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
@@ -23,17 +24,27 @@ export async function requiredAuthToken(req: NextRequest) {
   }
 
   let user = await getUserById({ id: claims.sub });
+
   if (!user) {
     const clerkUser = await clientClerk.users.getUser(claims.sub);
-    user = await createUser({
-      data: {
-        name: clerkUser.firstName ?? "",
-        email: clerkUser?.primaryEmailAddress?.emailAddress || "",
-        clerkId: claims.sub,
-        hasImage: clerkUser.hasImage,
-        imageUrl: clerkUser.imageUrl,
-      },
+
+    const emailUser = await getUserByEmail({
+      email: clerkUser.primaryEmailAddress?.emailAddress || "",
     });
+
+    if (emailUser) {
+      user = emailUser;
+    } else {
+      user = await createUser({
+        data: {
+          name: clerkUser.firstName ?? "",
+          email: clerkUser?.primaryEmailAddress?.emailAddress || "",
+          clerkId: claims.sub,
+          hasImage: clerkUser.hasImage,
+          imageUrl: clerkUser.imageUrl,
+        },
+      });
+    }
   }
   return user;
 }
