@@ -3,6 +3,7 @@ import { useAuth as useAuthContext } from "@/hooks/auth/useAuth";
 import { LoadingDots } from "../common/Loading";
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { Role } from "@/lib/database/prisma/generated/prisma";
 
 type PropsT = {
   children: React.ReactNode;
@@ -10,14 +11,14 @@ type PropsT = {
 
 type RoleRoute = {
   url: string;
-  role: string[];
+  role: Role[];
   redirect?: string;
   needAuth?: boolean;
 };
 
 const routeRoles: RoleRoute[] = [
   {
-    role: ["ADMIN", "SUPER_ADMIN"],
+    role: ["SUPER_ADMIN"],
     url: "/admin/*",
     needAuth: true,
     redirect: "/forbidden",

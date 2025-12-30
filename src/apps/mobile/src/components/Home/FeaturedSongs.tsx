@@ -1,28 +1,31 @@
 import { View } from 'react-native';
 import Reanimated, { FadeInUp } from 'react-native-reanimated';
+import { useQuery } from '@tanstack/react-query';
 
 import { Text } from '~/src/components/ui/typography';
-
 import { FeaturedSongCard } from './FeaturedSongCard';
-import { FlashList } from '@shopify/flash-list';
-import { getRandomSongs } from '~/src/utils/getRandomSongs';
-import { SongT } from '@repo/types';
-import { songs } from '~/src/libs/songs';
+import { getFeaturedSongs } from '~/src/services/songs/getFeaturedSongs';
+import { FlatList } from 'react-native-gesture-handler';
 
 export const FeaturedSongs = () => {
+  const { data: songs = [] } = useQuery({
+    queryKey: ['featured-songs'],
+    queryFn: getFeaturedSongs,
+  });
+
   return (
-    <Reanimated.View entering={FadeInUp.delay(500).duration(800)} className="my-6">
-      <Text size={'xl'} weight={'bold'} className="mb-4 text-gray-800 dark:text-white">
-        Random Songs
+    <Reanimated.View entering={FadeInUp.delay(300).duration(600)} className="my-6">
+      <Text size="xl" weight="bold" className="mb-4 text-gray-800 dark:text-white">
+        Featured Songs
       </Text>
 
-      <View className="gap-4 gap-x-2">
-        <FlashList
+      <View className="py-1">
+        <FlatList
           horizontal
-          data={getRandomSongs<SongT>(songs, 10)}
+          data={songs}
+          keyExtractor={(item) => item.id}
           showsHorizontalScrollIndicator={false}
-          estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View className="w-2 bg-transparent" />}
+          ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
           renderItem={({ item }) => <FeaturedSongCard song={item} />}
         />
       </View>
