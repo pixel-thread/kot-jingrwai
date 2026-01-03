@@ -1,5 +1,5 @@
 {
-  "name": "@repo/constants",
+  "name": "@repo/libs",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -23,13 +23,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/react": "*",
-    "typescript": "*",
     "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "@types/react": "*",
+    "typescript": "*"
   },
   "dependencies": {
-    "@repo/types": "workspace:*"
+    "@repo/types": "workspace:*",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.4.0"
   },
   "private": true
 }
