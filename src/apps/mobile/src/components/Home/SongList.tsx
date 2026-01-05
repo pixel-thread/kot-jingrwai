@@ -3,9 +3,9 @@ import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { FadeInRight } from 'react-native-reanimated';
 import { songs } from '~/src/libs/songs';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import { ContentSection } from '../Common/ContentSection';
-import { SongListItem } from '../Songs/SongListItem';
+import { SongListItem } from '@repo/ui-native';
 import { FlashList } from '@shopify/flash-list';
 
 type SongListProps = {

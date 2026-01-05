@@ -1,5 +1,5 @@
 import { View, ScrollView } from 'react-native';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { tynraiJingrwai } from '@repo/constants';
 import { TynraiJingrwaiT } from '@repo/types';

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { View, TouchableOpacity, TextInput } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated from 'react-native-reanimated';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import { useColorScheme } from 'nativewind';
 import { gray } from 'tailwindcss/colors';
 

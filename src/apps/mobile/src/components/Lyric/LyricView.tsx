@@ -1,7 +1,7 @@
 import { View, Platform, TouchableOpacity } from 'react-native';
 import { cn } from '~/src/libs/cn';
 import { SongT } from '@repo/types';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { useEffect } from 'react';
 import { useColorScheme } from 'nativewind';

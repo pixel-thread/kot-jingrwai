@@ -5,7 +5,7 @@ import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import { Button } from '../ui/button';
+import { Button } from '@repo/ui-native';
 
 type NotFoundSongProps = {
   reset: () => void;

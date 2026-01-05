@@ -2,7 +2,7 @@ import { router, Stack } from 'expo-router';
 import { View, ScrollView, TouchableOpacity, Switch, Linking } from 'react-native';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import ThemeSelector from '~/src/components/Common/theme/ThemeSelector';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import { useState } from 'react';
 import { useColorScheme } from 'nativewind';
 import { MaterialCommunityIcons } from '@expo/vector-icons';

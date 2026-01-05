@@ -20,7 +20,7 @@ import { cn } from '@repo/libs';
 import { Ternary } from '../Common/Ternary';
 import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
-import { Button } from '../ui/button';
+import { Button } from '@repo/ui-native';
 import { FeaturedSongs } from './FeaturedSongs';
 
 export const SongFinderPage = () => {

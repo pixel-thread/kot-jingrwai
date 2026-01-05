@@ -6,7 +6,7 @@ import Reanimated, {
   withTiming,
 } from 'react-native-reanimated';
 import { Container } from '~/src/components/Common/Container';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import { apostleCreed } from '~/src/libs/apostle-creed';
 import { ScrollView } from 'react-native-gesture-handler';
 import { View } from 'react-native';

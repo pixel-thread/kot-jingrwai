@@ -1,12 +1,12 @@
 import { View, ScrollView } from 'react-native';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import { tynraiJingrwai } from '@repo/constants';
 import { TynraiJingrwaiT } from '@repo/types';
 import { SongT } from '@repo/types';
 import { ContentSection } from '../../Common/ContentSection';
-import { SongListItem } from '../../Songs/SongListItem';
+import { SongListItem } from '@repo/ui-native';
 import { FlashList } from '@shopify/flash-list';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { Container } from '../../Common/Container';

@@ -3,11 +3,11 @@ const path = require('path');
 const fetch = require('node-fetch');
 require('dotenv').config();
 
-const apiBaseUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000/api';
+const apiBaseUrl = 'https://kot-jingrwai.vercel.app/api' || 'http://localhost:3000/api';
 
 const API_URL = `${apiBaseUrl}/songs`;
 
-const OUTPUT_PATH = path.resolve('src/libs/songs/song.json');
+const OUTPUT_PATH = path.resolve('./src/libs/songs/song.json');
 
 async function fetchRuntimeConfig() {
   const response = await fetch(API_URL);

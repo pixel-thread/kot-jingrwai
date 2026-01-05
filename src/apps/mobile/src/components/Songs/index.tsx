@@ -10,7 +10,7 @@ import { Container } from '~/src/components/Common/Container';
 import { PAGE_SIZE } from '~/src/libs/constant';
 import { NotFoundSong } from './NotFoundSong';
 import { SearchBar } from '../Common/search/SearchBar';
-import { SongListItem } from './SongListItem';
+import { SongListItem } from '@repo/ui-native';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
 
 type Props = {

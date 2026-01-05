@@ -2,7 +2,7 @@ import { View, TouchableOpacity, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import { useSongs } from '~/src/hooks/song/useSongs';
 import { SongT } from '@repo/types';
 import { useColorScheme } from 'nativewind';

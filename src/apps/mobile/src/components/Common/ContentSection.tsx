@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import Reanimated, { FadeInDown } from 'react-native-reanimated';
 import { cn } from '~/src/libs/cn';
 // Helper components

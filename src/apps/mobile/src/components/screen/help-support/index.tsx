@@ -1,5 +1,5 @@
 import { View, ScrollView, TouchableOpacity, Linking } from 'react-native';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';

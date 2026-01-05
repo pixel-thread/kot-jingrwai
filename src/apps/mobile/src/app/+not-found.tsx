@@ -1,6 +1,6 @@
 import { Link, Stack } from 'expo-router';
 import { Container } from '../components/Common/Container';
-import { Text } from '../components/ui/typography';
+import { Text } from '@repo/ui-native';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
 
 export default function NotFoundScreen() {

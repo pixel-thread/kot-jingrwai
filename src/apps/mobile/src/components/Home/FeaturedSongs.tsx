@@ -2,8 +2,7 @@ import { View } from 'react-native';
 import Reanimated, { FadeInUp } from 'react-native-reanimated';
 import { useQuery } from '@tanstack/react-query';
 
-import { Text } from '~/src/components/ui/typography';
-import { FeaturedSongCard } from './FeaturedSongCard';
+import { Text, FeaturedSongCard } from '@repo/ui-native';
 import { getFeaturedSongs } from '~/src/services/songs/getFeaturedSongs';
 import { FlatList } from 'react-native-gesture-handler';
 

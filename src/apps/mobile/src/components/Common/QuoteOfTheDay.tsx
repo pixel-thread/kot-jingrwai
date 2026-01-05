@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { ToastAndroid, TouchableOpacity, View } from 'react-native';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import * as Clipboard from 'expo-clipboard';
 import { Skeleton } from '@repo/ui-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';

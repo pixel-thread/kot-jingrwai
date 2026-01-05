@@ -21,12 +21,12 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate": "tsc -p tsconfig.json",
-    "check-types": "tsc --noEmit",
-    "dev": "tsc -w"
+    "check-types": "tsc --noEmit"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@repo/types": "workspace:*",
     "@types/node": "^22.15.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
