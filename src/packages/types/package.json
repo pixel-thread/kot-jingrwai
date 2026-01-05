@@ -19,7 +19,6 @@
     "generate": "tsc -p tsconfig.json"
   },
   "devDependencies": {
-    "typescript": "^5.4.0",
     "@types/react": "^18.2.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*"

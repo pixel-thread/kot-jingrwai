@@ -81,8 +81,7 @@
     "eslint-plugin-unused-imports": "^4.1.4",
     "or": "^0.2.0",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "tailwindcss": "^3.4.0",
-    "typescript": "~5.8.3"
+    "tailwindcss": "^3.4.0"
   },
   "private": true
 }
