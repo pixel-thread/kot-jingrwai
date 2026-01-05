@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { ToastAndroid, TouchableOpacity, View } from "react-native";
 import { Text } from "../typography";
 import * as Clipboard from "expo-clipboard";
@@ -8,16 +7,16 @@ import { useColorScheme } from "nativewind";
 import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
 import { http } from "@repo/utils";
 import { BibleVerseT as VerseT } from "@repo/types";
+import { useEffect, useState } from "react";
+
+async function getBibleVerse() {
+  return await http.get<VerseT>("/verse");
+}
 
 export const QuoteOfTheDay = () => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === "dark";
-
-  const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["random", "verse"],
-    queryFn: () => http.get<VerseT>("/verse"),
-    select: (data) => data.data,
-  });
+  const [data, setData] = useState<VerseT | null>(null);
 
   const copyToClipboard = async () => {
     if (data?.verse?.details.text) {
@@ -26,11 +25,15 @@ export const QuoteOfTheDay = () => {
     }
   };
 
-  if (!data?.verse) {
-    return null;
-  }
+  useEffect(() => {
+    getBibleVerse().then((res) => setData(res.data));
 
-  if (isLoading || isFetching) {
+    return () => {
+      setData(null);
+    };
+  }, []);
+
+  if (!data) {
     return (
       <Reanimated.View
         entering={FadeIn.duration(500)}

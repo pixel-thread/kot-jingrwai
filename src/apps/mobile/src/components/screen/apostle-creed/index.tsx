@@ -5,7 +5,7 @@ import Reanimated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { Container } from '~/src/components/Common/Container';
+import { Container } from '@repo/ui-native';
 import { Text } from '@repo/ui-native';
 import { apostleCreed } from '~/src/libs/apostle-creed';
 import { ScrollView } from 'react-native-gesture-handler';

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import { useLocalSearchParams } from 'expo-router/build/hooks';
 import { View, TouchableOpacity } from 'react-native';
-import { Container } from '~/src/components/Common/Container';
+import { Container } from '@repo/ui-native';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { LyricView } from '~/src/components/Lyric/LyricView';
 import { getUniqueSongs } from '~/src/services/songs/getUniqueSong';

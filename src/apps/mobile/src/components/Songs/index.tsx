@@ -6,7 +6,7 @@ import Reanimated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { Container } from '~/src/components/Common/Container';
+import { Container } from '@repo/ui-native';
 import { PAGE_SIZE } from '~/src/libs/constant';
 import { NotFoundSong } from './NotFoundSong';
 import { SearchBar } from '@repo/ui-native';

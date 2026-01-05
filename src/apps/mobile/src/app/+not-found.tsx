@@ -1,5 +1,5 @@
 import { Link, Stack } from 'expo-router';
-import { Container } from '../components/Common/Container';
+import { Container } from '@repo/ui-native';
 import { Text } from '@repo/ui-native';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
 

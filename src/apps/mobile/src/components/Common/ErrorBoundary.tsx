@@ -2,7 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Text } from '../ui/typography';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
-import { Container } from './Container';
+import { Container } from '@repo/ui-native';;
 import { logger } from '../../utils/logger';
 
 interface ErrorBoundaryProps {

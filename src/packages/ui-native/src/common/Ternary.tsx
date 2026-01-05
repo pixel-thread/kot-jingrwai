@@ -4,6 +4,10 @@ type TernaryProps = {
   ifFalse: React.ReactNode;
 };
 
-export const Ternary = ({ condition, ifTrue, ifFalse }: TernaryProps) => {
+export const Ternary = ({
+  condition,
+  ifTrue,
+  ifFalse,
+}: TernaryProps): React.ReactNode => {
   return condition ? ifTrue : ifFalse;
 };

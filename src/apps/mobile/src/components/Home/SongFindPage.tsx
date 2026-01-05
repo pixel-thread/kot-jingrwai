@@ -12,7 +12,7 @@ import Reanimated, {
 } from 'react-native-reanimated';
 
 import { SongList } from '~/src/components/Home/SongList';
-import { Container } from '~/src/components/Common/Container';
+import { Container } from '@repo/ui-native';
 import { Text } from '@repo/ui-native';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { cn } from '@repo/libs';
