@@ -1,3 +1,4 @@
+import { cn } from "@repo/libs";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 import { Text as RNText, TextProps as RNTextProps } from "react-native";

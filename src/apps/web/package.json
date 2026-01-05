@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@repo/constants": "workspace:*",
-    "@repo/ui": "workspace:*",
     "@repo/types": "workspace:*",
     "@repo/utils": "workspace:*",
     "@repo/typescript-config": "workspace:*",
