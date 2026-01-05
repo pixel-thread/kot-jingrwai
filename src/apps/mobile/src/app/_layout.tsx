@@ -10,7 +10,7 @@ import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
 import Entypo from '@expo/vector-icons/Entypo';
-import { logger } from '../utils/logger';
+import { logger } from '@repo/utils';
 import { useOnboardingStore } from '../libs/stores/onboarding';
 import Onboarding from '../components/Onboarding';
 import { Ternary } from '../components/Common/Ternary';

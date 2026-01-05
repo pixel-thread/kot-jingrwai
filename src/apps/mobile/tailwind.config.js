@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,ts,tsx}'],
+  content: [
+    './src/**/*.{js,ts,tsx}',
+    '../../packages/ui-native/src/**/*.{js,ts,tsx}',
+    '../../packages/libs/src/**/*.{js,ts,tsx}',
+  ],
   darkMode: 'class', // Enable class-based dark mode
   presets: [require('nativewind/preset')],
   theme: {

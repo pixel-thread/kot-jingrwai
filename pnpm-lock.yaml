@@ -40,6 +40,9 @@ importers:
       '@repo/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@repo/libs':
+        specifier: workspace:*
+        version: link:../../packages/libs
       '@repo/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -161,6 +164,12 @@ importers:
       '@babel/core':
         specifier: ^7.20.0
         version: 7.28.5
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       '@types/react':
         specifier: ~19.0.10
         version: 19.0.14

@@ -31,6 +31,7 @@
     "@repo/constants": "workspace:*",
     "@repo/utils": "workspace:*",
     "@repo/ui-native": "workspace:*",
+    "@repo/libs": "workspace:*",
     "@expo/vector-icons": "^14.0.0",
     "@react-native-async-storage/async-storage": "2.1.2",
     "@react-navigation/drawer": "^7.3.9",
@@ -73,6 +74,8 @@
     "zustand": "^4.5.7"
   },
   "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@babel/core": "^7.20.0",
     "@types/react": "~19.0.10",
     "add": "^2.0.6",

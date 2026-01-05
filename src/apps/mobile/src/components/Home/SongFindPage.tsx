@@ -13,9 +13,9 @@ import Reanimated, {
 
 import { SongList } from '~/src/components/Home/SongList';
 import { Container } from '~/src/components/Common/Container';
-import { Text } from '~/src/components/ui/typography';
+import { Text } from '@repo/ui-native';
 import { useSongStore } from '~/src/libs/stores/songs';
-import { cn } from '~/src/libs/cn';
+import { cn } from '@repo/libs';
 
 import { Ternary } from '../Common/Ternary';
 import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
