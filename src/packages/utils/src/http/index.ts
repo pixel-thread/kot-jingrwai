@@ -50,7 +50,7 @@ const handleResponse = <T>(
   };
 };
 
-const http = {
+export const http = {
   get: async <T>(
     url: string,
     config?: AxiosRequestConfig,
@@ -105,5 +105,3 @@ const http = {
     }
   },
 };
-
-export default http;

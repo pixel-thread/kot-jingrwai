@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { Text } from '~/src/components/ui/typography';
 import * as Clipboard from 'expo-clipboard';
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from '@repo/ui-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import http from '~/src/utils/http';
+import { http } from '@repo/utils';
 import { VerseT } from '~/src/types/verse';
 
 export const QuoteOfTheDay = () => {

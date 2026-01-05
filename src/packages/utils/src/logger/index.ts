@@ -1,4 +1,4 @@
-import http from "../http";
+import { http } from "../http";
 
 type ErrorType = "ERROR" | "INFO" | "WARN" | "LOG";
 
