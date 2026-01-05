@@ -34,8 +34,10 @@
   },
   "dependencies": {
     "@repo/libs": "workspace:*",
+    "class-variance-authority": "^0.7.1"
+  },
+  "peerDependencies": {
     "react": "*",
-    "react-dom": "*",
     "react-native": "*"
   }
 }
