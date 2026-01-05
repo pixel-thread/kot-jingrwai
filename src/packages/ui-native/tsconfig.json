@@ -1,13 +1,16 @@
 {
   "extends": "@repo/typescript-config/react-native.json",
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "outDir": "dist"
+    // "module": "esnext",
+    // "moduleResolution": "bundler",
+    "outDir": "dist",
+    "rootDir":"./src"
   },
   "include": [
     "src",
-    "nativewind-env.d.ts" 
+    "nativewind-env.d.ts",
+    "src/**/*"
   ],
   "exclude": ["node_modules", "dist"]
 }
+
