@@ -5,7 +5,7 @@ import { gray } from 'tailwindcss/colors';
 import { Text } from '../ui/typography';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { ReactNode } from 'react';
-import { Ternary } from './Ternary';
+import { Ternary } from '@repo/ui-native';
 import { useEffect } from 'react';
 
 import Reanimated, {

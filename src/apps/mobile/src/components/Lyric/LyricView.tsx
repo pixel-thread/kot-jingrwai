@@ -16,7 +16,7 @@ import Reanimated, {
   withTiming,
   useAnimatedRef,
 } from 'react-native-reanimated';
-import { Ternary } from '../Common/Ternary';
+import { Ternary } from '@repo/ui-native';
 import { useKeepAwake } from 'expo-keep-awake';
 import { copyToClipboard } from '~/src/utils/copyToClipboard';
 import { FloatingActionButtons } from '../Common/FloatingActionButtons';

@@ -523,6 +523,9 @@ importers:
       '@repo/libs':
         specifier: workspace:*
         version: link:../libs
+      '@repo/utils':
+        specifier: workspace:*
+        version: link:../utils
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1

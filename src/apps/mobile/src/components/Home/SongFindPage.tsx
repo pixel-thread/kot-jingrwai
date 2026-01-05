@@ -17,8 +17,8 @@ import { Text } from '@repo/ui-native';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { cn } from '@repo/libs';
 
-import { Ternary } from '../Common/Ternary';
-import { QuoteOfTheDay } from '../Common/QuoteOfTheDay';
+import { Ternary } from '@repo/ui-native';
+import { QuoteOfTheDay } from '@repo/ui-native';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
 import { Button } from '@repo/ui-native';
 import { FeaturedSongs } from './FeaturedSongs';

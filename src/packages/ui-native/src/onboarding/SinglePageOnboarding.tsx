@@ -10,10 +10,13 @@ import { Button } from "../button";
 type Props = {
   setHasCompletedOnboarding: (hasCompletedOnboarding: boolean) => void;
   onContinueAsGuest: () => void;
+  onContinueWithGoogle: () => void;
 };
+
 export function SinglePageOnboarding({
   setHasCompletedOnboarding,
   onContinueAsGuest,
+  onContinueWithGoogle,
 }: Props) {
   // Animation value for buttons
   const scaleLogin = useSharedValue(1);
@@ -23,6 +26,7 @@ export function SinglePageOnboarding({
     console.log("Login with Google");
     scaleLogin.value = withSpring(0.95, { duration: 100 });
     setTimeout(() => (scaleLogin.value = withSpring(1)), 200);
+    onContinueWithGoogle();
   };
 
   const handleGuest = () => {
