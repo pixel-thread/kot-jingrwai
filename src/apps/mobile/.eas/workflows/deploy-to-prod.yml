@@ -1,8 +1,8 @@
 name: EAS Production Deployment
 
-on:
-  push:
-    branches: ['master']
+# on:
+#   push:
+#     branches: ['master']
 
 jobs:
   fingerprint:
