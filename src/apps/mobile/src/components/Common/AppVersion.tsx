@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
-import { AppUpdateT } from '~/src/types/AppVersion';
+import { AppUpdateT } from '@repo/types';
 import { Text } from '@repo/ui-native';
 import { useColorScheme } from 'nativewind';
 import { MaterialCommunityIcons } from '@expo/vector-icons';

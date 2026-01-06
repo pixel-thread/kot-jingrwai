@@ -1,4 +1,3 @@
-import { View } from 'react-native';
 import { ApostleCreedPage } from '~/src/components/screen/apostle-creed';
 
 export default function page() {

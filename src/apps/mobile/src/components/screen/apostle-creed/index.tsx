@@ -61,7 +61,18 @@ export const ApostleCreedPage = () => {
                     leading={'loose'}
                     tracking={'normal'}
                     className="text-gray-800 dark:text-white">
-                    {indent(paragraph.lines)}
+                    {paragraph.lines.map((line, index) => (
+                      <Text
+                        key={index}
+                        size={size}
+                        weight={'bold'}
+                        align={'justify'}
+                        leading={'loose'}
+                        tracking={'normal'}
+                        className="text-gray-800 dark:text-white">
+                        &nbsp; {line.text}
+                      </Text>
+                    ))}
                   </Text>
                 </Reanimated.View>
               ))}

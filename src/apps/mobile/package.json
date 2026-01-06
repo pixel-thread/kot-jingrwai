@@ -28,7 +28,6 @@
     "update:prod": "eas update --branch production --message \"Production update\""
   },
   "dependencies": {
-    "@repo/types": "workspace:*",
     "@repo/constants": "workspace:*",
     "@repo/utils": "workspace:*",
     "@repo/ui-native": "workspace:*",
@@ -41,8 +40,6 @@
     "@tanstack/react-query": "^5.81.5",
     "axios": "^1.9.0",
     "babel-plugin-inline-import": "^3.0.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
     "expo": "~53.0.24",
     "expo-audio": "~0.4.9",
     "expo-clipboard": "~7.1.5",
@@ -71,12 +68,12 @@
     "react-native-uuid": "^2.0.3",
     "react-native-web": "^0.20.0",
     "react-native-worklets-core": "^1.6.2",
-    "tailwind-merge": "^3.3.0",
     "zustand": "^4.5.7"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@repo/types": "workspace:*",
     "@babel/core": "^7.20.0",
     "@types/react": "~19.0.10",
     "add": "^2.0.6",
