@@ -5,8 +5,7 @@ import Reanimated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { Container } from '@repo/ui-native';
-import { Text } from '@repo/ui-native';
+import { Container, Text } from '@repo/ui-native';
 import { apostleCreed } from '~/src/libs/apostle-creed';
 import { ScrollView } from 'react-native-gesture-handler';
 import { View } from 'react-native';
@@ -14,14 +13,13 @@ import { useTextStore } from '~/src/libs/stores/text';
 
 export const ApostleCreedPage = () => {
   const { size } = useTextStore();
-
-  const indent = (text: string[], spaces = 4) => `${'\u00A0\u00A0'.repeat(spaces)}${text}`;
   const headerOpacity = useSharedValue(0);
   const listOpacity = useSharedValue(0);
 
   useEffect(() => {
     headerOpacity.value = withTiming(1, { duration: 800 });
     listOpacity.value = withTiming(1, { duration: 1000 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const headerAnimatedStyle = useAnimatedStyle(() => {

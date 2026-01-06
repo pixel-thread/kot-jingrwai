@@ -1,11 +1,10 @@
 import { View, ScrollView } from 'react-native';
-import { Text } from '@repo/ui-native';
+import { Text, ContentSection, Container } from '@repo/ui-native';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { tynraiJingrwai } from '@repo/constants';
 import { TynraiJingrwaiT } from '@repo/types';
 import { CategoryItem } from './CategoryItems';
-import { ContentSection } from '@repo/ui-native';import { useRouter } from 'expo-router';
-import { Container } from '@repo/ui-native';
+import { useRouter } from 'expo-router';
 
 export default function TynraiJingrwaiScreen() {
   const router = useRouter();

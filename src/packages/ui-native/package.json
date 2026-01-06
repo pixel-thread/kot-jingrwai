@@ -4,6 +4,7 @@
   "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -19,7 +20,6 @@
     }
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
     "generate": "tsc -p tsconfig.json",
     "check-types": "tsc --noEmit",
     "dev": "tsc -w -p tsconfig.json"

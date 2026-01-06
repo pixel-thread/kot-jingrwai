@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import { cn } from '@repo/libs';
-import { MiniMusicPlayer } from './MiniMusicPlayer';
 
 type Props = {
   className?: string;
@@ -9,10 +8,6 @@ type Props = {
 };
 
 export const FloatingActionButtons = ({ className, children }: Props) => {
-  const [isVisible, setIsVisible] = React.useState(true);
-
-  if (!isVisible) return null;
-
   return (
     <View
       pointerEvents="box-none"

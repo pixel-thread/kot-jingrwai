@@ -1,11 +1,11 @@
 import { View, Alert, TouchableOpacity, ScrollView } from 'react-native';
-import { Text } from '@repo/ui-native';
+import { Text, ContentSection, Container } from '@repo/ui-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import * as Linking from 'expo-linking';
-import { ContentSection } from '@repo/ui-native';import { Container } from '@repo/ui-native';
+import { logger } from '@repo/utils';
 
 export default function ReportScreen() {
   const { colorScheme } = useColorScheme();
@@ -22,10 +22,14 @@ export default function ReportScreen() {
   }, []);
 
   const openEmail = async (subject: string, body: string) => {
-    const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const supported = true;
-    supported ? Linking.canOpenURL(url) : Alert.alert('Error', 'Email app is not available.');
-    return;
+    try {
+      const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      Linking.canOpenURL(url);
+      return;
+    } catch (error) {
+      logger.error('Unable to open email app', error);
+      Alert.alert('Error', 'Email app is not available.');
+    }
   };
 
   return (

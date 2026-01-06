@@ -4,15 +4,22 @@ import { ThemeToggle } from '@repo/ui-native';
 
 import Reanimated, { FadeIn } from 'react-native-reanimated';
 import TynraiJingrwaiScreen from '~/src/components/screen/tynrai-jingrwai';
+import { useThemeStore } from '~/src/libs/stores/theme';
 
-export default function page() {
+const TynraiJingrwaiPage = () => {
+  const { theme, setTheme } = useThemeStore();
+
   return (
     <Reanimated.View entering={FadeIn.duration(300)} className="flex-1">
       <Stack.Screen
         name="Tynrai Jingrwai"
         options={{
           header: ({ options }) => (
-            <CustomHeader options={options} back headerRight={<ThemeToggle />} />
+            <CustomHeader
+              back
+              options={options}
+              headerRight={<ThemeToggle theme={theme} setTheme={setTheme} />}
+            />
           ),
           title: 'Tynrai Jingrwai',
           headerShown: true,
@@ -23,4 +30,6 @@ export default function page() {
       <TynraiJingrwaiScreen />
     </Reanimated.View>
   );
-}
+};
+
+export default TynraiJingrwaiPage;

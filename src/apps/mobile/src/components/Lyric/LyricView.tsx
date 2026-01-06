@@ -1,7 +1,7 @@
 import { View, Platform, TouchableOpacity } from 'react-native';
 import { cn } from '@repo/libs';
 import { SongT } from '@repo/types';
-import { Text } from '@repo/ui-native';
+import { Text, Ternary } from '@repo/ui-native';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { useEffect } from 'react';
 import { useColorScheme } from 'nativewind';
@@ -16,7 +16,6 @@ import Reanimated, {
   withTiming,
   useAnimatedRef,
 } from 'react-native-reanimated';
-import { Ternary } from '@repo/ui-native';
 import { useKeepAwake } from 'expo-keep-awake';
 import { copyToClipboard } from '~/src/utils/copyToClipboard';
 import { FloatingActionButtons } from '../Common/FloatingActionButtons';

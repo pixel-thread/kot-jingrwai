@@ -3,7 +3,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactNative from "eslint-plugin-react-native";
 import importPlugin from "eslint-plugin-import";
 import tailwindcss from "eslint-plugin-tailwindcss";
-import { config as baseConfig } from "./base";
+import { config as baseConfig } from "./base.js";
 
 /**
  * React Native + Expo + NativeWind ESLint config

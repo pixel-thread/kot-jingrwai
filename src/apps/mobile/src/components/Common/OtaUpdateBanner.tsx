@@ -144,6 +144,7 @@ export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = 
     } else {
       hideBanner();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOtaUpdate, status]);
 
   // Optional auto-hide after terminal states
@@ -155,6 +156,7 @@ export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = 
       }, 800);
       return () => clearTimeout(t);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
   const isVisible =

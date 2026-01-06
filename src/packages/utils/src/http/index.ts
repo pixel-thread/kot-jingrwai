@@ -1,6 +1,4 @@
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
-
-import { logger } from "../logger";
 import axiosInstance from "../api";
 
 export interface ApiResponse<T> {
@@ -56,7 +54,9 @@ export const http = {
     config?: AxiosRequestConfig,
   ): Promise<ApiResponse<T>> => {
     try {
-      logger.log({ method: "GET =>", path: url });
+      if (process.env.NODE_ENV === "development") {
+        console.log("[HTTP] GET =>", url);
+      }
       const response = await axiosInstance.get(url, config);
       return handleResponse<T>(response);
     } catch (error) {
@@ -70,7 +70,9 @@ export const http = {
     config?: AxiosRequestConfig,
   ): Promise<ApiResponse<T>> => {
     try {
-      logger.log({ method: "POST =>", path: url });
+      if (process.env.NODE_ENV === "development") {
+        console.log("[HTTP] POST =>", url);
+      }
       const response = await axiosInstance.post(url, data, config);
       return handleResponse<T>(response);
     } catch (error) {
@@ -84,7 +86,9 @@ export const http = {
     config?: AxiosRequestConfig,
   ): Promise<ApiResponse<T>> => {
     try {
-      logger.log({ method: "PUT =>", path: url });
+      if (process.env.NODE_ENV === "development") {
+        console.log("[HTTP] PUT =>", url);
+      }
       const response = await axiosInstance.put(url, data, config);
       return handleResponse<T>(response);
     } catch (error) {
@@ -97,7 +101,9 @@ export const http = {
     config?: AxiosRequestConfig,
   ): Promise<ApiResponse<T>> => {
     try {
-      logger.log({ method: "DELETE =>", path: url });
+      if (process.env.NODE_ENV === "development") {
+        console.log("[HTTP] DELETE =>", url);
+      }
       const response = await axiosInstance.delete(url, config);
       return handleResponse<T>(response);
     } catch (error) {

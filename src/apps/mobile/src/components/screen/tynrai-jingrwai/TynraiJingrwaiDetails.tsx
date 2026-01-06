@@ -1,15 +1,11 @@
 import { View, ScrollView } from 'react-native';
-import { Text } from '@repo/ui-native';
+import { Text, ContentSection, SongListItem, Container } from '@repo/ui-native';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import { tynraiJingrwai } from '@repo/constants';
-import { TynraiJingrwaiT } from '@repo/types';
-import { SongT } from '@repo/types';
-import { ContentSection } from '@repo/ui-native';
-import { SongListItem } from '@repo/ui-native';
+import { TynraiJingrwaiT, SongT } from '@repo/types';
 import { FlashList } from '@shopify/flash-list';
 import { useSongs } from '~/src/hooks/song/useSongs';
-import { Container } from '@repo/ui-native';
 
 type Props = {
   id: string;
@@ -39,6 +35,7 @@ export const TynraijingrwaiDetails = ({ id }: Props) => {
 
   useEffect(() => {
     filterSongsByRange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const renderSongDropdown = (song: SongT) => {

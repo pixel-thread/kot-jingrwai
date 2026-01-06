@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { UpdateContext } from '~/src/context/update';
 import { AnalyticsService } from '~/src/services/analytic/AnalyticsService';
 import * as Constants from 'expo-constants';
-import http from '@repo/utils';
-import { AppUpdateT } from '~/src/types/AppVersion';
+import { http } from '@repo/utils';
+import { AppUpdateT } from '@repo/types';
 import { compareAppVersions } from '~/src/utils/compareAppVersion';
 import AppVersion from '../../Common/AppVersion';
 import { Platform } from 'react-native';
 import { OtaUpdateServices } from '~/src/services/update/checkForOtaUpdate';
-import { UPDATE_ENDPOINTS } from '~/src/libs/endpoints/update';
+import { UPDATE_ENDPOINTS } from '@repo/constants';
 
 const currentAppVersion = Constants.default.expoConfig?.version || '0.0.1';
 

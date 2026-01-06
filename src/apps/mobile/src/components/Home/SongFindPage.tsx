@@ -12,15 +12,11 @@ import Reanimated, {
 } from 'react-native-reanimated';
 
 import { SongList } from '~/src/components/Home/SongList';
-import { Container } from '@repo/ui-native';
-import { Text } from '@repo/ui-native';
+import { Container, Text, Ternary, QuoteOfTheDay, Button } from '@repo/ui-native';
 import { useSongStore } from '~/src/libs/stores/songs';
 import { cn } from '@repo/libs';
 
-import { Ternary } from '@repo/ui-native';
-import { QuoteOfTheDay } from '@repo/ui-native';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
-import { Button } from '@repo/ui-native';
 import { FeaturedSongs } from './FeaturedSongs';
 
 export const SongFinderPage = () => {
@@ -63,6 +59,7 @@ export const SongFinderPage = () => {
 
     scale.value = withSpring(1, { damping: 12 });
     opacity.value = withTiming(1, { duration: 1000 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

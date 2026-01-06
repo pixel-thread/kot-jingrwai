@@ -1,13 +1,12 @@
 import { router, Stack } from 'expo-router';
 import { View, ScrollView, TouchableOpacity, Switch, Linking } from 'react-native';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { Text, ContentSection, ThemeSelector } from '@repo/ui-native';
+import { Text, ContentSection, ThemeSelector, ThemeToggle } from '@repo/ui-native';
 import { useState } from 'react';
 import { useColorScheme } from 'nativewind';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useTextStore } from '~/src/libs/stores/text';
-import { ThemeToggle } from '@repo/ui-native';
 import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
 import { useThemeStore } from '~/src/libs/stores/theme';
 
@@ -37,7 +36,11 @@ export default function Settings() {
           headerTitleAlign: 'center',
           headerBackTitle: 'Back',
           header: ({ options }) => (
-            <CustomHeader options={options} back headerRight={<ThemeToggle />} />
+            <CustomHeader
+              options={options}
+              back
+              headerRight={<ThemeToggle theme={theme} setTheme={setTheme} />}
+            />
           ),
         }}
       />

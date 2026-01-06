@@ -1,9 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Network from 'expo-network';
-import http from '@repo/utils';
+import { http } from '@repo/utils';
 import uuid from 'react-native-uuid';
 import * as Constant from 'expo-constants';
-import { ANALYTIC_ENDPOINTS } from '~/src/libs/endpoints/analytic';
+import { ANALYTIC_ENDPOINTS } from '@repo/constants';
 const USER_ID_KEY = 'user_id';
 
 const SYNC_PENDING_KEY = 'pending_user_sync';

@@ -1,8 +1,7 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Text } from '@repo/ui-native';
+import { Text , Container } from '@repo/ui-native';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
-import { Container } from '@repo/ui-native';
 import { logger } from '@repo/utils';
 
 interface ErrorBoundaryProps {

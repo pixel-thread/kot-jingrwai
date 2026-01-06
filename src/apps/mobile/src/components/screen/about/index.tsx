@@ -1,12 +1,9 @@
 import { View, ScrollView } from 'react-native';
-import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import { Container, ContentSection, Text } from '@repo/ui-native';
 
 export const AboutScreen = () => {
-  const { colorScheme } = useColorScheme();
-
   // Animation values
   const [contentVisible, setContentVisible] = useState(false);
 

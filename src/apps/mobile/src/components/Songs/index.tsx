@@ -6,11 +6,8 @@ import Reanimated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { Container } from '@repo/ui-native';
+import { Container, NotFoundSong, SearchBar, SongListItem } from '@repo/ui-native';
 import { PAGE_SIZE } from '~/src/libs/constant';
-import { NotFoundSong } from '@repo/ui-native';
-import { SearchBar } from '@repo/ui-native';
-import { SongListItem } from '@repo/ui-native';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
 
 type Props = {
@@ -29,17 +26,21 @@ export const AllSongPage = ({ isKhorus }: Props) => {
   useEffect(() => {
     headerOpacity.value = withTiming(1, { duration: 800 });
     listOpacity.value = withTiming(1, { duration: 1000 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const paginatedSongs = filteredSongs?.slice(0, page * PAGE_SIZE);
 
+  const filteredSongsLength = filteredSongs?.length;
+  const paginatedSongsLength = paginatedSongs?.length;
+
   const loadMore = useCallback(() => {
     if (paginatedSongs && filteredSongs) {
-      if (paginatedSongs?.length < filteredSongs?.length) {
+      if (paginatedSongsLength < filteredSongsLength) {
         setPage((prev) => prev + 1);
       }
     }
-  }, [paginatedSongs?.length, filteredSongs?.length]);
+  }, [paginatedSongs, filteredSongs, paginatedSongsLength, filteredSongsLength]);
 
   const onSearch = useCallback((query: string) => {
     setSearchQuery(query);

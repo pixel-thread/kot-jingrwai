@@ -2,6 +2,7 @@ import { Stack, useLocalSearchParams } from 'expo-router';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import { ThemeToggle } from '@repo/ui-native';
 import { AllSongPage } from '~/src/components/Songs';
+import { useThemeStore } from '~/src/libs/stores/theme';
 
 type RouteParams = {
   isChorus?: string;
@@ -9,6 +10,7 @@ type RouteParams = {
 
 export default function Song() {
   const { isChorus } = useLocalSearchParams<RouteParams>();
+  const { theme, setTheme } = useThemeStore();
 
   return (
     <>
@@ -17,7 +19,11 @@ export default function Song() {
           headerShown: true,
           title: isChorus === 'true' ? 'Ki Khorus' : 'Ki Jingrwai',
           header: ({ options }) => (
-            <CustomHeader options={options} back headerRight={<ThemeToggle />} />
+            <CustomHeader
+              options={options}
+              back
+              headerRight={<ThemeToggle theme={theme} setTheme={setTheme} />}
+            />
           ),
         }}
       />

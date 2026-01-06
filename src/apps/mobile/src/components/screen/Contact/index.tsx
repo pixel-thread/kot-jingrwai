@@ -1,11 +1,11 @@
 import { View, Alert, TouchableOpacity, ScrollView } from 'react-native';
-import { Text } from '@repo/ui-native';
+import { Text, ContentSection, Container } from '@repo/ui-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
-import { ContentSection } from '@repo/ui-native';import * as Linking from 'expo-linking';
-import { Container } from '@repo/ui-native';
+import * as Linking from 'expo-linking';
+import { logger } from '@repo/utils';
 
 export default function ContactScreen() {
   const { colorScheme } = useColorScheme();
@@ -25,9 +25,13 @@ export default function ContactScreen() {
   }, []);
 
   const openEmail = async () => {
-    const url = `mailto:${email}`;
-    const supported = true;
-    supported ? Linking.openURL(url) : Alert.alert('Error', 'Email app is not available.');
+    try {
+      const url = `mailto:${email}`;
+      Linking.openURL(url);
+    } catch (error) {
+      logger.error('Unable to open email app', error);
+      Alert.alert('Error', 'Unable to open the email app.');
+    }
   };
 
   const openPhone = async (phone: string) => {
@@ -42,13 +46,18 @@ export default function ContactScreen() {
       }
       await Linking.openURL(url);
     } catch (err) {
+      logger.error('Unable to open phone dialer', err);
       Alert.alert('Error', 'Unable to open the phone dialer.');
     }
   };
 
   const openMap = async () => {
-    const supported = true;
-    supported ? Linking.openURL(mapUrl) : Alert.alert('Error', 'Map app is not available.');
+    try {
+      Linking.openURL(mapUrl);
+    } catch (error) {
+      logger.error('Unable to open map app', error);
+      Alert.alert('Error', 'Map app is not available.');
+    }
   };
 
   return (
