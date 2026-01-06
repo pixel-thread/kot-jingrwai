@@ -14,7 +14,7 @@ import { logger } from '@repo/utils';
 import { useOnboardingStore } from '../libs/stores/onboarding';
 import Onboarding from '../components/Onboarding';
 import { Ternary } from '@repo/ui-native';
-import { ErrorBoundary } from '../components/Common/ErrorBoundary';
+import { ErrorBoundary } from '@repo/ui-native';
 import { UpdateContextProvider } from '../components/Provider/update';
 import { OtaUpdateBanner } from '../components/Common/OtaUpdateBanner';
 

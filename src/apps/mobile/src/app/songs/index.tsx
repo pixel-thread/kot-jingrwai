@@ -1,6 +1,6 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { ThemeToggle } from '@repo/ui-native';
 import { AllSongPage } from '~/src/components/Songs';
 
 type RouteParams = {

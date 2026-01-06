@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { cn } from '~/src/libs/cn';
+import { cn } from '@repo/libs';
 import { MiniMusicPlayer } from './MiniMusicPlayer';
 
 type Props = {

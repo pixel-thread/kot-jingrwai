@@ -1,4 +1,4 @@
-import { EndpointT } from '~/src/types/endpoint';
+import { EndpointT } from '@repo/types';
 
 type SongEnpoints = 'GET_SONGS' | 'GET_SONG_TRACK' | 'GET_SONG';
 

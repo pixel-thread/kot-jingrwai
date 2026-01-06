@@ -5,8 +5,7 @@ import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
 import * as Linking from 'expo-linking';
-import { ContentSection } from '../../Common/ContentSection';
-import { Container } from '../../Common/Container';
+import { ContentSection } from '@repo/ui-native';import { Container } from '@repo/ui-native';
 
 export default function ReportScreen() {
   const { colorScheme } = useColorScheme();

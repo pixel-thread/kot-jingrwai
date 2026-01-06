@@ -1,6 +1,6 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { ThemeToggle } from '@repo/ui-native';
 
 import Reanimated, { FadeIn } from 'react-native-reanimated';
 import { TynraijingrwaiDetails } from '~/src/components/screen/tynrai-jingrwai/TynraiJingrwaiDetails';

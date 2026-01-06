@@ -4,7 +4,7 @@ import { useColorScheme } from 'nativewind';
 import { TouchableOpacity, View } from 'react-native';
 import { gray } from 'tailwindcss/colors';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { ThemeToggle } from '@repo/ui-native';
 import { useTextStore } from '~/src/libs/stores/text';
 
 const HeaderRight = () => {

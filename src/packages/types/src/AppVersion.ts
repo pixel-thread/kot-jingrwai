@@ -1,10 +1,10 @@
-export type AppUpdateType = 'PTA' | 'OTA';
+export type AppUpdateType = "PTA" | "OTA";
 
-export type AppUpdateStatus = 'ACTIVE' | 'INACTIVE' | 'DEPRECATED';
+export type AppUpdateStatus = "ACTIVE" | "INACTIVE" | "DEPRECATED";
 
-export type AppUpdatePlatform = 'ANDROID' | 'IOS';
+export type AppUpdatePlatform = "ANDROID" | "IOS";
 
-export type AppUpdateTag = 'BETA' | 'STABLE' | 'PATCH';
+export type AppUpdateTag = "BETA" | "STABLE" | "PATCH";
 
 export interface AppUpdateT {
   id: string;

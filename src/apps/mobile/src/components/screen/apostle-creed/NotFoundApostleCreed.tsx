@@ -4,7 +4,7 @@ import colors from 'tailwindcss/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import { Container } from '../../Common/Container';
+import { Container } from '@repo/ui-native';
 import { Text } from '../../ui/typography';
 import { Button } from '../../ui/button';
 

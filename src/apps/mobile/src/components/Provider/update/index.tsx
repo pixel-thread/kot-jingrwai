@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { UpdateContext } from '~/src/context/update';
 import { AnalyticsService } from '~/src/services/analytic/AnalyticsService';
 import * as Constants from 'expo-constants';
-import http from '~/src/utils/http';
+import http from '@repo/utils';
 import { AppUpdateT } from '~/src/types/AppVersion';
 import { compareAppVersions } from '~/src/utils/compareAppVersion';
 import AppVersion from '../../Common/AppVersion';

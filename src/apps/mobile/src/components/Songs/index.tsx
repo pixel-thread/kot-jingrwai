@@ -8,7 +8,7 @@ import Reanimated, {
 } from 'react-native-reanimated';
 import { Container } from '@repo/ui-native';
 import { PAGE_SIZE } from '~/src/libs/constant';
-import { NotFoundSong } from './NotFoundSong';
+import { NotFoundSong } from '@repo/ui-native';
 import { SearchBar } from '@repo/ui-native';
 import { SongListItem } from '@repo/ui-native';
 import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';

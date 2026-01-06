@@ -1,6 +1,6 @@
 import * as Updates from 'expo-updates';
 import * as Network from 'expo-network';
-import { logger } from '~/src/utils/logger';
+import { logger } from '@repo/utils';
 
 export const OtaUpdateServices = {
   async checkForOtaUpdate(): Promise<boolean> {

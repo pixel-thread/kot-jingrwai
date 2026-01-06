@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { ThemeToggle } from '@repo/ui-native';
 import { AboutScreen } from '~/src/components/screen/about';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
 

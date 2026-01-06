@@ -1,12 +1,12 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Text } from '../ui/typography';
+import { Text } from '@repo/ui-native';
 import { ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { useSongTrack } from '~/src/hooks/song/useSongTrack';
 import { useAudioPlayer } from 'expo-audio';
 import { SongT } from '@repo/types';
-import { cn } from '~/src/libs/cn';
+import { cn } from '@repo/libs';
 import { useQuery } from '@tanstack/react-query';
 import { getSongs } from '~/src/services/songs/getSongs';
 import { useRouter } from 'expo-router';
@@ -14,6 +14,7 @@ import { useRouter } from 'expo-router';
 type Props = {
   song: SongT;
 };
+
 export const MiniMusicPlayer = ({ song }: Props) => {
   const { colorScheme } = useColorScheme();
   const router = useRouter();

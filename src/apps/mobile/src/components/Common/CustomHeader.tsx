@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import { Platform, TouchableOpacity, View } from 'react-native';
 import { gray } from 'tailwindcss/colors';
-import { Text } from '../ui/typography';
+import { Text } from '@repo/ui-native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { ReactNode } from 'react';
 import { Ternary } from '@repo/ui-native';

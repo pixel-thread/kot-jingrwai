@@ -1,17 +1,18 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ThemeT } from '@repo/types';
 
 type UseThemeStoreT = {
-  theme: 'light' | 'dark' | 'system';
-  setTheme: (theme: 'light' | 'dark' | 'system') => void;
+  theme: ThemeT;
+  setTheme: (theme: ThemeT) => void;
 };
 
 export const useThemeStore = create<UseThemeStoreT>()(
   persist(
     (set) => ({
       theme: 'light',
-      setTheme: (theme: 'light' | 'dark' | 'system') => set({ theme }),
+      setTheme: (theme: ThemeT) => set({ theme }),
     }),
 
     {

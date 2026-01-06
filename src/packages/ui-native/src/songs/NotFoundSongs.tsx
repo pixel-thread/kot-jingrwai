@@ -1,18 +1,18 @@
-import { Container } from '../Common/Container';
-import { Text } from '../ui/typography';
-import { View } from 'react-native';
-import { useColorScheme } from 'nativewind';
-import colors from 'tailwindcss/colors';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import { Button } from '@repo/ui-native';
+import { Container } from "../common";
+import { Text } from "../typography";
+import { View } from "react-native";
+import { useColorScheme } from "nativewind";
+import colors from "tailwindcss/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
+import { Button } from "../button";
 
 type NotFoundSongProps = {
   reset: () => void;
 };
 export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
 
   return (
     <Container className="h-full">
@@ -27,7 +27,8 @@ export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
             shadowRadius: 8,
             elevation: 5,
           },
-        ]}>
+        ]}
+      >
         <Reanimated.View entering={FadeInDown.delay(300).duration(800)}>
           <View className="mb-6 h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600">
             <MaterialCommunityIcons name="music-off" size={48} color="white" />
@@ -36,17 +37,22 @@ export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
 
         <Reanimated.View entering={FadeInDown.delay(500).duration(800)}>
           <Text
-            size={'3xl'}
-            weight={'bold'}
-            className="mb-3 text-center text-gray-800 dark:text-white">
+            size={"3xl"}
+            weight={"bold"}
+            className="mb-3 text-center text-gray-800 dark:text-white"
+          >
             Song Not Found
           </Text>
         </Reanimated.View>
 
         <Reanimated.View entering={FadeInDown.delay(700).duration(800)}>
-          <Text size={'lg'} align={'center'} className="mb-6 text-gray-600 dark:text-gray-300">
-            We couldn&apos;t find the song you&apos;re looking for. Try searching again or return to
-            the home page.
+          <Text
+            size={"lg"}
+            align={"center"}
+            className="mb-6 text-gray-600 dark:text-gray-300"
+          >
+            We couldn&apos;t find the song you&apos;re looking for. Try
+            searching again or return to the home page.
           </Text>
         </Reanimated.View>
 
@@ -55,7 +61,7 @@ export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
             title="Clear"
             variant="primary"
             size="lg"
-            icon={'select-remove'}
+            icon={"select-remove"}
             iconPosition="left"
             onPress={reset}
             className="w-full"

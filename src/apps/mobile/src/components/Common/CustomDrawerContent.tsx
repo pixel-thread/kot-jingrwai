@@ -6,12 +6,11 @@ import {
 } from '@react-navigation/drawer';
 import { usePathname, useRouter } from 'expo-router';
 import { Image, View } from 'react-native';
-import { Text } from '../ui/typography';
+import { Text } from '@repo/ui-native';
 import { MenuItemsT } from '~/src/types/MenuItems';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
 import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
-import React from 'react';
 
 const menuItems: MenuItemsT[] = [
   { id: 1, title: 'Home', herf: '/' },

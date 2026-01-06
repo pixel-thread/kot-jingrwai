@@ -1,16 +1,15 @@
 import { router, Stack } from 'expo-router';
 import { View, ScrollView, TouchableOpacity, Switch, Linking } from 'react-native';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import ThemeSelector from '~/src/components/Common/theme/ThemeSelector';
-import { Text } from '@repo/ui-native';
+import { Text, ContentSection, ThemeSelector } from '@repo/ui-native';
 import { useState } from 'react';
 import { useColorScheme } from 'nativewind';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useTextStore } from '~/src/libs/stores/text';
-import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { ThemeToggle } from '@repo/ui-native';
 import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
-import { ContentSection } from '~/src/components/Common/ContentSection';
+import { useThemeStore } from '~/src/libs/stores/theme';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
@@ -26,6 +25,7 @@ export default function Settings() {
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(false);
   const { isSelectable: textSelectionEnabled, setIsSelectable: setTextSelectionEnabled } =
     useTextStore();
+  const { theme, setTheme } = useThemeStore();
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function Settings() {
         <Reanimated.View entering={FadeIn.duration(500)} className="p-4">
           {/* Theme Section */}
           <ContentSection title="Theme">
-            <ThemeSelector />
+            <ThemeSelector theme={theme} setTheme={setTheme} />
           </ContentSection>
 
           {/* App Preferences Section */}

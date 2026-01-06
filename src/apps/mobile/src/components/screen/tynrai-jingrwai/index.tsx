@@ -4,9 +4,8 @@ import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { tynraiJingrwai } from '@repo/constants';
 import { TynraiJingrwaiT } from '@repo/types';
 import { CategoryItem } from './CategoryItems';
-import { ContentSection } from '../../Common/ContentSection';
-import { useRouter } from 'expo-router';
-import { Container } from '../../Common/Container';
+import { ContentSection } from '@repo/ui-native';import { useRouter } from 'expo-router';
+import { Container } from '@repo/ui-native';
 
 export default function TynraiJingrwaiScreen() {
   const router = useRouter();

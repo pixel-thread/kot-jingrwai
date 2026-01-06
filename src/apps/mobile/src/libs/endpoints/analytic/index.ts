@@ -1,4 +1,4 @@
-import { EndpointT } from '~/src/types/endpoint';
+import { EndpointT } from '@repo/types';
 
 type AnalyticEnpoints = 'POST_ANALYTIC_USERS';
 

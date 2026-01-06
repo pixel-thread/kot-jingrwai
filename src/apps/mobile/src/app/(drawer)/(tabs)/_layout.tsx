@@ -6,12 +6,14 @@ import { TabBarIcon } from '~/src/components/Common/TabBarIcon';
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import { useEffect } from 'react';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
-import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { ThemeToggle } from '@repo/ui-native';
 import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
 import { View } from 'react-native';
+import { useThemeStore } from '~/src/libs/stores/theme';
 
 export default function TabLayout() {
   const { isUpdateAvailable } = useUpdateContext();
+  const { theme, setTheme } = useThemeStore();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
 
@@ -55,7 +57,7 @@ export default function TabLayout() {
                 <DrawerToggleButton tintColor={isDarkMode ? colors.gray[200] : colors.gray[950]} />
               </>
             }
-            headerRight={<ThemeToggle />}
+            headerRight={<ThemeToggle theme={theme} setTheme={setTheme} />}
           />
         ),
       }}>

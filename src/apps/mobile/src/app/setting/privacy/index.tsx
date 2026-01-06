@@ -2,7 +2,7 @@ import PrivacyPolicyScreen from '~/src/components/screen/privacy-policy';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
 import { Stack } from 'expo-router';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { ThemeToggle } from '@repo/ui-native';
 
 export default function PrivacyPolicy() {
   return (

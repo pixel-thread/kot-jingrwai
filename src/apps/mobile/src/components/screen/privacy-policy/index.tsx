@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
-import { ContentSection } from '../../Common/ContentSection';
+import { ContentSection } from '@repo/ui-native';
 
 export default function PrivacyPolicyScreen() {
   const { colorScheme } = useColorScheme();

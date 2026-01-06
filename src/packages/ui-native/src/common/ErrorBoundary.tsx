@@ -1,9 +1,9 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { Text } from '@repo/ui-native';
-import Reanimated, { FadeIn } from 'react-native-reanimated';
-import { Container } from '@repo/ui-native';
-import { logger } from '@repo/utils';
+import { Component, ErrorInfo, ReactNode } from "react";
+import { TouchableOpacity } from "react-native";
+import { Text } from "../typography";
+import Reanimated, { FadeIn } from "react-native-reanimated";
+import { Container } from "./Container";
+import { logger } from "@repo/utils";
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -20,7 +20,10 @@ interface ErrorBoundaryState {
  * ErrorBoundary component that catches JavaScript errors in its child component tree
  * and displays a fallback UI instead of crashing the whole app.
  */
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = {
@@ -41,7 +44,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // Log the error to the console and potentially to an error reporting service
-    logger.error('Error caught by ErrorBoundary', { error, errorInfo });
+    logger.error("Error caught by ErrorBoundary", { error, errorInfo });
     this.setState({
       errorInfo,
     });
@@ -67,17 +70,19 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
         <Container>
           <Reanimated.View
             entering={FadeIn.duration(500)}
-            className="flex-1 items-center justify-center px-4">
+            className="flex-1 items-center justify-center px-4"
+          >
             <Text size="2xl" weight="bold" align="center" className="mb-6">
               Something went wrong
             </Text>
             <Text size="md" align="center" className="mb-6">
-              The application encountered an unexpected error. We&apos;ve been notified and are
-              working to fix the issue.
+              The application encountered an unexpected error. We&apos;ve been
+              notified and are working to fix the issue.
             </Text>
             <TouchableOpacity
               onPress={this.resetError}
-              className="mt-4 rounded-lg bg-indigo-600 px-6 py-3 dark:bg-indigo-500">
+              className="mt-4 rounded-lg bg-indigo-600 px-6 py-3 dark:bg-indigo-500"
+            >
               <Text size="md" weight="semibold" className="text-white">
                 Try Again
               </Text>

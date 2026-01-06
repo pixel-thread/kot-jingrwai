@@ -6,9 +6,9 @@ import Reanimated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { Text } from '../ui/typography';
+import { Text } from '@repo/ui-native';
 import { OtaUpdateServices } from '~/src/services/update/checkForOtaUpdate';
-import { cn } from '~/src/libs/cn';
+import { cn } from '@repo/libs';
 
 type Status =
   | 'Checking'

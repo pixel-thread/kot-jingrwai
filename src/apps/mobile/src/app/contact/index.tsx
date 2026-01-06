@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 import { CustomHeader } from '~/src/components/Common/CustomHeader';
 import ContactScreen from '~/src/components/screen/Contact';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
-import { ThemeToggle } from '~/src/components/Common/theme/ThemeToggle';
+import { ThemeToggle } from '@repo/ui-native';
 
 export default function page() {
   return (

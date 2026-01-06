@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Network from 'expo-network';
-import http from '~/src/utils/http';
+import http from '@repo/utils';
 import uuid from 'react-native-uuid';
 import * as Constant from 'expo-constants';
 import { ANALYTIC_ENDPOINTS } from '~/src/libs/endpoints/analytic';

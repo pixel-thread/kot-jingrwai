@@ -5,11 +5,11 @@ import { useState, useEffect } from 'react';
 import { tynraiJingrwai } from '@repo/constants';
 import { TynraiJingrwaiT } from '@repo/types';
 import { SongT } from '@repo/types';
-import { ContentSection } from '../../Common/ContentSection';
+import { ContentSection } from '@repo/ui-native';
 import { SongListItem } from '@repo/ui-native';
 import { FlashList } from '@shopify/flash-list';
 import { useSongs } from '~/src/hooks/song/useSongs';
-import { Container } from '../../Common/Container';
+import { Container } from '@repo/ui-native';
 
 type Props = {
   id: string;

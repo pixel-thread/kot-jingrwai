@@ -4,9 +4,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'nativewind';
 import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useState, useEffect } from 'react';
-import { ContentSection } from '../../Common/ContentSection';
-import * as Linking from 'expo-linking';
-import { Container } from '../../Common/Container';
+import { ContentSection } from '@repo/ui-native';import * as Linking from 'expo-linking';
+import { Container } from '@repo/ui-native';
 
 export default function ContactScreen() {
   const { colorScheme } = useColorScheme();
