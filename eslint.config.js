@@ -1,3 +1,4 @@
+// eslint.config.js (root)
 export default [
   {
     files: [
@@ -7,6 +8,7 @@ export default [
     rules: {
       semi: ["error", "always"],
       quotes: ["error", "double"],
+      "no-console": "warn",
     },
   },
 ];
