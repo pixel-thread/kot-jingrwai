@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "cypress run",
-    "postinstall": "prisma generate"
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@repo/constants": "workspace:*",
