@@ -1,11 +1,11 @@
-import { Stack } from 'expo-router';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import ReportScreen from '~/src/components/screen/report';
-import Reanimated, { FadeIn } from 'react-native-reanimated';
-import { ThemeToggle } from '@repo/ui-native';
-import { useThemeStore } from '~/src/libs/stores/theme';
+import { Stack } from "expo-router";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import ReportScreen from "~/src/components/screen/report";
+import Reanimated, { FadeIn } from "react-native-reanimated";
+import { ThemeToggle } from "@repo/ui-native";
+import { useThemeStore } from "~/src/libs/stores/theme";
 
-export default function ReportPage() {
+const ReportPage = () => {
   const { theme, setTheme } = useThemeStore();
   return (
     <Reanimated.View entering={FadeIn.duration(300)} className="flex-1">
@@ -19,13 +19,15 @@ export default function ReportPage() {
               headerRight={<ThemeToggle theme={theme} setTheme={setTheme} />}
             />
           ),
-          title: 'Report',
+          title: "Report",
           headerShown: true,
-          headerTitleAlign: 'center',
-          headerBackTitle: 'Back',
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
         }}
       />
       <ReportScreen />
     </Reanimated.View>
   );
-}
+};
+
+export default ReportPage;

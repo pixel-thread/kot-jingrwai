@@ -11,7 +11,7 @@ import { config as baseConfig } from "./base.js";
  * @type {import("eslint").Linter.Config[]}
  */
 export const config = [
-  ...baseConfig,
+  // ...baseConfig,
   {
     plugins: {
       react,
@@ -55,14 +55,7 @@ export const config = [
       "import/order": [
         "warn",
         {
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "index",
-          ],
+          groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
           "newlines-between": "always",
         },
       ],

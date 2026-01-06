@@ -13,7 +13,8 @@ config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, 'node_modules'),
   path.resolve(workspaceRoot, 'node_modules'),
 ];
-config.resolver.disableHierarchicalLookup = false;
+
+config.resolver.disableHierarchicalLookup = true;
 
 // NativeWind v4 - Use NativeWind helper (SIMPLEST)
 const { withNativeWind } = require('nativewind/dist/metro');

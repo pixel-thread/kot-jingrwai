@@ -25,9 +25,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/react": "*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*"
+  },
+  "peelDependencies": {
+    "@types/react": "*"
   },
   "dependencies": {
     "@repo/types": "workspace:*"

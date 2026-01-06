@@ -1,18 +1,18 @@
-import { router, Stack } from 'expo-router';
-import { View, ScrollView, TouchableOpacity, Switch, Linking } from 'react-native';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { Text, ContentSection, ThemeSelector, ThemeToggle } from '@repo/ui-native';
-import { useState } from 'react';
-import { useColorScheme } from 'nativewind';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import { useTextStore } from '~/src/libs/stores/text';
-import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
-import { useThemeStore } from '~/src/libs/stores/theme';
+import { router, Stack } from "expo-router";
+import { View, ScrollView, TouchableOpacity, Switch, Linking } from "react-native";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { Text, ContentSection, ThemeSelector, ThemeToggle } from "@repo/ui-native";
+import { useState } from "react";
+import { useColorScheme } from "nativewind";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
+import { useTextStore } from "~/src/libs/stores/text";
+import { useUpdateContext } from "~/src/hooks/update/useUpdateContext";
+import { useThemeStore } from "~/src/libs/stores/theme";
 
-export default function Settings() {
+const Settings = () => {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
   const {
     isUpdateAvailable,
     isUpdateLoading,
@@ -30,11 +30,11 @@ export default function Settings() {
     <>
       <Stack.Screen
         options={{
-          title: 'Settings',
+          title: "Settings",
           headerBackVisible: true,
           headerShown: true,
-          headerTitleAlign: 'center',
-          headerBackTitle: 'Back',
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
           header: ({ options }) => (
             <CustomHeader
               options={options}
@@ -61,8 +61,8 @@ export default function Settings() {
                 <Switch
                   value={textSelectionEnabled}
                   onValueChange={setTextSelectionEnabled}
-                  trackColor={{ false: '#767577', true: '#81b0ff' }}
-                  thumbColor={textSelectionEnabled ? '#3b82f6' : '#f4f3f4'}
+                  trackColor={{ false: "#767577", true: "#81b0ff" }}
+                  thumbColor={textSelectionEnabled ? "#3b82f6" : "#f4f3f4"}
                 />
               }
             />
@@ -76,8 +76,8 @@ export default function Settings() {
                   disabled
                   value={notificationsEnabled}
                   onValueChange={setNotificationsEnabled}
-                  trackColor={{ false: '#767577', true: '#81b0ff' }}
-                  thumbColor={notificationsEnabled ? '#3b82f6' : '#f4f3f4'}
+                  trackColor={{ false: "#767577", true: "#81b0ff" }}
+                  thumbColor={notificationsEnabled ? "#3b82f6" : "#f4f3f4"}
                 />
               }
             />
@@ -91,8 +91,8 @@ export default function Settings() {
                   value={autoPlayEnabled}
                   disabled={true}
                   onValueChange={setAutoPlayEnabled}
-                  trackColor={{ false: '#767577', true: '#81b0ff' }}
-                  thumbColor={autoPlayEnabled ? '#3b82f6' : '#f4f3f4'}
+                  trackColor={{ false: "#767577", true: "#81b0ff" }}
+                  thumbColor={autoPlayEnabled ? "#3b82f6" : "#f4f3f4"}
                 />
               }
             />
@@ -112,9 +112,9 @@ export default function Settings() {
                     onPress={refresh}
                     className="rounded-full bg-gray-100 p-2 dark:bg-gray-800">
                     <MaterialCommunityIcons
-                      name={isUpdateLoading ? 'sync' : 'update'}
+                      name={isUpdateLoading ? "sync" : "update"}
                       size={20}
-                      color={isDarkMode ? '#3b82f6' : '#3b82f6'}
+                      color={isDarkMode ? "#3b82f6" : "#3b82f6"}
                     />
                   </TouchableOpacity>
                 </>
@@ -125,12 +125,12 @@ export default function Settings() {
               <Reanimated.View entering={FadeInDown.duration(500)}>
                 <TouchableOpacity
                   className="mt-2 flex-row items-center justify-between rounded-xl bg-blue-100 p-3 dark:bg-blue-900"
-                  onPress={() => Linking.openURL(update?.downloadUrl || '')}>
+                  onPress={() => Linking.openURL(update?.downloadUrl || "")}>
                   <View className="flex-row items-center">
                     <MaterialCommunityIcons
                       name="download"
                       size={20}
-                      color={isDarkMode ? '#93c5fd' : '#3b82f6'}
+                      color={isDarkMode ? "#93c5fd" : "#3b82f6"}
                     />
                     <Text className="ml-2 text-blue-700 dark:text-blue-300">Update Available!</Text>
                     <Text className="ml-2 text-blue-700 dark:text-blue-300">{update?.version}</Text>
@@ -138,7 +138,7 @@ export default function Settings() {
                   <MaterialCommunityIcons
                     name="chevron-right"
                     size={20}
-                    color={isDarkMode ? '#93c5fd' : '#3b82f6'}
+                    color={isDarkMode ? "#93c5fd" : "#3b82f6"}
                   />
                 </TouchableOpacity>
               </Reanimated.View>
@@ -148,24 +148,24 @@ export default function Settings() {
               icon="help-circle-outline"
               title="Help & Support"
               description="Get assistance with the app"
-              onPress={() => router.push('/setting/support')}
+              onPress={() => router.push("/setting/support")}
             />
 
             <SettingItem
               icon="shield-check-outline"
               title="Privacy Policy"
               description="Read our privacy policy"
-              onPress={() => router.push('/setting/privacy')}
+              onPress={() => router.push("/setting/privacy")}
             />
           </ContentSection>
         </Reanimated.View>
       </ScrollView>
     </>
   );
-}
+};
 
 type SettingItemProps = {
-  icon: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
+  icon: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   title: string;
   description?: string;
   right?: React.ReactNode;
@@ -174,7 +174,7 @@ type SettingItemProps = {
 
 const SettingItem = ({ icon, title, description, right, onPress }: SettingItemProps) => {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
   const { isUpdateAvailable } = useUpdateContext();
   const Container = onPress ? TouchableOpacity : View;
 
@@ -185,10 +185,10 @@ const SettingItem = ({ icon, title, description, right, onPress }: SettingItemPr
           <MaterialCommunityIcons
             name={icon}
             size={24}
-            color={isDarkMode ? '#93c5fd' : '#3b82f6'}
+            color={isDarkMode ? "#93c5fd" : "#3b82f6"}
           />
           <View className="ml-3">
-            {isUpdateAvailable && title === 'Version' && (
+            {isUpdateAvailable && title === "Version" && (
               <View className="absolute right-4 top-0 h-2 w-2 -translate-y-1/2 rounded-full bg-red-500" />
             )}
             <Text weight="semibold" className="text-gray-800 dark:text-gray-100">
@@ -206,3 +206,5 @@ const SettingItem = ({ icon, title, description, right, onPress }: SettingItemPr
     </Container>
   );
 };
+
+export default Settings;

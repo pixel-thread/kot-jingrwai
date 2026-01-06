@@ -1,3 +1,3 @@
 export default {
-  '**/*.{ts,tsx,js,jsx}': ['pnpm exec eslint --fix'],
+  '**/*.{ts,tsx,js,jsx}': ['pnpm exec eslint --fix']
 };

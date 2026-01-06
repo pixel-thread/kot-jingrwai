@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, ComponentRef } from "react";
 import {
   Text,
   TouchableOpacity,
@@ -10,11 +10,7 @@ import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from "react-
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@repo/libs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-/* -------------------------------------------------------------------------- */
-/*                                    CVA                                     */
-/* -------------------------------------------------------------------------- */
-
+/* -------------------------------------------------------------------------- */ /* CVA */ /* -------------------------------------------------------------------------- */
 const buttonVariants = cva("items-center justify-center rounded-xl w-full", {
   variants: {
     variant: {
@@ -23,21 +19,11 @@ const buttonVariants = cva("items-center justify-center rounded-xl w-full", {
       outline: "bg-transparent border border-indigo-500 dark:border-indigo-400",
       destructive: "bg-red-600 dark:bg-red-900",
     },
-    size: {
-      sm: "px-3 py-2",
-      md: "px-4 py-3",
-      lg: "px-6 py-4",
-    },
-    disabled: {
-      true: "opacity-50",
-    },
+    size: { sm: "px-3 py-2", md: "px-4 py-3", lg: "px-6 py-4" },
+    disabled: { true: "opacity-50" },
   },
-  defaultVariants: {
-    variant: "primary",
-    size: "md",
-  },
+  defaultVariants: { variant: "primary", size: "md" },
 });
-
 const textVariants = cva("text-center font-semibold", {
   variants: {
     variant: {
@@ -46,20 +32,12 @@ const textVariants = cva("text-center font-semibold", {
       outline: "text-indigo-600 dark:text-indigo-400",
       destructive: "text-white",
     },
-    size: {
-      sm: "text-sm",
-      md: "text-base",
-      lg: "text-lg",
-    },
+    size: { sm: "text-sm", md: "text-base", lg: "text-lg" },
   },
-  defaultVariants: {
-    variant: "primary",
-    size: "md",
-  },
+  defaultVariants: { variant: "primary", size: "md" },
 });
-
 /* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
+/* Types                                                                      */
 /* -------------------------------------------------------------------------- */
 
 type ButtonProps = TouchableOpacityProps &
@@ -71,11 +49,13 @@ type ButtonProps = TouchableOpacityProps &
     containerClassName?: string;
   };
 
+type ButtonRef = ComponentRef<typeof TouchableOpacity>;
+
 /* -------------------------------------------------------------------------- */
-/*                                  Component                                 */
+/* Component                                                                 */
 /* -------------------------------------------------------------------------- */
 
-export const Button = forwardRef<View, ButtonProps>(
+export const Button = forwardRef<ButtonRef, ButtonProps>(
   (
     {
       title,

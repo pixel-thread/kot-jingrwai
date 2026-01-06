@@ -1,14 +1,14 @@
-import { Stack, useLocalSearchParams } from 'expo-router';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '@repo/ui-native';
-import { AllSongPage } from '~/src/components/Songs';
-import { useThemeStore } from '~/src/libs/stores/theme';
+import { Stack, useLocalSearchParams } from "expo-router";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { ThemeToggle } from "@repo/ui-native";
+import { AllSongPage } from "~/src/components/Songs";
+import { useThemeStore } from "~/src/libs/stores/theme";
 
 type RouteParams = {
   isChorus?: string;
 };
 
-export default function Song() {
+const SongsPage = () => {
   const { isChorus } = useLocalSearchParams<RouteParams>();
   const { theme, setTheme } = useThemeStore();
 
@@ -17,7 +17,7 @@ export default function Song() {
       <Stack.Screen
         options={{
           headerShown: true,
-          title: isChorus === 'true' ? 'Ki Khorus' : 'Ki Jingrwai',
+          title: isChorus === "true" ? "Ki Khorus" : "Ki Jingrwai",
           header: ({ options }) => (
             <CustomHeader
               options={options}
@@ -27,7 +27,9 @@ export default function Song() {
           ),
         }}
       />
-      <AllSongPage isKhorus={isChorus === 'true' ? true : false} />
+      <AllSongPage isKhorus={isChorus === "true" ? true : false} />
     </>
   );
-}
+};
+
+export default SongsPage;

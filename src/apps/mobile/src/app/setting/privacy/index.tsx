@@ -1,11 +1,11 @@
-import PrivacyPolicyScreen from '~/src/components/screen/privacy-policy';
-import Reanimated, { FadeIn } from 'react-native-reanimated';
-import { Stack } from 'expo-router';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '@repo/ui-native';
-import { useThemeStore } from '~/src/libs/stores/theme';
+import PrivacyPolicyScreen from "~/src/components/screen/privacy-policy";
+import Reanimated, { FadeIn } from "react-native-reanimated";
+import { Stack } from "expo-router";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { ThemeToggle } from "@repo/ui-native";
+import { useThemeStore } from "~/src/libs/stores/theme";
 
-export default function PrivacyPolicy() {
+const PrivacyPolicy = () => {
   const { theme, setTheme } = useThemeStore();
   return (
     <Reanimated.View entering={FadeIn.duration(300)} className="flex-1">
@@ -19,13 +19,15 @@ export default function PrivacyPolicy() {
               headerRight={<ThemeToggle setTheme={setTheme} theme={theme} />}
             />
           ),
-          title: 'Privacy Policy',
+          title: "Privacy Policy",
           headerShown: true,
-          headerTitleAlign: 'center',
-          headerBackTitle: 'Back',
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
         }}
       />
       <PrivacyPolicyScreen />
     </Reanimated.View>
   );
-}
+};
+
+export default PrivacyPolicy;

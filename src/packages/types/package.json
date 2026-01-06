@@ -21,7 +21,6 @@
     "prepare": "tsc -p tsconfig.json"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*"
   },

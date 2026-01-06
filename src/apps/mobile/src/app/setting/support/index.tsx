@@ -1,11 +1,11 @@
-import { Stack } from 'expo-router';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '@repo/ui-native';
-import HelpSupportScreen from '~/src/components/screen/help-support';
-import Reanimated, { FadeIn } from 'react-native-reanimated';
-import { useThemeStore } from '~/src/libs/stores/theme';
+import { Stack } from "expo-router";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { ThemeToggle } from "@repo/ui-native";
+import HelpSupportScreen from "~/src/components/screen/help-support";
+import Reanimated, { FadeIn } from "react-native-reanimated";
+import { useThemeStore } from "~/src/libs/stores/theme";
 
-export default function SupportPage() {
+const SupportPage = () => {
   const { theme, setTheme } = useThemeStore();
   return (
     <Reanimated.View entering={FadeIn.duration(300)} className="flex-1">
@@ -19,13 +19,15 @@ export default function SupportPage() {
               headerRight={<ThemeToggle theme={theme} setTheme={setTheme} />}
             />
           ),
-          title: 'Help & Support',
+          title: "Help & Support",
           headerShown: true,
-          headerTitleAlign: 'center',
-          headerBackTitle: 'Back',
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
         }}
       />
       <HelpSupportScreen />
     </Reanimated.View>
   );
-}
+};
+
+export default SupportPage;

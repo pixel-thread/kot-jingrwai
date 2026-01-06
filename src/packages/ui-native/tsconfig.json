@@ -1,8 +1,6 @@
 {
   "extends": "@repo/typescript-config/react-native.json",
   "compilerOptions": {
-    // "module": "NodeNext",
-    // "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir":"./src",
     "jsx": "react-native",

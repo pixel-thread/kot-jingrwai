@@ -1,8 +1,17 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "typeRoots": ["./types", "./node_modules/@types"],
     "strict": true,
-    "jsx": "react-jsx"
-  }
+    "jsx": "react-jsx",
+
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
+
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "nativewind-env.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }
