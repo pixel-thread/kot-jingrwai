@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "Lynti Bneng",
+    "slug": "lynti-bneng",
+    "version": "1.0.0",
+    "scheme": "lynti-bneng",
+    "platforms": ["ios", "android"],
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./src/assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./src/assets/images/splashscreen/splashscreen.png",
+          "dark": {
+            "image": "./src/assets/images/splashscreen/splashscreen.png",
+            "backgroundColor": "#000000"
+          },
+          "imageWidth": 200
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+
+      "tsconfigPaths": true
+    },
+
+    "orientation": "portrait",
+    "icon": "./src/assets/icons/kot-jingrwai-icon.png",
+
+    "userInterfaceStyle": "light",
+
+    "splash": {
+      "image": "./src/assets/images/splashscreen/splashscreen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "dark": {
+        "image": "./src/assets/images/splashscreen/splashscreen.png",
+        "backgroundColor": "#000000"
+      }
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "owner": "pixel-thread",
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/icons/kot-jingrwai-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    }
+  }
+}

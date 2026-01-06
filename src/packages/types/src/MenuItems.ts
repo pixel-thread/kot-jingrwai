@@ -1,4 +1,4 @@
-import { Route } from 'expo-router';
+import { Route } from "expo-router";
 
 export type MenuItemsT = {
   id: number;

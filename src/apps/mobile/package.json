@@ -6,7 +6,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "start": "expo start",
-    "dev": "expo start --clear",
+    "dev": "expo start --clear --port 8081",
     "prebuild": "expo prebuild",
     "fetchSongs": "node scripts/fetch-songs.js",
     "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",

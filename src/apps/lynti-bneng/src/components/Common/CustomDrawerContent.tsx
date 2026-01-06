@@ -10,32 +10,21 @@ import { Text } from '@repo/ui-native';
 import { MenuItemsT } from '@repo/types';
 import { useColorScheme } from 'nativewind';
 import colors from 'tailwindcss/colors';
-import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
 import * as Constants from 'expo-constants';
 
-const menuItems: MenuItemsT[] = [
-  { id: 1, title: 'Home', herf: '/' },
-  { id: 2, title: 'Apostle Creed', herf: '/apostle-creed' },
-  { id: 6, title: 'Tynrai Jingrwai', herf: '/tynrai-jingrwai' },
-  { id: 3, title: 'Contact', herf: '/contact' },
-  { id: 4, title: 'Report', herf: '/report' },
-  { id: 5, title: 'Settings', herf: '/setting' },
-  { id: 7, title: 'Shaphang Jongngi', herf: '/about' },
-];
+const menuItems: MenuItemsT[] = [{ id: 1, title: 'Home', herf: '/' }];
 
 export function CustomDrawerContent(props: DrawerContentComponentProps) {
   const { colorScheme } = useColorScheme();
-  const { isUpdateAvailable } = useUpdateContext();
   const isDarkMode = colorScheme === 'dark';
   const router = useRouter();
   const pathname = usePathname();
   const appName = Constants.default.expoConfig?.name;
-
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={{ paddingTop: 0, flex: 1 }}>
       <View className="items-center p-4">
         <Image
-          source={require('~/assets/images/splashscreen/splashscreen.png')}
+          source={require('@/src/assets/images/splashscreen/splashscreen.png')}
           style={{ width: 100, height: 100, borderRadius: 50 }}
         />
         <Text className="mt-5 uppercase" weight={'bold'} size={'xl'}>
@@ -46,10 +35,6 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
       <DrawerItemList {...props} />
       <>
         {menuItems.map((item) => {
-          // Decide which item should carry the badge.
-          // Here I’m showing it on the “Settings” item as an example:
-          const showDot = item.herf === '/setting' && isUpdateAvailable;
-
           return (
             <View key={item.id} className="relative">
               <DrawerItem
@@ -62,10 +47,6 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
                   fontWeight: 'bold',
                 }}
               />
-
-              {showDot && (
-                <View className="absolute right-4 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-red-500" />
-              )}
             </View>
           );
         })}

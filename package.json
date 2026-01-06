@@ -4,6 +4,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "preinstall": "node scripts/enforce-expo-versions.js",
     "generate": "turbo run generate",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -12,7 +13,9 @@
   "devDependencies": {
     "prettier": "^3.7.4",
     "turbo": "^2.7.1",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "@types/react": "~19.0.10",
+    "@types/react-dom": "~19.2.3"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {
@@ -22,7 +25,9 @@
     "overrides": {
       "nativewind": "~4.1.23",
       "react-native-reanimated": "~3.17.4",
-      "react-native-safe-area-context": "5.4.0"
+      "react-native-safe-area-context": "5.4.0",
+      "@types/react": "~19.0.10",
+      "@types/react-dom": "~19.2.3"
     },
     "shamefully-hoist": true
   }
