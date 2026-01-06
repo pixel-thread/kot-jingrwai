@@ -29,8 +29,7 @@ export async function POST(request: NextRequest) {
 
     const songExist = await getUniqueSongs({ where: { id: songId } });
 
-    if (!songExist)
-      return ErrorResponse({ error: "Song not found", status: 404 });
+    if (!songExist) return ErrorResponse({ error: "Song not found", status: 404 });
 
     const fileExt = file.name.split(".").pop();
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
@@ -48,9 +47,7 @@ export async function POST(request: NextRequest) {
       return ErrorResponse({ error: uploadError.message, status: 500 });
     }
 
-    const { data: url } = supabase.storage
-      .from(env.SUPABASE_BUCKET)
-      .getPublicUrl(data?.path);
+    const { data: url } = supabase.storage.from(env.SUPABASE_BUCKET).getPublicUrl(data?.path);
 
     // Save metadata to database
 

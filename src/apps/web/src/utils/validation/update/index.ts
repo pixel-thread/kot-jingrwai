@@ -9,12 +9,7 @@ export const UpdateSchema = z.object({
   title: z.string(),
   description: z.array(z.string()).optional(),
   platforms: z
-    .array(
-      z.enum([
-        $Enums.AppVersionPlatform.ANDROID,
-        $Enums.AppVersionPlatform.IOS,
-      ]),
-    )
+    .array(z.enum([$Enums.AppVersionPlatform.ANDROID, $Enums.AppVersionPlatform.IOS]))
     .optional(),
   type: z.enum([$Enums.AppVersionType.PTA, $Enums.AppVersionType.OTA]),
   releaseNotesUrl: z.string().optional(),
@@ -22,10 +17,7 @@ export const UpdateSchema = z.object({
   minSupportedVersion: z
     .string()
     .min(1, "Min Version is required")
-    .regex(
-      /^\d+\.\d+\.\d+$/,
-      "Min Version must be in format X.Y.Z (e.g., 1.0.0)",
-    )
+    .regex(/^\d+\.\d+\.\d+$/, "Min Version must be in format X.Y.Z (e.g., 1.0.0)")
     .optional(),
   releaseDate: z.string(),
   tags: z.array(
@@ -34,7 +26,7 @@ export const UpdateSchema = z.object({
       $Enums.AppVersionTags.STABLE,
       $Enums.AppVersionTags.PATCH,
       $Enums.AppVersionTags.BUGFIX,
-    ]),
+    ])
   ),
   author: z.string().optional(),
   versionCode: z.int().optional(),

@@ -32,8 +32,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const getClerkToken = useCallback(async () => {
     const token = await getToken({ template: "jwt" });
     if (token) {
-      axiosInstance.defaults.headers.common["Authorization"] =
-        `Bearer ${token}`;
+      axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setIsToken(true);
     }
   }, [getToken]);

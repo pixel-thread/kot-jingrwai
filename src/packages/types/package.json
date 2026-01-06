@@ -16,7 +16,9 @@
     }
   },
   "scripts": {
-    "generate": "tsc -p tsconfig.json"
+    "generate": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
+    "prepare": "tsc -p tsconfig.json"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

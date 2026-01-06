@@ -38,9 +38,7 @@ export default function HeadMeta({
   const pageSchema = schemaData || SEO.structuredData;
 
   // Ensure image URL is absolute
-  const fullImageUrl = pageOgImage.startsWith("http")
-    ? pageOgImage
-    : `${SEO.url}${pageOgImage}`;
+  const fullImageUrl = pageOgImage.startsWith("http") ? pageOgImage : `${SEO.url}${pageOgImage}`;
 
   return (
     <head>
@@ -49,10 +47,7 @@ export default function HeadMeta({
       <meta name="description" content={pageDescription} />
       <meta name="keywords" content={pageKeywords.join(", ")} />
       <meta name="author" content={SEO.name} />
-      <meta
-        name="robots"
-        content={noIndex ? "noindex, nofollow" : "index, follow"}
-      />
+      <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
       <meta name="viewport" content={SEO.viewport} />
       <meta name="theme-color" content={SEO.themeColor} />
       <meta name="application-name" content={SEO.applicationName} />
@@ -70,12 +65,7 @@ export default function HeadMeta({
 
       {/* Alternate Languages */}
       {pageAlternateLanguages.map((lang, index) => (
-        <link
-          key={index}
-          rel="alternate"
-          hrefLang={lang.hreflang}
-          href={lang.href}
-        />
+        <link key={index} rel="alternate" hrefLang={lang.hreflang} href={lang.href} />
       ))}
 
       {/* Open Graph Tags */}
@@ -105,14 +95,8 @@ export default function HeadMeta({
       <meta name="twitter:image:alt" content={pageTitle} />
 
       {/* Apple Web App Meta Tags */}
-      <meta
-        name="apple-mobile-web-app-capable"
-        content={SEO.appleWebApp.capable ? "yes" : "no"}
-      />
-      <meta
-        name="apple-mobile-web-app-status-bar-style"
-        content={SEO.appleWebApp.statusBarStyle}
-      />
+      <meta name="apple-mobile-web-app-capable" content={SEO.appleWebApp.capable ? "yes" : "no"} />
+      <meta name="apple-mobile-web-app-status-bar-style" content={SEO.appleWebApp.statusBarStyle} />
       <meta name="apple-mobile-web-app-title" content={SEO.appleWebApp.title} />
 
       {/* Additional Meta Tags from SEO config */}

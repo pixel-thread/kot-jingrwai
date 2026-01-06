@@ -36,52 +36,42 @@ const columns: ColumnDef<DownloadUsers>[] = [
 export const AppUsers = () => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["app-users"],
-    queryFn: () =>
-      http.get<DownloadUsers[]>(ADMIN_USERS_ENDPOINT.GET_DOWNLOADED_USERS),
+    queryFn: () => http.get<DownloadUsers[]>(ADMIN_USERS_ENDPOINT.GET_DOWNLOADED_USERS),
     select: (data) => data.data,
   });
 
   return (
-    <div className="h-full flex flex-col space-y-6 p-6">
+    <div className="flex h-full flex-col space-y-6 p-6">
       {/* Header Section */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-3xl font-bold tracking-tight">App Users</h1>
         </div>
         <div className="flex gap-2">
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() => refetch()}
-            disabled={isLoading}
-          >
-            <RefreshCw
-              className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
-            />
+          <Button variant="outline" size="icon" onClick={() => refetch()} disabled={isLoading}>
+            <RefreshCw className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`} />
           </Button>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card>
           <CardContent className="p-6">
             <div className="text-2xl font-bold">{data?.length || 0}</div>
-            <p className="text-xs text-muted-foreground mt-1">Total Updates</p>
+            <p className="text-muted-foreground mt-1 text-xs">Total Updates</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-6">
             <div className="text-2xl font-bold">{data?.length || 0}</div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Total Android Versions
-            </p>
+            <p className="text-muted-foreground mt-1 text-xs">Total Android Versions</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-6">
             <div className="text-2xl font-bold">0</div>
-            <p className="text-xs text-muted-foreground mt-1">iOS Versions</p>
+            <p className="text-muted-foreground mt-1 text-xs">iOS Versions</p>
           </CardContent>
         </Card>
       </div>

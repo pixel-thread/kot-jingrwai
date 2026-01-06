@@ -6,7 +6,5 @@ interface SkeletonProps {
 }
 
 export const Skeleton = ({ className }: SkeletonProps) => {
-  return (
-    <View className={cn("rounded bg-gray-300 dark:bg-gray-700", className)} />
-  );
+  return <View className={cn("rounded bg-gray-300 dark:bg-gray-700", className)} />;
 };

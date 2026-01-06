@@ -2,11 +2,7 @@ import { View, TouchableOpacity, Platform } from "react-native";
 
 import { useRouter } from "expo-router";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Reanimated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from "react-native-reanimated";
+import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 import { Text } from "../typography";
 import { SongT } from "@repo/types";
 import { useColorScheme } from "nativewind";
@@ -52,8 +48,7 @@ export const SongListItem = ({ song }: { song: SongT }) => {
                 shadowRadius: 2,
               }
             : {}
-        }
-      >
+        }>
         <View className="flex-row items-center p-3">
           <View className="mr-3 h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600">
             <Text variant={"primary"} size="4xl" weight="bold">
@@ -61,11 +56,7 @@ export const SongListItem = ({ song }: { song: SongT }) => {
             </Text>
           </View>
           <View className="flex-1 border-l border-gray-100 pl-3 dark:border-gray-700">
-            <Text
-              size="lg"
-              weight="semibold"
-              className="line-clamp-1 capitalize"
-            >
+            <Text size="lg" weight="semibold" className="line-clamp-1 capitalize">
               {song.title}
             </Text>
             <View className="mt-1 flex-row items-center">

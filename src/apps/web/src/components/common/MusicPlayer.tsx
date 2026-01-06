@@ -1,15 +1,7 @@
 "use client";
 import React, { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Play,
-  Pause,
-  SkipBack,
-  SkipForward,
-  Volume2,
-  Maximize2,
-  Minimize2,
-} from "lucide-react";
+import { Play, Pause, SkipBack, SkipForward, Volume2, Maximize2, Minimize2 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 
@@ -94,11 +86,10 @@ export const MusicPlayer = ({
   return (
     <div
       className={cn(
-        "bg-background/50 backdrop-blur-sm border rounded-2xl shadow-lg transition-all duration-300 p-4",
-        isExpanded ? "w-full mx-auto" : "",
-        className,
-      )}
-    >
+        "bg-background/50 rounded-2xl border p-4 shadow-lg backdrop-blur-sm transition-all duration-300",
+        isExpanded ? "mx-auto w-full" : "",
+        className
+      )}>
       {/* Audio Element */}
       <audio
         ref={audioRef}
@@ -114,16 +105,16 @@ export const MusicPlayer = ({
       {/* Compact View */}
       {!isExpanded ? (
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 flex-1 min-w-0">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-md">
-              <div className="w-5 h-5 bg-white/20 rounded-sm animate-pulse" />
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            <div className="from-primary to-primary/80 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br shadow-md">
+              <div className="h-5 w-5 animate-pulse rounded-sm bg-white/20" />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="font-semibold text-sm truncate">{title}</p>
-              <p className="text-xs text-muted-foreground">{artist}</p>
+              <p className="truncate text-sm font-semibold">{title}</p>
+              <p className="text-muted-foreground text-xs">{artist}</p>
 
               <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <div className="text-muted-foreground flex items-center justify-between text-xs">
                   <span>{formatTime(currentTime)}</span>
                   <span>{formatTime(duration)}</span>
                 </div>
@@ -138,25 +129,19 @@ export const MusicPlayer = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 ml-4">
+          <div className="ml-4 flex items-center gap-2">
             <Button
               variant="ghost"
               size="sm"
               onClick={togglePlayPause}
-              className="h-10 w-10 rounded-full p-0 hover:bg-primary/20"
-            >
-              {isPlaying ? (
-                <Pause className="h-5 w-5" />
-              ) : (
-                <Play className="h-5 w-5" />
-              )}
+              className="hover:bg-primary/20 h-10 w-10 rounded-full p-0">
+              {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
             </Button>
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleExpand}
-              className="h-10 w-10 rounded-full p-0 hover:bg-accent"
-            >
+              className="hover:bg-accent h-10 w-10 rounded-full p-0">
               <Maximize2 className="h-4 w-4" />
             </Button>
           </div>
@@ -167,11 +152,11 @@ export const MusicPlayer = ({
           {/* Header */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center shadow-lg">
-                <div className="w-7 h-7 bg-white/20 rounded-lg animate-pulse" />
+              <div className="from-primary to-primary/80 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br shadow-lg">
+                <div className="h-7 w-7 animate-pulse rounded-lg bg-white/20" />
               </div>
               <div>
-                <h3 className="font-bold text-xl">{title}</h3>
+                <h3 className="text-xl font-bold">{title}</h3>
                 <p className="text-muted-foreground">{artist}</p>
               </div>
             </div>
@@ -179,15 +164,14 @@ export const MusicPlayer = ({
               variant="ghost"
               size="sm"
               onClick={toggleExpand}
-              className="h-10 w-10 rounded-full p-0 hover:bg-accent"
-            >
+              className="hover:bg-accent h-10 w-10 rounded-full p-0">
               <Minimize2 className="h-4 w-4" />
             </Button>
           </div>
 
           {/* Progress Bar */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <div className="text-muted-foreground flex items-center justify-between text-xs">
               <span>{formatTime(currentTime)}</span>
               <span>{formatTime(duration)}</span>
             </div>
@@ -205,9 +189,8 @@ export const MusicPlayer = ({
             <Button
               variant="ghost"
               size="sm"
-              className="h-12 w-12 rounded-full p-0 hover:bg-accent"
-              disabled
-            >
+              className="hover:bg-accent h-12 w-12 rounded-full p-0"
+              disabled>
               <SkipBack className="h-5 w-5" />
             </Button>
             <Button
@@ -215,35 +198,27 @@ export const MusicPlayer = ({
               size="lg"
               disabled={!audioSrc}
               onClick={togglePlayPause}
-              className="h-14 w-14 rounded-full p-0 shadow-lg hover:shadow-xl hover:bg-primary/20 hover:scale-105 transition-all"
-            >
-              {isPlaying ? (
-                <Pause className="h-6 w-6" />
-              ) : (
-                <Play className="h-6 w-6" />
-              )}
+              className="hover:bg-primary/20 h-14 w-14 rounded-full p-0 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
+              {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6" />}
             </Button>
             <Button
               variant="ghost"
               size="sm"
-              className="h-12 w-12 rounded-full p-0 hover:bg-accent"
-              disabled
-            >
+              className="hover:bg-accent h-12 w-12 rounded-full p-0"
+              disabled>
               <SkipForward className="h-5 w-5" />
             </Button>
           </div>
 
           {/* Volume */}
           <div className="flex items-center gap-3">
-            <Volume2
-              className={`h-4 w-4 ${volume === 0 ? "text-muted-foreground" : ""}`}
-            />
+            <Volume2 className={`h-4 w-4 ${volume === 0 ? "text-muted-foreground" : ""}`} />
             <Slider
               value={[volume]}
               max={1}
               step={0.01}
               onValueChange={handleVolumeChange}
-              className="flex-1 w-32"
+              className="w-32 flex-1"
             />
           </div>
         </div>

@@ -6,11 +6,7 @@ import {
   View,
   ActivityIndicator,
 } from "react-native";
-import Reanimated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from "react-native-reanimated";
+import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@repo/libs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -93,7 +89,7 @@ export const Button = forwardRef<View, ButtonProps>(
       containerClassName,
       ...props
     },
-    ref,
+    ref
   ) => {
     const scale = useSharedValue(1);
 
@@ -110,18 +106,14 @@ export const Button = forwardRef<View, ButtonProps>(
     };
 
     return (
-      <Reanimated.View
-        className={cn(containerClassName, "overflow-hidden")}
-        style={animatedStyle}
-      >
+      <Reanimated.View className={cn(containerClassName, "overflow-hidden")} style={animatedStyle}>
         <TouchableOpacity
           ref={ref}
           disabled={disabled || loading}
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
           className={cn(buttonVariants({ variant, size, disabled }), className)}
-          {...props}
-        >
+          {...props}>
           <View className="flex-row items-center justify-center">
             {loading ? (
               <ActivityIndicator
@@ -149,7 +141,7 @@ export const Button = forwardRef<View, ButtonProps>(
         </TouchableOpacity>
       </Reanimated.View>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";

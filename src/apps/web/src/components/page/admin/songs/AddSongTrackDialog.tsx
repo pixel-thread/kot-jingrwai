@@ -19,23 +19,19 @@ type Props = {
   songId: string;
 };
 
-export const AddSongTrackDialog = ({
-  isOpen,
-  onValueChange,
-  songId,
-}: Props) => {
+export const AddSongTrackDialog = ({ isOpen, onValueChange, songId }: Props) => {
   const [track, setTrack] = useState<File | null | undefined>(null);
 
   const mutation = useMutation({
     mutationFn: () =>
       http.post(
-        `/admin/tracks/upload`,
+        "/admin/tracks/upload",
         { file: track, songId: songId },
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        },
+        }
       ),
     onSuccess: (data) => {
       if (data.success) {

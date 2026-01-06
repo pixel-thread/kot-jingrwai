@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Folder,
-  Forward,
-  MoreHorizontal,
-  Trash2,
-  type LucideIcon,
-} from "lucide-react";
+import { Folder, Forward, MoreHorizontal, Trash2, type LucideIcon } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -59,8 +53,7 @@ export function NavProjects({
               <DropdownMenuContent
                 className="w-48 rounded-lg"
                 side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
-              >
+                align={isMobile ? "end" : "start"}>
                 <DropdownMenuItem>
                   <Folder className="text-muted-foreground" />
                   <span>View Project</span>

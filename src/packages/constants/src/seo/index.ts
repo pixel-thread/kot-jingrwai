@@ -79,8 +79,7 @@ export const SEO = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: process.env.NEXT_PUBLIC_APP_NAME,
-    description:
-      "Digital songbook application for worship music, hymns, and spiritual songs",
+    description: "Digital songbook application for worship music, hymns, and spiritual songs",
     applicationCategory: "MusicApplication",
     operatingSystem: "Any",
     offers: {
@@ -172,11 +171,7 @@ export const SEO = {
   ],
 
   // Page-specific SEO helpers
-  generatePageSEO: (
-    pageTitle: string,
-    pageDesc?: string,
-    pagePath?: string,
-  ) => ({
+  generatePageSEO: (pageTitle: string, pageDesc?: string, pagePath?: string) => ({
     title: `${pageTitle} | ${process.env.NEXT_PUBLIC_APP_NAME}`,
     description: pageDesc || SEO.desc,
     canonical: `${SEO.url}${pagePath || ""}`,
@@ -190,11 +185,7 @@ export const SEO = {
 };
 
 // Helper function for dynamic song pages
-export const generateSongSEO = (
-  songTitle: string,
-  songNumber: number,
-  composer?: string,
-) => ({
+export const generateSongSEO = (songTitle: string, songNumber: number, composer?: string) => ({
   title: `${songTitle} - Song #${songNumber} | ${process.env.NEXT_PUBLIC_APP_NAME}`,
   description: `View lyrics and details for "${songTitle}" (Song #${songNumber})${composer ? ` by ${composer}` : ""}. Part of our comprehensive digital songbook collection.`,
   canonical: `${SEO.url}/songs/${songNumber}`,

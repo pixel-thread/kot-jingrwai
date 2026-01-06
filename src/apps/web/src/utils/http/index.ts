@@ -20,11 +20,9 @@ export const handleAxiosError = <T>(error: unknown): ApiResponse<T> => {
 
   if (error instanceof AxiosError) {
     if (error.response) {
-      errorMessage =
-        (error.response.data as { message?: string })?.message || errorMessage;
+      errorMessage = (error.response.data as { message?: string })?.message || errorMessage;
       errorDetails =
-        (error.response.data as { error?: string | Record<string, unknown> })
-          ?.error ||
+        (error.response.data as { error?: string | Record<string, unknown> })?.error ||
         error.response.data ||
         "";
     } else if (error.request) {
@@ -44,9 +42,7 @@ export const handleAxiosError = <T>(error: unknown): ApiResponse<T> => {
   };
 };
 
-const handleResponse = <T>(
-  response: AxiosResponse<ApiResponse<T>>,
-): ApiResponse<T> => {
+const handleResponse = <T>(response: AxiosResponse<ApiResponse<T>>): ApiResponse<T> => {
   return {
     success: response.data.success,
     message: response.data.message || "Request successful",
@@ -57,10 +53,7 @@ const handleResponse = <T>(
 };
 
 const http = {
-  get: async <T>(
-    url: string,
-    config?: AxiosRequestConfig,
-  ): Promise<ApiResponse<T>> => {
+  get: async <T>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> => {
     try {
       logger.log({ method: "GET =>", path: url });
       const response = await axiosInstance.get(url, config);
@@ -73,7 +66,7 @@ const http = {
   post: async <T>(
     url: string,
     data?: object,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<ApiResponse<T>> => {
     try {
       logger.log({ method: "POST =>", path: url, data });
@@ -87,7 +80,7 @@ const http = {
   put: async <T>(
     url: string,
     data?: object,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<ApiResponse<T>> => {
     try {
       logger.log({ method: "PUT =>", path: url });
@@ -98,10 +91,7 @@ const http = {
     }
   },
 
-  delete: async <T>(
-    url: string,
-    config?: AxiosRequestConfig,
-  ): Promise<ApiResponse<T>> => {
+  delete: async <T>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> => {
     try {
       logger.log({ method: "DELETE =>", path: url });
       const response = await axiosInstance.delete(url, config);

@@ -11,8 +11,7 @@ export async function GET(req: NextRequest) {
 
     const isChorusDefine = chorus;
 
-    const isChorus =
-      req.nextUrl.searchParams.get("isChorus") === "true" || false;
+    const isChorus = req.nextUrl.searchParams.get("isChorus") === "true" || false;
 
     const [songs, total] = await getSongs({
       page,

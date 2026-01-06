@@ -3,12 +3,12 @@ export class EmailError extends Error {
   originalError?: unknown;
 
   constructor(
-    message: string = 'Failed to send email',
+    message: string = "Failed to send email",
     status: number = 500,
-    originalError?: unknown,
+    originalError?: unknown
   ) {
     super(message);
-    this.name = 'EmailError';
+    this.name = "EmailError";
     this.status = status;
     this.originalError = originalError;
 

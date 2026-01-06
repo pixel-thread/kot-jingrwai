@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
 async function mapWithConcurrency<T, R>(
   items: T[],
   limit: number,
-  fn: (item: T, index: number) => Promise<R>,
+  fn: (item: T, index: number) => Promise<R>
 ) {
   const results: R[] = new Array(items.length);
   let index = 0;
@@ -103,9 +103,7 @@ async function main() {
     }
   });
 
-  console.log(
-    `✅ Seeded ${allSongs.length} songs, ${totalParagraphs} paragraphs`,
-  );
+  console.log(`✅ Seeded ${allSongs.length} songs, ${totalParagraphs} paragraphs`);
 }
 
 main()

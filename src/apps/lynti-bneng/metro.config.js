@@ -8,12 +8,12 @@ const projectRoot = __dirname;
 const workspaceRoot = path.resolve(projectRoot, '../../..');
 
 // Monorepo setup
-config.watchFolders = [workspaceRoot];
+config.watchFolders = [...workspaceRoot, ...config.watchFolders];
 config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, 'node_modules'),
   path.resolve(workspaceRoot, 'node_modules'),
 ];
-config.resolver.disableHierarchicalLookup = true;
+config.resolver.disableHierarchicalLookup = false;
 
 // NativeWind v4 - Use NativeWind helper (SIMPLEST)
 const { withNativeWind } = require('nativewind/dist/metro');

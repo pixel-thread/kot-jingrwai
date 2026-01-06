@@ -5,9 +5,9 @@ import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-      if (process.env.NODE_ENV === "development") {
-        console.log(req);
-      }
+    if (process.env.NODE_ENV === "development") {
+      console.log(req);
+    }
     const update = await getLatestUpdate();
     return SuccessResponse({
       data: update,

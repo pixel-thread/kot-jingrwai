@@ -1,18 +1,18 @@
-import { useRouter } from 'expo-router';
-import { useColorScheme } from 'nativewind';
-import { Platform, TouchableOpacity, View } from 'react-native';
-import { gray } from 'tailwindcss/colors';
-import { Text , Ternary } from '@repo/ui-native';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import type { ReactNode } from 'react';
-import { useEffect } from 'react';
+import { useRouter } from "expo-router";
+import { useColorScheme } from "nativewind";
+import { Platform, TouchableOpacity, View } from "react-native";
+import { gray } from "tailwindcss/colors";
+import { Text, Ternary } from "@repo/ui-native";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import type { ReactNode } from "react";
+import { useEffect } from "react";
 
 import Reanimated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
   FadeIn,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
 
 type Props = {
   options?: { title?: string };
@@ -24,7 +24,7 @@ type Props = {
 export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, headerRight }) => {
   const router = useRouter();
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
 
   // Animation values
   const headerOpacity = useSharedValue(0.9);
@@ -53,7 +53,7 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
               onPress={onPressBackButton}
               className="mr-3 flex flex-row items-center justify-center">
               <Ternary
-                condition={Platform.OS === 'ios'}
+                condition={Platform.OS === "ios"}
                 ifFalse={
                   <MaterialCommunityIcons
                     size={20}
@@ -69,7 +69,7 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
                   />
                 }
               />
-              <Text size={'lg'} weight={'medium'}>
+              <Text size={"lg"} weight={"medium"}>
                 Back
               </Text>
             </TouchableOpacity>
@@ -81,12 +81,12 @@ export const CustomHeader: React.FC<Props> = ({ back, options, headerLeft, heade
           entering={FadeIn.delay(200).duration(500)}
           className="flex-1 items-center justify-center">
           <Text
-            size={'2xl'}
-            weight={'extrabold'}
-            align={'center'}
-            variant={'secondary'}
+            size={"2xl"}
+            weight={"extrabold"}
+            align={"center"}
+            variant={"secondary"}
             className="uppercase">
-            {options?.title ?? 'No Title'}
+            {options?.title ?? "No Title"}
           </Text>
         </Reanimated.View>
 

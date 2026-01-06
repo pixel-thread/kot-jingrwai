@@ -3,7 +3,7 @@ import { SignIn } from "@clerk/nextjs";
 
 export const LoginForm = () => {
   return (
-    <div className={"flex h-screen items-center justify-center w-full"}>
+    <div className={"flex h-screen w-full items-center justify-center"}>
       <SignIn />
     </div>
   );

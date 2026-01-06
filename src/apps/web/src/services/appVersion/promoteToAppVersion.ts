@@ -8,16 +8,13 @@ export async function promoteToAppVersion(payload: EasBuildPayload) {
 
   if (!isProduction || !isStatusFinished) return;
 
-  const version =
-    payload.metadata?.runtimeVersion || payload.metadata?.appVersion;
+  const version = payload.metadata?.runtimeVersion || payload.metadata?.appVersion;
 
   if (!version) return;
 
-  const title =
-    payload.metadata?.gitCommitMessage.split(/\r?\n/)[0] || `Build ${version}`;
+  const title = payload.metadata?.gitCommitMessage.split(/\r?\n/)[0] || `Build ${version}`;
 
-  const platform: AppVersionPlatform[] =
-    payload.platform === "android" ? ["ANDROID"] : ["IOS"];
+  const platform: AppVersionPlatform[] = payload.platform === "android" ? ["ANDROID"] : ["IOS"];
 
   const description: string[] = payload.metadata?.gitCommitMessage
     ? payload.metadata.gitCommitMessage.split(/\r?\n/).filter(Boolean)

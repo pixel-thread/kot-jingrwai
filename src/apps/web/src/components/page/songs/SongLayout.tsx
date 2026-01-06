@@ -32,23 +32,18 @@ export default function SongsLayout({ children }: Props) {
   }, [isSearchOpen]);
 
   return (
-    <div className="h-screen w-full flex flex-col overflow-hidden">
+    <div className="flex h-screen w-full flex-col overflow-hidden">
       {/* Header - Fixed height */}
-      <div className="flex-shrink-0 bg-background border-b shadow-sm">
+      <div className="bg-background flex-shrink-0 border-b shadow-sm">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row w-full md:justify-between items-center gap-6">
+          <div className="flex w-full flex-col items-center gap-6 md:flex-row md:justify-between">
             {/* Logo/Title Section */}
-            <Link
-              href="/songs"
-              className="flex items-center gap-3 w-full md:w-auto"
-            >
-              <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Music className="h-6 w-6 text-primary" />
+            <Link href="/songs" className="flex w-full items-center gap-3 md:w-auto">
+              <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-lg">
+                <Music className="text-primary h-6 w-6" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold tracking-tight">
-                  Song Library
-                </h1>
+                <h1 className="text-2xl font-bold tracking-tight">Song Library</h1>
               </div>
             </Link>
             <SongSearchInput />
@@ -62,9 +57,9 @@ export default function SongsLayout({ children }: Props) {
 
       {/* Scrollable Content Area */}
       <div className="flex-1 overflow-hidden">
-        <div className="container h-full mx-auto">
+        <div className="container mx-auto h-full">
           <ScrollArea className="h-full">
-            <div className="py-6 px-4">{children}</div>
+            <div className="px-4 py-6">{children}</div>
           </ScrollArea>
         </div>
       </div>

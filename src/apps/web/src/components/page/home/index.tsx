@@ -32,32 +32,30 @@ export default function Home() {
   }, [images.length]);
 
   return (
-    <div className="min-h-screen bg-background dark:text-white flex flex-col justify-center">
-      <section className="container mx-auto h-full flex flex-col md:flex-row items-center justify-between px-6 py-40 md:py-16 gap-10 md:gap-16">
+    <div className="bg-background flex min-h-screen flex-col justify-center dark:text-white">
+      <section className="container mx-auto flex h-full flex-col items-center justify-between gap-10 px-6 py-40 md:flex-row md:gap-16 md:py-16">
         {/* Text content */}
-        <div className="max-w-xl md:max-w-2xl text-center md:text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+        <div className="max-w-xl text-center md:max-w-2xl md:text-left">
+          <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-6xl">
             Ngi wanrah sha phi ia ka {""}
             <span className="text-indigo-600">{env.NEXT_PUBLIC_APP_NAME}</span>
           </h1>
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-md md:max-w-none mx-auto md:mx-0">
-            Ka app mobile ka ban iarap ia phi haba phi donkam ia ka kot
-            jingrwai, kaba suk bad kloi ban pyndonkam lada phi klet ban rah ia
-            ka kot jingrwai.
+          <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-gray-600 sm:mt-6 sm:text-lg md:mx-0 md:max-w-none md:text-xl dark:text-gray-300">
+            Ka app mobile ka ban iarap ia phi haba phi donkam ia ka kot jingrwai, kaba suk bad kloi
+            ban pyndonkam lada phi klet ban rah ia ka kot jingrwai.
           </p>
 
-          <div className="flex flex-col md:flex-row mt-4 w-full gap-2 md:w-auto md:justify-start justify-center items-center">
+          <div className="mt-4 flex w-full flex-col items-center justify-center gap-2 md:w-auto md:flex-row md:justify-start">
             {data?.downloadUrl && (
               <div className="w-full md:w-auto">
                 <a
                   className={cn(
                     buttonVariants({
                       size: "lg",
-                      className: "py-6 w-full md:w-auto",
-                    }),
+                      className: "w-full py-6 md:w-auto",
+                    })
                   )}
-                  href={data?.downloadUrl}
-                >
+                  href={data?.downloadUrl}>
                   {isFetching ? (
                     "Downloading..."
                   ) : (
@@ -77,11 +75,10 @@ export default function Home() {
                     buttonVariants({
                       size: "lg",
                       variant: "secondary",
-                      className: "py-6 w-full md:w-auto",
-                    }),
+                      className: "w-full py-6 md:w-auto",
+                    })
                   )}
-                  href={"/admin"}
-                >
+                  href={"/admin"}>
                   Dashboard
                   <ArrowRightIcon />
                 </Link>
@@ -93,11 +90,10 @@ export default function Home() {
                   buttonVariants({
                     size: "lg",
                     variant: "secondary",
-                    className: "py-6 w-full md:w-auto",
-                  }),
+                    className: "w-full py-6 md:w-auto",
+                  })
                 )}
-                href={"/songs"}
-              >
+                href={"/songs"}>
                 Continue online
                 <ArrowRightIcon />
               </Link>
@@ -106,7 +102,7 @@ export default function Home() {
         </div>
 
         {/* App mockup */}
-        <div className="flex justify-center md:justify-end w-full max-w-md md:max-w-lg mx-auto">
+        <div className="mx-auto flex w-full max-w-md justify-center md:max-w-lg md:justify-end">
           <Image
             src={images[imageIndex] || ""}
             alt="Ka dur pynshai jong ka App"
@@ -118,7 +114,7 @@ export default function Home() {
               width: "auto",
               height: "auto",
             }}
-            className="drop-shadow-2xl rounded-2xl"
+            className="rounded-2xl drop-shadow-2xl"
           />
         </div>
       </section>

@@ -20,6 +20,7 @@
     }
   },
   "scripts": {
+    "prepare": "tsc -p tsconfig.json",
     "generate": "tsc -p tsconfig.json",
     "check-types": "tsc --noEmit",
     "dev": "tsc -w -p tsconfig.json"

@@ -21,11 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -76,11 +72,7 @@ const UPDATE_TYPES = [
   { value: $Enums.AppVersionType.OTA, label: "OTA (Over the Air)" },
 ];
 
-export function AddUpdateDialog({
-  open,
-  onOpenChange,
-  onSuccess,
-}: AddUpdateDialogProps) {
+export function AddUpdateDialog({ open, onOpenChange, onSuccess }: AddUpdateDialogProps) {
   const [descriptionItems, setDescriptionItems] = useState<string[]>([""]);
   const form = useForm<FormValues>({
     resolver: zodResolver(UpdateSchema),
@@ -118,12 +110,11 @@ export function AddUpdateDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-[700px]">
         <DialogHeader>
           <DialogTitle>Add New App Update</DialogTitle>
           <DialogDescription>
-            Create a new version update for your application. Fill in the
-            details below.
+            Create a new version update for your application. Fill in the details below.
           </DialogDescription>
         </DialogHeader>
 
@@ -168,10 +159,7 @@ export function AddUpdateDialog({
                 <FormItem>
                   <FormLabel>Title *</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="Bug Fixes and Performance Improvements"
-                      {...field}
-                    />
+                    <Input placeholder="Bug Fixes and Performance Improvements" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -212,15 +200,10 @@ export function AddUpdateDialog({
                             variant="ghost"
                             size="icon"
                             onClick={() => {
-                              const newItems = descriptionItems.filter(
-                                (_, i) => i !== index,
-                              );
-                              setDescriptionItems(
-                                newItems.length ? newItems : [""],
-                              );
+                              const newItems = descriptionItems.filter((_, i) => i !== index);
+                              setDescriptionItems(newItems.length ? newItems : [""]);
                               field.onChange(newItems.filter((d) => d.trim()));
-                            }}
-                          >
+                            }}>
                             <XIcon className="h-4 w-4" />
                           </Button>
                         )}
@@ -230,18 +213,15 @@ export function AddUpdateDialog({
                       type="button"
                       variant="outline"
                       size="sm"
-                      onClick={() =>
-                        setDescriptionItems([...descriptionItems, ""])
-                      }
-                      className="w-full"
-                    >
+                      onClick={() => setDescriptionItems([...descriptionItems, ""])}
+                      className="w-full">
                       <PlusIcon className="mr-2 h-4 w-4" />
                       Add Description Item
                     </Button>
                   </div>
                   <FormDescription>
-                    Add multiple bullet points describing this update. Press
-                    Enter to add a new item.
+                    Add multiple bullet points describing this update. Press Enter to add a new
+                    item.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -255,10 +235,7 @@ export function AddUpdateDialog({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Update Type *</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger className="w-full">
                           <SelectValue placeholder="Select type" />
@@ -290,9 +267,8 @@ export function AddUpdateDialog({
                             variant="outline"
                             className={cn(
                               "w-full pl-3 text-left font-normal",
-                              !field.value && "text-muted-foreground",
-                            )}
-                          >
+                              !field.value && "text-muted-foreground"
+                            )}>
                             {field.value ? (
                               format(new Date(field.value), "PPP")
                             ) : (
@@ -305,12 +281,8 @@ export function AddUpdateDialog({
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
-                          selected={
-                            field.value ? new Date(field.value) : undefined
-                          }
-                          onSelect={(date) =>
-                            field.onChange(date?.toISOString())
-                          }
+                          selected={field.value ? new Date(field.value) : undefined}
+                          onSelect={(date) => field.onChange(date?.toISOString())}
                         />
                       </PopoverContent>
                     </Popover>
@@ -328,9 +300,7 @@ export function AddUpdateDialog({
                 <FormItem>
                   <div className="mb-4">
                     <FormLabel>Platforms</FormLabel>
-                    <FormDescription>
-                      Select the platforms for this update
-                    </FormDescription>
+                    <FormDescription>Select the platforms for this update</FormDescription>
                   </div>
                   <div className="flex gap-4">
                     {PLATFORMS.map((platform) => (
@@ -342,30 +312,20 @@ export function AddUpdateDialog({
                           return (
                             <FormItem
                               key={platform.value}
-                              className="flex flex-row items-start space-x-3 space-y-0"
-                            >
+                              className="flex flex-row items-start space-x-3 space-y-0">
                               <FormControl>
                                 <Checkbox
-                                  checked={field.value?.includes(
-                                    platform.value,
-                                  )}
+                                  checked={field.value?.includes(platform.value)}
                                   onCheckedChange={(checked) => {
                                     return checked
-                                      ? field.onChange([
-                                          ...(field.value || []),
-                                          platform.value,
-                                        ])
+                                      ? field.onChange([...(field.value || []), platform.value])
                                       : field.onChange(
-                                          field.value?.filter(
-                                            (value) => value !== platform.value,
-                                          ),
+                                          field.value?.filter((value) => value !== platform.value)
                                         );
                                   }}
                                 />
                               </FormControl>
-                              <FormLabel className="font-normal">
-                                {platform.label}
-                              </FormLabel>
+                              <FormLabel className="font-normal">{platform.label}</FormLabel>
                             </FormItem>
                           );
                         }}
@@ -396,21 +356,15 @@ export function AddUpdateDialog({
                           return (
                             <FormItem
                               key={tag.value}
-                              className="flex flex-row items-start space-x-3 space-y-0"
-                            >
+                              className="flex flex-row items-start space-x-3 space-y-0">
                               <FormControl>
                                 <Checkbox
                                   checked={field.value?.includes(tag.value)}
                                   onCheckedChange={(checked) => {
                                     return checked
-                                      ? field.onChange([
-                                          ...field.value,
-                                          tag.value,
-                                        ])
+                                      ? field.onChange([...field.value, tag.value])
                                       : field.onChange(
-                                          field.value?.filter(
-                                            (value) => value !== tag.value,
-                                          ),
+                                          field.value?.filter((value) => value !== tag.value)
                                         );
                                   }}
                                 />
@@ -425,9 +379,7 @@ export function AddUpdateDialog({
                     ))}
                   </div>
                   <FormMessage />
-                  <FormDescription>
-                    Select tags that describe this update
-                  </FormDescription>
+                  <FormDescription>Select tags that describe this update</FormDescription>
                 </FormItem>
               )}
             />
@@ -441,14 +393,9 @@ export function AddUpdateDialog({
                   <FormItem>
                     <FormLabel>Download URL</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="https://example.com/app.apk"
-                        {...field}
-                      />
+                      <Input placeholder="https://example.com/app.apk" {...field} />
                     </FormControl>
-                    <FormDescription>
-                      Direct download link for the update
-                    </FormDescription>
+                    <FormDescription>Direct download link for the update</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -461,14 +408,9 @@ export function AddUpdateDialog({
                   <FormItem>
                     <FormLabel>Release Notes URL</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="https://example.com/release-notes"
-                        {...field}
-                      />
+                      <Input placeholder="https://example.com/release-notes" {...field} />
                     </FormControl>
-                    <FormDescription>
-                      Link to detailed release notes
-                    </FormDescription>
+                    <FormDescription>Link to detailed release notes</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -485,9 +427,7 @@ export function AddUpdateDialog({
                   <FormControl>
                     <Input placeholder="John Doe" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    Name of the person who created this update
-                  </FormDescription>
+                  <FormDescription>Name of the person who created this update</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -501,14 +441,11 @@ export function AddUpdateDialog({
                   form.reset();
                   onOpenChange(false);
                 }}
-                disabled={createMutation.isPending}
-              >
+                disabled={createMutation.isPending}>
                 Cancel
               </Button>
               <Button type="submit" disabled={createMutation.isPending}>
-                {createMutation.isPending && (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                )}
+                {createMutation.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Create Update
               </Button>
             </DialogFooter>

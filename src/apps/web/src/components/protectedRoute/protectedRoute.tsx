@@ -63,9 +63,7 @@ export const RoleBaseRoute = ({ children }: PropsT) => {
       // Step 3: Handle role-based access control
       if (isSignedIn) {
         // Check if the user has at least one of the required roles for the current route
-        const hasRequiredRole = currentRoute.role.some((role) =>
-          userRoles.includes(role),
-        );
+        const hasRequiredRole = currentRoute.role.some((role) => userRoles.includes(role));
 
         // If the user does not have the required role(s)
         if (!hasRequiredRole) {

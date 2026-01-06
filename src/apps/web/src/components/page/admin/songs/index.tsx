@@ -56,10 +56,7 @@ export const AdminSongsPage = () => {
       accessorKey: "title",
       header: "Title",
       cell: ({ row }) => (
-        <Link
-          href={`/songs/${row.original.id}`}
-          className="max-w-[300px] truncate font-medium"
-        >
+        <Link href={`/songs/${row.original.id}`} className="max-w-[300px] truncate font-medium">
           {row.original.title}
         </Link>
       ),
@@ -68,26 +65,20 @@ export const AdminSongsPage = () => {
       accessorKey: "metadata.language",
       header: "Language",
       cell: ({ row }) => (
-        <Badge variant="outline">
-          {row.original.metadata.language.toUpperCase()}
-        </Badge>
+        <Badge variant="outline">{row.original.metadata.language.toUpperCase()}</Badge>
       ),
     },
     {
       accessorKey: "metadata.author",
       header: "Author",
       cell: ({ row }) => (
-        <div className="text-sm text-muted-foreground">
-          {row.original.metadata.author || "—"}
-        </div>
+        <div className="text-muted-foreground text-sm">{row.original.metadata.author || "—"}</div>
       ),
     },
     {
       accessorKey: "paragraphs",
       header: "Verses",
-      cell: ({ row }) => (
-        <div className="text-sm">{row.original.paragraphs.length}</div>
-      ),
+      cell: ({ row }) => <div className="text-sm">{row.original.paragraphs.length}</div>,
     },
     {
       header: "Chorus",
@@ -105,13 +96,12 @@ export const AdminSongsPage = () => {
       accessorKey: "metadata.tags",
       header: "Tags",
       cell: ({ row }) => (
-        <div className="flex gap-1 flex-wrap max-w-[200px]">
+        <div className="flex max-w-[200px] flex-wrap gap-1">
           {row.original.metadata.tags?.slice(0, 2).map((tag, idx) => (
             <Badge
               key={idx + row.original.metadata.id + tag}
               variant="secondary"
-              className="text-xs"
-            >
+              className="text-xs">
               {tag}
             </Badge>
           ))}
@@ -142,8 +132,7 @@ export const AdminSongsPage = () => {
                 onClick={() => {
                   setSelectedSong(song);
                   setIsViewDialogOpen(true);
-                }}
-              >
+                }}>
                 <Eye className="mr-2 h-4 w-4" />
                 View Details
               </DropdownMenuItem>
@@ -151,8 +140,7 @@ export const AdminSongsPage = () => {
                 onClick={() => {
                   setSelectedSong(song);
                   setIsAddTrackOpen(true);
-                }}
-              >
+                }}>
                 <MusicIcon className="mr-2 h-4 w-4" />
                 Add Track
               </DropdownMenuItem>
@@ -161,8 +149,7 @@ export const AdminSongsPage = () => {
                 onClick={() => {
                   setSelectedSong(song);
                   setIsDeleteDialogOpen(true);
-                }}
-              >
+                }}>
                 <TrashIcon className="mr-2 h-4 w-4" />
                 Delete Song
               </DropdownMenuItem>
@@ -176,7 +163,7 @@ export const AdminSongsPage = () => {
   if (isLoading) {
     return (
       <div className="container mx-auto py-10">
-        <div className="flex items-center justify-center h-64">
+        <div className="flex h-64 items-center justify-center">
           <div className="text-muted-foreground">Loading songs...</div>
         </div>
       </div>
@@ -186,10 +173,8 @@ export const AdminSongsPage = () => {
   if (error) {
     return (
       <div className="container mx-auto py-10">
-        <div className="flex items-center justify-center h-64">
-          <div className="text-destructive">
-            Error loading songs: {error.message}
-          </div>
+        <div className="flex h-64 items-center justify-center">
+          <div className="text-destructive">Error loading songs: {error.message}</div>
         </div>
       </div>
     );
@@ -197,22 +182,17 @@ export const AdminSongsPage = () => {
 
   return (
     <div className="container mx-auto py-10">
-      <div className="flex justify-between items-center mb-6">
+      <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">
-            Songs Management
-          </h1>
-          <p className="text-muted-foreground">
-            Manage your song library ({songs.length} total)
-          </p>
+          <h1 className="text-3xl font-bold tracking-tight">Songs Management</h1>
+          <p className="text-muted-foreground">Manage your song library ({songs.length} total)</p>
         </div>
 
         <div className="flex flex-row space-x-2">
           <Button
             onClick={() => setIsChorus(!isChorus)}
             variant={isChorus ? "default" : "outline"}
-            disabled={isFetching}
-          >
+            disabled={isFetching}>
             {isFetching ? "Loading..." : isChorus ? "All Songs" : "Chorus"}
           </Button>
 
@@ -261,7 +241,7 @@ const ViewSongDialog = ({ open, onOpenChange, song }: ViewSongDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-h-[90vh] max-w-3xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{song.title}</DialogTitle>
           <DialogDescription>Song #{song.metadata.number}</DialogDescription>
@@ -269,27 +249,23 @@ const ViewSongDialog = ({ open, onOpenChange, song }: ViewSongDialogProps) => {
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <span className="font-medium">Language:</span>{" "}
-              {song.metadata.language.toUpperCase()}
+              <span className="font-medium">Language:</span> {song.metadata.language.toUpperCase()}
             </div>
             <div>
-              <span className="font-medium">Author:</span>{" "}
-              {song.metadata.author || "—"}
+              <span className="font-medium">Author:</span> {song.metadata.author || "—"}
             </div>
             <div>
-              <span className="font-medium">Composer:</span>{" "}
-              {song.metadata.composer || "—"}
+              <span className="font-medium">Composer:</span> {song.metadata.composer || "—"}
             </div>
             <div>
-              <span className="font-medium">Verses:</span>{" "}
-              {song.paragraphs.length}
+              <span className="font-medium">Verses:</span> {song.paragraphs.length}
             </div>
           </div>
 
           {song.metadata.tags && song.metadata.tags.length > 0 && (
             <div>
-              <span className="font-medium text-sm">Tags:</span>
-              <div className="flex gap-2 mt-2 flex-wrap">
+              <span className="text-sm font-medium">Tags:</span>
+              <div className="mt-2 flex flex-wrap gap-2">
                 {song.metadata.tags.map((tag, idx) => (
                   <Badge key={idx + song.metadata.id + tag} variant="secondary">
                     {tag}
@@ -300,8 +276,8 @@ const ViewSongDialog = ({ open, onOpenChange, song }: ViewSongDialogProps) => {
           )}
 
           <div>
-            <h3 className="font-medium text-sm mb-2">Lyrics:</h3>
-            <div className="space-y-4 bg-muted p-4 rounded-lg">
+            <h3 className="mb-2 text-sm font-medium">Lyrics:</h3>
+            <div className="bg-muted space-y-4 rounded-lg p-4">
               {song.paragraphs.map((paragraph, idx) => (
                 <div key={paragraph.id || idx}>
                   {paragraph.type && (

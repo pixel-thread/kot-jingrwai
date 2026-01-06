@@ -9,7 +9,7 @@ export async function GET(
     params,
   }: {
     params: Promise<{ id: string }>;
-  },
+  }
 ) {
   try {
     if (process.env.NODE_ENV === "development") {

@@ -16,7 +16,7 @@ export async function GET(request: Request) {
     try {
       logger.info("Fetching random verse");
       response = await axios.get<BibleVerseT>(
-        "https://beta.ourmanna.com/api/v1/get?format=json&order=daily",
+        "https://beta.ourmanna.com/api/v1/get?format=json&order=daily"
       );
       logger.info("Successfully fetched random verse from api");
     } catch (error) {

@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate": "tsc -p tsconfig.json"
+    "generate": "tsc -p tsconfig.json",
+    "prepare": "tsc -p tsconfig.json"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

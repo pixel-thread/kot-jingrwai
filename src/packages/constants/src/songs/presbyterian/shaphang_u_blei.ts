@@ -779,7 +779,7 @@ export const shaphangUBlei = [
         lines: [
           "Ka por ba kum ka wah ba shlei,",
           "Ki khun ka kit noh hi;",
-          `Ki her b'la klet kum jingphohsniew,`,
+          "Ki her b'la klet kum jingphohsniew,",
           "Ba jah tang mih ka sngi.",
         ],
       },

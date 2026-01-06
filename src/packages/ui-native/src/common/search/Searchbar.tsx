@@ -28,11 +28,7 @@ export const SearchBar = ({
     <Reanimated.View className="mb-2 rounded-2xl">
       <View className="mb-2 flex-row items-center">
         <MaterialCommunityIcons name="music-note" size={24} color="#6366f1" />
-        <Text
-          size={"lg"}
-          weight={"semibold"}
-          className="ml-2 text-gray-800 dark:text-white"
-        >
+        <Text size={"lg"} weight={"semibold"} className="ml-2 text-gray-800 dark:text-white">
           {label}
         </Text>
       </View>
@@ -60,13 +56,8 @@ export const SearchBar = ({
           activeOpacity={0.7}
           disabled={!searchValue}
           className="w-auto items-center justify-center rounded-xl bg-indigo-600 p-4 shadow-sm disabled:opacity-50"
-          onPress={() => onSearch(searchValue)}
-        >
-          <Ionicons
-            name="search"
-            size={24}
-            color={isDarkMode ? gray[200] : gray[50]}
-          />
+          onPress={() => onSearch(searchValue)}>
+          <Ionicons name="search" size={24} color={isDarkMode ? gray[200] : gray[50]} />
         </TouchableOpacity>
       </View>
     </Reanimated.View>

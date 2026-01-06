@@ -1,21 +1,21 @@
-import { Tabs } from 'expo-router';
-import { useColorScheme } from 'nativewind';
-import colors from 'tailwindcss/colors';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { TabBarIcon } from '~/src/components/Common/TabBarIcon';
-import { DrawerToggleButton } from '@react-navigation/drawer';
-import { useEffect } from 'react';
-import { useSharedValue, withTiming } from 'react-native-reanimated';
-import { ThemeToggle } from '@repo/ui-native';
-import { useUpdateContext } from '~/src/hooks/update/useUpdateContext';
-import { View } from 'react-native';
-import { useThemeStore } from '~/src/libs/stores/theme';
+import { Tabs } from "expo-router";
+import { useColorScheme } from "nativewind";
+import colors from "tailwindcss/colors";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { TabBarIcon } from "~/src/components/Common/TabBarIcon";
+import { DrawerToggleButton } from "@react-navigation/drawer";
+import { useEffect } from "react";
+import { useSharedValue, withTiming } from "react-native-reanimated";
+import { ThemeToggle } from "@repo/ui-native";
+import { useUpdateContext } from "~/src/hooks/update/useUpdateContext";
+import { View } from "react-native";
+import { useThemeStore } from "~/src/libs/stores/theme";
 
 export default function TabLayout() {
   const { isUpdateAvailable } = useUpdateContext();
   const { theme, setTheme } = useThemeStore();
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
 
   // Animation values
   const tabBarOpacity = useSharedValue(0);
@@ -37,12 +37,12 @@ export default function TabLayout() {
           elevation: 0,
           height: 65,
           shadowOpacity: 0,
-          borderTopColor: 'transparent',
+          borderTopColor: "transparent",
         },
         tabBarLabelStyle: {
-          fontFamily: 'Helvetica',
+          fontFamily: "Helvetica",
           fontSize: 12,
-          fontWeight: '600',
+          fontWeight: "600",
         },
         tabBarActiveTintColor: isDarkMode ? colors.indigo[200] : colors.indigo[600],
         tabBarInactiveTintColor: isDarkMode ? colors.gray[400] : colors.gray[500],
@@ -65,20 +65,20 @@ export default function TabLayout() {
         name="index"
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          title: 'Home',
+          title: "Home",
         }}
       />
       <Tabs.Screen
         name="songs"
         options={{
-          title: 'Ki Jingiwai',
+          title: "Ki Jingrwai",
           tabBarIcon: ({ color }) => <TabBarIcon name="music-note" color={color} />,
         }}
       />
       <Tabs.Screen
         name="khorus"
         options={{
-          title: 'Ki Khorus',
+          title: "Ki Khorus",
           tabBarIcon: ({ color }) => <TabBarIcon name="music" color={color} />,
         }}
       />

@@ -3,83 +3,80 @@ import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 import { Text as RNText, TextProps as RNTextProps } from "react-native";
 
-export const textVariants = cva(
-  "antialias whitespace-pre-line font-[Helvetica]",
-  {
-    variants: {
-      size: {
-        base: "text-base", // default size
-        xs: "text-xs",
-        sm: "text-sm",
-        md: "text-base",
-        lg: "text-lg",
-        xl: "text-xl",
-        "2xl": "text-2xl",
-        "3xl": "text-3xl",
-        "4xl": "text-4xl",
-        "5xl": "text-5xl",
-        "6xl": "text-6xl",
-      },
-      decoration: {
-        none: "text-decoration-none",
-        underline: "text-decoration-underline",
-        lineThrough: "text-decoration-line-through",
-        overline: "text-decoration-overline",
-      },
-      italic: {
-        true: "italic",
-        false: "not-italic",
-      },
-      weight: {
-        normal: "font-normal",
-        medium: "font-medium",
-        semibold: "font-semibold",
-        bold: "font-bold",
-        extrabold: "font-extrabold",
-        black: "font-black",
-      },
-      align: {
-        left: "text-left",
-        center: "text-center",
-        right: "text-right",
-        justify: "text-justify",
-      },
-      tracking: {
-        tighter: "tracking-tighter",
-        tight: "tracking-tight",
-        normal: "tracking-normal",
-        wide: "tracking-wide",
-        wider: "tracking-wider",
-        widest: "tracking-widest",
-      },
-      leading: {
-        none: "leading-none",
-        tight: "leading-tight",
-        normal: "leading-normal",
-        loose: "leading-loose",
-      },
-      variant: {
-        default: "text-black dark:text-white",
-        primary: "text-indigo-600 dark:text-indigo-400",
-        secondary: "text-gray-600 dark:text-gray-300",
-        muted: "text-gray-400 dark:text-gray-500",
-        error: "text-red-600 dark:text-red-400",
-        success: "text-green-600 dark:text-green-400",
-        warning: "text-yellow-600 dark:text-yellow-400",
-      },
+export const textVariants = cva("antialias whitespace-pre-line font-[Helvetica]", {
+  variants: {
+    size: {
+      base: "text-base", // default size
+      xs: "text-xs",
+      sm: "text-sm",
+      md: "text-base",
+      lg: "text-lg",
+      xl: "text-xl",
+      "2xl": "text-2xl",
+      "3xl": "text-3xl",
+      "4xl": "text-4xl",
+      "5xl": "text-5xl",
+      "6xl": "text-6xl",
     },
-    defaultVariants: {
-      size: "base",
-      weight: "normal",
-      align: "left",
-      variant: "default",
-      decoration: "none",
-      italic: false,
-      tracking: "normal",
-      leading: "normal",
+    decoration: {
+      none: "text-decoration-none",
+      underline: "text-decoration-underline",
+      lineThrough: "text-decoration-line-through",
+      overline: "text-decoration-overline",
+    },
+    italic: {
+      true: "italic",
+      false: "not-italic",
+    },
+    weight: {
+      normal: "font-normal",
+      medium: "font-medium",
+      semibold: "font-semibold",
+      bold: "font-bold",
+      extrabold: "font-extrabold",
+      black: "font-black",
+    },
+    align: {
+      left: "text-left",
+      center: "text-center",
+      right: "text-right",
+      justify: "text-justify",
+    },
+    tracking: {
+      tighter: "tracking-tighter",
+      tight: "tracking-tight",
+      normal: "tracking-normal",
+      wide: "tracking-wide",
+      wider: "tracking-wider",
+      widest: "tracking-widest",
+    },
+    leading: {
+      none: "leading-none",
+      tight: "leading-tight",
+      normal: "leading-normal",
+      loose: "leading-loose",
+    },
+    variant: {
+      default: "text-black dark:text-white",
+      primary: "text-indigo-600 dark:text-indigo-400",
+      secondary: "text-gray-600 dark:text-gray-300",
+      muted: "text-gray-400 dark:text-gray-500",
+      error: "text-red-600 dark:text-red-400",
+      success: "text-green-600 dark:text-green-400",
+      warning: "text-yellow-600 dark:text-yellow-400",
     },
   },
-);
+  defaultVariants: {
+    size: "base",
+    weight: "normal",
+    align: "left",
+    variant: "default",
+    decoration: "none",
+    italic: false,
+    tracking: "normal",
+    leading: "normal",
+  },
+});
 
 export type TextVariantProps = VariantProps<typeof textVariants>;
 
@@ -114,9 +111,8 @@ export const Text = ({
           tracking,
           leading,
         }),
-        className,
-      )}
-    >
+        className
+      )}>
       {children}
     </RNText>
   );

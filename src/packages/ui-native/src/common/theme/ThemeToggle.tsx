@@ -16,8 +16,7 @@ export const ThemeToggle = ({ theme, setTheme }: Props) => {
   return (
     <TouchableOpacity
       onPress={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50"
-    >
+      className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
       <MaterialIcons
         name={theme === "light" ? "dark-mode" : "light-mode"}
         size={20}

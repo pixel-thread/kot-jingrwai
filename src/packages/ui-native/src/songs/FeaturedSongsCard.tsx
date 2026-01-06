@@ -23,8 +23,7 @@ export const FeaturedSongCard = ({ song }: FeaturedSongCardProps) => {
           onPress={() => router.push(`/songs/${song.id}`)}
           style={{ width: CARD_WIDTH, height: CARD_HEIGHT }}
           className={cn("overflow-hidden rounded-xl bg-white dark:bg-gray-800")}
-          activeOpacity={0.8}
-        >
+          activeOpacity={0.8}>
           <View className="h-[100px] items-center justify-center">
             <Text size="5xl" weight="black" className="text-indigo-500">
               {songNumber}
@@ -35,23 +34,13 @@ export const FeaturedSongCard = ({ song }: FeaturedSongCardProps) => {
             <Text
               weight="semibold"
               numberOfLines={1}
-              className="text-center text-gray-800 dark:text-white"
-            >
+              className="text-center text-gray-800 dark:text-white">
               {title}
             </Text>
 
             <View className="mt-1 flex-row items-center justify-center">
-              <MaterialCommunityIcons
-                name="account"
-                size={14}
-                color="#9CA3AF"
-              />
-              <Text
-                size="xs"
-                variant="muted"
-                numberOfLines={1}
-                className="ml-1"
-              >
+              <MaterialCommunityIcons name="account" size={14} color="#9CA3AF" />
+              <Text size="xs" variant="muted" numberOfLines={1} className="ml-1">
                 {author ?? "N/A"}
               </Text>
             </View>

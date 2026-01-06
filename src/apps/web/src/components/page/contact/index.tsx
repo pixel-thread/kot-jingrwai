@@ -10,41 +10,25 @@ type ContactItemProps = {
   isLast?: boolean;
 };
 
-const ContactItem = ({
-  icon,
-  title,
-  value,
-  description,
-  onClick,
-  isLast,
-}: ContactItemProps) => {
+const ContactItem = ({ icon, title, value, description, onClick, isLast }: ContactItemProps) => {
   return (
     <button
       onClick={onClick}
-      className={`w-full text-left border-gray-200 dark:border-gray-800 p-4 ${
+      className={`w-full border-gray-200 p-4 text-left dark:border-gray-800 ${
         !isLast ? "border-b" : ""
-      } flex items-center space-x-4 hover:bg-gray-100 dark:hover:bg-gray-900 transition`}
+      } flex items-center space-x-4 transition hover:bg-gray-100 dark:hover:bg-gray-900`}
       aria-label={`Kren lyngba ${title}`}
-      type="button"
-    >
-      <div className="text-indigo-600 dark:text-indigo-400 text-2xl flex-shrink-0">
-        {icon}
-      </div>
+      type="button">
+      <div className="flex-shrink-0 text-2xl text-indigo-600 dark:text-indigo-400">{icon}</div>
       <div className="flex-grow">
-        <h3 className="font-semibold text-gray-900 dark:text-gray-100">
-          {title}
-        </h3>
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100">{title}</h3>
         {description && (
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-            {description}
-          </p>
+          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{description}</p>
         )}
-        <p className="mt-1 text-blue-600 dark:text-blue-400 break-all">
-          {value}
-        </p>
+        <p className="mt-1 break-all text-blue-600 dark:text-blue-400">{value}</p>
       </div>
       <ChevronRight
-        className="text-indigo-600 dark:text-indigo-400 flex-shrink-0"
+        className="flex-shrink-0 text-indigo-600 dark:text-indigo-400"
         size={24}
         aria-hidden="true"
       />
@@ -64,13 +48,12 @@ export const SocialButton = ({ icon, label, href }: SocialButtonProps) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col items-center space-y-1 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
-      aria-label={label}
-    >
-      <div className="h-12 w-12 flex items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 text-3xl">
+      className="flex flex-col items-center space-y-1 text-gray-600 transition hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400"
+      aria-label={label}>
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100 text-3xl text-indigo-600 dark:bg-indigo-900 dark:text-indigo-400">
         {icon}
       </div>
-      <span className="text-xs select-none">{label}</span>
+      <span className="select-none text-xs">{label}</span>
     </a>
   );
 };
@@ -98,11 +81,10 @@ export const Contact = () => {
   return (
     <section
       id={"contact"}
-      className="min-h-full bg-indigo-500 text-gray-900 dark:text-gray-100 py-12 px-6 sm:px-12 md:px-24 lg:px-36"
-    >
+      className="min-h-full bg-indigo-500 px-6 py-12 text-gray-900 sm:px-12 md:px-24 lg:px-36 dark:text-gray-100">
       {/* Contact Information */}
-      <section className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-        <h2 className="text-3xl font-extrabold px-6 pt-8 pb-4 border-b border-gray-200 dark:border-gray-700">
+      <section className="mx-auto max-w-4xl overflow-hidden rounded-xl bg-white shadow-lg dark:bg-gray-800">
+        <h2 className="border-b border-gray-200 px-6 pb-4 pt-8 text-3xl font-extrabold dark:border-gray-700">
           Kumno ban contact ia ngi
         </h2>
         <div>

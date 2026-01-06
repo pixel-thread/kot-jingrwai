@@ -37,13 +37,11 @@ export const ThemeSelector = ({ theme, setTheme }: ThemeSelectorProps) => {
             onPress={() => setTheme(theme)}
             className={cn(
               "flex-row items-center justify-between p-4",
-              index < themes.length - 1 &&
-                "border-b border-gray-200 dark:border-gray-800",
+              index < themes.length - 1 && "border-b border-gray-200 dark:border-gray-800",
               isSelected && "bg-gray-300 dark:bg-gray-800",
               isSelected && index === themes.length - 1 && "rounded-b-xl",
-              isSelected && index === 0 && "rounded-t-xl",
-            )}
-          >
+              isSelected && index === 0 && "rounded-t-xl"
+            )}>
             <View className="flex-row items-center">
               <Ionicons
                 name={getIcon(theme)}
@@ -55,16 +53,13 @@ export const ThemeSelector = ({ theme, setTheme }: ThemeSelectorProps) => {
                   "ml-3",
                   isSelected
                     ? "font-medium text-blue-600 dark:text-blue-400"
-                    : "text-gray-900 dark:text-gray-100",
-                )}
-              >
+                    : "text-gray-900 dark:text-gray-100"
+                )}>
                 {theme.charAt(0).toUpperCase() + theme.slice(1)}
               </Text>
             </View>
 
-            {isSelected && (
-              <Ionicons name="checkmark" size={20} color="#3b82f6" />
-            )}
+            {isSelected && <Ionicons name="checkmark" size={20} color="#3b82f6" />}
           </TouchableOpacity>
         );
       })}

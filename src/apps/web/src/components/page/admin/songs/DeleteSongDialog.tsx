@@ -46,8 +46,7 @@ export const DeleteSongDialog = ({ id, isOpen, onValueChange }: Props) => {
           <Button
             variant="destructive"
             onClick={() => deleteMutation.mutate(id)}
-            disabled={deleteMutation.isPending}
-          >
+            disabled={deleteMutation.isPending}>
             {deleteMutation.isPending ? "Deleting..." : "Delete"}
           </Button>
         </DialogFooter>

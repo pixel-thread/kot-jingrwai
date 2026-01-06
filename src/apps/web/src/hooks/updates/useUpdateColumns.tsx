@@ -44,12 +44,9 @@ const defaultColumns: ColumnDef<AppVersion>[] = [
     cell: ({ row }) => {
       const platform = row.original.platforms;
       return (
-        <div className="space-x-2 flex">
+        <div className="flex space-x-2">
           {platform.map((platform, i) => (
-            <Badge
-              key={platform + i}
-              variant={platform === "ANDROID" ? "default" : "outline"}
-            >
+            <Badge key={platform + i} variant={platform === "ANDROID" ? "default" : "outline"}>
               {platform}
             </Badge>
           ))}
@@ -63,18 +60,11 @@ const defaultColumns: ColumnDef<AppVersion>[] = [
     cell: ({ row }) => {
       const tags = row.original.tags;
       return (
-        <div className="space-x-2 flex">
+        <div className="flex space-x-2">
           {tags.map((tag, i) => (
             <Badge
               key={tag + i}
-              variant={
-                tag === "BUGFIX"
-                  ? "destructive"
-                  : tag === "STABLE"
-                    ? "default"
-                    : "outline"
-              }
-            >
+              variant={tag === "BUGFIX" ? "destructive" : tag === "STABLE" ? "default" : "outline"}>
               {tag}
             </Badge>
           ))}
@@ -86,9 +76,7 @@ const defaultColumns: ColumnDef<AppVersion>[] = [
     accessorKey: "type",
     header: "Update Type",
     cell: ({ row }) => (
-      <Badge
-        variant={row.getValue("type") === "PTA" ? "destructive" : "secondary"}
-      >
+      <Badge variant={row.getValue("type") === "PTA" ? "destructive" : "secondary"}>
         {row.getValue("type")}
       </Badge>
     ),
@@ -97,7 +85,7 @@ const defaultColumns: ColumnDef<AppVersion>[] = [
     accessorKey: "releaseDate",
     header: "Release Date",
     cell: ({ row }) => (
-      <span className="text-sm text-muted-foreground">
+      <span className="text-muted-foreground text-sm">
         {format(new Date(row.original.createdAt), "MMM dd, yyyy")}
       </span>
     ),
@@ -108,16 +96,12 @@ const defaultColumns: ColumnDef<AppVersion>[] = [
       <>
         {row.original.downloadUrl ? (
           <Button disabled={!row.original.downloadUrl} asChild size={"icon-sm"}>
-            <a
-              href={row.original.downloadUrl || ""}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={row.original.downloadUrl || ""} target="_blank" rel="noopener noreferrer">
               <DownloadIcon />
             </a>
           </Button>
         ) : (
-          <span className="text-sm text-muted-foreground">N/A</span>
+          <span className="text-muted-foreground text-sm">N/A</span>
         )}
       </>
     ),
@@ -126,8 +110,7 @@ const defaultColumns: ColumnDef<AppVersion>[] = [
 
 export function useUpdateColumns() {
   const { mutate: deleteUpdate, isPending } = useMutation({
-    mutationFn: (id: string) =>
-      http.delete(ADMIN_UPDATE_ENDPOINT.DELETE_UPDATE.replace(":id", id)),
+    mutationFn: (id: string) => http.delete(ADMIN_UPDATE_ENDPOINT.DELETE_UPDATE.replace(":id", id)),
     onSuccess: (data) => {
       if (data.success) {
         toast.success(data.message);
@@ -145,8 +128,7 @@ export function useUpdateColumns() {
           variant={"destructive"}
           size={"icon-sm"}
           disabled={isPending}
-          onClick={() => deleteUpdate(row.original.id)}
-        >
+          onClick={() => deleteUpdate(row.original.id)}>
           <TrashIcon size={20} className="cursor-pointer" />
         </Button>
       ),

@@ -18,8 +18,7 @@ export const MainProvider = ({ children }: MainProviderProps) => {
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
-        >
+          disableTransitionOnChange>
           <AuthProvider>
             <RoleBaseRoute>{children}</RoleBaseRoute>
             <Toaster />

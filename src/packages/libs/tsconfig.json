@@ -2,7 +2,8 @@
   "extends": "@repo/typescript-config/react-native.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "noEmit":false
   },
   "include": [
     "src/**/*"

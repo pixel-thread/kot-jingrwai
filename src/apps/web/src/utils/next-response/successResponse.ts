@@ -26,6 +26,6 @@ export const SuccessResponse = <T>({
       meta: meta,
       timeStamp: new Date().toISOString(),
     },
-    { status: status },
+    { status: status }
   );
 };

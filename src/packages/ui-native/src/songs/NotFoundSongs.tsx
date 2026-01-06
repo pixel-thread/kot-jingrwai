@@ -27,8 +27,7 @@ export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
             shadowRadius: 8,
             elevation: 5,
           },
-        ]}
-      >
+        ]}>
         <Reanimated.View entering={FadeInDown.delay(300).duration(800)}>
           <View className="mb-6 h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600">
             <MaterialCommunityIcons name="music-off" size={48} color="white" />
@@ -39,20 +38,15 @@ export const NotFoundSong = ({ reset }: NotFoundSongProps) => {
           <Text
             size={"3xl"}
             weight={"bold"}
-            className="mb-3 text-center text-gray-800 dark:text-white"
-          >
+            className="mb-3 text-center text-gray-800 dark:text-white">
             Song Not Found
           </Text>
         </Reanimated.View>
 
         <Reanimated.View entering={FadeInDown.delay(700).duration(800)}>
-          <Text
-            size={"lg"}
-            align={"center"}
-            className="mb-6 text-gray-600 dark:text-gray-300"
-          >
-            We couldn&apos;t find the song you&apos;re looking for. Try
-            searching again or return to the home page.
+          <Text size={"lg"} align={"center"} className="mb-6 text-gray-600 dark:text-gray-300">
+            We couldn&apos;t find the song you&apos;re looking for. Try searching again or return to
+            the home page.
           </Text>
         </Reanimated.View>
 

@@ -1,12 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Music, User, Hash } from "lucide-react";
@@ -29,21 +23,17 @@ type Song = Prisma.SongGetPayload<{
 
 // Individual Song Card Component
 const SongCard = ({ song, onClick }: { song: Song; onClick?: () => void }) => {
-  const totalLines = song.paragraphs.reduce(
-    (acc, p) => acc + p.lines.length,
-    0,
-  );
+  const totalLines = song.paragraphs.reduce((acc, p) => acc + p.lines.length, 0);
 
   return (
     <Card
-      className="hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-l-primary/30"
-      onClick={onClick}
-    >
+      className="border-l-primary/30 cursor-pointer border-l-4 transition-shadow hover:shadow-lg"
+      onClick={onClick}>
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1">
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Music className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <Music className="text-muted-foreground h-4 w-4" />
               {song.title}
             </CardTitle>
             <CardDescription className="mt-1">
@@ -60,7 +50,7 @@ const SongCard = ({ song, onClick }: { song: Song; onClick?: () => void }) => {
       <CardContent className="space-y-3">
         {/* Author & Composer */}
         {(song.metadata.author || song.metadata.composer) && (
-          <div className="flex flex-col gap-1 text-sm text-muted-foreground">
+          <div className="text-muted-foreground flex flex-col gap-1 text-sm">
             {song.metadata.author && (
               <div className="flex items-center gap-2">
                 <User className="h-3 w-3" />
@@ -88,7 +78,7 @@ const SongCard = ({ song, onClick }: { song: Song; onClick?: () => void }) => {
         )}
 
         {/* Additional Info */}
-        <div className="flex items-center gap-4 text-xs text-muted-foreground pt-2 border-t">
+        <div className="text-muted-foreground flex items-center gap-4 border-t pt-2 text-xs">
           <span className="flex items-center gap-1">
             <Hash className="h-3 w-3" />
             {song.paragraphs.length} paragraphs
@@ -102,15 +92,11 @@ const SongCard = ({ song, onClick }: { song: Song; onClick?: () => void }) => {
         </div>
 
         {/* Optional metadata */}
-        {(song.metadata.tune ||
-          song.metadata.meter ||
-          song.metadata.reference) && (
-          <div className="text-xs text-muted-foreground space-y-1 pt-2 border-t">
+        {(song.metadata.tune || song.metadata.meter || song.metadata.reference) && (
+          <div className="text-muted-foreground space-y-1 border-t pt-2 text-xs">
             {song.metadata.tune && <div>Tune: {song.metadata.tune}</div>}
             {song.metadata.meter && <div>Meter: {song.metadata.meter}</div>}
-            {song.metadata.reference && (
-              <div>Ref: {song.metadata.reference}</div>
-            )}
+            {song.metadata.reference && <div>Ref: {song.metadata.reference}</div>}
           </div>
         )}
       </CardContent>
@@ -160,7 +146,7 @@ const SongsList = () => {
       const newData = data?.data;
       setSongs((prevData || []).concat(newData));
     }
-    // eslint-disable-next-line
+     
   }, [data]);
 
   useEffect(() => {
@@ -169,27 +155,25 @@ const SongsList = () => {
       const newData = khors?.data;
       setKhorus((prevData || []).concat(newData));
     }
-    // eslint-disable-next-line
+     
   }, [khors]);
 
   return (
     <div className="min-h-screen">
       <Tabs defaultValue="songs">
-        <TabsList className="grid relative top-0 z-10 w-full grid-cols-2">
+        <TabsList className="relative top-0 z-10 grid w-full grid-cols-2">
           <TabsTrigger value="songs">Songs</TabsTrigger>
           <TabsTrigger value="chorus">Khorus</TabsTrigger>
         </TabsList>
         <TabsContent className="mt-8" value="songs">
           {songs?.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 text-center">
-              <Music className="h-16 w-16 text-muted-foreground/50 mb-4" />
-              <h3 className="text-lg font-semibold mb-2">No songs found</h3>
-              <p className="text-muted-foreground">
-                Try adjusting your search or filter criteria
-              </p>
+              <Music className="text-muted-foreground/50 mb-4 h-16 w-16" />
+              <h3 className="mb-2 text-lg font-semibold">No songs found</h3>
+              <p className="text-muted-foreground">Try adjusting your search or filter criteria</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {songs?.map((song) => (
                 <SongCard
                   key={song.id}
@@ -199,12 +183,11 @@ const SongsList = () => {
               ))}
             </div>
           )}
-          <div className="flex justify-center mt-8">
+          <div className="mt-8 flex justify-center">
             <Button
               variant={"secondary"}
               disabled={isFetching || !songsMeta?.hasNextPage}
-              onClick={onLoadMoreSongs}
-            >
+              onClick={onLoadMoreSongs}>
               {isFetching ? "Loading..." : "Load More"}
             </Button>
           </div>
@@ -212,14 +195,12 @@ const SongsList = () => {
         <TabsContent className="mt-8" value="chorus">
           {khorus?.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 text-center">
-              <Music className="h-16 w-16 text-muted-foreground/50 mb-4" />
-              <h3 className="text-lg font-semibold mb-2">No songs found</h3>
-              <p className="text-muted-foreground">
-                Try adjusting your search or filter criteria
-              </p>
+              <Music className="text-muted-foreground/50 mb-4 h-16 w-16" />
+              <h3 className="mb-2 text-lg font-semibold">No songs found</h3>
+              <p className="text-muted-foreground">Try adjusting your search or filter criteria</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {khorus?.map((song) => (
                 <SongCard
                   key={song.id + song.title}
@@ -229,12 +210,11 @@ const SongsList = () => {
               ))}
             </div>
           )}
-          <div className="flex justify-center mt-8">
+          <div className="mt-8 flex justify-center">
             <Button
               variant={"secondary"}
               disabled={isFetchingKhorus || !khorusMeta?.hasNextPage}
-              onClick={onLoadMoreKhorus}
-            >
+              onClick={onLoadMoreKhorus}>
               {isFetching ? "Loading..." : "Load More"}
             </Button>
           </div>

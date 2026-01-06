@@ -7,7 +7,7 @@ import { NextRequest } from "next/server";
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> },
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requiredSuperAdminRole(request);

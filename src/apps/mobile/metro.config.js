@@ -1,21 +1,33 @@
 const { getDefaultConfig } = require('expo/metro-config');
-
-/** @type {import('expo/metro-config').MetroConfig} */
-const config = getDefaultConfig(__dirname);
-
 const path = require('path');
+
 const projectRoot = __dirname;
 const workspaceRoot = path.resolve(projectRoot, '../../..');
 
-// Monorepo setup
-config.watchFolders = [workspaceRoot];
-config.resolver.nodeModulesPaths = [
-  path.resolve(projectRoot, 'node_modules'),
-  path.resolve(workspaceRoot, 'node_modules'),
-];
-config.resolver.disableHierarchicalLookup = true;
+/** @type {import('expo/metro-config').MetroConfig} */
+const config = getDefaultConfig(projectRoot);
 
-// NativeWind v4 - Use NativeWind helper (SIMPLEST)
+/**
+ * ✅ EXTEND defaults instead of overwriting
+ */
+config.watchFolders = [...config.watchFolders, workspaceRoot];
+
+/**
+ * ✅ Allow Metro to resolve normally
+ */
+config.resolver.nodeModulesPaths = [
+  path.join(projectRoot, 'node_modules'),
+  path.join(workspaceRoot, 'node_modules'),
+];
+
+/**
+ * ❌ REMOVE this line entirely
+ * config.resolver.disableHierarchicalLookup = true;
+ */
+
+// NativeWind v4
 const { withNativeWind } = require('nativewind/dist/metro');
 
-module.exports = withNativeWind(config, { input: './src/styles/global.css' });
+module.exports = withNativeWind(config, {
+  input: './src/styles/global.css',
+});

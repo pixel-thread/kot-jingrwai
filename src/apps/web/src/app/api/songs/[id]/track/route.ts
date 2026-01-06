@@ -2,10 +2,7 @@ import { getUniqueSongs } from "@/services/songs/getUniqueSong";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
 
-export async function GET(
-  req: Request,
-  { params }: { params: Promise<{ id: string }> },
-) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const id = (await params).id;
     const song = await getUniqueSongs({ where: { id } });

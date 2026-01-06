@@ -1,12 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -51,23 +45,19 @@ const ParagraphDisplay = ({ paragraph }: { paragraph: SongParagraph }) => {
   };
 
   return (
-    <div
-      className={`py-4 rounded-md transition-colors ${getTypeStyles(paragraph?.type || "")}`}
-    >
-      <div className="flex items-center gap-2 mb-2">
+    <div className={`rounded-md py-4 transition-colors ${getTypeStyles(paragraph?.type || "")}`}>
+      <div className="mb-2 flex items-center gap-2">
         {paragraph.type && (
           <Badge variant="outline" className="text-xs capitalize">
             {paragraph.type}
           </Badge>
         )}
-        <span className="text-xs text-muted-foreground">
-          Paragraph {paragraph.order}
-        </span>
+        <span className="text-muted-foreground text-xs">Paragraph {paragraph.order}</span>
       </div>
 
       <div className="space-y-2">
         {paragraph.lines.map((line, idx) => (
-          <p key={idx} className="text-base leading-relaxed font-serif">
+          <p key={idx} className="font-serif text-base leading-relaxed">
             {line.text}
           </p>
         ))}
@@ -89,11 +79,11 @@ const MetadataCard = ({
   if (!value) return null;
 
   return (
-    <div className="flex items-start gap-3 p-3 rounded-lg border bg-card">
-      <Icon className="h-4 w-4 mt-1 text-muted-foreground" />
-      <div className="flex-1 min-w-0">
-        <p className="text-xs text-muted-foreground mb-1">{title}</p>
-        <p className="text-sm font-medium truncate">{value}</p>
+    <div className="bg-card flex items-start gap-3 rounded-lg border p-3">
+      <Icon className="text-muted-foreground mt-1 h-4 w-4" />
+      <div className="min-w-0 flex-1">
+        <p className="text-muted-foreground mb-1 text-xs">{title}</p>
+        <p className="truncate text-sm font-medium">{value}</p>
       </div>
     </div>
   );
@@ -114,13 +104,8 @@ const SongDetail = ({ id }: { id: string }) => {
     return <div>Loading...</div>;
   }
 
-  const totalLines = song.paragraphs.reduce(
-    (acc, p) => acc + p.lines.length,
-    0
-  );
-  const sortedParagraphs = [...song.paragraphs].sort(
-    (a, b) => a.order - b.order
-  );
+  const totalLines = song.paragraphs.reduce((acc, p) => acc + p.lines.length, 0);
+  const sortedParagraphs = [...song.paragraphs].sort((a, b) => a.order - b.order);
 
   // const handleShare = () => {
   //   if (navigator.share) {
@@ -135,9 +120,9 @@ const SongDetail = ({ id }: { id: string }) => {
   return (
     <div className="min-h-screen">
       {/* Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Main Content - Lyrics */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="space-y-6 lg:col-span-2">
           {/* Song Info Card */}
           <Card>
             <CardHeader>
@@ -148,9 +133,7 @@ const SongDetail = ({ id }: { id: string }) => {
                     <Badge variant="secondary" className="uppercase">
                       {song.metadata.language}
                     </Badge>
-                    {song.metadata.isChorus && (
-                      <Badge variant="default">Chorus</Badge>
-                    )}
+                    {song.metadata.isChorus && <Badge variant="default">Chorus</Badge>}
                   </CardDescription>
                 </div>
               </div>
@@ -162,20 +145,14 @@ const SongDetail = ({ id }: { id: string }) => {
               <MusicPlayer
                 audioSrc={song.track?.metadata.downloadUrl}
                 title={song.title}
-                artist={
-                  song.metadata.author || song.metadata.composer || "Unknown"
-                }
+                artist={song.metadata.author || song.metadata.composer || "Unknown"}
                 onPlay={() => console.log("Playing:", song.title)}
                 onPause={() => console.log("Paused:", song.title)}
               />
             </Card>
           )}
           {/* Tabs for Lyrics and Info */}
-          <Tabs
-            value={activeTab}
-            onValueChange={setActiveTab}
-            className="w-full"
-          >
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="lyrics">Lyrics</TabsTrigger>
               <TabsTrigger value="structure">Structure</TabsTrigger>
@@ -202,7 +179,7 @@ const SongDetail = ({ id }: { id: string }) => {
               <Card>
                 <CardContent className="pt-6">
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <h3 className="flex items-center gap-2 text-lg font-semibold">
                       <BookOpen className="h-5 w-5" />
                       Song Structure
                     </h3>
@@ -210,17 +187,16 @@ const SongDetail = ({ id }: { id: string }) => {
                       {sortedParagraphs.map((paragraph) => (
                         <div
                           key={paragraph.id || paragraph.order}
-                          className="flex items-center justify-between p-3 rounded-lg border hover:bg-accent/50 transition-colors"
-                        >
+                          className="hover:bg-accent/50 flex items-center justify-between rounded-lg border p-3 transition-colors">
                           <div className="flex items-center gap-3">
-                            <span className="text-sm font-medium text-muted-foreground">
+                            <span className="text-muted-foreground text-sm font-medium">
                               #{paragraph.order}
                             </span>
                             <Badge variant="outline" className="capitalize">
                               {paragraph.type || "verse"}
                             </Badge>
                           </div>
-                          <span className="text-xs text-muted-foreground">
+                          <span className="text-muted-foreground text-xs">
                             {paragraph.lines.length} lines
                           </span>
                         </div>
@@ -242,16 +218,8 @@ const SongDetail = ({ id }: { id: string }) => {
               <CardTitle className="text-lg">Credits</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <MetadataCard
-                title="Author"
-                value={song.metadata.author}
-                icon={User}
-              />
-              <MetadataCard
-                title="Composer"
-                value={song.metadata.composer}
-                icon={Music}
-              />
+              <MetadataCard title="Author" value={song.metadata.author} icon={User} />
+              <MetadataCard title="Composer" value={song.metadata.composer} icon={Music} />
             </CardContent>
           </Card>
 
@@ -266,33 +234,13 @@ const SongDetail = ({ id }: { id: string }) => {
                 value={song.metadata.language.toUpperCase()}
                 icon={Globe}
               />
-              <MetadataCard
-                title="Song Number"
-                value={song.metadata.number}
-                icon={Hash}
-              />
+              <MetadataCard title="Song Number" value={song.metadata.number} icon={Hash} />
               {song.metadata.oldNumber && (
-                <MetadataCard
-                  title="Old Number"
-                  value={song.metadata.oldNumber}
-                  icon={Hash}
-                />
+                <MetadataCard title="Old Number" value={song.metadata.oldNumber} icon={Hash} />
               )}
-              <MetadataCard
-                title="Tune"
-                value={song.metadata.tune}
-                icon={Music}
-              />
-              <MetadataCard
-                title="Meter"
-                value={song.metadata.meter}
-                icon={BookOpen}
-              />
-              <MetadataCard
-                title="Reference"
-                value={song.metadata.reference}
-                icon={BookOpen}
-              />
+              <MetadataCard title="Tune" value={song.metadata.tune} icon={Music} />
+              <MetadataCard title="Meter" value={song.metadata.meter} icon={BookOpen} />
+              <MetadataCard title="Reference" value={song.metadata.reference} icon={BookOpen} />
             </CardContent>
           </Card>
 
@@ -303,13 +251,13 @@ const SongDetail = ({ id }: { id: string }) => {
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="grid grid-cols-2 gap-3">
-                <div className="p-3 rounded-lg border bg-card text-center">
+                <div className="bg-card rounded-lg border p-3 text-center">
                   <p className="text-2xl font-bold">{song.paragraphs.length}</p>
-                  <p className="text-xs text-muted-foreground">Paragraphs</p>
+                  <p className="text-muted-foreground text-xs">Paragraphs</p>
                 </div>
-                <div className="p-3 rounded-lg border bg-card text-center">
+                <div className="bg-card rounded-lg border p-3 text-center">
                   <p className="text-2xl font-bold">{totalLines}</p>
-                  <p className="text-xs text-muted-foreground">Total Lines</p>
+                  <p className="text-muted-foreground text-xs">Total Lines</p>
                 </div>
               </div>
             </CardContent>
@@ -339,21 +287,17 @@ const SongDetail = ({ id }: { id: string }) => {
               <CardHeader>
                 <CardTitle className="text-lg">Dates</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2 text-xs text-muted-foreground">
+              <CardContent className="text-muted-foreground space-y-2 text-xs">
                 {song.createdAt && (
                   <div className="flex items-center gap-2">
                     <Calendar className="h-3 w-3" />
-                    <span>
-                      Created: {new Date(song.createdAt).toLocaleDateString()}
-                    </span>
+                    <span>Created: {new Date(song.createdAt).toLocaleDateString()}</span>
                   </div>
                 )}
                 {song.updatedAt && (
                   <div className="flex items-center gap-2">
                     <Calendar className="h-3 w-3" />
-                    <span>
-                      Updated: {new Date(song.updatedAt).toLocaleDateString()}
-                    </span>
+                    <span>Updated: {new Date(song.updatedAt).toLocaleDateString()}</span>
                   </div>
                 )}
               </CardContent>

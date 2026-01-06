@@ -12,8 +12,7 @@ const VerseTypeSchema = z
   ])
   .optional()
   .refine((val) => !val || Object.values($Enums.VerseType).includes(val), {
-    message:
-      "Invalid verse type. Must be INTRO, CHORUS, VERSE, BRIDGE, or OUTRO",
+    message: "Invalid verse type. Must be INTRO, CHORUS, VERSE, BRIDGE, or OUTRO",
   });
 
 // UUID Schema
@@ -34,10 +33,7 @@ export const TrackMetadataSchema = z
       .max(255, "File name too long (max 255 chars)"),
     fullPath: z.string().min(1, "Full path is required"),
     downloadUrl: z.url("Must be a valid URL"),
-    mimeType: z
-      .string()
-      .min(1, "MIME type is required")
-      .max(100, "MIME type too long"),
+    mimeType: z.string().min(1, "MIME type is required").max(100, "MIME type too long"),
     fileSize: z
       .number()
       .int("File size must be an integer")
@@ -53,10 +49,7 @@ export const TrackMetadataSchema = z
 export const TrackSchema = z
   .object({
     id: UUIDSchema,
-    metadataId: UUIDSchema.refine(
-      (id) => id && id !== "",
-      "Valid metadata ID is required",
-    ),
+    metadataId: UUIDSchema.refine((id) => id && id !== "", "Valid metadata ID is required"),
     songs: z.array(z.uuid("Invalid song UUID")).optional(),
     createdAt: z.string().datetime().optional(),
     updatedAt: z.string().datetime().optional(),
@@ -73,11 +66,7 @@ export const SongMetadataSchema = z
       .int("Song number must be an integer")
       .positive("Song number must be positive")
       .max(9999, "Song number too high (max 9999)"),
-    oldNumber: z
-      .number()
-      .int("Old number must be an integer")
-      .optional()
-      .nullable(),
+    oldNumber: z.number().int("Old number must be an integer").optional().nullable(),
     language: z
       .string()
       .min(1, "Language code is required")
@@ -105,15 +94,10 @@ export const ParagraphSchema = z
       .positive("Order must be positive")
       .max(999, "Order too high (max 999)"),
     lines: z
-      .array(
-        z.string().min(1, "Line cannot be empty").max(1000, "Line too long"),
-      )
+      .array(z.string().min(1, "Line cannot be empty").max(1000, "Line too long"))
       .min(1, "At least one line required"),
     type: VerseTypeSchema,
-    songId: UUIDSchema.refine(
-      (id) => id && id !== "",
-      "Valid song ID is required",
-    ),
+    songId: UUIDSchema.refine((id) => id && id !== "", "Valid song ID is required"),
     createdAt: z.string().datetime().optional(),
     updatedAt: z.string().datetime().optional(),
   })
@@ -123,15 +107,8 @@ export const ParagraphSchema = z
 export const SongSchema = z
   .object({
     id: UUIDSchema,
-    title: z
-      .string()
-      .min(1, "Song title is required")
-      .max(500, "Title too long (max 500 chars)"),
-    trackId: z
-      .uuid("Invalid track UUID")
-      .or(z.literal(""))
-      .optional()
-      .nullable(),
+    title: z.string().min(1, "Song title is required").max(500, "Title too long (max 500 chars)"),
+    trackId: z.uuid("Invalid track UUID").or(z.literal("")).optional().nullable(),
     metadataId: UUIDSchema,
     metadata: SongMetadataSchema,
     track: TrackSchema.optional().nullable(),

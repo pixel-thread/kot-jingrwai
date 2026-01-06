@@ -1,8 +1,8 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { Text , Container } from '@repo/ui-native';
-import Reanimated, { FadeIn } from 'react-native-reanimated';
-import { logger } from '@repo/utils';
+import { Component, ErrorInfo, ReactNode } from "react";
+import { TouchableOpacity } from "react-native";
+import { Text, Container } from "@repo/ui-native";
+import Reanimated, { FadeIn } from "react-native-reanimated";
+import { logger } from "@repo/utils";
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -40,7 +40,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // Log the error to the console and potentially to an error reporting service
-    logger.error('Error caught by ErrorBoundary', { error, errorInfo });
+    logger.error("Error caught by ErrorBoundary", { error, errorInfo });
     this.setState({
       errorInfo,
     });

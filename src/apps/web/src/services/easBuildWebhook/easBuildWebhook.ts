@@ -3,8 +3,7 @@ import { $Enums, Prisma } from "@/lib/database/prisma/generated/prisma";
 import { EasBuildPayload } from "@repo/types";
 
 export async function upsertEASBuild(payload: EasBuildPayload) {
-  const status: $Enums.EASBuildStatus =
-    payload.status.toUpperCase() as $Enums.EASBuildStatus;
+  const status: $Enums.EASBuildStatus = payload.status.toUpperCase() as $Enums.EASBuildStatus;
   const platform: $Enums.AppVersionPlatform =
     payload.platform.toUpperCase() as $Enums.AppVersionPlatform;
 
