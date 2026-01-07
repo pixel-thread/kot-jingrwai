@@ -19,6 +19,7 @@ export default [
       '**/build/**',
       '**/coverage/**',
       '**/*.generated.*',
+      '**/scripts/**',
       '**/**/metro.config.js',
     ],
   },

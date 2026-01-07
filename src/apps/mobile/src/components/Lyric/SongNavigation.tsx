@@ -1,8 +1,8 @@
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from "react-native";
 
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { useSongStore } from '~/src/libs/stores/songs';
-import { Container } from '@repo/ui-native';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useSongStore } from "@repo/libs";
+import { Container } from "@repo/ui-native";
 
 type SongNavigationProps = {
   onNext: () => void;
@@ -25,9 +25,9 @@ export const SongNavigation = ({ songNumber }: SongNavigationProps) => {
       <View className="flex-row items-center justify-between gap-x-5">
         <TouchableOpacity onPress={onClickFavorite}>
           <FontAwesome
-            name={isFavorite ? 'heart' : 'heart-o'}
+            name={isFavorite ? "heart" : "heart-o"}
             size={24}
-            color={isFavorite ? 'red' : 'black'}
+            color={isFavorite ? "red" : "black"}
           />
         </TouchableOpacity>
       </View>

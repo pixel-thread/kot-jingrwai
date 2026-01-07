@@ -59,16 +59,18 @@ export const SongListItem = ({ song }: { song: SongT }) => {
             <Text size="lg" weight="semibold" className="line-clamp-1 capitalize">
               {song.title}
             </Text>
-            <View className="mt-1 flex-row items-center">
-              <MaterialCommunityIcons
-                name="account"
-                size={14}
-                color={isDarkMode ? "#9CA3AF" : "#6B7280"}
-              />
-              <Text size="xs" variant="muted" className="ml-1">
-                {song.metadata.author || "Unknown"}
-              </Text>
-            </View>
+            {song.metadata.author && (
+              <View className="mt-1 flex-row items-center">
+                <MaterialCommunityIcons
+                  name="account"
+                  size={14}
+                  color={isDarkMode ? "#9CA3AF" : "#6B7280"}
+                />
+                <Text size="xs" variant="muted" className="ml-1">
+                  {song.metadata.author || "Unknown"}
+                </Text>
+              </View>
+            )}
             {song.metadata.composer && (
               <View className="mt-1 flex-row items-center">
                 <MaterialCommunityIcons

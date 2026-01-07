@@ -1,14 +1,14 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Stack } from 'expo-router';
-import { useColorScheme } from 'nativewind';
-import { TouchableOpacity, View } from 'react-native';
-import { gray } from 'tailwindcss/colors';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { useTextStore } from '~/src/libs/stores/text';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Stack } from "expo-router";
+import { useColorScheme } from "nativewind";
+import { TouchableOpacity, View } from "react-native";
+import { gray } from "tailwindcss/colors";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { useTextStore } from "@repo/libs";
 
 const HeaderRight = () => {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
   const { increaseTextSize, decreaseTextSize } = useTextStore();
 
   return (
@@ -17,7 +17,7 @@ const HeaderRight = () => {
         onPress={increaseTextSize}
         className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
         <MaterialCommunityIcons
-          name={'plus'}
+          name={"plus"}
           size={24}
           color={isDarkMode ? gray[200] : gray[950]}
         />
@@ -26,7 +26,7 @@ const HeaderRight = () => {
         onPress={decreaseTextSize}
         className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
         <MaterialCommunityIcons
-          name={'minus'}
+          name={"minus"}
           size={24}
           color={isDarkMode ? gray[200] : gray[950]}
         />
@@ -43,7 +43,7 @@ export default function KhorusLayout() {
           header: ({ options }) => (
             <CustomHeader options={options} back headerRight={<HeaderRight />} />
           ),
-          title: 'Apostle Creed',
+          title: "Apostle Creed",
           headerShown: true,
         }}
       />

@@ -6,9 +6,8 @@ import { useState } from "react";
 import { useColorScheme } from "nativewind";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
-import { useTextStore } from "~/src/libs/stores/text";
+import { useTextStore, useThemeStore } from "@repo/libs";
 import { useUpdateContext } from "~/src/hooks/update/useUpdateContext";
-import { useThemeStore } from "~/src/libs/stores/theme";
 
 const Settings = () => {
   const { colorScheme } = useColorScheme();

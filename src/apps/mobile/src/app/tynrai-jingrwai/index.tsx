@@ -1,10 +1,11 @@
-import { Stack } from 'expo-router';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '@repo/ui-native';
+import { Stack } from "expo-router";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { ThemeToggle } from "@repo/ui-native";
 
-import Reanimated, { FadeIn } from 'react-native-reanimated';
-import TynraiJingrwaiScreen from '~/src/components/screen/tynrai-jingrwai';
-import { useThemeStore } from '~/src/libs/stores/theme';
+import Reanimated, { FadeIn } from "react-native-reanimated";
+import TynraiJingrwaiScreen from "~/src/components/screen/tynrai-jingrwai";
+import { useThemeStore } from "@repo/libs";
+
 
 const TynraiJingrwaiPage = () => {
   const { theme, setTheme } = useThemeStore();
@@ -21,10 +22,10 @@ const TynraiJingrwaiPage = () => {
               headerRight={<ThemeToggle theme={theme} setTheme={setTheme} />}
             />
           ),
-          title: 'Tynrai Jingrwai',
+          title: "Tynrai Jingrwai",
           headerShown: true,
-          headerTitleAlign: 'center',
-          headerBackTitle: 'Back',
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
         }}
       />
       <TynraiJingrwaiScreen />

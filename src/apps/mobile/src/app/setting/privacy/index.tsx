@@ -3,7 +3,7 @@ import Reanimated, { FadeIn } from "react-native-reanimated";
 import { Stack } from "expo-router";
 import { CustomHeader } from "~/src/components/Common/CustomHeader";
 import { ThemeToggle } from "@repo/ui-native";
-import { useThemeStore } from "~/src/libs/stores/theme";
+import { useThemeStore } from "@repo/libs";
 
 const PrivacyPolicy = () => {
   const { theme, setTheme } = useThemeStore();

@@ -3,7 +3,7 @@ import { CustomHeader } from "~/src/components/Common/CustomHeader";
 import { ThemeToggle } from "@repo/ui-native";
 import HelpSupportScreen from "~/src/components/screen/help-support";
 import Reanimated, { FadeIn } from "react-native-reanimated";
-import { useThemeStore } from "~/src/libs/stores/theme";
+import { useThemeStore } from "@repo/libs";
 
 const SupportPage = () => {
   const { theme, setTheme } = useThemeStore();

@@ -24,7 +24,8 @@ config.resolver.nodeModulesPaths = [
  * ❌ REMOVE this line entirely
  */
 
-  config.resolver.disableHierarchicalLookup = true;
+// 🚨 DO NOT disable hierarchical lookup
+config.resolver.disableHierarchicalLookup = true;
 
 // NativeWind v4
 const { withNativeWind } = require('nativewind/dist/metro');

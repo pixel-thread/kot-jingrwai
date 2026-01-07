@@ -9,7 +9,7 @@ import { useSharedValue, withTiming } from "react-native-reanimated";
 import { ThemeToggle } from "@repo/ui-native";
 import { useUpdateContext } from "~/src/hooks/update/useUpdateContext";
 import { View } from "react-native";
-import { useThemeStore } from "~/src/libs/stores/theme";
+import { useThemeStore } from "@repo/libs";
 
 export default function TabLayout() {
   const { isUpdateAvailable } = useUpdateContext();

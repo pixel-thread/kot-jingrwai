@@ -1,20 +1,20 @@
-import { useQuery } from '@tanstack/react-query';
-import { Stack } from 'expo-router';
-import { useLocalSearchParams } from 'expo-router/build/hooks';
-import { View, TouchableOpacity } from 'react-native';
-import { Container } from '@repo/ui-native';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { LyricView } from '~/src/components/Lyric/LyricView';
-import { getUniqueSongs } from '~/src/services/songs/getUniqueSong';
+import { useQuery } from "@tanstack/react-query";
+import { Stack } from "expo-router";
+import { useLocalSearchParams } from "expo-router/build/hooks";
+import { View, TouchableOpacity } from "react-native";
+import { Container } from "@repo/ui-native";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { LyricView } from "~/src/components/Lyric/LyricView";
+import { getUniqueSongs } from "~/src/services/songs/getUniqueSong";
 
-import { useTextStore } from '~/src/libs/stores/text';
-import { gray } from 'tailwindcss/colors';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useColorScheme } from 'nativewind';
+import { useTextStore } from "@repo/libs";
+import { gray } from "tailwindcss/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useColorScheme } from "nativewind";
 
 const HeaderRight = () => {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
   const { increaseTextSize, decreaseTextSize } = useTextStore();
 
   return (
@@ -23,7 +23,7 @@ const HeaderRight = () => {
         onPress={increaseTextSize}
         className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
         <MaterialCommunityIcons
-          name={'plus'}
+          name={"plus"}
           size={24}
           color={isDarkMode ? gray[200] : gray[950]}
         />
@@ -32,7 +32,7 @@ const HeaderRight = () => {
         onPress={decreaseTextSize}
         className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
         <MaterialCommunityIcons
-          name={'minus'}
+          name={"minus"}
           size={24}
           color={isDarkMode ? gray[200] : gray[950]}
         />
@@ -44,7 +44,7 @@ const HeaderRight = () => {
 const SongsDetails = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { data: song, isFetching } = useQuery({
-    queryKey: ['song', id],
+    queryKey: ["song", id],
     queryFn: () => getUniqueSongs({ id }),
     enabled: !!id,
   });
@@ -55,7 +55,7 @@ const SongsDetails = () => {
         <Stack.Screen
           options={{
             headerShown: true,
-            title: song?.metadata?.number?.toString() || 'No Title',
+            title: song?.metadata?.number?.toString() || "No Title",
             header: ({ options }) => (
               <CustomHeader options={options} back headerRight={<HeaderRight />} />
             ),
@@ -70,7 +70,7 @@ const SongsDetails = () => {
       <Stack.Screen
         options={{
           headerShown: true,
-          title: song?.metadata?.number?.toString() || 'No Title',
+          title: song?.metadata?.number?.toString() || "No Title",
           header: ({ options }) => (
             <CustomHeader options={options} back headerRight={<HeaderRight />} />
           ),

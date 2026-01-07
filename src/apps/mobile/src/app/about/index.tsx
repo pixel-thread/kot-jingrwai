@@ -3,7 +3,7 @@ import { CustomHeader } from "~/src/components/Common/CustomHeader";
 import { ThemeToggle } from "@repo/ui-native";
 import { AboutScreen } from "~/src/components/screen/about";
 import Reanimated, { FadeIn } from "react-native-reanimated";
-import { useThemeStore } from "~/src/libs/stores/theme";
+import { useThemeStore } from "@repo/libs";
 
 const AboutPage = () => {
   const { setTheme, theme } = useThemeStore();

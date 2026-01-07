@@ -1,6 +1,7 @@
-import { useColorScheme } from 'nativewind';
-import { useEffect } from 'react';
-import { useThemeStore } from '~/src/libs/stores/theme';
+import { useColorScheme } from "nativewind";
+import { useEffect } from "react";
+import { useThemeStore } from "@repo/libs";
+
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useThemeStore();

@@ -1,7 +1,7 @@
-import { useRouter } from 'expo-router';
-import { useState, useEffect } from 'react';
-import { TextInput, View, ScrollView, Animated } from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useRouter } from "expo-router";
+import { useState, useEffect } from "react";
+import { TextInput, View, ScrollView, Animated } from "react-native";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated, {
   FadeIn,
   FadeInDown,
@@ -9,22 +9,21 @@ import Reanimated, {
   useSharedValue,
   withSpring,
   withTiming,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
 
-import { SongList } from '~/src/components/Home/SongList';
-import { Container, Text, Ternary, QuoteOfTheDay, Button } from '@repo/ui-native';
-import { useSongStore } from '~/src/libs/stores/songs';
-import { cn } from '@repo/libs';
+import { SongList } from "~/src/components/Home/SongList";
+import { Container, Text, Ternary, QuoteOfTheDay, Button } from "@repo/ui-native";
+import { cn, useSongStore } from "@repo/libs";
 
-import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
-import { FeaturedSongs } from './FeaturedSongs';
+import { useFilteredSongs } from "~/src/hooks/useFilteredSongs";
+import { FeaturedSongs } from "./FeaturedSongs";
 
 export const SongFinderPage = () => {
   const songs = useFilteredSongs({ isKhorus: false });
   const { recentlyPlayedSongs: recentSongs, favoriteSongs: fav } = useSongStore();
-  const [songNumber, setSongNumber] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<'recent' | 'favorites'>('recent');
+  const [songNumber, setSongNumber] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [activeTab, setActiveTab] = useState<"recent" | "favorites">("recent");
   const router = useRouter();
   // Animation values
   const scale = useSharedValue(0.9);
@@ -37,18 +36,18 @@ export const SongFinderPage = () => {
     const number = parseInt(songNumber);
 
     if (isNaN(number)) {
-      setError('Please enter a valid number');
+      setError("Please enter a valid number");
       return;
     }
 
     if (!availableSongNumbers.includes(number)) {
-      setError(`Song number not found, Please enter a valid song number`);
+      setError("Song number not found, Please enter a valid song number");
       return;
     }
 
     const song = songs.find((song) => song.metadata.number === number);
 
-    setError('');
+    setError("");
 
     router.push(`/songs/${song?.id}`);
   };
@@ -59,7 +58,7 @@ export const SongFinderPage = () => {
 
     scale.value = withSpring(1, { damping: 12 });
     opacity.value = withTiming(1, { duration: 1000 });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, []);
 
   return (
@@ -73,22 +72,22 @@ export const SongFinderPage = () => {
           // style={{ opacity: headerOpacity }}
           className="w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-8 pt-6">
           <Reanimated.View entering={FadeInDown.delay(300).duration(800)}>
-            <Text size={'3xl'} weight={'extrabold'} className="mb-2 uppercase">
+            <Text size={"3xl"} weight={"extrabold"} className="mb-2 uppercase">
               Jingrwai
             </Text>
           </Reanimated.View>
           <Reanimated.View entering={FadeInDown.delay(600).duration(800)}>
-            <Text size={'base'} italic variant={'default'} className="text-center opacity-80">
+            <Text size={"base"} italic variant={"default"} className="text-center opacity-80">
               Ngan rwai da la ka dohnud
             </Text>
-            <Text size={'base'} variant={'default'} italic className="text-center opacity-80">
+            <Text size={"base"} variant={"default"} italic className="text-center opacity-80">
               Ngan rwai da la ka jingshemphang ruh de
             </Text>
             <Text
-              size={'base'}
+              size={"base"}
               italic
-              weight={'normal'}
-              align={'right'}
+              weight={"normal"}
+              align={"right"}
               className="pr-2 opacity-80">
               - Paul
             </Text>
@@ -99,14 +98,14 @@ export const SongFinderPage = () => {
           <Reanimated.View
             className="mb-6 rounded-2xl bg-gray-100/70 p-5 shadow-xl dark:bg-gray-800"
             style={{
-              shadowColor: '#6366f1',
+              shadowColor: "#6366f1",
               shadowOffset: { width: 0, height: 4 },
               // shadowOpacity: 0.3,
               shadowRadius: 8,
             }}>
             <View className="mb-4 flex-row items-center">
               <MaterialCommunityIcons name="music" size={24} color="#6366f1" />
-              <Text size={'lg'} weight={'semibold'} className="ml-2 text-gray-800 dark:text-white">
+              <Text size={"lg"} weight={"semibold"} className="ml-2 text-gray-800 dark:text-white">
                 Wad da number jingrwai
               </Text>
             </View>
@@ -117,15 +116,15 @@ export const SongFinderPage = () => {
                 <TextInput
                   value={songNumber}
                   onChangeText={(text) => {
-                    const numericOnly = text.replace(/[^0-9]/g, '');
+                    const numericOnly = text.replace(/[^0-9]/g, "");
                     setSongNumber(numericOnly);
-                    setError('');
+                    setError("");
                   }}
                   placeholder="Number jingrwai"
-                  placeholderTextColor={'#9CA3AF'}
+                  placeholderTextColor={"#9CA3AF"}
                   keyboardType="number-pad" // Pure numeric keyboard, no ABC switch
                   returnKeyType="done" // Adds done/return button
-                  className={cn('flex-1 p-4 text-xl dark:text-white', error && 'border-red-500')}
+                  className={cn("flex-1 p-4 text-xl dark:text-white", error && "border-red-500")}
                   onSubmitEditing={handleSongSearch}
                 />
               </View>
@@ -142,8 +141,8 @@ export const SongFinderPage = () => {
                 containerClassName="w-full"
                 title="WAD"
                 disabled={!songNumber}
-                size={'lg'}
-                variant={'primary'}
+                size={"lg"}
+                variant={"primary"}
                 icon="magnify"
                 iconPosition="left"
                 onPress={() => handleSongSearch()}
@@ -161,18 +160,18 @@ export const SongFinderPage = () => {
               <Button
                 title="Recent"
                 containerClassName="w-1/2"
-                onPress={() => setActiveTab('recent')}
-                variant={activeTab === 'recent' ? 'primary' : 'secondary'}
+                onPress={() => setActiveTab("recent")}
+                variant={activeTab === "recent" ? "primary" : "secondary"}
               />
               <Button
                 title="Favorites"
-                onPress={() => setActiveTab('favorites')}
+                onPress={() => setActiveTab("favorites")}
                 containerClassName="w-1/2"
-                variant={activeTab === 'favorites' ? 'primary' : 'secondary'}
+                variant={activeTab === "favorites" ? "primary" : "secondary"}
               />
             </View>
             <Ternary
-              condition={activeTab === 'recent'}
+              condition={activeTab === "recent"}
               ifTrue={
                 <Reanimated.View entering={FadeIn.duration(300)}>
                   <SongList

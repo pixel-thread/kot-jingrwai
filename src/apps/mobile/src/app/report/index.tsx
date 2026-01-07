@@ -3,7 +3,7 @@ import { CustomHeader } from "~/src/components/Common/CustomHeader";
 import ReportScreen from "~/src/components/screen/report";
 import Reanimated, { FadeIn } from "react-native-reanimated";
 import { ThemeToggle } from "@repo/ui-native";
-import { useThemeStore } from "~/src/libs/stores/theme";
+import { useThemeStore } from "@repo/libs";
 
 const ReportPage = () => {
   const { theme, setTheme } = useThemeStore();

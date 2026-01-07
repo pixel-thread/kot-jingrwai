@@ -1,21 +1,21 @@
-import '~/src/styles/global.css';
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { useCallback, useEffect, useState } from 'react';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { ThemeProvider } from '../components/Provider/theme';
-import { TQueryProvider } from '../components/Provider/query';
-import * as SplashScreen from 'expo-splash-screen';
-import { Stack } from 'expo-router';
-import { useFonts } from 'expo-font';
-import * as Font from 'expo-font';
-import Entypo from '@expo/vector-icons/Entypo';
-import { logger } from '@repo/utils';
-import { useOnboardingStore } from '../libs/stores/onboarding';
-import Onboarding from '../components/Onboarding';
-import { Ternary, ErrorBoundary } from '@repo/ui-native';
-import { UpdateContextProvider } from '../components/Provider/update';
-import { OtaUpdateBanner } from '../components/Common/OtaUpdateBanner';
+import "~/src/styles/global.css";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { useCallback, useEffect, useState } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { ThemeProvider } from "../components/Provider/theme";
+import { TQueryProvider } from "../components/Provider/query";
+import * as SplashScreen from "expo-splash-screen";
+import { Stack } from "expo-router";
+import { useFonts } from "expo-font";
+import * as Font from "expo-font";
+import Entypo from "@expo/vector-icons/Entypo";
+import { logger } from "@repo/utils";
+import { useOnboardingStore } from "@repo/libs";
+import Onboarding from "../components/Onboarding";
+import { Ternary, ErrorBoundary } from "@repo/ui-native";
+import { UpdateContextProvider } from "../components/Provider/update";
+import { OtaUpdateBanner } from "../components/Common/OtaUpdateBanner";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -24,7 +24,7 @@ export default function Layout() {
   const [appIsReady, setAppIsReady] = useState(false);
   const { hasCompletedOnboarding } = useOnboardingStore();
   const [loaded, error] = useFonts({
-    Helvetica: require('~/assets/fonts/Helvetica.ttf'),
+    Helvetica: "~/assets/fonts/Helvetica.ttf",
   });
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Layout() {
   }, [appIsReady]);
 
   if (!appIsReady || !loaded || error) {
-    logger.info(error ? error : 'App not ready');
+    logger.info(error ? error : "App not ready");
     return null;
   }
 
@@ -70,8 +70,8 @@ export default function Layout() {
               <UpdateContextProvider>
                 <ThemeProvider>
                   <OtaUpdateBanner
-                    testMode={process.env.NODE_ENV === 'development'}
-                    scenario={'fail'}
+                    testMode={process.env.NODE_ENV === "development"}
+                    scenario={"fail"}
                   />
                   <Ternary
                     condition={!hasCompletedOnboarding}

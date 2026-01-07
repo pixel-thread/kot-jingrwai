@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import Reanimated, {
   FadeIn,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-} from 'react-native-reanimated';
-import { Container, Text } from '@repo/ui-native';
-import { apostleCreed } from '~/src/libs/apostle-creed';
-import { ScrollView } from 'react-native-gesture-handler';
-import { View } from 'react-native';
-import { useTextStore } from '~/src/libs/stores/text';
+} from "react-native-reanimated";
+import { Container, Text } from "@repo/ui-native";
+import { apostleCreed } from "~/src/libs/apostle-creed";
+import { ScrollView } from "react-native-gesture-handler";
+import { View } from "react-native";
+import { useTextStore } from "@repo/libs";
 
 export const ApostleCreedPage = () => {
   const { size } = useTextStore();
@@ -19,7 +19,7 @@ export const ApostleCreedPage = () => {
   useEffect(() => {
     headerOpacity.value = withTiming(1, { duration: 800 });
     listOpacity.value = withTiming(1, { duration: 1000 });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, []);
 
   const headerAnimatedStyle = useAnimatedStyle(() => {
@@ -40,7 +40,7 @@ export const ApostleCreedPage = () => {
           <Reanimated.View
             style={headerAnimatedStyle}
             className="mb-6 w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-6 pt-6 shadow-lg">
-            <Text size={'3xl'} weight={'extrabold'} className="mb-1 text-center">
+            <Text size={"3xl"} weight={"extrabold"} className="mb-1 text-center">
               {apostleCreed.title}
             </Text>
           </Reanimated.View>
@@ -54,19 +54,19 @@ export const ApostleCreedPage = () => {
                   className="rounded-2xl p-4 dark:bg-gray-800">
                   <Text
                     size={size}
-                    weight={'bold'}
-                    align={'justify'}
-                    leading={'loose'}
-                    tracking={'normal'}
+                    weight={"bold"}
+                    align={"justify"}
+                    leading={"loose"}
+                    tracking={"normal"}
                     className="text-gray-800 dark:text-white">
                     {paragraph.lines.map((line, index) => (
                       <Text
                         key={index}
                         size={size}
-                        weight={'bold'}
-                        align={'justify'}
-                        leading={'loose'}
-                        tracking={'normal'}
+                        weight={"bold"}
+                        align={"justify"}
+                        leading={"loose"}
+                        tracking={"normal"}
                         className="text-gray-800 dark:text-white">
                         &nbsp; {line.text}
                       </Text>

@@ -1,2 +1,2 @@
 export * from "./cn";
-export * from "./store";
+export * from "./stores";

@@ -1,21 +1,22 @@
-import { Stack, useLocalSearchParams } from 'expo-router';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { ThemeToggle } from '@repo/ui-native';
+import { Stack, useLocalSearchParams } from "expo-router";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { ThemeToggle } from "@repo/ui-native";
 
-import Reanimated, { FadeIn } from 'react-native-reanimated';
-import { TynraijingrwaiDetails } from '~/src/components/screen/tynrai-jingrwai/TynraiJingrwaiDetails';
-import { tynraiJingrwai } from '@repo/constants';
-import { useThemeStore } from '~/src/libs/stores/theme';
+import Reanimated, { FadeIn } from "react-native-reanimated";
+import { TynraijingrwaiDetails } from "~/src/components/screen/tynrai-jingrwai/TynraiJingrwaiDetails";
+import { tynraiJingrwai } from "@repo/constants";
+import { useThemeStore } from "@repo/libs";
+
 
 const TynraiJingrwaiPage = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const tynrai = tynraiJingrwai.find((val) => val.id === id);
-  const title = tynrai?.title || 'Tynrai Jingrwai';
+  const title = tynrai?.title || "Tynrai Jingrwai";
   const { setTheme, theme } = useThemeStore();
   return (
     <Reanimated.View entering={FadeIn.duration(300)} className="flex-1">
       <Stack.Screen
-        name={'Tynrai Jingrwai'}
+        name={"Tynrai Jingrwai"}
         options={{
           header: ({ options }) => (
             <CustomHeader
@@ -26,8 +27,8 @@ const TynraiJingrwaiPage = () => {
           ),
           title: title,
           headerShown: true,
-          headerTitleAlign: 'center',
-          headerBackTitle: 'Back',
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
         }}
       />
       <TynraijingrwaiDetails id={id} />

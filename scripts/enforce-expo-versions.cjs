@@ -12,8 +12,8 @@ const APPS_DIR = path.join(ROOT, 'src/apps');
  * --------------------------------------------- */
 const REQUIRED_VERSIONS = {
   expo: '~53.0.24',
-  react: '18.2.0',
-  'react-native': '0.73.6',
+  react: '19.0.0',
+  'react-native': '0.79.6',
   'expo-router': '~5.1.8',
   nativewind: '4.1.23',
 };

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "preinstall": "node scripts/enforce-expo-versions.cjs",
     "clean:install": "node scripts/clean-install.mjs",
     "generate": "turbo run generate",
     "lint": "turbo run lint",
@@ -41,10 +42,11 @@
       "nativewind": "~4.1.23",
       "react-native-reanimated": "~3.17.4",
       "react-native-safe-area-context": "5.4.0",
-      "@types/react": "~19.0.10",
-      "react": "18.2.0",
-      "react-dom": "18.2.0",
-      "react-native": "0.73.6"
+      "@types/react": "19.0.10",
+      "react": "19.0.0",
+      "react-dom": "19.0.0",
+      "react-native": "0.79.6",
+      "metro": "^0.82.0"
     },
     "public-hoist-pattern": [
       "react",

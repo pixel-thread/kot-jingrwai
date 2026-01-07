@@ -1,7 +1,7 @@
-import { useOnboardingStore } from '~/src/libs/stores/onboarding';
-import { SinglePageOnboarding } from '@repo/ui-native';
-import { useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native';
+import { useOnboardingStore } from "@repo/libs";
+import { SinglePageOnboarding } from "@repo/ui-native";
+import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native";
 
 export default function Onboarding() {
   const { setHasCompletedOnboarding } = useOnboardingStore();
@@ -11,8 +11,8 @@ export default function Onboarding() {
     <SafeAreaView className="flex-1">
       <SinglePageOnboarding
         setHasCompletedOnboarding={setHasCompletedOnboarding}
-        onContinueAsGuest={() => router.replace('/')}
-        onContinueWithGoogle={() => router.replace('/')}
+        onContinueAsGuest={() => router.replace("/")}
+        onContinueWithGoogle={() => router.replace("/")}
       />
     </SafeAreaView>
   );

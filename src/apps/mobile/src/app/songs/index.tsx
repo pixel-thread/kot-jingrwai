@@ -2,7 +2,7 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { CustomHeader } from "~/src/components/Common/CustomHeader";
 import { ThemeToggle } from "@repo/ui-native";
 import { AllSongPage } from "~/src/components/Songs";
-import { useThemeStore } from "~/src/libs/stores/theme";
+import { useThemeStore } from "@repo/libs";
 
 type RouteParams = {
   isChorus?: string;

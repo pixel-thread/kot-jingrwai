@@ -11,12 +11,12 @@ import Reanimated, {
   withTiming,
 } from "react-native-reanimated";
 
-import { SongList } from "~/src/components/Home/SongList";
+import { SongList } from "@components/Home/SongList";
 import { Container, Text, Ternary, QuoteOfTheDay, Button } from "@repo/ui-native";
-import { useSongStore } from "~/src/libs/stores/songs";
+import { useSongStore } from "@repo/libs";
 import { cn } from "@repo/libs";
 
-import { useFilteredSongs } from "~/src/hooks/useFilteredSongs";
+import { useFilteredSongs } from "@hooks/useFilteredSongs";
 import { FeaturedSongs } from "./FeaturedSongs";
 
 export const SongFinderPage = () => {
@@ -35,21 +35,16 @@ export const SongFinderPage = () => {
 
   const handleSongSearch = () => {
     const number = parseInt(songNumber);
-
     if (isNaN(number)) {
       setError("Please enter a valid number");
       return;
     }
-
     if (!availableSongNumbers.includes(number)) {
       setError("Song number not found, Please enter a valid song number");
       return;
     }
-
     const song = songs.find((song) => song.metadata.number === number);
-
     setError("");
-
     router.push(`/songs/${song?.id}`);
   };
 
