@@ -1,0 +1,72 @@
+name: EAS Production Deployment
+
+# on:
+#   push:
+#     branches: ['master']
+
+jobs:
+  fingerprint:
+    name: 📋 Calculate fingerprint
+    type: fingerprint
+    environment: production
+
+  check_existing_build:
+    name: 🔍 Check existing build
+    type: get-build
+    environment: production
+    needs: [fingerprint]
+    params:
+      fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
+      profile: production
+
+  build_new:
+    name: 🏗️ Create new build
+    type: build
+    environment: production
+    needs: [check_existing_build, fingerprint]
+    if: ${{ !needs.check_existing_build.outputs.build_id }}
+    params:
+      platform: android
+      profile: production
+
+  publish_update:
+    name: ⚡ Publish OTA update
+    type: update
+    environment: production
+    needs: [check_existing_build, fingerprint]
+    if: ${{ !!needs.check_existing_build.outputs.build_id }}
+    params:
+      platform: android
+      branch: production
+      channel: production
+
+  check_build_status:
+    name: 📊 Check EAS Build Status
+    runs-on: ubuntu-latest
+    needs: [build_new, check_existing_build]
+    if: ${{ always() }}
+    steps:
+      - name: Get build status
+        run: |
+          # Use EAS CLI to check build status and capture output
+          eas build:status --id ${{ needs.build_new.outputs.build_id || needs.check_existing_build.outputs.build_id }}
+          # Parse output for status (success, failure, canceled, timeout)
+          # Example: echo "::set-output name=status::$(echo $status)"
+          # Example: echo "::set-output name=message::$(echo $message)"
+
+  notify_summary:
+    name: 📊 Unified Deployment Summary
+    type: slack
+    needs: [fingerprint, check_existing_build, build_new, publish_update, check_build_status]
+    if: ${{ always() }}
+    params:
+      webhook_url: ${{ env.SLACK_WEBHOOK_URL }}
+      message: |
+        🚀 PROD deployment summary
+        Branch: ${{ github.ref_name }}
+        App: Kot-Jingrwai
+        Platform: android
+        Build ID: ${{ needs.build_new.outputs.build_id || needs.check_existing_build.outputs.build_id || 'N/A' }}
+        Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
+        Status: ${{ needs.check_build_status.outputs.status }}
+        Message: ${{ needs.check_build_status.outputs.message }}
