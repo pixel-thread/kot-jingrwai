@@ -6,7 +6,6 @@ import Reanimated, { FadeIn } from "react-native-reanimated";
 import TynraiJingrwaiScreen from "~/src/components/screen/tynrai-jingrwai";
 import { useThemeStore } from "@repo/libs";
 
-
 const TynraiJingrwaiPage = () => {
   const { theme, setTheme } = useThemeStore();
 

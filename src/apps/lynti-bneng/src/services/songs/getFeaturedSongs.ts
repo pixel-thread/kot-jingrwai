@@ -1,4 +1,4 @@
-import { songs } from "~/src/libs/songs";
+import { songs } from "@libs/songs";
 import { featuredSongs } from "@repo/constants";
 import { SongT } from "@repo/types";
 

@@ -20,6 +20,7 @@ export default [
       '**/coverage/**',
       '**/*.generated.*',
       '**/scripts/**',
+      '**/prisma/generated/**',
       '**/**/metro.config.js',
     ],
   },

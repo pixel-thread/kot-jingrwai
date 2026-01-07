@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 import { CustomHeader } from "~/src/components/Common/CustomHeader";
-import ReportScreen from "~/src/components/screen/report";
+import { ReportScreen } from "@repo/ui-native";
 import Reanimated, { FadeIn } from "react-native-reanimated";
 import { ThemeToggle } from "@repo/ui-native";
 import { useThemeStore } from "@repo/libs";

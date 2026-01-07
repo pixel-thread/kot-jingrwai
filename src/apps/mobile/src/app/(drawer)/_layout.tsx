@@ -1,16 +1,30 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Drawer } from 'expo-router/drawer';
-import { CustomDrawerContent } from '~/src/components/Common/CustomDrawerContent';
-import { CustomHeader } from '~/src/components/Common/CustomHeader';
-import { gray } from 'tailwindcss/colors';
-import { useColorScheme } from 'nativewind';
+import { Ionicons } from "@expo/vector-icons";
+import { Drawer } from "expo-router/drawer";
+import { CustomDrawerContent } from "@repo/ui-native";
+import { CustomHeader } from "~/src/components/Common/CustomHeader";
+import { gray } from "tailwindcss/colors";
+import { useColorScheme } from "nativewind";
+import { drawerMenuItems } from "~/src/libs/constants/drawerMenuItems";
+import { Route, usePathname, useRouter } from "expo-router";
 
 const DrawerLayout = () => {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const pathName = usePathname();
+  const router = useRouter();
+  const isDarkMode = colorScheme === "dark";
+
+  const onPressItems = (href: string) => router.push(href as Route);
+
   return (
     <Drawer
-      drawerContent={CustomDrawerContent}
+      drawerContent={(props) => (
+        <CustomDrawerContent
+          {...props}
+          items={drawerMenuItems}
+          onPress={(href) => onPressItems(href)}
+          pathName={pathName}
+        />
+      )}
       screenOptions={{
         headerShown: false,
         header: ({ options }) => <CustomHeader options={options} />,
@@ -22,9 +36,9 @@ const DrawerLayout = () => {
       <Drawer.Screen
         name="(tabs)"
         options={{
-          drawerLabel: 'Home',
+          drawerLabel: "Home",
           drawerIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />,
-          drawerItemStyle: { display: 'none' },
+          drawerItemStyle: { display: "none" },
         }}
       />
     </Drawer>

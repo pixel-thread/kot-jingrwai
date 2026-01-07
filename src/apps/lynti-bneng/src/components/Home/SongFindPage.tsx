@@ -13,11 +13,11 @@ import Reanimated, {
 
 import { SongList } from "@components/Home/SongList";
 import { Container, Text, Ternary, QuoteOfTheDay, Button } from "@repo/ui-native";
-import { useSongStore } from "@repo/libs";
-import { cn } from "@repo/libs";
+import { useSongStore , cn } from "@repo/libs";
 
 import { useFilteredSongs } from "@hooks/useFilteredSongs";
 import { FeaturedSongs } from "./FeaturedSongs";
+import * as Constants from "expo-constants";
 
 export const SongFinderPage = () => {
   const songs = useFilteredSongs({ isKhorus: false });
@@ -54,7 +54,6 @@ export const SongFinderPage = () => {
 
     scale.value = withSpring(1, { damping: 12 });
     opacity.value = withTiming(1, { duration: 1000 });
-     
   }, []);
 
   return (
@@ -69,23 +68,20 @@ export const SongFinderPage = () => {
           className="w-full items-center justify-center rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-600 pb-8 pt-6">
           <Reanimated.View entering={FadeInDown.delay(300).duration(800)}>
             <Text size={"3xl"} weight={"extrabold"} className="mb-2 uppercase">
-              Jingrwai
+              {Constants.default.expoConfig?.name}
             </Text>
           </Reanimated.View>
           <Reanimated.View entering={FadeInDown.delay(600).duration(800)}>
-            <Text size={"base"} italic variant={"default"} className="text-center opacity-80">
-              Ngan rwai da la ka dohnud
-            </Text>
-            <Text size={"base"} variant={"default"} italic className="text-center opacity-80">
-              Ngan rwai da la ka jingshemphang ruh de
-            </Text>
             <Text
-              size={"base"}
+              size={"md"}
               italic
-              weight={"normal"}
-              align={"right"}
-              className="pr-2 opacity-80">
-              - Paul
+              variant={"default"}
+              className="text-center opacity-80"
+              weight={"medium"}>
+              ...Nga Long Ka Lynti
+            </Text>
+            <Text size={"base"} italic variant={"default"} className="text-center opacity-80">
+              - Io. 14,6
             </Text>
           </Reanimated.View>
         </Animated.View>

@@ -19,7 +19,6 @@ export const ApostleCreedPage = () => {
   useEffect(() => {
     headerOpacity.value = withTiming(1, { duration: 800 });
     listOpacity.value = withTiming(1, { duration: 1000 });
-     
   }, []);
 
   const headerAnimatedStyle = useAnimatedStyle(() => {

@@ -9,7 +9,7 @@
     "dev": "expo start --clear --port 8081",
     "prebuild": "expo prebuild",
     "fetchSongs": "node scripts/fetch-songs.js",
-    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
+    "lint": "prettier --write . --fix",
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix && prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
     "web": "expo start --web",
     "local:dev:android": "eas build --profile development --platform android --local",

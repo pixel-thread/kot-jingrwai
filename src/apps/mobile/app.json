@@ -37,7 +37,25 @@
           "imageWidth": 200
         }
       ],
-      "expo-font",
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/Helvetica.ttf"],
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "Helvetica",
+                "fontDefinitions": [
+                  {
+                    "path": "./assets/fonts/Helvetica.ttf",
+                    "weight": 400
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
       "expo-web-browser"
     ],
     "experiments": {

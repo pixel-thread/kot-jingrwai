@@ -2,7 +2,7 @@ import { Tabs } from "expo-router";
 import { useColorScheme } from "nativewind";
 import colors from "tailwindcss/colors";
 import { CustomHeader } from "~/src/components/Common/CustomHeader";
-import { TabBarIcon } from "~/src/components/Common/TabBarIcon";
+import { TabBarIcon } from "@repo/ui-native";
 import { DrawerToggleButton } from "@react-navigation/drawer";
 import { useEffect } from "react";
 import { useSharedValue, withTiming } from "react-native-reanimated";

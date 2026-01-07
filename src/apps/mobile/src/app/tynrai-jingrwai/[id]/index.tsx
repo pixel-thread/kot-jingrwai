@@ -7,7 +7,6 @@ import { TynraijingrwaiDetails } from "~/src/components/screen/tynrai-jingrwai/T
 import { tynraiJingrwai } from "@repo/constants";
 import { useThemeStore } from "@repo/libs";
 
-
 const TynraiJingrwaiPage = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const tynrai = tynraiJingrwai.find((val) => val.id === id);

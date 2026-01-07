@@ -1,16 +1,17 @@
-import { Tabs } from 'expo-router';
-import { useColorScheme } from 'nativewind';
-import colors from 'tailwindcss/colors';
-import { TabBarIcon } from '@src/components/Common/TabBarIcon';
-import { DrawerToggleButton } from '@react-navigation/drawer';
-import { useEffect } from 'react';
-import { useSharedValue, withTiming } from 'react-native-reanimated';
-import { CustomHeader } from '@src/components/Common/CustomHeader';
+import { Tabs } from "expo-router";
+import { useColorScheme } from "nativewind";
+import colors from "tailwindcss/colors";
+import { TabBarIcon, ThemeToggle } from "@repo/ui-native";
+import { DrawerToggleButton } from "@react-navigation/drawer";
+import { useEffect } from "react";
+import { useSharedValue, withTiming } from "react-native-reanimated";
+import { CustomHeader } from "@src/components/Common/CustomHeader";
+import { useThemeStore } from "@repo/libs";
 
 export default function TabLayout() {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
-
+  const isDarkMode = colorScheme === "dark";
+  const { theme, setTheme } = useThemeStore();
   // Animation values
   const tabBarOpacity = useSharedValue(0);
 
@@ -31,18 +32,19 @@ export default function TabLayout() {
           elevation: 0,
           height: 65,
           shadowOpacity: 0,
-          borderTopColor: 'transparent',
+          borderTopColor: "transparent",
         },
         tabBarLabelStyle: {
-          fontFamily: 'Helvetica',
+          fontFamily: "Helvetica",
           fontSize: 12,
-          fontWeight: '600',
+          fontWeight: "600",
         },
         tabBarActiveTintColor: isDarkMode ? colors.indigo[200] : colors.indigo[600],
         tabBarInactiveTintColor: isDarkMode ? colors.gray[400] : colors.gray[500],
         header: ({ options }) => (
           <CustomHeader
             options={options}
+            headerRight={<ThemeToggle theme={theme} setTheme={setTheme} />}
             headerLeft={
               <>
                 <DrawerToggleButton tintColor={isDarkMode ? colors.gray[200] : colors.gray[950]} />
@@ -55,20 +57,20 @@ export default function TabLayout() {
         name="index"
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          title: 'Home',
+          title: "Home",
         }}
       />
       <Tabs.Screen
         name="jingrwai"
         options={{
-          title: 'Ki Jingiwai',
+          title: "Ki Jingiwai",
           tabBarIcon: ({ color }) => <TabBarIcon name="music-note" color={color} />,
         }}
       />
       <Tabs.Screen
         name="bible"
         options={{
-          title: 'Lynti Bneng',
+          title: "Lynti Bneng",
           tabBarIcon: ({ color }) => <TabBarIcon name="music" color={color} />,
         }}
       />

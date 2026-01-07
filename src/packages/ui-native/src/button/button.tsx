@@ -10,12 +10,13 @@ import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from "react-
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@repo/libs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 /* -------------------------------------------------------------------------- */ /* CVA */ /* -------------------------------------------------------------------------- */
-const buttonVariants = cva("items-center justify-center rounded-xl w-full", {
+export const buttonVariants = cva("items-center justify-center rounded-xl w-full", {
   variants: {
     variant: {
       primary: "bg-indigo-600 dark:bg-indigo-900",
-      secondary: "bg-gray-200 dark:bg-gray-800",
+      secondary: "bg-gray-300 dark:bg-gray-800",
       outline: "bg-transparent border border-indigo-500 dark:border-indigo-400",
       destructive: "bg-red-600 dark:bg-red-900",
     },
@@ -24,7 +25,8 @@ const buttonVariants = cva("items-center justify-center rounded-xl w-full", {
   },
   defaultVariants: { variant: "primary", size: "md" },
 });
-const textVariants = cva("text-center font-semibold", {
+
+const textVariants = cva("text-center line-clamp-1 truncate font-semibold", {
   variants: {
     variant: {
       primary: "text-white",
@@ -47,6 +49,7 @@ type ButtonProps = TouchableOpacityProps &
     icon?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
     iconPosition?: "left" | "right";
     containerClassName?: string;
+    textClassName?: string;
   };
 
 type ButtonRef = ComponentRef<typeof TouchableOpacity>;
@@ -66,6 +69,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
       iconPosition = "left",
       disabled,
       className,
+      textClassName,
       containerClassName,
       ...props
     },
@@ -110,7 +114,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
               )
             )}
 
-            <Text className={textVariants({ variant, size })}>{title}</Text>
+            <Text className={cn(textVariants({ variant, size }), textClassName)}>{title}</Text>
 
             {!loading && icon && iconPosition === "right" && (
               <View className="ml-2">

@@ -35,11 +35,12 @@
   },
   "dependencies": {
     "@repo/libs": "workspace:*",
-    "@repo/utils": "workspace:*",
-    "class-variance-authority": "^0.7.1"
+    "@repo/utils": "workspace:*"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "expo-audio": "*",
+    "class-variance-authority": "*"
   }
 }

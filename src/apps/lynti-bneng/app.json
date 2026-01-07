@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Lynti Bneng",
+    "name": "Ka Lynti Bneng",
     "slug": "lynti-bneng",
     "version": "1.0.0",
     "scheme": "lynti-bneng",
@@ -34,7 +34,7 @@
     "orientation": "portrait",
     "icon": "./src/assets/icons/kot-jingrwai-icon.png",
 
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
 
     "splash": {
       "image": "./src/assets/images/splashscreen/splashscreen.png",

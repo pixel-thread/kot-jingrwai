@@ -58,7 +58,6 @@ export const SongFinderPage = () => {
 
     scale.value = withSpring(1, { damping: 12 });
     opacity.value = withTiming(1, { duration: 1000 });
-     
   }, []);
 
   return (

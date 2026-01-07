@@ -5,4 +5,8 @@ export * from "./Container";
 export * from "./BetaBatch";
 export * from "./ContentSection";
 export * from "./ErrorBoundary";
+export * from "./FloatingAction";
 export * from "./theme";
+export * from "./CustomDrawerContent";
+export * from "./TabBarIcon";
+export * from "./Header";
