@@ -37,7 +37,7 @@ export function CustomDrawerContent({
         {items.map((item) => {
           const isActive = item.href === pathName;
           return (
-            <View className="my-0.5">
+            <View key={item.id + item.title} className="my-0.5">
               <Button
                 key={item.id}
                 textClassName="text-start!"
