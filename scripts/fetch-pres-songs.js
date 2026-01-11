@@ -8,6 +8,7 @@ const apiBaseUrl = 'https://kot-jingrwai.vercel.app/api' || 'http://localhost:30
 const API_URL = `${apiBaseUrl}/songs`;
 
 const OUTPUT_PATH = path.resolve('../src/apps/mobile/src/libs/songs/song.json');
+
 const LYNTI_BNENG = path.resolve('../src/apps/lynti-bneng/src/libs/songs/song.json');
 
 async function fetchRuntimeConfig() {
@@ -29,6 +30,7 @@ async function fetchRuntimeConfig() {
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(json.data, null, 2));
+
   fs.mkdirSync(path.dirname(LYNTI_BNENG), { recursive: true });
   fs.writeFileSync(LYNTI_BNENG, JSON.stringify(json.data, null, 2));
 

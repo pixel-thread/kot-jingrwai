@@ -35,7 +35,10 @@
   },
   "dependencies": {
     "@repo/libs": "workspace:*",
-    "@repo/utils": "workspace:*"
+    "@repo/utils": "workspace:*",
+    "@repo/constants": "workspace:*",
+    "@repo/services": "workspace:*",
+    "@repo/hooks": "workspace:*"
   },
   "peerDependencies": {
     "react": "*",

@@ -4,3 +4,7 @@ export * from "./api";
 export * from "./http";
 export * from "./logger";
 export * from "./reactQuery";
+export * from "./compareAppVersion";
+export * from "./copyToClipboard";
+export * from "./normalizeTextForSearch";
+export * from "./isConnectedToNetwork";

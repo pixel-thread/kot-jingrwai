@@ -11,3 +11,4 @@ export * from "./CustomDrawerContent";
 export * from "./TabBarIcon";
 export * from "./Header";
 export * from "./UnderDevelopment";
+export * from "./AppVersion";

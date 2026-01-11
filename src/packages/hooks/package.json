@@ -1,0 +1,46 @@
+{
+  "name": "@repo/hooks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "tsc -p tsconfig.json",
+    "prepare": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./*/**": {
+      "types": "./dist/*/**/*.d.ts",
+      "default": "./dist/*/**/*.js"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/types": "workspace:*",
+    "@repo/libs": "workspace:*"
+  },
+  "peerDependencies": {
+    "@types/react": "*",
+    "react": "*",
+    "zustand": "*",
+    "@react-native-async-storage/async-storage": "*"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.4.0"
+  },
+  "private": true
+}

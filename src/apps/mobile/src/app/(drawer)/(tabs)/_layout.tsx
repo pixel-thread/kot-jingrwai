@@ -7,12 +7,13 @@ import { DrawerToggleButton } from "@react-navigation/drawer";
 import { useEffect } from "react";
 import { useSharedValue, withTiming } from "react-native-reanimated";
 import { ThemeToggle } from "@repo/ui-native";
-import { useUpdateContext } from "~/src/hooks/update/useUpdateContext";
+import { useUpdateContext } from "@repo/hooks";
 import { View } from "react-native";
 import { useThemeStore } from "@repo/libs";
 
 export default function TabLayout() {
-  const { isUpdateAvailable } = useUpdateContext();
+  const context = useUpdateContext();
+  const { isUpdateAvailable } = context!;
   const { theme, setTheme } = useThemeStore();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === "dark";

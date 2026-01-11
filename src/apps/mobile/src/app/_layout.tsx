@@ -3,7 +3,13 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useCallback, useEffect, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { ThemeProvider, TQueryProvider, Ternary, ErrorBoundary } from "@repo/ui-native";
+import {
+  ThemeProvider,
+  TQueryProvider,
+  Ternary,
+  ErrorBoundary,
+  UpdateContextProvider,
+} from "@repo/ui-native";
 import * as SplashScreen from "expo-splash-screen";
 import { Stack } from "expo-router";
 // import { useFonts } from 'expo-font';
@@ -12,7 +18,6 @@ import { Stack } from "expo-router";
 // import { logger } from '@repo/utils';
 import { useOnboardingStore } from "@repo/libs";
 import Onboarding from "../components/Onboarding";
-import { UpdateContextProvider } from "../components/Provider/update";
 import { OtaUpdateBanner } from "../components/Common/OtaUpdateBanner";
 
 // Keep the splash screen visible while we fetch resources

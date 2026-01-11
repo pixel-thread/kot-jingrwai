@@ -3,8 +3,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import { indigo } from "tailwindcss/colors";
 import { Button } from "../button";
-import { Container } from "../common";
+import { Container } from "./Container";
 import { Text } from "../typography";
+
 type Props = {
   isModal?: boolean;
   title?: string;

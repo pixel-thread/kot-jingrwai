@@ -68,9 +68,6 @@ export const Header: React.FC<Props> = ({ back, options, headerLeft, headerRight
                   />
                 }
               />
-              <Text size={"lg"} weight={"medium"}>
-                Back
-              </Text>
             </TouchableOpacity>
           )}
           {headerLeft && <View className="flex flex-row gap-x-2">{headerLeft}</View>}

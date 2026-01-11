@@ -63,7 +63,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="jingrwai"
         options={{
-          title: "Ki Jingiwai",
+          title: "Ki Jingrwai",
           tabBarIcon: ({ color }) => <TabBarIcon name="music-note" color={color} />,
         }}
       />

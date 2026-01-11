@@ -3,11 +3,12 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
-import { ScrollView, View } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import { Text } from "../typography";
 import { MenuItemsT } from "@repo/types";
 import * as Constants from "expo-constants";
-import { Button } from "../button";
+import { buttonVariants } from "../button";
+import { cn } from "@repo/libs";
 
 interface Props extends DrawerContentComponentProps {
   items: MenuItemsT[];
@@ -34,18 +35,34 @@ export function CustomDrawerContent({
 
       <DrawerItemList {...props} />
       <ScrollView showsVerticalScrollIndicator={false}>
-        {items.map((item) => {
+        {items.map((item, i) => {
           const isActive = item.href === pathName;
           return (
             <View key={item.id + item.title} className="my-0.5">
-              <Button
-                key={item.id}
-                textClassName="text-start!"
-                title={item.title}
-                variant={isActive ? "primary" : "secondary"}
-                size={"sm"}
+              <TouchableOpacity
                 onPress={() => onPress(item.href)}
-              />
+                className={buttonVariants({
+                  variant: isActive ? "primary" : "secondary",
+                  className: "w-full",
+                })}>
+                <View className="w-full flex-1 flex-row items-start justify-start gap-2 px-1">
+                  <Text
+                    weight={"semibold"}
+                    size={"md"}
+                    className={cn(isActive ? "text-white" : "text-gray-800 dark:text-white")}>
+                    {i + 1}.
+                  </Text>
+                  <Text
+                    weight={"semibold"}
+                    size={"md"}
+                    className={cn(
+                      "tracking-wide",
+                      isActive ? "text-white" : "text-gray-800 dark:text-white"
+                    )}>
+                    {item.title}
+                  </Text>
+                </View>
+              </TouchableOpacity>
             </View>
           );
         })}

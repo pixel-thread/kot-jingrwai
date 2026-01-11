@@ -57,9 +57,15 @@ importers:
       '@repo/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@repo/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
       '@repo/libs':
         specifier: workspace:*
         version: link:../../packages/libs
+      '@repo/services':
+        specifier: workspace:*
+        version: link:../../packages/services
       '@repo/ui-native':
         specifier: workspace:*
         version: link:../../packages/ui-native
@@ -93,6 +99,9 @@ importers:
       expo-system-ui:
         specifier: ~5.0.11
         version: 5.0.11(expo@53.0.25(@babel/core@7.28.5)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.5)(@react-native-community/cli@12.3.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.5)(@react-native-community/cli@12.3.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native-web@0.20.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-native@0.79.6(@babel/core@7.28.5)(@react-native-community/cli@12.3.6)(@types/react@19.0.10)(react@19.0.0))
+      expo-updates:
+        specifier: ~0.28.17
+        version: 0.28.17(expo@53.0.25(@babel/core@7.28.5)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.5)(@react-native-community/cli@12.3.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.5)(@react-native-community/cli@12.3.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react@19.0.0)
       expo-web-browser:
         specifier: ~14.2.0
         version: 14.2.0(expo@53.0.25(@babel/core@7.28.5)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.5)(@react-native-community/cli@12.3.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.5)(@react-native-community/cli@12.3.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native@0.79.6(@babel/core@7.28.5)(@react-native-community/cli@12.3.6)(@types/react@19.0.10)(react@19.0.0))
@@ -172,9 +181,15 @@ importers:
       '@repo/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@repo/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
       '@repo/libs':
         specifier: workspace:*
         version: link:../../packages/libs
+      '@repo/services':
+        specifier: workspace:*
+        version: link:../../packages/services
       '@repo/ui-native':
         specifier: workspace:*
         version: link:../../packages/ui-native
@@ -605,6 +620,40 @@ importers:
         specifier: ^8.50.0
         version: 8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.8.3)
 
+  src/packages/hooks:
+    dependencies:
+      '@react-native-async-storage/async-storage':
+        specifier: '*'
+        version: 2.1.2(react-native@0.79.6(@babel/core@7.28.5)(@react-native-community/cli@12.3.6)(@types/react@19.0.10)(react@19.0.0))
+      '@types/react':
+        specifier: 19.0.10
+        version: 19.0.10
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      react:
+        specifier: 19.0.0
+        version: 19.0.0
+      tailwind-merge:
+        specifier: ^3.4.0
+        version: 3.4.0
+      zustand:
+        specifier: '*'
+        version: 4.5.7(@types/react@19.0.10)(react@19.0.0)
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/libs':
+        specifier: workspace:*
+        version: link:../libs
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../types
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
   src/packages/libs:
     dependencies:
       '@react-native-async-storage/async-storage':
@@ -674,9 +723,18 @@ importers:
 
   src/packages/ui-native:
     dependencies:
+      '@repo/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@repo/hooks':
+        specifier: workspace:*
+        version: link:../hooks
       '@repo/libs':
         specifier: workspace:*
         version: link:../libs
+      '@repo/services':
+        specifier: workspace:*
+        version: link:../services
       '@repo/utils':
         specifier: workspace:*
         version: link:../utils
@@ -11777,7 +11835,7 @@ snapshots:
       eslint: 9.39.2(jiti@1.21.7)
       eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.39.2(jiti@1.21.7))
       eslint-plugin-expo: 0.1.4(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3)
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@1.21.7))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@4.4.4)(eslint@9.39.2(jiti@1.21.7))
       eslint-plugin-react: 7.37.5(eslint@9.39.2(jiti@1.21.7))
       eslint-plugin-react-hooks: 5.2.0(eslint@9.39.2(jiti@1.21.7))
       globals: 16.5.0
@@ -11841,7 +11899,7 @@ snapshots:
       tinyglobby: 0.2.15
       unrs-resolver: 1.11.1
     optionalDependencies:
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@1.21.7))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@4.4.4)(eslint@9.39.2(jiti@1.21.7))
     transitivePeerDependencies:
       - supports-color
 
@@ -11871,7 +11929,7 @@ snapshots:
       tinyglobby: 0.2.15
       unrs-resolver: 1.11.1
     optionalDependencies:
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@1.21.7))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@4.4.4)(eslint@9.39.2(jiti@1.21.7))
     transitivePeerDependencies:
       - supports-color
 
@@ -11921,7 +11979,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@1.21.7)):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@4.4.4)(eslint@9.39.2(jiti@1.21.7)):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.9

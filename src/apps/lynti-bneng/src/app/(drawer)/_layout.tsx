@@ -21,8 +21,8 @@ const DrawerLayout = () => {
         <CustomDrawerContent
           items={drawerMenuItems}
           pathName={pathName}
+          onPress={(href) => onPress(href as Route)}
           {...props}
-          onPress={onPress}
         />
       )}
       screenOptions={{

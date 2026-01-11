@@ -7,10 +7,12 @@ import { useColorScheme } from "nativewind";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
 import { useTextStore, useThemeStore } from "@repo/libs";
-import { useUpdateContext } from "~/src/hooks/update/useUpdateContext";
+import { useUpdateContext } from "@repo/hooks";
 
 const Settings = () => {
   const { colorScheme } = useColorScheme();
+
+    const context =useUpdateContext();
   const isDarkMode = colorScheme === "dark";
   const {
     isUpdateAvailable,
@@ -18,7 +20,7 @@ const Settings = () => {
     refresh,
     currentAppVersion: appVersion,
     update,
-  } = useUpdateContext();
+  } =context!;
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(false);
   const { isSelectable: textSelectionEnabled, setIsSelectable: setTextSelectionEnabled } =
@@ -174,7 +176,8 @@ type SettingItemProps = {
 const SettingItem = ({ icon, title, description, right, onPress }: SettingItemProps) => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === "dark";
-  const { isUpdateAvailable } = useUpdateContext();
+  const context =useUpdateContext();
+  const { isUpdateAvailable } = context!;
   const Container = onPress ? TouchableOpacity : View;
 
   return (
