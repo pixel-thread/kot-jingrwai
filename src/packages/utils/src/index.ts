@@ -8,3 +8,4 @@ export * from "./compareAppVersion";
 export * from "./copyToClipboard";
 export * from "./normalizeTextForSearch";
 export * from "./isConnectedToNetwork";
+export * from "./text";
