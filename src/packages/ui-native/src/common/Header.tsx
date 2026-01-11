@@ -13,6 +13,7 @@ import Reanimated, {
   withTiming,
   FadeIn,
 } from "react-native-reanimated";
+import { truncateText } from "@repo/utils";
 
 type Props = {
   options?: { title?: string };
@@ -82,7 +83,7 @@ export const Header: React.FC<Props> = ({ back, options, headerLeft, headerRight
             align={"center"}
             variant={"secondary"}
             className="uppercase">
-            {options?.title ?? "No Title"}
+            {truncateText({ text: options?.title || "No Title" })}
           </Text>
         </Reanimated.View>
 

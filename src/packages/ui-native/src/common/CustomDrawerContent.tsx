@@ -9,6 +9,7 @@ import { MenuItemsT } from "@repo/types";
 import * as Constants from "expo-constants";
 import { buttonVariants } from "../button";
 import { cn } from "@repo/libs";
+import { truncateText } from "@repo/utils";
 
 interface Props extends DrawerContentComponentProps {
   items: MenuItemsT[];
@@ -59,7 +60,7 @@ export function CustomDrawerContent({
                       "tracking-wide",
                       isActive ? "text-white" : "text-gray-800 dark:text-white"
                     )}>
-                    {item.title}
+                    {truncateText({ text: item.title, maxLength: 30 })}
                   </Text>
                 </View>
               </TouchableOpacity>
