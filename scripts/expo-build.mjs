@@ -27,7 +27,7 @@ function notifySlack(message) {
   execSync(
     `curl -s -X POST -H 'Content-type: application/json' \
      --data '${JSON.stringify({ text: message })}' \
-     ${process.env.SLACK_WEBHOOK_URL}`,
+     ${process.env.SLACK_WEBHOOK_URL}`
   );
 }
 
@@ -46,7 +46,7 @@ function uploadToSlack(filePath, title) {
      -F "initial_comment=${title}" \
      -H "Authorization: Bearer ${token}" \
      https://slack.com/api/files.upload`,
-    { stdio: "inherit" },
+    { stdio: "inherit" }
   );
 }
 
@@ -75,12 +75,8 @@ function shutdown(reason = "Interrupted") {
 
 process.on("SIGINT", () => shutdown("SIGINT (Ctrl+C)"));
 process.on("SIGTERM", () => shutdown("SIGTERM"));
-process.on("uncaughtException", (err) =>
-  shutdown(`Uncaught exception: ${err.message}`),
-);
-process.on("unhandledRejection", (err) =>
-  shutdown(`Unhandled rejection: ${err?.message || err}`),
-);
+process.on("uncaughtException", (err) => shutdown(`Uncaught exception: ${err.message}`));
+process.on("unhandledRejection", (err) => shutdown(`Unhandled rejection: ${err?.message || err}`));
 /* -------------------------------------------------
  * Paths
  * ------------------------------------------------- */
@@ -162,15 +158,14 @@ if (apps.length === 0) {
     }
 
     const APP_ROOT = path.join(APPS_ROOT, app);
-    notifySlack(
-      `🚀 *Build started*\n📱 App: ${app}\n🧱 Build: ${buildLabel}\n`,
-    );
+    notifySlack(`🚀 *Build started*\n📱 App: ${app}\n🧱 Build: ${buildLabel}\n`);
 
     run("node -v");
+
     run("pnpm -v");
 
     notifySlack("📦 Installing dependencies");
-    run("pnpm install");
+    run("pnpm run clean:install");
 
     notifySlack("🎨 Generating ui-native");
     run("pnpm run generate");

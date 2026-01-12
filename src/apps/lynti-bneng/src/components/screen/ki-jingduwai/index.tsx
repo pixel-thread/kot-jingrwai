@@ -68,14 +68,14 @@ const kiJingDuwai: KiJingUDwaiT[] = [
         line: "Bad ka la shong sah bad ngi",
       },
     ],
-    nTag: "N. To duwai na bynta jong ngi, Ko Nongkha Blei Bakhuid",
-    pTag: "P. Ba ngin long ki babit ia ki jingkular u khrist!",
+    nTag: "To duwai na bynta jong ngi, Ko Nongkha Blei Bakhuid",
+    pTag: "Ba ngin long ki babit ia ki jingkular u khrist!",
   },
   {
     id: "to ngin iaduwai",
     title: "To Ngin iaduwai",
     desc: "Ko Trai, ngi Kyrpad ia me to theh ia ka jingaiei jong me hapoh ka dohnud jong ngi, ba ma ngi ki ba la tip ia ka jinglongdoh u Khrist u Khun jong Me Na ka Khubor jong u Angel, da ka jingshah shitom bad ka dienphna jong U, Ngin poi sha ka burom ka jingmihpat. Da ujuh u Khrist U Trai jong ngi.",
-    pTag: "P. Amen.",
+    pTag: "Amen.",
   },
   {
     id: "ha ka trinity bakhuid",
@@ -108,8 +108,8 @@ const kiJingDuwai: KiJingUDwaiT[] = [
         line: "To duwai ha u Blei na bynta jong ngi: Alleluia",
       },
     ],
-    nTag: "N. To shadkmen bad to sngewbha, ko Maria Theisotti. Alleluia,",
-    pTag: "P. Naba u Trai U la mihpat da shisha: Alleuia.",
+    nTag: "To shadkmen bad to sngewbha, ko Maria Theisotti. Alleluia,",
+    pTag: "Naba u Trai U la mihpat da shisha: Alleuia.",
   },
   {
     id: "to ngin ia duwai 2",
@@ -122,7 +122,7 @@ const kiJingDuwai: KiJingUDwaiT[] = [
         line: "Ka burom ha u kpa",
       },
     ],
-    pTag: "P. Amen.",
+    pTag: "Amen.",
   },
 ];
 
@@ -169,7 +169,8 @@ export const KiJingUDwaiScreen = () => {
             <Ternary
               condition={!!item.nTag}
               ifTrue={
-                <View>
+                <View className="flex-1 flex-row gap-x-2">
+                  <Text weight={"bold"}>N.</Text>
                   <Text className="text-start" italic size={"xl"}>
                     {item.nTag}
                   </Text>
@@ -180,7 +181,8 @@ export const KiJingUDwaiScreen = () => {
             <Ternary
               condition={!!item.pTag}
               ifTrue={
-                <View>
+                <View className="flex-1 flex-row gap-x-2">
+                  <Text weight={"bold"}>P.</Text>
                   <Text className="text-start" italic size={"xl"}>
                     {item.pTag}
                   </Text>
