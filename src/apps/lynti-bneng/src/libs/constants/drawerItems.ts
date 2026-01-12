@@ -1,11 +1,9 @@
 import { MenuItemsT } from "@repo/types";
 
 export const drawerMenuItems: MenuItemsT[] = [
-  { id: 1, title: "Home", href: "/" },
-  { id: 1, title: "KA JINGDUWAI & JINGKYRKHU", href: "/ka-jingduwai-jingkyrkhu" },
   { id: 2, title: "Ki Jingduwai", href: "/ki-jingduwai" },
-  { id: 3, title: "Ka Jingknia Ia u Kharist", href: "/ka-jingknia-iukharist" },
-  { id: 4, title: "Ki Skit Liturgi Jingïaseng", href: "/ki-skit-liturgi-jingiaseng" },
+  { id: 3, title: "Ka Jingknia IUKharist", href: "/ka-jingknia-iukharist" },
+  { id: 4, title: "Ki Skit Liturji Jingïaseng", href: "/ki-skit-liturgi-jingiaseng" },
   { id: 5, title: "Ka Jingleh Riewblei ha u Jisu", href: "/ka-jingleh-riewblei-ha-u-jisu" },
   {
     id: 6,

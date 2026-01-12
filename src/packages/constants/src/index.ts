@@ -5,4 +5,3 @@ export * from "./khoros";
 export * from "./endpoints";
 export * from "./tynrai-jingrwai";
 export * from "./featured-songs";
-export * from "./ki-jingkdew";

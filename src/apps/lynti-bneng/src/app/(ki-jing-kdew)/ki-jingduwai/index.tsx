@@ -1,5 +1,5 @@
 import { CustomHeader } from "@/src/components/Common/CustomHeader";
-import { UnderDevelopment } from "@repo/ui-native";
+import { KiJingUDwaiScreen } from "@/src/components/screen/ki-jingduwai";
 import { Stack } from "expo-router";
 
 export default function page() {
@@ -12,7 +12,7 @@ export default function page() {
           headerShown: true,
         }}
       />
-      <UnderDevelopment />
+      <KiJingUDwaiScreen />
     </>
   );
 }
