@@ -13,8 +13,8 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import { Stack } from "expo-router";
 import { useOnboardingStore } from "@repo/libs";
-import Onboarding from "../components/Onboarding";
-import { OtaUpdateBanner } from "../components/Common/OtaUpdateBanner";
+import Onboarding from "~/src/components/Onboarding";
+import { OtaUpdateBanner } from "~/src/components/Common/OtaUpdateBanner";
 import { logger } from "@repo/utils";
 
 // Keep the splash screen visible while we fetch resources
@@ -52,7 +52,11 @@ export default function Layout() {
                     testMode={process.env.NODE_ENV === "development"}
                     scenario={"fail"}
                   />
-                  <Stack screenOptions={{ headerShown: false }} />
+                  <Ternary
+                    condition={!hasCompletedOnboarding}
+                    ifTrue={<Onboarding />}
+                    ifFalse={<Stack screenOptions={{ headerShown: false }} />}
+                  />
                 </ThemeProvider>
               </UpdateContextProvider>
             </ErrorBoundary>
