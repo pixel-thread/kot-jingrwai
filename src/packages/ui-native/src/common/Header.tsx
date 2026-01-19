@@ -69,23 +69,20 @@ export const Header: React.FC<Props> = ({ back, options, headerLeft, headerRight
                   />
                 }
               />
+              <Reanimated.View entering={FadeIn.delay(200).duration(500)} className="px-2">
+                <Text
+                  size={"2xl"}
+                  weight={"extrabold"}
+                  align={"center"}
+                  variant={"secondary"}
+                  className="uppercase">
+                  {truncateText({ text: options?.title || "No Title" })}
+                </Text>
+              </Reanimated.View>
             </TouchableOpacity>
           )}
           {headerLeft && <View className="flex flex-row gap-x-2">{headerLeft}</View>}
         </View>
-
-        <Reanimated.View
-          entering={FadeIn.delay(200).duration(500)}
-          className="flex-1 items-center justify-center">
-          <Text
-            size={"2xl"}
-            weight={"extrabold"}
-            align={"center"}
-            variant={"secondary"}
-            className="uppercase">
-            {truncateText({ text: options?.title || "No Title" })}
-          </Text>
-        </Reanimated.View>
 
         {headerRight && <View className="flex flex-row gap-x-2">{headerRight}</View>}
       </View>
