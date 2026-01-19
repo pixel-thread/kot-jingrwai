@@ -2,12 +2,12 @@
 
 import { buttonVariants } from "@/components/ui/button";
 import { env } from "@/env";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { ArrowRightIcon, DownloadIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import http from "@/utils/http";
-import { UPDATE_ENDPOINT } from "@repo/constants";
+import { UPDATE_ENDPOINTS } from "@repo/constants";
 import { AppVersion } from "@/lib/database/prisma/generated/prisma";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -15,12 +15,12 @@ import { useAuth } from "@/hooks/auth/useAuth";
 
 export default function Home() {
   const { isSuperAdmin } = useAuth();
-  const images = ["/assets/mockup/home-1.png", "/assets/mockup/home-2.png"];
+  const images = useMemo(() => ["/assets/mockup/home-1.png", "/assets/mockup/home-2.png"], []);
   const [imageIndex, setImageIndex] = useState(0);
 
   const { data, isFetching } = useQuery({
     queryKey: ["latest-update"],
-    queryFn: () => http.get<AppVersion>(UPDATE_ENDPOINT.GET_LATEST_UPDATE),
+    queryFn: () => http.get<AppVersion>(UPDATE_ENDPOINTS.GET_LATEST_UPDATE),
     select: (data) => data.data,
   });
 

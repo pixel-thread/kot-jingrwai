@@ -1,23 +1,24 @@
 name: EAS Production Deployment
 
 on:
-push:
-  branches: ["master"]
-  paths:
-    - "src/apps/mobile/**" # App-specific changes
-    - "src/packages/**/**" # UI changes trigger OTA
+  push:
+    branches: ["master"]
+    paths:
+      - "src/apps/mobile/**"
+      - "src/packages/**/**"
 
 jobs:
-  # Native build ONLY when app changes (rare)
   fingerprint:
     name: 📋 Calculate fingerprint
     type: fingerprint
     environment: production
+    working_directory: src/apps/mobile
 
   check_existing_build:
     name: 🔍 Check existing build
     type: get-build
     environment: production
+    working_directory: src/apps/mobile
     needs: [fingerprint]
     params:
       fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
@@ -27,18 +28,19 @@ jobs:
     name: 🏗️ Create new build
     type: build
     environment: production
+    working_directory: src/apps/mobile
     needs: [check_existing_build, fingerprint]
     if: ${{ !needs.check_existing_build.outputs.build_id && github.event_name != 'pull_request' }}
     params:
       platform: android
       profile: production
 
-  # OTA ALWAYS (your main use case)
   publish_ota:
     name: ⚡ Publish OTA Update
     type: update
     environment: production
-    needs: [fingerprint] # Run regardless of build
+    working_directory: src/apps/mobile
+    needs: [fingerprint]
     params:
       platform: android
       branch: production

@@ -7,18 +7,52 @@ import { CustomHeader } from "~/src/components/Common/CustomHeader";
 import { LyricView } from "~/src/components/Lyric/LyricView";
 import { getUniqueSongs } from "~/src/services/songs/getUniqueSong";
 
-import { useTextStore } from "@repo/libs";
+import { useSongStore, useTextStore } from "@repo/libs";
 import { gray } from "tailwindcss/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useColorScheme } from "nativewind";
+import { useSongs } from "~/src/hooks/song/useSongs";
+import { useSong } from "~/src/hooks/song/useSong";
 
-const HeaderRight = () => {
+const HeaderRight = ({ id }: { id: string }) => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const { increaseTextSize, decreaseTextSize } = useTextStore();
+  const { removeFavoriteSong, addFavoriteSong, favoriteSongs } = useSongStore();
+  const { data: song, isFetching } = useSong({ id });
+  const songNumber = song?.metadata.number;
+  const isFavoriteSong = favoriteSongs.includes(songNumber || 0);
+
+  const onToggleFavSongs = () => {
+    if (song && !isFetching) {
+      if (isFavoriteSong) {
+        removeFavoriteSong(song.metadata.number);
+      } else {
+        addFavoriteSong(song.metadata.number);
+      }
+    }
+  };
 
   return (
     <View className="flex-row items-center gap-x-4">
+      <TouchableOpacity
+        onPress={onToggleFavSongs}
+        className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
+        <MaterialCommunityIcons
+          name={isFavoriteSong ? "heart" : "heart-outline"}
+          size={24}
+          color={isDarkMode ? gray[200] : gray[950]}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={decreaseTextSize}
+        className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
+        <MaterialCommunityIcons
+          name={"minus"}
+          size={24}
+          color={isDarkMode ? gray[200] : gray[950]}
+        />
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={increaseTextSize}
         className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
@@ -57,7 +91,7 @@ const SongsDetails = () => {
             headerShown: true,
             title: song?.metadata?.number?.toString() || "Loading",
             header: ({ options }) => (
-              <CustomHeader options={options} back headerRight={<HeaderRight />} />
+              <CustomHeader options={options} back headerRight={<HeaderRight id={id || ""} />} />
             ),
           }}
         />
@@ -73,7 +107,7 @@ const SongsDetails = () => {
           headerShown: true,
           title: song?.metadata?.number?.toString() || "No Title",
           header: ({ options }) => (
-            <CustomHeader options={options} back headerRight={<HeaderRight />} />
+            <CustomHeader options={options} back headerRight={<HeaderRight id={id} />} />
           ),
         }}
       />
