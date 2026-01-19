@@ -1,4 +1,3 @@
-import { useAuth } from "@clerk/nextjs";
 import {
   MutationCache,
   QueryCache,
@@ -8,12 +7,9 @@ import {
 } from "@tanstack/react-query";
 
 export const TQueryProvider = ({ children }: { children: React.ReactNode }) => {
-  const { isSignedIn } = useAuth();
-
   const queryOptions: QueryClientConfig = {
     queryCache: new QueryCache(),
     mutationCache: new MutationCache(),
-    defaultOptions: { queries: { enabled: isSignedIn } },
   };
 
   const client = new QueryClient(queryOptions);

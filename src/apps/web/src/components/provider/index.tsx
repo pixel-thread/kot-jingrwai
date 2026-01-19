@@ -10,6 +10,7 @@ import { NxThemeProvider } from "./theme";
 type MainProviderProps = {
   children: React.ReactNode;
 };
+
 export const MainProvider = ({ children }: MainProviderProps) => {
   return (
     <ClerkProvider publishableKey={env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
