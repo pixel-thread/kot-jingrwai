@@ -1,12 +1,12 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Network from 'expo-network';
-import { http } from '@repo/utils';
-import uuid from 'react-native-uuid';
-import * as Constant from 'expo-constants';
-import { ANALYTIC_ENDPOINTS } from '@repo/constants';
-const USER_ID_KEY = 'user_id';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Network from "expo-network";
+import { http } from "@repo/utils";
+import uuid from "react-native-uuid";
+import * as Constant from "expo-constants";
+import { ANALYTIC_ENDPOINTS } from "@repo/constants";
+const USER_ID_KEY = "user_id";
 
-const SYNC_PENDING_KEY = 'pending_user_sync';
+const SYNC_PENDING_KEY = "pending_user_sync";
 
 export const AnalyticsService = {
   async getOrCreateUserId(): Promise<string> {
@@ -14,7 +14,7 @@ export const AnalyticsService = {
     if (!userId) {
       userId = uuid.v4();
       await AsyncStorage.setItem(USER_ID_KEY, userId);
-      await AsyncStorage.setItem(SYNC_PENDING_KEY, 'true');
+      await AsyncStorage.setItem(SYNC_PENDING_KEY, "true");
     }
     return userId;
   },
@@ -37,14 +37,14 @@ export const AnalyticsService = {
     try {
       const res = await http.post(ANALYTIC_ENDPOINTS.POST_ANALYTIC_USERS, {
         userId,
-        appVersion: Constant.default.expoConfig?.version || '',
+        appVersion: Constant.default.expoConfig?.version || "",
       });
 
       if (res.success) {
         await AsyncStorage.removeItem(SYNC_PENDING_KEY);
       }
     } catch (err) {
-      console.log('Sync failed:', err);
+      console.log("Sync failed:", err);
     }
   },
 };

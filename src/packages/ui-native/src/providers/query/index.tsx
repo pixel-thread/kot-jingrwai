@@ -1,7 +1,7 @@
 import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { setupFocusManager } from "@repo/utils";
-import { setupOnlineManager } from "@repo/utils";
+import { setupFocusManager } from "@repo/utils-native";
+import { setupOnlineManager } from "@repo/utils-native";
 
 type Props = Readonly<{
   children: React.ReactNode;

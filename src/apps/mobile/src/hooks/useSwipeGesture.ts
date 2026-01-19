@@ -1,6 +1,6 @@
-import { useSharedValue, runOnJS } from 'react-native-reanimated';
-import { Gesture } from 'react-native-gesture-handler';
-import * as Haptics from 'expo-haptics';
+import { useSharedValue, runOnJS } from "react-native-reanimated";
+import { Gesture } from "react-native-gesture-handler";
+import * as Haptics from "expo-haptics";
 
 type UseSwipeGestureProps = {
   onSwipeLeft?: () => void;

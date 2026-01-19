@@ -1,11 +1,11 @@
-import { View, ScrollView } from 'react-native';
-import { Text, ContentSection, SongListItem, Container } from '@repo/ui-native';
-import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import { useState, useEffect } from 'react';
-import { tynraiJingrwai } from '@repo/constants';
-import { TynraiJingrwaiT, SongT } from '@repo/types';
-import { FlashList } from '@shopify/flash-list';
-import { useSongs } from '~/src/hooks/song/useSongs';
+import { View, ScrollView } from "react-native";
+import { Text, ContentSection, SongListItem, Container } from "@repo/ui-native";
+import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
+import { useState, useEffect } from "react";
+import { tynraiJingrwai } from "@repo/constants";
+import { TynraiJingrwaiT, SongT } from "@repo/types";
+import { FlashList } from "@shopify/flash-list";
+import { useSongs } from "~/src/hooks/song/useSongs";
 
 type Props = {
   id: string;

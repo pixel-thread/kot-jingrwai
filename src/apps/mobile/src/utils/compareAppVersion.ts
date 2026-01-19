@@ -19,7 +19,7 @@ function isVersionLess(version1: string, version2: string): boolean {
   return (
     version1.localeCompare(version2, undefined, {
       numeric: true,
-      sensitivity: 'base',
+      sensitivity: "base",
     }) < 0
   );
 }

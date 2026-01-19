@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { View } from "react-native";
 import Reanimated, {
   Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-} from 'react-native-reanimated';
-import { Text } from '@repo/ui-native';
-import { OtaUpdateServices } from '~/src/services/update/checkForOtaUpdate';
-import { cn } from '@repo/libs';
+} from "react-native-reanimated";
+import { Text } from "@repo/ui-native";
+import { OtaUpdateServices } from "~/src/services/update/checkForOtaUpdate";
+import { cn } from "@repo/libs";
 
 type Status =
-  | 'Checking'
-  | 'Available'
-  | 'Downloading'
-  | 'Installing'
-  | 'Success'
-  | 'Reloading'
-  | 'Failed'
-  | 'None';
+  | "Checking"
+  | "Available"
+  | "Downloading"
+  | "Installing"
+  | "Success"
+  | "Reloading"
+  | "Failed"
+  | "None";
 
-type TestScenario = 'success' | 'fail' | 'none';
+type TestScenario = "success" | "fail" | "none";
 
 type Props = {
   testMode?: boolean;
@@ -30,24 +30,24 @@ type Props = {
 const makeFakeServices = (scenario: TestScenario) => ({
   async checkForOtaUpdate() {
     await new Promise((r) => setTimeout(r, 500));
-    return scenario === 'success' || scenario === 'fail';
+    return scenario === "success" || scenario === "fail";
   },
   async applyOtaUpdate() {
     await new Promise((r) => setTimeout(r, 1500));
-    if (scenario === 'fail') {
-      throw new Error('Simulated OTA failure');
+    if (scenario === "fail") {
+      throw new Error("Simulated OTA failure");
     }
     // In real mode this service should call Updates.reloadAsync() when ready. [web:12][web:18]
   },
 });
 
-export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = 'success' }) => {
+export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = "success" }) => {
   const [isInitialMount, setIsInitialMount] = useState(true);
   const Services = testMode ? makeFakeServices(scenario) : OtaUpdateServices;
 
   const [isOtaUpdate, setIsOtaUpdate] = useState(false);
 
-  const [status, setStatus] = useState<Status>('None');
+  const [status, setStatus] = useState<Status>("None");
 
   const height = useSharedValue(0);
 
@@ -81,14 +81,14 @@ export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = 
   }
 
   async function installUpdate() {
-    setStatus('Installing');
+    setStatus("Installing");
     try {
       await Services.applyOtaUpdate();
-      setStatus('Reloading');
+      setStatus("Reloading");
       setIsOtaUpdate(false);
     } catch (e) {
       console.log(e);
-      setStatus('Failed');
+      setStatus("Failed");
     } finally {
       setIsInitialMount(false);
     }
@@ -96,29 +96,29 @@ export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = 
 
   async function downloadUpdate() {
     try {
-      setStatus('Downloading');
+      setStatus("Downloading");
       await installUpdate();
     } catch (error) {
       console.log(error);
-      setStatus('Failed');
+      setStatus("Failed");
     }
   }
 
   async function checkUpdate() {
     try {
-      setStatus('Checking');
+      setStatus("Checking");
       const isOtaUpdateAvailable = await Services.checkForOtaUpdate();
       if (isOtaUpdateAvailable) {
         setIsOtaUpdate(true);
-        setStatus('Available');
+        setStatus("Available");
         await downloadUpdate();
       } else {
         setIsOtaUpdate(false);
-        setStatus('None');
+        setStatus("None");
       }
     } catch (error) {
       console.log(error);
-      setStatus('Failed');
+      setStatus("Failed");
       setIsOtaUpdate(false);
     }
   }
@@ -134,10 +134,10 @@ export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = 
   useEffect(() => {
     const shouldShow =
       isOtaUpdate ||
-      status === 'Checking' ||
-      status === 'Downloading' ||
-      status === 'Installing' ||
-      status === 'Reloading';
+      status === "Checking" ||
+      status === "Downloading" ||
+      status === "Installing" ||
+      status === "Reloading";
 
     if (shouldShow) {
       showBanner();
@@ -149,7 +149,7 @@ export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = 
 
   // Optional auto-hide after terminal states
   useEffect(() => {
-    if (status === 'Success' || status === 'Failed' || status === 'Reloading') {
+    if (status === "Success" || status === "Failed" || status === "Reloading") {
       const t = setTimeout(() => {
         setIsOtaUpdate(false);
         hideBanner();
@@ -161,12 +161,12 @@ export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = 
 
   const isVisible =
     isOtaUpdate ||
-    status === 'Checking' ||
-    status === 'Downloading' ||
-    status === 'Installing' ||
-    status === 'Reloading' ||
-    status === 'Success' ||
-    status === 'Failed';
+    status === "Checking" ||
+    status === "Downloading" ||
+    status === "Installing" ||
+    status === "Reloading" ||
+    status === "Success" ||
+    status === "Failed";
 
   if (!isVisible) {
     return null;
@@ -176,7 +176,7 @@ export const OtaUpdateBanner: React.FC<Props> = ({ testMode = false, scenario = 
     <Reanimated.View className="w-full">
       <Reanimated.View
         style={containerStyle}
-        className={cn('items-center justify-center', 'bg-indigo-500 dark:bg-indigo-900')}>
+        className={cn("items-center justify-center", "bg-indigo-500 dark:bg-indigo-900")}>
         <View className="flex-1 items-center justify-center px-3">
           <Text weight="medium" className="text-center text-white">
             Update: {status}

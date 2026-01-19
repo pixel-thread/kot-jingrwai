@@ -1,16 +1,16 @@
-import { View } from 'react-native';
-import { useColorScheme } from 'nativewind';
-import colors from 'tailwindcss/colors';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
-import { Container } from '@repo/ui-native';
-import { Text } from '../../ui/typography';
-import { Button } from '../../ui/button';
+import { View } from "react-native";
+import { useColorScheme } from "nativewind";
+import colors from "tailwindcss/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
+import { Container } from "@repo/ui-native";
+import { Text } from "../../ui/typography";
+import { Button } from "../../ui/button";
 
 export const NotFoundApostleCreed = () => {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
   const router = useRouter();
 
   return (
@@ -35,15 +35,15 @@ export const NotFoundApostleCreed = () => {
 
         <Reanimated.View entering={FadeInDown.delay(500).duration(800)}>
           <Text
-            size={'3xl'}
-            weight={'bold'}
+            size={"3xl"}
+            weight={"bold"}
             className="mb-3 text-center text-gray-800 dark:text-white">
             Song Not Found
           </Text>
         </Reanimated.View>
 
         <Reanimated.View entering={FadeInDown.delay(700).duration(800)}>
-          <Text size={'lg'} align={'center'} className="mb-6 text-gray-600 dark:text-gray-300">
+          <Text size={"lg"} align={"center"} className="mb-6 text-gray-600 dark:text-gray-300">
             We couldn&apos;t find the song you&apos;re looking for. Try searching again or return to
             the home page.
           </Text>
@@ -56,7 +56,7 @@ export const NotFoundApostleCreed = () => {
             size="lg"
             icon={<MaterialCommunityIcons name="home" size={20} color="white" />}
             iconPosition="left"
-            onPress={() => router.push('/')}
+            onPress={() => router.push("/")}
             className="w-full"
           />
         </Reanimated.View>

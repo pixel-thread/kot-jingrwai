@@ -1,8 +1,7 @@
 import { Container, Text } from "@repo/ui-native";
-import { ScrollView } from "react-native";
+import { ScrollView , View, TouchableOpacity, Platform } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 import { kiJingDuwai } from "@/src/libs/constants/ki-jing-duwai";
-import { View, TouchableOpacity, Platform } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated from "react-native-reanimated";

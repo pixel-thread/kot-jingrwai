@@ -36,7 +36,7 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
-.env*.local
+.env*
 
 .build-artifacts
 *.apk

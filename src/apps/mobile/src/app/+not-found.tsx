@@ -1,11 +1,11 @@
-import { Link, Stack } from 'expo-router';
-import { Container, Text } from '@repo/ui-native';
-import Reanimated, { FadeIn } from 'react-native-reanimated';
+import { Link, Stack } from "expo-router";
+import { Container, Text } from "@repo/ui-native";
+import Reanimated, { FadeIn } from "react-native-reanimated";
 
 export default function NotFoundScreen() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
+      <Stack.Screen options={{ title: "Oops!" }} />
       <Container>
         <Reanimated.View
           entering={FadeIn.duration(500)}

@@ -6,7 +6,7 @@
   },
   "include": [
     "src/**/*"
-  ],
+, "../utils-native/reactQuery", "../utils-native/reactQuery"  ],
   "exclude": [
     "node_modules",
     "dist"

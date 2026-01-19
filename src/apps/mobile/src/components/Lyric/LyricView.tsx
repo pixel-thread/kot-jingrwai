@@ -15,7 +15,7 @@ import Reanimated, {
   useAnimatedRef,
 } from "react-native-reanimated";
 import { useKeepAwake } from "expo-keep-awake";
-import { copyToClipboard } from "~/src/utils/copyToClipboard";
+import { copyToClipboard } from "~/src/utils-native";
 // import { FloatingActionButtons } from "@repo/ui-native";
 // import { MiniMusicPlayer } from "../Common/MiniMusicPlayer";
 
@@ -187,7 +187,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                             <View className="flex-1 flex-row">
                               {isFirst && (
                                 <Text variant={"primary"} size={"xl"}>
-                                  {"\""}
+                                  {'"'}
                                 </Text>
                               )}
                               <View className={isFirst ? "flex-1 px-0" : isLast ? "pl-2" : "px-2"}>
@@ -206,7 +206,7 @@ export const LyricView = ({ song }: LyricViewProps) => {
                               </View>
                               {isLast && (
                                 <Text variant={"primary"} weight={"bold"} size={"xl"}>
-                                  {"\""}
+                                  {'"'}
                                 </Text>
                               )}
                             </View>

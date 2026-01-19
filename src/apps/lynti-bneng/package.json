@@ -32,6 +32,7 @@
     "@repo/services": "workspace:*",
     "@repo/ui-native": "workspace:*",
     "@repo/utils": "workspace:*",
+    "@repo/utils-native": "workspace:*",
     "@shopify/flash-list": "1.7.6",
     "@tanstack/react-query": "^5.81.5",
     "axios": "^1.9.0",

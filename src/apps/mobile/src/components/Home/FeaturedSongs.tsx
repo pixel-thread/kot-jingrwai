@@ -1,14 +1,14 @@
-import { View } from 'react-native';
-import Reanimated, { FadeInUp } from 'react-native-reanimated';
-import { useQuery } from '@tanstack/react-query';
+import { View } from "react-native";
+import Reanimated, { FadeInUp } from "react-native-reanimated";
+import { useQuery } from "@tanstack/react-query";
 
-import { Text, FeaturedSongCard } from '@repo/ui-native';
-import { getFeaturedSongs } from '~/src/services/songs/getFeaturedSongs';
-import { FlatList } from 'react-native-gesture-handler';
+import { Text, FeaturedSongCard } from "@repo/ui-native";
+import { getFeaturedSongs } from "~/src/services/songs/getFeaturedSongs";
+import { FlatList } from "react-native-gesture-handler";
 
 export const FeaturedSongs = () => {
   const { data: songs = [] } = useQuery({
-    queryKey: ['featured-songs'],
+    queryKey: ["featured-songs"],
     queryFn: getFeaturedSongs,
   });
 

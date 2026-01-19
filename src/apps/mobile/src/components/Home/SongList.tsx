@@ -1,10 +1,10 @@
-import { View, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Reanimated, { FadeInRight } from 'react-native-reanimated';
-import { songs } from '~/src/libs/songs';
-import { Text, ContentSection, SongListItem } from '@repo/ui-native';
-import { FlashList } from '@shopify/flash-list';
+import { View, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Reanimated, { FadeInRight } from "react-native-reanimated";
+import { songs } from "~/src/libs/songs";
+import { Text, ContentSection, SongListItem } from "@repo/ui-native";
+import { FlashList } from "@shopify/flash-list";
 
 type SongListProps = {
   title: string;
@@ -25,7 +25,7 @@ export const SongList = ({ title, songNumbers = [], emptyMessage }: SongListProp
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
             <Reanimated.View
-              className={'my-1'}
+              className={"my-1"}
               entering={FadeInRight.delay(index * 100).duration(400)}>
               <SongListItem song={item} />
             </Reanimated.View>
@@ -41,7 +41,7 @@ export const SongList = ({ title, songNumbers = [], emptyMessage }: SongListProp
                 {emptyMessage}
               </Text>
               <TouchableOpacity
-                onPress={() => router.push('/songs')}
+                onPress={() => router.push("/songs")}
                 className="mt-3 rounded-full bg-indigo-100 px-4 py-2 dark:bg-indigo-900">
                 <Text size="sm" className="text-indigo-600 dark:text-indigo-400">
                   Browse Songs

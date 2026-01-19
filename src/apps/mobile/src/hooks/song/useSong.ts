@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import { getUniqueSongs } from '~/src/services/songs/getUniqueSong';
+import { useQuery } from "@tanstack/react-query";
+import { getUniqueSongs } from "~/src/services/songs/getUniqueSong";
 
 type Props = {
   id: string;
@@ -7,7 +7,7 @@ type Props = {
 
 export function useSong({ id }: Props) {
   return useQuery({
-    queryKey: ['song', id],
+    queryKey: ["song", id],
     queryFn: () => getUniqueSongs({ id }),
     enabled: !!id,
   });

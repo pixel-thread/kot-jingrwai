@@ -1,14 +1,14 @@
-import { useState, useCallback, useEffect } from 'react';
-import { FlashList } from '@shopify/flash-list';
+import { useState, useCallback, useEffect } from "react";
+import { FlashList } from "@shopify/flash-list";
 import Reanimated, {
   FadeInRight,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-} from 'react-native-reanimated';
-import { Container, NotFoundSong, SearchBar, SongListItem } from '@repo/ui-native';
-import { PAGE_SIZE } from '~/src/libs/constant';
-import { useFilteredSongs } from '~/src/hooks/useFilteredSongs';
+} from "react-native-reanimated";
+import { Container, NotFoundSong, SearchBar, SongListItem } from "@repo/ui-native";
+import { PAGE_SIZE } from "~/src/libs/constant";
+import { useFilteredSongs } from "~/src/hooks/useFilteredSongs";
 
 type Props = {
   isKhorus: boolean;
@@ -16,7 +16,7 @@ type Props = {
 
 export const AllSongPage = ({ isKhorus }: Props) => {
   const [page, setPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const filteredSongs = useFilteredSongs({ searchQuery, isKhorus });
 
   // Animation values
@@ -53,7 +53,7 @@ export const AllSongPage = ({ isKhorus }: Props) => {
     <Container className="flex-1 dark:bg-gray-950">
       <Reanimated.View style={listAnimatedStyle} className="flex-1 p-4">
         <SearchBar
-          label={isKhorus ? 'Find Your Chorus' : 'Find Your Songs'}
+          label={isKhorus ? "Find Your Chorus" : "Find Your Songs"}
           onSearch={onSearch}
           value={searchQuery}
         />
@@ -62,7 +62,7 @@ export const AllSongPage = ({ isKhorus }: Props) => {
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
             <Reanimated.View
-              className={'my-1'}
+              className={"my-1"}
               entering={FadeInRight.delay(index * 100).duration(400)}>
               <SongListItem song={item} />
             </Reanimated.View>
@@ -74,7 +74,7 @@ export const AllSongPage = ({ isKhorus }: Props) => {
           keyboardShouldPersistTaps="handled"
           stickyHeaderHiddenOnScroll={true}
           ListEmptyComponent={() => (
-            <NotFoundSong reset={() => searchQuery && setSearchQuery('')} />
+            <NotFoundSong reset={() => searchQuery && setSearchQuery("")} />
           )}
         />
       </Reanimated.View>

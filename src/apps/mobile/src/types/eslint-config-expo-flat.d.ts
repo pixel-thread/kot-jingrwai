@@ -1,2 +1,2 @@
 // types/eslint-config-expo-flat.d.ts
-declare module 'eslint-config-expo/flat';
+declare module "eslint-config-expo/flat";

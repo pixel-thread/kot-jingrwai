@@ -1,6 +1,6 @@
-import * as Updates from 'expo-updates';
-import * as Network from 'expo-network';
-import { logger } from '@repo/utils';
+import * as Updates from "expo-updates";
+import * as Network from "expo-network";
+import { logger } from "@repo/utils";
 
 export const OtaUpdateServices = {
   async checkForOtaUpdate(): Promise<boolean> {
@@ -17,7 +17,7 @@ export const OtaUpdateServices = {
 
       return update.isAvailable;
     } catch (error) {
-      logger.error('Failed to check for updates', { error });
+      logger.error("Failed to check for updates", { error });
       return false;
     }
   },
@@ -41,7 +41,7 @@ export const OtaUpdateServices = {
         await OtaUpdateServices.applyOtaUpdate();
       }
     } catch (error) {
-      logger.error('Failed to check for updates', { error });
+      logger.error("Failed to check for updates", { error });
       return false;
     }
   },

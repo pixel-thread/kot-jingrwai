@@ -1,7 +1,7 @@
-import { View, TouchableOpacity } from 'react-native';
-import { Text } from '@repo/ui-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useColorScheme } from 'nativewind';
+import { View, TouchableOpacity } from "react-native";
+import { Text } from "@repo/ui-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useColorScheme } from "nativewind";
 
 type CategoryItemProps = {
   title: string;
@@ -12,18 +12,18 @@ type CategoryItemProps = {
 
 export const CategoryItem = ({ title, range, onPress, isLast }: CategoryItemProps) => {
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
 
   return (
     <TouchableOpacity
       onPress={onPress}
-      className={`flex-1 border-gray-200 p-4 dark:border-gray-800 ${!isLast ? 'border-b' : ''}`}>
+      className={`flex-1 border-gray-200 p-4 dark:border-gray-800 ${!isLast ? "border-b" : ""}`}>
       <View className="flex-row  items-center justify-between">
         <View className="flex-row items-center justify-center">
           <MaterialCommunityIcons
             name="book-open-page-variant"
             size={24}
-            color={isDarkMode ? '#93c5fd' : '#3b82f6'}
+            color={isDarkMode ? "#93c5fd" : "#3b82f6"}
           />
           <View className="ml-3">
             <Text weight="semibold" className="text-gray-800 dark:text-gray-100">
@@ -38,7 +38,7 @@ export const CategoryItem = ({ title, range, onPress, isLast }: CategoryItemProp
           <MaterialCommunityIcons
             name="chevron-right"
             size={20}
-            color={isDarkMode ? '#93c5fd' : '#3b82f6'}
+            color={isDarkMode ? "#93c5fd" : "#3b82f6"}
           />
         </View>
       </View>

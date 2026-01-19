@@ -1,17 +1,17 @@
-import { View, TouchableOpacity, Platform } from 'react-native';
-import { useRouter } from 'expo-router';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-import { Text } from '@repo/ui-native';
-import { useSongs } from '~/src/hooks/song/useSongs';
-import { SongT } from '@repo/types';
-import { useColorScheme } from 'nativewind';
+import { View, TouchableOpacity, Platform } from "react-native";
+import { useRouter } from "expo-router";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
+import { Text } from "@repo/ui-native";
+import { useSongs } from "~/src/hooks/song/useSongs";
+import { SongT } from "@repo/types";
+import { useColorScheme } from "nativewind";
 
 export const ApostleListItems = ({ song }: { song: SongT }) => {
   const router = useRouter();
   const { ChangeSong } = useSongs();
   const { colorScheme } = useColorScheme();
-  const isDarkMode = colorScheme === 'dark';
+  const isDarkMode = colorScheme === "dark";
 
   // Animation for press feedback
   const scale = useSharedValue(1);
@@ -35,15 +35,15 @@ export const ApostleListItems = ({ song }: { song: SongT }) => {
       <TouchableOpacity
         onPress={() => {
           ChangeSong(song.metadata.number);
-          router.push('/song');
+          router.push("/song");
         }}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         className="overflow-hidden rounded-xl bg-white shadow-sm dark:bg-gray-800"
         style={
-          Platform.OS === 'ios'
+          Platform.OS === "ios"
             ? {
-                shadowColor: '#000',
+                shadowColor: "#000",
                 shadowOffset: { width: 0, height: 1 },
                 shadowOpacity: 0.1,
                 shadowRadius: 2,
@@ -67,10 +67,10 @@ export const ApostleListItems = ({ song }: { song: SongT }) => {
               <MaterialCommunityIcons
                 name="account"
                 size={14}
-                color={isDarkMode ? '#9CA3AF' : '#6B7280'}
+                color={isDarkMode ? "#9CA3AF" : "#6B7280"}
               />
               <Text size="xs" variant="muted" className="ml-1">
-                {song.metadata.author || 'Unknown'}
+                {song.metadata.author || "Unknown"}
               </Text>
             </View>
             {song.metadata.composer && (
@@ -78,7 +78,7 @@ export const ApostleListItems = ({ song }: { song: SongT }) => {
                 <MaterialCommunityIcons
                   name="music"
                   size={14}
-                  color={isDarkMode ? '#9CA3AF' : '#6B7280'}
+                  color={isDarkMode ? "#9CA3AF" : "#6B7280"}
                 />
                 <Text size="xs" variant="muted" className="ml-1">
                   {song.metadata.composer}

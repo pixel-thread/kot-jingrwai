@@ -12,7 +12,7 @@ import { useUpdateContext } from "@repo/hooks";
 const Settings = () => {
   const { colorScheme } = useColorScheme();
 
-    const context =useUpdateContext();
+  const context = useUpdateContext();
   const isDarkMode = colorScheme === "dark";
   const {
     isUpdateAvailable,
@@ -20,7 +20,7 @@ const Settings = () => {
     refresh,
     currentAppVersion: appVersion,
     update,
-  } =context!;
+  } = context!;
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(false);
   const { isSelectable: textSelectionEnabled, setIsSelectable: setTextSelectionEnabled } =
@@ -176,7 +176,7 @@ type SettingItemProps = {
 const SettingItem = ({ icon, title, description, right, onPress }: SettingItemProps) => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === "dark";
-  const context =useUpdateContext();
+  const context = useUpdateContext();
   const { isUpdateAvailable } = context!;
   const Container = onPress ? TouchableOpacity : View;
 

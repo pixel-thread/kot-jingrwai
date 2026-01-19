@@ -1,5 +1,5 @@
-import * as Network from 'expo-network';
-import { onlineManager } from '@tanstack/react-query';
+import * as Network from "expo-network";
+import { onlineManager } from "@tanstack/react-query";
 
 /**
  * Sync Expo network state with React Query

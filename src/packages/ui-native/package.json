@@ -36,6 +36,7 @@
   "dependencies": {
     "@repo/libs": "workspace:*",
     "@repo/utils": "workspace:*",
+    "@repo/utils-native": "workspace:*",
     "@repo/constants": "workspace:*",
     "@repo/services": "workspace:*",
     "@repo/hooks": "workspace:*"

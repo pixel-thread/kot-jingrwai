@@ -1,6 +1,6 @@
-import { ToastAndroid, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { Text } from "../typography";
-import * as Clipboard from "expo-clipboard";
+import { copyToClipboard } from "@repo/utils-native";
 import { Skeleton } from "../skeleton";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useColorScheme } from "nativewind";
@@ -17,13 +17,6 @@ export const QuoteOfTheDay = () => {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const [data, setData] = useState<VerseT | null>(null);
-
-  const copyToClipboard = async () => {
-    if (data?.verse?.details.text) {
-      await Clipboard.setStringAsync(data.verse.details.text);
-      ToastAndroid.show("Quote copied to clipboard!", ToastAndroid.SHORT);
-    }
-  };
 
   useEffect(() => {
     getBibleVerse().then((res) => setData(res.data));
@@ -48,7 +41,7 @@ export const QuoteOfTheDay = () => {
   return (
     <Reanimated.View entering={FadeInDown.duration(500)}>
       <TouchableOpacity
-        onPress={copyToClipboard}
+        onPress={() => copyToClipboard(data.verse.details.text)}
         className="overflow-hidden rounded-xl border border-gray-300 bg-white shadow-sm dark:border-none dark:border-gray-950 dark:bg-gray-800">
         <View className="p-4">
           <View className="mb-2 flex-row items-center justify-center">

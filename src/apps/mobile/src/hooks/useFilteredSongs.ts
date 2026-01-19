@@ -1,7 +1,7 @@
-import { normalizeForSearch } from '../utils/normalizeTextForSearch';
-import { SongT } from '@repo/types';
-import { getSongs } from '../services/songs/getSongs';
-import { useQuery } from '@tanstack/react-query';
+import { normalizeForSearch } from "../utils/normalizeTextForSearch";
+import { SongT } from "@repo/types";
+import { getSongs } from "../services/songs/getSongs";
+import { useQuery } from "@tanstack/react-query";
 
 type UseFilteredSongsProps = {
   searchQuery?: string;
@@ -9,13 +9,13 @@ type UseFilteredSongsProps = {
 };
 
 export const useFilteredSongs = ({
-  searchQuery = '',
+  searchQuery = "",
   isKhorus = false,
 }: UseFilteredSongsProps): SongT[] => {
   const query = searchQuery.trim();
 
   const { data: dataSource = [] } = useQuery({
-    queryKey: ['songs', { isKhorus }],
+    queryKey: ["songs", { isKhorus }],
     queryFn: () => getSongs({ isChorus: isKhorus }),
   });
 
@@ -34,7 +34,7 @@ export const useFilteredSongs = ({
     ].filter(Boolean); // Remove null/undefined values
 
     return searchFields.some((field) => {
-      const normalizedField = normalizeForSearch(field ?? '');
+      const normalizedField = normalizeForSearch(field ?? "");
       return normalizedField?.includes(normalizedQuery);
     });
   });

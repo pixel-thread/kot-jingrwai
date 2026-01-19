@@ -1,4 +1,4 @@
-import { AppUpdateT } from '@repo/types';
+import { AppUpdateT } from "@repo/types";
 
 export interface UpdateContextI {
   update: AppUpdateT | null | undefined;

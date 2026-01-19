@@ -22,6 +22,7 @@ const HeaderRight = ({ id }: { id: string }) => {
   const { data: song, isFetching } = useSong({ id });
   const songNumber = song?.metadata.number;
   const isFavoriteSong = favoriteSongs.includes(songNumber || 0);
+  gg;
 
   const onToggleFavSongs = () => {
     if (song && !isFetching) {

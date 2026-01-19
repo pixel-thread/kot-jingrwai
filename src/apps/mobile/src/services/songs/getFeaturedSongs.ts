@@ -1,6 +1,6 @@
-import { songs } from '~/src/libs/songs';
-import { featuredSongs } from '@repo/constants';
-import { SongT } from '@repo/types';
+import { songs } from "~/src/libs/songs";
+import { featuredSongs } from "@repo/constants";
+import { SongT } from "@repo/types";
 
 function getMonthDayValue(date: Date): number {
   return (date.getMonth() + 1) * 100 + date.getDate();
