@@ -1,11 +1,11 @@
 name: EAS Production Deployment
 
-on:
-  push:
-    branches: ["master"]
-    paths:
-      - "src/apps/mobile/**"
-      - "src/packages/**/**"
+# on:
+#   push:
+#     branches: ["master"]
+#     paths:
+#       - "src/apps/mobile/**"
+#       - "src/packages/**/**"
 
 jobs:
   fingerprint:
