@@ -44,15 +44,6 @@ const HeaderRight = ({ id }: { id: string }) => {
         />
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={decreaseTextSize}
-        className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
-        <MaterialCommunityIcons
-          name={"minus"}
-          size={24}
-          color={isDarkMode ? gray[200] : gray[950]}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity
         onPress={increaseTextSize}
         className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
         <MaterialCommunityIcons
