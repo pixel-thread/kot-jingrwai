@@ -5,7 +5,7 @@ push:
   branches: ["master"]
   paths:
     - "src/apps/mobile/**" # App-specific changes
-    - "src/packages/ui-native/**" # UI changes trigger OTA
+    - "src/packages/**/**" # UI changes trigger OTA
 
 jobs:
   # Native build ONLY when app changes (rare)
