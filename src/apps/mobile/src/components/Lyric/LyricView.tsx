@@ -15,7 +15,7 @@ import Reanimated, {
   useAnimatedRef,
 } from "react-native-reanimated";
 import { useKeepAwake } from "expo-keep-awake";
-import { copyToClipboard } from "~/src/utils-native";
+import { copyToClipboard } from "@repo/utils-native";
 // import { FloatingActionButtons } from "@repo/ui-native";
 // import { MiniMusicPlayer } from "../Common/MiniMusicPlayer";
 
