@@ -6,7 +6,7 @@ name: EAS Production Deployment
 
 jobs:
   fingerprint:
-    name: 📋 Calculate fingerprint
+    name: 📋 Calculate android fingerprint
     type: fingerprint
     environment: production
 
