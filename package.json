@@ -5,21 +5,11 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "preinstall": "node scripts/enforce-expo-versions.cjs",
     "clean:install": "node scripts/clean-install.mjs",
     "generate": "turbo run generate",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types",
-    "prepare": "husky"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "pnpm exec eslint . --no-warn-ignored"
-    ],
-    "*.{json,md,yml,yaml}": [
-      "prettier --write"
-    ]
+    "check-types": "turbo run check-types"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -27,8 +17,6 @@
     "@types/react-dom": "~19.2.3",
     "eslint": "^9.39.2",
     "globals": "^16.5.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "turbo": "^2.7.1",
     "typescript": "5.8.3",
