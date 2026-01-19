@@ -51,17 +51,18 @@ const SongsDetails = () => {
 
   if (!song || isFetching) {
     return (
-      <View className="flex-1">
+      <>
         <Stack.Screen
           options={{
             headerShown: true,
-            title: song?.metadata?.number?.toString() || "No Title",
+            title: song?.metadata?.number?.toString() || "Loading",
             header: ({ options }) => (
               <CustomHeader options={options} back headerRight={<HeaderRight />} />
             ),
           }}
         />
-      </View>
+        <Container className="flex-1 bg-gray-200"></Container>
+      </>
     );
   }
 

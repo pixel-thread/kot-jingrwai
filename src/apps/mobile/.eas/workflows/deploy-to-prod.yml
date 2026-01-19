@@ -1,11 +1,11 @@
 name: EAS Production Deployment
 
-# on:
-# push:
-#   branches: ['master']
-#   paths:
-#     - 'src/apps/mobile/**' # App-specific changes
-#     - 'src/packages/ui-native/**' # UI changes trigger OTA
+on:
+push:
+  branches: ["master"]
+  paths:
+    - "src/apps/mobile/**" # App-specific changes
+    - "src/packages/ui-native/**" # UI changes trigger OTA
 
 jobs:
   # Native build ONLY when app changes (rare)
@@ -43,7 +43,7 @@ jobs:
       platform: android
       branch: production
       channel: production
-      message: 'UI/JS changes: ${{ github.event.head_commit.message }}'
+      message: "UI/JS changes: ${{ github.event.head_commit.message }}"
 
   notify_summary:
     name: 📊 Deployment Summary
