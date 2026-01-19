@@ -11,7 +11,6 @@ import { useSongStore, useTextStore } from "@repo/libs";
 import { gray } from "tailwindcss/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useColorScheme } from "nativewind";
-import { useSongs } from "~/src/hooks/song/useSongs";
 import { useSong } from "~/src/hooks/song/useSong";
 
 const HeaderRight = ({ id }: { id: string }) => {
@@ -22,7 +21,6 @@ const HeaderRight = ({ id }: { id: string }) => {
   const { data: song, isFetching } = useSong({ id });
   const songNumber = song?.metadata.number;
   const isFavoriteSong = favoriteSongs.includes(songNumber || 0);
-  gg;
 
   const onToggleFavSongs = () => {
     if (song && !isFetching) {
