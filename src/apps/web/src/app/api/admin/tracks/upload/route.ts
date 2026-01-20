@@ -11,6 +11,13 @@ const schema = z.object({ file: z.instanceof(File) });
 
 export async function POST(request: NextRequest) {
   try {
+    // add header check for admin
+    const header = request.headers.get("Authorization");
+
+    if (header !== env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) {
+      return ErrorResponse({ error: "Unauthorized", status: 401 });
+    }
+
     const formData = await request.formData();
 
     // @ts-ignore
@@ -61,9 +68,9 @@ export async function POST(request: NextRequest) {
 
     const { data: url } = TrackService.getPublicUrl(data?.path);
 
-    const track = await TrackService.createTrack({
-      data: { songId },
-      metadata: {
+    // Save metadata to database
+    const trackMetadata = await prisma.trackMetadata.create({
+      data: {
         supabaseId: data?.id,
         path: data.path,
         fileName: file.name,
