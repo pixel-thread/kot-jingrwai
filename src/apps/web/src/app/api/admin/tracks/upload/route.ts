@@ -31,9 +31,24 @@ export async function POST(request: NextRequest) {
 
     const songExist = await getUniqueSongs({ where: { id: songId } });
 
-    if (!songExist) return ErrorResponse({ error: "Song not found", status: 404 });
+    if (!songExist)
+      return ErrorResponse({
+        message: "Song does not exist",
+        error: "Song not found",
+        status: 404,
+      });
 
-    const { error: uploadError, data } = await UploadService.upload({ file });
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${songExist.metadata.number}-${songExist.id}.${fileExt}`;
+    const filePath = `tracks/${fileName}`;
+
+    // Upload to Supabase Storage
+    const { error: uploadError, data } = await supabase.storage
+      .from(env.SUPABASE_BUCKET)
+      .upload(filePath, Buffer.from(await file.arrayBuffer()), {
+        contentType: file.type,
+        upsert: true,
+      });
 
     if (uploadError) {
       logger.error("SUPABASE Error: UPLOAD ERROR", { uploadError });
@@ -59,7 +74,24 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    return SuccessResponse({ data: track, message: "Song uploaded successfully" });
+    const track = await prisma.track.create({
+      data: {
+        songs: { connect: { id: songId } },
+        metadata: { connect: { id: trackMetadata.id } },
+      },
+      include: { metadata: true },
+    });
+
+    await prisma.trackMetadata.update({
+      where: { id: trackMetadata.id },
+      data: { trackId: track.id },
+    });
+
+    logger.info("API:Track uploaded successfully", {
+      songNo: songExist.metadata.number,
+    });
+
+    return SuccessResponse({ data: track });
   } catch (error) {
     return handleApiErrors(error);
   }

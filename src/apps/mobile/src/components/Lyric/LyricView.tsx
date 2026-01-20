@@ -16,8 +16,8 @@ import Reanimated, {
 } from "react-native-reanimated";
 import { useKeepAwake } from "expo-keep-awake";
 import { copyToClipboard } from "@repo/utils-native";
-// import { FloatingActionButtons } from "@repo/ui-native";
-// import { MiniMusicPlayer } from "../Common/MiniMusicPlayer";
+import { FloatingActionButtons } from "@repo/ui-native";
+import { MiniMusicPlayer } from "../Common/MiniMusicPlayer";
 
 type LyricViewProps = {
   song: SongT;
@@ -66,11 +66,9 @@ export const LyricView = ({ song }: LyricViewProps) => {
 
   return (
     <>
-      {/*
-        <FloatingActionButtons>
+      <FloatingActionButtons>
         <MiniMusicPlayer song={song} />
-        </FloatingActionButtons>
-      */}
+      </FloatingActionButtons>
       <ScrollView
         ref={scrollRef}
         simultaneousHandlers={scrollRef}

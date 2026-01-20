@@ -3,7 +3,7 @@ const path = require("path");
 const fetch = require("node-fetch");
 require("dotenv").config();
 
-const apiBaseUrl = "https://kot-jingrwai.vercel.app/api" || "http://localhost:3000/api";
+const apiBaseUrl = "http://localhost:3000/api";
 
 const API_URL = `${apiBaseUrl}/songs`;
 
