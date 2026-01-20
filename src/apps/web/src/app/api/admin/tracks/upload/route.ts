@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabase";
 import { getUniqueSongs } from "@/services/songs/getUniqueSong";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
+import { logger } from "@repo/utils";
 import { NextRequest } from "next/server";
 import z from "zod";
 
@@ -31,10 +32,15 @@ export async function POST(request: NextRequest) {
 
     const songExist = await getUniqueSongs({ where: { id: songId } });
 
-    if (!songExist) return ErrorResponse({ error: "Song not found", status: 404 });
+    if (!songExist)
+      return ErrorResponse({
+        message: "Song does not exist",
+        error: "Song not found",
+        status: 404,
+      });
 
     const fileExt = file.name.split(".").pop();
-    const fileName = `${crypto.randomUUID()}.${fileExt}`;
+    const fileName = `${songExist.metadata.number}-${songExist.id}.${fileExt}`;
     const filePath = `tracks/${fileName}`;
 
     // Upload to Supabase Storage
@@ -76,6 +82,10 @@ export async function POST(request: NextRequest) {
     await prisma.trackMetadata.update({
       where: { id: trackMetadata.id },
       data: { trackId: track.id },
+    });
+
+    logger.info("API:Track uploaded successfully", {
+      songNo: songExist.metadata.number,
     });
 
     return SuccessResponse({ data: track });

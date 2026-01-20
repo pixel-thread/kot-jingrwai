@@ -20,10 +20,6 @@ config.resolver.nodeModulesPaths = [
   path.join(workspaceRoot, "node_modules"),
 ];
 
-/**
- * ❌ REMOVE this line entirely
- */
-
 // 🚨 DO NOT disable hierarchical lookup
 config.resolver.disableHierarchicalLookup = true;
 
