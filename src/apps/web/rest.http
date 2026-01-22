@@ -1,5 +1,8 @@
 ### 
 
+
+### 
+
 # @name get verse
 
 GET {{NEXT_PUBLIC_API_URL}}/verse HTTP/1.1
@@ -104,5 +107,25 @@ Content-Type: application/json
 # @name get songs
 
 GET {{NEXT_PUBLIC_API_URL}}/songs/featured HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
+### 
+
+# @name get tracks
+
+GET {{NEXT_PUBLIC_API_URL}}/admin/tracks HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
+### 
+
+@trackId = 4569de9f-6294-4476-b347-b6efce104db8
+
+# @name get songs
+
+DELETE {{NEXT_PUBLIC_API_URL}}/admin/tracks/{{trackId}} HTTP/1.1
 Accept: application/json
 Content-Type: application/json

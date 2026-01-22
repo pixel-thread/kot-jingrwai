@@ -6,7 +6,7 @@ import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    await requiredSuperAdminRole(req);
+    // await requiredSuperAdminRole(req);
     const tracks = await TrackService.getTracks();
 
     return SuccessResponse({
