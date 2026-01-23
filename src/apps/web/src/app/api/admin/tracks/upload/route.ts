@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
       return ErrorResponse({
         message: uploadError.message,
         error: uploadError,
-        status: uploadError.status || 500,
+        status: 500,
       });
     }
 
