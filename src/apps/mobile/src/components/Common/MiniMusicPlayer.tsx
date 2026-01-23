@@ -77,7 +77,9 @@ export const MiniMusicPlayer = ({ song }: Props) => {
     onSuccess: (data) => {
       if (data.success) {
         ToastAndroid.show(data.message, ToastAndroid.SHORT);
-        logger.info(data.message);
+        logger.info("Song Upload Success", {
+          data,
+        });
 
         queryClient.invalidateQueries({
           queryKey: ["songs"],
@@ -89,7 +91,9 @@ export const MiniMusicPlayer = ({ song }: Props) => {
         return;
       }
       ToastAndroid.show(data.message, ToastAndroid.SHORT);
-      logger.info(data.message);
+      logger.info("Song Upload Error", {
+        data,
+      });
       return;
     },
   });
