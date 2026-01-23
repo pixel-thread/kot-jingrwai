@@ -30,13 +30,16 @@ export async function POST(request: NextRequest) {
     }
 
     const songExist = await getUniqueSongs({ where: { id: songId } });
-
-    if (!songExist)
+    if (!songExist) {
+      logger.info(`Track Upload Error: Song does not exist`, {
+        songId: songId,
+      });
       return ErrorResponse({
         message: "Song does not exist",
         error: "Song not found",
         status: 404,
       });
+    }
 
     const fileExt = file.name.split(".").pop();
     const fileName = `${songExist.metadata.number}-${songExist.id}.${fileExt}`;
