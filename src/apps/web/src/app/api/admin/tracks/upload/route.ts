@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabase";
 import { getUniqueSongs } from "@/services/songs/getUniqueSong";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
+import { logger } from "@repo/utils";
 import { NextRequest } from "next/server";
 import z from "zod";
 
@@ -38,6 +39,8 @@ export async function POST(request: NextRequest) {
     const filePath = `tracks/${fileName}`;
 
     // Upload to Supabase Storage
+    console.log("Uploading Song To Supabase");
+
     const { error: uploadError, data } = await supabase.storage
       .from(env.SUPABASE_BUCKET)
       .upload(filePath, Buffer.from(await file.arrayBuffer()), {
@@ -46,12 +49,15 @@ export async function POST(request: NextRequest) {
       });
 
     if (uploadError) {
-      return ErrorResponse({ error: uploadError.message, status: 500 });
+      logger.error("SUPABASE UPLOAD ERROR", { uploadError });
+      return ErrorResponse({
+        message: uploadError.message,
+        error: uploadError,
+        status: uploadError.status || 500,
+      });
     }
 
     const { data: url } = supabase.storage.from(env.SUPABASE_BUCKET).getPublicUrl(data?.path);
-
-    // Save metadata to database
 
     const trackMetadata = await prisma.trackMetadata.create({
       data: {
@@ -78,8 +84,9 @@ export async function POST(request: NextRequest) {
       data: { trackId: track.id },
     });
 
-    return SuccessResponse({ data: track });
+    return SuccessResponse({ data: track, message: "Song uploaded successfully" });
   } catch (error) {
+    console.log("Error uploading song", { error });
     return handleApiErrors(error);
   }
 }
