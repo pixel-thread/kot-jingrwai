@@ -3,7 +3,7 @@ const path = require("path");
 const fetch = require("node-fetch");
 require("dotenv").config();
 
-const apiBaseUrl = "http://localhost:3000/api";
+const apiBaseUrl = process.env.EXPO_PUBLIC_API_URL || "http://localhost:3000/api";
 
 const API_URL = `${apiBaseUrl}/songs`;
 
