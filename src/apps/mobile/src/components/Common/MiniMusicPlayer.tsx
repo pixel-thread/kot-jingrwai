@@ -70,6 +70,7 @@ export const MiniMusicPlayer = ({ song }: Props) => {
     mutationKey: ["uploadSong"],
     mutationFn: (form: FormData) =>
       http.post("/admin/tracks/upload", form, {
+        timeout: 0, // infinite
         headers: {
           "Content-Type": "multipart/form-data",
         },
