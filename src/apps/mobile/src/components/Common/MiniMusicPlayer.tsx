@@ -43,6 +43,29 @@ export const MiniMusicPlayer = ({ song }: Props) => {
     queryFn: () => getSongs({ isAll: true }),
   });
 
+  const { mutate: deleteSongTrack } = useMutation({
+    mutationKey: ["deleteSongTrack"],
+    mutationFn: (id: { id: string }) => http.delete(`/admin/tracks/${id.id}`),
+    onSuccess: (data) => {
+      if (data.success) {
+        ToastAndroid.show(data.message, ToastAndroid.SHORT);
+
+        queryClient.invalidateQueries({
+          queryKey: ["songs"],
+        });
+
+        queryClient.invalidateQueries({
+          queryKey: ["track", song.id],
+        });
+        logger.info(data.message);
+        return;
+      }
+      ToastAndroid.show(data.message, ToastAndroid.SHORT);
+      logger.info(data.message);
+      return;
+    },
+  });
+
   const { mutate, isPending } = useMutation({
     mutationKey: ["uploadSong"],
     mutationFn: (form: FormData) =>
@@ -149,19 +172,36 @@ export const MiniMusicPlayer = ({ song }: Props) => {
     }
   };
 
+  const onClickDelete = () => {
+    if (songTrack?.id) {
+      deleteSongTrack({ id: songTrack.id });
+    }
+  };
+
   return (
     <View className="flex-1 gap-y-2">
       <Ternary
         condition={isTrackExist}
         ifTrue={
-          <MusicPlayer
-            musicUrl={songTrack?.metadata.downloadUrl || ""}
-            song={song}
-            onNextSong={onNextSong}
-            onPreviousSong={onPreviousSong}
-            isLoading={isTrackExist ? false : true}
-            isDisabled={isDisabled}
-          />
+          <>
+            <View className="w-full flex-row justify-end">
+              <TouchableOpacity
+                onPress={onClickDelete}
+                activeOpacity={0.8}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                className="bg-background  p-1">
+                <MaterialCommunityIcons name="trash-can" size={20} color="red" />
+              </TouchableOpacity>
+            </View>
+            <MusicPlayer
+              musicUrl={songTrack?.metadata.downloadUrl || ""}
+              song={song}
+              onNextSong={onNextSong}
+              onPreviousSong={onPreviousSong}
+              isLoading={isTrackExist ? false : true}
+              isDisabled={isDisabled}
+            />
+          </>
         }
         ifFalse={
           <TouchableOpacity
