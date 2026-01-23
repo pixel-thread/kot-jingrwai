@@ -10,7 +10,9 @@ import axios, { AxiosResponse } from "axios";
 
 export async function GET(request: Request) {
   try {
-    logger.log(request);
+    if (process.env.NODE_ENV === "development") {
+      logger.log(request);
+    }
     let response: AxiosResponse<BibleVerseT>;
 
     try {

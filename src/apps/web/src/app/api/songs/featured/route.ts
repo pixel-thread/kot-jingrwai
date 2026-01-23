@@ -7,7 +7,9 @@ import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    logger.log(req ? "Get Featured Songs" : "Get Featured Songs");
+    if (process.env.NODE_ENV === "development") {
+      logger.log(req);
+    }
     const randomPage = Math.floor(Math.random() * 64) + 1;
 
     const [songs, total] = await getSongs({
