@@ -9,8 +9,8 @@ export type KiJingDuwaiItemsT = {
   title: string;
   desc: string;
   prayerLines?: PrayerLineT[];
-  pTag?: string;
-  nTag?: string;
+  paidbah?: string;
+  nongialam?: string;
   items?: KiJingDuwaiItemsT[];
 };
 

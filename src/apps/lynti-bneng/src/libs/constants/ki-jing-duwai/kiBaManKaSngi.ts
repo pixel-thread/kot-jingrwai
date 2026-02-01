@@ -4,7 +4,7 @@ export const kiBaManKaSngi: KiJingDuwaiItemsT[] = [
   {
     id: "kiJingDuwai",
     title: "Kiba man ka sngi",
-    desc: "Ki khun Khrist kiba bha ki tang shu khie na bathiah ki leh ia ka Dak ka Diengphna, bad ki tyrwa ia la ki dohnud ha u Blei, da ka ba og \"Ko Jisu, Ko Maria, ko Joseph, ng aiti ha phi ia ka dohnud bad ia la mynsiem.\"",
+    desc: 'Ki khun Khrist kiba bha ki tang shu khie na bathiah ki leh ia ka Dak ka Diengphna, bad ki tyrwa ia la ki dohnud ha u Blei, da ka ba og "Ko Jisu, Ko Maria, ko Joseph, ng aiti ha phi ia ka dohnud bad ia la mynsiem."',
   },
   {
     id: "kaDakKaDiengPhna",
@@ -14,7 +14,7 @@ export const kiBaManKaSngi: KiJingDuwaiItemsT[] = [
   {
     id: "angelUTrai",
     title: "Ka jingduwai Angel u Trai",
-    desc: "Ka jingduwai \"Angel\" ka long ka jingkynmaw ieid ia ka jingmaia ka jinglong doh jong u khun u Blei. To duwai ia ka mynstep mynsngi bad janmit.",
+    desc: 'Ka jingduwai "Angel" ka long ka jingkynmaw ieid ia ka jingmaia ka jinglong doh jong u khun u Blei. To duwai ia ka mynstep mynsngi bad janmit.',
     prayerLines: [
       {
         id: 1,
@@ -52,14 +52,14 @@ export const kiBaManKaSngi: KiJingDuwaiItemsT[] = [
         line: "Bad ka la shong sah bad ngi",
       },
     ],
-    nTag: "To duwai na bynta jong ngi, Ko Nongkha Blei Bakhuid",
-    pTag: "Ba ngin long ki babit ia ki jingkular u khrist!",
+    nongialam: "To duwai na bynta jong ngi, Ko Nongkha Blei Bakhuid",
+    paidbah: "Ba ngin long ki babit ia ki jingkular u khrist!",
   },
   {
     id: "to ngin iaduwai",
     title: "To Ngin iaduwai",
     desc: "Ko Trai, ngi Kyrpad ia me to theh ia ka jingaiei jong me hapoh ka dohnud jong ngi, ba ma ngi ki ba la tip ia ka jinglongdoh u Khrist u Khun jong Me Na ka Khubor jong u Angel, da ka jingshah shitom bad ka dienphna jong U, Ngin poi sha ka burom ka jingmihpat. Da ujuh u Khrist U Trai jong ngi.",
-    pTag: "Amen.",
+    paidbah: "Amen.",
   },
   {
     id: "ha ka trinity bakhuid",
@@ -69,7 +69,7 @@ export const kiBaManKaSngi: KiJingDuwaiItemsT[] = [
   {
     id: "to shad kmen, ko syiem",
     title: "To shad kmen, ko syiem",
-    desc: "Ha ka por Paskha, ha ka jaka \"U Angel u Trai.\" duwai:",
+    desc: 'Ha ka por Paskha, ha ka jaka "U Angel u Trai." duwai:',
     prayerLines: [
       {
         id: 1,
@@ -92,8 +92,8 @@ export const kiBaManKaSngi: KiJingDuwaiItemsT[] = [
         line: "To duwai ha u Blei na bynta jong ngi: Alleluia",
       },
     ],
-    nTag: "To shadkmen bad to sngewbha, ko Maria Theisotti. Alleluia,",
-    pTag: "Naba u Trai U la mihpat da shisha: Alleuia.",
+    nongialam: "To shadkmen bad to sngewbha, ko Maria Theisotti. Alleluia,",
+    paidbah: "Naba u Trai U la mihpat da shisha: Alleuia.",
   },
   {
     id: "to ngin ia duwai 2",
@@ -106,6 +106,6 @@ export const kiBaManKaSngi: KiJingDuwaiItemsT[] = [
         line: "Ka burom ha u kpa",
       },
     ],
-    pTag: "Amen.",
+    paidbah: "Amen.",
   },
 ];
