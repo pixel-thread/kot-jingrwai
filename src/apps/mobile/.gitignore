@@ -27,3 +27,4 @@ android
 .metro-health-check*
 # /src/libs/songs/*.json
 /assets/db/*.db
+app-env.d.ts
