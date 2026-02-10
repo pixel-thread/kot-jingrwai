@@ -1,0 +1,33 @@
+name: Migrate PROD Prisma database
+on:
+  push:
+    paths:
+      - "src/apps/web/src/lib/database/prisma/migrations/**" # Fixed path
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install deps WITHOUT postinstall
+        run: |
+          cd backend
+          npm install
+        working-directory: .
+
+      - name: Apply migrations
+        run: |
+          cd backend
+          npx prisma migrate deploy

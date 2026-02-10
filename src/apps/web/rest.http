@@ -116,8 +116,6 @@ Content-Type: application/json
 
 ### 
 
-@trackId = 4569de9f-6294-4476-b347-b6efce104db8
-
 # @name get songs
 
 DELETE {{NEXT_PUBLIC_API_URL}}/admin/tracks/{{trackId}} HTTP/1.1
