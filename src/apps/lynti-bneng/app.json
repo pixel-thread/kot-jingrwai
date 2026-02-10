@@ -4,7 +4,10 @@
     "slug": "ka-lynti-bneng",
     "version": "1.0.0",
     "scheme": "lynti-bneng",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "web": {
       "bundler": "metro",
       "output": "static",
@@ -21,8 +24,7 @@
             "image": "./src/assets/images/splashscreen/splashscreen.png",
             "backgroundColor": "#000000"
           },
-          "imageWidth": 200,
-          "backgroundColor": "#ffffff"
+          "imageWidth": 200
         }
       ]
     ],
@@ -42,9 +44,12 @@
         "backgroundColor": "#000000"
       }
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pixelthread.kalyntibneng"
     },
     "owner": "pixel-thread",
     "android": {
