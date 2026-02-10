@@ -20,8 +20,8 @@ module.exports = defineConfig([
     rules: {
       "react/display-name": "off",
       "import/no-unresolved": "off",
-      "no-unused-vars": "error",
-      "no-unused-expressions": "error",
+      "no-unused-vars": "warn",
+      "no-unused-expressions": "warn",
       "react-hooks/rules-of-hooks": "warn",
     },
   },

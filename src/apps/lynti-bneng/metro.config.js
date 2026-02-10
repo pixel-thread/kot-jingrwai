@@ -31,5 +31,5 @@ config.resolver.disableHierarchicalLookup = true;
 const { withNativeWind } = require("nativewind/dist/metro");
 
 module.exports = withNativeWind(config, {
-  input: "./src/styles/global.css",
+  input: "./global.css",
 });
