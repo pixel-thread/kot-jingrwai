@@ -1,8 +1,5 @@
 ### 
 
-
-### 
-
 # @name get verse
 
 GET {{NEXT_PUBLIC_API_URL}}/verse HTTP/1.1
@@ -101,7 +98,6 @@ GET https://kot-jingrwai.vercel.app/api/songs HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
-
 ### 
 
 # @name get songs
@@ -109,7 +105,6 @@ Content-Type: application/json
 GET {{NEXT_PUBLIC_API_URL}}/songs/featured HTTP/1.1
 Accept: application/json
 Content-Type: application/json
-
 
 ### 
 
@@ -119,7 +114,6 @@ GET {{NEXT_PUBLIC_API_URL}}/admin/tracks HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
-
 ### 
 
 @trackId = 4569de9f-6294-4476-b347-b6efce104db8
@@ -127,5 +121,41 @@ Content-Type: application/json
 # @name get songs
 
 DELETE {{NEXT_PUBLIC_API_URL}}/admin/tracks/{{trackId}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+### 
+
+# @name sign-in
+
+POST {{NEXT_PUBLIC_API_URL}}/auth/sign-in HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email":"jyrwaboys@gmail.com",
+  "password":"123Clashofclan@"
+}
+
+### 
+
+# @name sign-up
+
+POST {{NEXT_PUBLIC_API_URL}}/auth/sign-up HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email":"jyrwaboys@gmail.com",
+  "password":"123Clashofclan@",
+  "confirmPassword":"123Clashofclan@",
+  "name":"dev"
+}
+
+### 
+
+# @name logout
+
+POST {{NEXT_PUBLIC_API_URL}}/auth/logout HTTP/1.1
 Accept: application/json
 Content-Type: application/json

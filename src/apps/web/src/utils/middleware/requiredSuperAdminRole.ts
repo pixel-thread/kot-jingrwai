@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { requiredAuthToken } from "./requiredAuthToken";
+import { requiredAuthToken } from "./requireAuth";
 import { UnauthorizedError } from "@/utils/errors/unAuthError";
 
 export async function requiredSuperAdminRole(req: NextRequest) {
