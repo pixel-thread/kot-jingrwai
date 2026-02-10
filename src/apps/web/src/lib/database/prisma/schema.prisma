@@ -31,6 +31,7 @@ enum TAGS {
 
 enum Role {
   SUPER_ADMIN
+  ADMIN
   USER
 }
 
@@ -69,11 +70,55 @@ enum EASBuildStatus {
  * ---------------------------
  */
 
+model Auth {
+  id           String @id @default(uuid())
+  email        String @unique
+  hashPassword String
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  userId String  @unique
+  user   User    @relation(fields: [userId], references: [id])
+  otps   otp[]
+  tokens Token[]
+
+  @@index([id])
+}
+
+model otp {
+  id        String  @id @default(uuid())
+  otp       String
+  isRevoked Boolean @default(false)
+
+  authId String?
+  auth   Auth?   @relation(fields: [authId], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Token {
+  id        String   @id @default(uuid())
+  userId    String
+  authId    String
+  hash      String   @unique // store hashed token
+  isRevoked Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  auth      Auth     @relation(fields: [authId], references: [id])
+
+  @@index([userId])
+  @@index([authId])
+  @@index([expiresAt])
+}
+
 model User {
   id       String  @id @default(uuid())
   role     Role    @default(USER)
-  clerkId  String  @unique // corrected from clarkId
-  email    String  @unique
   imageUrl String?
   hasImage Boolean @default(false)
   name     String
@@ -85,8 +130,10 @@ model User {
 
   // Relations
   createdVerses BibleVerse[]
+  authId        String?      @unique
+  auth          Auth?
+  tokens        Token[]
 
-  @@unique([clerkId, email])
   @@index([id])
   @@index([name])
   @@index([role])

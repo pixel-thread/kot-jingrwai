@@ -17,7 +17,13 @@
         "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
         "EAS_WEBHOOK_SECRET",
         "DATABASE_URL",
-        "DIRECT_URL"
+        "DIRECT_URL",
+        "SALT",
+        "JWT_ACCESS_SECRET",
+        "JWT_REFRESH_SECRET",
+        "ACESS_TOKEN_TTL",
+        "REFRESH_TOKEN_TTL",
+        "NODE_ENV"
       ]
     },
     "lint": {

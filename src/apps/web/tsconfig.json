@@ -26,8 +26,23 @@
       "@/*": [
         "./src/*"
       ],
+      "@src/*": [
+        "./src/*"
+      ],
       "@repo/*": [
         "../../packages/*/src"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@types/*": [
+        "./src/types/*"
+      ],
+      "@libs/*": [
+        "./src/lib/*"
       ]
     }
   },
