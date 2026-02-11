@@ -25,7 +25,6 @@ export const LoginScreen = () => {
       if (data.success) {
         const res = data?.data;
         if (res?.refreshToken && res?.accessToken) {
-          console.log("set tokens");
           await TokenStoreManager.setTokens(res?.accessToken, res?.refreshToken);
         }
         if (Platform.OS === "android") {
@@ -36,7 +35,6 @@ export const LoginScreen = () => {
       if (Platform.OS === "android") {
         ToastAndroid.show(data.message, ToastAndroid.SHORT);
       }
-      console.log(data.message);
       return data.data;
     },
   });
