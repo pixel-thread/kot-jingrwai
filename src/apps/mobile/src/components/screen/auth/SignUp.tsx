@@ -25,6 +25,10 @@ export const Signup = () => {
   const onSignup = (data: FormValue) => mutate(data);
 
   return (
-    <SignupScreen onSignup={onSignup} isLoading={isPending} onLoginPress={() => router.back()} />
+    <SignupScreen
+      onSignup={onSignup}
+      isLoading={isPending}
+      onLoginPress={() => router.replace("/auth")}
+    />
   );
 };

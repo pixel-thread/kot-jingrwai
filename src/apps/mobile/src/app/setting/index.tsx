@@ -158,6 +158,12 @@ const Settings = () => {
               description="Read our privacy policy"
               onPress={() => router.push("/setting/privacy")}
             />
+            <SettingItem
+              icon="lock"
+              title="Authentication"
+              description="Login to your account"
+              onPress={() => router.push("/auth")}
+            />
           </ContentSection>
         </Reanimated.View>
       </ScrollView>

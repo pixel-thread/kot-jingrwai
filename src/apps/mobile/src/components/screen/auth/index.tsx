@@ -48,7 +48,7 @@ export const LoginScreen = () => {
     <LScreen
       onLogin={onLogin}
       isLoading={isPending}
-      onSignup={() => router.push("/auth/sign-up")}
+      onSignup={() => router.replace("/auth/sign-up")}
     />
   );
 };
