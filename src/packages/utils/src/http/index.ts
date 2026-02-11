@@ -6,6 +6,7 @@ export interface ApiResponse<T> {
   message: string;
   data: T | null; // 👈 Explicitly allow `null`
   error?: string | Record<string, any>;
+  token?: string;
 }
 
 export const handleAxiosError = <T>(error: unknown): ApiResponse<T> => {
