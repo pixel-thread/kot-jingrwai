@@ -1,5 +1,5 @@
 import { SignUpScreen } from "@repo/ui-native";
 
-export default function page() {
+export const Signup = () => {
   return <SignUpScreen />;
-}
+};
