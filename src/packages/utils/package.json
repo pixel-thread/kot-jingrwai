@@ -28,6 +28,7 @@
     "@repo/typescript-config": "workspace:*"
   },
   "dependencies": {
+    "@repo/libs": "workspace:*",
     "@repo/types": "workspace:*"
   },
   "private": true
