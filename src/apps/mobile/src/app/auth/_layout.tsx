@@ -7,7 +7,7 @@ export default function Layout() {
       <Stack
         screenOptions={{
           header: ({ options }) => <CustomHeader back options={options} />,
-          title: "Login",
+          title: "Authentication",
           headerShown: true,
         }}
       />
