@@ -24,16 +24,20 @@ export const LoginScreen = () => {
     onSuccess: async (data) => {
       if (data.success) {
         const res = data?.data;
+        if (res?.refreshToken && res?.accessToken) {
+          console.log("set tokens");
+          await TokenStoreManager.setTokens(res?.accessToken, res?.refreshToken);
+        }
         if (Platform.OS === "android") {
           ToastAndroid.show(data.message, ToastAndroid.SHORT);
-          if (res?.refreshToken) {
-            await TokenStoreManager.setTokens(res.accessToken, res.refreshToken);
-          }
-          return res;
         }
-        ToastAndroid.show(data.message, ToastAndroid.SHORT);
-        return data.data;
+        return res;
       }
+      if (Platform.OS === "android") {
+        ToastAndroid.show(data.message, ToastAndroid.SHORT);
+      }
+      console.log(data.message);
+      return data.data;
     },
   });
 
