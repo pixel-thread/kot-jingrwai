@@ -29,13 +29,13 @@ export function PrivacyPolicyScreen() {
             <ContentSection title="Privacy Policy">
               <View className="p-4">
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
-                  Kot Jingrwai {"(\"we,\" \"our,\" or \"us\")"} is committed to protecting your privacy.
+                  Kot Jingrwai {'("we," "our," or "us")'} is committed to protecting your privacy.
                   This Privacy Policy explains how your personal information is collected, used, and
                   disclosed by Kot Jingrwai.
                 </Text>
                 <Text className="mb-4 text-gray-700 dark:text-gray-300">
                   This Privacy Policy applies to our mobile application, and its associated services
-                  {"(collectively, our \"Service\")"}. By accessing or using our Service, you signify
+                  {'(collectively, our "Service")'}. By accessing or using our Service, you signify
                   that you have read, understood, and agree to our collection, storage, use, and
                   disclosure of your personal information as described in this Privacy Policy.
                 </Text>
