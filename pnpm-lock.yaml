@@ -207,7 +207,7 @@ importers:
         version: 10.1.8(eslint@9.39.2(jiti@1.21.7))
       eslint-import-resolver-typescript:
         specifier: ^4.4.4
-        version: 4.4.4(eslint-plugin-import@2.32.0)(eslint@9.39.2(jiti@1.21.7))
+        version: 4.4.4(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@1.21.7)))(eslint@9.39.2(jiti@1.21.7))
       eslint-plugin-unused-imports:
         specifier: ^4.1.4
         version: 4.3.0(@typescript-eslint/eslint-plugin@8.53.0(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint@9.39.2(jiti@1.21.7))
@@ -295,6 +295,9 @@ importers:
       expo-router:
         specifier: ~5.1.8
         version: 5.1.10(@react-navigation/drawer@7.7.13(@react-navigation/native@7.1.28(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native-gesture-handler@2.24.0(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native-reanimated@3.17.5(@babel/core@7.28.6)(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native-safe-area-context@5.4.0(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native-screens@4.11.1(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(@types/react@19.0.10)(expo-constants@17.1.8(expo@53.0.25(@babel/core@7.28.6)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(expo-linking@7.1.7(expo@53.0.25(@babel/core@7.28.6)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(expo@53.0.25(@babel/core@7.28.6)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native-reanimated@3.17.5(@babel/core@7.28.6)(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native-safe-area-context@5.4.0(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native-screens@4.11.1(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0)
+      expo-secure-store:
+        specifier: ^15.0.8
+        version: 15.0.8(expo@53.0.25(@babel/core@7.28.6)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))
       expo-splash-screen:
         specifier: ~0.30.10
         version: 0.30.10(expo@53.0.25(@babel/core@7.28.6)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))
@@ -382,7 +385,7 @@ importers:
         version: 10.1.8(eslint@9.39.2(jiti@1.21.7))
       eslint-import-resolver-typescript:
         specifier: ^4.4.4
-        version: 4.4.4(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@1.21.7)))(eslint@9.39.2(jiti@1.21.7))
+        version: 4.4.4(eslint-plugin-import@2.32.0)(eslint@9.39.2(jiti@1.21.7))
       eslint-plugin-unused-imports:
         specifier: ^4.1.4
         version: 4.3.0(@typescript-eslint/eslint-plugin@8.53.0(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint@9.39.2(jiti@1.21.7))(typescript@5.8.3))(eslint@9.39.2(jiti@1.21.7))
