@@ -1,6 +1,6 @@
 import { View, ScrollView } from "react-native";
 import { ContentSection } from "../../common";
-import { Text } from "../../typography";
+import { Text } from "../../ui/typography";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useColorScheme } from "nativewind";
 import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";

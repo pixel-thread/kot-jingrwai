@@ -1,7 +1,7 @@
 import { TouchableOpacity, View } from "react-native";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import { copyToClipboard } from "@repo/utils-native";
-import { Skeleton } from "../skeleton";
+import { Skeleton } from "../ui/skeleton";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useColorScheme } from "nativewind";
 import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";

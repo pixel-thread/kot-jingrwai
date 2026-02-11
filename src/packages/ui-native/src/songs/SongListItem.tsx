@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Platform } from "react-native";
 import { useRouter } from "expo-router";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import { SongT } from "@repo/types";
 import { useColorScheme } from "nativewind";
 import colors from "tailwindcss/colors";
@@ -42,11 +42,11 @@ export const SongListItem = ({ song }: { song: SongT }) => {
         style={
           Platform.OS === "ios"
             ? {
-                shadowColor: "#000",
-                shadowOffset: { width: 0, height: 1 },
-                shadowOpacity: 0.1,
-                shadowRadius: 2,
-              }
+              shadowColor: "#000",
+              shadowOffset: { width: 0, height: 1 },
+              shadowOpacity: 0.1,
+              shadowRadius: 2,
+            }
             : {}
         }>
         <View className="flex-row items-center p-3">

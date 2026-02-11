@@ -1,6 +1,6 @@
 import { Component, ErrorInfo, ReactNode } from "react";
 import { TouchableOpacity } from "react-native";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import Reanimated, { FadeIn } from "react-native-reanimated";
 import { Container } from "./Container";
 import { logger } from "@repo/utils";
