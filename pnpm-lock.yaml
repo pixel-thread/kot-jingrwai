@@ -841,6 +841,9 @@ importers:
 
   src/packages/utils:
     dependencies:
+      '@repo/constants':
+        specifier: workspace:*
+        version: link:../constants
       '@repo/libs':
         specifier: workspace:*
         version: link:../libs
