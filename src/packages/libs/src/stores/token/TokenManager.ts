@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import * as SecureStore from "expo-secure-store";
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, TOKEN_STORE_KEY } from "../../key";
 
 interface TokenState {
   accessToken: string | null;
@@ -9,9 +10,13 @@ interface TokenState {
   clearTokens: () => void;
 }
 
-const SecureStorage = {
+export const TokenStoreManager = {
   getItem: async (key: string): Promise<string | null> => {
     return await SecureStore.getItemAsync(key);
+  },
+  setTokens: async (accessToken: string, refreshToken: string): Promise<void> => {
+    await SecureStore.setItemAsync(ACCESS_TOKEN_KEY, accessToken);
+    await SecureStore.setItemAsync(REFRESH_TOKEN_KEY, refreshToken);
   },
   setItem: async (key: string, value: string): Promise<void> => {
     await SecureStore.setItemAsync(key, value);
@@ -30,8 +35,8 @@ export const useTokenManager = create<TokenState>()(
       clearTokens: () => set({ accessToken: null, refreshToken: null }),
     }),
     {
-      name: "token-storage-manager",
-      storage: createJSONStorage(() => SecureStorage),
+      name: TOKEN_STORE_KEY,
+      storage: createJSONStorage(() => TokenStoreManager),
     }
   )
 );
