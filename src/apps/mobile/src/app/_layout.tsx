@@ -6,14 +6,13 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   ThemeProvider,
   TQueryProvider,
-  Ternary,
   ErrorBoundary,
   UpdateContextProvider,
+  AuthProvider,
 } from "@repo/ui-native";
 import * as SplashScreen from "expo-splash-screen";
-import { Redirect, router, Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import { useOnboardingStore } from "@repo/libs";
-import Onboarding from "~/src/components/Onboarding";
 import { OtaUpdateBanner } from "~/src/components/Common/OtaUpdateBanner";
 import { logger } from "@repo/utils";
 
@@ -54,15 +53,17 @@ export default function Layout() {
         <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-900">
           <TQueryProvider>
             <ErrorBoundary>
-              <UpdateContextProvider>
-                <ThemeProvider>
-                  <OtaUpdateBanner
-                    testMode={process.env.NODE_ENV === "development"}
-                    scenario={"fail"}
-                  />
-                  <Stack screenOptions={{ headerShown: false }} />
-                </ThemeProvider>
-              </UpdateContextProvider>
+              <AuthProvider>
+                <UpdateContextProvider>
+                  <ThemeProvider>
+                    <OtaUpdateBanner
+                      testMode={process.env.NODE_ENV === "development"}
+                      scenario={"fail"}
+                    />
+                    <Stack screenOptions={{ headerShown: false }} />
+                  </ThemeProvider>
+                </UpdateContextProvider>
+              </AuthProvider>
             </ErrorBoundary>
           </TQueryProvider>
         </SafeAreaView>
