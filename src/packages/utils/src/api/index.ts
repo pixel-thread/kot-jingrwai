@@ -1,6 +1,5 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, TokenStoreManager } from "@repo/libs";
-import { router } from "expo-router";
 import { AUTH_ENDPOINT } from "@repo/constants";
 
 const axiosInstance = axios.create({
@@ -38,7 +37,6 @@ const shouldSkipRefresh = (url?: string) => {
 const handleUnauthorizedExit = async () => {
   await TokenStoreManager.removeItem(ACCESS_TOKEN_KEY);
   await TokenStoreManager.removeItem(REFRESH_TOKEN_KEY);
-  router.replace("/auth/sign-in");
 };
 
 /* -------------------------------------------------- */
