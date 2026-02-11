@@ -1,6 +1,7 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, TokenStoreManager } from "@repo/libs";
 import { router } from "expo-router";
+import { AUTH_ENDPOINT } from "@repo/constants";
 
 const axiosInstance = axios.create({
   baseURL: process.env.EXPO_PUBLIC_API_URL,
@@ -26,7 +27,11 @@ const processQueue = (error: any, token: string | null = null) => {
 
 const shouldSkipRefresh = (url?: string) => {
   if (!url) return true;
-  const skipUrls = ["/auth/refresh", "/auth/sign-in", "/auth/sign-up"];
+  const skipUrls = [
+    AUTH_ENDPOINT.POST_LOGIN,
+    AUTH_ENDPOINT.POST_REGISTER,
+    AUTH_ENDPOINT.POST_REFRESH,
+  ];
   return skipUrls.some((path) => url.includes(path));
 };
 
@@ -91,7 +96,9 @@ axiosInstance.interceptors.response.use(
       const refreshToken = await TokenStoreManager.getItem(REFRESH_TOKEN_KEY);
 
       // Use standard axios instance for the refresh call
-      const res = await axios.post(`${process.env.EXPO_PUBLIC_API_URL}/auth/refresh`, {
+      const url = `${process.env.EXPO_PUBLIC_API_URL}/${AUTH_ENDPOINT.POST_REFRESH}`;
+
+      const res = await axios.post(url, {
         refresh_token: refreshToken,
       });
 
