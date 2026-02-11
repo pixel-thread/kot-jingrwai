@@ -8,8 +8,8 @@ import {
   ScrollView,
 } from "react-native";
 import { Container } from "../../common";
-import { Text } from "../../typography";
-import { Button } from "../../button";
+import { Text } from "../../ui/typography";
+import { Button } from "../../ui/button";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useColorScheme } from "nativewind";
 import { gray } from "tailwindcss/colors";
@@ -23,9 +23,10 @@ type LoginValues = {
 type Props = {
   onLogin: (value: LoginValues) => void;
   isLoading?: boolean;
+  onSignup?: () => void;
 };
 
-export function LoginScreen({ onLogin, isLoading }: Props) {
+export function LoginScreen({ onLogin, isLoading, onSignup }: Props) {
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === "dark";
 
@@ -137,7 +138,7 @@ export function LoginScreen({ onLogin, isLoading }: Props) {
               <Text variant="secondary" size="sm">
                 Don&apos;t have an account?
               </Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onSignup}>
                 <Text
                   variant="primary"
                   size="sm"
