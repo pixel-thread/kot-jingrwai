@@ -3,3 +3,4 @@ export * from "./contact";
 export * from "./help-support";
 export * from "./privacy-policy";
 export * from "./report";
+export * from "./auth";

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "lynti:dev": "turbo run dev --filter web --filter lynti-bneng --filter @repo/ui-native",
     "clean:install": "node scripts/clean-install.mjs",
     "generate": "turbo run generate",
     "lint": "turbo run lint",
