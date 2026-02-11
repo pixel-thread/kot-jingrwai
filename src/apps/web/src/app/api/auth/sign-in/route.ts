@@ -38,7 +38,7 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }) => {
     });
 
     const data = {
-      refresh_token: hashedRefresh,
+      refreshToken: hashedRefresh,
       accessToken: accessToken,
     };
     return SuccessResponse({
