@@ -8,4 +8,5 @@ export const drawerMenuItems: MenuItemsT[] = [
   { id: 4, title: "Report", href: "/report" },
   { id: 5, title: "Settings", href: "/setting" },
   { id: 7, title: "Shaphang Jongngi", href: "/about" },
+  { id: 8, title: "Auth", href: "/auth" },
 ];
