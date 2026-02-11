@@ -26,10 +26,12 @@
     "@types/react": "*",
     "typescript": "*",
     "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "@repo/types": "workspace:*"
   },
   "dependencies": {
-    "@repo/types": "workspace:*"
+    "@repo/libs": "workspace:*",
+    "@repo/constants": "workspace:*"
   },
   "private": true
 }

@@ -869,13 +869,19 @@ importers:
 
   src/packages/utils-native:
     dependencies:
-      '@repo/types':
+      '@repo/constants':
         specifier: workspace:*
-        version: link:../types
+        version: link:../constants
+      '@repo/libs':
+        specifier: workspace:*
+        version: link:../libs
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../types
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
