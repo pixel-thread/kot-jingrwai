@@ -11,7 +11,7 @@ import {
   UpdateContextProvider,
 } from "@repo/ui-native";
 import * as SplashScreen from "expo-splash-screen";
-import { Stack } from "expo-router";
+import { Redirect, router, Stack } from "expo-router";
 import { useOnboardingStore } from "@repo/libs";
 import Onboarding from "~/src/components/Onboarding";
 import { OtaUpdateBanner } from "~/src/components/Common/OtaUpdateBanner";
@@ -25,8 +25,16 @@ export default function Layout() {
   const { hasCompletedOnboarding } = useOnboardingStore();
 
   useEffect(() => {
-    setAppIsReady(true);
-  }, []);
+    if (!appIsReady) {
+      setAppIsReady(true);
+    }
+  }, [appIsReady]);
+
+  useEffect(() => {
+    if (!hasCompletedOnboarding && appIsReady) {
+      router.replace("/onboarding");
+    }
+  }, [hasCompletedOnboarding, appIsReady]);
 
   const onLayoutRootView = useCallback(() => {
     if (appIsReady) {
@@ -52,11 +60,7 @@ export default function Layout() {
                     testMode={process.env.NODE_ENV === "development"}
                     scenario={"fail"}
                   />
-                  <Ternary
-                    condition={!hasCompletedOnboarding}
-                    ifTrue={<Onboarding />}
-                    ifFalse={<Stack screenOptions={{ headerShown: false }} />}
-                  />
+                  <Stack screenOptions={{ headerShown: false }} />
                 </ThemeProvider>
               </UpdateContextProvider>
             </ErrorBoundary>
