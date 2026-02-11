@@ -78,89 +78,90 @@ export function LoginScreen({
             </Text>
           </Reanimated.View>
 
-          <View className="gap-y-5">
-            {/* Email Input with Controller */}
-            <Reanimated.View entering={FadeInDown.delay(100).duration(600).springify()}>
-              <Text
-                variant="secondary"
-                size="xs"
-                weight="bold"
-                className="mb-2 ml-1 uppercase tracking-wider text-gray-500">
-                Email Address
-              </Text>
-              <Controller
-                control={control}
-                name="email"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <View
-                    className={`flex-row items-center rounded-2xl bg-white px-4 py-3.5 shadow-sm ring-1 dark:bg-gray-800 ${errors.email ? "ring-red-500" : "ring-gray-100 dark:ring-gray-700"}`}>
-                    <TextInput
-                      className="ml-3 flex-1 text-base text-gray-900 dark:text-white"
-                      placeholder="name@example.com"
-                      placeholderTextColor={isDarkMode ? gray[500] : gray[400]}
-                      keyboardType="email-address"
-                      autoCapitalize="none"
-                      onBlur={onBlur}
-                      onChangeText={onChange}
-                      value={value}
-                    />
-                  </View>
-                )}
-              />
-              {errors.email && (
-                <Text className="ml-1 mt-1 text-xs text-red-500">{errors.email.message}</Text>
-              )}
-            </Reanimated.View>
-
-            {/* Password Input with Controller */}
-            <Reanimated.View entering={FadeInDown.delay(200).duration(600).springify()}>
-              <Text
-                variant="secondary"
-                size="xs"
-                weight="bold"
-                className="mb-2 ml-1 uppercase tracking-wider text-gray-500">
-                Password
-              </Text>
-              <Controller
-                control={control}
-                name="password"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <View
-                    className={`flex-row items-center rounded-2xl bg-white px-4 py-3.5 shadow-sm ring-1 dark:bg-gray-800 ${errors.password ? "ring-red-500" : "ring-gray-100 dark:ring-gray-700"}`}>
-                    <TextInput
-                      className="ml-3 flex-1 text-base text-gray-900 dark:text-white"
-                      placeholder="Enter your password"
-                      placeholderTextColor={isDarkMode ? gray[500] : gray[400]}
-                      secureTextEntry={!isPasswordVisible}
-                      onBlur={onBlur}
-                      onChangeText={onChange}
-                      value={value}
-                    />
-                    <TouchableOpacity onPress={() => setIsPasswordVisible(!isPasswordVisible)}>
-                      <MaterialCommunityIcons
-                        name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
-                        size={22}
-                        color={isDarkMode ? gray[400] : gray[500]}
+          <Form {...form}>
+            <View className="gap-y-5">
+              {/* Email Input with Controller */}
+              <Reanimated.View entering={FadeInDown.delay(100).duration(600).springify()}>
+                <Text
+                  variant="secondary"
+                  size="xs"
+                  weight="bold"
+                  className="mb-2 ml-1 uppercase tracking-wider text-gray-500">
+                  Email Address
+                </Text>
+                <Controller
+                  control={control}
+                  name="email"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <View
+                      className={`flex-row items-center rounded-2xl bg-white px-4 py-3.5 shadow-sm ring-1 dark:bg-gray-800 ${errors.email ? "ring-red-500" : "ring-gray-100 dark:ring-gray-700"}`}>
+                      <TextInput
+                        className="ml-3 flex-1 text-base text-gray-900 dark:text-white"
+                        placeholder="name@example.com"
+                        placeholderTextColor={isDarkMode ? gray[500] : gray[400]}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
                       />
-                    </TouchableOpacity>
-                  </View>
+                    </View>
+                  )}
+                />
+                {errors.email && (
+                  <Text className="ml-1 mt-1 text-xs text-red-500">{errors.email.message}</Text>
                 )}
+              </Reanimated.View>
+
+              {/* Password Input with Controller */}
+              <Reanimated.View entering={FadeInDown.delay(200).duration(600).springify()}>
+                <Text
+                  variant="secondary"
+                  size="xs"
+                  weight="bold"
+                  className="mb-2 ml-1 uppercase tracking-wider text-gray-500">
+                  Password
+                </Text>
+                <Controller
+                  control={control}
+                  name="password"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <View
+                      className={`flex-row items-center rounded-2xl bg-white px-4 py-3.5 shadow-sm ring-1 dark:bg-gray-800 ${errors.password ? "ring-red-500" : "ring-gray-100 dark:ring-gray-700"}`}>
+                      <TextInput
+                        className="ml-3 flex-1 text-base text-gray-900 dark:text-white"
+                        placeholder="Enter your password"
+                        placeholderTextColor={isDarkMode ? gray[500] : gray[400]}
+                        secureTextEntry={!isPasswordVisible}
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                      />
+                      <TouchableOpacity onPress={() => setIsPasswordVisible(!isPasswordVisible)}>
+                        <MaterialCommunityIcons
+                          name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
+                          size={22}
+                          color={isDarkMode ? gray[400] : gray[500]}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  )}
+                />
+                {errors.password && (
+                  <Text className="ml-1 mt-1 text-xs text-red-500">{errors.password.message}</Text>
+                )}
+              </Reanimated.View>
+
+              {/* Login Button using handleSubmit */}
+              <Button
+                title="Sign In"
+                onPress={handleSubmit(onSubmit)}
+                loading={isLoading}
+                size="lg"
+                className="rounded-2xl shadow-md shadow-indigo-200 dark:shadow-none"
               />
-              {errors.password && (
-                <Text className="ml-1 mt-1 text-xs text-red-500">{errors.password.message}</Text>
-              )}
-            </Reanimated.View>
-
-            {/* Login Button using handleSubmit */}
-            <Button
-              title="Sign In"
-              onPress={handleSubmit(onSubmit)}
-              loading={isLoading}
-              size="lg"
-              className="rounded-2xl shadow-md shadow-indigo-200 dark:shadow-none"
-            />
-          </View>
-
+            </View>
+          </Form>
           {/* Divider */}
           <View className="mt-4 gap-y-5">
             <Reanimated.View
