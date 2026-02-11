@@ -1,11 +1,11 @@
 import { Container } from "../common";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import { View } from "react-native";
 import { useColorScheme } from "nativewind";
 import colors from "tailwindcss/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 
 type NotFoundSongProps = {
   reset: () => void;

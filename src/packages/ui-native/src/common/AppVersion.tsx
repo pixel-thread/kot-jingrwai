@@ -8,7 +8,7 @@ import {
   StatusBar,
 } from "react-native";
 import { AppUpdateT } from "@repo/types";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import { useColorScheme } from "nativewind";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated, {

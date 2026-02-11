@@ -1,5 +1,5 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import { ToastAndroid, TouchableOpacity, View } from "react-native";
 import { useColorScheme } from "nativewind";
 import React from "react";

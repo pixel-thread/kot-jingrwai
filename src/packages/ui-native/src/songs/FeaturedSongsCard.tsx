@@ -1,7 +1,7 @@
 import { View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated, { FadeIn } from "react-native-reanimated";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import { cn } from "@repo/libs";
 import { SongT } from "@repo/types";
 import { useRouter } from "expo-router";

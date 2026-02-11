@@ -1,7 +1,7 @@
 import { useColorScheme } from "nativewind";
 import { Platform, TouchableOpacity, View } from "react-native";
 import { gray } from "tailwindcss/colors";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import { Ternary } from "../common/Ternary";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import type { ReactNode } from "react";

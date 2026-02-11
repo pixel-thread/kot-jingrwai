@@ -2,9 +2,9 @@ import { Modal, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import { indigo } from "tailwindcss/colors";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 import { Container } from "./Container";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 
 type Props = {
   isModal?: boolean;

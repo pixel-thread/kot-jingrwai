@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import Reanimated, { FadeInDown } from "react-native-reanimated";
 import { cn } from "@repo/libs";
 import { PropsWithChildren } from "react";

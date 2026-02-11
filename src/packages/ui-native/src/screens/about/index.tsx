@@ -2,7 +2,7 @@ import { View, ScrollView } from "react-native";
 import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
 import { useState, useEffect } from "react";
 import { Container, ContentSection } from "../../common";
-import { Text } from "../../typography";
+import { Text } from "../../ui/typography";
 
 export const AboutScreen = () => {
   // Animation values

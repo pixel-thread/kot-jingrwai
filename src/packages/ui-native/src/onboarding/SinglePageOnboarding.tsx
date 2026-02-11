@@ -1,7 +1,7 @@
 import { View } from "react-native";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import Reanimated, { FadeInUp, useSharedValue, withSpring } from "react-native-reanimated";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 
 type Props = {
   setHasCompletedOnboarding: (hasCompletedOnboarding: boolean) => void;

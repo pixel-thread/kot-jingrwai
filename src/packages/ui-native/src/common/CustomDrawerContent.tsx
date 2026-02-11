@@ -4,10 +4,10 @@ import {
   DrawerItemList,
 } from "@react-navigation/drawer";
 import { ScrollView, TouchableOpacity, View } from "react-native";
-import { Text } from "../typography";
+import { Text } from "../ui/typography";
 import { MenuItemsT } from "@repo/types";
 import * as Constants from "expo-constants";
-import { buttonVariants } from "../button";
+import { buttonVariants } from "../ui/button";
 import { cn } from "@repo/libs";
 import { truncateText } from "@repo/utils";
 
