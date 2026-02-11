@@ -1,5 +1,6 @@
 import { SignupScreen } from "@repo/ui-native";
-import { http, SignUpSchema } from "@repo/utils";
+import { SignUpSchema } from "@repo/utils";
+import { http } from "@repo/utils-native";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { z } from "zod";

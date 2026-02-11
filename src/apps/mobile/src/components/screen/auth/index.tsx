@@ -1,6 +1,6 @@
 import { AUTH_ENDPOINT } from "@repo/constants";
 import { LoginScreen as LScreen } from "@repo/ui-native";
-import { http } from "@repo/utils";
+import { http } from "@repo/utils-native";
 import { TokenStoreManager, useOnboardingStore } from "@repo/libs";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "expo-router";

@@ -8,7 +8,8 @@ import { Platform, ToastAndroid, TouchableOpacity, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useColorScheme } from "nativewind";
 import * as DocumentPicker from "expo-document-picker";
-import { http, logger, truncateText } from "@repo/utils";
+import { logger, truncateText } from "@repo/utils";
+import { http } from "@repo/utils-native";
 import React, { useState } from "react";
 import { useAudioPlayer } from "expo-audio";
 
