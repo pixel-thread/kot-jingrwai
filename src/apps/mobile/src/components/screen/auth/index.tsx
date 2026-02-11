@@ -1,7 +1,12 @@
 import { AUTH_ENDPOINT } from "@repo/constants";
 import { LoginScreen as LScreen } from "@repo/ui-native";
 import { http } from "@repo/utils";
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, TokenStoreManager } from "@repo/libs";
+import {
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+  TokenStoreManager,
+  useOnboardingStore,
+} from "@repo/libs";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { Platform, ToastAndroid } from "react-native";
@@ -18,6 +23,7 @@ type ResType = {
 
 export const LoginScreen = () => {
   const router = useRouter();
+  const { setHasCompletedOnboarding } = useOnboardingStore();
 
   const { isPending, mutate } = useMutation({
     mutationFn: (data: FormValue) => http.post<ResType>(AUTH_ENDPOINT.POST_LOGIN, data),
@@ -30,6 +36,7 @@ export const LoginScreen = () => {
         if (Platform.OS === "android") {
           ToastAndroid.show(data.message, ToastAndroid.SHORT);
         }
+        setHasCompletedOnboarding(true);
         return res;
       }
       if (Platform.OS === "android") {
