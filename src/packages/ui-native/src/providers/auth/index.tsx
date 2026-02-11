@@ -1,5 +1,5 @@
-import React from "react";
-import { AuthContext } from "@repo/libs";
+import React, { useCallback, useEffect } from "react";
+import { AuthContext, TokenStoreManager } from "@repo/libs";
 import { UserT, AuthContextI } from "@repo/types";
 import { useQuery } from "@tanstack/react-query";
 import { http } from "@repo/utils";
@@ -10,11 +10,26 @@ type Props = {
 };
 
 export const AuthProvider = ({ children }: Props) => {
+  const [isTokenSet, setIsTokenSet] = React.useState(false);
+
   const { isFetching, data, refetch } = useQuery({
     queryKey: ["user"],
-    queryFn: async () => http.get<UserT>(AUTH_ENDPOINT.GET_ME),
-    select: (data) => data.data,
+    queryFn: () => http.get<UserT>(AUTH_ENDPOINT.GET_ME),
+    select: (data) => data?.data,
+    enabled: isTokenSet,
   });
+
+  const getToken = useCallback(async () => {
+    if (isTokenSet) return;
+    const token = await TokenStoreManager.isTokenSet();
+    if (token) {
+      setIsTokenSet(token);
+    }
+  }, [isTokenSet]);
+
+  useEffect(() => {
+    getToken();
+  }, [getToken]);
 
   const value = {
     user: data,

@@ -2,6 +2,10 @@ import * as SecureStore from "expo-secure-store";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "../../key";
 
 export const TokenStoreManager = {
+  isTokenSet: async (): Promise<boolean> => {
+    const accessToken = await SecureStore.getItemAsync(ACCESS_TOKEN_KEY);
+    return !!accessToken;
+  },
   getItem: async (key: string): Promise<string | null> => {
     return await SecureStore.getItemAsync(key);
   },
