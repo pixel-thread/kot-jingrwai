@@ -12,6 +12,7 @@ import { logger, truncateText } from "@repo/utils";
 import { http } from "@repo/utils-native";
 import React, { useState } from "react";
 import { useAudioPlayer } from "expo-audio";
+import { useAuth } from "@repo/hooks";
 
 type Props = {
   song: SongT;
@@ -26,6 +27,10 @@ export type FileT = {
 };
 
 export const MiniMusicPlayer = ({ song }: Props) => {
+  const authContext = useAuth();
+  const role = authContext?.role;
+  const isUploadEnable = role === "ADMIN" || role === "SUPER_ADMIN";
+
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const [file, setFile] = useState<DocumentPicker.DocumentPickerAsset | null>(null);
@@ -183,6 +188,19 @@ export const MiniMusicPlayer = ({ song }: Props) => {
       deleteSongTrack({ id: songTrack.id });
     }
   };
+
+  if (!isUploadEnable && !isTrackExist) {
+    return (
+      <MusicPlayer
+        song={song}
+        musicUrl={songTrack?.metadata.downloadUrl || ""}
+        onNextSong={onNextSong}
+        onPreviousSong={onPreviousSong}
+        isLoading={isTrackExist ? false : true}
+        isDisabled={isDisabled}
+      />
+    );
+  }
 
   return (
     <View className="flex-1 gap-y-2">
