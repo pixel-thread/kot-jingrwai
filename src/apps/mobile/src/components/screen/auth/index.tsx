@@ -1,12 +1,7 @@
 import { AUTH_ENDPOINT } from "@repo/constants";
 import { LoginScreen as LScreen } from "@repo/ui-native";
 import { http } from "@repo/utils";
-import {
-  ACCESS_TOKEN_KEY,
-  REFRESH_TOKEN_KEY,
-  TokenStoreManager,
-  useOnboardingStore,
-} from "@repo/libs";
+import { TokenStoreManager, useOnboardingStore } from "@repo/libs";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { Platform, ToastAndroid } from "react-native";
@@ -37,6 +32,7 @@ export const LoginScreen = () => {
           ToastAndroid.show(data.message, ToastAndroid.SHORT);
         }
         setHasCompletedOnboarding(true);
+        router.replace("/");
         return res;
       }
       if (Platform.OS === "android") {
