@@ -52,7 +52,7 @@ export const RoleBaseRoute = ({ children, routeRoles = defaultRoute }: PropsT) =
   // Handle authentication and role-based redirects
   useEffect(() => {
     // Wait until authentication loading is complete to proceed
-    if (isAuthLoading) return;
+    if (isAuthLoading || isLoading) return;
 
     // Step 1: Identify the current route from the `routeRoles` configuration
     const currentRoute = routeRoles.find((route) => {
@@ -69,7 +69,7 @@ export const RoleBaseRoute = ({ children, routeRoles = defaultRoute }: PropsT) =
       // If the route requires authentication and the user is not authenticated
       if (currentRoute.needAuth && !isAuthenticated) {
         // Redirect the user to the signin page and include the current path as a `redirect` query parameter
-        router.replace(`/auth?redirect=${encodeURIComponent(pathName)}`);
+        router.push(`/auth?redirect=${encodeURIComponent(pathName)}`);
         return; // Exit the logic as redirection is in progress
       }
 
@@ -96,15 +96,6 @@ export const RoleBaseRoute = ({ children, routeRoles = defaultRoute }: PropsT) =
       router.push(redirect || "/");
     }
   }, [isAuthenticated, pathName, redirect, router, isAuthLoading, isLoading]);
-
-  // Display preloader if authentication or loading is in progress
-  if (isAuthLoading || isLoading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
 
   return <>{children}</>;
 };
