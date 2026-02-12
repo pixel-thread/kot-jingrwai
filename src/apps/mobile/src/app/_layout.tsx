@@ -16,6 +16,7 @@ import { router, Stack } from "expo-router";
 import { useOnboardingStore } from "@repo/libs";
 import { OtaUpdateBanner } from "~/src/components/Common/OtaUpdateBanner";
 import { logger } from "@repo/utils";
+import { defaultRoute } from "../libs/constants/routeRole";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -55,7 +56,7 @@ export default function Layout() {
           <TQueryProvider>
             <ErrorBoundary>
               <AuthProvider>
-                <RoleBaseRoute>
+                <RoleBaseRoute routeRoles={defaultRoute}>
                   <UpdateContextProvider>
                     <ThemeProvider>
                       <OtaUpdateBanner
