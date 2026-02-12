@@ -5,3 +5,4 @@ export * from "./logger";
 export * from "./compareAppVersion";
 export * from "./normalizeTextForSearch";
 export * from "./text";
+export * from "./validiations";

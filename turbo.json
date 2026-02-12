@@ -8,6 +8,7 @@
       "outputs": [".vercel/**", ".next/**", "!.next/cache/**", "dist/**", "assets/**"],
       "env": [
         "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+        "EXPO_PUBLIC_API_URL",
         "CLERK_SECRET_KEY",
         "NEXT_PUBLIC_APP_NAME",
         "NEXT_PUBLIC_BASE_URL",

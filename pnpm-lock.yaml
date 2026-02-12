@@ -728,6 +728,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      expo-secure-store:
+        specifier: '*'
+        version: 15.0.8(expo@53.0.25(@babel/core@7.28.6)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0))
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -838,6 +841,12 @@ importers:
 
   src/packages/utils:
     dependencies:
+      '@repo/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@repo/libs':
+        specifier: workspace:*
+        version: link:../libs
       '@repo/types':
         specifier: workspace:*
         version: link:../types
@@ -4432,6 +4441,11 @@ packages:
         optional: true
       react-server-dom-webpack:
         optional: true
+
+  expo-secure-store@15.0.8:
+    resolution: {integrity: sha512-lHnzvRajBu4u+P99+0GEMijQMFCOYpWRO4dWsXSuMt77+THPIGjzNvVKrGSl6mMrLsfVaKL8BpwYZLGlgA+zAw==}
+    peerDependencies:
+      expo: '*'
 
   expo-splash-screen@0.30.10:
     resolution: {integrity: sha512-Tt9va/sLENQDQYeOQ6cdLdGvTZ644KR3YG9aRlnpcs2/beYjOX1LHT510EGzVN9ljUTg+1ebEo5GGt2arYtPjw==}
@@ -11434,6 +11448,10 @@ snapshots:
       - react
       - react-native
       - supports-color
+
+  expo-secure-store@15.0.8(expo@53.0.25(@babel/core@7.28.6)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0)):
+    dependencies:
+      expo: 53.0.25(@babel/core@7.28.6)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0)
 
   expo-splash-screen@0.30.10(expo@53.0.25(@babel/core@7.28.6)(@expo/metro-runtime@5.0.5(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0)))(react-native@0.79.6(@babel/core@7.28.6)(@types/react@19.0.10)(react@19.0.0))(react@19.0.0)):
     dependencies:

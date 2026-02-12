@@ -57,10 +57,10 @@ export const POST = withValidation({ body: TokenSchema }, async ({ body }) => {
 
     return SuccessResponse({
       data: {
-        access_token: newAccessToken,
-        refresh_token: newRefreshToken,
+        accessToken: newAccessToken,
+        refreshToken: newRefreshToken,
       },
-      message: "Successfull refresh",
+      message: "Successfully refresh",
     });
   } catch (error) {
     return handleApiErrors(error);

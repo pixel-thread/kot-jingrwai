@@ -10,12 +10,7 @@ import { type EndpointT } from "@repo/types";
  * @property POST_LOGOUT - Logout endpoint
  * @property GET_ME - Get current user information endpoint
  */
-type AuthEndpointKeys =
-  | "POST_LOGIN"
-  | "POST_REGISTER"
-  | "POST_LOGOUT"
-  | "GET_ME"
-  | "POST_LOGIN_INIT";
+type AuthEndpointKeys = "POST_LOGIN" | "POST_REGISTER" | "POST_LOGOUT" | "GET_ME" | "POST_REFRESH";
 
 /**
  * Authentication API endpoints configuration.
@@ -29,9 +24,9 @@ type AuthEndpointKeys =
  */
 
 export const AUTH_ENDPOINT: EndpointT<AuthEndpointKeys> = {
-  POST_LOGIN_INIT: "/auth/init",
-  POST_LOGIN: "/auth",
-  POST_REGISTER: "/auth/register",
+  POST_LOGIN: "/auth/sign-in",
+  POST_REGISTER: "/auth/sign-up",
   POST_LOGOUT: "/auth/logout",
-  GET_ME: "/auth",
+  GET_ME: "/auth/me",
+  POST_REFRESH: "/auth/refresh",
 };

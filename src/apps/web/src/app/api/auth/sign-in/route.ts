@@ -37,12 +37,12 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }) => {
       authId: auth.id,
     });
 
+    const data = {
+      refreshToken: hashedRefresh,
+      accessToken: accessToken,
+    };
     return SuccessResponse({
-      token: accessToken,
-      data: {
-        ...auth.user,
-        refresh_token: hashedRefresh,
-      },
+      data: data,
       message: "Successfully logged in",
     });
   } catch (error) {
