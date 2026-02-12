@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "@repo/libs": "workspace:*",
-    "@repo/constants": "workspace:*"
+    "@repo/constants": "workspace:*",
+    "@repo/utils": "workspace:*"
   },
   "private": true
 }

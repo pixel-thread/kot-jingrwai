@@ -7,8 +7,26 @@ import {
   PrismaClientUnknownRequestError,
   PrismaClientValidationError,
 } from "@prisma/client/runtime/library";
+import { errors as JoseErrors } from "jose";
+
+const isJwtError = (error: unknown): boolean => {
+  return (
+    error instanceof JoseErrors.JWTExpired ||
+    error instanceof JoseErrors.JWTInvalid ||
+    error instanceof JoseErrors.JWSSignatureVerificationFailed ||
+    error instanceof JoseErrors.JWTClaimValidationFailed ||
+    error instanceof JoseErrors.JWSInvalid
+  );
+};
 
 export const handleApiErrors = (error: unknown) => {
+  if (isJwtError(error)) {
+    return ErrorResponse({
+      message: "Unauthorized",
+      status: 401,
+    });
+  }
+
   if (error instanceof PrismaClientInitializationError) {
     return ErrorResponse({ message: error.message, error, status: 400 });
   }

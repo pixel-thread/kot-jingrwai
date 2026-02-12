@@ -55,7 +55,6 @@ axiosInstance.interceptors.response.use(
   (res) => res,
   async (error: AxiosError) => {
     const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
-
     // 1. If not a 401 or shouldn't refresh, just fail
     if (
       !error.response ||
@@ -73,7 +72,6 @@ axiosInstance.interceptors.response.use(
     }
 
     originalRequest._retry = true;
-
     // 3. Handle concurrent requests while refreshing
     if (isRefreshing) {
       return new Promise((resolve, reject) => {
@@ -82,7 +80,7 @@ axiosInstance.interceptors.response.use(
             originalRequest.headers.Authorization = `Bearer ${token}`;
             resolve(axiosInstance(originalRequest));
           },
-          reject: (err: any) => reject(err),
+          reject: (err) => reject(err),
         });
       });
     }
@@ -94,15 +92,14 @@ axiosInstance.interceptors.response.use(
       const refreshToken = await TokenStoreManager.getItem(REFRESH_TOKEN_KEY);
 
       // Use standard axios instance for the refresh call
-      const url = `${process.env.EXPO_PUBLIC_API_URL}/${AUTH_ENDPOINT.POST_REFRESH}`;
+      const url = `${process.env.EXPO_PUBLIC_API_URL}${AUTH_ENDPOINT.POST_REFRESH}`;
 
-      const res = await axios.post(url, {
-        refresh_token: refreshToken,
-      });
+      const res = await axios.post(url, { refreshToken });
 
       const payload: any = res.data;
-      const access_token = payload?.data?.access_token ?? payload?.access_token;
-      const new_refresh_token = payload?.data?.refresh_token ?? payload?.refresh_token;
+      const access_token = payload?.data?.accessToken;
+      const new_refresh_token = payload?.data?.refreshToken;
+
       if (!access_token) {
         throw new Error("Invalid refresh response");
       }
@@ -115,7 +112,9 @@ axiosInstance.interceptors.response.use(
       return axiosInstance(originalRequest);
     } catch (refreshError) {
       processQueue(refreshError, null);
+
       await handleUnauthorizedExit();
+
       return Promise.reject(refreshError);
     } finally {
       isRefreshing = false;
