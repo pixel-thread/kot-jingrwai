@@ -14,7 +14,7 @@ import {
   useThemeStore,
 } from "@repo/libs";
 import { useAuth, useUpdateContext } from "@repo/hooks";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { http } from "@repo/utils-native";
 import { AUTH_ENDPOINT } from "@repo/constants";
 
@@ -26,7 +26,6 @@ const Settings = () => {
   const { colorScheme } = useColorScheme();
   const auth = useAuth();
   const user = auth?.user;
-  const queryClient = useQueryClient();
   const context = useUpdateContext();
   const isDarkMode = colorScheme === "dark";
   const {
