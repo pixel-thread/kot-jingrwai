@@ -29,6 +29,11 @@ enum TAGS {
   CHRISTMAS
 }
 
+enum AppSource {
+  LYNTI_BNENG
+  KOT_JINGRWAI
+}
+
 enum Role {
   SUPER_ADMIN
   ADMIN
@@ -160,20 +165,21 @@ model Song {
 }
 
 model SongMetadata {
-  id        String   @id @default(uuid())
+  id        String      @id @default(uuid())
   number    Int // song number/index
   oldNumber Int?
+  source    AppSource[] @default([KOT_JINGRWAI])
   language  String // e.g. 'en', 'kn', 'khasi'
   author    String?
-  isChorus  Boolean  @default(false)
+  isChorus  Boolean     @default(false)
   composer  String?
   tags      String[] // optional categories/tags
   syllables String?
   reference String?
   tune      String?
   meter     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 
   songId String?
   song   Song?
