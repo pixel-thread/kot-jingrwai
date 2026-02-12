@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { AuthContext, TokenStoreManager } from "@repo/libs";
 import { UserT, AuthContextI } from "@repo/types";
 import { useQuery } from "@tanstack/react-query";
-import { http } from "@repo/utils";
+import { http } from "@repo/utils-native";
 import { AUTH_ENDPOINT } from "@repo/constants";
 
 type Props = {

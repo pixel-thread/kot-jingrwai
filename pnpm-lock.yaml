@@ -875,6 +875,9 @@ importers:
       '@repo/libs':
         specifier: workspace:*
         version: link:../libs
+      '@repo/utils':
+        specifier: workspace:*
+        version: link:../utils
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*

@@ -2,16 +2,31 @@ import { router, Stack } from "expo-router";
 import { View, ScrollView, TouchableOpacity, Switch, Linking } from "react-native";
 import { CustomHeader } from "~/src/components/Common/CustomHeader";
 import { Text, ContentSection, ThemeSelector, ThemeToggle } from "@repo/ui-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useColorScheme } from "nativewind";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
-import { useTextStore, useThemeStore } from "@repo/libs";
-import { useUpdateContext } from "@repo/hooks";
+import {
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+  TokenStoreManager,
+  useTextStore,
+  useThemeStore,
+} from "@repo/libs";
+import { useAuth, useUpdateContext } from "@repo/hooks";
+import { useMutation } from "@tanstack/react-query";
+import { http } from "@repo/utils-native";
+import { AUTH_ENDPOINT } from "@repo/constants";
+import { logger } from "@repo/utils";
+
+type LogoutPayload = {
+  refreshToken: string;
+};
 
 const Settings = () => {
   const { colorScheme } = useColorScheme();
-
+  const auth = useAuth();
+  const user = auth?.user;
   const context = useUpdateContext();
   const isDarkMode = colorScheme === "dark";
   const {
@@ -26,6 +41,27 @@ const Settings = () => {
   const { isSelectable: textSelectionEnabled, setIsSelectable: setTextSelectionEnabled } =
     useTextStore();
   const { theme, setTheme } = useThemeStore();
+
+  const { isPending, mutate } = useMutation({
+    mutationFn: (data: LogoutPayload) => http.post(AUTH_ENDPOINT.POST_LOGOUT, data),
+    onSuccess: async (data) => {
+      if (data.success) {
+        await TokenStoreManager.removeItem(ACCESS_TOKEN_KEY);
+        await TokenStoreManager.removeItem(REFRESH_TOKEN_KEY);
+        router.replace("/");
+      }
+      return data.data;
+    },
+  });
+
+  const handleLogout = async () => {
+    const refreshToken = await TokenStoreManager.getItem(REFRESH_TOKEN_KEY);
+
+    if (refreshToken) {
+      mutate({ refreshToken });
+      router.replace("/");
+    }
+  };
 
   return (
     <>
@@ -164,6 +200,14 @@ const Settings = () => {
               description="Login to your account"
               onPress={() => router.push("/auth")}
             />
+            {user && (
+              <SettingItem
+                icon="lock-reset"
+                title={isPending ? "Logging out..." : "Logout"}
+                description="Logout from your account"
+                onPress={() => handleLogout()}
+              />
+            )}
           </ContentSection>
         </Reanimated.View>
       </ScrollView>
