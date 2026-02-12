@@ -104,6 +104,20 @@ model otp {
   updated_at DateTime @updatedAt
 }
 
+model SongPrayer {
+  id        String    @id @default(uuid())
+  value     String
+  songId    String
+  order     Int
+  isPaidBah Boolean
+  source    AppSource @default(KOT_JINGRWAI)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([songId])
+  @@index([id])
+}
+
 model Token {
   id        String   @id @default(uuid())
   userId    String
