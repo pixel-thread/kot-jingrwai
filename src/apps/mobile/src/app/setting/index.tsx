@@ -1,8 +1,8 @@
 import { router, Stack } from "expo-router";
 import { View, ScrollView, TouchableOpacity, Switch, Linking } from "react-native";
 import { CustomHeader } from "~/src/components/Common/CustomHeader";
-import { Text, ContentSection, ThemeSelector, ThemeToggle } from "@repo/ui-native";
-import { useEffect, useState } from "react";
+import { Text, ContentSection, ThemeSelector, ThemeToggle, Ternary } from "@repo/ui-native";
+import { useState } from "react";
 import { useColorScheme } from "nativewind";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Reanimated, { FadeIn, FadeInDown } from "react-native-reanimated";
@@ -17,7 +17,6 @@ import { useAuth, useUpdateContext } from "@repo/hooks";
 import { useMutation } from "@tanstack/react-query";
 import { http } from "@repo/utils-native";
 import { AUTH_ENDPOINT } from "@repo/constants";
-import { logger } from "@repo/utils";
 
 type LogoutPayload = {
   refreshToken: string;
@@ -194,20 +193,25 @@ const Settings = () => {
               description="Read our privacy policy"
               onPress={() => router.push("/setting/privacy")}
             />
-            <SettingItem
-              icon="lock"
-              title="Authentication"
-              description="Login to your account"
-              onPress={() => router.push("/auth")}
+            <Ternary
+              condition={!!user}
+              ifTrue={
+                <SettingItem
+                  icon="lock-reset"
+                  title={isPending ? "Logging out..." : "Logout"}
+                  description="Logout from your account"
+                  onPress={() => handleLogout()}
+                />
+              }
+              ifFalse={
+                <SettingItem
+                  icon="lock"
+                  title="Authentication"
+                  description="Login to your account"
+                  onPress={() => router.push("/auth")}
+                />
+              }
             />
-            {user && (
-              <SettingItem
-                icon="lock-reset"
-                title={isPending ? "Logging out..." : "Logout"}
-                description="Logout from your account"
-                onPress={() => handleLogout()}
-              />
-            )}
           </ContentSection>
         </Reanimated.View>
       </ScrollView>
