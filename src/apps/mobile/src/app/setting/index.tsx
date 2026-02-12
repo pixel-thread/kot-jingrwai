@@ -14,7 +14,7 @@ import {
   useThemeStore,
 } from "@repo/libs";
 import { useAuth, useUpdateContext } from "@repo/hooks";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { http } from "@repo/utils-native";
 import { AUTH_ENDPOINT } from "@repo/constants";
 
@@ -26,6 +26,7 @@ const Settings = () => {
   const { colorScheme } = useColorScheme();
   const auth = useAuth();
   const user = auth?.user;
+  const queryClient = useQueryClient();
   const context = useUpdateContext();
   const isDarkMode = colorScheme === "dark";
   const {
@@ -45,6 +46,7 @@ const Settings = () => {
     mutationFn: (data: LogoutPayload) => http.post(AUTH_ENDPOINT.POST_LOGOUT, data),
     onSuccess: async (data) => {
       if (data.success) {
+        auth?.refresh();
         await TokenStoreManager.removeItem(ACCESS_TOKEN_KEY);
         await TokenStoreManager.removeItem(REFRESH_TOKEN_KEY);
         router.replace("/");

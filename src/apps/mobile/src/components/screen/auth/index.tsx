@@ -5,6 +5,7 @@ import { TokenStoreManager, useOnboardingStore } from "@repo/libs";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { Platform, ToastAndroid } from "react-native";
+import { useAuth } from "@repo/hooks";
 
 type FormValue = {
   email: string;
@@ -18,6 +19,7 @@ type ResType = {
 
 export const LoginScreen = () => {
   const router = useRouter();
+  const auth = useAuth();
   const { setHasCompletedOnboarding } = useOnboardingStore();
 
   const { isPending, mutate } = useMutation({
@@ -27,6 +29,7 @@ export const LoginScreen = () => {
         const res = data?.data;
         if (res?.refreshToken && res?.accessToken) {
           await TokenStoreManager.setTokens(res?.accessToken, res?.refreshToken);
+          auth?.refresh();
         }
         if (Platform.OS === "android") {
           ToastAndroid.show(data.message, ToastAndroid.SHORT);
