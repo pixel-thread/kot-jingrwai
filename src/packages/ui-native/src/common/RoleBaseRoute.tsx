@@ -4,10 +4,6 @@ import { View, ActivityIndicator } from "react-native";
 import { useAuth } from "@repo/hooks";
 import { AuthContextI, RoleT } from "@repo/types";
 
-type PropsT = {
-  children: React.ReactNode;
-};
-
 type RoleRoute = {
   url: string;
   role: RoleT[]; // Use RoleT from shared types
@@ -15,9 +11,14 @@ type RoleRoute = {
   needAuth?: boolean;
 };
 
+type PropsT = {
+  children: React.ReactNode;
+  routeRoles?: RoleRoute[];
+};
+
 // Define routeRoles locally since it's not in a shared package yet
 // Matching the web implementation structure
-const routeRoles: RoleRoute[] = [
+const defaultRoute: RoleRoute[] = [
   {
     role: ["SUPER_ADMIN", "ADMIN"],
     url: "/admin/*",
@@ -28,7 +29,7 @@ const routeRoles: RoleRoute[] = [
 
 const pageAccessOnlyIfUnAuthenticated: string[] = ["/auth", "/sign-up"];
 
-export const RoleBaseRoute = ({ children }: PropsT) => {
+export const RoleBaseRoute = ({ children, routeRoles = defaultRoute }: PropsT) => {
   const { redirect } = useLocalSearchParams<{ redirect: string }>();
   const router = useRouter();
   const pathName = usePathname();
