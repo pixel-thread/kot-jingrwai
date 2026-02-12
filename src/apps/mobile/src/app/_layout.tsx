@@ -9,6 +9,7 @@ import {
   ErrorBoundary,
   UpdateContextProvider,
   AuthProvider,
+  RoleBaseRoute,
 } from "@repo/ui-native";
 import * as SplashScreen from "expo-splash-screen";
 import { router, Stack } from "expo-router";
@@ -54,15 +55,17 @@ export default function Layout() {
           <TQueryProvider>
             <ErrorBoundary>
               <AuthProvider>
-                <UpdateContextProvider>
-                  <ThemeProvider>
-                    <OtaUpdateBanner
-                      testMode={process.env.NODE_ENV === "development"}
-                      scenario={"fail"}
-                    />
-                    <Stack screenOptions={{ headerShown: false }} />
-                  </ThemeProvider>
-                </UpdateContextProvider>
+                <RoleBaseRoute>
+                  <UpdateContextProvider>
+                    <ThemeProvider>
+                      <OtaUpdateBanner
+                        testMode={process.env.NODE_ENV === "development"}
+                        scenario={"fail"}
+                      />
+                      <Stack screenOptions={{ headerShown: false }} />
+                    </ThemeProvider>
+                  </UpdateContextProvider>
+                </RoleBaseRoute>
               </AuthProvider>
             </ErrorBoundary>
           </TQueryProvider>
