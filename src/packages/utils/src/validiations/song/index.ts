@@ -23,9 +23,9 @@ const sourceSchema = z
 const UUIDSchema = z.uuid("Must be a valid UUID format");
 
 export const PrayerSchema = z.object({
-  id: UUIDSchema,
+  id: UUIDSchema.optional(),
   value: z.string().min(1, "Prayer is required").max(500, "Prayer too long (max 500 chars)"),
-  songId: UUIDSchema,
+  songId: UUIDSchema.optional(),
   order: z.number(),
   isPaidbah: z.boolean(),
 });
@@ -33,7 +33,7 @@ export const PrayerSchema = z.object({
 // TrackMetadata Schema
 export const TrackMetadataSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     supabaseId: z
       .string()
       .min(1, "Supabase ID is required")
@@ -58,7 +58,7 @@ export const TrackMetadataSchema = z
 // Track Schema
 export const TrackSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     metadataId: UUIDSchema.refine((id) => id && id !== "", "Valid metadata ID is required"),
     songs: z.array(z.uuid("Invalid song UUID")).optional(),
   })
@@ -67,7 +67,7 @@ export const TrackSchema = z
 // SongMetadata Schema
 export const SongMetadataSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     isChorus: z.boolean().optional(),
     source: sourceSchema,
     number: z
@@ -94,7 +94,7 @@ export const SongMetadataSchema = z
 // Paragraph Schema
 export const ParagraphSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     order: z
       .number()
       .int("Order must be an integer")
@@ -104,17 +104,17 @@ export const ParagraphSchema = z
       .array(z.string().min(1, "Line cannot be empty").max(1000, "Line too long"))
       .min(1, "At least one line required"),
     type: VerseTypeSchema,
-    songId: UUIDSchema.refine((id) => id && id !== "", "Valid song ID is required"),
+    songId: UUIDSchema.refine((id) => id && id !== "", "Valid song ID is required").optional(),
   })
   .strict();
 
 // Song Schema (Create)
 export const SongSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     title: z.string().min(1, "Song title is required").max(500, "Title too long (max 500 chars)"),
     trackId: z.uuid("Invalid track UUID").or(z.literal("")).optional().nullable(),
-    metadataId: UUIDSchema,
+    metadataId: UUIDSchema.optional(),
     metadata: SongMetadataSchema,
     track: TrackSchema.optional().nullable(),
     paragraphs: z.array(ParagraphSchema).optional().nullable(),
