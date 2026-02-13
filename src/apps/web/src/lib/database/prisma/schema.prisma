@@ -105,14 +105,12 @@ model otp {
 }
 
 model SongPrayer {
-  id        String    @id @default(uuid())
-  value     String
-  songId    String
-  order     Int
-  isPaidBah Boolean
-  source    AppSource @default(KOT_JINGRWAI)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id        String   @id @default(uuid())
+  lines     Line[]
+  songId    String?
+  song      Song?    @relation(fields: [songId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([songId])
   @@index([id])
@@ -173,6 +171,7 @@ model Song {
   paragraphs Paragraph[]
   metadataId String       @unique
   metadata   SongMetadata @relation(fields: [metadataId], references: [id])
+  prayers    SongPrayer[]
 
   @@index([id])
   @@index([trackId])
@@ -203,13 +202,17 @@ model SongMetadata {
 }
 
 model Line {
-  id          String     @id @default(uuid())
-  text        String
-  order       Int
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id        String   @id @default(uuid())
+  text      String
+  order     Int
+  isPaidBah Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   paragraphId String?
-  paragraph   Paragraph? @relation(fields: [paragraphId], references: [id])
+  paragraph   Paragraph?  @relation(fields: [paragraphId], references: [id])
+  prayerId    String?
+  prayer      SongPrayer? @relation(fields: [prayerId], references: [id])
 
   @@unique([paragraphId, order])
   @@index([paragraphId])

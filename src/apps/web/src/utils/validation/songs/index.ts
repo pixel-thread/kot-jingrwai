@@ -18,6 +18,14 @@ const VerseTypeSchema = z
 // UUID Schema
 const UUIDSchema = z.uuid("Must be a valid UUID format");
 
+export const PrayerSchema = z.object({
+  id: UUIDSchema,
+  value: z.string().min(1, "Prayer is required").max(500, "Prayer too long (max 500 chars)"),
+  songId: UUIDSchema,
+  order: z.number(),
+  source: z.string().optional(),
+});
+
 // TrackMetadata Schema
 export const TrackMetadataSchema = z
   .object({
@@ -113,6 +121,7 @@ export const SongSchema = z
     metadata: SongMetadataSchema,
     track: TrackSchema.optional().nullable(),
     paragraphs: z.array(ParagraphSchema).optional().nullable(),
+    prayers: z.array(PrayerSchema).optional().nullable(),
     createdAt: z.string().datetime().optional(),
     updatedAt: z.string().datetime().optional(),
   })

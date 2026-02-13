@@ -157,3 +157,64 @@ Content-Type: application/json
 POST {{NEXT_PUBLIC_API_URL}}/auth/logout HTTP/1.1
 Accept: application/json
 Content-Type: application/json
+
+### 
+
+# @name add song 
+
+POST {{NEXT_PUBLIC_API_URL}}/admin/songs HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "title": "Amazing Grace",
+  "trackId": "d9860634-118c-4a11-a39c-85949d107802",
+  "metadataId": "a1103982-127e-4091-a6e5-22e3914a1e94",
+  "metadata": {
+    "id": "a1103982-127e-4091-a6e5-22e3914a1e94",
+    "isChorus": false,
+    "source": "KOT_JINGRWAI",
+    "number": 101,
+    "oldNumber": 50,
+    "language": "en",
+    "author": "John Newton",
+    "composer": "Traditional",
+    "tags": ["hymn", "classic"],
+    "syllables": "8.6.8.6",
+    "reference": "1 Chronicles 17:16-17",
+    "tune": "New Britain",
+    "meter": "CM",
+    "songId": "550e8400-e29b-41d4-a716-446655440000"
+  },
+  "track": {
+    "id": "d9860634-118c-4a11-a39c-85949d107802",
+    "metadataId": "f7893214-771d-48d1-8d2a-438407876251",
+    "songs": ["550e8400-e29b-41d4-a716-446655440000"]
+  },
+  "paragraphs": [
+    {
+      "id": "b1039821-227e-4091-a6e5-22e3914a1e95",
+      "order": 1,
+      "lines": ["Amazing grace! How sweet the sound", "That saved a wretch like me!"],
+      "type": "VERSE",
+      "songId": "550e8400-e29b-41d4-a716-446655440000"
+    }
+  ],
+  "prayers": [
+    {
+      "id": "c1039821-327e-4091-a6e5-22e3914a1e96",
+      "value": "A prayer of gratitude for grace.",
+      "songId": "550e8400-e29b-41d4-a716-446655440000",
+      "order": 1,
+      "isPaidbah": true
+    },
+    {
+      "id": "c1039821-327e-4091-a6e5-22e3914a1e96",
+      "value": "A prayer of gratitude for grace.",
+      "songId": "550e8400-e29b-41d4-a716-446655440000",
+      "order": 1,
+      "isPaidbah": false
+    }
+  ]
+}

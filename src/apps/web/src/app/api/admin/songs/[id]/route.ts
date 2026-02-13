@@ -1,4 +1,4 @@
-import { getUniqueSongs } from "@/services/songs/getUniqueSong";
+import { SongService } from "@/services/songs";
 import { updateSong } from "@/services/songs/updateSong";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { requiredSuperAdminRole } from "@/utils/middleware/requiredSuperAdminRole";
@@ -10,7 +10,7 @@ export async function PUT(req: NextRequest) {
   try {
     await requiredSuperAdminRole(req);
     const body = SongSchema.parse(await req.json());
-    const isSongExists = await getUniqueSongs({ where: { id: body.id } });
+    const isSongExists = await SongService.findUnique({ where: { id: body.id } });
 
     if (!isSongExists) {
       return ErrorResponse({
