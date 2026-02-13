@@ -12,7 +12,7 @@ export const defaultRoute: RoleRoute[] = [
     role: ["SUPER_ADMIN", "ADMIN"],
     url: "/admin/*",
     needAuth: true,
-    redirect: "/forbidden",
+    redirect: "/auth",
   },
   {
     role: ["USER", "ADMIN", "SUPER_ADMIN"],
