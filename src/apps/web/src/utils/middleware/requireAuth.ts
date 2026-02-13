@@ -26,5 +26,5 @@ export async function requireAuth(req: NextRequest) {
     throw new UnauthorizedError("Unauthorized");
   }
 
-  return auth;
+  return auth.user;
 }
