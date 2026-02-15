@@ -7,7 +7,7 @@ import { SongSchema } from "@repo/utils";
 
 export const POST = withValidation({ body: SongSchema }, async ({ body }, req) => {
   try {
-    await requiredRole(req, "ADMIN");
+    await requiredRole(req, "NONE");
 
     const result = await SongService.create({ data: body });
 
