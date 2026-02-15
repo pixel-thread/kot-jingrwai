@@ -71,7 +71,7 @@ export const ParagraphItem = ({
           <View key={field.id} className="flex-1 flex-row items-start gap-2">
             <Controller
               control={control}
-              name={`paragraphs.${paragraphIndex}.lines.${lineIndex}`}
+              name={`paragraphs.${paragraphIndex}.lines.${lineIndex}.text`}
               render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
                 <View className="my-1 flex-1">
                   <TextInput
@@ -82,7 +82,9 @@ export const ParagraphItem = ({
                     placeholder={`Line ${lineIndex + 1}`}
                     placeholderTextColor="#9ca3af"
                     onBlur={onBlur}
-                    onChangeText={onChange}
+                    onChangeText={(value) => {
+                      onChange(value);
+                    }}
                     value={value}
                   />
                   {error && <Text className="mt-1 text-xs text-red-500">{error.message}</Text>}
@@ -96,7 +98,13 @@ export const ParagraphItem = ({
         ))}
 
         <TouchableOpacity
-          onPress={() => append(" ")}
+          onPress={() =>
+            append({
+              text: "",
+              isPaidBah: false,
+              order: fields.length + 1,
+            })
+          }
           className="mt-2 flex-row items-center justify-center rounded-lg border border-dashed border-gray-300 p-3 dark:border-gray-700">
           <MaterialCommunityIcons name="plus" size={20} color="#6b7280" />
           <Text className="ml-2 text-sm font-medium text-gray-500">Add Line</Text>

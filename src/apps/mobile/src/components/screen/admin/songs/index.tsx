@@ -10,12 +10,13 @@ import { Container, Text, Button, Input } from "@repo/ui-native";
 import { PrayerItem } from "./PrayerItem";
 import { ParagraphItem } from "./ParagraphItem";
 import { SongSchema, logger } from "@repo/utils";
+import { cn } from "@repo/libs";
 
 type SongFormValues = z.infer<typeof SongSchema>;
+
 const source = ["KOT_JINGRWAI", "LYNTI_BNENG"];
 
 export function AddSong() {
-  const router = useRouter();
   const insets = useSafeAreaInsets();
   const {
     control,
@@ -51,13 +52,12 @@ export function AddSong() {
 
   const onSubmit = async (data: SongFormValues) => {
     // Transform data for payload
-    console.log(JSON.stringify(data, null, 2));
+    logger.log(data);
     await new Promise((resolve) => setTimeout(resolve, 1000));
   };
-  logger.log("AddSong render", errors);
+  logger.log("Rendering AddSong", errors);
   return (
     <>
-      <Stack.Screen options={{ title: "Add Song", headerBackTitle: "Back" }} />
       <Container>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -91,6 +91,39 @@ export function AddSong() {
                     />
                   )}
                 />
+
+                <View>
+                  <Text className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Source
+                  </Text>
+                  <Controller
+                    control={control}
+                    name="metadata.source"
+                    render={({ field: { onChange, value } }) => (
+                      <View className="flex-row gap-3">
+                        {source.map((item) => (
+                          <TouchableOpacity
+                            key={item}
+                            onPress={() => onChange(item)}
+                            className={cn(
+                              "flex-1 items-center justify-center rounded-lg border py-3",
+                              value === item
+                                ? "border-indigo-600 bg-indigo-600"
+                                : "border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
+                            )}>
+                            <Text
+                              className={cn(
+                                "font-medium",
+                                value === item ? "text-white" : "text-gray-700 dark:text-gray-300"
+                              )}>
+                              {item.replace("_", " ")}
+                            </Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    )}
+                  />
+                </View>
 
                 <View className="flex-row gap-4">
                   <View className="flex-1">
@@ -151,11 +184,12 @@ export function AddSong() {
                 <Text className="text-xl font-bold text-gray-900 dark:text-white">Lyrics</Text>
                 <TouchableOpacity
                   onPress={() =>
-                    appendParagraph({
-                      type: "VERSE",
-                      lines: [{ text: "", isPaidBah: false, order: paragraphFields.length + 1 }],
-                      order: paragraphFields.length + 1,
-                    })
+                    appendParagraph([
+                      {
+                        type: "VERSE",
+                        lines: [{ text: "", isPaidBah: false, order: paragraphFields.length + 1 }],
+                      },
+                    ])
                   }
                   className="flex-row items-center rounded-lg bg-indigo-50 px-3 py-2 dark:bg-indigo-900/30">
                   <MaterialCommunityIcons name="plus" size={16} color="#4f46e5" />
@@ -185,7 +219,13 @@ export function AddSong() {
                 <TouchableOpacity
                   onPress={() =>
                     appendPrayer({
-                      lines: [{ text: "", isPaidBah: false, order: paragraphFields.length + 1 }],
+                      lines: [
+                        {
+                          text: "",
+                          isPaidBah: false,
+                          order: prayerFields.length + 1,
+                        },
+                      ],
                     })
                   }
                   className="flex-row items-center rounded-lg bg-indigo-50 px-3 py-2 dark:bg-indigo-900/30">

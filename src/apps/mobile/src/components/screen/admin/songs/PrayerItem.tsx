@@ -12,7 +12,7 @@ type PrayerItemProps = {
   errors: any;
 };
 
-const PrayerType = ["NONGIALAM", "PAIDBAH"] as const;
+const prayerType = ["NONGIALAM", "PAIDBAH"] as const;
 
 export const PrayerItem = ({
   paragraphIndex,
@@ -50,7 +50,7 @@ export const PrayerItem = ({
           {fields.map((field, lineIndex) => (
             <View key={field.id} className="w-full flex-col gap-2">
               <View className="flex-row gap-2">
-                {(["NONGIALAM", "PAIDBAH"] as const).map((type) => (
+                {prayerType.map((type) => (
                   <Controller
                     key={type}
                     control={control}
@@ -110,7 +110,11 @@ export const PrayerItem = ({
         <TouchableOpacity
           onPress={() => {
             console.log("Appending line");
-            append({ text: "", isPaidBah: false });
+            append({
+              text: "",
+              isPaidBah: false,
+              order: fields.length + 1,
+            });
           }}
           className="mt-2 flex-row items-center justify-center rounded-lg border border-dashed border-gray-300 p-3 dark:border-gray-700">
           <MaterialCommunityIcons name="plus" size={20} color="#6b7280" />
