@@ -26,7 +26,7 @@ export const LineSchema = z
     id: UUIDSchema.optional(),
     text: z.string().min(1, "Line is required").max(1000, "Line too long (max 1000 chars)"),
     isPaidBah: z.boolean(),
-    order: z.number(),
+    order: z.coerce.number(),
     paragraphId: UUIDSchema.optional(),
     prayerId: UUIDSchema.optional(),
   })
@@ -36,7 +36,7 @@ export const PrayerSchema = z.object({
   id: UUIDSchema.optional(),
   lines: z.array(LineSchema),
   songId: UUIDSchema.optional(),
-  order: z.number(),
+  order: z.coerce.number(),
   isPaidbah: z.boolean(),
 });
 
@@ -56,7 +56,7 @@ export const TrackMetadataSchema = z
     fullPath: z.string().min(1, "Full path is required"),
     downloadUrl: z.url("Must be a valid URL"),
     mimeType: z.string().min(1, "MIME type is required").max(100, "MIME type too long"),
-    fileSize: z
+    fileSize: z.coerce
       .number()
       .int("File size must be an integer")
       .positive("File size must be positive")
@@ -80,12 +80,12 @@ export const SongMetadataSchema = z
     id: UUIDSchema.optional(),
     isChorus: z.boolean().optional(),
     source: sourceSchema,
-    number: z
+    number: z.coerce
       .number()
       .int("Song number must be an integer")
       .positive("Song number must be positive")
       .max(9999, "Song number too high (max 9999)"),
-    oldNumber: z.number().int("Old number must be an integer").optional().nullable(),
+    oldNumber: z.coerce.number().int("Old number must be an integer").optional().nullable(),
     language: z
       .string()
       .min(1, "Language code is required")
@@ -105,7 +105,7 @@ export const SongMetadataSchema = z
 export const ParagraphSchema = z
   .object({
     id: UUIDSchema.optional(),
-    order: z
+    order: z.coerce
       .number()
       .int("Order must be an integer")
       .positive("Order must be positive")
