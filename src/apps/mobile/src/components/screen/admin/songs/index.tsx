@@ -196,6 +196,7 @@ export function AddSong() {
                   onPress={() =>
                     appendParagraph([
                       {
+                        order: prayerFields.length + 1,
                         type: "VERSE",
                         lines: [{ text: "", isPaidBah: false, order: paragraphFields.length + 1 }],
                       },
