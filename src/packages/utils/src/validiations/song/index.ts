@@ -104,11 +104,11 @@ export const SongMetadataSchema = z
 export const ParagraphSchema = z
   .object({
     id: UUIDSchema.optional(),
-    // order: z.coerce
-    //   .number()
-    //   .int("Order must be an integer")
-    //   .positive("Order must be positive")
-    //   .max(999, "Order too high (max 999)"),
+    order: z.coerce
+      .number()
+      .int("Order must be an integer")
+      .positive("Order must be positive")
+      .max(999, "Order too high (max 999)"),
     lines: z.array(LineSchema).min(1, "At least one line required"),
     type: VerseTypeSchema,
     songId: UUIDSchema.refine((id) => id && id !== "", "Valid song ID is required").optional(),
