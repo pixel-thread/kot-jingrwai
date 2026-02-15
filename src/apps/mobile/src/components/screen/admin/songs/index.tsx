@@ -9,16 +9,24 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Container, Text, Button, Input } from "@repo/ui-native";
 import { PrayerItem } from "./PrayerItem";
 import { ParagraphItem } from "./ParagraphItem";
-import { SongSchema, SongMetadataSchema } from "@repo/utils";
+import { SongSchema, SongMetadataSchema, PrayerSchema, logger } from "@repo/utils";
+
+const FormPrayerSchema = PrayerSchema.omit({ value: true }).extend({
+  lines: z.array(z.string().min(1, "Line cannot be empty")),
+  isPaidbah: z.boolean(),
+  value: z.string().optional(),
+});
 
 const FormSongSchema = SongSchema.extend({
   metadata: SongMetadataSchema.extend({
-    number: z.coerce.number()
+    number: z.coerce
+      .number()
       .int("Song number must be an integer")
       .positive("Song number must be positive")
       .max(9999, "Song number too high (max 9999)"),
     tags: z.array(z.string()).default([]),
   }),
+  prayers: z.array(FormPrayerSchema).optional().nullable(),
 });
 
 type SongFormValues = z.infer<typeof FormSongSchema>;
@@ -60,11 +68,17 @@ export function AddSong() {
 
   const onSubmit = async (data: SongFormValues) => {
     // Transform data for payload
-    console.log(JSON.stringify(data, null, 2));
+    const payload = {
+      ...data,
+      prayers: data.prayers?.map((prayer) => ({
+        ...prayer,
+        value: prayer.lines.join("\n"),
+      })),
+    };
+    console.log(JSON.stringify(payload, null, 2));
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    router.back();
   };
-
+  logger.log("AddSong render", errors);
   return (
     <>
       <Stack.Screen options={{ title: "Add Song", headerBackTitle: "Back" }} />
@@ -163,7 +177,7 @@ export function AddSong() {
                   onPress={() =>
                     appendParagraph({
                       type: "VERSE",
-                      lines: [" ", " "],
+                      lines: [""],
                       order: paragraphFields.length + 1,
                     })
                   }
@@ -196,9 +210,10 @@ export function AddSong() {
                   onPress={() =>
                     appendPrayer([
                       {
-                        isPaidbah: false,
+                        isPaidbah: true,
                         value: "",
                         order: prayerFields.length + 1,
+                        lines: [""],
                       },
                     ])
                   }

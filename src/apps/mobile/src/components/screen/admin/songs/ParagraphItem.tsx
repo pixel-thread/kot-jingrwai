@@ -20,7 +20,7 @@ export const ParagraphItem = ({
 }: ParagraphItemProps) => {
   const { fields, append, remove } = useFieldArray({
     control,
-    name: `paragraphs.${paragraphIndex}.lines`,
+    name: `paragraphs.${paragraphIndex}.lines` as const,
   });
 
   return (
@@ -68,10 +68,10 @@ export const ParagraphItem = ({
 
       <View className="space-y-3">
         {fields.map((field, lineIndex) => (
-          <View key={field.id} className="flex-1 flex-row items-center gap-2">
+          <View key={field.id} className="flex-1 flex-row items-start gap-2">
             <Controller
               control={control}
-              name={`paragraphs.${paragraphIndex}.lines.${lineIndex}.text`}
+              name={`paragraphs.${paragraphIndex}.lines.${lineIndex}`}
               render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
                 <View className="my-1 flex-1">
                   <TextInput
@@ -85,18 +85,18 @@ export const ParagraphItem = ({
                     onChangeText={onChange}
                     value={value}
                   />
-                  {error && <Text className="text-xs text-red-500">{error.message}</Text>}
+                  {error && <Text className="mt-1 text-xs text-red-500">{error.message}</Text>}
                 </View>
               )}
             />
-            <TouchableOpacity onPress={() => remove(lineIndex)} className="p-2">
+            <TouchableOpacity onPress={() => remove(lineIndex)} className="p-2 pt-3">
               <MaterialCommunityIcons name="close" size={20} color="#9ca3af" />
             </TouchableOpacity>
           </View>
         ))}
 
         <TouchableOpacity
-          onPress={() => append({ text: "" })}
+          onPress={() => append(" ")}
           className="mt-2 flex-row items-center justify-center rounded-lg border border-dashed border-gray-300 p-3 dark:border-gray-700">
           <MaterialCommunityIcons name="plus" size={20} color="#6b7280" />
           <Text className="ml-2 text-sm font-medium text-gray-500">Add Line</Text>
