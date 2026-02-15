@@ -21,6 +21,7 @@ const sourceSchema = z
 
 // UUID Schema
 const UUIDSchema = z.uuid("Must be a valid UUID format");
+
 export const LineSchema = z
   .object({
     id: UUIDSchema.optional(),
@@ -36,8 +37,6 @@ export const PrayerSchema = z.object({
   id: UUIDSchema.optional(),
   lines: z.array(LineSchema),
   songId: UUIDSchema.optional(),
-  order: z.coerce.number(),
-  isPaidbah: z.boolean(),
 });
 
 // TrackMetadata Schema
