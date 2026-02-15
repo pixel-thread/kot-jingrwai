@@ -45,9 +45,9 @@ export async function createSong({ body }: Props) {
       });
 
       await tx.line.createMany({
-        data: paragraph.lines.map((lineText, idx) => ({
-          text: lineText,
-          order: idx,
+        data: paragraph.lines.map((lineText) => ({
+          text: lineText.text,
+          order: lineText.order,
           paragraphId: createdParagraph.id,
         })),
       });
@@ -63,13 +63,13 @@ export async function createSong({ body }: Props) {
         });
 
         // Create lines associated with the prayer
-        await tx.line.create({
-          data: {
-            text: prayer.value,
-            order: prayer.order,
-            prayerId: createdPrayer.id, // Linking to the prayer, not paragraph
-            isPaidBah: prayer.isPaidbah,
-          },
+        await tx.line.createMany({
+          data: prayer.lines.map((lineText) => ({
+            text: lineText.text,
+            order: lineText.order,
+            prayerId: createdPrayer.id,
+            isPaidBah: lineText.isPaidBah,
+          })),
         });
       }
     }
