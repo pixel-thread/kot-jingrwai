@@ -1,5 +1,4 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Stack, useRouter } from "expo-router";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -9,8 +8,10 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Container, Text, Button, Input } from "@repo/ui-native";
 import { PrayerItem } from "./PrayerItem";
 import { ParagraphItem } from "./ParagraphItem";
-import { SongSchema, logger } from "@repo/utils";
+import { SongSchema, http, logger } from "@repo/utils";
 import { cn } from "@repo/libs";
+import { useMutation } from "@tanstack/react-query";
+import { ADMIN_SONG_ENDPOINT } from "@repo/constants";
 
 type SongFormValues = z.infer<typeof SongSchema>;
 
@@ -23,12 +24,24 @@ export function AddSong() {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm({
     resolver: zodResolver(SongSchema),
     defaultValues: {
       metadata: {
         tags: [],
       },
+    },
+  });
+
+  const { isPending, mutate } = useMutation({
+    mutationFn: (data: SongFormValues) => http.post(ADMIN_SONG_ENDPOINT.POST_ADD_SONG, data),
+    onSuccess: (data) => {
+      if (data.success) {
+        reset();
+        return data;
+      }
+      return data;
     },
   });
 
@@ -50,12 +63,8 @@ export function AddSong() {
     name: "prayers",
   });
 
-  const onSubmit = async (data: SongFormValues) => {
-    // Transform data for payload
-    logger.log(data);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-  };
-  logger.log("Rendering AddSong", errors);
+  const onSubmit = async (data: SongFormValues) => mutate(data);
+
   return (
     <>
       <Container>
@@ -76,7 +85,7 @@ export function AddSong() {
                 New Song
               </Text>
 
-              <View className="space-y-4">
+              <View className="gap-y-4">
                 <Controller
                   control={control}
                   name="title"
@@ -94,19 +103,19 @@ export function AddSong() {
 
                 <View>
                   <Text className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Source
+                    App Source
                   </Text>
                   <Controller
                     control={control}
                     name="metadata.source"
                     render={({ field: { onChange, value } }) => (
-                      <View className="flex-row gap-3">
+                      <ScrollView horizontal className="flex-row gap-3">
                         {source.map((item) => (
                           <TouchableOpacity
                             key={item}
                             onPress={() => onChange(item)}
                             className={cn(
-                              "flex-1 items-center justify-center rounded-lg border py-3",
+                              "mx-2 flex-1 items-center justify-center rounded-lg border p-3",
                               value === item
                                 ? "border-indigo-600 bg-indigo-600"
                                 : "border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
@@ -120,7 +129,7 @@ export function AddSong() {
                             </Text>
                           </TouchableOpacity>
                         ))}
-                      </View>
+                      </ScrollView>
                     )}
                   />
                 </View>
@@ -253,7 +262,7 @@ export function AddSong() {
             <Button
               title="Save Song"
               onPress={handleSubmit(onSubmit)}
-              loading={isSubmitting}
+              loading={isSubmitting || isPending}
               size="lg"
             />
           </ScrollView>
