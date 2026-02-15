@@ -1,8 +1,7 @@
 import { normalizeForSearch } from "@utils/normalizeTextForSearch";
 import { SongT } from "@repo/types";
-import { getSongs } from "@services/songs/getSongs";
 import { useQuery } from "@tanstack/react-query";
-import { http } from "@repo/utils";
+import { http } from "@repo/utils-native";
 import { SONG_ENDPOINTS } from "@repo/constants";
 
 type UseFilteredSongsProps = {
