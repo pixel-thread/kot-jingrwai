@@ -183,12 +183,10 @@ export function AddSong() {
               <View className="mb-4 flex-row items-center justify-between">
                 <Text className="text-xl font-bold text-gray-900 dark:text-white">Prayer</Text>
                 <TouchableOpacity
-                  onPress={
-                    () => {}
-                    // appendPrayer({
-                    //   lines: [{ text: "", isPaidBah: false, order: paragraphFields.length + 1 }],
-                    //   order: paragraphFields.length + 1,
-                    // })
+                  onPress={() =>
+                    appendPrayer({
+                      lines: [{ text: "", isPaidBah: false, order: paragraphFields.length + 1 }],
+                    })
                   }
                   className="flex-row items-center rounded-lg bg-indigo-50 px-3 py-2 dark:bg-indigo-900/30">
                   <MaterialCommunityIcons name="plus" size={16} color="#4f46e5" />
