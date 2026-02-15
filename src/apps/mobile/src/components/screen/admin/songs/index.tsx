@@ -9,31 +9,19 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Container, Text, Button, Input } from "@repo/ui-native";
 import { PrayerItem } from "./PrayerItem";
 import { ParagraphItem } from "./ParagraphItem";
-import { SongT } from "@repo/types";
+import { SongSchema, SongMetadataSchema } from "@repo/utils";
 
-// --- Schema ---
-const songFormSchema = z.object({
-  title: z.string().min(1, "Title is required"),
-  metadata: z.object({
-    number: z.string().min(1, "Number is required"), // Keep as string in form
-    language: z.string().optional(),
-    author: z.string().optional(),
-    composer: z.string().optional(),
-    syllables: z.string().optional(),
+const FormSongSchema = SongSchema.extend({
+  metadata: SongMetadataSchema.extend({
+    number: z.coerce.number()
+      .int("Song number must be an integer")
+      .positive("Song number must be positive")
+      .max(9999, "Song number too high (max 9999)"),
+    tags: z.array(z.string()).default([]),
   }),
-  paragraphs: z.array(
-    z.object({
-      type: z.enum(["VERSE", "CHORUS"]).default("VERSE"),
-      lines: z.array(
-        z.object({
-          text: z.string().min(1, "Line text is required"),
-        })
-      ),
-    })
-  ),
 });
 
-type SongFormValues = z.infer<typeof songFormSchema>;
+type SongFormValues = z.infer<typeof FormSongSchema>;
 
 export function AddSong() {
   const router = useRouter();
@@ -44,22 +32,11 @@ export function AddSong() {
     register,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(songFormSchema),
+    resolver: zodResolver(FormSongSchema),
     defaultValues: {
-      title: "",
       metadata: {
-        number: "",
-        language: "khasi",
-        author: "",
-        composer: "",
-        syllables: "",
+        tags: [],
       },
-      paragraphs: [
-        {
-          type: "VERSE",
-          lines: [{ text: "" }, { text: "" }, { text: "" }, { text: "" }],
-        },
-      ],
     },
   });
 
@@ -78,20 +55,12 @@ export function AddSong() {
     remove: removePrayer,
   } = useFieldArray({
     control,
-    name: "paragraphs",
+    name: "prayers",
   });
 
   const onSubmit = async (data: SongFormValues) => {
     // Transform data for payload
-    const payload = {
-      ...data,
-      metadata: {
-        ...data.metadata,
-        number: parseInt(data.metadata.number, 10),
-      },
-    };
-
-    console.log(JSON.stringify(payload, null, 2));
+    console.log(JSON.stringify(data, null, 2));
     await new Promise((resolve) => setTimeout(resolve, 1000));
     router.back();
   };
@@ -138,14 +107,13 @@ export function AddSong() {
                     <Controller
                       control={control}
                       name="metadata.number"
-                      render={({ field: { onChange, onBlur, value } }) => (
+                      render={({ field: { onChange, onBlur } }) => (
                         <Input
                           label="Song Number"
                           placeholder="e.g. 42"
                           keyboardType="numeric"
                           onBlur={onBlur}
                           onChangeText={onChange}
-                          value={value}
                           error={errors.metadata?.number?.message}
                         />
                       )}
@@ -193,7 +161,11 @@ export function AddSong() {
                 <Text className="text-xl font-bold text-gray-900 dark:text-white">Lyrics</Text>
                 <TouchableOpacity
                   onPress={() =>
-                    appendParagraph({ type: "VERSE", lines: [{ text: "" }, { text: "" }] })
+                    appendParagraph({
+                      type: "VERSE",
+                      lines: [" ", " "],
+                      order: paragraphFields.length + 1,
+                    })
                   }
                   className="flex-row items-center rounded-lg bg-indigo-50 px-3 py-2 dark:bg-indigo-900/30">
                   <MaterialCommunityIcons name="plus" size={16} color="#4f46e5" />
@@ -222,12 +194,18 @@ export function AddSong() {
                 <Text className="text-xl font-bold text-gray-900 dark:text-white">Prayer</Text>
                 <TouchableOpacity
                   onPress={() =>
-                    appendPrayer({ type: "VERSE", lines: [{ text: "" }, { text: "" }] })
+                    appendPrayer([
+                      {
+                        isPaidbah: false,
+                        value: "",
+                        order: prayerFields.length + 1,
+                      },
+                    ])
                   }
                   className="flex-row items-center rounded-lg bg-indigo-50 px-3 py-2 dark:bg-indigo-900/30">
                   <MaterialCommunityIcons name="plus" size={16} color="#4f46e5" />
                   <Text className="ml-1 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
-                    Add Block
+                    Add Prayer Block
                   </Text>
                 </TouchableOpacity>
               </View>

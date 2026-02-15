@@ -36,61 +36,58 @@ export const PrayerItem = ({
         </TouchableOpacity>
       </View>
 
-      <View className="mb-4 flex-row gap-2">
-        <Controller
-          control={control}
-          name={`paragraphs.${paragraphIndex}.type`}
-          render={({ field: { onChange, value } }) => (
+      <View className="mb-4 flex-row gap-2"></View>
+
+      <View className="space-y-3">
+        {fields.map((field, lineIndex) => (
+          <View key={field.id} className="flex-1 flex-col items-start gap-2">
             <View className="flex-row gap-2">
               {(["NONGIALAM", "PAIDBAH"] as const).map((type) => (
                 <TouchableOpacity
                   key={type}
-                  onPress={() => onChange(type)}
+                  // onPress={() => onChange(type)}
                   className={cn(
                     "rounded-lg border px-4 py-2",
-                    value === type
-                      ? "border-indigo-600 bg-indigo-600"
-                      : "border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
+                    // value === type
+                    // ? "border-indigo-600 bg-indigo-600"
+                    // :
+                    "border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
                   )}>
                   <Text
                     className={cn(
-                      "text-sm font-medium",
-                      value === type ? "text-white" : "text-gray-600 dark:text-gray-400"
+                      "text-sm font-medium"
+                      // value === type ? "text-white" : "text-gray-600 dark:text-gray-400"
                     )}>
                     {type}
                   </Text>
                 </TouchableOpacity>
               ))}
             </View>
-          )}
-        />
-      </View>
-
-      <View className="space-y-3">
-        {fields.map((field, lineIndex) => (
-          <View key={field.id} className="flex-1 flex-row items-center gap-2">
-            <Controller
-              control={control}
-              name={`paryers.${paragraphIndex}.lines.${lineIndex}.text`}
-              render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-                <View className="my-1 flex-1">
-                  <TextInput
-                    className={cn(
-                      "h-10 w-full rounded-lg border border-gray-200 bg-white px-3 text-base text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white",
-                      error && "border-red-500"
-                    )}
-                    placeholder={`Line ${lineIndex + 1}`}
-                    placeholderTextColor="#9ca3af"
-                    onBlur={onBlur}
-                    onChangeText={onChange}
-                    value={value}
-                  />
-                </View>
-              )}
-            />
-            <TouchableOpacity onPress={() => remove(lineIndex)} className="p-2">
-              <MaterialCommunityIcons name="close" size={20} color="#9ca3af" />
-            </TouchableOpacity>
+            <View className="w-full flex-row items-center justify-center">
+              <Controller
+                control={control}
+                name={`paryers.${paragraphIndex}.lines.${lineIndex}.text`}
+                render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+                  <View className="my-1 w-full flex-1">
+                    <TextInput
+                      className={cn(
+                        "h-10 w-full rounded-lg border border-gray-200 bg-white px-3 text-base text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white",
+                        error && "border-red-500"
+                      )}
+                      placeholder={`Line ${lineIndex + 1}`}
+                      placeholderTextColor="#9ca3af"
+                      onBlur={onBlur}
+                      onChangeText={onChange}
+                      value={value}
+                    />
+                    {error && <Text className="text-xs text-red-500">{error.message}</Text>}
+                  </View>
+                )}
+              />
+              <TouchableOpacity onPress={() => remove(lineIndex)} className="items-center p-2">
+                <MaterialCommunityIcons name="close" size={20} color="#9ca3af" />
+              </TouchableOpacity>
+            </View>
           </View>
         ))}
 

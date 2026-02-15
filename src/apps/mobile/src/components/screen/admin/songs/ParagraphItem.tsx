@@ -85,6 +85,7 @@ export const ParagraphItem = ({
                     onChangeText={onChange}
                     value={value}
                   />
+                  {error && <Text className="text-xs text-red-500">{error.message}</Text>}
                 </View>
               )}
             />
