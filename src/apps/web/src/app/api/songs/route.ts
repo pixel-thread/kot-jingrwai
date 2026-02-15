@@ -1,21 +1,39 @@
+import { $Enums } from "@/lib/database/prisma/generated/prisma";
 import { getSongs } from "@/services/songs/getSongs";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
-import { NextRequest } from "next/server";
+import z from "zod";
 
-export async function GET(req: NextRequest) {
+const routeSchema = {
+  query: z.object({
+    page: z.coerce.string().default("1"),
+    isChorus: z.coerce.boolean().default(false).optional(),
+    source: z
+      .enum([$Enums.AppSource.LYNTI_BNENG, $Enums.AppSource.KOT_JINGRWAI])
+      .default($Enums.AppSource.KOT_JINGRWAI)
+      .optional(),
+  }),
+};
+
+export const GET = withValidation(routeSchema, async ({ query }) => {
   try {
-    const page = req.nextUrl.searchParams.get("page");
-    const chorus = req.nextUrl.searchParams.get("isChorus");
+    const { page, isChorus, source } = query;
 
-    const isChorusDefine = chorus;
-
-    const isChorus = req.nextUrl.searchParams.get("isChorus") === "true" || false;
+    const isChorusDefine = isChorus;
+    console.log(source);
 
     const [songs, total] = await getSongs({
       page,
-      where: { metadata: { isChorus: isChorusDefine ? isChorus : undefined } },
+      where: {
+        metadata: {
+          isChorus: isChorusDefine ? isChorus : undefined,
+          source: {
+            has: source,
+          },
+        },
+      },
     });
 
     return SuccessResponse({
@@ -26,4 +44,4 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     return handleApiErrors(error);
   }
-}
+});
