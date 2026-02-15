@@ -20,5 +20,5 @@ type EndpointKeys = "POST_ADD_SONG";
  */
 
 export const ADMIN_SONG_ENDPOINT: EndpointT<EndpointKeys> = {
-  POST_ADD_SONG: "/admin/song",
+  POST_ADD_SONG: "/admin/songs",
 };
