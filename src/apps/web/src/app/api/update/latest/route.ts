@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
     const update = await getLatestUpdate();
 
     return SuccessResponse({
-      data: process.env.NODE_ENV === "development" ? MOCK_DATA : update,
+      data: update,
       message: "Successfully fetched latest update",
     });
   } catch (error) {
