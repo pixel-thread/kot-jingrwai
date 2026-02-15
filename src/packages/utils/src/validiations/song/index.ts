@@ -1,35 +1,39 @@
-import { $Enums } from "@/lib/database/prisma/generated/prisma";
 import z from "zod";
 
-// Enums
+const verseTypes = ["VERSE", "CHORUS", "BRIDGE", "INTRO", "OUTRO"];
+
+export const source = ["KOT_JINGRWAI", "LYNTI_BNENG"];
+
 const VerseTypeSchema = z
-  .enum([
-    $Enums.VerseType.INTRO,
-    $Enums.VerseType.CHORUS,
-    $Enums.VerseType.VERSE,
-    $Enums.VerseType.BRIDGE,
-    $Enums.VerseType.OUTRO,
-  ])
+  .enum(verseTypes)
   .optional()
-  .refine((val) => !val || Object.values($Enums.VerseType).includes(val), {
+  .refine((val) => !val || Object.values(verseTypes).includes(val), {
     message: "Invalid verse type. Must be INTRO, CHORUS, VERSE, BRIDGE, or OUTRO",
-  });
+  })
+  .default("VERSE");
+
+const sourceSchema = z
+  .enum(source)
+  .refine((val) => !val || Object.values(source).includes(val), {
+    message: "Source must be one of the app",
+  })
+  .default("KOT_JINGRWAI");
 
 // UUID Schema
 const UUIDSchema = z.uuid("Must be a valid UUID format");
 
 export const PrayerSchema = z.object({
-  id: UUIDSchema,
+  id: UUIDSchema.optional(),
   value: z.string().min(1, "Prayer is required").max(500, "Prayer too long (max 500 chars)"),
-  songId: UUIDSchema,
+  songId: UUIDSchema.optional(),
   order: z.number(),
-  source: z.string().optional(),
+  isPaidbah: z.boolean(),
 });
 
 // TrackMetadata Schema
 export const TrackMetadataSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     supabaseId: z
       .string()
       .min(1, "Supabase ID is required")
@@ -48,27 +52,24 @@ export const TrackMetadataSchema = z
       .positive("File size must be positive")
       .max(10_000_000_000, "File size too large (max 10GB)"),
     trackId: UUIDSchema.optional(),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
   })
   .strict();
 
 // Track Schema
 export const TrackSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     metadataId: UUIDSchema.refine((id) => id && id !== "", "Valid metadata ID is required"),
     songs: z.array(z.uuid("Invalid song UUID")).optional(),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
   })
   .strict();
 
 // SongMetadata Schema
 export const SongMetadataSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     isChorus: z.boolean().optional(),
+    source: sourceSchema,
     number: z
       .number()
       .int("Song number must be an integer")
@@ -87,15 +88,13 @@ export const SongMetadataSchema = z
     tune: z.string().max(200, "Tune name too long").optional().nullable(),
     meter: z.string().max(50, "Meter too long").optional().nullable(),
     songId: UUIDSchema.optional().nullable(),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
   })
   .strict();
 
 // Paragraph Schema
 export const ParagraphSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     order: z
       .number()
       .int("Order must be an integer")
@@ -105,24 +104,20 @@ export const ParagraphSchema = z
       .array(z.string().min(1, "Line cannot be empty").max(1000, "Line too long"))
       .min(1, "At least one line required"),
     type: VerseTypeSchema,
-    songId: UUIDSchema.refine((id) => id && id !== "", "Valid song ID is required"),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
+    songId: UUIDSchema.refine((id) => id && id !== "", "Valid song ID is required").optional(),
   })
   .strict();
 
 // Song Schema (Create)
 export const SongSchema = z
   .object({
-    id: UUIDSchema,
+    id: UUIDSchema.optional(),
     title: z.string().min(1, "Song title is required").max(500, "Title too long (max 500 chars)"),
     trackId: z.uuid("Invalid track UUID").or(z.literal("")).optional().nullable(),
-    metadataId: UUIDSchema,
+    metadataId: UUIDSchema.optional(),
     metadata: SongMetadataSchema,
     track: TrackSchema.optional().nullable(),
     paragraphs: z.array(ParagraphSchema).optional().nullable(),
     prayers: z.array(PrayerSchema).optional().nullable(),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
   })
   .strict();

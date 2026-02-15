@@ -1,5 +1,7 @@
 export type VerseT = "VERSE" | "CHORUS" | "BRIDGE" | "INTRO" | "OUTRO";
 
+export type AppSourceT = "KOT_JINGRWAI" | "LYNTI_BNENG";
+
 export type LineT = {
   id: string;
   order: number;
