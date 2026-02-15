@@ -15,13 +15,16 @@ export const useFilteredSongs = ({
 }: UseFilteredSongsProps): SongT[] => {
   const query = searchQuery.trim();
 
-  const { data: dataSource = [] } = useQuery({
+  const { data: dataSource = [], isFetching } = useQuery({
     queryKey: ["songs", { isKhorus }],
     queryFn: () => http.get<SongT[]>(SONG_ENDPOINTS.GET_SONGS),
     select: ({ data }) => data,
   });
+
   // If no query, return all songs from the selected source
   if (!query) return dataSource || [];
+
+  if (isFetching) return [];
 
   const normalizedQuery = normalizeForSearch(query);
 
