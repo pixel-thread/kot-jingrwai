@@ -1,10 +1,8 @@
 import { prisma } from "@/lib/database/prisma";
-import { SongSchema } from "@/utils/validation/songs";
+import { SongSchema } from "@repo/utils";
 import z from "zod";
 
-type Props = {
-  data: z.infer<typeof SongSchema>;
-};
+type Props = { data: Required<z.infer<typeof SongSchema>> };
 
 export async function updateSong({ data }: Props) {
   return await prisma.$transaction(async (tx) => {
@@ -38,7 +36,7 @@ export async function updateSong({ data }: Props) {
           id: p.id,
           order: p.order,
           lines: p.lines,
-          type: p.type,
+          type: p.type as any,
           songId,
         })),
         skipDuplicates: true,

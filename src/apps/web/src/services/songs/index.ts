@@ -2,20 +2,21 @@ import { Prisma } from "@/lib/database/prisma/generated/prisma";
 import { getSongs } from "./getSongs";
 import { getUniqueSongs } from "./getUniqueSong";
 import { updateSong } from "./updateSong";
-import { SongSchema } from "@/utils/validation/songs";
 import z from "zod";
 import { prisma } from "@/lib/database/prisma";
+import { createSong } from "./createSong";
+import { SongSchema } from "@repo/utils";
 
 type UniqueSong = { where: Prisma.SongWhereUniqueInput };
 
-type UpdateUnique = { data: z.infer<typeof SongSchema> };
+type UpdateUnique = { data: Required<z.infer<typeof SongSchema>> };
 
-type CreateSong = { data: Prisma.SongCreateInput };
+type CreateSong = { data: z.infer<typeof SongSchema> };
 
 export const SongService = {
   findUnique: (props: UniqueSong) => getUniqueSongs(props),
   findMany: getSongs,
   update: (props: UpdateUnique) => updateSong(props),
-  create: (props: CreateSong) => prisma.song.create({ data: props.data }),
+  create: (props: CreateSong) => createSong({ body: props.data }),
   delete: (props: UniqueSong) => prisma.song.delete(props),
 };
