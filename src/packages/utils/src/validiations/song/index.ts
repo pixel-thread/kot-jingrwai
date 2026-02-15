@@ -21,10 +21,20 @@ const sourceSchema = z
 
 // UUID Schema
 const UUIDSchema = z.uuid("Must be a valid UUID format");
+export const LineSchema = z
+  .object({
+    id: UUIDSchema.optional(),
+    text: z.string().min(1, "Line is required").max(1000, "Line too long (max 1000 chars)"),
+    isPaidBah: z.boolean(),
+    order: z.number(),
+    paragraphId: UUIDSchema.optional(),
+    prayerId: UUIDSchema.optional(),
+  })
+  .strict();
 
 export const PrayerSchema = z.object({
   id: UUIDSchema.optional(),
-  value: z.string().min(1, "Prayer is required").max(500, "Prayer too long (max 500 chars)"),
+  lines: z.array(LineSchema),
   songId: UUIDSchema.optional(),
   order: z.number(),
   isPaidbah: z.boolean(),
@@ -100,9 +110,7 @@ export const ParagraphSchema = z
       .int("Order must be an integer")
       .positive("Order must be positive")
       .max(999, "Order too high (max 999)"),
-    lines: z
-      .array(z.string().min(1, "Line cannot be empty").max(1000, "Line too long"))
-      .min(1, "At least one line required"),
+    lines: z.array(LineSchema).min(1, "At least one line required"),
     type: VerseTypeSchema,
     songId: UUIDSchema.refine((id) => id && id !== "", "Valid song ID is required").optional(),
   })
