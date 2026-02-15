@@ -5,5 +5,5 @@ type Props = {
 };
 
 export async function getUserByEmail({ email }: Props) {
-  return await prisma.user.findUnique({ where: { email } });
+  return await prisma.auth.findUnique({ where: { email } });
 }
