@@ -8,7 +8,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Container, Text, Button, Input } from "@repo/ui-native";
 import { PrayerItem } from "./PrayerItem";
 import { ParagraphItem } from "./ParagraphItem";
-import { SongSchema, http, logger } from "@repo/utils";
+import { SongSchema, http } from "@repo/utils";
 import { cn } from "@repo/libs";
 import { useMutation } from "@tanstack/react-query";
 import { ADMIN_SONG_ENDPOINT } from "@repo/constants";
@@ -29,6 +29,7 @@ export function AddSong() {
     resolver: zodResolver(SongSchema),
     defaultValues: {
       metadata: {
+        source: "KOT_JINGRWAI",
         tags: [],
       },
     },
