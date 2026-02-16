@@ -6,6 +6,7 @@ import { NextRequest } from "next/server";
 export async function GET(req: NextRequest) {
   try {
     const auth = await requireAuth(req);
+    console.log(auth);
     return SuccessResponse({
       data: auth,
       message: "Successfully fetched user details",
