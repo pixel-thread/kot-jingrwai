@@ -9,10 +9,10 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { Container, Text, Button, Input } from "@repo/ui-native";
 import { PrayerItem } from "./PrayerItem";
 import { ParagraphItem } from "./ParagraphItem";
-import { SongSchema, http } from "@repo/utils";
+import { SongSchema, http, logger } from "@repo/utils";
 import { cn } from "@repo/libs";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { ADMIN_SONG_ENDPOINT } from "@repo/constants";
+import { ADMIN_SONG_ENDPOINT, SONG_ENDPOINTS } from "@repo/constants";
 import { SongT } from "@repo/types";
 import { useEffect } from "react";
 
@@ -26,11 +26,18 @@ export function UpdateSong() {
   const router = useRouter();
 
   const { data: songData, isLoading: isLoadingSong } = useQuery({
-    queryKey: ["song", id],
-    queryFn: () => http.get<SongT>(`/admin/songs/${id}`),
+    queryKey: ["song", "detail", id],
+    queryFn: () => http.get<SongT>(SONG_ENDPOINTS.GET_SONG.replace(":id", id)),
     enabled: !!id,
     select: (data) => data.data,
   });
+
+  useEffect(() => {
+    logger.log("Update Song Screen", {
+      id: id,
+      data: songData,
+    });
+  }, [songData]);
 
   const {
     control,
@@ -304,4 +311,3 @@ export function UpdateSong() {
     </>
   );
 }
-

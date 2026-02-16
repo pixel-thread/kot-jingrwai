@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Stack } from "expo-router";
-import { useLocalSearchParams } from "expo-router/build/hooks";
+import { useLocalSearchParams, useRouter } from "expo-router/build/hooks";
 import { View, TouchableOpacity } from "react-native";
 import { Container } from "@repo/ui-native";
 import { CustomHeader } from "~/src/components/Common/CustomHeader";
@@ -14,6 +14,7 @@ import { useColorScheme } from "nativewind";
 import { useSong } from "~/src/hooks/song/useSong";
 
 const HeaderRight = ({ id }: { id: string }) => {
+  const router = useRouter();
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const { increaseTextSize, decreaseTextSize } = useTextStore();
@@ -32,6 +33,8 @@ const HeaderRight = ({ id }: { id: string }) => {
     }
   };
 
+  const onPressEdit = () => router.push(`/admin/songs/${id}`);
+
   return (
     <View className="flex-row items-center gap-x-4">
       <TouchableOpacity
@@ -48,6 +51,15 @@ const HeaderRight = ({ id }: { id: string }) => {
         className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
         <MaterialCommunityIcons
           name={"plus"}
+          size={24}
+          color={isDarkMode ? gray[200] : gray[950]}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={onPressEdit}
+        className="h-10 w-10 items-center justify-center rounded-full bg-gray-300/50 dark:bg-gray-600/50">
+        <MaterialCommunityIcons
+          name={"file-edit"}
           size={24}
           color={isDarkMode ? gray[200] : gray[950]}
         />
