@@ -16,7 +16,6 @@ const DrawerLayout = () => {
   const isDarkMode = colorScheme === "dark";
 
   const onPressItems = (href: string) => router.push(href as Route);
-
   return (
     <Drawer
       drawerContent={(props) => (
