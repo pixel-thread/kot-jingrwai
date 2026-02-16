@@ -4,11 +4,13 @@ import { CustomDrawerContent } from "@repo/ui-native";
 import { CustomHeader } from "~/src/components/Common/CustomHeader";
 import { gray } from "tailwindcss/colors";
 import { useColorScheme } from "nativewind";
-import { drawerMenuItems } from "~/src/libs/constants/drawerMenuItems";
+import { adminMenuItems, drawerMenuItems } from "~/src/libs/constants/drawerMenuItems";
 import { Route, usePathname, useRouter } from "expo-router";
+import { useAuth } from "@repo/hooks";
 
 const DrawerLayout = () => {
   const { colorScheme } = useColorScheme();
+  const context = useAuth();
   const pathName = usePathname();
   const router = useRouter();
   const isDarkMode = colorScheme === "dark";
@@ -20,7 +22,7 @@ const DrawerLayout = () => {
       drawerContent={(props) => (
         <CustomDrawerContent
           {...props}
-          items={drawerMenuItems}
+          items={context?.role === "USER" ? drawerMenuItems : adminMenuItems}
           onPress={(href) => onPressItems(href)}
           pathName={pathName}
         />
