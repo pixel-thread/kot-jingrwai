@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: Props) => {
 
   const value = {
     user: data,
-    role: "USER",
+    role: data?.role || "USER",
     refresh: refetch,
     isAuthLoading: isFetching,
   } satisfies AuthContextI;

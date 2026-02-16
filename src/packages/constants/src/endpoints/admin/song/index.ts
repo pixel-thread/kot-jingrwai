@@ -6,7 +6,7 @@ import { type EndpointT } from "@repo/types";
  *
  * @property GET_USERS - Endpoint for retrieving users list
  */
-type EndpointKeys = "POST_ADD_SONG";
+type EndpointKeys = "POST_ADD_SONG" | "PUT_UPDATE_SONG";
 
 /**
  * Admin users management API endpoints configuration.
@@ -21,4 +21,5 @@ type EndpointKeys = "POST_ADD_SONG";
 
 export const ADMIN_SONG_ENDPOINT: EndpointT<EndpointKeys> = {
   POST_ADD_SONG: "/admin/songs",
+  PUT_UPDATE_SONG: "/admin/songs/:id",
 };
