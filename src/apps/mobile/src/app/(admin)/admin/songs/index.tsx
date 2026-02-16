@@ -1,3 +1,5 @@
+import { AllSongPage } from "~/src/components/Songs";
+
 export default function SongsIndex() {
-  return null;
+  return <AllSongPage isKhorus={false} />;
 }

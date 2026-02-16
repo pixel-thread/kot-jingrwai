@@ -12,7 +12,7 @@ export const drawerMenuItems: MenuItemsT[] = [
 
 export const adminMenuItems: MenuItemsT[] = [
   { id: 1, title: "Home", href: "/" },
-  { id: 2, title: "Add Songs", href: "/admin/songs" },
+  { id: 2, title: "Songs", href: "/admin/songs" },
   { id: 6, title: "Tynrai Jingrwai", href: "/tynrai-jingrwai" },
   { id: 3, title: "Contact", href: "/contact" },
   { id: 4, title: "Report", href: "/report" },
