@@ -1,4 +1,5 @@
 import z from "zod";
+import { dateValidiation } from "../common";
 
 const verseTypes = ["VERSE", "CHORUS", "BRIDGE", "INTRO", "OUTRO"];
 
@@ -30,6 +31,8 @@ export const LineSchema = z
     order: z.coerce.number(),
     paragraphId: UUIDSchema.optional(),
     prayerId: UUIDSchema.optional(),
+    updatedAt: dateValidiation.optional(),
+    createdAt: dateValidiation.optional(),
   })
   .strict();
 
@@ -37,6 +40,8 @@ export const PrayerSchema = z.object({
   id: UUIDSchema.optional(),
   lines: z.array(LineSchema),
   songId: UUIDSchema.optional(),
+  updatedAt: dateValidiation.optional(),
+  createdAt: dateValidiation.optional(),
 });
 
 // TrackMetadata Schema
@@ -61,6 +66,8 @@ export const TrackMetadataSchema = z
       .positive("File size must be positive")
       .max(10_000_000_000, "File size too large (max 10GB)"),
     trackId: UUIDSchema.optional(),
+    updatedAt: dateValidiation.optional(),
+    createdAt: dateValidiation.optional(),
   })
   .strict();
 
@@ -70,6 +77,8 @@ export const TrackSchema = z
     id: UUIDSchema.optional(),
     metadataId: UUIDSchema.refine((id) => id && id !== "", "Valid metadata ID is required"),
     songs: z.array(z.uuid("Invalid song UUID")).optional(),
+    updatedAt: dateValidiation.optional(),
+    createdAt: dateValidiation.optional(),
   })
   .strict();
 
@@ -97,6 +106,8 @@ export const SongMetadataSchema = z
     tune: z.string().max(200, "Tune name too long").optional().nullable(),
     meter: z.string().max(50, "Meter too long").optional().nullable(),
     songId: UUIDSchema.optional().nullable(),
+    updatedAt: dateValidiation.optional(),
+    createdAt: dateValidiation.optional(),
   })
   .strict();
 
@@ -112,6 +123,8 @@ export const ParagraphSchema = z
     lines: z.array(LineSchema).min(1, "At least one line required"),
     type: VerseTypeSchema,
     songId: UUIDSchema.refine((id) => id && id !== "", "Valid song ID is required").optional(),
+    updatedAt: dateValidiation.optional(),
+    createdAt: dateValidiation.optional(),
   })
   .strict();
 
@@ -126,5 +139,7 @@ export const SongSchema = z
     track: TrackSchema.optional().nullable(),
     paragraphs: z.array(ParagraphSchema).optional().nullable(),
     prayers: z.array(PrayerSchema).optional().nullable(),
+    updatedAt: dateValidiation.optional(),
+    createdAt: dateValidiation.optional(),
   })
   .strict();
