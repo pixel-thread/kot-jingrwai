@@ -23,7 +23,6 @@ const source = ["KOT_JINGRWAI", "LYNTI_BNENG"];
 export function UpdateSong() {
   const insets = useSafeAreaInsets();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const router = useRouter();
 
   const { data: songData, isLoading: isLoadingSong } = useQuery({
     queryKey: ["song", "detail", id],
@@ -31,13 +30,6 @@ export function UpdateSong() {
     enabled: !!id,
     select: (data) => data.data,
   });
-
-  useEffect(() => {
-    logger.log("Update Song Screen", {
-      id: id,
-      data: songData,
-    });
-  }, [songData]);
 
   const {
     control,
