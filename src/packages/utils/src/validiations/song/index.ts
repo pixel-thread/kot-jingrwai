@@ -30,7 +30,7 @@ export const LineSchema = z
     isPaidBah: z.boolean(),
     order: z.coerce.number(),
     paragraphId: UUIDSchema.optional(),
-    prayerId: UUIDSchema.optional(),
+    prayerId: UUIDSchema.optional().nullable(),
     updatedAt: dateValidiation.optional(),
     createdAt: dateValidiation.optional(),
   })
@@ -98,8 +98,8 @@ export const SongMetadataSchema = z
       .string()
       .min(1, "Language code is required")
       .max(10, "Language code too long (max 10 chars)"),
-    author: z.string().max(200, "Author name too long").optional(),
-    composer: z.string().max(200, "Composer name too long").optional(),
+    author: z.string().max(200, "Author name too long").optional().nullable(),
+    composer: z.string().max(200, "Composer name too long").optional().nullable(),
     tags: z.array(z.string().max(50, "Tag too long")),
     syllables: z.string().max(100, "Syllables too long").optional().nullable(),
     reference: z.string().max(500, "Reference too long").optional().nullable(),
