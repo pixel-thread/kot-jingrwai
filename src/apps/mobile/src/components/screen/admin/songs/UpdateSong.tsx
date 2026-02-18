@@ -4,12 +4,12 @@ import { KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, View } fr
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { z } from "zod";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 
 import { Container, Text, Button, Input } from "@repo/ui-native";
 import { PrayerItem } from "./PrayerItem";
 import { ParagraphItem } from "./ParagraphItem";
-import { SongSchema, http, logger } from "@repo/utils";
+import { SongSchema, http } from "@repo/utils";
 import { cn } from "@repo/libs";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ADMIN_SONG_ENDPOINT, SONG_ENDPOINTS } from "@repo/constants";
@@ -94,7 +94,6 @@ export function UpdateSong() {
       </Container>
     );
   }
-
   return (
     <>
       <Container>
@@ -143,7 +142,10 @@ export function UpdateSong() {
                         {source.map((item) => (
                           <TouchableOpacity
                             key={item}
-                            onPress={() => onChange(item)}
+                            onPress={() => {
+                              console.log(item);
+                              onChange(item);
+                            }}
                             className={cn(
                               "mx-2 flex-1 items-center justify-center rounded-lg border p-3",
                               value === item
