@@ -1,7 +1,7 @@
 import { SongService } from "@/services/songs";
 import { updateSong } from "@/services/songs/updateSong";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
-import { requiredSuperAdminRole } from "@/utils/middleware/requiredSuperAdminRole";
+import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
 import { SongSchema } from "@repo/utils";
@@ -15,7 +15,7 @@ const routeSchema = {
 
 export const PUT = withValidation(routeSchema, async ({ body, params }, req: NextRequest) => {
   try {
-    await requiredSuperAdminRole(req);
+    await requiredRole(req, "ADMIN");
 
     const isSongExists = await SongService.findUnique({ where: { id: params.id } });
 
