@@ -18,3 +18,10 @@ export const otpValidiation = z
   .string("OTP is required")
   .min(6, "OTP is required")
   .max(6, "OTP must be 6 digits");
+
+export const nameValidiation = z
+  .string()
+  .min(1, "First name is required")
+  .regex(/^[a-zA-Z]+$/, "First name must only contain letters");
+
+export const emailValidation = z.email("Email is required");
