@@ -1,5 +1,14 @@
 import z from "zod";
 
-export const TokenSchema = z.object({
-  refreshToken: z.string("Refresh token is required").min(1, "Refresh token is required"),
+const tokenValidation = z.string("Token is required").min(1, "Token is required");
+
+export const TokenSchema = z
+  .object({
+    refreshToken: tokenValidation,
+  })
+  .strict();
+
+export const RefreshTokenResponseSchema = z.object({
+  accessToken: tokenValidation.optional().nullable(),
+  refreshToken: tokenValidation.optional().nullable(),
 });

@@ -3,8 +3,9 @@ import { UnauthorizedError } from "@src/utils/errors/unAuthError";
 import { TokenServices } from "@src/services/tokens";
 import { JWT } from "@libs/auth/jwt";
 import { SuccessResponse } from "@src/utils/next-response";
-import { TokenSchema } from "@src/utils/validation/token";
+import { RefreshTokenResponseSchema, TokenSchema } from "@src/utils/validation/token";
 import { withValidation } from "@src/utils/middleware/withValidiation";
+import { sanitize } from "@/utils/helper/sanitize";
 
 export const POST = withValidation({ body: TokenSchema }, async ({ body }) => {
   try {
@@ -55,11 +56,13 @@ export const POST = withValidation({ body: TokenSchema }, async ({ body }) => {
 
     const newAccessToken = await JWT.signAccessToken({ userId });
 
+    const data = {
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken,
+    };
+
     return SuccessResponse({
-      data: {
-        accessToken: newAccessToken,
-        refreshToken: newRefreshToken,
-      },
+      data: sanitize(RefreshTokenResponseSchema, data),
       message: "Successfully refresh",
     });
   } catch (error) {

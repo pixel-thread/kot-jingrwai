@@ -15,14 +15,13 @@ export const POST = withValidation({ body: SignUpSchema }, async ({ body }) => {
 
     if (user) return ErrorResponse({ message: "User already exists", status: 400 });
 
-    const newUser = await AuthServices.create({
+    await AuthServices.create({
       email: body.email,
       name: body.name,
       password: body.password,
     });
 
     return SuccessResponse({
-      data: newUser,
       message: "User created successfully. Please login",
       status: 201,
     });
