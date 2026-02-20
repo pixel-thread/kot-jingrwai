@@ -2,6 +2,8 @@ import z from "zod";
 
 export const source = ["KOT_JINGRWAI", "LYNTI_BNENG"];
 
+export const emailValidation = z.email("Email is required");
+
 export const passwordValidation = z
   .string("Password is required")
   .min(8, "Password must be at least 8 characters")
@@ -41,3 +43,16 @@ export const sourceValidiation = z
     message: "Source must be one of the app",
   })
   .default("KOT_JINGRWAI");
+
+export const AppPlatform = ["ANDROID", "IOS", "WEB"];
+
+export const AppUpdateType = ["PTA", "OTA"];
+
+export const AppTags = ["BETA", "STABLE", "PATCH", "BUGFIX"];
+
+export const UserRole = ["USER", "ADMIN", "SUPER_ADMIN"];
+
+export const nameValidiation = z
+  .string()
+  .min(1, "First name is required")
+  .regex(/^[a-zA-Z]+$/, "First name must only contain letters");

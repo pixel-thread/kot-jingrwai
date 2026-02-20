@@ -3,7 +3,7 @@ import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
-import { TrackResponseSchema } from "@/utils/validation/track";
+import { TrackResponseSchema } from "@repo/utils";
 import { logger } from "@repo/utils";
 import { NextRequest } from "next/server";
 

@@ -1,13 +1,12 @@
 import { handleApiErrors } from "@utils/errors/handleApiErrors";
 import { ErrorResponse, SuccessResponse } from "@utils/next-response";
-import { LoginSchema } from "@utils/validation/auth";
 import { AuthServices } from "@services/auth";
 import { BcryptService } from "@src/lib/auth/bcrypt";
 import { TokenServices } from "@src/services/tokens";
 import { JWT } from "@libs/auth/jwt";
 import { withValidation } from "@src/utils/middleware/withValidiation";
 import { sanitize } from "@/utils/helper/sanitize";
-import { RefreshTokenResponseSchema } from "@/utils/validation/token";
+import { RefreshTokenResponseSchema, LoginSchema } from "@repo/utils";
 
 const checkIfDateIsThreeMonth = (date: Date) => {
   return Date.now() - date.getTime() > 3 * 30 * 24 * 60 * 60 * 1000; // 3 months

@@ -3,7 +3,7 @@ import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
-import { UpdateSchema } from "@/utils/validation/update";
+import { UpdateSchema } from "@repo/utils";
 
 export const GET = withValidation({}, async () => {
   try {

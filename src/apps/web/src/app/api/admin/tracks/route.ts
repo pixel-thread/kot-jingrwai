@@ -1,10 +1,9 @@
 import { TrackService } from "@/services/track";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
-import { requiredSuperAdminRole } from "@/utils/middleware/requiredSuperAdminRole";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { SuccessResponse } from "@/utils/next-response";
-import { TracksResponseSchema } from "@/utils/validation/track";
+import { TracksResponseSchema } from "@repo/utils";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {

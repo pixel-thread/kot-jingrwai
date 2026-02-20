@@ -3,7 +3,7 @@ import { UnauthorizedError } from "@src/utils/errors/unAuthError";
 import { TokenServices } from "@src/services/tokens";
 import { JWT } from "@libs/auth/jwt";
 import { SuccessResponse } from "@src/utils/next-response";
-import { RefreshTokenResponseSchema, TokenSchema } from "@src/utils/validation/token";
+import { RefreshTokenResponseSchema, TokenSchema } from "@repo/utils";
 import { withValidation } from "@src/utils/middleware/withValidiation";
 import { sanitize } from "@/utils/helper/sanitize";
 

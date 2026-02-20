@@ -4,7 +4,7 @@ import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { requiredSuperAdminRole } from "@/utils/middleware/requiredSuperAdminRole";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
-import { UpdateSchema } from "@/utils/validation/update";
+import { UpdateSchema } from "@repo/utils";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {

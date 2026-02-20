@@ -1,7 +1,7 @@
 import { addDownloadedUser } from "@/services/download/addDownloadedUser";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { SuccessResponse } from "@/utils/next-response";
-import { UserAnalyticSchema } from "@/utils/validation/analytic/user";
+import { UserAnalyticSchema } from "@repo/utils";
 
 export async function POST(req: Request) {
   try {

@@ -3,7 +3,7 @@ import { AuthServices } from "@services/auth";
 import { withValidation } from "@src/utils/middleware/withValidiation";
 import { handleApiErrors } from "@utils/errors/handleApiErrors";
 import { ErrorResponse, SuccessResponse } from "@utils/next-response";
-import { SignUpSchema } from "@utils/validation/auth";
+import { SignUpSchema } from "@repo/utils";
 
 export const POST = withValidation({ body: SignUpSchema }, async ({ body }, req) => {
   try {

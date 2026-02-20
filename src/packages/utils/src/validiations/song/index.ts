@@ -1,11 +1,10 @@
 import z from "zod";
 import { dateValidiation, UUIDSchema } from "../common";
 import { ResponseSongMetadataSchema, SongMetadataSchema } from "./metadata";
-import { TrackSchema } from "./track";
+import { TrackSchema } from "../track";
 import { ParagraphSchema, ResponseParagraphSchema } from "./paragraph";
 import { PrayerSchema, ResponsePrayerSchema } from "./prayer";
 
-// Song Schema (Create)
 export const SongSchema = z
   .object({
     title: z.string().min(1, "Song title is required").max(500, "Title too long (max 500 chars)"),

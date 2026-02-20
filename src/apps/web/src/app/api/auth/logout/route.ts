@@ -3,7 +3,7 @@ import { handleApiErrors } from "@src/utils/errors/handleApiErrors";
 import { UnauthorizedError } from "@src/utils/errors/unAuthError";
 import { SuccessResponse } from "@src/utils/next-response";
 import { withValidation } from "@src/utils/middleware/withValidiation";
-import { TokenSchema } from "@src/utils/validation/token";
+import { TokenSchema } from "@repo/utils";
 
 export const POST = withValidation({ body: TokenSchema }, async ({ body }) => {
   try {
