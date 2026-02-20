@@ -42,3 +42,4 @@ yarn-error.log*
 *.apk
 src/apps/mobile/app-env.d.ts
 src/apps/lynti-bneng/nativewind-env.d.ts
+src/apps/web/test.http

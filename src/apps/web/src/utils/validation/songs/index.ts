@@ -48,8 +48,8 @@ export const TrackMetadataSchema = z
       .positive("File size must be positive")
       .max(10_000_000_000, "File size too large (max 10GB)"),
     trackId: UUIDSchema.optional(),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
+    createdAt: z.coerce.date().optional(),
+    updatedAt: z.coerce.date().optional(),
   })
   .strict();
 
@@ -59,8 +59,8 @@ export const TrackSchema = z
     id: UUIDSchema,
     metadataId: UUIDSchema.refine((id) => id && id !== "", "Valid metadata ID is required"),
     songs: z.array(z.uuid("Invalid song UUID")).optional(),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
+    createdAt: z.coerce.date().optional(),
+    updatedAt: z.coerce.date().optional(),
   })
   .strict();
 
@@ -87,8 +87,8 @@ export const SongMetadataSchema = z
     tune: z.string().max(200, "Tune name too long").optional().nullable(),
     meter: z.string().max(50, "Meter too long").optional().nullable(),
     songId: UUIDSchema.optional().nullable(),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
+    createdAt: z.coerce.date().optional(),
+    updatedAt: z.coerce.date().optional(),
   })
   .strict();
 
@@ -106,8 +106,8 @@ export const ParagraphSchema = z
       .min(1, "At least one line required"),
     type: VerseTypeSchema,
     songId: UUIDSchema.refine((id) => id && id !== "", "Valid song ID is required"),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
+    createdAt: z.coerce.date().optional(),
+    updatedAt: z.coerce.date().optional(),
   })
   .strict();
 
@@ -122,7 +122,18 @@ export const SongSchema = z
     track: TrackSchema.optional().nullable(),
     paragraphs: z.array(ParagraphSchema).optional().nullable(),
     prayers: z.array(PrayerSchema).optional().nullable(),
-    createdAt: z.string().datetime().optional(),
-    updatedAt: z.string().datetime().optional(),
+    createdAt: z.coerce.date().optional(),
+    updatedAt: z.coerce.date().optional(),
   })
   .strict();
+
+export const SongResponseSchema = z.array(SongSchema);
+
+export const SongsResponseSchema = z.array(
+  SongSchema.omit({
+    track: true,
+    prayers: true,
+    metadataId: true,
+    paragraphs: true,
+  })
+);

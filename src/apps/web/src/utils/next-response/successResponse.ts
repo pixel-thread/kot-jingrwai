@@ -26,6 +26,12 @@ export const SuccessResponse = <T>({
       meta: meta,
       timeStamp: new Date().toISOString(),
     },
-    { status: status }
+    {
+      status: status,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        "X-Content-Type-Options": "nosniff",
+      },
+    }
   );
 };

@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   try {
     const body = UserAnalyticSchema.parse(await req.json());
 
-    const user = await addDownloadedUser({
+    await addDownloadedUser({
       where: { userId: body.userId },
       create: {
         userId: body.userId,
@@ -20,7 +20,9 @@ export async function POST(req: Request) {
       },
     });
 
-    return SuccessResponse({ data: user });
+    return SuccessResponse({
+      message: "Successfully downloaded user",
+    });
   } catch (error) {
     return handleApiErrors(error);
   }

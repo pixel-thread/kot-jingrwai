@@ -13,6 +13,8 @@ export const env = createEnv({
     ACCESS_TOKEN_TTL: z.coerce.number("ACCESS_TOKEN_TTL"),
     REFRESH_TOKEN_TTL: z.coerce.number("REFRESH_TOKEN_TTL"),
     NODE_ENV: z.enum(["development", "test", "production"]),
+    UPSTASH_REDIS_REST_URL: z.string().min(1),
+    UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_BASE_URL: z.string("NEXT_PUBLIC_BASE_URL").min(1),
@@ -22,6 +24,8 @@ export const env = createEnv({
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
+    UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
+    UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
     NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
     DATABASE_URL: process.env.DATABASE_URL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,

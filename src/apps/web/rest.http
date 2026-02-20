@@ -150,13 +150,38 @@ Content-Type: application/json
   "name":"dev"
 }
 
+
 ### 
+
+# @name me
+
+GET {{NEXT_PUBLIC_API_URL}}/auth/me
+Authorization: Bearer {{ACCESS_TOKEN}}
+Accept: application/json
+Content-Type: application/json
+
+### 
+
+
+# @name refresh 
+
+POST {{NEXT_PUBLIC_API_URL}}/auth/refresh
+Accept: application/json
+Content-Type: application/json
+
+{
+  "refreshToken": "{{REFRESH_TOKEN}}"
+}
+
+###
 
 # @name logout
 
 POST {{NEXT_PUBLIC_API_URL}}/auth/logout HTTP/1.1
 Accept: application/json
 Content-Type: application/json
+
+{}
 
 ### 
 

@@ -6,6 +6,8 @@ import { BcryptService } from "@src/lib/auth/bcrypt";
 import { TokenServices } from "@src/services/tokens";
 import { JWT } from "@libs/auth/jwt";
 import { withValidation } from "@src/utils/middleware/withValidiation";
+import { sanitize } from "@/utils/helper/sanitize";
+import { RefreshTokenResponseSchema } from "@/utils/validation/token";
 
 const checkIfDateIsThreeMonth = (date: Date) => {
   return Date.now() - date.getTime() > 3 * 30 * 24 * 60 * 60 * 1000; // 3 months
@@ -41,8 +43,9 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }) => {
       refreshToken: hashedRefresh,
       accessToken: accessToken,
     };
+
     return SuccessResponse({
-      data: data,
+      data: sanitize(RefreshTokenResponseSchema, data),
       message: "Successfully logged in",
     });
   } catch (error) {

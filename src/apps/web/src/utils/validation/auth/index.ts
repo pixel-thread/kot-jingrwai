@@ -1,20 +1,25 @@
 import { z } from "zod";
 
-import { otpValidiation, passwordValidation, phoneValidiation } from "..";
+import {
+  emailValidation,
+  nameValidiation,
+  otpValidiation,
+  passwordValidation,
+  phoneValidiation,
+} from "..";
+
+import { $Enums } from "@/lib/database/prisma/generated/prisma";
 
 export const LoginSchema = z
   .object({
-    email: z.email("Email is required"),
+    email: emailValidation,
     password: passwordValidation,
   })
   .strict();
 
 export const SignUpSchema = LoginSchema.extend({
-  email: z.email("Email is required"),
-  name: z
-    .string()
-    .min(1, "First name is required")
-    .regex(/^[a-zA-Z]+$/, "First name must only contain letters"),
+  email: emailValidation,
+  name: nameValidiation,
   password: passwordValidation,
   confirmPassword: passwordValidation,
 })
@@ -38,7 +43,7 @@ export const ForgotPasswordSchema = z
   })
   .superRefine(({ password, confirmPassword }, ctx) => {
     if (password !== confirmPassword) {
-      ctx.addIssue({
+      return ctx.addIssue({
         code: "custom",
         message: "Passwords do not match",
         path: ["confirm_password", "password"],
@@ -46,3 +51,13 @@ export const ForgotPasswordSchema = z
     }
   })
   .strict();
+
+export const MeAuthResponseSchema = z.object({
+  email: emailValidation.nullable().optional(),
+  name: nameValidiation,
+  phone_no: phoneValidiation.nullable().optional(),
+  hasImage: z.boolean().default(false),
+  imageUrl: z.string().nullable().optional(),
+  createdAt: z.coerce.date(),
+  role: z.enum([$Enums.Role.USER, $Enums.Role.ADMIN, $Enums.Role.SUPER_ADMIN]),
+});
