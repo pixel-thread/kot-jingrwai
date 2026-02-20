@@ -11,10 +11,8 @@ import { UPDATE_ENDPOINTS } from "@repo/constants";
 import { AppVersion } from "@/lib/database/prisma/generated/prisma";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { useAuth } from "@/hooks/auth/useAuth";
 
 export default function Home() {
-  const { isSuperAdmin } = useAuth();
   const images = useMemo(() => ["/assets/mockup/home-1.png", "/assets/mockup/home-2.png"], []);
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -68,22 +66,6 @@ export default function Home() {
               </div>
             )}
 
-            {isSuperAdmin && (
-              <div className="w-full md:w-auto">
-                <Link
-                  className={cn(
-                    buttonVariants({
-                      size: "lg",
-                      variant: "secondary",
-                      className: "w-full py-6 md:w-auto",
-                    })
-                  )}
-                  href={"/admin"}>
-                  Dashboard
-                  <ArrowRightIcon />
-                </Link>
-              </div>
-            )}
             <div className="w-full md:w-auto">
               <Link
                 className={cn(
