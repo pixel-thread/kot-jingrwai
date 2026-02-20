@@ -1,8 +1,10 @@
 import { getSongs } from "@/services/songs/getSongs";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
+import { SongsResponseSchema, sourceValidiation } from "@repo/utils";
 import z from "zod";
 
 const querySchema = z.object({
@@ -12,7 +14,7 @@ const querySchema = z.object({
     .boolean()
     .transform((val) => Boolean(val))
     .default(false),
-  source: z.string().optional(),
+  source: sourceValidiation,
 });
 
 export const GET = withValidation({ query: querySchema }, async ({ query }) => {
@@ -64,7 +66,7 @@ export const GET = withValidation({ query: querySchema }, async ({ query }) => {
     });
 
     return SuccessResponse({
-      data: songs,
+      data: sanitize(SongsResponseSchema, songs),
       meta: getMeta({ currentPage: page || "1", total }),
       message: "Success fetching songs",
     });
