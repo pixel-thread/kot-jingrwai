@@ -1,5 +1,4 @@
 import { addVerse } from "@/services/verse/addVerse";
-import { deleteVerse } from "@/services/verse/deleteVerse";
 import { getBibleVerse } from "@/services/verse/getBibleVerse";
 import { getVerse } from "@/services/verse/getVerse";
 import { BibleVerseT } from "@/types/verse";
@@ -10,7 +9,6 @@ import axios, { AxiosResponse } from "axios";
 
 export async function GET(request: Request) {
   try {
-    logger.log(request);
     let response: AxiosResponse<BibleVerseT>;
 
     try {
@@ -80,35 +78,6 @@ export async function GET(request: Request) {
     });
   } catch (error) {
     logger.error("Error While Getting Bible verse");
-    return handleApiErrors(error);
-  }
-}
-
-export async function DELETE(request: Request) {
-  try {
-    logger.info("Deleting all verses");
-    const searchParams = new URL(request.url).searchParams;
-    const isAll = searchParams.get("isAll") === "true";
-    const id = searchParams.get("id");
-    let response;
-    if (isAll) {
-      response = await deleteVerse({ isAll: true });
-      return SuccessResponse({
-        data: response,
-        message: "Successfully deleted all verses",
-      });
-    } else if (id) {
-      response = await deleteVerse({ id });
-      return SuccessResponse({
-        data: response,
-        message: "Successfully deleted verse",
-      });
-    }
-    return SuccessResponse({
-      data: response,
-      message: "Successfully deleted verse",
-    });
-  } catch (error) {
     return handleApiErrors(error);
   }
 }
