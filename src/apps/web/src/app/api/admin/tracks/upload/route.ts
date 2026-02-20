@@ -2,7 +2,9 @@ import { getUniqueSongs } from "@/services/songs/getUniqueSong";
 import { TrackService } from "@/services/track";
 import { UploadService } from "@/services/uploads/indext";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
+import { TrackResponseSchema } from "@/utils/validation/track";
 import { logger } from "@repo/utils";
 import { NextRequest } from "next/server";
 import z from "zod";
@@ -77,24 +79,10 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    const track = await prisma.track.create({
-      data: {
-        songs: { connect: { id: songId } },
-        metadata: { connect: { id: trackMetadata.id } },
-      },
-      include: { metadata: true },
+    return SuccessResponse({
+      data: sanitize(TrackResponseSchema, track),
+      message: "Song uploaded successfully",
     });
-
-    await prisma.trackMetadata.update({
-      where: { id: trackMetadata.id },
-      data: { trackId: track.id },
-    });
-
-    logger.info("API:Track uploaded successfully", {
-      songNo: songExist.metadata.number,
-    });
-
-    return SuccessResponse({ data: track });
   } catch (error) {
     return handleApiErrors(error);
   }

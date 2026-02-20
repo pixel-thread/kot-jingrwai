@@ -1,14 +1,16 @@
 import { getLatestUpdate } from "@/services/appVersion/getLatestUpdate";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
+import { UpdateSchema } from "@/utils/validation/update";
 
 export const GET = withValidation({}, async () => {
   try {
     const update = await getLatestUpdate();
 
     return SuccessResponse({
-      data: update,
+      data: sanitize(UpdateSchema, update),
       message: "Successfully fetched latest update",
     });
   } catch (error) {
