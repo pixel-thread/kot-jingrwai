@@ -168,7 +168,6 @@ Content-Type: application/json
 POST {{NEXT_PUBLIC_API_URL}}/auth/refresh
 Accept: application/json
 Content-Type: application/json
-# Authorization: Bearer {{ACCESS_TOKEN}}
 
 {
   "refreshToken": "{{REFRESH_TOKEN}}"
