@@ -16,6 +16,16 @@ datasource db {
  * ENUMS
  * ---------------------------
  */
+enum AttemptType {
+  LOGIN
+  OTP
+  FORGOT_PASSWORD
+}
+
+enum LockReason {
+  TOO_MANY_FAILED_LOGIN_ATTEMPTS
+  TOO_MANY_FAILED_OTP_ATTEMPTS
+}
 
 enum VerseType {
   VERSE
@@ -83,6 +93,10 @@ model Auth {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
+
+  // Relations
+  attempts Attempt[]
+  locks    AccountLock[]
 
   userId String  @unique
   user   User    @relation(fields: [userId], references: [id])
@@ -392,4 +406,30 @@ model Log {
 
   @@index([isBackend, timestamp])
   @@index([type, timestamp])
+}
+
+model Attempt {
+  id        String      @id @default(uuid())
+  authId    String?
+  email     String?
+  ipAddress String?
+  type      AttemptType
+  success   Boolean
+  createdAt DateTime    @default(now())
+
+  auth Auth? @relation(fields: [authId], references: [id])
+}
+
+model AccountLock {
+  id          String     @id @default(uuid())
+  authId      String?
+  email       String?
+  reason      LockReason
+  lockedUntil DateTime
+  createdAt   DateTime   @default(now())
+
+  auth Auth? @relation(fields: [authId], references: [id])
+
+  @@index([authId])
+  @@index([email])
 }

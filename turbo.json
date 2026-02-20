@@ -22,9 +22,11 @@
         "SALT",
         "JWT_ACCESS_SECRET",
         "JWT_REFRESH_SECRET",
-        "ACESS_TOKEN_TTL",
+        "ACCESS_TOKEN_TTL",
         "REFRESH_TOKEN_TTL",
-        "NODE_ENV"
+        "NODE_ENV",
+        "UPSTASH_REDIS_REST_URL",
+        "UPSTASH_REDIS_REST_TOKEN"
       ]
     },
     "lint": {
