@@ -1,7 +1,7 @@
 import { stackMiddlewares } from "./utils/middleware/stackMiddleware";
-import { withRateLimiting } from "./utils/middleware/withRateLimiting";
+import { withApiAuth } from "./utils/middleware/withApiAuth";
 
-const middlewares = [withRateLimiting];
+const middlewares = [withApiAuth];
 
 export default stackMiddlewares(middlewares);
 

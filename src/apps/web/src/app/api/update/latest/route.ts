@@ -10,7 +10,7 @@ export const GET = withValidation({}, async () => {
     const update = await getLatestUpdate();
 
     return SuccessResponse({
-      data: sanitize(UpdateSchema, update),
+      data: sanitize(UpdateSchema.optional().nullable(), update),
       message: "Successfully fetched latest update",
     });
   } catch (error) {

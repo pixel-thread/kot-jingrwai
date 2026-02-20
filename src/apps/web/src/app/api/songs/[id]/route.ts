@@ -3,7 +3,8 @@ import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
-import { SongResponseSchema } from "@/utils/validation/songs";
+import { SongResponseSchema } from "@repo/utils";
+
 import z from "zod";
 
 const RouteSchema = {

@@ -1,3 +1,4 @@
+import { $Enums } from "@/lib/database/prisma/generated/prisma";
 import z from "zod";
 
 export const passwordValidation = z
@@ -25,3 +26,21 @@ export const nameValidiation = z
   .regex(/^[a-zA-Z]+$/, "First name must only contain letters");
 
 export const emailValidation = z.email("Email is required");
+
+export const sourceValidiation = z
+  .enum([$Enums.AppSource.LYNTI_BNENG, $Enums.AppSource.KOT_JINGRWAI])
+  .default($Enums.AppSource.KOT_JINGRWAI);
+
+export const UUIDSchema = z.uuid("Must be a valid UUID format");
+
+export const VerseTypeSchema = z
+  .enum([
+    $Enums.VerseType.INTRO,
+    $Enums.VerseType.CHORUS,
+    $Enums.VerseType.VERSE,
+    $Enums.VerseType.BRIDGE,
+    $Enums.VerseType.OUTRO,
+  ])
+  .refine((val) => !val || Object.values($Enums.VerseType).includes(val), {
+    message: "Invalid verse type. Must be INTRO, CHORUS, VERSE, BRIDGE, or OUTRO",
+  });
