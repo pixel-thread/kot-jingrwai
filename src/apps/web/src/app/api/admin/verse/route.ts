@@ -23,10 +23,7 @@ export async function DELETE(request: Request) {
         message: "Successfully deleted verse",
       });
     }
-    return SuccessResponse({
-      data: response,
-      message: "Successfully deleted verse",
-    });
+    return SuccessResponse({ message: "Successfully deleted verse" });
   } catch (error) {
     return handleApiErrors(error);
   }

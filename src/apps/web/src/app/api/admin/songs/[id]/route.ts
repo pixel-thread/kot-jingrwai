@@ -1,9 +1,11 @@
 import { SongService } from "@/services/songs";
 import { updateSong } from "@/services/songs/updateSong";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
+import { SongResponseSchema } from "@/utils/validation/songs";
 import { SongSchema } from "@repo/utils";
 import { NextRequest } from "next/server";
 import z from "zod";
@@ -29,7 +31,7 @@ export const PUT = withValidation(routeSchema, async ({ body, params }, req: Nex
     const updatedSong = await updateSong({ data: body });
 
     return SuccessResponse({
-      data: updatedSong,
+      data: sanitize(SongResponseSchema, updatedSong),
       message: "Successfully updated song",
     });
   } catch (error) {

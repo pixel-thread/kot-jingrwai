@@ -4,6 +4,8 @@ import { requiredSuperAdminRole } from "@/utils/middleware/requiredSuperAdminRol
 import { SuccessResponse } from "@/utils/next-response";
 import { NextRequest } from "next/server";
 import { convertUTCToIST } from "@repo/utils";
+import { sanitize } from "@/utils/helper/sanitize";
+import { UserAnalyticSchema } from "@/utils/validation/analytic/user";
 
 export async function GET(req: NextRequest) {
   try {
@@ -15,7 +17,7 @@ export async function GET(req: NextRequest) {
       createdAt: convertUTCToIST(val.createdAt),
     }));
     return SuccessResponse({
-      data,
+      data: sanitize(UserAnalyticSchema, data),
       message: "success",
     });
   } catch (error) {
