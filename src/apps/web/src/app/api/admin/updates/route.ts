@@ -1,3 +1,4 @@
+import { AppVersionTags } from "@/lib/database/prisma/generated/prisma";
 import { createUpdate } from "@/services/appVersion/update/createUpdate";
 import { getUpdates } from "@/services/appVersion/update/getUpdates";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
@@ -37,10 +38,10 @@ export async function POST(request: Request) {
         version: body.version,
         title: body.title,
         description: body.description,
-        platforms: body.platforms,
-        releaseNotesUrl: body.releaseNotesUrl,
-        type: body.type,
-        tags: body.tags,
+        platforms: body.platforms as any,
+        releaseNotesUrl: body.releaseNotesUrl as any,
+        type: body.type as any,
+        tags: body.tags as any,
         minSupportedVersion: body.minSupportedVersion,
         releaseDate: new Date(),
         author: body.author,
