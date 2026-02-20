@@ -1,9 +1,11 @@
 import { $Enums } from "@/lib/database/prisma/generated/prisma";
 import { getSongs } from "@/services/songs/getSongs";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
+import { SongsResponseSchema } from "@/utils/validation/songs";
 import z from "zod";
 
 const routeSchema = {
@@ -22,7 +24,6 @@ export const GET = withValidation(routeSchema, async ({ query }) => {
     const { page, isChorus, source } = query;
 
     const isChorusDefine = isChorus;
-    console.log(source);
 
     const [songs, total] = await getSongs({
       page,
@@ -37,7 +38,7 @@ export const GET = withValidation(routeSchema, async ({ query }) => {
     });
 
     return SuccessResponse({
-      data: songs,
+      data: sanitize(SongsResponseSchema, songs),
       meta: getMeta({ currentPage: page || "1", total }),
       message: "Success fetching songs",
     });

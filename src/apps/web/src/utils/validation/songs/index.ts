@@ -127,10 +127,13 @@ export const SongSchema = z
   })
   .strict();
 
-export const SongResponseSchema = z.array(
+export const SongResponseSchema = z.array(SongSchema);
+
+export const SongsResponseSchema = z.array(
   SongSchema.omit({
     track: true,
     prayers: true,
+    metadataId: true,
     paragraphs: true,
   })
 );

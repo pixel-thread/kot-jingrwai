@@ -4,11 +4,14 @@ import { getVerse } from "@/services/verse/getVerse";
 import { BibleVerseT } from "@/types/verse";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { logger } from "@/utils/logger";
+import { requiredRole } from "@/utils/middleware/requireRole";
 import { SuccessResponse } from "@/utils/next-response";
 import axios, { AxiosResponse } from "axios";
+import { NextRequest } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
+    await requiredRole(request, "SUPER_ADMIN");
     let response: AxiosResponse<BibleVerseT>;
 
     try {

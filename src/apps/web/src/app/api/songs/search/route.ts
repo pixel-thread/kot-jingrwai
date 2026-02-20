@@ -1,7 +1,9 @@
 import { getSongs } from "@/services/songs/getSongs";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
+import { SongsResponseSchema } from "@/utils/validation/songs";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -17,7 +19,6 @@ export async function GET(req: NextRequest) {
       where: {
         metadata: { isChorus },
         OR: [
-          // 🔢 Search by song number
           ...(isNumber
             ? [
                 {
@@ -27,16 +28,12 @@ export async function GET(req: NextRequest) {
                 },
               ]
             : []),
-
-          // 🎵 Search by title
           {
             title: {
               contains: query,
               mode: "insensitive",
             },
           },
-
-          // 📝 Search by FIRST LINE of any paragraph
           {
             paragraphs: {
               some: {
@@ -57,7 +54,7 @@ export async function GET(req: NextRequest) {
     });
 
     return SuccessResponse({
-      data: songs,
+      data: sanitize(SongsResponseSchema, songs),
       meta: getMeta({ currentPage: page || "1", total }),
       message: "Success fetching songs",
     });
