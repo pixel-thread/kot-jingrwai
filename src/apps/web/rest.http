@@ -131,7 +131,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "email":"jyrwaboys@gmail.coms",
+  "email":"two@gmail.com",
   "password":"123Clashofclan@"
 }
 
@@ -144,7 +144,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "email":"jyrwaboys@gmail.com",
+  "email":"two@gmail.com",
   "password":"123Clashofclan@",
   "confirmPassword":"123Clashofclan@",
   "name":"dev"
