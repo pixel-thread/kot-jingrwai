@@ -29,3 +29,14 @@ export function getTime(value: number, unit: TimeUnit): number {
       throw new Error(`Unsupported time unit: ${unit}`);
   }
 }
+
+export function calculateLockUntil(failCount: number): Date {
+  const now = new Date();
+
+  // 1 hour per failCount
+  const hoursToAdd = failCount;
+
+  const lockedUntil = new Date(now.getTime() + hoursToAdd * 60 * 60 * 1000);
+
+  return lockedUntil;
+}

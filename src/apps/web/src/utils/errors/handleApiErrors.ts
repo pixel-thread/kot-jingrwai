@@ -28,15 +28,15 @@ export const handleApiErrors = (error: unknown) => {
   }
 
   if (error instanceof PrismaClientInitializationError) {
-    return ErrorResponse({ message: error.message, error, status: 400 });
+    return ErrorResponse({ message: error.message, status: 400 });
   }
 
   if (error instanceof PrismaClientValidationError) {
-    return ErrorResponse({ message: error.message, error, status: 400 });
+    return ErrorResponse({ message: error.message, status: 400 });
   }
 
   if (error instanceof PrismaClientUnknownRequestError) {
-    return ErrorResponse({ message: error.message, error, status: 400 });
+    return ErrorResponse({ message: error.message, status: 400 });
   }
 
   if (error instanceof ZodError) {
@@ -47,7 +47,6 @@ export const handleApiErrors = (error: unknown) => {
     });
     return ErrorResponse({
       message: error?.issues[0]?.message,
-      error: error.issues,
       status: 400,
     });
   }
@@ -62,10 +61,12 @@ export const handleApiErrors = (error: unknown) => {
     logger.error({ type: "Error", message: error.message, error });
     return ErrorResponse({ message: error.message });
   }
+
   logger.error({
     type: "UnknownError",
     message: "Internal Server Error",
     error,
   });
+
   return ErrorResponse({ message: "Internal Server Error" });
 };

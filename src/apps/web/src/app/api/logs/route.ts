@@ -1,14 +1,17 @@
 import { addLogs } from "@/services/logs/addLogs";
-import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { withValidation } from "@/utils/middleware/withValidiation";
-import { SuccessResponse } from "@/utils/next-response";
-import { LogSchema } from "@repo/utils";
+import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
+import { logger, LogSchema } from "@repo/utils";
 
 export const POST = withValidation({ body: LogSchema }, async ({ body }) => {
   try {
     await addLogs({ data: body });
     return SuccessResponse({ message: "Log saved successfully" });
   } catch (error) {
-    return handleApiErrors(error);
+    logger.error("Error saving log", { error });
+    return ErrorResponse({
+      message: "Internal Server error",
+      status: 500,
+    });
   }
 });
