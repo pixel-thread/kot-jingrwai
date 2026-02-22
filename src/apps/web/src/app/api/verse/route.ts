@@ -11,7 +11,7 @@ import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
-    await requiredRole(request, "SUPER_ADMIN");
+    await requiredRole(request, "NONE");
     let response: AxiosResponse<BibleVerseT>;
 
     try {
