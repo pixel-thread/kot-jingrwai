@@ -23,7 +23,7 @@ export const POST = withValidation({ body: SignUpSchema }, async ({ body }, req)
       });
     }
 
-    await requiredRole(req, "SUPER_ADMIN");
+    // await requiredRole(req, "SUPER_ADMIN");
 
     const email = body.email;
     // check if user already exists under the same email address

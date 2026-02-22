@@ -8,7 +8,12 @@ import { SongsResponseSchema, sourceValidiation } from "@repo/utils";
 import z from "zod";
 
 const querySchema = z.object({
-  query: z.string().optional().default(""),
+  // remove all special characters
+  query: z
+    .string()
+    .transform((val) => val.replace(/[^a-zA-Z0-9]/g, ""))
+    .optional()
+    .default(""),
   page: z.string().optional().default("1"),
   isChorus: z.coerce
     .boolean()
