@@ -5,8 +5,8 @@ import {
   otpValidiation,
   passwordValidation,
   phoneValidiation,
-  UserRole,
 } from "../common";
+import { UserRole } from "@repo/constants";
 
 export const LoginSchema = z
   .object({
