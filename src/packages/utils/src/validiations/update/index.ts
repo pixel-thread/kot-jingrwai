@@ -1,5 +1,5 @@
 import z from "zod";
-import { AppPlatform, AppTags, AppUpdateType } from "../common";
+import { AppPlatform, AppTags, AppUpdateType } from "@repo/constants";
 
 export const UpdateSchema = z.object({
   version: z
