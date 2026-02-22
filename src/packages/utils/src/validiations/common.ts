@@ -57,9 +57,7 @@ export const nameValidiation = z
   .min(1, "First name is required")
   .regex(textOnlyRegx, "First name must only contain letters");
 
-export const textOnlyValidiation = z
-  .string("Must only contain letters")
-  .regex(textOnlyRegx, "Must only contain letters");
+export const textOnlyValidiation = z.string("Must only contain letters");
 
 export const appVersionValidiation = z
   .string()
