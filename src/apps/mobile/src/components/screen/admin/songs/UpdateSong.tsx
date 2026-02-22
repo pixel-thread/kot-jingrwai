@@ -4,22 +4,60 @@ import { KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, View } fr
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { z } from "zod";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, router } from "expo-router";
 
 import { Container, Text, Button, Input } from "@repo/ui-native";
 import { PrayerItem } from "./PrayerItem";
 import { ParagraphItem } from "./ParagraphItem";
-import { SongSchema } from "@repo/utils";
+import { logger, SongSchema } from "@repo/utils";
 import { http } from "@repo/utils-native";
 import { cn } from "@repo/libs";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { ADMIN_SONG_ENDPOINT, SONG_ENDPOINTS } from "@repo/constants";
+import { ADMIN_SONG_ENDPOINT, SONG_ENDPOINTS, appSource } from "@repo/constants";
 import { SongT } from "@repo/types";
 import { useEffect } from "react";
 
 type SongFormValues = z.infer<typeof SongSchema>;
 
-const source = ["KOT_JINGRWAI", "LYNTI_BNENG"];
+const cleanSongData = (songData: SongT) => {
+  return {
+    title: songData.title,
+    metadata: {
+      number: songData.metadata?.number,
+      language: songData.metadata?.language,
+      source: (songData.metadata as any)?.source || [],
+      tags: songData.metadata?.tags || [],
+      isChorus: songData.metadata?.isChorus,
+      oldNumber: songData.metadata?.oldNumber,
+      author: songData.metadata?.author,
+      composer: songData.metadata?.composer,
+      syllables: songData.metadata?.syllables,
+      reference: songData.metadata?.reference,
+      tune: songData.metadata?.tune,
+      meter: songData.metadata?.meter,
+    },
+    paragraphs:
+      songData.paragraphs?.map((p: any) => ({
+        order: p.order,
+        type: p.type,
+        lines:
+          p.lines?.map((l: any) => ({
+            order: l.order,
+            text: l.text,
+            isPaidBah: l.isPaidBah,
+          })) || [],
+      })) || [],
+    prayers:
+      (songData as any).prayers?.map((p: any) => ({
+        lines:
+          p.lines?.map((l: any) => ({
+            order: l.order,
+            text: l.text,
+            isPaidBah: l.isPaidBah,
+          })) || [],
+      })) || [],
+  };
+};
 
 export function UpdateSong() {
   const insets = useSafeAreaInsets();
@@ -38,19 +76,12 @@ export function UpdateSong() {
     register,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm({
-    resolver: zodResolver(SongSchema),
-    defaultValues: {
-      metadata: {
-        source: "KOT_JINGRWAI",
-        tags: [],
-      },
-    },
-  });
+  } = useForm({ resolver: zodResolver(SongSchema) });
 
   useEffect(() => {
     if (songData) {
-      reset(songData as SongFormValues);
+      const cleanData = cleanSongData(songData);
+      reset(cleanData as unknown as SongFormValues);
     }
   }, [songData, reset]);
 
@@ -58,8 +89,9 @@ export function UpdateSong() {
     mutationFn: (data: SongFormValues) =>
       http.put(ADMIN_SONG_ENDPOINT.PUT_UPDATE_SONG.replace(":id", id), data),
     onSuccess: (data) => {
+      console.log(data);
       if (data.success) {
-        // router.back();
+        router.back();
         return data;
       }
       return data;
@@ -95,6 +127,9 @@ export function UpdateSong() {
       </Container>
     );
   }
+
+  logger.log(errors);
+
   return (
     <>
       <Container>
@@ -138,25 +173,31 @@ export function UpdateSong() {
                   <Controller
                     control={control}
                     name="metadata.source"
+                    defaultValue={songData?.metadata?.source || []}
                     render={({ field: { onChange, value } }) => (
                       <ScrollView horizontal className="flex-row gap-3">
-                        {source.map((item) => (
+                        {appSource.map((item) => (
                           <TouchableOpacity
                             key={item}
                             onPress={() => {
-                              console.log(item);
-                              onChange(item);
+                              const currentValues = Array.isArray(value) ? value : [];
+                              const newValues = currentValues.includes(item)
+                                ? currentValues.filter((v: string | undefined) => v !== item)
+                                : [...currentValues, item];
+                              onChange(newValues);
                             }}
                             className={cn(
                               "mx-2 flex-1 items-center justify-center rounded-lg border p-3",
-                              value === item
+                              (Array.isArray(value) ? value : []).includes(item)
                                 ? "border-indigo-600 bg-indigo-600"
                                 : "border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
                             )}>
                             <Text
                               className={cn(
                                 "font-medium",
-                                value === item ? "text-white" : "text-gray-700 dark:text-gray-300"
+                                (Array.isArray(value) ? value : []).includes(item)
+                                  ? "text-white"
+                                  : "text-gray-700 dark:text-gray-300"
                               )}>
                               {item.replace("_", " ")}
                             </Text>

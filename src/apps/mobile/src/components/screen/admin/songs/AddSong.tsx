@@ -29,7 +29,7 @@ export function AddSong() {
     resolver: zodResolver(SongSchema),
     defaultValues: {
       metadata: {
-        source: "KOT_JINGRWAI",
+        source: ["KOT_JINGRWAI"],
         tags: [],
       },
     },
@@ -114,17 +114,23 @@ export function AddSong() {
                         {source.map((item) => (
                           <TouchableOpacity
                             key={item}
-                            onPress={() => onChange(item)}
+                            onPress={() => {
+                              const currentValues = Array.isArray(value) ? value : [];
+                              const newValues = currentValues.includes(item)
+                                ? currentValues.filter((v: string | undefined) => v !== item)
+                                : [...currentValues, item];
+                              onChange(newValues);
+                            }}
                             className={cn(
                               "mx-2 flex-1 items-center justify-center rounded-lg border p-3",
-                              value === item
+                              (Array.isArray(value) ? value : []).includes(item)
                                 ? "border-indigo-600 bg-indigo-600"
                                 : "border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
                             )}>
                             <Text
                               className={cn(
                                 "font-medium",
-                                value === item ? "text-white" : "text-gray-700 dark:text-gray-300"
+                                (Array.isArray(value) ? value : []).includes(item) ? "text-white" : "text-gray-700 dark:text-gray-300"
                               )}>
                               {item.replace("_", " ")}
                             </Text>
