@@ -7,6 +7,7 @@ import {
   upperCaseRegx,
   appSource,
   verseTypes,
+  appVersionRegx,
 } from "@repo/constants";
 
 export const emailValidation = z.email("Email is required").trim();
@@ -75,3 +76,7 @@ export const nameValidiation = z
 export const textOnlyValidiation = z
   .string("Must only contain letters")
   .regex(textOnlyRegx, "Must only contain letters");
+
+export const appVersionValidiation = z
+  .string()
+  .regex(appVersionRegx, "Min Version must be in format X.Y.Z (e.g., 1.0.0)");
