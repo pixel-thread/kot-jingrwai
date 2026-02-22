@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
 
     return SuccessResponse({
       data: "Webhook received",
-      status: 200,
+      status: 201,
     });
   } catch (error) {
     return handleApiErrors(error);

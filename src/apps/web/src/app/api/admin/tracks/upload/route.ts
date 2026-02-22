@@ -2,7 +2,9 @@ import { getUniqueSongs } from "@/services/songs/getUniqueSong";
 import { TrackService } from "@/services/track";
 import { UploadService } from "@/services/uploads/indext";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
+import { TrackResponseSchema } from "@repo/utils";
 import { logger } from "@repo/utils";
 import { NextRequest } from "next/server";
 import z from "zod";
@@ -59,7 +61,10 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    return SuccessResponse({ data: track, message: "Song uploaded successfully" });
+    return SuccessResponse({
+      data: sanitize(TrackResponseSchema, track),
+      message: "Song uploaded successfully",
+    });
   } catch (error) {
     return handleApiErrors(error);
   }

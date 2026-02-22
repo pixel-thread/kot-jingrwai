@@ -1,16 +1,17 @@
 import { addVerse } from "@/services/verse/addVerse";
-import { deleteVerse } from "@/services/verse/deleteVerse";
 import { getBibleVerse } from "@/services/verse/getBibleVerse";
 import { getVerse } from "@/services/verse/getVerse";
 import { BibleVerseT } from "@/types/verse";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { logger } from "@/utils/logger";
+import { requiredRole } from "@/utils/middleware/requireRole";
 import { SuccessResponse } from "@/utils/next-response";
 import axios, { AxiosResponse } from "axios";
+import { NextRequest } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
-    logger.log(request);
+    await requiredRole(request, "SUPER_ADMIN");
     let response: AxiosResponse<BibleVerseT>;
 
     try {
@@ -80,35 +81,6 @@ export async function GET(request: Request) {
     });
   } catch (error) {
     logger.error("Error While Getting Bible verse");
-    return handleApiErrors(error);
-  }
-}
-
-export async function DELETE(request: Request) {
-  try {
-    logger.info("Deleting all verses");
-    const searchParams = new URL(request.url).searchParams;
-    const isAll = searchParams.get("isAll") === "true";
-    const id = searchParams.get("id");
-    let response;
-    if (isAll) {
-      response = await deleteVerse({ isAll: true });
-      return SuccessResponse({
-        data: response,
-        message: "Successfully deleted all verses",
-      });
-    } else if (id) {
-      response = await deleteVerse({ id });
-      return SuccessResponse({
-        data: response,
-        message: "Successfully deleted verse",
-      });
-    }
-    return SuccessResponse({
-      data: response,
-      message: "Successfully deleted verse",
-    });
-  } catch (error) {
     return handleApiErrors(error);
   }
 }

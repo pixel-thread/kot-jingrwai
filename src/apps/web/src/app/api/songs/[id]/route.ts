@@ -1,26 +1,27 @@
 import { getUniqueSongs } from "@/services/songs/getUniqueSong";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
+import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
-import { NextRequest } from "next/server";
+import { SongResponseSchema } from "@repo/utils";
 
-export async function GET(
-  req: NextRequest,
-  {
-    params,
-  }: {
-    params: Promise<{ id: string }>;
-  }
-) {
+import z from "zod";
+
+const RouteSchema = {
+  params: z.object({ id: z.uuid() }),
+};
+
+export const GET = withValidation(RouteSchema, async ({ params }) => {
   try {
-    if (process.env.NODE_ENV === "development") {
-      console.log(req);
-    }
-    const id = (await params).id;
+    const id = params.id;
+
     const song = await getUniqueSongs({ where: { id } });
+
     return SuccessResponse({
-      data: song,
+      data: sanitize(SongResponseSchema, song),
+      message: "Successfully fetched song",
     });
   } catch (error) {
     return handleApiErrors(error);
   }
-}
+});

@@ -16,6 +16,16 @@ datasource db {
  * ENUMS
  * ---------------------------
  */
+enum AttemptType {
+  LOGIN
+  OTP
+  FORGOT_PASSWORD
+}
+
+enum LockReason {
+  TOO_MANY_FAILED_LOGIN_ATTEMPTS
+  TOO_MANY_FAILED_OTP_ATTEMPTS
+}
 
 enum VerseType {
   VERSE
@@ -84,6 +94,10 @@ model Auth {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 
+  // Relations
+  attempts Attempt[]
+  locks    AccountLock[]
+
   userId String  @unique
   user   User    @relation(fields: [userId], references: [id])
   otps   otp[]
@@ -105,14 +119,12 @@ model otp {
 }
 
 model SongPrayer {
-  id        String    @id @default(uuid())
-  value     String
-  songId    String
-  order     Int
-  isPaidBah Boolean
-  source    AppSource @default(KOT_JINGRWAI)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id        String   @id @default(uuid())
+  lines     Line[]
+  songId    String?
+  song      Song?    @relation(fields: [songId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([songId])
   @@index([id])
@@ -173,6 +185,7 @@ model Song {
   paragraphs Paragraph[]
   metadataId String       @unique
   metadata   SongMetadata @relation(fields: [metadataId], references: [id])
+  prayers    SongPrayer[]
 
   @@index([id])
   @@index([trackId])
@@ -203,13 +216,17 @@ model SongMetadata {
 }
 
 model Line {
-  id          String     @id @default(uuid())
-  text        String
-  order       Int
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id        String   @id @default(uuid())
+  text      String
+  order     Int
+  isPaidBah Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   paragraphId String?
-  paragraph   Paragraph? @relation(fields: [paragraphId], references: [id])
+  paragraph   Paragraph?  @relation(fields: [paragraphId], references: [id])
+  prayerId    String?
+  prayer      SongPrayer? @relation(fields: [prayerId], references: [id])
 
   @@unique([paragraphId, order])
   @@index([paragraphId])
@@ -389,4 +406,30 @@ model Log {
 
   @@index([isBackend, timestamp])
   @@index([type, timestamp])
+}
+
+model Attempt {
+  id        String      @id @default(uuid())
+  authId    String?
+  email     String?
+  ipAddress String?
+  type      AttemptType
+  success   Boolean
+  createdAt DateTime    @default(now())
+
+  auth Auth? @relation(fields: [authId], references: [id])
+}
+
+model AccountLock {
+  id          String     @id @default(uuid())
+  authId      String?
+  email       String?
+  reason      LockReason
+  lockedUntil DateTime
+  createdAt   DateTime   @default(now())
+
+  auth Auth? @relation(fields: [authId], references: [id])
+
+  @@index([authId])
+  @@index([email])
 }

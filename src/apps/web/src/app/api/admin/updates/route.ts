@@ -1,16 +1,18 @@
+import { AppVersionTags } from "@/lib/database/prisma/generated/prisma";
 import { createUpdate } from "@/services/appVersion/update/createUpdate";
 import { getUpdates } from "@/services/appVersion/update/getUpdates";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
 import { requiredSuperAdminRole } from "@/utils/middleware/requiredSuperAdminRole";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
-import { UpdateSchema } from "@/utils/validation/update";
+import { UpdateSchema } from "@repo/utils";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
     await requiredSuperAdminRole(request);
     const updates = await getUpdates({ where: {} });
-    return SuccessResponse({ data: updates });
+    return SuccessResponse({ data: sanitize(UpdateSchema, updates) });
   } catch (error) {
     return handleApiErrors(error);
   }
@@ -36,10 +38,10 @@ export async function POST(request: Request) {
         version: body.version,
         title: body.title,
         description: body.description,
-        platforms: body.platforms,
-        releaseNotesUrl: body.releaseNotesUrl,
-        type: body.type,
-        tags: body.tags,
+        platforms: body.platforms as any,
+        releaseNotesUrl: body.releaseNotesUrl as any,
+        type: body.type as any,
+        tags: body.tags as any,
         minSupportedVersion: body.minSupportedVersion,
         releaseDate: new Date(),
         author: body.author,

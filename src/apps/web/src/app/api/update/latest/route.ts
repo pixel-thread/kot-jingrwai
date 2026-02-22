@@ -1,54 +1,19 @@
 import { getLatestUpdate } from "@/services/appVersion/getLatestUpdate";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { sanitize } from "@/utils/helper/sanitize";
+import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
-import { logger } from "@repo/utils";
-import { NextRequest } from "next/server";
+import { UpdateSchema } from "@repo/utils";
 
-const MOCK_DATA = {
-  id: "738bc74a-7246-4b2f-9f82-fa19bdffd2bc",
-  version: "1.0.3",
-  title: "Build 1.0.0",
-  description: [
-    "v1",
-    "1. Auto update",
-    "2. Update onboarding",
-    "3. Update release workflow",
-    "4. Sync User number tracking",
-  ],
-  releaseNotesUrl: null,
-  releaseDate: "2025-12-11 11:53:07.702",
-  minSupportedVersion: null,
-  author: "pixel-thread-personal",
-  tags: ["ios"],
-  additionalInfo: {
-    buildId: "01ff33ec-6e58-49df-aed8-c389e7e02ddb",
-    channel: "production",
-    profile: "production",
-  },
-  status: "ACTIVE",
-  createdAt: "2025-12-11 11:53:07.702",
-  updatedAt: "2025-12-11 11:53:07.702",
-  downloadUrl: "https://expo.dev/artifacts/eas/fivuSfzB7UdVay8nnNFQx.apk",
-  type: "OTA",
-  platforms: ["IOS"],
-  buildNumber: null,
-  runtimeVersion: null,
-  versionCode: null,
-};
-
-export async function GET(req: NextRequest) {
+export const GET = withValidation({}, async () => {
   try {
-    if (process.env.NODE_ENV === "development") {
-      logger.log(req);
-    }
-
     const update = await getLatestUpdate();
 
     return SuccessResponse({
-      data: process.env.NODE_ENV === "development" ? MOCK_DATA : update,
+      data: sanitize(UpdateSchema.optional().nullable(), update),
       message: "Successfully fetched latest update",
     });
   } catch (error) {
     return handleApiErrors(error);
   }
-}
+});

@@ -1,16 +1,18 @@
 import { TrackService } from "@/services/track";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
-import { requiredSuperAdminRole } from "@/utils/middleware/requiredSuperAdminRole";
+import { sanitize } from "@/utils/helper/sanitize";
+import { requiredRole } from "@/utils/middleware/requireRole";
 import { SuccessResponse } from "@/utils/next-response";
+import { TracksResponseSchema } from "@repo/utils";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    // await requiredSuperAdminRole(req);
+    await requiredRole(req, "ADMIN");
     const tracks = await TrackService.getTracks();
 
     return SuccessResponse({
-      data: tracks,
+      data: sanitize(TracksResponseSchema, tracks),
       message: "Tracks fetched successfully",
     });
   } catch (error) {

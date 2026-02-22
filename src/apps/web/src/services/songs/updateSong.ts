@@ -1,10 +1,15 @@
 import { prisma } from "@/lib/database/prisma";
-import { SongSchema } from "@/utils/validation/songs";
+import { SongSchema } from "@repo/utils";
 import z from "zod";
 
-type Props = {
-  data: z.infer<typeof SongSchema>;
-};
+const Schema = SongSchema.extend({
+  id: z.uuid(),
+  metadataId: z.uuid(),
+  paragraphs: z
+    .array(z.object({ id: z.string(), order: z.number(), lines: z.string(), type: z.string() }))
+    .optional(),
+});
+type Props = { data: Required<z.infer<typeof Schema>> };
 
 export async function updateSong({ data }: Props) {
   return await prisma.$transaction(async (tx) => {
@@ -38,7 +43,7 @@ export async function updateSong({ data }: Props) {
           id: p.id,
           order: p.order,
           lines: p.lines,
-          type: p.type,
+          type: p.type as any,
           songId,
         })),
         skipDuplicates: true,

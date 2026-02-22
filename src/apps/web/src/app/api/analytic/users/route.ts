@@ -1,13 +1,13 @@
 import { addDownloadedUser } from "@/services/download/addDownloadedUser";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { SuccessResponse } from "@/utils/next-response";
-import { UserAnalyticSchema } from "@/utils/validation/analytic/user";
+import { UserAnalyticSchema } from "@repo/utils";
 
 export async function POST(req: Request) {
   try {
     const body = UserAnalyticSchema.parse(await req.json());
 
-    const user = await addDownloadedUser({
+    await addDownloadedUser({
       where: { userId: body.userId },
       create: {
         userId: body.userId,
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return SuccessResponse({ data: user });
+    return SuccessResponse({ message: "Successfully downloaded user" });
   } catch (error) {
     return handleApiErrors(error);
   }

@@ -131,7 +131,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "email":"jyrwaboys@gmail.com",
+  "email":"two@gmail.com",
   "password":"123Clashofclan@"
 }
 
@@ -144,16 +144,87 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "email":"jyrwaboys@gmail.com",
+  "email":"two@gmail.com",
   "password":"123Clashofclan@",
   "confirmPassword":"123Clashofclan@",
   "name":"dev"
 }
 
+
 ### 
+
+# @name me
+
+GET {{NEXT_PUBLIC_API_URL}}/auth/me
+Authorization: Bearer {{ACCESS_TOKEN}}
+Accept: application/json
+Content-Type: application/json
+
+### 
+
+
+# @name refresh 
+
+POST {{NEXT_PUBLIC_API_URL}}/auth/refresh
+Accept: application/json
+Content-Type: application/json
+
+{
+  "refreshToken": "{{REFRESH_TOKEN}}"
+}
+
+###
 
 # @name logout
 
 POST {{NEXT_PUBLIC_API_URL}}/auth/logout HTTP/1.1
 Accept: application/json
 Content-Type: application/json
+
+{}
+
+### 
+
+# @name add song 
+
+POST {{NEXT_PUBLIC_API_URL}}/admin/songs HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "Amazing Grace",
+  "metadata": {
+    "isChorus": false,
+    "source": "LYNTI_BNEG",
+    "number": 104,
+    "oldNumber": 51,
+    "language": "en",
+    "author": "John Newton",
+    "composer": "Traditional",
+    "tags": ["hymn", "classic"],
+    "syllables": "8.6.8.6",
+    "reference": "1 Chronicles 17:16-17",
+    "tune": "New Britain",
+    "meter": "CM"
+  },
+  "track": null,
+  "paragraphs": [
+    {
+      "order": 1,
+      "lines": ["Amazing grace! How sweet the sound", "That saved a wretch like me!"],
+      "type": "VERSE"
+    }
+  ],
+  "prayers": [
+    {
+      "value": "A prayer of gratitude for grace.",
+      "order": 1,
+      "isPaidbah": true
+    },
+    {
+      "value": "A prayer of gratitude for grace.",
+      "order": 2,
+      "isPaidbah": false
+    }
+  ]
+}
