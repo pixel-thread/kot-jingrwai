@@ -3,7 +3,6 @@ import {
   specialCharsRegx,
   textOnlyRegx,
   numericOnlyRegx,
-  numericRegx,
   lowerCaseRegx,
   upperCaseRegx,
   appSource,
@@ -19,7 +18,7 @@ export const passwordValidation = z
   .max(64, "Password must be less than 64 characters")
   .regex(lowerCaseRegx, "Must contain a lowercase letter")
   .regex(upperCaseRegx, "Must contain an uppercase letter")
-  .regex(numericRegx, "Must contain a number")
+  .regex(/[0-9]/, "Must contain a number")
   .regex(specialCharsRegx, "Must contain a special character");
 
 export const phoneValidiation = z
