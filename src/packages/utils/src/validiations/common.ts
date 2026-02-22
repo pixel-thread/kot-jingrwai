@@ -2,7 +2,7 @@ import z from "zod";
 import {
   specialCharsRegx,
   textOnlyRegx,
-  numericRegx,
+  numericOnlyRegx,
   lowerCaseRegx,
   upperCaseRegx,
   appSource,
@@ -18,7 +18,7 @@ export const passwordValidation = z
   .max(64, "Password must be less than 64 characters")
   .regex(lowerCaseRegx, "Must contain a lowercase letter")
   .regex(upperCaseRegx, "Must contain an uppercase letter")
-  .regex(numericRegx, "Must contain a number")
+  .regex(numericOnlyRegx, "Must contain a number")
   .regex(specialCharsRegx, "Must contain a special character");
 
 export const phoneValidiation = z
@@ -29,7 +29,7 @@ export const phoneValidiation = z
   .refine((val) => !textOnlyRegx.test(val), {
     message: "Phone number must only contain numbers",
   })
-  .refine((val) => !numericRegx.test(val), {
+  .refine((val) => !numericOnlyRegx.test(val), {
     message: "Phone number must only contain numbers",
   })
   .min(10, "Phone number is required")
@@ -43,7 +43,7 @@ export const otpValidiation = z
   .refine((val) => !textOnlyRegx.test(val), {
     message: "Otp number must only contain numbers",
   })
-  .refine((val) => !numericRegx.test(val), {
+  .refine((val) => !numericOnlyRegx.test(val), {
     message: "Otp number must only contain numbers",
   })
   .min(6, "OTP is required")
