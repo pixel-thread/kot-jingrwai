@@ -3,7 +3,6 @@ import { UnauthorizedError } from "../errors/unAuthError";
 import { JWT } from "@libs/auth/jwt";
 import { AuthServices } from "@src/services/auth";
 import { AccountLockServices } from "@/services/auth/lock";
-import { ErrorResponse } from "../next-response";
 
 export async function requireAuth(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
@@ -32,10 +31,7 @@ export async function requireAuth(req: NextRequest) {
   });
 
   if (lockedAccount) {
-    return ErrorResponse({
-      message: "Account temporarily locked. Please try again later.",
-      status: 403,
-    });
+    throw new UnauthorizedError("Account temporarily locked. Please try again later.");
   }
 
   if (!auth) {
