@@ -5,6 +5,8 @@ export const specialCharsRegx = /[!@#$%^&*(),.?":{}|<>_\-\\[\]`~+=;/]/;
 export const textOnlyRegx = /^[a-zA-Z ]+$/;
 
 // Only numbers
+export const numericRegx = /[0-9]/;
+// Only numbers
 export const numericOnlyRegx = /^[0-9]+$/;
 
 // Contains at least one lowercase letter
