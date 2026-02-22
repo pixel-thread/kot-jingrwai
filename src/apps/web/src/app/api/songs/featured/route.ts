@@ -1,24 +1,18 @@
 import { getSongs } from "@/services/songs/getSongs";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
-import { logger } from "@/utils/logger";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
-import { SongsResponseSchema } from "@/utils/validation/songs";
+import { SongsResponseSchema } from "@repo/utils";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    if (process.env.NODE_ENV === "development") {
-      logger.log(req);
-    }
     const randomPage = Math.floor(Math.random() * 64) + 1;
 
     const [songs, total] = await getSongs({
       page: randomPage.toString(),
-      orderBy: {
-        title: "asc",
-      },
+      orderBy: { title: "asc" },
     });
 
     return SuccessResponse({

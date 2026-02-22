@@ -16,6 +16,7 @@ type CreateSong = { data: z.infer<typeof SongSchema> };
 export const SongService = {
   findUnique: (props: UniqueSong) => getUniqueSongs(props),
   findMany: getSongs,
+  // @ts-ignore
   update: (props: UpdateUnique) => updateSong(props),
   create: (props: CreateSong) => createSong({ body: props.data }),
   delete: (props: UniqueSong) => prisma.song.delete(props),

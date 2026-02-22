@@ -43,3 +43,4 @@ yarn-error.log*
 src/apps/mobile/app-env.d.ts
 src/apps/lynti-bneng/nativewind-env.d.ts
 src/apps/web/test.http
+src/apps/web/generate-test.js

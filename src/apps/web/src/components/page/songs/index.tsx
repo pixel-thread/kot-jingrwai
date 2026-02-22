@@ -13,17 +13,12 @@ import { Prisma } from "@/lib/database/prisma/generated/prisma";
 type Song = Prisma.SongGetPayload<{
   include: {
     metadata: true;
-    paragraphs: {
-      include: {
-        lines: true;
-      };
-    };
   };
 }>;
 
 // Individual Song Card Component
 const SongCard = ({ song, onClick }: { song: Song; onClick?: () => void }) => {
-  const totalLines = song.paragraphs.reduce((acc, p) => acc + p.lines.length, 0);
+  const totalLines = 0;
 
   return (
     <Card
@@ -76,20 +71,6 @@ const SongCard = ({ song, onClick }: { song: Song; onClick?: () => void }) => {
             ))}
           </div>
         )}
-
-        {/* Additional Info */}
-        <div className="text-muted-foreground flex items-center gap-4 border-t pt-2 text-xs">
-          <span className="flex items-center gap-1">
-            <Hash className="h-3 w-3" />
-            {song.paragraphs.length} paragraphs
-          </span>
-          <span>{totalLines} lines</span>
-          {song.metadata.isChorus && (
-            <Badge variant="default" className="text-xs">
-              Chorus
-            </Badge>
-          )}
-        </div>
 
         {/* Optional metadata */}
         {(song.metadata.tune || song.metadata.meter || song.metadata.reference) && (
@@ -146,7 +127,6 @@ const SongsList = () => {
       const newData = data?.data;
       setSongs((prevData || []).concat(newData));
     }
-     
   }, [data]);
 
   useEffect(() => {
@@ -155,7 +135,6 @@ const SongsList = () => {
       const newData = khors?.data;
       setKhorus((prevData || []).concat(newData));
     }
-     
   }, [khors]);
 
   return (

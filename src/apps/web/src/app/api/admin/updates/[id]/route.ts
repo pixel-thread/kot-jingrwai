@@ -1,7 +1,6 @@
 import { deleteUpdate } from "@/services/appVersion/update/deleteUpdate";
 import { getUniqueUpdate } from "@/services/appVersion/update/getUniqueUpdate";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
-import { requiredSuperAdminRole } from "@/utils/middleware/requiredSuperAdminRole";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { SuccessResponse } from "@/utils/next-response";
 import { NextRequest } from "next/server";

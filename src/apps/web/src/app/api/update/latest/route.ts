@@ -3,14 +3,14 @@ import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
-import { UpdateSchema } from "@/utils/validation/update";
+import { UpdateSchema } from "@repo/utils";
 
 export const GET = withValidation({}, async () => {
   try {
     const update = await getLatestUpdate();
 
     return SuccessResponse({
-      data: sanitize(UpdateSchema, update),
+      data: sanitize(UpdateSchema.optional().nullable(), update),
       message: "Successfully fetched latest update",
     });
   } catch (error) {

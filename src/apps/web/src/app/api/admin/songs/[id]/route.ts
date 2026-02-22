@@ -5,13 +5,12 @@ import { sanitize } from "@/utils/helper/sanitize";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
-import { SongResponseSchema } from "@/utils/validation/songs";
-import { SongSchema } from "@repo/utils";
+import { SongSchema, SongResponseSchema } from "@repo/utils";
 import { NextRequest } from "next/server";
 import z from "zod";
 
 const routeSchema = {
-  body: SongSchema.required(),
+  body: SongSchema,
   params: z.object({ id: z.uuid() }),
 };
 
@@ -28,7 +27,7 @@ export const PUT = withValidation(routeSchema, async ({ body, params }, req: Nex
       });
     }
 
-    const updatedSong = await updateSong({ data: body });
+    const updatedSong = await updateSong({ data: body as any });
 
     return SuccessResponse({
       data: sanitize(SongResponseSchema, updatedSong),

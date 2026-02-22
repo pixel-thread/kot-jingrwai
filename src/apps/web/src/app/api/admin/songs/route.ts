@@ -4,8 +4,7 @@ import { sanitize } from "@/utils/helper/sanitize";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
-import { SongResponseSchema } from "@/utils/validation/songs";
-import { SongSchema } from "@repo/utils";
+import { SongResponseSchema, SongSchema } from "@repo/utils";
 
 export const POST = withValidation({ body: SongSchema }, async ({ body }, req) => {
   try {

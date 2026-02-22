@@ -5,7 +5,7 @@ import { SuccessResponse } from "@/utils/next-response";
 import { NextRequest } from "next/server";
 import { convertUTCToIST } from "@repo/utils";
 import { sanitize } from "@/utils/helper/sanitize";
-import { UserAnalyticSchema } from "@/utils/validation/analytic/user";
+import { UserAnalyticSchema } from "@repo/utils";
 
 export async function GET(req: NextRequest) {
   try {

@@ -4,7 +4,7 @@ import { logger } from "../logger";
 import { MiddlewareFactory } from "./stackMiddleware";
 import { JWT } from "@/lib/auth/jwt";
 
-const routeWithOutAuth = ["/api/auth/**"];
+const routeWithOutAuth = ["/api/auth/**", "/api/songs/**"];
 
 // check if /auth/** return true for all the route
 const checkIsPublicRoute = (path: string) => {

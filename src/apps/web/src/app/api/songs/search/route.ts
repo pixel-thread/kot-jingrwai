@@ -1,19 +1,36 @@
 import { getSongs } from "@/services/songs/getSongs";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
+import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
-import { SongsResponseSchema } from "@/utils/validation/songs";
-import { NextRequest } from "next/server";
+import { SongsResponseSchema, sourceValidiation } from "@repo/utils";
+import z from "zod";
 
-export async function GET(req: NextRequest) {
+const querySchema = z.object({
+  // remove all special characters
+  query: z
+    .string()
+    .transform((val) => val.replace(/[^a-zA-Z0-9]/g, ""))
+    .optional()
+    .default(""),
+  page: z.string().optional().default("1"),
+  isChorus: z.coerce
+    .boolean()
+    .transform((val) => Boolean(val))
+    .default(false),
+  source: sourceValidiation,
+});
+
+export const GET = withValidation({ query: querySchema }, async ({ query }) => {
   try {
-    const page = req.nextUrl.searchParams.get("page");
-    const query = req.nextUrl.searchParams.get("query") || "";
-    const isChorus = req.nextUrl.searchParams.get("isChorus") === "true";
+    const page = query.page;
+    const queryValue = query.query;
+    const isChorus = query.isChorus;
 
-    const queryNumber = Number(query);
+    const queryNumber = Number(queryValue);
     const isNumber = !Number.isNaN(queryNumber);
+
     const [songs, total] = await getSongs({
       page,
       where: {
@@ -30,7 +47,7 @@ export async function GET(req: NextRequest) {
             : []),
           {
             title: {
-              contains: query,
+              contains: queryValue,
               mode: "insensitive",
             },
           },
@@ -41,7 +58,7 @@ export async function GET(req: NextRequest) {
                   some: {
                     order: 0,
                     text: {
-                      contains: query,
+                      contains: queryValue,
                       mode: "insensitive",
                     },
                   },
@@ -61,4 +78,4 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     return handleApiErrors(error);
   }
-}
+});

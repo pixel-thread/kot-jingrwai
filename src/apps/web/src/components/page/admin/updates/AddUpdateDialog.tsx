@@ -39,7 +39,7 @@ import * as z from "zod";
 import { Loader2, CalendarIcon, PlusIcon, XIcon } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { UpdateSchema } from "@/utils/validation/update";
+import { UpdateSchema } from "@repo/utils";
 import { ADMIN_UPDATE_ENDPOINT } from "@repo/constants";
 import { useState } from "react";
 

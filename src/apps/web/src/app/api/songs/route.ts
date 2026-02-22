@@ -1,21 +1,24 @@
-import { $Enums } from "@/lib/database/prisma/generated/prisma";
+import { AppSource } from "@/lib/database/prisma/generated/prisma";
 import { getSongs } from "@/services/songs/getSongs";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
-import { SongsResponseSchema } from "@/utils/validation/songs";
+import { sourceValidiation } from "@repo/utils";
+import { SongsResponseSchema } from "@repo/utils";
+
 import z from "zod";
 
 const routeSchema = {
   query: z.object({
     page: z.coerce.string().default("1"),
-    isChorus: z.coerce.boolean().default(false).optional(),
-    source: z
-      .enum([$Enums.AppSource.LYNTI_BNENG, $Enums.AppSource.KOT_JINGRWAI])
-      .default($Enums.AppSource.KOT_JINGRWAI)
+    isChorus: z.coerce
+      .boolean()
+      .default(false)
+      .transform((val) => Boolean(val))
       .optional(),
+    source: sourceValidiation,
   }),
 };
 
@@ -23,18 +26,9 @@ export const GET = withValidation(routeSchema, async ({ query }) => {
   try {
     const { page, isChorus, source } = query;
 
-    const isChorusDefine = isChorus;
-
     const [songs, total] = await getSongs({
       page,
-      where: {
-        metadata: {
-          isChorus: isChorusDefine ? isChorus : undefined,
-          source: {
-            has: source,
-          },
-        },
-      },
+      where: { metadata: { isChorus: isChorus, source: { has: source as AppSource } } },
     });
 
     return SuccessResponse({
