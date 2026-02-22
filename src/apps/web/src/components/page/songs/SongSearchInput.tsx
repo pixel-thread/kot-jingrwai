@@ -31,8 +31,9 @@ export const SongSearchInput = () => {
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setIsSearchOpen(value.trim().length > 0);
-    setSearchQuery(value);
+    const sanitizeValue = value.replace(/[^a-zA-Z0-9\s]/g, "");
+    setIsSearchOpen(sanitizeValue.trim().length > 0);
+    setSearchQuery(sanitizeValue);
   };
 
   const onSongSelect = (song: SongT) => {
