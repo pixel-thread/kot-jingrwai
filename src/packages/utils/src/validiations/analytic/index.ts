@@ -1,6 +1,7 @@
 import z from "zod";
+import { textOnlyValidiation } from "../common";
 
 export const UserAnalyticSchema = z.object({
   userId: z.uuid("Invalid user id").trim(),
-  appVersion: z.string("Invalid app version").trim(),
+  appVersion: textOnlyValidiation.trim(),
 });
