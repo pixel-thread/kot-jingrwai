@@ -21,7 +21,7 @@ export const GET = withValidation(RouteSchema, async ({ params }) => {
     }
 
     return SuccessResponse({
-      data: sanitize(TrackResponseSchema, song.track),
+      data: sanitize(TrackResponseSchema.nullable(), song.track),
       message: "Successfully fetched song track",
     });
   } catch (error) {
