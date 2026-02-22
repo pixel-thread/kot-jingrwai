@@ -1,11 +1,17 @@
-export const specialCharsRegx = RegExp(/[!@#$%^&*(),.?":{}|<>_\-\\[\]`~+=;/]/);
+// Special characters
+export const specialCharsRegx = /[!@#$%^&*(),.?":{}|<>_\-\\[\]`~+=;/]/;
 
-export const textOnlyRegx = RegExp(/^[a-zA-Z ]+$/);
+// Only letters
+export const textOnlyRegx = /^[a-zA-Z ]+$/;
 
-export const numericRegx = RegExp(/^[0-9]+$/);
+// Only numbers
+export const numericOnlyRegx = /^[0-9]+$/;
 
-export const lowerCaseRegx = RegExp(/^[a-z]+$/);
+// Contains at least one lowercase letter
+export const lowerCaseRegx = /[a-z]/;
 
-export const upperCaseRegx = RegExp(/^[A-Z]+$/);
+// Contains at least one uppercase letter
+export const upperCaseRegx = /[A-Z]/;
 
-export const appVersionRegx = RegExp(/^\d+\.\d+\.\d+$/);
+// App version format (e.g. 1.0.0)
+export const appVersionRegx = /^\d+\.\d+\.\d+$/;
