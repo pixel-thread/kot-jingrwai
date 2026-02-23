@@ -17,6 +17,7 @@ export const useFilteredSongs = ({
   const { data: dataSource = [] } = useQuery({
     queryKey: ["songs", { isKhorus }],
     queryFn: () => getSongs({ isChorus: isKhorus }),
+    select: (data) => data?.data,
   });
 
   // If no query, return all songs from the selected source
