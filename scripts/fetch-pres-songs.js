@@ -7,7 +7,7 @@ const apiBaseUrl = "https://kot-jingrwai.vercel.app/api" || "http://localhost:30
 
 const API_URL = `${apiBaseUrl}/songs`;
 
-const OUTPUT_PATH = path.resolve("../src/apps/mobile/src/libs/songs/song.json");
+const OUTPUT_PATH = path.resolve("./src/apps/mobile/src/libs/songs/song.json");
 
 async function fetchRuntimeConfig() {
   const response = await fetch(API_URL);
