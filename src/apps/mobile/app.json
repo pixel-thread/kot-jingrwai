@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Kot Jingrwai",
-    "slug": "kot-jingrwai",
+    "slug": "kot-jingrwai-internal",
     "version": "1.0.1",
     "scheme": "kot-jing-rwai",
     "orientation": "portrait",
@@ -16,7 +16,9 @@
         "backgroundColor": "#000000"
       }
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "plugins": [
       "expo-router",
       [
@@ -46,7 +48,9 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Helvetica.ttf"],
+          "fonts": [
+            "./assets/fonts/Helvetica.ttf"
+          ],
           "android": {
             "fonts": [
               {
@@ -80,7 +84,10 @@
     "android": {
       "package": "com.pixelthread.kotjingrwai",
       "versionCode": 1,
-      "permissions": [],
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/kot-jingrwai-icon.png",
         "backgroundColor": "#ffffff"
@@ -94,7 +101,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "72320702-85db-46c3-9f25-eb17aed2c84c"
+        "projectId": "05f841b9-60fa-4741-bacb-1edb1ac96b5d"
       }
     },
     "owner": "pixel-thread",
