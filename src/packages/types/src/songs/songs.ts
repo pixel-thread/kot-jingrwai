@@ -26,6 +26,7 @@ export type SongMetadataT = {
   number: number; // song number/index
   oldNumber?: number | null;
   language: string; // e.g. 'en', 'kn', 'khasi'
+  source: AppSourceT[];
   author?: string | null;
   composer?: string | null;
   isChorus?: boolean;
