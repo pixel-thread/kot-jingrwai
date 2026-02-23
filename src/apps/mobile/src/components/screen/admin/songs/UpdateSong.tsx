@@ -89,7 +89,6 @@ export function UpdateSong() {
     mutationFn: (data: SongFormValues) =>
       http.put(ADMIN_SONG_ENDPOINT.PUT_UPDATE_SONG.replace(":id", id), data),
     onSuccess: (data) => {
-      console.log(data);
       if (data.success) {
         router.back();
         return data;
@@ -127,8 +126,6 @@ export function UpdateSong() {
       </Container>
     );
   }
-
-  logger.log(errors);
 
   return (
     <>
