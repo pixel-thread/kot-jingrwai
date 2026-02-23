@@ -10,7 +10,7 @@ import {
   appVersionRegx,
 } from "@repo/constants";
 
-export const emailValidation = z.email("Email is required").trim();
+export const emailValidation = z.email("Email is required").trim().toLowerCase();
 
 export const passwordValidation = z
   .string("Password is required")
