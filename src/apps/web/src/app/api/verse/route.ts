@@ -8,6 +8,8 @@ import { requiredRole } from "@/utils/middleware/requireRole";
 import { SuccessResponse } from "@/utils/next-response";
 import axios, { AxiosResponse } from "axios";
 import { NextRequest } from "next/server";
+import { VerseResponseSchema } from "@repo/utils";
+import { sanitize } from "@/utils/helper/sanitize";
 
 export async function GET(request: NextRequest) {
   try {
@@ -15,13 +17,10 @@ export async function GET(request: NextRequest) {
     let response: AxiosResponse<BibleVerseT>;
 
     try {
-      logger.info("Fetching random verse");
       response = await axios.get<BibleVerseT>(
         "https://beta.ourmanna.com/api/v1/get?format=json&order=daily"
       );
-      logger.info("Successfully fetched random verse from api");
     } catch (error) {
-      logger.log(error);
       const dbVerse = await getBibleVerse();
       return SuccessResponse({
         data: dbVerse,
@@ -29,7 +28,6 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    logger.info("Adding verse to db");
     const data = response.data;
     const text = data.verse.details.text;
     const reference = data.verse.details.reference;
@@ -73,14 +71,12 @@ export async function GET(request: NextRequest) {
         },
       },
     });
-    logger.info("Successfully added verse to db");
 
     return SuccessResponse({
-      data: verse,
+      data: sanitize(VerseResponseSchema, verse),
       message: "Successfully fetched verse.",
     });
   } catch (error) {
-    logger.error("Error While Getting Bible verse");
     return handleApiErrors(error);
   }
 }
