@@ -18,7 +18,7 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) 
       normalReq.ip ||
       req.headers.get("x-real-ip") ||
       req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
-      "127.0.0.1";
+      "unknown";
 
     // 1. Unified Lock Check (IP + Email)
     const activeLock = await AccountLockServices.findFirst({
