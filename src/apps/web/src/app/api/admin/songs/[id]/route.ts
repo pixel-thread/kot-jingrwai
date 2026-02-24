@@ -17,7 +17,6 @@ const routeSchema = {
 export const PUT = withValidation(routeSchema, async ({ body, params }, req: NextRequest) => {
   try {
     await requiredRole(req, "ADMIN");
-    const songId = params.id;
     const isSongExists = await SongService.findUnique({ where: { id: params.id } });
 
     if (!isSongExists) {
