@@ -1,27 +1,47 @@
 import { addVerse } from "@/services/verse/addVerse";
 import { getBibleVerse } from "@/services/verse/getBibleVerse";
 import { getVerse } from "@/services/verse/getVerse";
-import { BibleVerseT } from "@/types/verse";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { logger } from "@/utils/logger";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { SuccessResponse } from "@/utils/next-response";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { NextRequest } from "next/server";
 import { VerseResponseSchema } from "@repo/utils";
 import { sanitize } from "@/utils/helper/sanitize";
+import { z } from "zod";
+
+const ExternalVerseSchema = z.object({
+  verse: z.object({
+    notice: z.string(),
+    details: z.object({
+      text: z.string(),
+      reference: z.string(),
+      version: z.string(),
+      verseurl: z.string(),
+    }),
+  }),
+});
 
 export async function GET(request: NextRequest) {
   try {
     await requiredRole(request, "NONE");
-    let response: AxiosResponse<BibleVerseT>;
+
+    let apiData;
 
     try {
-      response = await axios.get<BibleVerseT>(
-        "https://beta.ourmanna.com/api/v1/get?format=json&order=daily"
+      const response = await axios.get(
+        "https://beta.ourmanna.com/api/v1/get?format=json&order=daily",
+        { timeout: 5000 }
       );
+
+      const parsed = ExternalVerseSchema.safeParse(response.data);
+      if (!parsed.success) {
+        throw new Error(`Invalid payload structure from external API. Issues: ${parsed.error.message}`);
+      }
+      apiData = parsed.data;
     } catch (e) {
-      logger.error("Error while fetching verse from API.", e);
+      logger.error("Error fetching or validating verse from API.", e);
       const dbVerse = await getBibleVerse();
       return SuccessResponse({
         data: dbVerse,
@@ -29,14 +49,11 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    const data = response.data;
-    const text = data.verse.details.text;
-    const reference = data.verse.details.reference;
+    const { notice, details } = apiData.verse;
+    const { text, reference, version, verseurl } = details;
+
     const verseDetail = await getVerse({
-      where: {
-        text,
-        reference,
-      },
+      where: { text, reference },
     });
 
     const verse = await addVerse({
@@ -44,14 +61,9 @@ export async function GET(request: NextRequest) {
       update: {
         verse: {
           update: {
-            notice: data.verse.notice,
+            notice,
             details: {
-              update: {
-                text: text,
-                reference: reference,
-                version: data.verse.details.version,
-                verseurl: data.verse.details.verseurl,
-              },
+              update: { text, reference, version, verseurl },
             },
           },
         },
@@ -59,14 +71,9 @@ export async function GET(request: NextRequest) {
       create: {
         verse: {
           create: {
-            notice: data.verse.notice,
+            notice,
             details: {
-              create: {
-                text: text,
-                reference: reference,
-                version: data.verse.details.version,
-                verseurl: data.verse.details.verseurl,
-              },
+              create: { text, reference, version, verseurl },
             },
           },
         },
