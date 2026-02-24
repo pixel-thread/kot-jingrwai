@@ -13,7 +13,12 @@ import { calculateLockUntil } from "@/utils/helper/getTime";
 export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) => {
   try {
     const now = new Date();
-    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+    const normalReq = req as any;
+    const clientIp =
+      normalReq.ip ||
+      req.headers.get("x-real-ip") ||
+      req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+      "127.0.0.1";
 
     // 1. Unified Lock Check (IP + Email)
     const activeLock = await AccountLockServices.findFirst({
@@ -54,6 +59,7 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) 
       const failedCount = await AttempServices.count({
         where: {
           email: body.email,
+          ipAddress: clientIp,
           type: "LOGIN",
           success: false,
           createdAt: { gte: rollingWindow },
