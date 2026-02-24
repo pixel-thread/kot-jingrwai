@@ -20,7 +20,8 @@ export async function GET(request: NextRequest) {
       response = await axios.get<BibleVerseT>(
         "https://beta.ourmanna.com/api/v1/get?format=json&order=daily"
       );
-    } catch (error) {
+    } catch (e) {
+      logger.error("Error while fetching verse from API.", e);
       const dbVerse = await getBibleVerse();
       return SuccessResponse({
         data: dbVerse,
