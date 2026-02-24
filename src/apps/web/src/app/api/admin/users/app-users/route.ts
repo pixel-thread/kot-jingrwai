@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
     }));
     return SuccessResponse({
       data: sanitize(UserAnalyticSchema, data),
-      message: "success",
+      message: "Successfully fetched users",
     });
   } catch (error) {
     return handleApiErrors(error);
