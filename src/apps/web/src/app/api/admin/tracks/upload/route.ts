@@ -47,10 +47,28 @@ export async function POST(request: NextRequest) {
     }
 
     const songExist = await getUniqueSongs({ where: { id: songId } });
+    if (!songExist) {
+      logger.info(`Track Upload Error: Song does not exist`, {
+        songId: songId,
+      });
+      return ErrorResponse({
+        message: "Song does not exist",
+        error: "Song not found",
+        status: 404,
+      });
+    }
 
-    if (!songExist) return ErrorResponse({ error: "Song not found", status: 404 });
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${songExist.metadata.number}-${songExist.id}.${fileExt}`;
+    const filePath = `tracks/${fileName}`;
 
-    const { error: uploadError, data } = await UploadService.upload({ file });
+    // Upload to Supabase Storage
+    const { error: uploadError, data } = await supabase.storage
+      .from(env.SUPABASE_BUCKET)
+      .upload(filePath, Buffer.from(await file.arrayBuffer()), {
+        contentType: file.type,
+        upsert: true,
+      });
 
     if (uploadError) {
       logger.error("SUPABASE Error: UPLOAD ERROR", uploadError);
@@ -62,9 +80,9 @@ export async function POST(request: NextRequest) {
 
     const { data: url } = TrackService.getPublicUrl(data?.path);
 
-    const track = await TrackService.createTrack({
-      data: { songId },
-      metadata: {
+    // Save metadata to database
+    const trackMetadata = await prisma.trackMetadata.create({
+      data: {
         supabaseId: data?.id,
         path: data.path,
         fileName: file.name,

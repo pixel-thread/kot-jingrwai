@@ -12,6 +12,7 @@ export async function getUniqueSongs({ where }: Props) {
       paragraphs: { include: { lines: true } },
       metadata: true,
       track: { include: { metadata: true } },
+      prayers: true,
     },
   });
 }

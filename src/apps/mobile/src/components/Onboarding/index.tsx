@@ -12,7 +12,7 @@ export default function Onboarding() {
       <SinglePageOnboarding
         setHasCompletedOnboarding={setHasCompletedOnboarding}
         onContinueAsGuest={() => router.replace("/")}
-        onContinueWithGoogle={() => router.replace("/")}
+        onContinueWithGoogle={() => router.push("/auth")}
       />
     </SafeAreaView>
   );
