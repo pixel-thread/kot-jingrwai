@@ -2,8 +2,11 @@ name: Backend Deployment
 
 on:
   push:
-    branches: [master]
-    paths: ["src/apps/web/**", "src/packages/**"]
+    paths:
+      - "src/apps/web/**"
+      - "src/packages/**"
+    branches:
+      - master
 
   workflow_dispatch:
 
