@@ -19,7 +19,6 @@ const sendLogToServer = async (type: ErrorType, message: string, content: string
       },
     });
   } catch (error) {
-    console.error("Failed to send logs to server", error);
     console.error("Failed to send logs to server");
   }
 };
