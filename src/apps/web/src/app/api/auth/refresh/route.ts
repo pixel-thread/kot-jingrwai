@@ -3,14 +3,15 @@ import { UnauthorizedError } from "@src/utils/errors/unAuthError";
 import { TokenServices } from "@src/services/tokens";
 import { JWT } from "@libs/auth/jwt";
 import { ErrorResponse, SuccessResponse } from "@src/utils/next-response";
-import { RefreshTokenResponseSchema, TokenSchema } from "@repo/utils";
+import { logger, RefreshTokenResponseSchema, TokenSchema } from "@repo/utils";
 import { withValidation } from "@src/utils/middleware/withValidiation";
 import { sanitize } from "@/utils/helper/sanitize";
 import { AccountLockServices } from "@/services/auth/lock";
 
 export const POST = withValidation({ body: TokenSchema }, async ({ body }) => {
   try {
-    const { refreshToken } = body;
+    const { refreshToken: token } = body;
+    const refreshToken = await JWT.hash(token);
 
     // Ensure client provided a refresh token
     if (!refreshToken) {
@@ -73,15 +74,17 @@ export const POST = withValidation({ body: TokenSchema }, async ({ body }) => {
       data: { isRevoked: true },
     });
 
+    // Issue new access token
+    const newAccessToken = await JWT.signAccessToken({ userId });
+
+    const newHashedToken = await JWT.hash(newRefreshToken);
+
     // add new unrevoked refresh token
     await TokenServices.createToken({
       userId,
-      hash: newRefreshToken,
+      hash: newHashedToken,
       authId,
     });
-
-    // Issue new access token
-    const newAccessToken = await JWT.signAccessToken({ userId });
 
     // Send back sanitized response
     const data = {
@@ -94,6 +97,7 @@ export const POST = withValidation({ body: TokenSchema }, async ({ body }) => {
       message: "Successfully refresh",
     });
   } catch (error) {
+    logger.error;
     return handleApiErrors(error);
   }
 });
