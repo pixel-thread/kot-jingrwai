@@ -33,7 +33,7 @@ export const GET = withValidation(routeSchema, async ({ query }) => {
 
     return SuccessResponse({
       data: sanitize(SongsResponseSchema, songs),
-      meta: getMeta({ currentPage: page || "1", total }),
+      meta: getMeta({ currentPage: page, total }),
       message: "Success fetching songs",
     });
   } catch (error) {
