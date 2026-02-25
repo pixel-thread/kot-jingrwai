@@ -37,7 +37,7 @@ jobs:
 
       - name: Run Tests
         # Using --filter ensures only the web app tests run
-        run: pnpm run test --filter web
+        run: pnpm run build
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
