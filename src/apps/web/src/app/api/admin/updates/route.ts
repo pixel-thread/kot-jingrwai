@@ -1,4 +1,3 @@
-import { AppVersionTags } from "@/lib/database/prisma/generated/prisma";
 import { createUpdate } from "@/services/appVersion/update/createUpdate";
 import { getUpdates } from "@/services/appVersion/update/getUpdates";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";

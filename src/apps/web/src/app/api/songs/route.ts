@@ -5,14 +5,14 @@ import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
-import { sourceValidiation } from "@repo/utils";
+import { pageValidation, sourceValidiation } from "@repo/utils";
 import { SongsResponseSchema } from "@repo/utils";
 
 import z from "zod";
 
 const routeSchema = {
   query: z.object({
-    page: z.coerce.string().default("1"),
+    page: pageValidation,
     isChorus: z.coerce
       .boolean()
       .default(false)
@@ -33,7 +33,7 @@ export const GET = withValidation(routeSchema, async ({ query }) => {
 
     return SuccessResponse({
       data: sanitize(SongsResponseSchema, songs),
-      meta: getMeta({ currentPage: page || "1", total }),
+      meta: getMeta({ currentPage: page, total }),
       message: "Success fetching songs",
     });
   } catch (error) {

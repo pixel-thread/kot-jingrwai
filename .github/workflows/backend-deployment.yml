@@ -1,0 +1,28 @@
+name: Backend Deployment
+on:
+  push:
+    branches: [master]
+    paths: ["src/apps/web/**", "src/packages/**"] # packages/** if you have shared code
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install & Test
+        run: |
+          pnpm ci
+          pnpm run test --filter web
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: "--prod" # Only deploys to production on master

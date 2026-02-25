@@ -1,0 +1,44 @@
+name: Reusable Expo Build
+
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        required: true
+        type: string
+      app_path:
+        required: true
+        type: string
+    secrets:
+      EXPO_TOKEN:
+        required: true
+      AWS_KEY:
+        required: true
+      AWS_SECRET:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install & Run Tests
+        run: |
+          pnpm ci
+          # pnpm run test --prefix ${{ inputs.app_path }}
+
+      - name: EAS Build
+        run: eas build --platform android --profile production --non-interactive --local --output=./build/app.apk --path ${{ inputs.app_path }}
+
+      - name: Upload to Custom Storage
+
+        run: |
+          aws s3 cp ./build/app.apk s3://my-bucket/builds/${{ inputs.app_name }}-${{ github.sha }}.apk
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
