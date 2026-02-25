@@ -4,7 +4,7 @@ import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
-import { SongsResponseSchema, sourceValidiation } from "@repo/utils";
+import { pageValidation, SongsResponseSchema, sourceValidiation } from "@repo/utils";
 import z from "zod";
 
 const querySchema = z.object({
@@ -14,7 +14,7 @@ const querySchema = z.object({
     .transform((val) => val.replace(/[^a-zA-Z0-9]/g, ""))
     .optional()
     .default(""),
-  page: z.string().optional().default("1"),
+  page: pageValidation,
   isChorus: z.coerce
     .boolean()
     .transform((val) => Boolean(val))
@@ -72,7 +72,7 @@ export const GET = withValidation({ query: querySchema }, async ({ query }) => {
 
     return SuccessResponse({
       data: sanitize(SongsResponseSchema, songs),
-      meta: getMeta({ currentPage: page || "1", total }),
+      meta: getMeta({ currentPage: page, total }),
       message: "Success fetching songs",
     });
   } catch (error) {
