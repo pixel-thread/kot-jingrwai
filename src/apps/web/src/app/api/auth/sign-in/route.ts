@@ -100,11 +100,11 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) 
         where: { email: body.email, type: "LOGIN" },
       }),
     ]);
-
+    const hashToken = await JWT.hash(refreshToken);
     // Store refresh token
     await TokenServices.createToken({
       userId: auth.userId,
-      hash: refreshToken, // Hash token this should not be save as a plain text
+      hash: hashToken, // Hash token this should not be save as a plain text
       authId: auth.id,
     });
 
