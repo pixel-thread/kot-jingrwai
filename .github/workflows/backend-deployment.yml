@@ -2,7 +2,7 @@ name: Backend Deployment
 
 on:
   push:
-    paths: ["src/apps/web/**", "src/packages/**"] # packages/** if you have shared code
+    paths: ["src/apps/web/**", "src/packages/**"]
     branches:
       - master
 
@@ -11,10 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 9
+          # This replaces the manual 'pnpm install' step if you prefer
           run_install: false
 
       - uses: actions/setup-node@v4
@@ -22,10 +24,12 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: Install & Test
-        run: |
-          pnpm ci
-          pnpm run test --filter web
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Tests
+        # Using --filter ensures only the web app tests run
+        run: pnpm run test --filter web
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
@@ -33,4 +37,4 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: "--prod" # Only deploys to production on master
+          vercel-args: "--prod"
