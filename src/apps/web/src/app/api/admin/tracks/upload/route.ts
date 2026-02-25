@@ -3,16 +3,30 @@ import { TrackService } from "@/services/track";
 import { UploadService } from "@/services/uploads/indext";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
+import { requiredRole } from "@/utils/middleware/requireRole";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
 import { TrackResponseSchema } from "@repo/utils";
 import { logger } from "@repo/utils";
 import { NextRequest } from "next/server";
 import z from "zod";
 
-const schema = z.object({ file: z.instanceof(File) });
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
+const ACCEPTED_AUDIO_TYPES = ["audio/mpeg", "audio/wav", "audio/mp3", "audio/ogg"];
+
+const schema = z.object({
+  file: z.instanceof(File)
+    .refine((file) => file.size <= MAX_FILE_SIZE, "File size limit is 10MB")
+    .refine(
+      (file) => ACCEPTED_AUDIO_TYPES.includes(file.type),
+      "Only .mp3, .wav, or .ogg formats are supported."
+    ),
+  songId: z.uuid("Invalid Song ID structure")
+});
 
 export async function POST(request: NextRequest) {
   try {
+    await requiredRole(request, "ADMIN")
     const formData = await request.formData();
 
     // @ts-ignore
@@ -21,7 +35,7 @@ export async function POST(request: NextRequest) {
     // @ts-ignore
     const songId = formData.get("songId") as string;
 
-    schema.parse({ file });
+    schema.parse({ file, songId });
 
     if (!file) {
       return ErrorResponse({ error: "Missing required fields", status: 400 });
@@ -56,10 +70,9 @@ export async function POST(request: NextRequest) {
       });
 
     if (uploadError) {
-      logger.error("SUPABASE Error: UPLOAD ERROR", { uploadError });
+      logger.error("SUPABASE Error: UPLOAD ERROR", uploadError);
       return ErrorResponse({
         message: uploadError.message,
-        error: uploadError,
         status: 500,
       });
     }

@@ -10,115 +10,108 @@ import { RefreshTokenResponseSchema, LoginSchema } from "@repo/utils";
 import { AttempServices } from "@/services/auth/attempt";
 import { AccountLockServices } from "@/services/auth/lock";
 import { calculateLockUntil } from "@/utils/helper/getTime";
-
 export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) => {
   try {
     const now = new Date();
+    const normalReq = req as any;
+    const clientIp =
+      normalReq.ip ||
+      req.headers.get("x-real-ip") ||
+      req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+      "unknown";
 
-    // Define rolling window for failed attempts (last 15 minutes)
-    // Only count failed attempts within this time frame
-    const rollingWindowMinutes = 15;
-    const windowStart = new Date(now.getTime() - rollingWindowMinutes * 60 * 1000);
-
-    //  Check if account is currently locked
-    // lockedUntil >= now means user is still locked
-    const lockedAccount = await AccountLockServices.findFirst({
-      where: { email: body.email, lockedUntil: { gte: now } },
+    // 1. Unified Lock Check (IP + Email)
+    const activeLock = await AccountLockServices.findFirst({
+      where: {
+        OR: [{ email: body.email }],
+        lockedUntil: { gte: now },
+      },
     });
 
-    if (lockedAccount) {
-      // Generic message to avoid leaking info about exact lock time
+    if (activeLock) {
       return ErrorResponse({
-        message: "Account temporarily locked. Please try again later.",
+        message: "Too many attempts. Please try again later.",
         status: 403,
       });
     }
 
-    //  Retrieve user by email
-    const auth = await AuthServices.getUnique({
-      where: { email: body.email },
-    });
+    // 2. Fetch User & Prepare Timing Defense
+    const auth = await AuthServices.getUnique({ where: { email: body.email } });
 
-    //  Count failed login attempts for this email in rolling window
-    const failedCount = await AttempServices.count({
-      where: {
-        email: body.email,
-        type: "LOGIN",
-        success: false,
-        createdAt: { gte: windowStart },
-      },
-    });
+    const isPasswordCorrect = auth
+      ? await BcryptService.compare(body.password, auth.hashPassword)
+      : await BcryptService.dummyCompare();
 
-    //  Check credentials
-    const isInvalidCredential =
-      !auth || !(await BcryptService.compare(body.password, auth.hashPassword));
-
-    if (isInvalidCredential) {
-      //  Determine client IP from headers (Next.js does not have req.ip)
-      const clientIp =
-        req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
-        req.headers.get("x-real-ip") ||
-        "unknown";
-
-      //  Record failed login attempt
+    // 3. Handle Authentication Failure
+    if (!isPasswordCorrect || !auth) {
+      // Record the failure and get the updated count in one transaction-like flow
+      // We use the email and IP to track brute force across different levels
       await AttempServices.create({
         data: {
           email: body.email,
           type: "LOGIN",
           success: false,
-          ipAddress: clientIp, // optional for audit / brute-force protection
+          ipAddress: clientIp,
         },
       });
 
-      // Calculate remaining attempts before lock
-      const attemptsLeft = Math.max(0, 3 - (failedCount + 1));
+      const rollingWindow = new Date(now.getTime() - 15 * 60 * 1000);
+      const failedCount = await AttempServices.count({
+        where: {
+          email: body.email,
+          ipAddress: clientIp,
+          type: "LOGIN",
+          success: false,
+          createdAt: { gte: rollingWindow },
+        },
+      });
 
-      // Lock account if failed attempts exceed threshold
-      if (failedCount + 1 >= 3) {
-        const lockUntil = calculateLockUntil(failedCount + 1); // progressive lock duration
+      const MAX_ATTEMPTS = 3;
+
+      if (failedCount >= MAX_ATTEMPTS) {
         await AccountLockServices.create({
           data: {
             email: body.email,
             reason: "TOO_MANY_FAILED_LOGIN_ATTEMPTS",
-            lockedUntil: lockUntil,
+            lockedUntil: calculateLockUntil(failedCount),
           },
         });
 
-        // Generic error to prevent user enumeration
         return ErrorResponse({
-          message: "Account temporarily locked due to multiple failed login attempts.",
+          message: "Account locked due to multiple failed attempts.",
           status: 403,
         });
       }
 
-      // Return remaining attempts for UX (optional, but still generic)
       return ErrorResponse({
-        message: `Invalid email or password. ${attemptsLeft} attempt(s) remaining.`,
+        message: "Invalid credentials",
         status: 401,
       });
     }
 
-    // Successful login → generate tokens
-    const accessToken = await JWT.signAccessToken({ userId: auth.userId });
-    const refreshToken = await JWT.signRefreshToken({ userId: auth.userId });
+    // Run cleanup and token generation in parallel to reduce latency
+    const [accessToken, refreshToken] = await Promise.all([
+      JWT.signAccessToken({ userId: auth.userId }),
+      JWT.signRefreshToken({ userId: auth.userId }),
 
-    // Store refresh token hash in DB (never store plaintext)
+      // Clear failed attempts for this email
+      AttempServices.deleteMany({
+        where: { email: body.email, type: "LOGIN" },
+      }),
+    ]);
+    const hashToken = await JWT.hash(refreshToken);
+    // Store refresh token
     await TokenServices.createToken({
       userId: auth.userId,
-      hash: refreshToken,
+      hash: hashToken, // Hash token this should not be save as a plain text
       authId: auth.id,
     });
 
-    // Return sanitized response with access + refresh tokens
     return SuccessResponse({
       message: "Successfully logged in",
-      data: sanitize(RefreshTokenResponseSchema, {
-        accessToken,
-        refreshToken,
-      }),
+      data: sanitize(RefreshTokenResponseSchema, { accessToken, refreshToken }),
     });
   } catch (error) {
-    // Catch and handle all unexpected errors
     return handleApiErrors(error);
   }
 });

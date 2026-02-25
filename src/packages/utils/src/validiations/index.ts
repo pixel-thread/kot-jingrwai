@@ -6,3 +6,4 @@ export * from "./track";
 export * from "./update";
 export * from "./analytic";
 export * from "./logs";
+export * from "./verse";

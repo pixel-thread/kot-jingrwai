@@ -27,7 +27,7 @@ export const JWT = {
       .setExpirationTime(`${REFRESH_TTL}s`)
       .sign(refreshSecret);
 
-    return this.hash(signedToken);
+    return signedToken;
   },
 
   async verifyAccessToken(token: string) {
@@ -41,8 +41,8 @@ export const JWT = {
   },
 
   async hash(token: string) {
-    const salt = crypto.randomBytes(16).toString("hex");
-    const content = token + salt;
-    return crypto.createHash("sha256").update(content).digest("hex");
+    // const salt = crypto.randomBytes(16).toString("hex");
+    // const content = token + salt;
+    return crypto.createHash("sha256").update(token).digest("hex");
   },
 };
