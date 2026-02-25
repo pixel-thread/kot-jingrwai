@@ -23,7 +23,7 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) 
     // 1. Unified Lock Check (IP + Email)
     const activeLock = await AccountLockServices.findFirst({
       where: {
-        OR: [{ ipAddress: clientIp }, { email: body.email }],
+        OR: [{ email: body.email }],
         lockedUntil: { gte: now },
       },
     });
