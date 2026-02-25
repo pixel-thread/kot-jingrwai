@@ -1,9 +1,10 @@
 name: Kot-Jingrwai Prod Deployment
 
 # on:
-#   push:
-#     branches: [master]
-#     paths: ["src/apps/mobile/**", "packages/**"] # Only runs if files here change
+  # workflow_dispatch:
+  # push:
+  #   branches: [master]
+  #   paths: ["src/apps/mobile/**", "packages/**"] # Only runs if files here change
 
 jobs:
   call-build:
