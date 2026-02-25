@@ -36,7 +36,7 @@ describe("POST => /logs - OWASP Security Audit", () => {
 
         const res = await request(baseURL)
             .post("/logs")
-            .set("x-client-logger-key", process.env.EXPO_PUBLIC_CLIENT_LOGGER_KEY || "test")
+            .set("x-client-logger-key", process.env.NEXT_PUBLIC_CLIENT_LOGGER_KEY || "test")
             .send(xssPayload);
 
         // The server should either accept it safely (treating as plaintext) or reject it.
@@ -54,7 +54,7 @@ describe("POST => /logs - OWASP Security Audit", () => {
 
         const res = await request(baseURL)
             .post("/logs")
-            .set("x-client-logger-key", process.env.EXPO_PUBLIC_CLIENT_LOGGER_KEY || "test")
+            .set("x-client-logger-key", process.env.NEXT_PUBLIC_CLIENT_LOGGER_KEY || "test")
             .send(maliciousPayload);
 
         // Depending on Zod strictness, it either strips it (200) or rejects it (400), or 403 if no key.
