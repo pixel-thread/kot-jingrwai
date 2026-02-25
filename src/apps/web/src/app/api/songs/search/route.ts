@@ -18,7 +18,7 @@ const querySchema = z.object({
   isChorus: z.coerce
     .boolean()
     .transform((val) => Boolean(val))
-    .default(false),
+    .catch(false),
   source: sourceValidiation,
 });
 
