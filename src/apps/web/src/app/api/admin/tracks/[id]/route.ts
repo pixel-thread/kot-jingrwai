@@ -8,26 +8,24 @@ import { TrackResponseSchema, UUIDSchema } from "@repo/utils";
 import { logger } from "@repo/utils";
 import z from "zod";
 
-const routeSchema = {
-  params: z.object({
-    id: UUIDSchema,
-  }),
-};
+const routeSchema = { params: z.object({ id: UUIDSchema }) };
 
 export const DELETE = withValidation(routeSchema, async ({ params }, req) => {
   try {
-    requiredRole(req, "SUPER_ADMIN");
+    await requiredRole(req, "SUPER_ADMIN");
+
     const id = params.id;
 
     const isTrackExist = await TrackService.getUniqueTrack({ where: { id } });
 
     if (!isTrackExist) {
-      logger.info("Track not found", { id });
+      logger.info("Track not found", { trackId: id });
       return ErrorResponse({
         message: "Track not found",
         status: 404,
       });
     }
+
     const track = await TrackService.deleteTrack({ id });
 
     return SuccessResponse({
