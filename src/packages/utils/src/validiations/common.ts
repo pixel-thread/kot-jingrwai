@@ -62,3 +62,12 @@ export const textOnlyValidiation = z.string("Must only contain letters");
 export const appVersionValidiation = z
   .string()
   .regex(appVersionRegx, "Min Version must be in format X.Y.Z (e.g., 1.0.0)");
+
+export const pageValidation = z
+  .string()
+  .regex(/^\d+$/, "Page must contain only numbers")
+  .min(1, "Page cannot be empty")
+  .max(5, "Page cannot exceed 5 digits")
+  .transform((val) => Number(val))
+  .pipe(z.number().positive("Page must be greater than 0"))
+  .catch(1);
