@@ -23,7 +23,7 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) 
     // 1. Unified Lock Check (IP + Email)
     const activeLock = await AccountLockServices.findFirst({
       where: {
-        OR: [{ ipAddress: clientIp }, { email: body.email }],
+        OR: [{ email: body.email }],
         lockedUntil: { gte: now },
       },
     });
@@ -72,7 +72,6 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) 
         await AccountLockServices.create({
           data: {
             email: body.email,
-            ipAddress: clientIp,
             reason: "TOO_MANY_FAILED_LOGIN_ATTEMPTS",
             lockedUntil: calculateLockUntil(failedCount),
           },
