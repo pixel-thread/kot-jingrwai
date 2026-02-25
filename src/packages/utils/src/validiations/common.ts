@@ -63,7 +63,7 @@ export const appVersionValidiation = z
   .string()
   .regex(appVersionRegx, "Min Version must be in format X.Y.Z (e.g., 1.0.0)");
 
-export const pageValidation = z
+export const pageValidation = z.coerce
   .string()
   .regex(/^\d+$/, "Page must contain only numbers")
   .min(1, "Page cannot be empty")
