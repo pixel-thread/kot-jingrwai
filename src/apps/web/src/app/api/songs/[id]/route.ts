@@ -18,7 +18,7 @@ export const GET = withValidation(RouteSchema, async ({ params }) => {
     const song = await getUniqueSongs({ where: { id } });
 
     return SuccessResponse({
-      data: sanitize(SongResponseSchema, song),
+      data: sanitize(SongResponseSchema.nullable(), song),
       message: "Successfully fetched song",
     });
   } catch (error) {
