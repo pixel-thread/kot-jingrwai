@@ -21,11 +21,13 @@ export const env = createEnv({
     NEXT_PUBLIC_APP_NAME: z.string("NEXT_PUBLIC_APP_NAME").min(1),
     NEXT_PUBLIC_API_URL: z.string("NEXT_PUBLIC_API_URL").min(1),
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string("NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY").min(1),
+    NEXT_PUBLIC_CLIENT_LOGGER_KEY: z.string().min(1),
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
     UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
     UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
+    NEXT_PUBLIC_CLIENT_LOGGER_KEY: process.env.NEXT_PUBLIC_CLIENT_LOGGER_KEY,
     NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
     DATABASE_URL: process.env.DATABASE_URL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
