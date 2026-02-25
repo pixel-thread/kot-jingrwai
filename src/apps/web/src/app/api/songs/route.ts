@@ -5,14 +5,14 @@ import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
-import { sourceValidiation } from "@repo/utils";
+import { pageValidation, sourceValidiation } from "@repo/utils";
 import { SongsResponseSchema } from "@repo/utils";
 
 import z from "zod";
 
 const routeSchema = {
   query: z.object({
-    page: z.coerce.string().default("1"),
+    page: pageValidation,
     isChorus: z.coerce
       .boolean()
       .default(false)
