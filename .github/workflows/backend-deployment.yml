@@ -2,8 +2,8 @@ name: Backend Deployment
 
 on:
   push:
-    paths: ["src/apps/web/**", "src/packages/**"]
     branches: ["master"]
+    paths: ["src/apps/web/**", "src/packages/**"]
 
 jobs:
   prod-deploy:
