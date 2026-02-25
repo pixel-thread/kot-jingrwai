@@ -4,12 +4,18 @@ type Props = {
   isChorus?: boolean;
   isAll?: boolean;
 };
+
 export function getSongs({ isChorus = false, isAll = false }: Props) {
-  if (process.env.NODE_ENV === "development") {
-    console.log("Get Songs", { isChorus, isAll });
-  }
+  let data;
+
   if (isAll) {
-    return songs;
+    data = { data: songs };
   }
-  return songs.filter((song) => song.metadata.isChorus === isChorus);
+
+  if (isChorus) {
+    const filterdSongs = songs.filter((song) => song.metadata.isChorus === isChorus);
+    data = { data: filterdSongs };
+  }
+
+  return data;
 }

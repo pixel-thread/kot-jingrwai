@@ -13,12 +13,12 @@ const querySchema = z.object({
     .string()
     .transform((val) => val.replace(/[^a-zA-Z0-9]/g, ""))
     .optional()
-    .default(""),
+    .catch(""),
   page: pageValidation,
   isChorus: z.coerce
     .boolean()
     .transform((val) => Boolean(val))
-    .default(false),
+    .catch(false),
   source: sourceValidiation,
 });
 

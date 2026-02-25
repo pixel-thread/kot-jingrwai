@@ -162,7 +162,7 @@ export function LoginScreen({
           </View>
 
           {/* Divider */}
-          <View className="mt-4 gap-y-5">
+          <View className="mt-4 gap-y-2">
             <Reanimated.View
               entering={FadeInUp.delay(600).duration(600).springify()}
               className="flex-row items-center justify-center space-x-4">
@@ -184,7 +184,7 @@ export function LoginScreen({
                   variant="primary"
                   size="sm"
                   weight="bold"
-                  className="text-indigo-600 dark:text-indigo-400">
+                  className="ml-1 text-indigo-600 dark:text-indigo-400">
                   Create Account
                 </Text>
               </TouchableOpacity>

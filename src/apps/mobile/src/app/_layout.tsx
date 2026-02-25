@@ -6,16 +6,17 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   ThemeProvider,
   TQueryProvider,
-  Ternary,
   ErrorBoundary,
   UpdateContextProvider,
+  AuthProvider,
+  RoleBaseRoute,
 } from "@repo/ui-native";
 import * as SplashScreen from "expo-splash-screen";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import { useOnboardingStore } from "@repo/libs";
-import Onboarding from "~/src/components/Onboarding";
 import { OtaUpdateBanner } from "~/src/components/Common/OtaUpdateBanner";
 import { logger } from "@repo/utils";
+import { defaultRoute } from "../libs/constants/routeRole";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -25,8 +26,16 @@ export default function Layout() {
   const { hasCompletedOnboarding } = useOnboardingStore();
 
   useEffect(() => {
-    setAppIsReady(true);
-  }, []);
+    if (!appIsReady) {
+      setAppIsReady(true);
+    }
+  }, [appIsReady]);
+
+  useEffect(() => {
+    if (!hasCompletedOnboarding && appIsReady) {
+      router.replace("/onboarding");
+    }
+  }, [hasCompletedOnboarding, appIsReady]);
 
   const onLayoutRootView = useCallback(() => {
     if (appIsReady) {
@@ -46,19 +55,19 @@ export default function Layout() {
         <SafeAreaView className="flex-1 bg-gray-200 dark:bg-gray-900">
           <TQueryProvider>
             <ErrorBoundary>
-              <UpdateContextProvider>
-                <ThemeProvider>
-                  <OtaUpdateBanner
-                    testMode={process.env.NODE_ENV === "development"}
-                    scenario={"fail"}
-                  />
-                  <Ternary
-                    condition={!hasCompletedOnboarding}
-                    ifTrue={<Onboarding />}
-                    ifFalse={<Stack screenOptions={{ headerShown: false }} />}
-                  />
-                </ThemeProvider>
-              </UpdateContextProvider>
+              <AuthProvider>
+                <RoleBaseRoute routeRoles={defaultRoute}>
+                  <UpdateContextProvider>
+                    <ThemeProvider>
+                      <OtaUpdateBanner
+                        testMode={process.env.NODE_ENV === "development"}
+                        scenario={"fail"}
+                      />
+                      <Stack screenOptions={{ headerShown: false }} />
+                    </ThemeProvider>
+                  </UpdateContextProvider>
+                </RoleBaseRoute>
+              </AuthProvider>
             </ErrorBoundary>
           </TQueryProvider>
         </SafeAreaView>

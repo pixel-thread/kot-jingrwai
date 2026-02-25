@@ -25,7 +25,8 @@
     "@types/react": "*",
     "typescript": "*",
     "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "@repo/types": "workspace:*"
   },
   "dependencies": {
     "@repo/libs": "workspace:*",

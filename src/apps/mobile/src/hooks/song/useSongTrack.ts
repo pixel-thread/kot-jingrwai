@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { SONG_ENDPOINTS } from "@repo/constants";
 import { TrackT } from "@repo/types";
-import { http } from "@repo/utils";
+import { http } from "@repo/utils-native";
 
 type Props = {
   id: string;

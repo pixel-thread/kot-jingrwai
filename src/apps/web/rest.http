@@ -94,7 +94,7 @@ Content-Type: application/json
 
 # @name get prod songs
 
-GET https://kot-jingrwai.vercel.app/api/songs HTTP/1.1
+GET {{NEXT_PUBLIC_API_URL}}/songs HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
