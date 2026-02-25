@@ -2,18 +2,23 @@ import { TrackService } from "@/services/track";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { requiredRole } from "@/utils/middleware/requireRole";
+import { withValidation } from "@/utils/middleware/withValidiation";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
-import { TrackResponseSchema } from "@repo/utils";
+import { TrackResponseSchema, UUIDSchema } from "@repo/utils";
 import { logger } from "@repo/utils";
-import { NextRequest } from "next/server";
+import z from "zod";
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+const routeSchema = {
+  params: z.object({
+    id: UUIDSchema,
+  }),
+};
+
+export const DELETE = withValidation(routeSchema, async ({ params }, req) => {
   try {
-    requiredRole(request, "SUPER_ADMIN");
-    const id = (await params).id;
+    requiredRole(req, "SUPER_ADMIN");
+    const id = params.id;
+
     const isTrackExist = await TrackService.getUniqueTrack({ where: { id } });
 
     if (!isTrackExist) {
@@ -32,4 +37,4 @@ export async function DELETE(
   } catch (error) {
     return handleApiErrors(error);
   }
-}
+});
