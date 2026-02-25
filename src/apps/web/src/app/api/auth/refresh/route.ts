@@ -97,7 +97,6 @@ export const POST = withValidation({ body: TokenSchema }, async ({ body }) => {
       message: "Successfully refresh",
     });
   } catch (error) {
-    logger.error;
     return handleApiErrors(error);
   }
 });
