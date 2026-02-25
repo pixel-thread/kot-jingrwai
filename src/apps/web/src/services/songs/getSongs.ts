@@ -4,7 +4,7 @@ import { getPagination } from "@/utils/pagination";
 
 type Props = {
   where?: Prisma.SongWhereInput;
-  page?: string | null;
+  page?: string | null | number;
   orderBy?: Prisma.SongOrderByWithRelationInput;
 };
 

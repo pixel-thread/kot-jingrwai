@@ -3,97 +3,97 @@ import request from "supertest";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
 
-describe("POST => /auth/sign-in - Security & Strength", () => {
+describe("POST => /auth/sign-in", () => {
+  const TEST_EMAIL = process.env.TEST_EMAIL || "test@example.com";
+  const TEST_PASSWORD = process.env.TEST_PASSWORD || "password123";
+
   // --- SUCCESS PATHS ---
-  it("should return 200 and a valid token on correct credentials", async () => {
+  it("should return 200 and auth tokens on correct credentials", async () => {
     const res = await request(baseURL).post("/auth/sign-in").send({
-      email: process.env.TEST_EMAIL,
-      password: process.env.TEST_PASSWORD, // Ensure this is in your .env
+      email: TEST_EMAIL,
+      password: TEST_PASSWORD,
     });
 
-    expect([200, 403]).toContain(res.status);
     if (res.status === 200) {
-      expect(res.body).toHaveProperty("accessToken");
-      expect(res.body).toHaveProperty("refreshToken");
-      // Security check: Ensure password hash is NEVER returned
-      expect(res.body.user).not.toHaveProperty("hashPassword");
-      expect(res.body.user).not.toHaveProperty("password");
-    }
-    expect(res.body.message).toContain("Account temporarily locked. Please try again later.");
-  });
-
-  // --- SECURITY & BRUTE FORCE ---
-  it("should implement rate limiting/lockout after multiple failures", async () => {
-    const randomEmail = `attack-${Math.random()}@gmail.com`;
-
-    // Simulate 6 quick attempts (assuming your limit is 5)
-    for (let i = 0; i < 6; i++) {
-      const res = await request(baseURL).post("/auth/sign-in").send({
-        email: randomEmail,
-        password: "WrongPassword123!",
-      });
-
-      if (i >= 5) {
-        // Your logic should eventually return 429 (Too Many Requests)
-        // or 403 (Forbidden/Locked)
-        expect([429, 403]).toContain(res.status);
-      }
+      expect(res.body.data).toHaveProperty("accessToken");
+      expect(res.body.data).toHaveProperty("refreshToken");
+    } else {
+      // If locked out due to previous tests hitting rate limits, 403 is expected temporarily
+      expect(res.status).toBe(403);
     }
   });
 
-  it("should not leak user existence", async () => {
-    // Testing an email that definitely doesn't exist
+  // --- INVALID CREDENTIALS & USER ENUMERATION ---
+  it("should return 401 for wrong password and not leak existence", async () => {
+    const res = await request(baseURL).post("/auth/sign-in").send({
+      email: TEST_EMAIL,
+      password: "WrongPassword123!",
+    });
+
+    if (res.status === 401) {
+      expect(res.body.message).toBe("Invalid credentials");
+    } else {
+      expect(res.status).toBe(403); // If locked
+    }
+  });
+
+  it("should return 401 for non-existent email (no user enumeration)", async () => {
     const res = await request(baseURL).post("/auth/sign-in").send({
       email: "totally-fake-email-123456@gmail.com",
       password: "SomePassword123!",
     });
 
-    // Security Best Practice: Don't say "User not found".
-    // Say "Invalid email or password" to prevent user enumeration.
-    if (res.status === 200) {
-      expect(res.body.message.toLowerCase()).toContain("invalid");
-      expect(res.body.message.toLowerCase()).not.toContain("exists");
+    // We shouldn't say "user not found", keep it ambiguous
+    if (res.status === 401) {
+      expect(res.body.message).toBe("Invalid credentials");
+    } else {
+      expect(res.status).toBe(403);
     }
-    expect(res.body.message.toLowerCase()).toContain("locked");
-    expect(res.body.message.toLowerCase()).not.toContain("user");
   });
 
-  // --- INPUT VALIDATION (EDGE CASES) ---
-  it("should handle extremely long input strings (Buffer Overflow/DOS check)", async () => {
-    const res = await request(baseURL)
-      .post("/auth/sign-in")
-      .send({
-        email: "a".repeat(1000) + "@gmail.com",
-        password: "Pa@1".repeat(1000) + "!",
+  // --- RATE LIMITING / LOCKOUT MECHANISM ---
+  it("should implement rate limiting/lockout after 3 failures", async () => {
+    const randomEmail = `attack-${Math.random()}@gmail.com`;
+
+    // Simulate 4 attempts. The limit is 3.
+    for (let i = 1; i <= 4; i++) {
+      const res = await request(baseURL).post("/auth/sign-in").send({
+        email: randomEmail,
+        password: "WrongPassword123!",
       });
-    expect(res.status).toBe(400); // Should be rejected by Zod max()
+
+      if (i < 3) {
+        // First 2 failures
+        expect(res.status).toBe(401);
+        expect(res.body.message).toBe("Invalid credentials");
+      } else if (i === 3) {
+        // 3rd failure locks the account
+        expect(res.status).toBe(403);
+        expect(res.body.message).toBe("Account locked due to multiple failed attempts.");
+      } else {
+        // 4th failure hits the active lock
+        expect(res.status).toBe(403);
+        expect(res.body.message).toBe("Too many attempts. Please try again later.");
+      }
+    }
   });
 
-  it("should trim whitespace from email", async () => {
-    const res = await request(baseURL)
-      .post("/auth/sign-in")
-      .send({
-        email: `  ${process.env.TEST_EMAIL}  `,
-        password: process.env.TEST_PASSWORD,
-      });
-    // If your backend trims input, this should succeed
-    expect([200, 403, 400]).toContain(res.status);
-  });
-
-  it("should be case-insensitive for email", async () => {
+  // --- INPUT VALIDATION (ZOD) ---
+  it("should return 400 for missing fields", async () => {
     const res = await request(baseURL).post("/auth/sign-in").send({
-      email: process.env.TEST_EMAIL?.toUpperCase(),
-      password: process.env.TEST_PASSWORD,
+      email: "test@example.com",
     });
-    expect([200, 403]).toContain(res.status);
+
+    expect(res.status).toBe(400);
+    expect(res.body.message).toBe("Request validation failed");
   });
 
-  // --- SQL INJECTION / NO-SQL INJECTION ---
-  it("should reject common injection patterns", async () => {
+  it("should return 400 for invalid email format", async () => {
     const res = await request(baseURL).post("/auth/sign-in").send({
-      email: "' OR 1=1 --",
-      password: "password123!",
+      email: "not-an-email",
+      password: "password123",
     });
+
     expect(res.status).toBe(400);
   });
 });

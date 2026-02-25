@@ -11,6 +11,7 @@
     "generate": "turbo run generate",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo run test",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {

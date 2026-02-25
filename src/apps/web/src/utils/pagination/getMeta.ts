@@ -1,18 +1,18 @@
-import { DEFAULT_PAGE_SIZE } from './paginationOptions';
+import { DEFAULT_PAGE_SIZE } from "./paginationOptions";
 
 type GetMetaProps = {
   total: number;
-  currentPage: string;
+  currentPage: number;
 };
 export const getMeta = ({ total, currentPage }: GetMetaProps) => {
   const totalPages = Math.ceil(total / DEFAULT_PAGE_SIZE);
 
   return {
     total,
-    page: parseInt(currentPage),
+    page: currentPage,
     pageSize: DEFAULT_PAGE_SIZE,
     totalPages,
-    hasNextPage: parseInt(currentPage) < totalPages,
-    hasPreviousPage: parseInt(currentPage) > 1,
+    hasNextPage: currentPage < totalPages,
+    hasPreviousPage: currentPage > 1,
   };
 };

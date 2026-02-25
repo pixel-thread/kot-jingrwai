@@ -10,7 +10,9 @@ import { RefreshTokenResponseSchema, LoginSchema } from "@repo/utils";
 import { AttempServices } from "@/services/auth/attempt";
 import { AccountLockServices } from "@/services/auth/lock";
 import { calculateLockUntil } from "@/utils/helper/getTime";
-export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) => {
+import { withTimeout } from "@/utils/middleware/withTimeout";
+
+const loginHandler = withValidation({ body: LoginSchema.strict() }, async ({ body }, req) => {
   try {
     const now = new Date();
     const normalReq = req as any;
@@ -115,3 +117,5 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) 
     return handleApiErrors(error);
   }
 });
+
+export const POST = withTimeout(loginHandler);

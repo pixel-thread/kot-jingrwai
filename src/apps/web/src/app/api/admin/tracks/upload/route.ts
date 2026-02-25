@@ -12,21 +12,22 @@ import z from "zod";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
-const ACCEPTED_AUDIO_TYPES = ["audio/mpeg", "audio/wav", "audio/mp3", "audio/ogg"];
+const ACCEPTED_AUDIO_TYPES = ["audio/wav", "audio/mp3"];
 
 const schema = z.object({
-  file: z.instanceof(File)
+  file: z
+    .instanceof(File)
     .refine((file) => file.size <= MAX_FILE_SIZE, "File size limit is 10MB")
     .refine(
       (file) => ACCEPTED_AUDIO_TYPES.includes(file.type),
-      "Only .mp3, .wav, or .ogg formats are supported."
+      "Only .mp3, .wav, formats are supported."
     ),
-  songId: z.uuid("Invalid Song ID structure")
+  songId: z.uuid("Invalid Song ID structure"),
 });
 
 export async function POST(request: NextRequest) {
   try {
-    await requiredRole(request, "ADMIN")
+    await requiredRole(request, "ADMIN");
     const formData = await request.formData();
 
     // @ts-ignore
