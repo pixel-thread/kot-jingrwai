@@ -44,7 +44,7 @@ describe("GET => /songs/search", () => {
   it("should correctly reject invalid types and strip special characters instead of SQLi", async () => {
     const res = await request(baseURL)
       .get("/songs/search")
-      .query({ query: "' OR 1=1 --", page: "invalid_page_number" })
+      .query({ query: "' OR 1=1 --", page: "invalid_page_number", source: "Test source" })
       .send();
 
     // Should return 400 due to Zod validating `page` as string in default setup but the query transformer strips it

@@ -9,7 +9,6 @@ describe("DELETE => /admin/tracks/:id", () => {
   // --- SECURITY / ACCESS CONTROL (A01) ---
   it("should block request if user lacks SUPER_ADMIN role", async () => {
     const res = await request(baseURL).delete(`/admin/tracks/${validUuid}`).send();
-    console.log("res.status", res.status);
     // Zod withValidation runs first, successfully parses UUID.
     // Then requiredRole("SUPER_ADMIN") runs.
     expect([401, 403, 500]).toContain(res.status);

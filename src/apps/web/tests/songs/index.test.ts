@@ -29,7 +29,6 @@ describe("GET => /songs", () => {
 
     if (res.status === 200) {
       expect(res.body.success).toBe(true);
-      console.log(res.body);
       expect(res.body.meta.page).toBe(1);
     } else if (res.status === 400) {
       // If the application strictly validates 'source' parameter even when not provided properly

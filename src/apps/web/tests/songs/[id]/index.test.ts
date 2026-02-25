@@ -1,5 +1,4 @@
 /** @jest-environment node */
-import { UUIDSchema } from "@repo/utils";
 import request from "supertest";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
@@ -9,7 +8,6 @@ describe("GET => /songs/:id", () => {
   // or rely on application handling if the UUID does not exist.
   // In actual E2E testing, you would seed a song and use its ID.
   const validUuid = "73ef6a15-533e-4df1-9b12-0b224c8a5c7d";
-  console.log("Is Valid UUID", UUIDSchema.safeParse(validUuid).success);
 
   // --- SUCCESS PATHS ---
   it("should process a valid UUID format and return appropriate response", async () => {
