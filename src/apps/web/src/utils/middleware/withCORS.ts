@@ -1,19 +1,47 @@
 import { NextRequest, NextResponse } from "next/server";
 import { MiddlewareFactory } from "./stackMiddleware";
+import { env } from "@src/env";
+import { logger } from "../logger";
 
-const allowedOrigins = ["https://localhost:3001"];
+// Base origins combining Dev/Localhost and the Production API Domain securely
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://localhost:8081",
+  env.NEXT_PUBLIC_BASE_URL,
+  env.NEXT_PUBLIC_API_URL,
+].filter(Boolean); // Filter out any undefined/invalid env mappings securely
 
 export const withCORS: MiddlewareFactory = (next) => {
   return async (request: NextRequest, _next) => {
-    const origin = request.headers.get("origin") ?? "";
-    const isAllowedOrigin = allowedOrigins.includes(origin);
+    // 1. Extract Origin. Note: S2S or Mobile Clients often don't send Origin, which standard CORS allows
+    const origin = request.headers.get("origin");
 
-    // 1. Handle Preflight (OPTIONS) requests
+    // Only validate if Origin is explicitly present (Browser/Fetch contexts)
+    if (origin) {
+      const isAllowedOrigin = allowedOrigins.includes(origin);
+
+      if (!isAllowedOrigin) {
+        logger.warn(`[CORS] Rejected unauthorized origin boundary crossing: ${origin}`);
+
+        // Fail-closed instantly at the Edge saving Server resources (Security-Engineer Audit Fix)
+        return NextResponse.json(
+          { error: "Forbidden", message: "Origin not allowed by CORS policy." },
+          { status: 403 }
+        );
+      }
+    }
+
+    // 2. Handle Preflight (OPTIONS) requests safely
     if (request.method === "OPTIONS") {
-      const response = new NextResponse(null, { status: 204 });
+      // If we made it here, origin is either Empty (Allowed) or Validated
+      const response = new NextResponse(null, { status: 404 });
 
-      if (isAllowedOrigin) {
+      if (origin) {
         response.headers.set("Access-Control-Allow-Origin", origin);
+      } else {
+        // Fallback for strict wildcard contexts, ideally never triggered if origin checked
+        response.headers.set("Access-Control-Allow-Origin", "*");
       }
 
       response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -26,15 +54,14 @@ export const withCORS: MiddlewareFactory = (next) => {
       return response;
     }
 
-    // 2. Handle Actual Request
+    // 3. Handle Actual Request
     const response = await next(request, _next);
 
-    // Add CORS headers to the response coming back up the chain
-    if (isAllowedOrigin) {
+    // 4. Append successful headers returning up the middleware chain
+    if (origin) {
       response?.headers.set("Access-Control-Allow-Origin", origin);
     }
 
-    // Always good to vary by origin if you have multiple allowed
     response?.headers.set("Vary", "Origin");
 
     return response;
