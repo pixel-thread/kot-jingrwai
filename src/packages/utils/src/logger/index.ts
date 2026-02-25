@@ -11,9 +11,15 @@ const sendLogToServer = async (type: ErrorType, message: string, content: string
   };
 
   try {
-    await http.post("/logs", logEntry);
+    await http.post("/logs", logEntry, {
+      headers: {
+        "Content-Type": "application/json",
+        "x-client-logger-key":
+          process.env.EXPO_PUBLIC_CLIENT_LOGGER_KEY || process.env.NEXT_PUBLIC_CLIENT_LOGGER_KEY,
+      },
+    });
   } catch (error) {
-    console.error("Failed to send logs to server", error);
+    console.error("Failed to send logs to server");
   }
 };
 

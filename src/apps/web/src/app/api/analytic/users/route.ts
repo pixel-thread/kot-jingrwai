@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return SuccessResponse({ message: "Successfully downloaded user" });
+    return SuccessResponse({ message: "Successfully sync user" });
   } catch (error) {
     return handleApiErrors(error);
   }

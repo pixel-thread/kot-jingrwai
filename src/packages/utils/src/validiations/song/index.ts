@@ -1,5 +1,5 @@
 import z from "zod";
-import { dateValidiation, textOnlyValidiation, UUIDSchema } from "../common";
+import { textOnlyValidiation, UUIDSchema } from "../common";
 import { ResponseSongMetadataSchema, SongMetadataSchema } from "./metadata";
 import { TrackSchema } from "../track";
 import { ParagraphSchema, ResponseParagraphSchema } from "./paragraph";
@@ -26,8 +26,6 @@ export const SongResponseSchema = z.object({
   track: TrackSchema.optional().nullable(),
   paragraphs: z.array(ResponseParagraphSchema).optional().nullable(),
   prayers: z.array(ResponsePrayerSchema).optional().nullable(),
-  updatedAt: dateValidiation.optional(),
-  createdAt: dateValidiation.optional(),
 });
 
 export const SongsResponseSchema = z.array(

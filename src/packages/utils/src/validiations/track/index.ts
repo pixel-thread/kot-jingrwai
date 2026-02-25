@@ -15,4 +15,4 @@ export const TrackResponseSchema = z.object({
   updatedAt: z.coerce.date(),
 });
 
-export const TracksResponseSchema = z.array(TrackResponseSchema);
+export const TracksResponseSchema = z.array(TrackResponseSchema.nullable());

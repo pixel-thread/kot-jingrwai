@@ -12,7 +12,10 @@ export async function GET(request: NextRequest) {
   try {
     await requiredSuperAdminRole(request);
     const updates = await getUpdates({ where: {} });
-    return SuccessResponse({ data: sanitize(UpdateSchema, updates) });
+    return SuccessResponse({
+      data: sanitize(UpdateSchema, updates),
+      message: "Successfully fetched updates",
+    });
   } catch (error) {
     return handleApiErrors(error);
   }
@@ -48,7 +51,7 @@ export async function POST(request: Request) {
       },
     });
 
-    return SuccessResponse({ message: "version created", data: version });
+    return SuccessResponse({ message: "version created", data: version, status: 201 });
   } catch (error) {
     return handleApiErrors(error);
   }

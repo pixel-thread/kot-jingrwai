@@ -11,23 +11,22 @@ import z from "zod";
 
 const routeSchema = {
   body: SongSchema,
-  params: z.object({ id: z.uuid() }),
+  params: z.object({ id: z.uuid("Song ID should be a valid uuid") }),
 };
 
 export const PUT = withValidation(routeSchema, async ({ body, params }, req: NextRequest) => {
   try {
     await requiredRole(req, "ADMIN");
-
     const isSongExists = await SongService.findUnique({ where: { id: params.id } });
 
     if (!isSongExists) {
       return ErrorResponse({
         message: "Song does not exist",
-        data: { isSongExists },
+        status: 404,
       });
     }
 
-    const updatedSong = await updateSong({ data: body as any });
+    const updatedSong = await updateSong({ data: body as any, songId: params.id });
 
     return SuccessResponse({
       data: sanitize(SongResponseSchema, updatedSong),
