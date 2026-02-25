@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
 
     return SuccessResponse({
       data: sanitize(SongsResponseSchema, songs),
-      meta: getMeta({ currentPage: randomPage.toString(), total }),
+      meta: getMeta({ currentPage: 1, total }),
       message: "Success fetch featured songs",
     });
   } catch (error) {

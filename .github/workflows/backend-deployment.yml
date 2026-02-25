@@ -2,8 +2,9 @@ name: Backend Deployment
 
 on:
   push:
-    branches: [master]
     paths: ["src/apps/web/**", "src/packages/**"] # packages/** if you have shared code
+    branches:
+      - master
 
 jobs:
   prod-deploy:
