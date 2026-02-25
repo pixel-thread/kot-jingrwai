@@ -5,10 +5,14 @@ on:
     paths: ["src/apps/web/**", "src/packages/**"] # packages/** if you have shared code
 
 jobs:
-  test-and-deploy:
+  prod-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
