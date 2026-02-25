@@ -72,7 +72,6 @@ export const POST = withValidation({ body: LoginSchema }, async ({ body }, req) 
         await AccountLockServices.create({
           data: {
             email: body.email,
-            ipAddress: clientIp,
             reason: "TOO_MANY_FAILED_LOGIN_ATTEMPTS",
             lockedUntil: calculateLockUntil(failedCount),
           },
