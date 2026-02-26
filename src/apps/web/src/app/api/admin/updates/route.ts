@@ -2,15 +2,15 @@ import { createUpdate } from "@/services/appVersion/update/createUpdate";
 import { getUpdates } from "@/services/appVersion/update/getUpdates";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
-import { requiredSuperAdminRole } from "@/utils/middleware/requiredSuperAdminRole";
+import { requiredRole } from "@/utils/middleware/requireRole";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
 import { UpdateSchema } from "@repo/utils";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
-    await requiredSuperAdminRole(request);
-    const updates = await getUpdates({ where: {} });
+    await requiredRole(request, "SUPER_ADMIN");
+    const updates = getUpdates({ where: {} });
     return SuccessResponse({
       data: sanitize(UpdateSchema, updates),
       message: "Successfully fetched updates",
@@ -20,8 +20,9 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
+    await requiredRole(request, "SUPER_ADMIN");
     const body = UpdateSchema.parse(await request.json());
 
     const isVersionExists = await getUpdates({
