@@ -14,6 +14,7 @@ export const ShowCase = () => {
           className="aspect-square rounded-3xl object-contain drop-shadow-2xl"
           priority
           style={{ width: "100%", height: "auto" }}
+          datatype="image/png"
         />
       </div>
 
