@@ -6,7 +6,6 @@ import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
 import { SongSchema, SongResponseSchema } from "@repo/utils";
-import { NextRequest } from "next/server";
 import z from "zod";
 
 const routeSchema = {
@@ -14,7 +13,7 @@ const routeSchema = {
   params: z.object({ id: z.uuid("Song ID should be a valid uuid") }),
 };
 
-export const PUT = withValidation(routeSchema, async ({ body, params }, req: NextRequest) => {
+export const PUT = withValidation(routeSchema, async ({ body, params }, req) => {
   try {
     await requiredRole(req, "ADMIN");
     const isSongExists = await SongService.findUnique({ where: { id: params.id } });
@@ -26,7 +25,7 @@ export const PUT = withValidation(routeSchema, async ({ body, params }, req: Nex
       });
     }
 
-    const updatedSong = await updateSong({ data: body as any, songId: params.id });
+    const updatedSong = await updateSong({ data: body, songId: params.id });
 
     return SuccessResponse({
       data: sanitize(SongResponseSchema, updatedSong),
