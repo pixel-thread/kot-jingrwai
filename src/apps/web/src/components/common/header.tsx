@@ -1,8 +1,6 @@
 import { env } from "@/env";
 import Link from "next/link";
 import { SongSearchInput } from "../page/songs/SongSearchInput";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "../ui/button";
 
 export const NavBar = () => {
   return (
@@ -28,9 +26,9 @@ export const NavBar = () => {
             viewBox="0 0 17 14">
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M1 1h15M1 7h15M1 13h15"
             />
           </svg>
