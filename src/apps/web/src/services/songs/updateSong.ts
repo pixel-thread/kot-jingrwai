@@ -6,7 +6,7 @@ import z from "zod";
 
 type Props = {
   songId: string;
-  data: Required<z.infer<typeof SongSchema>>;
+  data: z.infer<typeof SongSchema>;
 };
 
 export async function updateSong({ data, songId }: Props) {
