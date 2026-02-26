@@ -1,3 +1,4 @@
+import { AppSource } from "@/lib/database/prisma/generated/prisma";
 import { getSongs } from "@/services/songs/getSongs";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
@@ -34,7 +35,7 @@ export const GET = withValidation({ query: querySchema }, async ({ query }) => {
     const [songs, total] = await getSongs({
       page,
       where: {
-        metadata: { isChorus },
+        metadata: { isChorus, source: { has: query.source as AppSource } },
         OR: [
           ...(isNumber
             ? [
@@ -72,7 +73,7 @@ export const GET = withValidation({ query: querySchema }, async ({ query }) => {
 
     return SuccessResponse({
       data: sanitize(SongsResponseSchema, songs),
-      meta: getMeta({ currentPage: page, total }),
+      meta: getMeta({ currentPage: page, total: total }),
       message: "Success fetching songs",
     });
   } catch (error) {
