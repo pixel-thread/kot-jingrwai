@@ -11,23 +11,6 @@ type Props = {
 export async function getSongs({ where, page, orderBy }: Props = {}) {
   const { take, skip } = getPagination({ page: page ?? "1" });
 
-  if (!page) {
-    return prisma.$transaction([
-      prisma.song.findMany({
-        where,
-        orderBy: orderBy ?? {
-          metadata: { number: "asc" },
-        },
-        include: {
-          metadata: true,
-          paragraphs: { include: { lines: true } },
-          track: { include: { metadata: true } },
-        },
-      }),
-      prisma.song.count({ where }),
-    ]);
-  }
-
   return prisma.$transaction([
     prisma.song.findMany({
       where,
