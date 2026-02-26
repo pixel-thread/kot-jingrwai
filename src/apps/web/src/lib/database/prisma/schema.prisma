@@ -213,6 +213,7 @@ model SongMetadata {
   @@index([number])
   @@index([language])
   @@index([source])
+  @@index([number, source, isChorus])
 }
 
 model Line {
