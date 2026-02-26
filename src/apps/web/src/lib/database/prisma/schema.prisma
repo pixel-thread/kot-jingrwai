@@ -102,8 +102,6 @@ model Auth {
   user   User    @relation(fields: [userId], references: [id])
   otps   otp[]
   tokens Token[]
-
-  @@index([id])
 }
 
 model otp {
@@ -127,7 +125,6 @@ model SongPrayer {
   updatedAt DateTime @updatedAt
 
   @@index([songId])
-  @@index([id])
 }
 
 model Token {
@@ -165,7 +162,6 @@ model User {
   auth          Auth?
   tokens        Token[]
 
-  @@index([id])
   @@index([name])
   @@index([role])
 }
@@ -187,8 +183,9 @@ model Song {
   metadata   SongMetadata @relation(fields: [metadataId], references: [id])
   prayers    SongPrayer[]
 
-  @@index([id])
   @@index([trackId])
+  @@index([title])
+  @@index([createdAt])
 }
 
 model SongMetadata {
@@ -211,8 +208,11 @@ model SongMetadata {
   songId String?
   song   Song?
 
-  @@unique([number, isChorus, id])
+  @@unique([number, isChorus])
   @@index([isChorus])
+  @@index([number])
+  @@index([language])
+  @@index([source])
 }
 
 model Line {
@@ -231,7 +231,8 @@ model Line {
   @@unique([paragraphId, order])
   @@index([paragraphId])
   @@index([text])
-  @@index([id])
+  @@index([isPaidBah])
+  @@index([paragraphId, order])
 }
 
 model Paragraph {
@@ -244,6 +245,9 @@ model Paragraph {
 
   songId String
   song   Song   @relation(fields: [songId], references: [id])
+
+  @@index([type])
+  @@index([songId, order])
 }
 
 model Track {
@@ -368,8 +372,6 @@ model Details {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   verse     Verse?
-
-  @@index([id])
 }
 
 model Verse {
@@ -381,7 +383,9 @@ model Verse {
   updatedAt  DateTime    @updatedAt
   bibleVerse BibleVerse?
 
-  @@index([id])
+  @@index([createdAt])
+  @@index([detailsId])
+  @@index([detailsId, createdAt])
 }
 
 model BibleVerse {
@@ -393,7 +397,9 @@ model BibleVerse {
   user      User?    @relation(fields: [userId], references: [id])
   userId    String?
 
-  @@index([id])
+  @@index([userId])
+  @@index([verseId])
+  @@index([createdAt])
 }
 
 model Log {
@@ -406,6 +412,7 @@ model Log {
 
   @@index([isBackend, timestamp])
   @@index([type, timestamp])
+  @@index([timestamp])
 }
 
 model Attempt {
