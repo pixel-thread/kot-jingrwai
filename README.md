@@ -1,135 +1,141 @@
-# Turborepo starter
+<div align="center">
+  <img src="./src/apps/web/public/assets/og/og-image.png" alt="Web App Screen" width="400" />
+  <h1>Kot-Jingrwai</h1>
+  <p>A comprehensive platform bringing traditional Khasi hymns and songs to the digital age.</p>
 
-This Turborepo starter is maintained by the Turborepo core team.
+  <!-- Badges -->
+  <p>
+    <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version 1.0.0" />
+    <img src="https://img.shields.io/badge/Next.js-15-black.svg?logo=next.js" alt="Next.js" />
+    <img src="https://img.shields.io/badge/React_Native-0.79-blue.svg?logo=react" alt="React Native" />
+    <img src="https://img.shields.io/badge/Turborepo-2.7-red.svg?logo=turborepo" alt="Turborepo" />
+    <img src="https://img.shields.io/badge/pnpm-9.0.0-orange.svg?logo=pnpm" alt="pnpm" />
+  </p>
+</div>
 
-## Using this example
+---
 
-Run the following command:
+## 📖 About The Project
 
-```sh
-npx create-turbo@latest
+**Kot-Jingrwai** is an open-source initiative that digitizes and centralizes Khasi songs and choruses, making them easily accessible across web and mobile platforms. Built entirely as a modern full-stack monorepo, it empowers users with features like offline singing, synchronized lyrics, and a seamless interface.
+
+## ✨ Key Features
+
+- **Massive Song Library:** Access hundreds of songs and choruses natively.
+- **Tynrai Jingrwai:** A dedicated section capturing authentic Khasi musical traditions.
+- **Cross-Platform:** Available on the Web and Mobile (iOS & Android).
+- **Offline Mode:** Enjoy lyrics anywhere, even without an internet connection.
+- **Customizable Themes:** Switch themes and easily copy lyrics.
+- **Improved Readability:** Optimized fonts for reading lyrics during services.
+
+## 🛠️ Tech Stack
+
+Kot-Jingrwai is a modern monorepo powered by **[Turborepo](https://turborepo.org/)** to ensure lightning-fast builds and easy code sharing.
+
+- **Monorepo Management:** Turborepo, pnpm workspaces
+- **Web App:** Next.js (React), Tailwind CSS
+- **Mobile App:** Expo (React Native), NativeWind
+- **Language:** 100% TypeScript
+- **Linting & Formatting:** ESLint, Prettier
+
+## 📂 Project Structure
+
+```text
+mono-kot-jingrwai/
+├── apps/
+│   ├── web/             # Next.js web application
+│   └── mobile/          # React Native (Expo) mobile application
+├── packages/
+│   ├── ui/              # Shared React components for web
+│   ├── ui-native/       # Shared React Native components
+│   ├── eslint-config/   # Shared ESLint configurations
+│   └── typescript-config/ # Shared tsconfig
+├── package.json
+└── turbo.json
 ```
 
-## What's inside?
+## 🚀 Getting Started
 
-This Turborepo includes the following packages/apps:
+Follow these steps to set up the project locally.
 
-### Apps and Packages
+### Prerequisites
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+You need the following installed on your machine:
+- **Node.js:** `>=18.x`
+- **pnpm:** `9.0.0`
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Installation
 
-### Utilities
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/kot-jingrwai.git
+   cd kot-jingrwai
+   ```
 
-This Turborepo has some additional tools already setup for you:
+2. **Install dependencies:**
+   ```bash
+   pnpm install
+   ```
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+### Running the Project
 
-### Build
+You can run individual apps or the entire monorepo using `turbo`.
 
-To build all apps and packages, run the following command:
+- **Start all apps (Development):**
+  ```bash
+  pnpm dev
+  ```
+- **Start the Web app only:**
+  ```bash
+  pnpm turbo run dev --filter web
+  ```
+- **Start the Mobile app only:**
+  ```bash
+  pnpm turbo run dev --filter lynti-bneng
+  ```
 
-```
-cd my-turborepo
+## 📜 Available Scripts
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
+- `pnpm build` : Builds all applications and packages.
+- `pnpm dev` : Starts local development server for all apps.
+- `pnpm lint` : Lints the entire monorepo using ESLint.
+- `pnpm format` : Formats all code using Prettier.
+- `pnpm test` : Runs the test suite across the monorepo.
+- `pnpm clean:install` : Cleans all `node_modules` and reinstalls cleanly.
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
+## 📈 Release Notes: Version 1.0.0
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+**Release Date:** 2025-10-26
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+This major release centralizes the codebase into a monorepo for easier maintenance. All songs and choruses sync from the backend at build time. 
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+- **What's New:** Added the "Tynrai Jingrwai" section, introduced a new theme with text selection, added more song/chorus lyrics, and integrated everything into a Turborepo.
+- **Improvements:** Corrected spelling errors, increased font size and line height for better readability, and added a developer contact feature.
+- **Bug Fixes:** Resolved slow loading times and font-loading issues.
 
-### Develop
+## 🤝 Contributing
 
-To develop all apps and packages, run the following command:
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-```
-cd my-turborepo
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
+## 📸 Images
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
+<div align="center">
+  <!-- Add screenshots or relevant images here -->
+  <img src="./src/apps/web/public/assets/mockup/home-2.png" alt="Mobile App Screen" width="200" style="margin-right: 10px;" />
+</div>
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+## 🛡️ License
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+Distributed under the MIT License. See `LICENSE` for more information.
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+---
 
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+<p align="center">
+  Built with ❤️ for the community.
+</p>
