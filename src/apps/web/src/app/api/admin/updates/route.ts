@@ -16,7 +16,7 @@ import { NextRequest } from "next/server";
 export async function GET(request: NextRequest) {
   try {
     await requiredRole(request, "SUPER_ADMIN");
-    const updates = getUpdates({ where: {} });
+    const updates = getUpdates({ where: { platforms: { has: "ANDROID" } } });
     return SuccessResponse({
       data: sanitize(ResponseUpdateSchema, updates),
       message: "Successfully fetched updates",
