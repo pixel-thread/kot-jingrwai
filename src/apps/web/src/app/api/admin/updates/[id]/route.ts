@@ -2,16 +2,17 @@ import { deleteUpdate } from "@/services/appVersion/update/deleteUpdate";
 import { getUniqueUpdate } from "@/services/appVersion/update/getUniqueUpdate";
 import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { requiredRole } from "@/utils/middleware/requireRole";
+import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
-import { NextRequest } from "next/server";
+import { UUIDSchema } from "@repo/utils";
+import z from "zod";
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+const RouteSchma = { params: z.object({ id: UUIDSchema }) };
+
+export const DELETE = withValidation(RouteSchma, async ({ params }, req) => {
   try {
-    await requiredRole(request, "SUPER_ADMIN");
-    const id = (await params).id;
+    await requiredRole(req, "SUPER_ADMIN");
+    const id = params.id;
     const update = await getUniqueUpdate({ where: { id } });
 
     if (!update) {
@@ -24,4 +25,4 @@ export async function DELETE(
   } catch (error) {
     return handleApiErrors(error);
   }
-}
+});
