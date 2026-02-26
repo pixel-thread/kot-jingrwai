@@ -173,6 +173,16 @@ Content-Type: application/json
   "refreshToken": "{{REFRESH_TOKEN}}"
 }
 
+
+###
+
+# @name search song 
+
+GET {{NEXT_PUBLIC_API_URL}}/songs/search?query=9&page=2 HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+
 ###
 
 # @name logout
