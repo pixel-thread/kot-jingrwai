@@ -1,9 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Network from "expo-network";
-import { http } from "@repo/utils";
+import { logger } from "@repo/utils";
+import { http } from "@repo/utils-native";
 import uuid from "react-native-uuid";
 import * as Constant from "expo-constants";
 import { ANALYTIC_ENDPOINTS } from "@repo/constants";
+
 const USER_ID_KEY = "user_id";
 
 const SYNC_PENDING_KEY = "pending_user_sync";
@@ -44,7 +46,7 @@ export const AnalyticsService = {
         await AsyncStorage.removeItem(SYNC_PENDING_KEY);
       }
     } catch (err) {
-      console.log("Sync failed:", err);
+      logger.log("Sync failed:", err);
     }
   },
 };
