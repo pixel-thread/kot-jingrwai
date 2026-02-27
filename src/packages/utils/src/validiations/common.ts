@@ -8,6 +8,8 @@ import {
   appSource,
   verseTypes,
   appVersionRegx,
+  INT4_MAX,
+  INT4_MIN,
 } from "@repo/constants";
 
 export const emailValidation = z.email("Email is required").trim().toLowerCase();
@@ -71,3 +73,24 @@ export const pageValidation = z.coerce
   .transform((val) => Number(val))
   .pipe(z.number().positive("Page must be greater than 0"))
   .catch(1);
+
+export const searchQueryValidiation = z
+  .preprocess(
+    (val) => (typeof val === "string" ? val : ""),
+    z
+      .string()
+      .max(100, "Please enter a valid search query")
+      .transform((val) => val.replace(/[^a-zA-Z0-9]/g, ""))
+      .transform((val) => val.toLowerCase())
+      .refine((val) => {
+        if (!val) return true;
+
+        const num = Number(val);
+
+        if (Number.isNaN(num)) return true;
+
+        return num <= INT4_MAX && num >= INT4_MIN;
+      }, "Please enter a valid search query")
+  )
+  .catch("1")
+  .optional();
