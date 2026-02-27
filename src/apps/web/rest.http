@@ -178,9 +178,13 @@ Content-Type: application/json
 
 # @name search song 
 
-@query=aaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaa33aaaaafdfffffffffffffffffffffff
+// sql injection
+@query="1=1 $ 'SELECT * FROM songs'"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+@isChorus=null
+@source= KOT_JINGRWAI
+@page=10000000000000000000000000000000000000000
 
-GET {{NEXT_PUBLIC_API_URL}}/songs/search?query={{query}}&page=2 HTTP/1.1
+GET {{NEXT_PUBLIC_API_URL}}/songs/search?query={{query}}&isChorus={{isChorus}}&source={{source}}&page={{page}} HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
