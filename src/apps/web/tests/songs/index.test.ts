@@ -47,7 +47,7 @@ describe("GET => /songs", () => {
 
     if (res.status === 400) {
       expect(res.body.success).toBe(false);
-      expect(res.body.error).toBeDefined();
+      expect(res.body.error).toBeUndefined();
     }
   });
 

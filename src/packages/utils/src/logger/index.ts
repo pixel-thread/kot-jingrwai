@@ -39,7 +39,8 @@ const formatData = (type: ErrorType, ...args: any[]): string => {
 };
 
 const logMethod = async (type: ErrorType, ...args: any[]): Promise<void> => {
-  if (process.env.NODE_ENV === "development") {
+  const isDebug = process.env.NODE_ENV === "development" && process.env.DEBUG_MODE;
+  if (isDebug) {
     console.log(formatData(type, ...args));
   }
 
