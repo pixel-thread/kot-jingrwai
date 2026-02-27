@@ -6,14 +6,10 @@ import { sanitize } from "@/utils/helper/sanitize";
 import { MeAuthResponseSchema } from "@repo/utils";
 
 export async function GET(req: NextRequest) {
-  try {
-    const auth = await requireAuth(req);
+  const auth = await requireAuth(req);
 
-    return SuccessResponse({
-      data: sanitize(MeAuthResponseSchema, auth),
-      message: "Successfully fetched user details",
-    });
-  } catch (error) {
-    return handleApiErrors(error);
-  }
+  return SuccessResponse({
+    data: sanitize(MeAuthResponseSchema, auth),
+    message: "Successfully fetched user details",
+  });
 }

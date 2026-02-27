@@ -86,8 +86,11 @@ export const TrackService = {
     return getFilePublicUrl(path);
   },
 
-  async getTracks() {
-    return await prisma.track.findMany();
+  async getTracks({ page }: { page?: number } = {}) {
+    return await prisma.track.findMany({
+      take: 10,
+      skip: page,
+    });
   },
 
   async deleteTrack({ id }: DeleteTrackProps) {

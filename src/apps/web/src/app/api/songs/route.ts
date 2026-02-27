@@ -23,20 +23,16 @@ const routeSchema = {
 };
 
 export const GET = withValidation(routeSchema, async ({ query }) => {
-  try {
-    const { page, isChorus, source } = query;
+  const { page, isChorus, source } = query;
 
-    const [songs, total] = await getSongs({
-      page,
-      where: { metadata: { isChorus: isChorus, source: { has: source as AppSource } } },
-    });
+  const [songs, total] = await getSongs({
+    page,
+    where: { metadata: { isChorus: isChorus, source: { has: source as AppSource } } },
+  });
 
-    return SuccessResponse({
-      data: sanitize(SongsResponseSchema, songs),
-      meta: getMeta({ currentPage: page, total }),
-      message: "Success fetching songs",
-    });
-  } catch (error) {
-    return handleApiErrors(error);
-  }
+  return SuccessResponse({
+    data: sanitize(SongsResponseSchema, songs),
+    meta: getMeta({ currentPage: page, total }),
+    message: "Success fetching songs",
+  });
 });

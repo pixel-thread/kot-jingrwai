@@ -1,21 +1,19 @@
 import { TrackService } from "@/services/track";
-import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { requiredRole } from "@/utils/middleware/requireRole";
+import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
+import { TracksRouteValidation } from "@/utils/validiation";
 import { TracksResponseSchema } from "@repo/utils";
-import { NextRequest } from "next/server";
 
-export async function GET(req: NextRequest) {
-  try {
-    await requiredRole(req, "ADMIN");
-    const tracks = await TrackService.getTracks();
+export const GET = withValidation(TracksRouteValidation, async ({ query }, req) => {
+  const page = query.page;
+  await requiredRole(req, "ADMIN");
 
-    return SuccessResponse({
-      data: sanitize(TracksResponseSchema, tracks),
-      message: "Tracks fetched successfully",
-    });
-  } catch (error) {
-    return handleApiErrors(error);
-  }
-}
+  const tracks = await TrackService.getTracks({ page: page });
+
+  return SuccessResponse({
+    data: sanitize(TracksResponseSchema, tracks),
+    message: "Tracks fetched successfully",
+  });
+});

@@ -2,12 +2,12 @@ import { getUniqueSongs } from "@/services/songs/getUniqueSong";
 import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
-import { SongResponseSchema } from "@repo/utils";
+import { SongResponseSchema, UUIDSchema } from "@repo/utils";
 
 import z from "zod";
 
 const RouteSchema = {
-  params: z.object({ id: z.uuid() }),
+  params: z.object({ id: UUIDSchema }),
 };
 
 export const GET = withValidation(RouteSchema, async ({ params }) => {

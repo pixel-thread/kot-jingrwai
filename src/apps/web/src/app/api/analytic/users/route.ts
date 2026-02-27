@@ -1,27 +1,21 @@
 import { addDownloadedUser } from "@/services/download/addDownloadedUser";
-import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { UserAnalyticSchema } from "@repo/utils";
 
-export async function POST(req: Request) {
-  try {
-    const body = UserAnalyticSchema.parse(await req.json());
+export const POST = withValidation({ body: UserAnalyticSchema }, async ({ body }) => {
+  await addDownloadedUser({
+    where: { userId: body.userId },
+    create: {
+      userId: body.userId,
+      appVersion: body.appVersion,
+      lastLoginAt: new Date(),
+    },
+    update: {
+      appVersion: body.appVersion,
+      lastLoginAt: new Date(),
+    },
+  });
 
-    await addDownloadedUser({
-      where: { userId: body.userId },
-      create: {
-        userId: body.userId,
-        appVersion: body.appVersion,
-        lastLoginAt: new Date(),
-      },
-      update: {
-        appVersion: body.appVersion,
-        lastLoginAt: new Date(),
-      },
-    });
-
-    return SuccessResponse({ message: "Successfully sync user" });
-  } catch (error) {
-    return handleApiErrors(error);
-  }
-}
+  return SuccessResponse({ message: "Successfully sync user" });
+});
