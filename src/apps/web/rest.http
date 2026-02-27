@@ -178,7 +178,9 @@ Content-Type: application/json
 
 # @name search song 
 
-GET {{NEXT_PUBLIC_API_URL}}/songs/search?query=9&page=2 HTTP/1.1
+@query=aaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaaa33aaaaafdfffffffffffffffffffffffaaaaaa33aaaaafdfffffffffffffffffffffff
+
+GET {{NEXT_PUBLIC_API_URL}}/songs/search?query={{query}}&page=2 HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
@@ -238,3 +240,11 @@ Content-Type: application/json
     }
   ]
 }
+
+###
+
+# name base route
+
+GET {{NEXT_PUBLIC_API_URL}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
