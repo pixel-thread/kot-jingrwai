@@ -3,13 +3,24 @@ import { logger } from "@/utils/logger";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
+import { UUIDSchema } from "@repo/utils";
+import { z } from "zod";
 
-export const DELETE = withValidation({}, async ({}, req) => {
+const RouteSchema = {
+  query: z.object({
+    id: UUIDSchema,
+    isAll: z.coerce
+      .boolean()
+      .transform((val) => Boolean(val))
+      .catch(false),
+  }),
+};
+
+export const DELETE = withValidation(RouteSchema, async ({ query }, req) => {
   requiredRole(req, "SUPER_ADMIN");
   logger.info("Deleting all verses");
-  const searchParams = new URL(req.url).searchParams;
-  const isAll = searchParams.get("isAll") === "true";
-  const id = searchParams.get("id");
+  const isAll = query.isAll;
+  const id = query.id;
   let response;
   if (isAll) {
     response = await deleteVerse({ isAll: true });
