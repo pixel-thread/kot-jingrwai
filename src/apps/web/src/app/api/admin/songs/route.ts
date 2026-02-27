@@ -6,6 +6,7 @@ import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import {
+  pageValidation,
   SongResponseSchema,
   SongSchema,
   SongsResponseSchema,
@@ -15,7 +16,7 @@ import z from "zod";
 
 const routeSchema = {
   query: z.object({
-    page: z.coerce.string().default("1"),
+    page: pageValidation,
     isChorus: z.coerce
       .boolean()
       .default(false)
