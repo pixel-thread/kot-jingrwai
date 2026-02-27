@@ -4,41 +4,37 @@ import { type EasBuildPayload } from "@repo/types";
 import { verifyExpoSignature } from "@/utils/eas/verifyExpoSignature";
 import { promoteToAppVersion } from "@/services/appVersion/promoteToAppVersion";
 import { upsertEASBuild } from "@/services/easBuildWebhook/easBuildWebhook";
-import { handleApiErrors } from "@/utils/errors/handleApiErrors";
+import { withValidation } from "@/utils/middleware/withValidiation";
 
-export async function POST(req: NextRequest) {
-  try {
-    const signature = req.headers.get("expo-signature");
-    const body = await req.text();
+export const POST = withValidation({}, async ({}, req: NextRequest) => {
+  const signature = req.headers.get("expo-signature");
+  const body = await req.text();
 
-    const valid = verifyExpoSignature(body, signature);
-    if (!valid) {
-      return ErrorResponse({
-        error: "EAS signature error",
-        status: 401,
-        message: "Invalid signature",
-      });
-    }
-
-    let payload: EasBuildPayload;
-
-    try {
-      payload = JSON.parse(body);
-    } catch {
-      return new Response(JSON.stringify({ error: "Invalid JSON" }), {
-        status: 400,
-      });
-    }
-
-    await upsertEASBuild(payload);
-
-    await promoteToAppVersion(payload);
-
-    return SuccessResponse({
-      data: "Webhook received",
-      status: 201,
+  const valid = verifyExpoSignature(body, signature);
+  if (!valid) {
+    return ErrorResponse({
+      error: "EAS signature error",
+      status: 401,
+      message: "Invalid signature",
     });
-  } catch (error) {
-    return handleApiErrors(error);
   }
-}
+
+  let payload: EasBuildPayload;
+
+  try {
+    payload = JSON.parse(body);
+  } catch {
+    return new Response(JSON.stringify({ error: "Invalid JSON" }), {
+      status: 400,
+    });
+  }
+
+  await upsertEASBuild(payload);
+
+  await promoteToAppVersion(payload);
+
+  return SuccessResponse({
+    data: "Webhook received",
+    status: 201,
+  });
+});
