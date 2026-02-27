@@ -1,6 +1,7 @@
 import { z, ZodError } from "zod";
 import { NextRequest, NextResponse } from "next/server";
 import { ErrorResponse } from "../next-response";
+import { handleApiErrors } from "../errors/handleApiErrors";
 
 /* -------------------------------------------------- */
 /* Types */
@@ -79,7 +80,7 @@ export function withValidation<
       }
 
       /* ---------------- handler ---------------- */
-      return handler(
+      return await handler(
         {
           params: validatedParams as InferOrUndefined<P>,
           query: validatedQuery as InferOrUndefined<Q>,
@@ -88,19 +89,7 @@ export function withValidation<
         req
       );
     } catch (error) {
-      if (error instanceof ZodError) {
-        return ErrorResponse({
-          message: "Request validation failed",
-          status: 400,
-          error: error.issues,
-        });
-      }
-
-      return ErrorResponse({
-        message: "Unexpected request error",
-        status: 400,
-        error,
-      });
+      return handleApiErrors(error);
     }
   };
 }
