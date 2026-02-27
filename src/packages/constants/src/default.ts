@@ -15,3 +15,7 @@ export const appSource = ["KOT_JINGRWAI", "LYNTI_BNENG"];
 export const verseTypes = ["VERSE", "CHORUS", "BRIDGE", "INTRO", "OUTRO"];
 
 export const logsType = ["ERROR", "INFO", "WARN", "LOG"];
+
+export const INT4_MAX = 2147483647;
+
+export const INT4_MIN = -2147483648;
