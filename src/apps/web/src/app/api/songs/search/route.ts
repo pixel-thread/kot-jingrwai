@@ -1,21 +1,21 @@
 import { AppSource } from "@/lib/database/prisma/generated/prisma";
 import { getSongs } from "@/services/songs/getSongs";
-import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { SuccessResponse } from "@/utils/next-response";
 import { getMeta } from "@/utils/pagination/getMeta";
-import { pageValidation, SongsResponseSchema, sourceValidiation } from "@repo/utils";
+import {
+  pageValidation,
+  searchQueryValidiation,
+  SongsResponseSchema,
+  sourceValidiation,
+} from "@repo/utils";
+
 import z from "zod";
 
 const querySchema = z.object({
-  // remove all special characters
-  query: z
-    .string()
-    .transform((val) => val.replace(/[^a-zA-Z0-9]/g, ""))
-    .optional()
-    .catch(""),
   page: pageValidation,
+  query: searchQueryValidiation,
   isChorus: z.coerce
     .boolean()
     .transform((val) => Boolean(val))
@@ -24,59 +24,55 @@ const querySchema = z.object({
 });
 
 export const GET = withValidation({ query: querySchema }, async ({ query }) => {
-  try {
-    const page = query.page;
-    const queryValue = query.query;
-    const isChorus = query.isChorus;
+  const page = query.page;
+  const queryValue = query.query;
+  const isChorus = query.isChorus;
 
-    const queryNumber = Number(queryValue);
-    const isNumber = !Number.isNaN(queryNumber);
+  const queryNumber = Number(queryValue);
+  const isNumber = !Number.isNaN(queryNumber);
 
-    const [songs, total] = await getSongs({
-      page,
-      where: {
-        metadata: { isChorus, source: { has: query.source as AppSource } },
-        OR: [
-          ...(isNumber
-            ? [
-                {
-                  metadata: {
-                    number: { equals: queryNumber },
-                  },
+  const [songs, total] = await getSongs({
+    page,
+    where: {
+      metadata: { isChorus, source: { has: query.source as AppSource } },
+      OR: [
+        ...(isNumber
+          ? [
+              {
+                metadata: {
+                  number: { equals: queryNumber },
                 },
-              ]
-            : []),
-          {
-            title: {
-              contains: queryValue,
-              mode: "insensitive",
-            },
+              },
+            ]
+          : []),
+        {
+          title: {
+            contains: queryValue,
+            mode: "insensitive",
           },
-          {
-            paragraphs: {
-              some: {
-                lines: {
-                  some: {
-                    order: 0,
-                    text: {
-                      contains: queryValue,
-                      mode: "insensitive",
-                    },
+        },
+        {
+          paragraphs: {
+            some: {
+              lines: {
+                some: {
+                  order: 0,
+                  text: {
+                    contains: queryValue,
+                    mode: "insensitive",
                   },
                 },
               },
             },
           },
-        ],
-      },
-    });
+        },
+      ],
+    },
+  });
 
-    return SuccessResponse({
-      data: sanitize(SongsResponseSchema, songs),
-      meta: getMeta({ currentPage: page, total: total }),
-      message: "Success fetching songs",
-    });
-  } catch (error) {
-    return handleApiErrors(error);
-  }
+  return SuccessResponse({
+    data: sanitize(SongsResponseSchema, songs),
+    meta: getMeta({ currentPage: page, total: total }),
+    message: "Success fetching songs",
+  });
 });
