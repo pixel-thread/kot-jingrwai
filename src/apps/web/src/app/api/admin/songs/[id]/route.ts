@@ -5,33 +5,30 @@ import { sanitize } from "@/utils/helper/sanitize";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
 import { ErrorResponse, SuccessResponse } from "@/utils/next-response";
-import { SongSchema, SongResponseSchema } from "@repo/utils";
+import { SongSchema, SongResponseSchema, UUIDSchema } from "@repo/utils";
 import z from "zod";
 
 const routeSchema = {
   body: SongSchema,
-  params: z.object({ id: z.uuid("Song ID should be a valid uuid") }),
+  params: z.object({ id: UUIDSchema }),
 };
 
 export const PUT = withValidation(routeSchema, async ({ body, params }, req) => {
-  try {
-    await requiredRole(req, "ADMIN");
-    const isSongExists = await SongService.findUnique({ where: { id: params.id } });
+  await requiredRole(req, "ADMIN");
 
-    if (!isSongExists) {
-      return ErrorResponse({
-        message: "Song does not exist",
-        status: 404,
-      });
-    }
+  const isSongExists = await SongService.findUnique({ where: { id: params.id } });
 
-    const updatedSong = await updateSong({ data: body, songId: params.id });
-
-    return SuccessResponse({
-      data: sanitize(SongResponseSchema, updatedSong),
-      message: "Successfully updated song",
+  if (!isSongExists) {
+    return ErrorResponse({
+      message: "Song does not exist",
+      status: 404,
     });
-  } catch (error) {
-    return handleApiErrors(error);
   }
+
+  const updatedSong = await updateSong({ data: body, songId: params.id });
+
+  return SuccessResponse({
+    data: sanitize(SongResponseSchema, updatedSong),
+    message: "Successfully updated song",
+  });
 });
