@@ -1,6 +1,5 @@
 import { AppSource } from "@/lib/database/prisma/generated/prisma";
 import { SongService } from "@/services/songs";
-import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
@@ -27,34 +26,26 @@ const routeSchema = {
 };
 
 export const GET = withValidation(routeSchema, async ({ query }, req) => {
-  try {
-    await requiredRole(req, "SUPER_ADMIN");
-    const { isChorus, source } = query;
+  await requiredRole(req, "SUPER_ADMIN");
+  const { isChorus, source } = query;
 
-    const songs = await SongService.findAllSongs({
-      where: { metadata: { isChorus: isChorus, source: { has: source as AppSource } } },
-    });
+  const songs = await SongService.findAllSongs({
+    where: { metadata: { isChorus: isChorus, source: { has: source as AppSource } } },
+  });
 
-    return SuccessResponse({
-      data: sanitize(SongsResponseSchema, songs),
-      message: "Successfully fetched songs",
-    });
-  } catch (error) {
-    return handleApiErrors(error);
-  }
+  return SuccessResponse({
+    data: sanitize(SongsResponseSchema, songs),
+    message: "Successfully fetched songs",
+  });
 });
 
 export const POST = withValidation({ body: SongSchema }, async ({ body }, req) => {
-  try {
-    await requiredRole(req, "ADMIN");
+  await requiredRole(req, "ADMIN");
 
-    const result = await SongService.create({ data: body });
+  const result = await SongService.create({ data: body });
 
-    return SuccessResponse({
-      data: sanitize(SongResponseSchema, result),
-      message: "Successfully created song with prayers and metadata",
-    });
-  } catch (error) {
-    return handleApiErrors(error);
-  }
+  return SuccessResponse({
+    data: sanitize(SongResponseSchema, result),
+    message: "Successfully created song with prayers and metadata",
+  });
 });

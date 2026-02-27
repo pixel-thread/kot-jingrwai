@@ -8,31 +8,27 @@ import { TrackResponseSchema, UUIDSchema } from "@repo/utils";
 import { logger } from "@repo/utils";
 import z from "zod";
 
-const routeSchema = { params: z.object({ id: UUIDSchema }) };
+const RouteSchema = { params: z.object({ id: UUIDSchema }) };
 
-export const DELETE = withValidation(routeSchema, async ({ params }, req) => {
-  try {
-    await requiredRole(req, "SUPER_ADMIN");
+export const DELETE = withValidation(RouteSchema, async ({ params }, req) => {
+  await requiredRole(req, "SUPER_ADMIN");
 
-    const id = params.id;
+  const id = params.id;
 
-    const isTrackExist = await TrackService.getUniqueTrack({ where: { id } });
+  const isTrackExist = await TrackService.getUniqueTrack({ where: { id } });
 
-    if (!isTrackExist) {
-      logger.info("Track not found", { trackId: id });
-      return ErrorResponse({
-        message: "Track not found",
-        status: 404,
-      });
-    }
-
-    const track = await TrackService.deleteTrack({ id });
-
-    return SuccessResponse({
-      data: sanitize(TrackResponseSchema, track),
-      message: "Track deleted successfully",
+  if (!isTrackExist) {
+    logger.info("Track not found", { trackId: id });
+    return ErrorResponse({
+      message: "Track not found",
+      status: 404,
     });
-  } catch (error) {
-    return handleApiErrors(error);
   }
+
+  const track = await TrackService.deleteTrack({ id });
+
+  return SuccessResponse({
+    data: sanitize(TrackResponseSchema, track),
+    message: "Track deleted successfully",
+  });
 });

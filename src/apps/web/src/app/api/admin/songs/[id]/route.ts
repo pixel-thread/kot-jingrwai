@@ -1,6 +1,5 @@
 import { SongService } from "@/services/songs";
 import { updateSong } from "@/services/songs/updateSong";
-import { handleApiErrors } from "@/utils/errors/handleApiErrors";
 import { sanitize } from "@/utils/helper/sanitize";
 import { requiredRole } from "@/utils/middleware/requireRole";
 import { withValidation } from "@/utils/middleware/withValidiation";
