@@ -48,7 +48,7 @@ export const VerseTypeValidiation = z
 export const UUIDSchema = z.uuid("Must be a valid UUID format");
 
 export const sourceValidiation = z
-  .enum(appSource)
+  .enum(appSource, "Please select a valid source")
   .refine((val) => !val || Object.values(appSource).includes(val), {
     message: "Source must be one of the app",
   })
@@ -79,6 +79,7 @@ export const searchQueryValidiation = z
     (val) => (typeof val === "string" ? val : ""),
     z
       .string()
+      .trim()
       .max(100, "Please enter a valid search query")
       .transform((val) => val.replace(/[^a-zA-Z0-9]/g, ""))
       .transform((val) => val.toLowerCase())
