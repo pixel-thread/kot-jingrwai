@@ -1,6 +1,5 @@
-import { z, ZodError } from "zod";
+import { z } from "zod";
 import { NextRequest, NextResponse } from "next/server";
-import { ErrorResponse } from "../next-response";
 import { handleApiErrors } from "../errors/handleApiErrors";
 
 /* -------------------------------------------------- */

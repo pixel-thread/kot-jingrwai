@@ -86,7 +86,6 @@ export const handleApiErrors = (error: unknown) => {
     });
   }
   if (error instanceof Error) {
-    logger.error({ type: "Error", message: error.message, error });
     return ErrorResponse({ message: error.message });
   }
 

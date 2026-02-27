@@ -30,7 +30,7 @@ describe("GET & POST => /admin/songs", () => {
 
       if (res.status === 400) {
         expect(res.body.success).toBe(false);
-        expect(res.body.error).toBeDefined();
+        expect(res.body.error).toBeUndefined();
       }
     });
   });
@@ -69,7 +69,7 @@ describe("GET & POST => /admin/songs", () => {
       expect([400, 403, 429]).toContain(res.status);
       if (res.status === 400) {
         expect(res.body.success).toBe(false);
-        expect(res.body.error).toBeDefined();
+        expect(res.body.error).toBeUndefined();
       }
     });
 

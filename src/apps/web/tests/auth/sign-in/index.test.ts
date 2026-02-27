@@ -85,7 +85,7 @@ describe("POST => /auth/sign-in", () => {
     });
 
     expect(res.status).toBe(400);
-    expect(res.body.message).toBe("Request validation failed");
+    expect(res.body.message.toLowerCase()).toBe("password is required");
   });
 
   it("should return 400 for invalid email format", async () => {

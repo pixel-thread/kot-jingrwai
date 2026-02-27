@@ -208,7 +208,6 @@ model SongMetadata {
   songId String?
   song   Song?
 
-  @@unique([number, isChorus])
   @@index([isChorus])
   @@index([number])
   @@index([language])
