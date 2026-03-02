@@ -86,7 +86,7 @@ export const MusicPlayer = ({
   return (
     <div
       className={cn(
-        "bg-background/50 rounded-2xl border p-4 shadow-lg backdrop-blur-sm transition-all duration-300",
+        "liquid-glass liquid-interact rounded-3xl p-4 transition-all duration-300",
         isExpanded ? "mx-auto w-full" : "",
         className
       )}>

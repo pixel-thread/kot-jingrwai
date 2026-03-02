@@ -7,8 +7,6 @@ type AuthProviderProps = {
   children: Readonly<Required<React.ReactNode>>;
 };
 
-type UserT = Required<{ id: string; role: string }>;
-
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const value: AuthContextT = {
     user: null,

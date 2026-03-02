@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { MainProvider } from "@/components/provider";
 import HeadMeta from "@/components/common/Head";
+import { SplashScreen } from "@/components/common/SplashScreen";
 import { Suspense } from "react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -24,7 +25,75 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html suppressHydrationWarning suppressContentEditableWarning>
       <HeadMeta />
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${outfit.variable} ${geistMono.variable} antialiased`}>
+        {/* Global SVG Filters for Liquid Glass UI */}
+        <svg
+          className="pointer-events-none absolute h-0 w-0"
+          aria-hidden="true"
+          style={{ position: "absolute", width: 0, height: 0 }}>
+          <defs>
+            <filter id="liquid-glass" x="-20%" y="-20%" width="140%" height="140%">
+              {/* Refraction / Fluidity */}
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.04"
+                numOctaves="2"
+                result="noise"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="3"
+                xChannelSelector="R"
+                yChannelSelector="G"
+                result="refraction"
+              />
+
+              {/* Blur / Smoothing */}
+              <feGaussianBlur in="refraction" stdDeviation="2" result="blur" />
+
+              {/* Rim Lighting & Highlights */}
+              <feSpecularLighting
+                in="blur"
+                specularExponent="40"
+                lightingColor="rgba(255,255,255,0.7)"
+                result="highlights">
+                <fePointLight x="100" y="0" z="200" />
+              </feSpecularLighting>
+
+              {/* Blend everything */}
+              <feComposite
+                in="highlights"
+                in2="blur"
+                operator="arithmetic"
+                k1="0"
+                k2="1"
+                k3="1"
+                k4="0"
+                result="litGlass"
+              />
+              <feBlend mode="screen" in="litGlass" in2="SourceGraphic" result="final" />
+            </filter>
+
+            <filter id="liquid-ripple">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.01 0.05"
+                numOctaves="3"
+                result="waves"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="waves"
+                scale="10"
+                xChannelSelector="R"
+                yChannelSelector="G"
+              />
+            </filter>
+          </defs>
+        </svg>
+
+        <SplashScreen />
         <Suspense>
           <MainProvider>{children}</MainProvider>
         </Suspense>

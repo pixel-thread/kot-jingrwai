@@ -1,5 +1,5 @@
-import React from "react";
 import { Mail, Phone, MapPin, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 type ContactItemProps = {
   icon: React.ReactNode;
@@ -14,9 +14,8 @@ const ContactItem = ({ icon, title, value, description, onClick, isLast }: Conta
   return (
     <button
       onClick={onClick}
-      className={`w-full border-gray-200 p-4 text-left dark:border-gray-800 ${
-        !isLast ? "border-b" : ""
-      } flex items-center space-x-4 transition hover:bg-gray-100 dark:hover:bg-gray-900`}
+      className={`liquid-interact liquid-ripple w-full border-gray-200/40 p-4 text-left dark:border-white/5 ${!isLast ? "border-b" : ""
+        } flex items-center space-x-4`}
       aria-label={`Kren lyngba ${title}`}
       type="button">
       <div className="flex-shrink-0 text-2xl text-indigo-600 dark:text-indigo-400">{icon}</div>
@@ -81,37 +80,54 @@ export const Contact = () => {
   return (
     <section
       id={"contact"}
-      className="min-h-full bg-indigo-500 px-6 py-12 text-gray-900 sm:px-12 md:px-24 lg:px-36 dark:text-gray-100">
+      className="relative flex min-h-[80vh] items-center overflow-hidden bg-background px-6 py-16 text-gray-900 sm:px-12 md:px-24 lg:px-36 dark:bg-[#0a0a0a] dark:text-gray-100">
+
+      {/* Background Orbs */}
+      <div className="absolute left-[10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-indigo-500/10 blur-[100px]" />
+      <div className="absolute bottom-[20%] right-[10%] -z-10 h-96 w-96 rounded-full bg-violet-500/10 blur-[120px]" />
+
       {/* Contact Information */}
-      <section className="mx-auto max-w-4xl overflow-hidden rounded-xl bg-white shadow-lg dark:bg-gray-800">
-        <h2 className="border-b border-gray-200 px-6 pb-4 pt-8 text-3xl font-extrabold dark:border-gray-700">
-          Kumno ban contact ia ngi
-        </h2>
-        <div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{
+          hidden: { opacity: 0, y: 30 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 },
+          },
+        }}
+        className="liquid-glass mx-auto w-full max-w-4xl overflow-hidden rounded-3xl">
+        <motion.h2 variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1 } }} className="border-b border-gray-100 px-8 pb-6 pt-10 text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-left sm:text-4xl dark:border-gray-800 dark:text-white">
+          <span className="bg-gradient-to-r from-indigo-500 to-violet-500 bg-clip-text text-transparent">Get in Touch</span> with us
+        </motion.h2>
+        <div className="p-2 sm:p-4">
           <ContactItem
             icon={<Mail />}
-            title="Email"
+            title="Email Address"
             value={email}
-            description="Kren bad ngi lyngba ka email na ka bynta jingiarap lane jingkylli"
+            description="Reach out to us via email for any inquiries or support."
             onClick={openEmail}
           />
           <ContactItem
             icon={<Phone />}
-            title="Phone"
+            title="Phone Support"
             value={phone}
-            description="Call ia ngi ha ki por treikam"
+            description="Give us a call. We're available during working hours."
             onClick={openPhone}
           />
           <ContactItem
             icon={<MapPin />}
-            title="Ka jaka treikam"
+            title="Headquarters"
             value={address}
-            description="Wan jngoh ia ka ophis jong ngi ne wad ha ka map"
+            description="Visit us at our main office branch."
             onClick={openMap}
             isLast
           />
         </div>
-      </section>
+      </motion.div>
     </section>
   );
 };
