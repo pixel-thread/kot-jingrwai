@@ -6,11 +6,8 @@ import { logger } from "../logger";
 // Base origins combining Dev/Localhost and the Production API Domain securely
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://localhost:3001",
-  "http://localhost:8081",
   env.NEXT_PUBLIC_BASE_URL,
   env.NEXT_PUBLIC_API_URL,
-  "https://kot-jingrwai.pixel-thread.in",
 ].filter(Boolean); // Filter out any undefined/invalid env mappings securely
 
 export const withCORS: MiddlewareFactory = (next) => {

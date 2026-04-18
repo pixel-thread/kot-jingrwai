@@ -3,18 +3,26 @@ import { z } from "zod";
 
 export const env = createEnv({
   server: {
+    // DATABASE
     DATABASE_URL: z.url("DATABASE_URL"),
+    DIRECT_URL: z.string("DIRECT_URL"),
+    // clerk
     CLERK_SECRET_KEY: z.string("CLERK_SECRET_KEY"),
+    // supabase
     SUPABASE_SECRET_KEY: z.string("SUPABASE_KEY"),
     SUPABASE_BUCKET: z.string("SUPABASE_BUCKET"),
+    // jwt
     SALT: z.coerce.number("SALT"),
     JWT_ACCESS_SECRET: z.string("JWT_ACCESS_SECRET"),
     JWT_REFRESH_SECRET: z.string("JWT_REFRESH_SECRET"),
     ACCESS_TOKEN_TTL: z.coerce.number("ACCESS_TOKEN_TTL"),
     REFRESH_TOKEN_TTL: z.coerce.number("REFRESH_TOKEN_TTL"),
+    // env
     NODE_ENV: z.enum(["development", "test", "production"]),
+    // redis
     UPSTASH_REDIS_REST_URL: z.string().min(1),
     UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
+    EAS_WEBHOOK_SECRET: z.string("EAS_WEBHOOK_SECRET"),
   },
   client: {
     NEXT_PUBLIC_BASE_URL: z.string("NEXT_PUBLIC_BASE_URL").min(1),
@@ -25,11 +33,12 @@ export const env = createEnv({
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
+    DATABASE_URL: process.env.DATABASE_URL,
+    DIRECT_URL: process.env.DIRECT_URL,
     UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
     UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
     NEXT_PUBLIC_CLIENT_LOGGER_KEY: process.env.NEXT_PUBLIC_CLIENT_LOGGER_KEY,
     NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
-    DATABASE_URL: process.env.DATABASE_URL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
@@ -42,5 +51,6 @@ export const env = createEnv({
     ACCESS_TOKEN_TTL: process.env.ACCESS_TOKEN_TTL,
     REFRESH_TOKEN_TTL: process.env.REFRESH_TOKEN_TTL,
     NODE_ENV: process.env.NODE_ENV,
+    EAS_WEBHOOK_SECRET: process.env.EAS_WEBHOOK_SECRET,
   },
 });
