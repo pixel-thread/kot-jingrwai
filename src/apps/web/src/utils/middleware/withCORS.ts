@@ -10,6 +10,7 @@ const allowedOrigins = [
   "http://localhost:8081",
   env.NEXT_PUBLIC_BASE_URL,
   env.NEXT_PUBLIC_API_URL,
+  "https://kot-jingrwai.pixel-thread.in",
 ].filter(Boolean); // Filter out any undefined/invalid env mappings securely
 
 export const withCORS: MiddlewareFactory = (next) => {
