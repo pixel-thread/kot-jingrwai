@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { MiddlewareFactory } from "./stackMiddleware";
 import { env } from "@src/env";
 import { logger } from "../logger";
+import { ErrorResponse } from "../next-response";
 
 // Base origins combining Dev/Localhost and the Production API Domain securely
 const allowedOrigins = [
@@ -23,10 +24,11 @@ export const withCORS: MiddlewareFactory = (next) => {
         logger.warn(`[CORS] Rejected unauthorized origin boundary crossing: ${origin}`);
 
         // Fail-closed instantly at the Edge saving Server resources (Security-Engineer Audit Fix)
-        return NextResponse.json(
-          { error: "Forbidden", message: "Origin not allowed by CORS policy." },
-          { status: 403 }
-        );
+        return ErrorResponse({
+          error: "Forbidden",
+          status: 403,
+          message: "Origin not allowed by CORS policy.",
+        });
       }
     }
 
