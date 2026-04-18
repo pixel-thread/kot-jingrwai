@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",
+    "db:generate": "prisma generate",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:unit": "jest"
