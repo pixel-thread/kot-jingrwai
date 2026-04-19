@@ -14,23 +14,12 @@ jobs:
     environment: production
     working_directory: src/apps/mobile
 
-  check_existing_build:
-    name: 🔍 Check existing build
-    type: get-build
-    environment: production
-    working_directory: src/apps/mobile
-    needs: [fingerprint]
-    params:
-      fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
-      profile: production
-
   build_new:
     name: 🏗️ Create new build
     type: build
     environment: production
     working_directory: src/apps/mobile
-    needs: [check_existing_build, fingerprint]
-    if: ${{ !needs.check_existing_build.outputs.build_id && github.event_name != 'pull_request' }}
+    needs: [fingerprint]
     params:
       platform: android
       profile: production
@@ -57,5 +46,5 @@ jobs:
       message: |
         🚀 PROD Deploy
         OTA: ✅ Always (UI/JS)
-        Native Build: ${{ needs.build_new.outputs.build_id && '✅ New' || '❎ Skipped' }}
+        Native Build: ${{ needs.build_new.status == 'finished' && '✅ Created' || '❌ Failed' }}
         Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
