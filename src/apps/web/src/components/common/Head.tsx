@@ -1,3 +1,4 @@
+"use client";
 // components/Head.tsx
 import { SEO } from "@repo/constants";
 
