@@ -164,6 +164,8 @@ model User {
 
   @@index([name])
   @@index([role])
+  @@index([status])
+  @@index([id])
 }
 
 /**
