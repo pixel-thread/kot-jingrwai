@@ -128,6 +128,7 @@ export default function HeadMeta({
           }}
         />
       )}
+      <meta name="google-site-verification" content="J9lzg6JMLd4DmeegcKWB4X1pbl5cDSXU1cSxFSVD1fY" />
     </head>
   );
 }
