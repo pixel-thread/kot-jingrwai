@@ -5,10 +5,10 @@ on:
     branches:
       - master
     paths:
-      - "apps/web/**"
-      - "packages/**"
-      - "!packages/ui-native/**"
-      - "!packages/utils-native/**"
+      - "src/apps/web/**"
+      - "src/packages/**"
+      - "!src/packages/ui-native/**"
+      - "!src/packages/utils-native/**"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
 
