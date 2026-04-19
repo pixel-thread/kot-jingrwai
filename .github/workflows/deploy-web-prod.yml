@@ -1,61 +1,68 @@
-name: 🚀 Deploy Web to Vercel (Production)
+name: Deploy Prod Web Application to Vercel
 
 on:
   push:
-    paths:
-      - "src/apps/web/**"
-      - "src/packages/**"
     branches:
       - master
-  workflow_run:
-    workflows: ["🗄️ Migrate Production Database"]
-    types: [completed]
-    branches: [master]
+    paths:
+      - "apps/web/**"
+      - "packages/**"
+      - "!packages/ui-native/**"
+      - "!packages/utils-native/**"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
 
-concurrency:
-  group: vercel-deploy-prod
-  cancel-in-progress: true   # OK to cancel a pending deploy
-
+# This workflow automates the deployment of the 'web' Next.js application to Vercel.
+# It ensures that the build is consistent by using pnpm and targets the specific monorepo app directory.
 jobs:
   deploy:
-    name: Deploy to Vercel Production
+    name: Deploy to Production
     runs-on: ubuntu-latest
-    # Skip if triggered by a FAILED migration
-    if: >-
-      github.event_name == 'push' || 
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
     environment: production
+
     env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
-          version: 10
+          version: 10.0.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "20"
           cache: "pnpm"
 
-      - name: Install Vercel CLI
-        run: pnpm add -g vercel@latest
+      - name: Install Dependencies
+        # Using --frozen-lockfile ensures that the build is deterministic.
+        run: pnpm install --frozen-lockfile
 
-      - name: Pull Vercel Environment
-        run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+      - name: Generate Prisma Clients
+        # Generates all database clients across the monorepo.
+        run: pnpm turbo run db:generate --filter=@securevault/web
 
-      - name: Build Project
-        run: vercel build --prod --token=$VERCEL_TOKEN
+      - name: Build Workspace
+        # Builds all packages and apps in the monorepo.
+        run: pnpm run build
 
-      - name: Deploy to Production
-        id: deploy
-        run: |
-          DEPLOY_URL=$(vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN)
-          echo "deploy_url=$DEPLOY_URL" >> "$GITHUB_OUTPUT"
-          echo "✅ Deployed to: $DEPLOY_URL"
+      - name: Pull Vercel Environment Information
+        # Pulls the environment variables and settings from Vercel.
+        # Note: The "Build not running on Vercel" warning is expected when pre-building in CI.
+        run: npx vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+
+      - name: Build Project for Vercel
+        # Builds the project locally using Vercel's build engine.
+        run: npx vercel build --prod --token=$VERCEL_TOKEN
+
+      - name: Deploy Prebuilt Artifacts to Vercel
+        # Deploys the artifacts generated in the previous step.
+        run: npx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN

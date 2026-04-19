@@ -1,48 +1,41 @@
-name: 🗄️ Migrate Production Database
-
+name: Migrate PROD Prisma database
 on:
   push:
     paths:
-      - "src/apps/web/src/lib/database/prisma/schema.prisma"
-      - "src/apps/web/src/lib/database/prisma/migrations/**"
+      - "apps/web/src/libs/db/prisma/schema.prisma"
+      - "apps/web/src/libs/db/prisma/migrations/**"
     branches:
       - master
 
-concurrency:
-  group: prisma-migration-prod
-  cancel-in-progress: false  # Never cancel a running migration
-
+# This workflow automates the application of Prisma migrations to the production database.
+# It is triggered whenever changes are pushed to the schema or migrations on the master branch.
 jobs:
-  migrate:
-    name: Apply Prisma Migrations
+  deploy:
     runs-on: ubuntu-latest
     environment: production
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       DIRECT_URL: ${{ secrets.DIRECT_URL }}
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
-          version: 10
+          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "20"
           cache: "pnpm"
 
-      - name: Install dependencies
+      - name: Install Dependencies
+        # Using --frozen-lockfile ensures that the build is deterministic and matches the lockfile exactly.
         run: pnpm install --frozen-lockfile
 
-      - name: Generate Prisma Client
-        run: npx prisma generate --schema=src/apps/web/src/lib/database/prisma/schema.prisma
-
-      - name: Check migration status
-        run: npx prisma migrate status --schema=src/apps/web/src/lib/database/prisma/schema.prisma
-
-      - name: Apply pending migrations
-        run: npx prisma migrate deploy --schema=src/apps/web/src/lib/database/prisma/schema.prisma
+      - name: Run Prisma Migrations
+        working-directory: apps/web
+        # The --schema flag is used to specify the exact location of the schema file within the monorepo.
+        run: npx prisma migrate deploy
