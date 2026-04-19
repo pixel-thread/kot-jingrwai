@@ -4,7 +4,7 @@
     "slug": "kot-jingrwai",
     "version": "1.0.1",
     "scheme": "kot-jing-rwai",
-    "orientation": "portrait",
+    "orientation": "automatic",
     "icon": "./assets/icons/kot-jingrwai-icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
