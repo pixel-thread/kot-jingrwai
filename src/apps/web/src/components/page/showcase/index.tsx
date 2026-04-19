@@ -40,7 +40,7 @@ export const ShowCase = () => {
           </li>
           <li className="flex items-center gap-3">
             <span className="text-lg text-indigo-500 sm:text-xl dark:text-indigo-400">✅</span>
-            Lah ban pyndonkam khlem ka internet
+            Lah ban pyndonkam khlem ka internet.
           </li>
         </ul>
       </div>
