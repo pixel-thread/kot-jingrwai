@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html suppressHydrationWarning suppressContentEditableWarning>
       <HeadMeta />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Suspense fallback={null}>
+        <Suspense>
           <MainProvider>{children}</MainProvider>
         </Suspense>
       </body>

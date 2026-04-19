@@ -2,8 +2,8 @@ name: Migrate PROD Prisma database
 on:
   push:
     paths:
-      - "apps/web/src/libs/db/prisma/schema.prisma"
-      - "apps/web/src/libs/db/prisma/migrations/**"
+      - "src/apps/web/src/lib/database/prisma/schema.prisma"
+      - "src/apps/web/src/lib/database/prisma/migrations/**"
     branches:
       - master
 
@@ -36,6 +36,6 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run Prisma Migrations
-        working-directory: apps/web
+        working-directory: src/apps/web
         # The --schema flag is used to specify the exact location of the schema file within the monorepo.
-        run: npx prisma migrate deploy
+        run: npx prisma migrate deploy --schema=src/lib/database/prisma/schema.prisma
