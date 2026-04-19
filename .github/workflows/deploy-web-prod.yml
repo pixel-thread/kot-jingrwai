@@ -50,15 +50,12 @@ jobs:
 
       - name: Pull Vercel Environment Information
         # Pulls the environment variables and settings from Vercel.
-        working-directory: src/apps/web
-        run: npx vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+        run: pnpm dlx vercel pull --yes --environment=production --token=$VERCEL_TOKEN
 
       - name: Build Project for Vercel
         # Builds the project locally using Vercel's build engine.
-        working-directory: src/apps/web
-        run: npx vercel build --prod --token=$VERCEL_TOKEN
+        run: pnpm dlx vercel build --prod --token=$VERCEL_TOKEN
 
       - name: Deploy Prebuilt Artifacts to Vercel
         # Deploys the artifacts generated in the previous step.
-        working-directory: src/apps/web
-        run: npx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+        run: pnpm dlx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
