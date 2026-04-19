@@ -1,0 +1,61 @@
+name: 🚀 Deploy Web to Vercel (Production)
+
+on:
+  push:
+    paths:
+      - "src/apps/web/**"
+      - "src/packages/**"
+    branches:
+      - master
+  workflow_run:
+    workflows: ["🗄️ Migrate Production Database"]
+    types: [completed]
+    branches: [master]
+
+concurrency:
+  group: vercel-deploy-prod
+  cancel-in-progress: true   # OK to cancel a pending deploy
+
+jobs:
+  deploy:
+    name: Deploy to Vercel Production
+    runs-on: ubuntu-latest
+    # Skip if triggered by a FAILED migration
+    if: >-
+      github.event_name == 'push' || 
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    environment: production
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install Vercel CLI
+        run: pnpm add -g vercel@latest
+
+      - name: Pull Vercel Environment
+        run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+
+      - name: Build Project
+        run: vercel build --prod --token=$VERCEL_TOKEN
+
+      - name: Deploy to Production
+        id: deploy
+        run: |
+          DEPLOY_URL=$(vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN)
+          echo "deploy_url=$DEPLOY_URL" >> "$GITHUB_OUTPUT"
+          echo "✅ Deployed to: $DEPLOY_URL"
