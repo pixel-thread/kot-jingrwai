@@ -1,4 +1,4 @@
-name: EAS Deploy Production Build
+name: EAS Publish Production OTA Update
 
 on:
   push:
@@ -14,24 +14,25 @@ jobs:
     environment: production
     working_directory: src/apps/mobile
 
-  build_new:
-    name: 🏗️ Create new build
-    type: build
+  publish_ota:
+    name: ⚡ Publish OTA Update
+    type: update
     environment: production
     working_directory: src/apps/mobile
     needs: [fingerprint]
     params:
       platform: android
-      profile: production
+      branch: production
+      message: "UI/JS changes: ${{ github.event.head_commit.message }}"
 
-  notify_build:
-    name: 📊 Build Summary
+  notify_ota:
+    name: 📊 OTA Summary
     type: slack
-    needs: [build_new]
+    needs: [publish_ota]
     if: ${{ always() }}
     params:
       webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
       message: |
-        🚀 PROD BUILD
-        Status: ${{ needs.build_new.status == 'finished' && '✅ Success' || '❌ Failed' }}
+        ⚡ PROD OTA
+        Status: ${{ needs.publish_ota.status == 'finished' && '✅ Published' || '❌ Failed' }}
         Fingerprint: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
