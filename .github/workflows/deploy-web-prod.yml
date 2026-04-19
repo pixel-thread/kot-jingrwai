@@ -48,10 +48,6 @@ jobs:
         # Generates the web database client. 
         run: npx prisma generate --schema=src/apps/web/src/lib/database/prisma/schema.prisma
 
-      - name: Build Workspace
-        # Builds the web application using Turbo.
-        run: pnpm turbo run build --filter web
-
       - name: Pull Vercel Environment Information
         # Pulls the environment variables and settings from Vercel.
         working-directory: src/apps/web
