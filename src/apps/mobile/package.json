@@ -22,9 +22,7 @@
     "build:ios:prod": "eas build --profile production --platform ios",
     "build:android:dev": "eas build --profile development --platform android",
     "build:android:preview": "eas build --profile preview --platform android",
-    "build:android:prod": "eas build --profile production --platform android",
-    "update:preview": "eas update --branch preview --message \"Preview update\"",
-    "update:prod": "eas update --branch production --message \"Production update\""
+    "build:android:prod": "eas build --profile production --platform android"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
